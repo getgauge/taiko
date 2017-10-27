@@ -1,0 +1,21 @@
+{
+	"name": "taiko",
+	"version": "0.0.2",
+	"description": "An easy to use wrapper over Google Chrome's Puppeteer library.",
+	"main": "taiko.js",
+	"scripts": {},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/getgauge/taiko"
+	},
+	"keywords": [
+		"headless",
+		"puppeteer",
+		"browser"
+	],
+	"author": "getgauge",
+	"license": "MIT",
+	"dependencies": {
+		"puppeteer": "^0.12.0"
+	}
+}
