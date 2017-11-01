@@ -13,7 +13,7 @@ const openBrowser = async(options) => {
 
 const closeBrowser = async(options) => b.close();
 
-const goto = async(url, options) => p.goto(url, options);
+const goto = async(url, options) => {await p.goto(url, options)};
 
 const reload = async(options) => p.reload(options);
 
@@ -41,7 +41,7 @@ const hover = async(selector) => {
 const focus = async(selector) => await (await _focus(selector)).dispose();
 
 const write = async(text, into) => {
-    const e = await _focus(into);
+    const e = await _focus(isString(into) ? textField(into) : into);
     await e.type(text);
     await e.dispose();
 }
@@ -61,25 +61,13 @@ const highlight = async(selector) => evaluate(selector, e => e.style.border = '0
 
 const scrollTo = async(selector) => evaluate(selector, e => e.scrollIntoViewIfNeeded());
 
-const scrollRight = async(selector, px = 100) => {
-    await (Number.isInteger(selector) ? p.evaluate(px => window.scrollBy(px, 0), px) :
-        evaluate(selector, (e, px) => e.scrollLeft += px, px));
-}
+const scrollRight = async(e, px = 100) => scroll(e, px, px => window.scrollBy(px, 0), (e, px) => e.scrollLeft += px);
 
-const scrollLeft = async(selector, px = 100) => {
-    await (Number.isInteger(selector) ? p.evaluate(px => window.scrollBy(px * -1, 0), px) :
-        evaluate(selector, (e, px) => e.scrollLeft -= px, px));
-}
+const scrollLeft = async(e, px = 100) => scroll(e, px, px => window.scrollBy(px * -1, 0), (e, px) => e.scrollLeft -= px);
 
-const scrollUp = async(selector, px = 100) => {
-    await (Number.isInteger(selector) ? p.evaluate(px => window.scrollBy(0, px * -1), px) :
-        evaluate(selector, (e, px) => e.scrollTop -= px, px));
-}
+const scrollUp = async(e, px = 100) => scroll(e, px, px => window.scrollBy(0, px * -1), (e, px) => e.scrollTop -= px);
 
-const scrollDown = async(selector, px = 100) => {
-    await (Number.isInteger(selector) ? p.evaluate(px => window.scrollBy(0, px), px) :
-        evaluate(selector, (e, px) => e.scrollTop += px, px));
-}
+const scrollDown = async(e, px = 100) => scroll(e, px, px => window.scrollBy(0, px), (e, px) => e.scrollTop += px);
 
 const $ = (selector) => {
     const get = async() => selector.startsWith('//') ? $xpath(selector) : p.$(selector);
@@ -201,6 +189,11 @@ const _focus = async(selector) => {
     const e = await element(selector);
     await p.evaluate(e => e.focus(), e);
     return e;
+}
+
+const scroll = async(e, px, scrollPage, scrollElement) => {
+    if(!e) e = 100;
+    await (Number.isInteger(e) ? p.evaluate(scrollPage, e) : evaluate(e, scrollElement, px));
 }
 
 const dialog = (type, message, callback) => {
