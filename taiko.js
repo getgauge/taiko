@@ -2,22 +2,38 @@ const puppeteer = require('puppeteer');
 
 let b, p;
 
-const browser = () => b;
+const browser = () => {
+    validate();
+    return b;
+}
 
-const page = () => p;
+const page = () => {
+    validate();
+    return p;
+}
 
 const openBrowser = async(options) => {
     b = await puppeteer.launch(options);
     p = await b.newPage();
 }
 
-const closeBrowser = async(options) => b.close();
+const closeBrowser = async(options) => {
+    validate();
+    await b.close();
+}
 
-const goto = async(url, options) => {await p.goto(url, options)};
+const goto = async(url, options) => {
+    validate();
+    await p.goto(url, options);
+};
 
-const reload = async(options) => p.reload(options);
+const reload = async(options) => {
+    validate();
+    await p.reload(options);
+}
 
 const click = async(selector, waitForNavigation = true, options = {}) => {
+    validate();
     const e = await element(selector);
     await e.click(options);
     await e.dispose();
@@ -25,28 +41,36 @@ const click = async(selector, waitForNavigation = true, options = {}) => {
 }
 
 const doubleClick = async(selector, waitForNavigation = true, options = {}) => {
+    validate();
     await click(selector, waitForNavigation, Object.assign({ clickCount: 2, }, options));
 }
 
 const rightClick = async(selector, waitForNavigation = true, options = {}) => {
+    validate();
     await click(selector, waitForNavigation, Object.assign({ button: 'right', }, options));
 }
 
 const hover = async(selector) => {
+    validate();
     const e = await element(selector);
     await e.hover();
     await e.dispose();
 }
 
-const focus = async(selector) => await (await _focus(selector)).dispose();
+const focus = async(selector) => {
+    validate();
+    await (await _focus(selector)).dispose();
+}
 
 const write = async(text, into) => {
+    validate();
     const e = await _focus(isString(into) ? textField(into) : into);
     await e.type(text);
     await e.dispose();
 }
 
 const upload = async(filepath, to) => {
+    validate();
     let e;
     if (isString(to)) e = await $xpath(`//input[@type='file'][@id=(//label[contains(text(),'${to}')]/@for)]`);
     else if (isSelector(to)) e = await to.get();
@@ -55,64 +79,94 @@ const upload = async(filepath, to) => {
     await e.dispose();
 }
 
-const press = async(key, options) => p.keyboard.press(key);
+const press = async(key, options) => {
+    validate();
+    await p.keyboard.press(key);
+}
 
-const highlight = async(selector) => evaluate(selector, e => e.style.border = '0.5em solid red');
+const highlight = async(selector) => {
+    validate();
+    await evaluate(selector, e => e.style.border = '0.5em solid red');
+}
 
-const scrollTo = async(selector) => evaluate(selector, e => e.scrollIntoViewIfNeeded());
+const scrollTo = async(selector) => {
+    validate();
+    await evaluate(selector, e => e.scrollIntoViewIfNeeded());
+}
 
-const scrollRight = async(e, px = 100) => scroll(e, px, px => window.scrollBy(px, 0), (e, px) => e.scrollLeft += px);
+const scrollRight = async(e, px = 100) => {
+    validate();
+    await scroll(e, px, px => window.scrollBy(px, 0), (e, px) => e.scrollLeft += px);
+}
 
-const scrollLeft = async(e, px = 100) => scroll(e, px, px => window.scrollBy(px * -1, 0), (e, px) => e.scrollLeft -= px);
+const scrollLeft = async(e, px = 100) => {
+    validate();
+    await scroll(e, px, px => window.scrollBy(px * -1, 0), (e, px) => e.scrollLeft -= px);
+}
 
-const scrollUp = async(e, px = 100) => scroll(e, px, px => window.scrollBy(0, px * -1), (e, px) => e.scrollTop -= px);
+const scrollUp = async(e, px = 100) => {
+    validate();
+    await scroll(e, px, px => window.scrollBy(0, px * -1), (e, px) => e.scrollTop -= px);
+}
 
-const scrollDown = async(e, px = 100) => scroll(e, px, px => window.scrollBy(0, px), (e, px) => e.scrollTop += px);
+const scrollDown = async(e, px = 100) => {
+    validate();
+    await scroll(e, px, px => window.scrollBy(0, px), (e, px) => e.scrollTop += px);
+}
 
 const $ = (selector) => {
+    validate();
     const get = async() => selector.startsWith('//') ? $xpath(selector) : p.$(selector);
     return { get: get, exists: exists(get), };
 }
 
 const $$ = (selector) => {
+    validate();
     const get = async() => selector.startsWith('//') ? $$xpath(selector) : p.$$(selector);
     return { get: get, exists: async() => (await get()).length > 0, };
 }
 
 const image = (selector) => {
+    validate();
     assertType(selector);
     const get = async() => p.$(`img[alt='${selector}']`);
     return { get: get, exists: exists(get), };
 }
 
 const link = (selector) => {
+    validate();
     const get = async() => getElementByTag(selector, 'a');
     return { get: get, exists: exists(get), };
 }
 
 const listItem = (selector) => {
+    validate();
     const get = async() => getElementByTag(selector, 'li');
     return { get: get, exists: exists(get), };
 }
 
 const button = (selector) => {
+    validate();
     const get = async() => getElementByTag(selector, 'button');
     return { get: get, exists: exists(get), };
 }
 
 const inputField = (attribute, selector) => {
+    validate();
     assertType(selector);
     const get = async() => p.$(`input[${attribute}='${selector}']`);
     return { get: get, exists: exists(get), value: async() => p.evaluate(e => e.value, await get()), }
 }
 
 const textField = (selector) => {
+    validate();
     assertType(selector);
     const get = async() => $xpath(`//input[@type='text'][@id=(//label[contains(text(),'${selector}')]/@for)]`);
     return { get: get, exists: exists(get), value: async() => p.evaluate(e => e.value, await get()), }
 }
 
 const comboBox = (selector) => {
+    validate();
     assertType(selector);
     const get = async() => $xpath(`//select[@id=(//label[contains(text(),'${selector}')]/@for)]`);
     return {
@@ -130,6 +184,7 @@ const comboBox = (selector) => {
 }
 
 const checkBox = (selector) => {
+    validate();
     assertType(selector);
     const get = async() => $xpath(`//input[@type='checkbox'][@id=(//label[contains(text(),'${selector}')]/@for)]`);
     return {
@@ -140,6 +195,7 @@ const checkBox = (selector) => {
 }
 
 const radioButton = (selector) => {
+    validate();
     assertType(selector);
     const get = async() => $xpath(`//input[@type='radio'][@id=(//label[contains(text(),'${selector}')]/@for)]`);
     return {
@@ -158,12 +214,14 @@ const confirm = (message, callback) => dialog('confirm', message, callback);
 const beforeunload = (message, callback) => dialog('beforeunload', message, callback);
 
 const text = (text) => {
+    validate();
     assertType(text);
     const get = async(e = '*') => $xpath('//' + e + `[text()='${text}']`);
     return { get: get, exists: exists(get), };
 }
 
 const contains = (text) => {
+    validate();
     assertType(text);
     const get = async(e = '*') => $xpath('//' + e + `[contains(text(),'${text}')]`);
     return { get: get, exists: exists(get), };
@@ -192,11 +250,12 @@ const _focus = async(selector) => {
 }
 
 const scroll = async(e, px, scrollPage, scrollElement) => {
-    if(!e) e = 100;
+    e = e || 100;
     await (Number.isInteger(e) ? p.evaluate(scrollPage, e) : evaluate(e, scrollElement, px));
 }
 
 const dialog = (type, message, callback) => {
+    validate();
     p.on('dialog', async dialog => {
         if (dialog.type === type && dialog.message() === message)
             await callback(dialog);
@@ -230,6 +289,10 @@ const $$xpath = async(selector) => {
         if (elementHandle) result.push(elementHandle);
     }
     return result;
+}
+
+const validate = () => {
+    if (!b || !p) throw new Error("Browser or Page not initialized. Call 'openBrowser()' before using this API.");
 }
 
 const assertType = (obj, condition = isString, message = 'String parameter expected') => {
@@ -314,4 +377,4 @@ module.exports = {
     waitForNavigation: e => e,
     to: e => e,
     into: e => e,
-}
+};
