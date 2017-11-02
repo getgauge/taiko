@@ -35,7 +35,7 @@ const rewrite = (code) => {
 };
 
 const aEval = (oEval) => (cmd, context, filename, callback) => {
-    commands.push(cmd);
+    commands.push(cmd.trim());
     try {
         cmd = rewrite(cmd);
     } catch (err) {
@@ -61,5 +61,8 @@ module.exports = {
         history(repl, hFile);
         repl.eval = aEval(oEval);
     },
-    commands: () => commands,
+    commands: {
+        get: () => commands,
+        clear: () => commands.length = 0,
+    }
 };
