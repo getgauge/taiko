@@ -3,7 +3,11 @@
 	"version": "0.0.2",
 	"description": "An easy to use wrapper over Google Chrome's Puppeteer library.",
 	"main": "taiko.js",
+	"bin": {
+		"taiko": "repl.js"
+	},
 	"scripts": {
+		"format": "./node_modules/.bin/js-beautify *.js -r -b collapse,preserve-inline && npm run lint",
 		"lint": "./node_modules/.bin/eslint *.js",
 		"test": "npm run lint"
 	},
@@ -19,9 +23,13 @@
 	"author": "getgauge",
 	"license": "MIT",
 	"dependencies": {
-		"puppeteer": "^0.12.0"
+		"puppeteer": "^0.12.0",
+		"babylon": "^6.18.0",
+		"recast": "^0.12.8",
+		"repl.history": "^0.1.4"
 	},
 	"devDependencies": {
-		"eslint": "^4.10.0"
+		"eslint": "^4.10.0",
+		"js-beautify": "^1.7.4"
 	}
 }
