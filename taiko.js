@@ -15,26 +15,26 @@ const page = () => {
 const openBrowser = async options => {
     b = await puppeteer.launch(options);
     p = await b.newPage();
-    return { success: true };
+    return { description: 'Browser and page initialized' };
 };
 
 const closeBrowser = async () => {
     validate();
     await b.close();
     b, p = null;
-    return { success: true };
+    return { description: 'Browser and page closed' };
 };
 
 const goto = async (url, options) => {
     validate();
     await p.goto(url, options);
-    return { success: true, url: p.url() };
+    return { description: `Navigated to url "${p.url()}"`, url: p.url() };
 };
 
 const reload = async options => {
     validate();
     await p.reload(options);
-    return { success: true, url: p.url() };
+    return { description: `"${p.url()}" reloaded`, url: p.url() };
 };
 
 const click = async (selector, waitForNavigation = true, options = {}) => {
@@ -43,19 +43,19 @@ const click = async (selector, waitForNavigation = true, options = {}) => {
     await e.click(options);
     await e.dispose();
     if (waitForNavigation) await p.waitForNavigation();
-    return { success: true, description: 'Clicked ' + description(selector, true) };
+    return { description: 'Clicked ' + description(selector, true) };
 };
 
 const doubleClick = async (selector, waitForNavigation = true, options = {}) => {
     validate();
     await click(selector, waitForNavigation, Object.assign({ clickCount: 2, }, options));
-    return { success: true, description: 'Double clicked ' + description(selector, true) };
+    return { description: 'Double clicked ' + description(selector, true) };
 };
 
 const rightClick = async (selector, waitForNavigation = true, options = {}) => {
     validate();
     await click(selector, waitForNavigation, Object.assign({ button: 'right', }, options));
-    return { success: true, description: 'Right clicked ' + description(selector, true) };
+    return { description: 'Right clicked ' + description(selector, true) };
 };
 
 const hover = async selector => {
@@ -63,13 +63,13 @@ const hover = async selector => {
     const e = await element(selector);
     await e.hover();
     await e.dispose();
-    return { success: true, description: 'Hovered over the ' + description(selector, true) };
+    return { description: 'Hovered over the ' + description(selector, true) };
 };
 
 const focus = async selector => {
     validate();
     await (await _focus(selector)).dispose();
-    return { success: true, description: 'Focussed on the ' + description(selector, true) };
+    return { description: 'Focussed on the ' + description(selector, true) };
 };
 
 const write = async (text, into) => {
@@ -78,7 +78,7 @@ const write = async (text, into) => {
     const e = await _focus(selector);
     await e.type(text);
     await e.dispose();
-    return { success: true, description: `Wrote ${text} in the ` + description(selector, true) };
+    return { description: `Wrote ${text} in the ` + description(selector, true) };
 };
 
 const upload = async (filepath, to) => {
@@ -91,25 +91,25 @@ const upload = async (filepath, to) => {
     const e = await to.get();
     await e.uploadFile(filepath);
     await e.dispose();
-    return { success: true, description: `Uploaded ${filepath} to the ` + description(to, true) };
+    return { description: `Uploaded ${filepath} to the ` + description(to, true) };
 };
 
 const press = async (key, options) => {
     validate();
     await p.keyboard.press(key, options);
-    return { success: true, description: `Pressed the ${key} key` };
+    return { description: `Pressed the ${key} key` };
 };
 
 const highlight = async selector => {
     validate();
     await evaluate(selector, e => e.style.border = '0.5em solid red');
-    return { success: true, description: 'Highlighted the ' + description(selector, true) };
+    return { description: 'Highlighted the ' + description(selector, true) };
 };
 
 const scrollTo = async selector => {
     validate();
     await evaluate(selector, e => e.scrollIntoViewIfNeeded());
-    return { success: true, description: 'Scrolled to the ' + description(selector, true) };
+    return { description: 'Scrolled to the ' + description(selector, true) };
 };
 
 const scrollRight = async (e, px = 100) => {
@@ -287,10 +287,10 @@ const scroll = async (e, px, scrollPage, scrollElement, direction) => {
     e = e || 100;
     if (Number.isInteger(e)) {
         await p.evaluate(scrollPage, e);
-        return { success: true, description: `Scrolled ${direction} the page by ${px} pixels` };
+        return { description: `Scrolled ${direction} the page by ${px} pixels` };
     }
     await evaluate(e, scrollElement, px);
-    return { success: true, description: `Scrolled ${direction} ` + description(e, true) + ` by ${px} pixels` };
+    return { description: `Scrolled ${direction} ` + description(e, true) + ` by ${px} pixels` };
 };
 
 const dialog = (type, message, callback) => {
@@ -334,7 +334,7 @@ const $$xpath = async selector => {
 };
 
 const validate = () => {
-    if (!b || !p) throw new Error('Browser or Page not initialized. Call openBrowser() before using this API.');
+    if (!b || !p) throw new Error('Browser or page not initialized. Call `openBrowser()` before using this API');
 };
 
 const assertType = (obj, condition = isString, message = 'String parameter expected') => {

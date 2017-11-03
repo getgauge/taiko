@@ -35,7 +35,7 @@ const rewrite = (code) => {
 };
 
 const aEval = (oEval) => (cmd, context, filename, callback) => {
-    commands.push(cmd.trim());
+    const oCmd = cmd.trim();
     try {
         cmd = rewrite(cmd);
     } catch (err) {
@@ -48,6 +48,7 @@ const aEval = (oEval) => (cmd, context, filename, callback) => {
             try {
                 value = await value;
                 callback.call(this, err, value);
+                commands.push(oCmd);
             } catch (error) {
                 callback.call(this, error, null);
             }
