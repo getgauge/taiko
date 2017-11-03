@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 
+const fs = require('fs');
 const { aEval, commands } = require('./awaitEval');
 const taiko = require('./taiko');
 
@@ -11,25 +12,32 @@ for (let func in taiko) {
     funcs[func] = true;
 }
 
+repl.context['openBrowser'] = (options = {}) => {
+    if (!options.headless) options.headless = false;
+    return taiko.openBrowser(options);
+};
+
 aEval(repl);
 
 repl.defineCommand('code', {
-    help: 'Prints code for all evaluated commands in this REPL session',
+    help: 'Prints or saves the code for all evaluated commands in this REPL session',
     /*eslint-disable no-unused-vars*/
-    action(name) {
+    action(file) {
         const text = commands.get()
             .map(e => {
                 if (!e.endsWith(';')) e += ';';
                 return funcs[e.split('(')[0]] ? '\tawait ' + e : '\t' + e;
             }).join('\n');
-        console.log(`const { ${Object.keys(funcs).join(', ')} } = require('taiko');\n\n(async => {\n${text}\n})();`);
+        const content = `const { ${Object.keys(funcs).join(', ')} } = require('taiko');\n\n(async () => {\n${text}\n})();`;
+        if (!file) console.log(content);
+        else fs.writeFileSync(file, content);
         this.displayPrompt();
     }
 });
 
 repl.defineCommand('del', {
     help: 'Delete previously evaluated commands from the buffer',
-    action(name) {
+    action() {
         commands.clear();
         this.displayPrompt();
     }
