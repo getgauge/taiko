@@ -4,7 +4,6 @@ const recast = require('recast');
 const parser = require('babylon');
 const history = require('repl.history');
 const hFile = path.join(os.homedir(), '.taiko_repl_history');
-const commands = [];
 
 const leakLocals = (nodes) => {
     return nodes.map(node => {
@@ -34,7 +33,7 @@ const rewrite = (code) => {
     return recast.print(ast).code;
 };
 
-const aEval = (oEval) => (cmd, context, filename, callback) => {
+const aEval = (oEval, cmdCallback) => (cmd, context, filename, callback) => {
     const oCmd = cmd.trim();
     try {
         cmd = rewrite(cmd);
@@ -48,7 +47,7 @@ const aEval = (oEval) => (cmd, context, filename, callback) => {
             try {
                 value = await value;
                 callback.call(this, err, value);
-                commands.push(oCmd);
+                cmdCallback(oCmd, value);
             } catch (error) {
                 callback.call(this, error, null);
             }
@@ -57,13 +56,9 @@ const aEval = (oEval) => (cmd, context, filename, callback) => {
 };
 
 module.exports = {
-    aEval: (repl) => {
+    aEval: (repl, callback) => {
         const oEval = repl.eval;
         history(repl, hFile);
-        repl.eval = aEval(oEval);
+        repl.eval = aEval(oEval, callback);
     },
-    commands: {
-        get: () => commands,
-        clear: () => commands.length = 0,
-    }
 };

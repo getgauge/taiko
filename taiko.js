@@ -85,7 +85,7 @@ const upload = async (filepath, to) => {
     validate();
     if (isString(to)) to = {
         get: async () => $xpath(`//input[@type='file'][@id=(//label[contains(text(),'${to}')]/@for)]`),
-        desc: `File input field with label containing "${to}"`,
+        description: `File input field with label containing "${to}"`,
     };
     else if (!isSelector(to)) throw Error('Invalid element passed as paramenter');
     const e = await to.get();
@@ -135,38 +135,38 @@ const scrollDown = async (e, px = 100) => {
 const $ = selector => {
     validate();
     const get = async () => selector.startsWith('//') ? $xpath(selector) : p.$(selector);
-    return { get: get, exists: exists(get), desc: `Custom selector "$(${selector})"` };
+    return { get: get, exists: exists(get), description: `Custom selector "$(${selector})"` };
 };
 
 const $$ = selector => {
     validate();
     const get = async () => selector.startsWith('//') ? $$xpath(selector) : p.$$(selector);
-    return { get: get, exists: async () => (await get()).length > 0, desc: `Custom selector $$(${selector})` };
+    return { get: get, exists: async () => (await get()).length > 0, description: `Custom selector $$(${selector})` };
 };
 
 const image = selector => {
     validate();
     assertType(selector);
     const get = async () => p.$(`img[alt='${selector}']`);
-    return { get: get, exists: exists(get), desc: `Image with "alt=${selector}"` };
+    return { get: get, exists: exists(get), description: `Image with "alt=${selector}"` };
 };
 
 const link = selector => {
     validate();
     const get = async () => element(selector, 'a');
-    return { get: get, exists: exists(get), desc: description(selector).replace('Element', 'Link') };
+    return { get: get, exists: exists(get), description: description(selector).replace('Element', 'Link') };
 };
 
 const listItem = selector => {
     validate();
     const get = async () => element(selector, 'li');
-    return { get: get, exists: exists(get), desc: description(selector).replace('Element', 'List item') };
+    return { get: get, exists: exists(get), description: description(selector).replace('Element', 'List item') };
 };
 
 const button = selector => {
     validate();
     const get = async () => element(selector, 'button');
-    return { get: get, exists: exists(get), desc: description(selector).replace('Element', 'Button') };
+    return { get: get, exists: exists(get), description: description(selector).replace('Element', 'Button') };
 };
 
 const inputField = (attribute, selector) => {
@@ -176,7 +176,7 @@ const inputField = (attribute, selector) => {
     return {
         get: get,
         exists: exists(get),
-        desc: `Input field with "${attribute} = ${selector}"`,
+        description: `Input field with "${attribute} = ${selector}"`,
         value: async () => p.evaluate(e => e.value, await get()),
     };
 };
@@ -188,7 +188,7 @@ const textField = selector => {
     return {
         get: get,
         exists: exists(get),
-        desc: `Text field with label containing "${selector}"`,
+        description: `Text field with label containing "${selector}"`,
         value: async () => p.evaluate(e => e.value, await get()),
     };
 };
@@ -200,7 +200,7 @@ const comboBox = selector => {
     return {
         get: get,
         exists: exists(get),
-        desc: `Combo box with label containing "${selector}"`,
+        description: `Combo box with label containing "${selector}"`,
         select: async (value) => {
             const box = await get();
             if (!box) throw new Error('Combo Box not found');
@@ -219,7 +219,7 @@ const checkBox = selector => {
     return {
         get: get,
         exists: exists(get),
-        desc: `Checkbox with label containing "${selector}"`,
+        description: `Checkbox with label containing "${selector}"`,
         isChecked: async () => p.evaluate(e => e.checked, await get()),
     };
 };
@@ -231,7 +231,7 @@ const radioButton = selector => {
     return {
         get: get,
         exists: exists(get),
-        desc: `Radio button with label containing "${selector}"`,
+        description: `Radio button with label containing "${selector}"`,
         isSelected: async () => p.evaluate(e => e.checked, await get())
     };
 };
@@ -240,14 +240,14 @@ const text = text => {
     validate();
     assertType(text);
     const get = async (e = '*') => $xpath('//' + e + `[text()='${text}']`);
-    return { get: get, exists: exists(get), desc: `Element with text "${text}"` };
+    return { get: get, exists: exists(get), description: `Element with text "${text}"` };
 };
 
 const contains = text => {
     validate();
     assertType(text);
     const get = async (e = '*') => $xpath('//' + e + `[contains(text(),'${text}')]`);
-    return { get: get, exists: exists(get), desc: `Element containing text "${text}"` };
+    return { get: get, exists: exists(get), description: `Element containing text "${text}"` };
 };
 
 const alert = (message, callback) => dialog('alert', message, callback);
@@ -268,10 +268,10 @@ const element = async (selector, tag) => {
     return e;
 };
 
-const description = (selector, lowerCase) => {
+const description = (selector, lowerCase = false) => {
     const d = (() => {
-        if (isString(selector)) return contains(selector).desc;
-        else if (isSelector(selector)) return selector.desc;
+        if (isString(selector)) return contains(selector).description;
+        else if (isSelector(selector)) return selector.description;
         return '';
     })();
     return lowerCase ? d.charAt(0).toLowerCase() + d.slice(1) : d;
