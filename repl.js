@@ -15,7 +15,7 @@ try {
     }).trimRight() + '\n');
 } catch (e) {}
 
-const repl = require('repl').start({ prompt: '>> ', ignoreUndefined: true });
+const repl = require('repl').start({ prompt: '> ', ignoreUndefined: true });
 const dWrite = repl.writer;
 const funcs = {};
 const commands = [];
