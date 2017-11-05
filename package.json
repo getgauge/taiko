@@ -17,8 +17,10 @@
 	},
 	"keywords": [
 		"headless",
-		"puppeteer",
-		"browser"
+		"headless-chrome",
+		"headless-testing",
+		"headless-browser",
+		"puppeteer"
 	],
 	"author": "getgauge",
 	"license": "MIT",
