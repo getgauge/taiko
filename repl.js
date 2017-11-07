@@ -2,8 +2,17 @@
 
 const fs = require('fs');
 const util = require('util');
+const puppeteer = require('puppeteer');
+const spawnSync = require('child_process').spawnSync;
 const { aEval } = require('./awaitEval');
 const taiko = require('./taiko');
+
+let version = '';
+let browserVersion = '';
+try {
+    version = 'Version: ' + JSON.parse(fs.readFileSync('package.json')).version;
+    browserVersion = spawnSync(puppeteer.executablePath(), ['--version']).stdout.toString().trim();
+} catch (_) {}
 
 displayTaiko();
 
@@ -72,13 +81,23 @@ repl.defineCommand('code', {
     }
 });
 
+repl.defineCommand('version', {
+    help: 'Prints version info',
+    action() {
+        displayTaiko();
+        this.displayPrompt();
+    }
+});
+
 function displayTaiko() {
-    console.log('___________      .__ __');
-    console.log('\\__    ___/____  |__|  | ______');
-    console.log('  |    |  \\__  \\ |  |  |/ /  _ \\');
-    console.log('  |    |   / __ \\|  |    <  <_> )');
-    console.log('  |____|  (____  /__|__|_ \\____/');
+    console.log('___________      .__ __             Interactive browser automation.');
+    console.log('\\__    ___/____  |__|  | ______     ');
+    console.log('  |    |  \\__  \\ |  |  |/ /  _ \\    ' + version);
+    console.log('  |    |   / __ \\|  |    <  <_> )   ' + browserVersion);
+    console.log('  |____|  (____  /__|__|_ \\____/    Type .api for help and .exit to quit');
     console.log('               \\/        \\/');
+    console.log();
+    console.log('Documentation available at https://github.com/getgauge/taiko/blob/master/docs/api.md\n');
 }
 
 const removeQuotes = (textWithQuotes, textWithoutQuotes) => textWithQuotes.replace(`'${textWithoutQuotes}'`, textWithoutQuotes);
