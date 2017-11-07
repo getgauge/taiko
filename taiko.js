@@ -174,7 +174,7 @@ const write = async (text, into) => {
         return { description: `Wrote ${text} into the ` + description(selector, true) };
     } else {
         p.keyboard.type(text);
-        return { description: `Wrote ${text} into the focussed element.` };
+        return { description: `Wrote ${text} into the focused element.` };
     }
 };
 
@@ -454,13 +454,18 @@ const button = selector => {
  * focus(inputField('id', 'name'))
  * inputField('id', 'name').exists()
  * ```
- * @param {string} attribute - The button's attribute.
+ * @param {string} [attribute='value'] - The input field's attribute.
  * @param {string} value - Value of the attribute specified in the first parameter.
  * @returns {ElementWrapper}
  */
-const inputField = (attribute, value) => {
+const inputField = (attribute = 'value', value) => {
     validate();
+    if (!value) {
+        value = attribute;
+        attribute = 'value';
+    }
     assertType(value);
+    assertType(attribute);
     const get = async () => p.$(`input[${attribute}='${value}']`);
     return {
         get: get,

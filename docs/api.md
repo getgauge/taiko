@@ -439,7 +439,7 @@ Examples:
 
 **Parameters**
 
--   `attribute` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The button's attribute.
+-   `attribute` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The input field's attribute. (optional, default `'value'`)
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Value of the attribute specified in the first parameter.
 
 Returns **[ElementWrapper](#elementwrapper)** 
