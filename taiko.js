@@ -27,7 +27,7 @@ const closeBrowser = async () => {
 };
 
 /**
- * Opens the specified URL in the browser's tab.
+ * Opens the specified URL in the browser's tab. Adds `http` protocol to the url if not present.
  *
  * @param {string} url - URL to navigate page to.
  * @param {Object} options - [Navigation parameters](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagegotourl-options)
@@ -35,6 +35,7 @@ const closeBrowser = async () => {
  */
 const goto = async (url, options) => {
     validate();
+    if (!/^https?:\/\//i.test(url)) url = 'http://' + url;
     await p.goto(url, options);
     return { description: `Navigated to url "${p.url()}"`, url: p.url() };
 };

@@ -69,7 +69,7 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 ## goto
 
-Opens the specified URL in the browser's tab.
+Opens the specified URL in the browser's tab. Adds `http` protocol to the url if not present.
 
 **Parameters**
 
