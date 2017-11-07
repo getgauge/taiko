@@ -614,7 +614,10 @@ const text = text => {
 const contains = text => {
     validate();
     assertType(text);
-    const get = async (e = '*') => $xpath('//' + e + `[contains(text(),'${text}')]`);
+    const get = async (e = '*') => {
+        const element = await $xpath('//' + e + `[contains(@value,'${text}')]`);
+        return element ? element : await $xpath('//' + e + `[contains(text(),'${text}')]`);
+    };
     return { get: get, exists: exists(get), description: `Element containing text "${text}"` };
 };
 
