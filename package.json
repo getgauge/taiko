@@ -9,6 +9,7 @@
 	"scripts": {
 		"format": "./node_modules/.bin/js-beautify *.js -r -b collapse,preserve-inline && npm run lint",
 		"lint": "./node_modules/.bin/eslint *.js",
+		"doc": "./node_modules/documentation/bin/documentation.js build taiko.js -f md -o api.md",
 		"test": "npm run lint"
 	},
 	"repository": {
@@ -32,6 +33,7 @@
 	},
 	"devDependencies": {
 		"eslint": "^4.10.0",
-		"js-beautify": "^1.7.4"
+		"js-beautify": "^1.7.4",
+		"documentation": "^5.3.3"
 	}
 }
