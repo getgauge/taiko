@@ -193,7 +193,7 @@ const write = async (text, into) => {
 const upload = async (filepath, to) => {
     validate();
     if (isString(to)) to = {
-        get: async () => $xpath(`//input[@type='file'][@id=(//label[contains(text(),'${to}')]/@for)]`),
+        get: async () => $xpath(`//input[@type='file'][@id=(//label[contains(text(),"${to}")]/@for)]`),
         description: `File input field with label containing "${to}"`,
     };
     else if (!isSelector(to)) throw Error('Invalid element passed as paramenter');
@@ -391,7 +391,7 @@ const $$ = selector => {
 const image = alt => {
     validate();
     assertType(alt);
-    const get = async () => p.$(`img[alt='${alt}']`);
+    const get = async () => p.$(`img[alt="${alt}"]`);
     return { get: get, exists: exists(get), description: `Image with "alt=${alt}"` };
 };
 
@@ -466,7 +466,7 @@ const inputField = (attribute = 'value', value) => {
     }
     assertType(value);
     assertType(attribute);
-    const get = async () => p.$(`input[${attribute}='${value}']`);
+    const get = async () => p.$(`input[${attribute}="${value}"]`);
     return {
         get: get,
         exists: exists(get),
@@ -489,7 +489,7 @@ const inputField = (attribute = 'value', value) => {
 const textField = label => {
     validate();
     assertType(label);
-    const get = async () => $xpath(`//input[@type='text'][@id=(//label[contains(text(),'${label}')]/@for)]`);
+    const get = async () => $xpath(`//input[@type='text'][@id=(//label[contains(text(),"${label}")]/@for)]`);
     return {
         get: get,
         exists: exists(get),
@@ -513,7 +513,7 @@ const textField = label => {
 const comboBox = label => {
     validate();
     assertType(label);
-    const get = async () => $xpath(`//select[@id=(//label[contains(text(),'${label}')]/@for)]`);
+    const get = async () => $xpath(`//select[@id=(//label[contains(text(),"${label}")]/@for)]`);
     return {
         get: get,
         exists: exists(get),
@@ -545,7 +545,7 @@ const comboBox = label => {
 const checkBox = selector => {
     validate();
     assertType(selector);
-    const get = async () => $xpath(`//input[@type='checkbox'][@id=(//label[contains(text(),'${selector}')]/@for)]`);
+    const get = async () => $xpath(`//input[@type='checkbox'][@id=(//label[contains(text(),"${selector}")]/@for)]`);
     return {
         get: get,
         exists: exists(get),
@@ -572,7 +572,7 @@ const checkBox = selector => {
 const radioButton = selector => {
     validate();
     assertType(selector);
-    const get = async () => $xpath(`//input[@type='radio'][@id=(//label[contains(text(),'${selector}')]/@for)]`);
+    const get = async () => $xpath(`//input[@type='radio'][@id=(//label[contains(text(),"${selector}")]/@for)]`);
     return {
         get: get,
         exists: exists(get),
@@ -597,7 +597,7 @@ const radioButton = selector => {
 const text = text => {
     validate();
     assertType(text);
-    const get = async (e = '*') => $xpath('//' + e + `[text()='${text}']`);
+    const get = async (e = '*') => $xpath('//' + e + `[text()="${text}"]`);
     return { get: get, exists: exists(get), description: `Element with text "${text}"` };
 };
 
@@ -615,8 +615,8 @@ const contains = text => {
     validate();
     assertType(text);
     const get = async (e = '*') => {
-        const element = await $xpath('//' + e + `[contains(@value,'${text}')]`);
-        return element ? element : await $xpath('//' + e + `[contains(text(),'${text}')]`);
+        const element = await $xpath('//' + e + `[contains(@value,"${text}")]`);
+        return element ? element : await $xpath('//' + e + `[contains(text(),"${text}")]`);
     };
     return { get: get, exists: exists(get), description: `Element containing text "${text}"` };
 };
