@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const util = require('util');
+const path = require('path');
 const puppeteer = require('puppeteer');
 const spawnSync = require('child_process').spawnSync;
 const { aEval } = require('./awaitEval');
@@ -9,9 +10,11 @@ const taiko = require('./taiko');
 
 let version = '';
 let browserVersion = '';
+let doc = '';
 try {
     version = 'Version: ' + JSON.parse(fs.readFileSync('package.json')).version;
     browserVersion = spawnSync(puppeteer.executablePath(), ['--version']).stdout.toString().trim();
+    doc = JSON.parse(fs.readFileSync(path.join('docs', 'api.json')));
 } catch (_) {}
 
 displayTaiko();
@@ -85,6 +88,48 @@ repl.defineCommand('version', {
     help: 'Prints version info',
     action() {
         displayTaiko();
+        this.displayPrompt();
+    }
+});
+
+repl.defineCommand('api', {
+    help: 'Prints api info',
+    action(name) {
+        if (name) {
+            const e = doc.find(e => e.name === name);
+            if (!e) {
+                console.log(`Function ${name} doesn't exist.`);
+                this.displayPrompt();
+                return;
+            }
+            console.log();
+            console.log(e.description.children
+                .map((c) => {
+                    return (c.children || [])
+                        .map((c1) => (c1.type === 'link' ? c1.children[0].value : c1.value).trim())
+                        .join(' ');
+                })
+                .filter((e) => e && e.trim() != '')
+                .join('\n'));
+            if (e.examples.length > 0) {
+                console.log();
+                console.log(e.examples.length > 1 ? 'Examples:' : 'Example:');
+                console.log(e.examples.map((e) => '\t' + e.description).join('\n'));
+                console.log();
+            }
+        } else {
+            doc.forEach(e => {
+                let description = e.description.children
+                    .map((c) => {
+                        return (c.children || [])
+                            .map((c1) => (c1.type === 'link' ? c1.children[0].value : c1.value).trim())
+                            .join(' ');
+                    });
+                if (e.summary) description = e.tags.find(t => t.title === 'summary').description;
+                console.log(removeQuotes(util.inspect(e.name, { colors: true }), e.name) + ' : ' + description + '\n');
+            });
+            console.log('Run `.api <name>` for more info on a specific function. For Example: `.api click`.');
+        }
         this.displayPrompt();
     }
 });

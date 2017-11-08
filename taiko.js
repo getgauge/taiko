@@ -4,11 +4,17 @@ let b, p;
 
 /**
  * Launches a browser with a tab. The browser will be closed when the parent node.js process is closed.
+ * @summary Launches a browser.
+ *
+ * @example
+ * openBrowser()
+ * @example
+ * openBrowser({ headless: false })
  *
  * @param {Object} options - Set of configurable [options](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerlaunchoptions) to set on the browser.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const openBrowser = async options => {
+module.exports.openBrowser = async options => {
     b = await puppeteer.launch(options);
     p = await b.newPage();
     return { description: 'Browser and page initialized' };
@@ -16,10 +22,14 @@ const openBrowser = async options => {
 
 /**
  * Closes the browser and all of its tabs (if any were opened).
+ * @summary Closes the browser.
+ *
+ * @example
+ * closeBrowser()
  *
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const closeBrowser = async () => {
+module.exports.closeBrowser = async () => {
     validate();
     await b.close();
     b, p = null;
@@ -27,13 +37,19 @@ const closeBrowser = async () => {
 };
 
 /**
- * Opens the specified URL in the browser's tab. Adds `http` protocol to the url if not present.
+ * Opens the specified URL in the browser's tab. Adds `http` protocol to the URL if not present.
+ * @summary Opens the specified URL in the browser's tab.
+ *
+ * @example
+ * goto('https://google.com')
+ * @example
+ * goto('google.com')
  *
  * @param {string} url - URL to navigate page to.
  * @param {Object} options - [Navigation parameters](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagegotourl-options)
  * @returns {Promise<Object>} - Object with the description of the action performed and the final URL.
  */
-const goto = async (url, options) => {
+module.exports.goto = async (url, options) => {
     validate();
     if (!/^https?:\/\//i.test(url)) url = 'http://' + url;
     await p.goto(url, options);
@@ -43,10 +59,15 @@ const goto = async (url, options) => {
 /**
  * Reloads the page.
  *
+ * @example
+ * reload('https://google.com')
+ * @example
+ * reload('https://google.com', { timeout: 10000 })
+ *
  * @param {Object} options - [Navigation parameters](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagereloadoptions)
  * @returns {Promise<Object>} - Object with the description of the action performed and the final URL.
  */
-const reload = async options => {
+module.exports.reload = async options => {
     validate();
     await p.reload(options);
     return { description: `"${p.url()}" reloaded`, url: p.url() };
@@ -54,13 +75,14 @@ const reload = async options => {
 
 /**
  * Fetches an element with the given selector, scrolls it into view if needed, and then clicks in the center of the element. If there's no element matching selector, the method throws an error.
+ * @summary Clicks on an element.
  *
- * Examples:
- * ```
+ * @example
  * click('Get Started')
+ * @example
  * click(link('Get Started'))
+ * @example
  * click('Get Started', waitForNavigation(false))
- * ```
  *
  * @param {selector|string} selector - A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.
  * @param {boolean} [waitForNavigation=true] - wait for navigation after the click.
@@ -70,7 +92,7 @@ const reload = async options => {
  * @param {number} [options.delay=0] - Time to wait between mousedown and mouseup in milliseconds.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const click = async (selector, waitForNavigation = true, options = {}) => {
+module.exports.click = async (selector, waitForNavigation = true, options = {}) => {
     validate();
     const e = await element(selector);
     await e.click(options);
@@ -81,53 +103,57 @@ const click = async (selector, waitForNavigation = true, options = {}) => {
 
 /**
  * Fetches an element with the given selector, scrolls it into view if needed, and then double clicks the element. If there's no element matching selector, the method throws an error.
+ * @summary Double clicks on an element.
  *
- * Examples:
- * ```
- *  doubleClick('Get Started')
- *  doubleClick(button('Get Started'))
- *  doubleClick('Get Started', waitForNavigation(false))
- * ```
+ * @example
+ * doubleClick('Get Started')
+ * @example
+ * doubleClick(button('Get Started'))
+ * @example
+ * doubleClick('Get Started', waitForNavigation(false))
+ *
  * @param {selector|string} selector - A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be double clicked.
  * @param {boolean} [waitForNavigation=true] - wait for navigation after the click.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const doubleClick = async (selector, waitForNavigation = true) => {
+module.exports.doubleClick = async (selector, waitForNavigation = true) => {
     validate();
-    await click(selector, waitForNavigation, { clickCount: 2, });
+    await module.exports.click(selector, waitForNavigation, { clickCount: 2, });
     return { description: 'Double clicked ' + description(selector, true) };
 };
 
 /**
  * Fetches an element with the given selector, scrolls it into view if needed, and then right clicks the element. If there's no element matching selector, the method throws an error.
+ * @summary Right clicks on an element.
  *
- * Examples:
- * ```
- *  rightClick('Get Started')
- *  rightClick(text('Get Started'))
- * ```
+ * @example
+ * rightClick('Get Started')
+ * @example
+ * rightClick(text('Get Started'))
+ *
  * @param {selector|string} selector - A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be double clicked.
  * @param {boolean} [waitForNavigation=true] - wait for navigation after the click.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const rightClick = async (selector) => {
+module.exports.rightClick = async (selector) => {
     validate();
-    await click(selector, false, { button: 'right', });
+    await module.exports.click(selector, false, { button: 'right', });
     return { description: 'Right clicked ' + description(selector, true) };
 };
 
 /**
  * Fetches an element with the given selector, scrolls it into view if needed, and then hovers over the center of the element. If there's no element matching selector, the method throws an error.
+ * @summary Hovers over an element.
  *
- * Examples:
- * ```
- *  hover('Get Started')
- *  hover(link('Get Started'))
- * ```
+ * @example
+ * hover('Get Started')
+ * @example
+ * hover(link('Get Started'))
+ *
  * @param {selector|string} selector - A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be hovered.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const hover = async selector => {
+module.exports.hover = async selector => {
     validate();
     const e = await element(selector);
     await e.hover();
@@ -137,15 +163,15 @@ const hover = async selector => {
 
 /**
  * Fetches an element with the given selector and focuses it. If there's no element matching selector, the method throws an error.
+ * @summary Focus on an element.
  *
- * Examples:
- * ```
- *  focus(textField('Username:'))
- * ```
+ * @example
+ * focus(textField('Username:'))
+ *
  * @param {selector|string} selector - A selector of an element to focus. If there are multiple elements satisfying the selector, the first will be focused.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const focus = async selector => {
+module.exports.focus = async selector => {
     validate();
     await (await _focus(selector)).dispose();
     return { description: 'Focussed on the ' + description(selector, true) };
@@ -154,20 +180,21 @@ const focus = async selector => {
 /**
  * Types the given text into the focused or given element.
  *
- * Examples:
- * ```
- *  write('admin', into('Username:'))
- *  write('admin', 'Username:')
- *  write('admin')
- * ```
+ * @example
+ * write('admin', into('Username:'))
+ * @example
+ * write('admin', 'Username:')
+ * @example
+ * write('admin')
+ *
  * @param {string} text - Text to type into the element.
  * @param {selector|string} [into] - A selector of an element to write into.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const write = async (text, into) => {
+module.exports.write = async (text, into) => {
     validate();
     if (into) {
-        const selector = isString(into) ? textField(into) : into;
+        const selector = isString(into) ? module.exports.textField(into) : into;
         const e = await _focus(selector);
         await e.type(text);
         await e.dispose();
@@ -181,16 +208,16 @@ const write = async (text, into) => {
 /**
  * Uploads a file to a file input element.
  *
- * Examples:
- * ```
- *  upload('c:/abc.txt', to('Please select a file:'))
- *  upload('c:/abc.txt', 'Please select a file:')
- * ```
+ * @example
+ * upload('c:/abc.txt', to('Please select a file:'))
+ * @example
+ * upload('c:/abc.txt', 'Please select a file:')
+ *
  * @param {string} filepath - The path of the file to be attached.
  * @param {selector|string} to - The file input element to which to upload the file.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const upload = async (filepath, to) => {
+module.exports.upload = async (filepath, to) => {
     validate();
     if (isString(to)) to = {
         get: async () => $xpath(`//input[@type='file'][@id=(//label[contains(text(),"${to}")]/@for)]`),
@@ -206,18 +233,18 @@ const upload = async (filepath, to) => {
 /**
  * Presses the given key.
  *
- * Examples:
- * ```
- *  press('Enter')
- *  press('a')
- * ```
+ * @example
+ * press('Enter')
+ * @example
+ * press('a')
+ *
  * @param {string} key - Name of key to press, such as ArrowLeft. See [USKeyboardLayout](https://github.com/GoogleChrome/puppeteer/blob/master/lib/USKeyboardLayout.js) for a list of all key names.
  * @param {Object} options
  * @param {string} options.text - If specified, generates an input event with this text.
  * @param {number} [options.delay=0] - Time to wait between keydown and keyup in milliseconds.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const press = async (key, options) => {
+module.exports.press = async (key, options) => {
     validate();
     await p.keyboard.press(key, options);
     return { description: `Pressed the ${key} key` };
@@ -225,16 +252,17 @@ const press = async (key, options) => {
 
 /**
  * Highlights the given element on the page by drawing a red rectangle around it. This is useful for debugging purposes.
+ * @summary Highlights the given element.
  *
- * Examples:
- * ```
- *  highlight('Get Started')
- *  highlight(link('Get Started'))
- * ```
+ * @example
+ * highlight('Get Started')
+ * @example
+ * highlight(link('Get Started'))
+ *
  * @param {selector|string} selector - A selector of an element to highlight. If there are multiple elements satisfying the selector, the first will be highlighted.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const highlight = async selector => {
+module.exports.highlight = async selector => {
     validate();
     await evaluate(selector, e => e.style.border = '0.5em solid red');
     return { description: 'Highlighted the ' + description(selector, true) };
@@ -243,15 +271,15 @@ const highlight = async selector => {
 /**
  * Scrolls the page to the given element.
  *
- * Examples:
- * ```
- *  scrollTo('Get Started')
- *  scrollTo(link('Get Started'))
- * ```
+ * @example
+ * scrollTo('Get Started')
+ * @example
+ * scrollTo(link('Get Started'))
+ *
  * @param {selector|string} selector - A selector of an element to scroll to.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const scrollTo = async selector => {
+module.exports.scrollTo = async selector => {
     validate();
     await evaluate(selector, e => e.scrollIntoViewIfNeeded());
     return { description: 'Scrolled to the ' + description(selector, true) };
@@ -260,18 +288,20 @@ const scrollTo = async selector => {
 /**
  * Scrolls the page/element to the right.
  *
- * Examples:
- * ```
- *  scrollRight()
- *  scrollRight(1000)
- *  scrollRight('Element containing text')
- *  scrollRight('Element containing text', 1000)
- * ```
+ * @example
+ * scrollRight()
+ * @example
+ * scrollRight(1000)
+ * @example
+ * scrollRight('Element containing text')
+ * @example
+ * scrollRight('Element containing text', 1000)
+ *
  * @param {selector|string|number} [e='Window']
  * @param {number} [px=100]
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const scrollRight = async (e, px = 100) => {
+module.exports.scrollRight = async (e, px = 100) => {
     validate();
     return await scroll(e, px, px => window.scrollBy(px, 0), (e, px) => e.scrollLeft += px, 'right');
 };
@@ -279,18 +309,20 @@ const scrollRight = async (e, px = 100) => {
 /**
  * Scrolls the page/element to the left.
  *
- * Examples:
- * ```
- *  scrollLeft()
- *  scrollLeft(1000)
- *  scrollLeft('Element containing text')
- *  scrollLeft('Element containing text', 1000)
- * ```
+ * @example
+ * scrollLeft()
+ * @example
+ * scrollLeft(1000)
+ * @example
+ * scrollLeft('Element containing text')
+ * @example
+ * scrollLeft('Element containing text', 1000)
+ *
  * @param {selector|string|number} [e='Window']
  * @param {number} [px=100]
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const scrollLeft = async (e, px = 100) => {
+module.exports.scrollLeft = async (e, px = 100) => {
     validate();
     return await scroll(e, px, px => window.scrollBy(px * -1, 0), (e, px) => e.scrollLeft -= px, 'left');
 };
@@ -298,18 +330,20 @@ const scrollLeft = async (e, px = 100) => {
 /**
  * Scrolls up the page/element.
  *
- * Examples:
- * ```
- *  scrollUp()
- *  scrollUp(1000)
- *  scrollUp('Element containing text')
- *  scrollUp('Element containing text', 1000)
- * ```
+ * @example
+ * scrollUp()
+ * @example
+ * scrollUp(1000)
+ * @example
+ * scrollUp('Element containing text')
+ * @example
+ * scrollUp('Element containing text', 1000)
+ *
  * @param {selector|string|number} [e='Window']
  * @param {number} [px=100]
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const scrollUp = async (e, px = 100) => {
+module.exports.scrollUp = async (e, px = 100) => {
     validate();
     return await scroll(e, px, px => window.scrollBy(0, px * -1), (e, px) => e.scrollTop -= px), 'top';
 };
@@ -317,18 +351,20 @@ const scrollUp = async (e, px = 100) => {
 /**
  * Scrolls down the page/element.
  *
- * Examples:
- * ```
- *  scrollDown()
- *  scrollDown(1000)
- *  scrollDown('Element containing text')
- *  scrollDown('Element containing text', 1000)
- * ```
+ * @example
+ * scrollDown()
+ * @example
+ * scrollDown(1000)
+ * @example
+ * scrollDown('Element containing text')
+ * @example
+ * scrollDown('Element containing text', 1000)
+ *
  * @param {selector|string|number} [e='Window']
  * @param {number} [px=100]
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-const scrollDown = async (e, px = 100) => {
+module.exports.scrollDown = async (e, px = 100) => {
     validate();
     return await scroll(e, px, px => window.scrollBy(0, px), (e, px) => e.scrollTop += px, 'down');
 };
@@ -336,27 +372,26 @@ const scrollDown = async (e, px = 100) => {
 /**
  * Captures a screenshot of the page.
  *
- * Examples:
- * ```
+ * @example
  * screenshot({path: 'screenshot.png'});
- * ```
+ *
  * @param {Object} options - Options object with properties mentioned [here](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagescreenshotoptions).
  * @returns {Promise<Buffer>} - Promise which resolves to buffer with captured screenshot.
  */
-const screenshot = async options => p.screenshot(options);
+module.exports.screenshot = async options => p.screenshot(options);
 
 /**
  * Lets you identify an element on the web page via XPath or CSS selector.
  *
- * Examples:
- * ```
+ * @example
  * click($('.class'))
+ * @example
  * $('.class').exists()
- * ```
+ *
  * @param {string} selector - XPath or CSS selector.
  * @returns {ElementWrapper}
  */
-const $ = selector => {
+module.exports.$ = selector => {
     validate();
     const get = async () => selector.startsWith('//') || selector.startsWith('(') ? $xpath(selector) : p.$(selector);
     return { get: get, exists: exists(get), description: `Custom selector "$(${selector})"` };
@@ -364,14 +399,16 @@ const $ = selector => {
 
 /**
  * Lets you identify elements on the web page via XPath or CSS selector.
- * ```
+ *
+ * @example
  * highlight($$(`//*[text()='text']`)[1])
+ * @example
  * $$(`//*[text()='text']`).exists()
- * ```
+ *
  * @param {string} selector - XPath or CSS selector.
  * @returns {ElementWrapper}
  */
-const $$ = selector => {
+module.exports.$$ = selector => {
     validate();
     const get = async () => selector.startsWith('//') || selector.startsWith('(') ? $$xpath(selector) : p.$$(selector);
     return { get: get, exists: async () => (await get()).length > 0, description: `Custom selector $$(${selector})` };
@@ -379,16 +416,17 @@ const $$ = selector => {
 
 /**
  * Lets you identify an image (HTML <img> element) on a web page. Typically, this is done via the image's alt text.
+ * @summary Lets you identify an image on a web page.
  *
- * Examples:
- * ```
+ * @example
  * click(image('alt'))
+ * @example
  * image('alt').exists()
- * ```
+ *
  * @param {string} alt - The image's alt text.
  * @returns {ElementWrapper}
  */
-const image = alt => {
+module.exports.image = alt => {
     validate();
     assertType(alt);
     const get = async () => p.$(`img[alt="${alt}"]`);
@@ -398,15 +436,15 @@ const image = alt => {
 /**
  * Lets you identify a link on a web page.
  *
- * Examples:
- * ```
+ * @example
  * click(link('Get Started'))
+ * @example
  * link('Get Started').exists()
- * ```
+ *
  * @param {string} text - The link text.
  * @returns {ElementWrapper}
  */
-const link = text => {
+module.exports.link = text => {
     validate();
     const get = async () => element(text, 'a');
     return { get: get, exists: exists(get), description: description(text).replace('Element', 'Link') };
@@ -414,16 +452,17 @@ const link = text => {
 
 /**
  * Lets you identify a list item (HTML <li> element) on a web page.
+ * @summary Lets you identify a list item on a web page.
  *
- * Examples:
- * ```
+ * @example
  * highlight(listItem('Get Started'))
+ * @example
  * listItem('Get Started').exists()
- * ```
+ *
  * @param {string} label - The label of the list item.
  * @returns {ElementWrapper}
  */
-const listItem = text => {
+module.exports.listItem = text => {
     validate();
     const get = async () => element(text, 'li');
     return { get: get, exists: exists(get), description: description(text).replace('Element', 'List item') };
@@ -432,15 +471,15 @@ const listItem = text => {
 /**
  * Lets you identify a button on a web page.
  *
- * Examples:
- * ```
+ * @example
  * highlight(button('Get Started'))
+ * @example
  * button('Get Started').exists()
- * ```
+ *
  * @param {string} label - The button label.
  * @returns {ElementWrapper}
  */
-const button = selector => {
+module.exports.button = selector => {
     validate();
     const get = async () => element(selector, 'button');
     return { get: get, exists: exists(get), description: description(selector).replace('Element', 'Button') };
@@ -449,16 +488,16 @@ const button = selector => {
 /**
  * Lets you identify an input field on a web page.
  *
- * Examples:
- * ```
+ * @example
  * focus(inputField('id', 'name'))
+ * @example
  * inputField('id', 'name').exists()
- * ```
+ *
  * @param {string} [attribute='value'] - The input field's attribute.
  * @param {string} value - Value of the attribute specified in the first parameter.
  * @returns {ElementWrapper}
  */
-const inputField = (attribute = 'value', value) => {
+module.exports.inputField = (attribute = 'value', value) => {
     validate();
     if (!value) {
         value = attribute;
@@ -478,15 +517,15 @@ const inputField = (attribute = 'value', value) => {
 /**
  * Lets you identify a text field on a web page.
  *
- * Examples:
- * ```
+ * @example
  * focus(textField('Username:'))
+ * @example
  * textField('Username:').exists()
- * ```
+ *
  * @param {string} label - The label (human-visible name) of the text field.
  * @returns {ElementWrapper}
  */
-const textField = label => {
+module.exports.textField = label => {
     validate();
     assertType(label);
     const get = async () => $xpath(`//input[@type='text'][@id=(//label[contains(text(),"${label}")]/@for)]`);
@@ -501,16 +540,17 @@ const textField = label => {
 /**
  * Lets you identify a combo box on a web page.
  *
- * Examples:
- * ```
+ * @example
  * comboBox('Vehicle:').select('Car')
+ * @example
  * comboBox('Vehicle:').value()
+ * @example
  * comboBox('Vehicle:').exists()
- * ```
+ *
  * @param {string} label - The label (human-visible name) of the combo box.
  * @returns {ElementWrapper}
  */
-const comboBox = label => {
+module.exports.comboBox = label => {
     validate();
     assertType(label);
     const get = async () => $xpath(`//select[@id=(//label[contains(text(),"${label}")]/@for)]`);
@@ -532,17 +572,19 @@ const comboBox = label => {
 /**
  * Lets you identify a checkbox on a web page.
  *
- * Examples:
- * ```
+ * @example
  * checkBox('Vehicle').check()
+ * @example
  * checkBox('Vehicle').uncheck()
+ * @example
  * checkBox('Vehicle').isChecked()
+ * @example
  * checkBox('Vehicle').exists()
- * ```
+ *
  * @param {string} label - The label (human-visible name) of the check box.
  * @returns {ElementWrapper}
  */
-const checkBox = selector => {
+module.exports.checkBox = selector => {
     validate();
     assertType(selector);
     const get = async () => $xpath(`//input[@type='checkbox'][@id=(//label[contains(text(),"${selector}")]/@for)]`);
@@ -559,17 +601,19 @@ const checkBox = selector => {
 /**
  * Lets you identify a radio button on a web page.
  *
- * Examples:
- * ```
+ * @example
  * radioButton('Vehicle').select()
+ * @example
  * radioButton('Vehicle').deselect()
+ * @example
  * radioButton('Vehicle').isSelected()
+ * @example
  * radioButton('Vehicle').exists()
- * ```
+ *
  * @param {string} label - The label (human-visible name) of the radio button.
  * @returns {ElementWrapper}
  */
-const radioButton = selector => {
+module.exports.radioButton = selector => {
     validate();
     assertType(selector);
     const get = async () => $xpath(`//input[@type='radio'][@id=(//label[contains(text(),"${selector}")]/@for)]`);
@@ -586,15 +630,15 @@ const radioButton = selector => {
 /**
  * Lets you identify an element with text.
  *
- * Examples:
- * ```
+ * @example
  * highlight(text('Vehicle'))
+ * @example
  * text('Vehicle').exists()
- * ```
+ *
  * @param {string} text - Text to match.
  * @returns {ElementWrapper}
  */
-const text = text => {
+module.exports.text = text => {
     validate();
     assertType(text);
     const get = async (e = '*') => $xpath('//' + e + `[text()="${text}"]`);
@@ -604,14 +648,13 @@ const text = text => {
 /**
  * Lets you identify an element containing the text.
  *
- * Example:
- * ```
+ * @example
  * contains('Vehicle').exists()
- * ```
+ *
  * @param {string} text - Text to match.
  * @returns {ElementWrapper}
  */
-const contains = text => {
+module.exports.contains = text => {
     validate();
     assertType(text);
     const get = async (e = '*') => {
@@ -624,117 +667,110 @@ const contains = text => {
 /**
  * Lets you perform an operation when an `alert` with given text is shown.
  *
- * Example:
- * ```
+ * @example
  * alert('Message', async alert => await alert.dismiss());
- * ```
+ *
  * @param {string} message - Identify alert based on this message.
  * @param {function(alert)} callback - Operation to perform.
  */
-const alert = (message, callback) => dialog('alert', message, callback);
+module.exports.alert = (message, callback) => dialog('alert', message, callback);
 
 /**
  * Lets you perform an operation when a `prompt` with given text is shown.
  *
- * Example:
- * ```
+ * @example
  * prompt('Message', async prompt => await prompt.dismiss());
- * ```
+ *
  * @param {string} message - Identify prompt based on this message.
  * @param {function(prompt)} callback - Operation to perform.
  */
-const prompt = (message, callback) => dialog('prompt', message, callback);
+module.exports.prompt = (message, callback) => dialog('prompt', message, callback);
 
 /**
  * Lets you perform an operation when a `confirm` with given text is shown.
  *
- * Example:
- * ```
+ * @example
  * confirm('Message', async confirm => await confirm.dismiss());
- * ```
+ *
  * @param {string} message - Identify confirm based on this message.
  * @param {function(confirm)} callback - Operation to perform.
  */
-const confirm = (message, callback) => dialog('confirm', message, callback);
+module.exports.confirm = (message, callback) => dialog('confirm', message, callback);
 
 /**
  * Lets you perform an operation when a `beforeunload` with given text is shown.
  *
- * Example:
- * ```
+ * @example
  * beforeunload('Message', async beforeunload => await beforeunload.dismiss());
- * ```
+ *
  * @param {string} message - Identify beforeunload based on this message.
  * @param {function(beforeunload)} callback - Operation to perform.
  */
-const beforeunload = (message, callback) => dialog('beforeunload', message, callback);
+module.exports.beforeunload = (message, callback) => dialog('beforeunload', message, callback);
 
 /**
  * Converts seconds to milliseconds.
  *
- * Example:
- * ```
+ * @example
  * link('Plugins').exists(intervalSecs(1))
- * ```
+ *
  * @param {number} secs - Seconds to convert.
  * @return {number} - Milliseconds.
  */
-const intervalSecs = secs => secs * 1000;
+module.exports.intervalSecs = secs => secs * 1000;
 
 /**
  * Converts seconds to milliseconds.
  *
- * Example:
- * ```
+ * @example
  * link('Plugins').exists(intervalSecs(1), timeoutSecs(10))
- * ```
+ *
  * @param {number} secs - Seconds to convert.
  * @return {number} - Milliseconds.
  */
-const timeoutSecs = secs => secs * 1000;
+module.exports.timeoutSecs = secs => secs * 1000;
 
 /**
  * This function is used to improve the readability. It simply returns the parameter passed into it.
- *
- * Example:
- * ```
+ * @summary Improves the readability and returns the parameter passed into it.
+ * @example
  * click('Get Started', waitForNavigation(false))
- * ```
+ *
  * @param {boolean}
  * @return {boolean}
  */
-const waitForNavigation = e => e;
+module.exports.waitForNavigation = e => e;
 
 /**
  * This function is used to improve the readability. It simply returns the parameter passed into it.
+ * @summary Improves the readability and returns the parameter passed into it.
  *
- * Example:
- * ```
+ * @example
  * upload('c:/abc.txt', to('Please select a file:'))
- * ```
+ *
  * @param {string|Selector}
  * @return {string|Selector}
  */
-const to = e => e;
+module.exports.to = e => e;
 
 /**
  * This function is used to improve the readability. It simply returns the parameter passed into it.
+ * @summary Improves the readability and returns the parameter passed into it.
  *
- * Example:
- * ```
+ * @example
  * write("user", into('Username:'))
- * ```
+ *
  * @param {string|Selector}
  * @return {string|Selector}
  */
-const into = e => e;
+module.exports.into = e => e;
 
 /**
  * Returns the browser created using `openBrowser`.
  *
  * @returns {Browser} - [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser).
  */
-const browser = () => {
+module.exports.browser = () => {
     validate();
     return b;
 };
@@ -744,14 +780,14 @@ const browser = () => {
  *
  * @returns {Page} - [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page).
  */
-const page = () => {
+module.exports.page = () => {
     validate();
     return p;
 };
 
 const element = async (selector, tag) => {
     const e = await (() => {
-        if (isString(selector)) return contains(selector).get(tag);
+        if (isString(selector)) return module.exports.contains(selector).get(tag);
         else if (isSelector(selector)) return selector.get(tag);
         return null;
     })();
@@ -761,7 +797,7 @@ const element = async (selector, tag) => {
 
 const description = (selector, lowerCase = false) => {
     const d = (() => {
-        if (isString(selector)) return contains(selector).description;
+        if (isString(selector)) return module.exports.contains(selector).description;
         else if (isSelector(selector)) return selector.description;
         return '';
     })();
@@ -865,62 +901,18 @@ const evaluate = async (selector, callback, ...args) => {
     await e.dispose();
 };
 
-module.exports = {
-    browser,
-    page,
-    openBrowser,
-    closeBrowser,
-    goto,
-    reload,
-    $,
-    $$,
-    link,
-    listItem,
-    inputField,
-    textField,
-    image,
-    button,
-    comboBox,
-    checkBox,
-    radioButton,
-    alert,
-    prompt,
-    confirm,
-    beforeunload,
-    text,
-    contains,
-    click,
-    doubleClick,
-    rightClick,
-    write,
-    press,
-    upload,
-    highlight,
-    focus,
-    scrollTo,
-    scrollRight,
-    scrollLeft,
-    scrollUp,
-    scrollDown,
-    hover,
-    screenshot,
-    timeoutSecs,
-    intervalSecs,
-    waitForNavigation,
-    to,
-    into,
-};
-
 /**
  * Identifies an element on the page.
  *
- * Example:
- * ```
+ * @example
  * link('Sign in')
+ * @example
  * button('Get Started')
+ * @example
  * $('#id')
+ * @example
  * text('Home')
- * ```
+ *
  * @typedef {function(string, ...string)} selector
  */
 
@@ -928,14 +920,8 @@ module.exports = {
  * Wrapper object for the element present on the web page.
  * @typedef {Object} ElementWrapper
  * @property {function} get - DOM element getter.
- * @property {exists} exists - Checks existence for element.
+ * @property {function(number, number)} exists - Checks existence for element.
  * @property {string} description - Describing the operation performed.
- */
-
-/**
- * @callback exists
- * @param {number} intervalTime - Interval millisecs or use `intervalSecs(secs)`
- * @param {number} timeoutTime - Timeout millisecs or use `timeoutSecs(secs)`
  */
 
 /**

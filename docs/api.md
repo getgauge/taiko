@@ -47,7 +47,6 @@
 -   [page](#page)
 -   [selector](#selector)
 -   [ElementWrapper](#elementwrapper)
--   [exists](#exists)
 -   [Browser](#browser-1)
 -   [Page](#page-1)
 
@@ -59,22 +58,48 @@ Launches a browser with a tab. The browser will be closed when the parent node.j
 
 -   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Set of configurable [options](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerlaunchoptions) to set on the browser.
 
+**Examples**
+
+```javascript
+openBrowser()
+```
+
+```javascript
+openBrowser({ headless: false })
+```
+
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
 ## closeBrowser
 
 Closes the browser and all of its tabs (if any were opened).
 
+**Examples**
+
+```javascript
+closeBrowser()
+```
+
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
 ## goto
 
-Opens the specified URL in the browser's tab. Adds `http` protocol to the url if not present.
+Opens the specified URL in the browser's tab. Adds `http` protocol to the URL if not present.
 
 **Parameters**
 
 -   `url` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** URL to navigate page to.
 -   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** [Navigation parameters](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagegotourl-options)
+
+**Examples**
+
+```javascript
+goto('https://google.com')
+```
+
+```javascript
+goto('google.com')
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed and the final URL.
 
@@ -86,17 +111,21 @@ Reloads the page.
 
 -   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** [Navigation parameters](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagereloadoptions)
 
+**Examples**
+
+```javascript
+reload('https://google.com')
+```
+
+```javascript
+reload('https://google.com', { timeout: 10000 })
+```
+
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed and the final URL.
 
 ## click
 
 Fetches an element with the given selector, scrolls it into view if needed, and then clicks in the center of the element. If there's no element matching selector, the method throws an error.
-
-Examples:
-
-    click('Get Started')
-    click(link('Get Started'))
-    click('Get Started', waitForNavigation(false))
 
 **Parameters**
 
@@ -107,22 +136,44 @@ Examples:
     -   `options.number` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** number of times to click on the element. (optional, default `1`)
     -   `options.delay` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Time to wait between mousedown and mouseup in milliseconds. (optional, default `0`)
 
+**Examples**
+
+```javascript
+click('Get Started')
+```
+
+```javascript
+click(link('Get Started'))
+```
+
+```javascript
+click('Get Started', waitForNavigation(false))
+```
+
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
 ## doubleClick
 
 Fetches an element with the given selector, scrolls it into view if needed, and then double clicks the element. If there's no element matching selector, the method throws an error.
 
-Examples:
-
-     doubleClick('Get Started')
-     doubleClick(button('Get Started'))
-     doubleClick('Get Started', waitForNavigation(false))
-
 **Parameters**
 
 -   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be double clicked.
 -   `waitForNavigation` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** wait for navigation after the click. (optional, default `true`)
+
+**Examples**
+
+```javascript
+doubleClick('Get Started')
+```
+
+```javascript
+doubleClick(button('Get Started'))
+```
+
+```javascript
+doubleClick('Get Started', waitForNavigation(false))
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
@@ -130,15 +181,20 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Fetches an element with the given selector, scrolls it into view if needed, and then right clicks the element. If there's no element matching selector, the method throws an error.
 
-Examples:
-
-     rightClick('Get Started')
-     rightClick(text('Get Started'))
-
 **Parameters**
 
 -   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be double clicked.
 -   `waitForNavigation` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** wait for navigation after the click. (optional, default `true`)
+
+**Examples**
+
+```javascript
+rightClick('Get Started')
+```
+
+```javascript
+rightClick(text('Get Started'))
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
@@ -146,14 +202,19 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Fetches an element with the given selector, scrolls it into view if needed, and then hovers over the center of the element. If there's no element matching selector, the method throws an error.
 
-Examples:
-
-     hover('Get Started')
-     hover(link('Get Started'))
-
 **Parameters**
 
 -   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be hovered.
+
+**Examples**
+
+```javascript
+hover('Get Started')
+```
+
+```javascript
+hover(link('Get Started'))
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
@@ -161,13 +222,15 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Fetches an element with the given selector and focuses it. If there's no element matching selector, the method throws an error.
 
-Examples:
-
-     focus(textField('Username:'))
-
 **Parameters**
 
 -   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** A selector of an element to focus. If there are multiple elements satisfying the selector, the first will be focused.
+
+**Examples**
+
+```javascript
+focus(textField('Username:'))
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
@@ -175,16 +238,24 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Types the given text into the focused or given element.
 
-Examples:
-
-     write('admin', into('Username:'))
-     write('admin', 'Username:')
-     write('admin')
-
 **Parameters**
 
 -   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Text to type into the element.
 -   `into` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))?** A selector of an element to write into.
+
+**Examples**
+
+```javascript
+write('admin', into('Username:'))
+```
+
+```javascript
+write('admin', 'Username:')
+```
+
+```javascript
+write('admin')
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
@@ -192,26 +263,26 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Uploads a file to a file input element.
 
-Examples:
-
-     upload('c:/abc.txt', to('Please select a file:'))
-     upload('c:/abc.txt', 'Please select a file:')
-
 **Parameters**
 
 -   `filepath` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The path of the file to be attached.
 -   `to` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** The file input element to which to upload the file.
+
+**Examples**
+
+```javascript
+upload('c:/abc.txt', to('Please select a file:'))
+```
+
+```javascript
+upload('c:/abc.txt', 'Please select a file:')
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
 ## press
 
 Presses the given key.
-
-Examples:
-
-     press('Enter')
-     press('a')
 
 **Parameters**
 
@@ -220,20 +291,35 @@ Examples:
     -   `options.text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** If specified, generates an input event with this text.
     -   `options.delay` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Time to wait between keydown and keyup in milliseconds. (optional, default `0`)
 
+**Examples**
+
+```javascript
+press('Enter')
+```
+
+```javascript
+press('a')
+```
+
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
 ## highlight
 
 Highlights the given element on the page by drawing a red rectangle around it. This is useful for debugging purposes.
 
-Examples:
-
-     highlight('Get Started')
-     highlight(link('Get Started'))
-
 **Parameters**
 
 -   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** A selector of an element to highlight. If there are multiple elements satisfying the selector, the first will be highlighted.
+
+**Examples**
+
+```javascript
+highlight('Get Started')
+```
+
+```javascript
+highlight(link('Get Started'))
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
@@ -241,14 +327,19 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Scrolls the page to the given element.
 
-Examples:
-
-     scrollTo('Get Started')
-     scrollTo(link('Get Started'))
-
 **Parameters**
 
 -   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** A selector of an element to scroll to.
+
+**Examples**
+
+```javascript
+scrollTo('Get Started')
+```
+
+```javascript
+scrollTo(link('Get Started'))
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
@@ -256,17 +347,28 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Scrolls the page/element to the right.
 
-Examples:
-
-     scrollRight()
-     scrollRight(1000)
-     scrollRight('Element containing text')
-     scrollRight('Element containing text', 1000)
-
 **Parameters**
 
 -   `e` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number))**  (optional, default `'Window'`)
 -   `px` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)**  (optional, default `100`)
+
+**Examples**
+
+```javascript
+scrollRight()
+```
+
+```javascript
+scrollRight(1000)
+```
+
+```javascript
+scrollRight('Element containing text')
+```
+
+```javascript
+scrollRight('Element containing text', 1000)
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
@@ -274,17 +376,28 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Scrolls the page/element to the left.
 
-Examples:
-
-     scrollLeft()
-     scrollLeft(1000)
-     scrollLeft('Element containing text')
-     scrollLeft('Element containing text', 1000)
-
 **Parameters**
 
 -   `e` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number))**  (optional, default `'Window'`)
 -   `px` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)**  (optional, default `100`)
+
+**Examples**
+
+```javascript
+scrollLeft()
+```
+
+```javascript
+scrollLeft(1000)
+```
+
+```javascript
+scrollLeft('Element containing text')
+```
+
+```javascript
+scrollLeft('Element containing text', 1000)
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
@@ -292,17 +405,28 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Scrolls up the page/element.
 
-Examples:
-
-     scrollUp()
-     scrollUp(1000)
-     scrollUp('Element containing text')
-     scrollUp('Element containing text', 1000)
-
 **Parameters**
 
 -   `e` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number))**  (optional, default `'Window'`)
 -   `px` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)**  (optional, default `100`)
+
+**Examples**
+
+```javascript
+scrollUp()
+```
+
+```javascript
+scrollUp(1000)
+```
+
+```javascript
+scrollUp('Element containing text')
+```
+
+```javascript
+scrollUp('Element containing text', 1000)
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
@@ -310,17 +434,28 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Scrolls down the page/element.
 
-Examples:
-
-     scrollDown()
-     scrollDown(1000)
-     scrollDown('Element containing text')
-     scrollDown('Element containing text', 1000)
-
 **Parameters**
 
 -   `e` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number))**  (optional, default `'Window'`)
 -   `px` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)**  (optional, default `100`)
+
+**Examples**
+
+```javascript
+scrollDown()
+```
+
+```javascript
+scrollDown(1000)
+```
+
+```javascript
+scrollDown('Element containing text')
+```
+
+```javascript
+scrollDown('Element containing text', 1000)
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
@@ -328,13 +463,15 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Captures a screenshot of the page.
 
-Examples:
-
-    screenshot({path: 'screenshot.png'});
-
 **Parameters**
 
 -   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Options object with properties mentioned [here](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagescreenshotoptions).
+
+**Examples**
+
+```javascript
+screenshot({path: 'screenshot.png'});
+```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Buffer](https://nodejs.org/api/buffer.html)>** Promise which resolves to buffer with captured screenshot.
 
@@ -342,14 +479,19 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Lets you identify an element on the web page via XPath or CSS selector.
 
-Examples:
-
-    click($('.class'))
-    $('.class').exists()
-
 **Parameters**
 
 -   `selector` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** XPath or CSS selector.
+
+**Examples**
+
+```javascript
+click($('.class'))
+```
+
+```javascript
+$('.class').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -357,12 +499,19 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify elements on the web page via XPath or CSS selector.
 
-    highlight($$(`//*[text()='text']`)[1])
-    $$(`//*[text()='text']`).exists()
-
 **Parameters**
 
 -   `selector` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** XPath or CSS selector.
+
+**Examples**
+
+```javascript
+highlight($$(`//*[text()='text']`)[1])
+```
+
+```javascript
+$$(`//*[text()='text']`).exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -370,14 +519,19 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify an image (HTML <img> element) on a web page. Typically, this is done via the image's alt text.
 
-Examples:
-
-    click(image('alt'))
-    image('alt').exists()
-
 **Parameters**
 
 -   `alt` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The image's alt text.
+
+**Examples**
+
+```javascript
+click(image('alt'))
+```
+
+```javascript
+image('alt').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -385,14 +539,19 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify a link on a web page.
 
-Examples:
-
-    click(link('Get Started'))
-    link('Get Started').exists()
-
 **Parameters**
 
 -   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The link text.
+
+**Examples**
+
+```javascript
+click(link('Get Started'))
+```
+
+```javascript
+link('Get Started').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -400,15 +559,20 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify a list item (HTML <li> element) on a web page.
 
-Examples:
-
-    highlight(listItem('Get Started'))
-    listItem('Get Started').exists()
-
 **Parameters**
 
 -   `text`  
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label of the list item.
+
+**Examples**
+
+```javascript
+highlight(listItem('Get Started'))
+```
+
+```javascript
+listItem('Get Started').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -416,15 +580,20 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify a button on a web page.
 
-Examples:
-
-    highlight(button('Get Started'))
-    button('Get Started').exists()
-
 **Parameters**
 
 -   `selector`  
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The button label.
+
+**Examples**
+
+```javascript
+highlight(button('Get Started'))
+```
+
+```javascript
+button('Get Started').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -432,15 +601,20 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify an input field on a web page.
 
-Examples:
-
-    focus(inputField('id', 'name'))
-    inputField('id', 'name').exists()
-
 **Parameters**
 
 -   `attribute` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The input field's attribute. (optional, default `'value'`)
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Value of the attribute specified in the first parameter.
+
+**Examples**
+
+```javascript
+focus(inputField('id', 'name'))
+```
+
+```javascript
+inputField('id', 'name').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -448,14 +622,19 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify a text field on a web page.
 
-Examples:
-
-    focus(textField('Username:'))
-    textField('Username:').exists()
-
 **Parameters**
 
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label (human-visible name) of the text field.
+
+**Examples**
+
+```javascript
+focus(textField('Username:'))
+```
+
+```javascript
+textField('Username:').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -463,15 +642,23 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify a combo box on a web page.
 
-Examples:
-
-    comboBox('Vehicle:').select('Car')
-    comboBox('Vehicle:').value()
-    comboBox('Vehicle:').exists()
-
 **Parameters**
 
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label (human-visible name) of the combo box.
+
+**Examples**
+
+```javascript
+comboBox('Vehicle:').select('Car')
+```
+
+```javascript
+comboBox('Vehicle:').value()
+```
+
+```javascript
+comboBox('Vehicle:').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -479,17 +666,28 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify a checkbox on a web page.
 
-Examples:
-
-    checkBox('Vehicle').check()
-    checkBox('Vehicle').uncheck()
-    checkBox('Vehicle').isChecked()
-    checkBox('Vehicle').exists()
-
 **Parameters**
 
 -   `selector`  
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label (human-visible name) of the check box.
+
+**Examples**
+
+```javascript
+checkBox('Vehicle').check()
+```
+
+```javascript
+checkBox('Vehicle').uncheck()
+```
+
+```javascript
+checkBox('Vehicle').isChecked()
+```
+
+```javascript
+checkBox('Vehicle').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -497,17 +695,28 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify a radio button on a web page.
 
-Examples:
-
-    radioButton('Vehicle').select()
-    radioButton('Vehicle').deselect()
-    radioButton('Vehicle').isSelected()
-    radioButton('Vehicle').exists()
-
 **Parameters**
 
 -   `selector`  
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label (human-visible name) of the radio button.
+
+**Examples**
+
+```javascript
+radioButton('Vehicle').select()
+```
+
+```javascript
+radioButton('Vehicle').deselect()
+```
+
+```javascript
+radioButton('Vehicle').isSelected()
+```
+
+```javascript
+radioButton('Vehicle').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -515,14 +724,19 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify an element with text.
 
-Examples:
-
-    highlight(text('Vehicle'))
-    text('Vehicle').exists()
-
 **Parameters**
 
 -   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Text to match.
+
+**Examples**
+
+```javascript
+highlight(text('Vehicle'))
+```
+
+```javascript
+text('Vehicle').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -530,13 +744,15 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you identify an element containing the text.
 
-Example:
-
-    contains('Vehicle').exists()
-
 **Parameters**
 
 -   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Text to match.
+
+**Examples**
+
+```javascript
+contains('Vehicle').exists()
+```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
@@ -544,65 +760,75 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 Lets you perform an operation when an `alert` with given text is shown.
 
-Example:
-
-    alert('Message', async alert => await alert.dismiss());
-
 **Parameters**
 
 -   `message` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Identify alert based on this message.
--   `callback` **function ([alert](#alert))** Operation to perform.
+-   `callback` **function ([alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert))** Operation to perform.
+
+**Examples**
+
+```javascript
+alert('Message', async alert => await alert.dismiss());
+```
 
 ## prompt
 
 Lets you perform an operation when a `prompt` with given text is shown.
 
-Example:
-
-    prompt('Message', async prompt => await prompt.dismiss());
-
 **Parameters**
 
 -   `message` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Identify prompt based on this message.
--   `callback` **function ([prompt](#prompt))** Operation to perform.
+-   `callback` **function ([prompt](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt))** Operation to perform.
+
+**Examples**
+
+```javascript
+prompt('Message', async prompt => await prompt.dismiss());
+```
 
 ## confirm
 
 Lets you perform an operation when a `confirm` with given text is shown.
 
-Example:
-
-    confirm('Message', async confirm => await confirm.dismiss());
-
 **Parameters**
 
 -   `message` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Identify confirm based on this message.
--   `callback` **function ([confirm](#confirm))** Operation to perform.
+-   `callback` **function ([confirm](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm))** Operation to perform.
+
+**Examples**
+
+```javascript
+confirm('Message', async confirm => await confirm.dismiss());
+```
 
 ## beforeunload
 
 Lets you perform an operation when a `beforeunload` with given text is shown.
 
-Example:
-
-    beforeunload('Message', async beforeunload => await beforeunload.dismiss());
-
 **Parameters**
 
 -   `message` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Identify beforeunload based on this message.
--   `callback` **function ([beforeunload](#beforeunload))** Operation to perform.
+-   `callback` **function (beforeunload)** Operation to perform.
+
+**Examples**
+
+```javascript
+beforeunload('Message', async beforeunload => await beforeunload.dismiss());
+```
 
 ## intervalSecs
 
 Converts seconds to milliseconds.
 
-Example:
-
-    link('Plugins').exists(intervalSecs(1))
-
 **Parameters**
 
 -   `secs` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Seconds to convert.
+
+**Examples**
+
+```javascript
+link('Plugins').exists(intervalSecs(1))
+```
 
 Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Milliseconds.
 
@@ -610,13 +836,15 @@ Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 Converts seconds to milliseconds.
 
-Example:
-
-    link('Plugins').exists(intervalSecs(1), timeoutSecs(10))
-
 **Parameters**
 
 -   `secs` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Seconds to convert.
+
+**Examples**
+
+```javascript
+link('Plugins').exists(intervalSecs(1), timeoutSecs(10))
+```
 
 Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Milliseconds.
 
@@ -624,14 +852,16 @@ Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 This function is used to improve the readability. It simply returns the parameter passed into it.
 
-Example:
-
-    click('Get Started', waitForNavigation(false))
-
 **Parameters**
 
 -   `e`  
 -   `boolean`  
+
+**Examples**
+
+```javascript
+click('Get Started', waitForNavigation(false))
+```
 
 Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
@@ -639,13 +869,15 @@ Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 This function is used to improve the readability. It simply returns the parameter passed into it.
 
-Example:
-
-    upload('c:/abc.txt', to('Please select a file:'))
-
 **Parameters**
 
 -   `e`  
+
+**Examples**
+
+```javascript
+upload('c:/abc.txt', to('Please select a file:'))
+```
 
 Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | Selector)** 
 
@@ -653,13 +885,15 @@ Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 This function is used to improve the readability. It simply returns the parameter passed into it.
 
-Example:
-
-    write("user", into('Username:'))
-
 **Parameters**
 
 -   `e`  
+
+**Examples**
+
+```javascript
+write("user", into('Username:'))
+```
 
 Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | Selector)** 
 
@@ -679,14 +913,25 @@ Returns **[Page](#page)** [Page](https://github.com/GoogleChrome/puppeteer/blob/
 
 Identifies an element on the page.
 
-Example:
-
-    link('Sign in')
-    button('Get Started')
-    $('#id')
-    text('Home')
-
 Type: function ([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), ...[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))
+
+**Examples**
+
+```javascript
+link('Sign in')
+```
+
+```javascript
+button('Get Started')
+```
+
+```javascript
+$('#id')
+```
+
+```javascript
+text('Home')
+```
 
 ## ElementWrapper
 
@@ -697,17 +942,8 @@ Type: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 **Properties**
 
 -   `get` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** DOM element getter.
--   `exists` **[exists](#exists)** Checks existence for element.
+-   `exists` **function ([number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number))** Checks existence for element.
 -   `description` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Describing the operation performed.
-
-## exists
-
-Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
-
-**Parameters**
-
--   `intervalTime` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Interval millisecs or use `intervalSecs(secs)`
--   `timeoutTime` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Timeout millisecs or use `timeoutSecs(secs)`
 
 ## Browser
 
