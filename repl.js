@@ -4,7 +4,7 @@ const fs = require('fs');
 const util = require('util');
 const path = require('path');
 const puppeteer = require('puppeteer');
-const spawnSync = require('child_process').spawnSync;
+const { spawnSync } = require('child_process');
 const { aEval } = require('./awaitEval');
 const taiko = require('./taiko');
 
@@ -95,6 +95,9 @@ repl.defineCommand('version', {
 repl.defineCommand('api', {
     help: 'Prints api info',
     action(name) {
+        const desc = d => d.children
+            .map(c => (c.children || []).map((c1) => (c1.type === 'link' ? c1.children[0].value : c1.value).trim()).join(' '))
+            .join(' ');
         if (name) {
             const e = doc.find(e => e.name === name);
             if (!e) {
@@ -103,14 +106,7 @@ repl.defineCommand('api', {
                 return;
             }
             console.log();
-            console.log(e.description.children
-                .map((c) => {
-                    return (c.children || [])
-                        .map((c1) => (c1.type === 'link' ? c1.children[0].value : c1.value).trim())
-                        .join(' ');
-                })
-                .filter((e) => e && e.trim() != '')
-                .join('\n'));
+            console.log(desc(e.description));
             if (e.examples.length > 0) {
                 console.log();
                 console.log(e.examples.length > 1 ? 'Examples:' : 'Example:');
@@ -118,17 +114,14 @@ repl.defineCommand('api', {
                 console.log();
             }
         } else {
+            const max = Math.max(...(doc.map(e => e.name.length))) + 4;
             doc.forEach(e => {
-                let description = e.description.children
-                    .map((c) => {
-                        return (c.children || [])
-                            .map((c1) => (c1.type === 'link' ? c1.children[0].value : c1.value).trim())
-                            .join(' ');
-                    });
+                const api = e.name + ' '.repeat(max - e.name.length);
+                let description = desc(e.description);
                 if (e.summary) description = e.tags.find(t => t.title === 'summary').description;
-                console.log(removeQuotes(util.inspect(e.name, { colors: true }), e.name) + ' : ' + description + '\n');
+                console.log(removeQuotes(util.inspect(api, { colors: true }), api) + description);
             });
-            console.log('Run `.api <name>` for more info on a specific function. For Example: `.api click`.');
+            console.log('\nRun `.api <name>` for more info on a specific function. For Example: `.api click`.');
         }
         this.displayPrompt();
     }
@@ -145,7 +138,7 @@ function displayTaiko() {
     console.log('Documentation available at https://github.com/getgauge/taiko/blob/master/docs/api.md\n');
 }
 
-const removeQuotes = (textWithQuotes, textWithoutQuotes) => textWithQuotes.replace(`'${textWithoutQuotes}'`, textWithoutQuotes);
+const removeQuotes = (textWithQuotes, textWithoutQuotes) => textWithQuotes.replace(`'${textWithoutQuotes}'`, () => textWithoutQuotes);
 
 const handleError = (e) => {
     util.inspect.styles.string = 'red';
