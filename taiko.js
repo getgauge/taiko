@@ -766,7 +766,7 @@ module.exports.to = e => e;
 module.exports.into = e => e;
 
 /**
- * Returns the browser created using `openBrowser`.
+ * Returns the browser created using openBrowser.
  *
  * @returns {Browser} - [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser).
  */
@@ -917,11 +917,14 @@ const evaluate = async (selector, callback, ...args) => {
  */
 
 /**
- * Wrapper object for the element present on the web page.
+ * Wrapper object for the element present on the web page. There might be extra properties/methods avaliable based on the element type.
+ * @summary Wrapper object for the element present on the web page.
+ *
  * @typedef {Object} ElementWrapper
  * @property {function} get - DOM element getter.
  * @property {function(number, number)} exists - Checks existence for element.
  * @property {string} description - Describing the operation performed.
+ *
  */
 
 /**

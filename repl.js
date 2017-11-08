@@ -12,9 +12,9 @@ let version = '';
 let browserVersion = '';
 let doc = '';
 try {
-    version = 'Version: ' + JSON.parse(fs.readFileSync('package.json')).version;
+    version = 'Version: ' + JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'))).version;
     browserVersion = spawnSync(puppeteer.executablePath(), ['--version']).stdout.toString().trim();
-    doc = JSON.parse(fs.readFileSync(path.join('docs', 'api.json')));
+    doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'docs', 'api.json')));
 } catch (_) {}
 
 displayTaiko();
@@ -95,6 +95,11 @@ repl.defineCommand('version', {
 repl.defineCommand('api', {
     help: 'Prints api info',
     action(name) {
+        if (!doc) {
+            console.log('API usage not available.');
+            this.displayPrompt();
+            return;
+        }
         const desc = d => d.children
             .map(c => (c.children || []).map((c1) => (c1.type === 'link' ? c1.children[0].value : c1.value).trim()).join(' '))
             .join(' ');

@@ -13010,7 +13010,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Returns the browser created using ",
+              "value": "Returns the browser created using openBrowser.",
               "position": {
                 "start": {
                   "line": 1,
@@ -13019,42 +13019,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 35,
-                  "offset": 34
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "inlineCode",
-              "value": "openBrowser",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 35,
-                  "offset": 34
-                },
-                "end": {
-                  "line": 1,
-                  "column": 48,
-                  "offset": 47
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": ".",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 48,
-                  "offset": 47
-                },
-                "end": {
-                  "line": 1,
-                  "column": 49,
-                  "offset": 48
+                  "column": 47,
+                  "offset": 46
                 },
                 "indent": []
               }
@@ -13068,8 +13034,8 @@
             },
             "end": {
               "line": 1,
-              "column": 49,
-              "offset": 48
+              "column": 47,
+              "offset": 46
             },
             "indent": []
           }
@@ -13083,8 +13049,8 @@
         },
         "end": {
           "line": 1,
-          "column": 49,
-          "offset": 48
+          "column": 47,
+          "offset": 46
         }
       }
     },
@@ -13644,7 +13610,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Wrapper object for the element present on the web page.",
+              "value": "Wrapper object for the element present on the web page. There might be extra properties/methods avaliable based on the element type.",
               "position": {
                 "start": {
                   "line": 1,
@@ -13653,8 +13619,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 56,
-                  "offset": 55
+                  "column": 133,
+                  "offset": 132
                 },
                 "indent": []
               }
@@ -13668,8 +13634,8 @@
             },
             "end": {
               "line": 1,
-              "column": 56,
-              "offset": 55
+              "column": 133,
+              "offset": 132
             },
             "indent": []
           }
@@ -13683,16 +13649,21 @@
         },
         "end": {
           "line": 1,
-          "column": 56,
-          "offset": 55
+          "column": 133,
+          "offset": 132
         }
       }
     },
     "tags": [
       {
+        "title": "summary",
+        "description": "Wrapper object for the element present on the web page.",
+        "lineNumber": 2
+      },
+      {
         "title": "typedef",
         "description": null,
-        "lineNumber": 2,
+        "lineNumber": 4,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -13702,7 +13673,7 @@
       {
         "title": "property",
         "description": "DOM element getter.",
-        "lineNumber": 3,
+        "lineNumber": 5,
         "type": {
           "type": "NameExpression",
           "name": "function"
@@ -13712,7 +13683,7 @@
       {
         "title": "property",
         "description": "Checks existence for element.",
-        "lineNumber": 4,
+        "lineNumber": 6,
         "type": {
           "type": "FunctionType",
           "params": [
@@ -13732,7 +13703,7 @@
       {
         "title": "property",
         "description": "Describing the operation performed.",
-        "lineNumber": 5,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -13746,7 +13717,7 @@
         "column": 0
       },
       "end": {
-        "line": 925,
+        "line": 928,
         "column": 3
       }
     },
@@ -13770,7 +13741,7 @@
       {
         "title": "property",
         "name": "get",
-        "lineNumber": 3,
+        "lineNumber": 5,
         "description": {
           "type": "root",
           "children": [
@@ -13831,7 +13802,7 @@
       {
         "title": "property",
         "name": "exists",
-        "lineNumber": 4,
+        "lineNumber": 6,
         "description": {
           "type": "root",
           "children": [
@@ -13902,7 +13873,7 @@
       {
         "title": "property",
         "name": "description",
-        "lineNumber": 5,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -13965,6 +13936,58 @@
     "sees": [],
     "throws": [],
     "todos": [],
+    "summary": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Wrapper object for the element present on the web page.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 56,
+                  "offset": 55
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 56,
+              "offset": 55
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 56,
+          "offset": 55
+        }
+      }
+    },
     "kind": "typedef",
     "name": "ElementWrapper",
     "type": {
@@ -14107,11 +14130,11 @@
     ],
     "loc": {
       "start": {
-        "line": 927,
+        "line": 930,
         "column": 0
       },
       "end": {
-        "line": 930,
+        "line": 933,
         "column": 3
       }
     },
@@ -14278,11 +14301,11 @@
     ],
     "loc": {
       "start": {
-        "line": 932,
+        "line": 935,
         "column": 0
       },
       "end": {
-        "line": 935,
+        "line": 938,
         "column": 3
       }
     },

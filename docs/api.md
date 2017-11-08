@@ -899,7 +899,7 @@ Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 ## browser
 
-Returns the browser created using `openBrowser`.
+Returns the browser created using openBrowser.
 
 Returns **[Browser](#browser)** [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser).
 
@@ -935,7 +935,7 @@ text('Home')
 
 ## ElementWrapper
 
-Wrapper object for the element present on the web page.
+Wrapper object for the element present on the web page. There might be extra properties/methods avaliable based on the element type.
 
 Type: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
