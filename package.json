@@ -9,7 +9,7 @@
 	"scripts": {
 		"format": "./node_modules/.bin/js-beautify *.js -r -b collapse,preserve-inline && npm run lint",
 		"lint": "./node_modules/.bin/eslint *.js",
-		"doc": "./node_modules/documentation/bin/documentation.js build taiko.js -f md -o docs/api.md && ./node_modules/documentation/bin/documentation.js build taiko.js -f json -o docs/api.json",
+		"doc": "./node_modules/documentation/bin/documentation.js build taiko.js -f md -o docs/index.md && ./node_modules/documentation/bin/documentation.js build taiko.js -f json -o docs/api.json",
 		"test": "npm run lint"
 	},
 	"repository": {

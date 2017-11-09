@@ -8,7 +8,7 @@ ___________      .__ __
 ```
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/taiko.svg)](https://badge.fury.io/js/taiko)
 
-[**API**](docs/api.md)
+[**API**](docs/index.md)
 
 An easy to use wrapper over Google Chrome's Puppeteer library.
 
