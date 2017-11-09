@@ -113,10 +113,9 @@ function displayTaiko() {
     console.log('\\__    ___/____  |__|  | ______     ');
     console.log('  |    |  \\__  \\ |  |  |/ /  _ \\    ' + version);
     console.log('  |    |   / __ \\|  |    <  <_> )   ' + browserVersion);
-    console.log('  |____|  (____  /__|__|_ \\____/    Type .api for help and .exit to quit');
-    console.log('               \\/        \\/');
+    console.log('  |____|  (____  /__|__|_ \\____/    Documentation: https://getgauge.github.io/Taiko/');
+    console.log('               \\/        \\/         Type .api for help and .exit to quit');
     console.log();
-    console.log('Documentation available at https://github.com/getgauge/taiko/blob/master/docs/api.md\n');
 }
 
 const removeQuotes = (textWithQuotes, textWithoutQuotes) => textWithQuotes.replace(`'${textWithoutQuotes}'`, () => textWithoutQuotes);
