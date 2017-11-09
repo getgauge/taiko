@@ -120,7 +120,7 @@ function displayTaiko() {
 
 const removeQuotes = (textWithQuotes, textWithoutQuotes) => textWithQuotes.replace(`'${textWithoutQuotes}'`, () => textWithoutQuotes);
 
-const handleError = (e) => {
+const handleError = e => {
     util.inspect.styles.string = 'red';
     lastStack = removeQuotes(util.inspect(e.stack, { colors: true }).replace(/\\n/g, '\n'), e.stack);
     e.message = ' ✘ Error: ' + e.message + ', run `.trace` for more info.';
@@ -162,4 +162,4 @@ const desc = d => d.children
         .join(' '))
     .join(' ');
 
-const isTaikoFunc = (keyword) => keyword.split('(')[0] in funcs;
+const isTaikoFunc = keyword => keyword.split('(')[0] in funcs;

@@ -12224,7 +12224,7 @@
             },
             {
               "type": "NameExpression",
-              "name": "Selector"
+              "name": "selector"
             }
           ]
         },
@@ -12246,7 +12246,7 @@
             },
             {
               "type": "NameExpression",
-              "name": "Selector"
+              "name": "selector"
             }
           ]
         }
@@ -12317,7 +12317,7 @@
             },
             {
               "type": "NameExpression",
-              "name": "Selector"
+              "name": "selector"
             }
           ]
         }
@@ -12475,7 +12475,7 @@
             },
             {
               "type": "NameExpression",
-              "name": "Selector"
+              "name": "selector"
             }
           ]
         },
@@ -12497,7 +12497,7 @@
             },
             {
               "type": "NameExpression",
-              "name": "Selector"
+              "name": "selector"
             }
           ]
         }
@@ -12568,7 +12568,7 @@
             },
             {
               "type": "NameExpression",
-              "name": "Selector"
+              "name": "selector"
             }
           ]
         }

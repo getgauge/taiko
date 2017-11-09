@@ -1,0 +1,21 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+html * {
+    font-family: Monaco, monospace !important;
+}
+
+li code {
+    background: #191919;
+    border-radius: 3px;
+}
+
+section #title p {
+    font-size: 16px;
+}
+
+section #title h1 {
+    font-size: 32px;
+}

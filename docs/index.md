@@ -747,7 +747,7 @@ This function is used to improve the readability. It simply returns the paramete
 upload('c:/abc.txt', to('Please select a file:'))
 ```
 
-Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | Selector)** 
+Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [selector](#selector))** 
 
 ## into
 
@@ -763,7 +763,7 @@ This function is used to improve the readability. It simply returns the paramete
 write("user", into('Username:'))
 ```
 
-Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | Selector)** 
+Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [selector](#selector))** 
 
 ## browser
 

@@ -704,8 +704,8 @@ module.exports.waitForNavigation = e => e;
  * @example
  * upload('c:/abc.txt', to('Please select a file:'))
  *
- * @param {string|Selector}
- * @return {string|Selector}
+ * @param {string|selector}
+ * @return {string|selector}
  */
 module.exports.to = e => e;
 
@@ -716,8 +716,8 @@ module.exports.to = e => e;
  * @example
  * write("user", into('Username:'))
  *
- * @param {string|Selector}
- * @return {string|Selector}
+ * @param {string|selector}
+ * @return {string|selector}
  */
 module.exports.into = e => e;
 
