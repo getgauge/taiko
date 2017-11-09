@@ -25,6 +25,7 @@ const funcs = {};
 const commands = [];
 const stringColor = util.inspect.styles.string;
 const openBrowser = taiko.openBrowser;
+let taikoCommands = {};
 let lastStack = '';
 
 repl.writer = output => {
@@ -46,9 +47,11 @@ for (let func in taiko) {
         try {
             lastStack = '';
             const args = await Promise.all(Object.values(arguments));
+            taikoCommands[func] = true;
             return taiko[func].constructor.name === 'AsyncFunction' ?
                 await taiko[func].apply(this, args) : taiko[func].apply(this, args);
         } catch (e) {
+            delete taikoCommands[func];
             return handleError(e);
         } finally {
             util.inspect.styles.string = stringColor;
@@ -67,6 +70,7 @@ repl.defineCommand('trace', {
 
 repl.on('reset', () => {
     commands.length = 0;
+    taikoCommands = {};
     lastStack = '';
 });
 
@@ -77,7 +81,9 @@ repl.defineCommand('code', {
             if (!e.endsWith(';')) e += ';';
             return isTaikoFunc(e) ? '\tawait ' + e : '\t' + e;
         }).join('\n');
-        const content = `const { ${Object.keys(funcs).join(', ')} } = require('taiko');\n\n(async () => {\n${text}\n})();`;
+        const cmds = Object.keys(taikoCommands);
+        const importTaiko = cmds.length > 0 ? `const { ${cmds.join(', ')} } = require('taiko');\n\n` : '';
+        const content = importTaiko + `(async () => {\n${text}\n})();`;
         if (!file) console.log(content);
         else fs.writeFileSync(file, content);
         this.displayPrompt();
