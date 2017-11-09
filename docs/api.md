@@ -62,9 +62,6 @@ Launches a browser with a tab. The browser will be closed when the parent node.j
 
 ```javascript
 openBrowser()
-```
-
-```javascript
 openBrowser({ headless: false })
 ```
 
@@ -95,9 +92,6 @@ Opens the specified URL in the browser's tab. Adds `http` protocol to the URL if
 
 ```javascript
 goto('https://google.com')
-```
-
-```javascript
 goto('google.com')
 ```
 
@@ -115,9 +109,6 @@ Reloads the page.
 
 ```javascript
 reload('https://google.com')
-```
-
-```javascript
 reload('https://google.com', { timeout: 10000 })
 ```
 
@@ -140,13 +131,7 @@ Fetches an element with the given selector, scrolls it into view if needed, and 
 
 ```javascript
 click('Get Started')
-```
-
-```javascript
 click(link('Get Started'))
-```
-
-```javascript
 click('Get Started', waitForNavigation(false))
 ```
 
@@ -165,13 +150,7 @@ Fetches an element with the given selector, scrolls it into view if needed, and 
 
 ```javascript
 doubleClick('Get Started')
-```
-
-```javascript
 doubleClick(button('Get Started'))
-```
-
-```javascript
 doubleClick('Get Started', waitForNavigation(false))
 ```
 
@@ -190,9 +169,6 @@ Fetches an element with the given selector, scrolls it into view if needed, and 
 
 ```javascript
 rightClick('Get Started')
-```
-
-```javascript
 rightClick(text('Get Started'))
 ```
 
@@ -210,9 +186,6 @@ Fetches an element with the given selector, scrolls it into view if needed, and 
 
 ```javascript
 hover('Get Started')
-```
-
-```javascript
 hover(link('Get Started'))
 ```
 
@@ -247,13 +220,7 @@ Types the given text into the focused or given element.
 
 ```javascript
 write('admin', into('Username:'))
-```
-
-```javascript
 write('admin', 'Username:')
-```
-
-```javascript
 write('admin')
 ```
 
@@ -272,9 +239,6 @@ Uploads a file to a file input element.
 
 ```javascript
 upload('c:/abc.txt', to('Please select a file:'))
-```
-
-```javascript
 upload('c:/abc.txt', 'Please select a file:')
 ```
 
@@ -295,9 +259,6 @@ Presses the given key.
 
 ```javascript
 press('Enter')
-```
-
-```javascript
 press('a')
 ```
 
@@ -315,9 +276,6 @@ Highlights the given element on the page by drawing a red rectangle around it. T
 
 ```javascript
 highlight('Get Started')
-```
-
-```javascript
 highlight(link('Get Started'))
 ```
 
@@ -335,9 +293,6 @@ Scrolls the page to the given element.
 
 ```javascript
 scrollTo('Get Started')
-```
-
-```javascript
 scrollTo(link('Get Started'))
 ```
 
@@ -356,17 +311,8 @@ Scrolls the page/element to the right.
 
 ```javascript
 scrollRight()
-```
-
-```javascript
 scrollRight(1000)
-```
-
-```javascript
 scrollRight('Element containing text')
-```
-
-```javascript
 scrollRight('Element containing text', 1000)
 ```
 
@@ -385,17 +331,8 @@ Scrolls the page/element to the left.
 
 ```javascript
 scrollLeft()
-```
-
-```javascript
 scrollLeft(1000)
-```
-
-```javascript
 scrollLeft('Element containing text')
-```
-
-```javascript
 scrollLeft('Element containing text', 1000)
 ```
 
@@ -414,17 +351,8 @@ Scrolls up the page/element.
 
 ```javascript
 scrollUp()
-```
-
-```javascript
 scrollUp(1000)
-```
-
-```javascript
 scrollUp('Element containing text')
-```
-
-```javascript
 scrollUp('Element containing text', 1000)
 ```
 
@@ -443,17 +371,8 @@ Scrolls down the page/element.
 
 ```javascript
 scrollDown()
-```
-
-```javascript
 scrollDown(1000)
-```
-
-```javascript
 scrollDown('Element containing text')
-```
-
-```javascript
 scrollDown('Element containing text', 1000)
 ```
 
@@ -487,9 +406,6 @@ Lets you identify an element on the web page via XPath or CSS selector.
 
 ```javascript
 click($('.class'))
-```
-
-```javascript
 $('.class').exists()
 ```
 
@@ -507,9 +423,6 @@ Lets you identify elements on the web page via XPath or CSS selector.
 
 ```javascript
 highlight($$(`//*[text()='text']`)[1])
-```
-
-```javascript
 $$(`//*[text()='text']`).exists()
 ```
 
@@ -527,9 +440,6 @@ Lets you identify an image (HTML <img> element) on a web page. Typically, this i
 
 ```javascript
 click(image('alt'))
-```
-
-```javascript
 image('alt').exists()
 ```
 
@@ -547,9 +457,6 @@ Lets you identify a link on a web page.
 
 ```javascript
 click(link('Get Started'))
-```
-
-```javascript
 link('Get Started').exists()
 ```
 
@@ -568,9 +475,6 @@ Lets you identify a list item (HTML <li> element) on a web page.
 
 ```javascript
 highlight(listItem('Get Started'))
-```
-
-```javascript
 listItem('Get Started').exists()
 ```
 
@@ -589,9 +493,6 @@ Lets you identify a button on a web page.
 
 ```javascript
 highlight(button('Get Started'))
-```
-
-```javascript
 button('Get Started').exists()
 ```
 
@@ -610,9 +511,6 @@ Lets you identify an input field on a web page.
 
 ```javascript
 focus(inputField('id', 'name'))
-```
-
-```javascript
 inputField('id', 'name').exists()
 ```
 
@@ -630,9 +528,6 @@ Lets you identify a text field on a web page.
 
 ```javascript
 focus(textField('Username:'))
-```
-
-```javascript
 textField('Username:').exists()
 ```
 
@@ -650,13 +545,7 @@ Lets you identify a combo box on a web page.
 
 ```javascript
 comboBox('Vehicle:').select('Car')
-```
-
-```javascript
 comboBox('Vehicle:').value()
-```
-
-```javascript
 comboBox('Vehicle:').exists()
 ```
 
@@ -675,17 +564,8 @@ Lets you identify a checkbox on a web page.
 
 ```javascript
 checkBox('Vehicle').check()
-```
-
-```javascript
 checkBox('Vehicle').uncheck()
-```
-
-```javascript
 checkBox('Vehicle').isChecked()
-```
-
-```javascript
 checkBox('Vehicle').exists()
 ```
 
@@ -704,17 +584,8 @@ Lets you identify a radio button on a web page.
 
 ```javascript
 radioButton('Vehicle').select()
-```
-
-```javascript
 radioButton('Vehicle').deselect()
-```
-
-```javascript
 radioButton('Vehicle').isSelected()
-```
-
-```javascript
 radioButton('Vehicle').exists()
 ```
 
@@ -732,9 +603,6 @@ Lets you identify an element with text.
 
 ```javascript
 highlight(text('Vehicle'))
-```
-
-```javascript
 text('Vehicle').exists()
 ```
 
@@ -919,17 +787,8 @@ Type: function ([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 ```javascript
 link('Sign in')
-```
-
-```javascript
 button('Get Started')
-```
-
-```javascript
 $('#id')
-```
-
-```javascript
 text('Home')
 ```
 

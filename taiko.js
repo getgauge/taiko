@@ -8,7 +8,6 @@ let b, p;
  *
  * @example
  * openBrowser()
- * @example
  * openBrowser({ headless: false })
  *
  * @param {Object} options - Set of configurable [options](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerlaunchoptions) to set on the browser.
@@ -42,7 +41,6 @@ module.exports.closeBrowser = async () => {
  *
  * @example
  * goto('https://google.com')
- * @example
  * goto('google.com')
  *
  * @param {string} url - URL to navigate page to.
@@ -61,7 +59,6 @@ module.exports.goto = async (url, options) => {
  *
  * @example
  * reload('https://google.com')
- * @example
  * reload('https://google.com', { timeout: 10000 })
  *
  * @param {Object} options - [Navigation parameters](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagereloadoptions)
@@ -79,9 +76,7 @@ module.exports.reload = async options => {
  *
  * @example
  * click('Get Started')
- * @example
  * click(link('Get Started'))
- * @example
  * click('Get Started', waitForNavigation(false))
  *
  * @param {selector|string} selector - A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.
@@ -107,9 +102,7 @@ module.exports.click = async (selector, waitForNavigation = true, options = {}) 
  *
  * @example
  * doubleClick('Get Started')
- * @example
  * doubleClick(button('Get Started'))
- * @example
  * doubleClick('Get Started', waitForNavigation(false))
  *
  * @param {selector|string} selector - A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be double clicked.
@@ -128,7 +121,6 @@ module.exports.doubleClick = async (selector, waitForNavigation = true) => {
  *
  * @example
  * rightClick('Get Started')
- * @example
  * rightClick(text('Get Started'))
  *
  * @param {selector|string} selector - A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be double clicked.
@@ -147,7 +139,6 @@ module.exports.rightClick = async (selector) => {
  *
  * @example
  * hover('Get Started')
- * @example
  * hover(link('Get Started'))
  *
  * @param {selector|string} selector - A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be hovered.
@@ -182,9 +173,7 @@ module.exports.focus = async selector => {
  *
  * @example
  * write('admin', into('Username:'))
- * @example
  * write('admin', 'Username:')
- * @example
  * write('admin')
  *
  * @param {string} text - Text to type into the element.
@@ -210,7 +199,6 @@ module.exports.write = async (text, into) => {
  *
  * @example
  * upload('c:/abc.txt', to('Please select a file:'))
- * @example
  * upload('c:/abc.txt', 'Please select a file:')
  *
  * @param {string} filepath - The path of the file to be attached.
@@ -235,7 +223,6 @@ module.exports.upload = async (filepath, to) => {
  *
  * @example
  * press('Enter')
- * @example
  * press('a')
  *
  * @param {string} key - Name of key to press, such as ArrowLeft. See [USKeyboardLayout](https://github.com/GoogleChrome/puppeteer/blob/master/lib/USKeyboardLayout.js) for a list of all key names.
@@ -256,7 +243,6 @@ module.exports.press = async (key, options) => {
  *
  * @example
  * highlight('Get Started')
- * @example
  * highlight(link('Get Started'))
  *
  * @param {selector|string} selector - A selector of an element to highlight. If there are multiple elements satisfying the selector, the first will be highlighted.
@@ -273,7 +259,6 @@ module.exports.highlight = async selector => {
  *
  * @example
  * scrollTo('Get Started')
- * @example
  * scrollTo(link('Get Started'))
  *
  * @param {selector|string} selector - A selector of an element to scroll to.
@@ -290,11 +275,8 @@ module.exports.scrollTo = async selector => {
  *
  * @example
  * scrollRight()
- * @example
  * scrollRight(1000)
- * @example
  * scrollRight('Element containing text')
- * @example
  * scrollRight('Element containing text', 1000)
  *
  * @param {selector|string|number} [e='Window']
@@ -311,11 +293,8 @@ module.exports.scrollRight = async (e, px = 100) => {
  *
  * @example
  * scrollLeft()
- * @example
  * scrollLeft(1000)
- * @example
  * scrollLeft('Element containing text')
- * @example
  * scrollLeft('Element containing text', 1000)
  *
  * @param {selector|string|number} [e='Window']
@@ -332,11 +311,8 @@ module.exports.scrollLeft = async (e, px = 100) => {
  *
  * @example
  * scrollUp()
- * @example
  * scrollUp(1000)
- * @example
  * scrollUp('Element containing text')
- * @example
  * scrollUp('Element containing text', 1000)
  *
  * @param {selector|string|number} [e='Window']
@@ -353,11 +329,8 @@ module.exports.scrollUp = async (e, px = 100) => {
  *
  * @example
  * scrollDown()
- * @example
  * scrollDown(1000)
- * @example
  * scrollDown('Element containing text')
- * @example
  * scrollDown('Element containing text', 1000)
  *
  * @param {selector|string|number} [e='Window']
@@ -385,7 +358,6 @@ module.exports.screenshot = async options => p.screenshot(options);
  *
  * @example
  * click($('.class'))
- * @example
  * $('.class').exists()
  *
  * @param {string} selector - XPath or CSS selector.
@@ -402,7 +374,6 @@ module.exports.$ = selector => {
  *
  * @example
  * highlight($$(`//*[text()='text']`)[1])
- * @example
  * $$(`//*[text()='text']`).exists()
  *
  * @param {string} selector - XPath or CSS selector.
@@ -420,7 +391,6 @@ module.exports.$$ = selector => {
  *
  * @example
  * click(image('alt'))
- * @example
  * image('alt').exists()
  *
  * @param {string} alt - The image's alt text.
@@ -438,7 +408,6 @@ module.exports.image = alt => {
  *
  * @example
  * click(link('Get Started'))
- * @example
  * link('Get Started').exists()
  *
  * @param {string} text - The link text.
@@ -456,7 +425,6 @@ module.exports.link = text => {
  *
  * @example
  * highlight(listItem('Get Started'))
- * @example
  * listItem('Get Started').exists()
  *
  * @param {string} label - The label of the list item.
@@ -473,7 +441,6 @@ module.exports.listItem = text => {
  *
  * @example
  * highlight(button('Get Started'))
- * @example
  * button('Get Started').exists()
  *
  * @param {string} label - The button label.
@@ -490,7 +457,6 @@ module.exports.button = selector => {
  *
  * @example
  * focus(inputField('id', 'name'))
- * @example
  * inputField('id', 'name').exists()
  *
  * @param {string} [attribute='value'] - The input field's attribute.
@@ -519,7 +485,6 @@ module.exports.inputField = (attribute = 'value', value) => {
  *
  * @example
  * focus(textField('Username:'))
- * @example
  * textField('Username:').exists()
  *
  * @param {string} label - The label (human-visible name) of the text field.
@@ -542,9 +507,7 @@ module.exports.textField = label => {
  *
  * @example
  * comboBox('Vehicle:').select('Car')
- * @example
  * comboBox('Vehicle:').value()
- * @example
  * comboBox('Vehicle:').exists()
  *
  * @param {string} label - The label (human-visible name) of the combo box.
@@ -574,11 +537,8 @@ module.exports.comboBox = label => {
  *
  * @example
  * checkBox('Vehicle').check()
- * @example
  * checkBox('Vehicle').uncheck()
- * @example
  * checkBox('Vehicle').isChecked()
- * @example
  * checkBox('Vehicle').exists()
  *
  * @param {string} label - The label (human-visible name) of the check box.
@@ -603,11 +563,8 @@ module.exports.checkBox = selector => {
  *
  * @example
  * radioButton('Vehicle').select()
- * @example
  * radioButton('Vehicle').deselect()
- * @example
  * radioButton('Vehicle').isSelected()
- * @example
  * radioButton('Vehicle').exists()
  *
  * @param {string} label - The label (human-visible name) of the radio button.
@@ -632,7 +589,6 @@ module.exports.radioButton = selector => {
  *
  * @example
  * highlight(text('Vehicle'))
- * @example
  * text('Vehicle').exists()
  *
  * @param {string} text - Text to match.
@@ -906,11 +862,8 @@ const evaluate = async (selector, callback, ...args) => {
  *
  * @example
  * link('Sign in')
- * @example
  * button('Get Started')
- * @example
  * $('#id')
- * @example
  * text('Home')
  *
  * @typedef {function(string, ...string)} selector

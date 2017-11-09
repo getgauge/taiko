@@ -60,18 +60,13 @@
       },
       {
         "title": "example",
-        "description": "openBrowser()",
+        "description": "openBrowser()\nopenBrowser({ headless: false })",
         "lineNumber": 4
-      },
-      {
-        "title": "example",
-        "description": "openBrowser({ headless: false })",
-        "lineNumber": 6
       },
       {
         "title": "param",
         "description": "Set of configurable [options](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerlaunchoptions) to set on the browser.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -81,7 +76,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -103,18 +98,18 @@
         "column": 0
       },
       "end": {
-        "line": 16,
+        "line": 15,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 17,
+          "line": 16,
           "column": 0
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 2
         }
       },
@@ -123,17 +118,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "openBrowser()"
-      },
-      {
-        "description": "openBrowser({ headless: false })"
+        "description": "openBrowser()\nopenBrowser({ headless: false })"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -477,22 +469,22 @@
     ],
     "loc": {
       "start": {
-        "line": 23,
+        "line": 22,
         "column": 0
       },
       "end": {
-        "line": 31,
+        "line": 30,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 32,
+          "line": 31,
           "column": 0
         },
         "end": {
-          "line": 37,
+          "line": 36,
           "column": 2
         }
       },
@@ -746,18 +738,13 @@
       },
       {
         "title": "example",
-        "description": "goto('https://google.com')",
+        "description": "goto('https://google.com')\ngoto('google.com')",
         "lineNumber": 4
-      },
-      {
-        "title": "example",
-        "description": "goto('google.com')",
-        "lineNumber": 6
       },
       {
         "title": "param",
         "description": "URL to navigate page to.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -767,7 +754,7 @@
       {
         "title": "param",
         "description": "[Navigation parameters](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagegotourl-options)",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -777,7 +764,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed and the final URL.",
-        "lineNumber": 11,
+        "lineNumber": 10,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -795,22 +782,22 @@
     ],
     "loc": {
       "start": {
-        "line": 39,
+        "line": 38,
         "column": 0
       },
       "end": {
-        "line": 51,
+        "line": 49,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 52,
+          "line": 50,
           "column": 0
         },
         "end": {
-          "line": 57,
+          "line": 55,
           "column": 2
         }
       },
@@ -819,17 +806,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "goto('https://google.com')"
-      },
-      {
-        "description": "goto('google.com')"
+        "description": "goto('https://google.com')\ngoto('google.com')"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "url",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -890,7 +874,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "description": {
           "type": "root",
           "children": [
@@ -1171,18 +1155,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "reload('https://google.com')",
+        "description": "reload('https://google.com')\nreload('https://google.com', { timeout: 10000 })",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "reload('https://google.com', { timeout: 10000 })",
-        "lineNumber": 5
       },
       {
         "title": "param",
         "description": "[Navigation parameters](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagereloadoptions)",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -1192,7 +1171,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed and the final URL.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -1210,22 +1189,22 @@
     ],
     "loc": {
       "start": {
-        "line": 59,
+        "line": 57,
         "column": 0
       },
       "end": {
-        "line": 69,
+        "line": 66,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 70,
+          "line": 67,
           "column": 0
         },
         "end": {
-          "line": 74,
+          "line": 71,
           "column": 2
         }
       },
@@ -1234,17 +1213,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "reload('https://google.com')"
-      },
-      {
-        "description": "reload('https://google.com', { timeout: 10000 })"
+        "description": "reload('https://google.com')\nreload('https://google.com', { timeout: 10000 })"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -1478,23 +1454,13 @@
       },
       {
         "title": "example",
-        "description": "click('Get Started')",
+        "description": "click('Get Started')\nclick(link('Get Started'))\nclick('Get Started', waitForNavigation(false))",
         "lineNumber": 4
-      },
-      {
-        "title": "example",
-        "description": "click(link('Get Started'))",
-        "lineNumber": 6
-      },
-      {
-        "title": "example",
-        "description": "click('Get Started', waitForNavigation(false))",
-        "lineNumber": 8
       },
       {
         "title": "param",
         "description": "A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.",
-        "lineNumber": 11,
+        "lineNumber": 9,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -1513,7 +1479,7 @@
       {
         "title": "param",
         "description": "wait for navigation after the click.",
-        "lineNumber": 12,
+        "lineNumber": 10,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -1527,7 +1493,7 @@
       {
         "title": "param",
         "description": "click options.",
-        "lineNumber": 13,
+        "lineNumber": 11,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -1537,7 +1503,7 @@
       {
         "title": "param",
         "description": "`left`, `right`, or `middle`.",
-        "lineNumber": 14,
+        "lineNumber": 12,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -1551,7 +1517,7 @@
       {
         "title": "param",
         "description": "number of times to click on the element.",
-        "lineNumber": 15,
+        "lineNumber": 13,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -1565,7 +1531,7 @@
       {
         "title": "param",
         "description": "Time to wait between mousedown and mouseup in milliseconds.",
-        "lineNumber": 16,
+        "lineNumber": 14,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -1579,7 +1545,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 17,
+        "lineNumber": 15,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -1597,22 +1563,22 @@
     ],
     "loc": {
       "start": {
-        "line": 76,
+        "line": 73,
         "column": 0
       },
       "end": {
-        "line": 94,
+        "line": 89,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 95,
+          "line": 90,
           "column": 0
         },
         "end": {
-          "line": 102,
+          "line": 97,
           "column": 2
         }
       },
@@ -1621,20 +1587,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "click('Get Started')"
-      },
-      {
-        "description": "click(link('Get Started'))"
-      },
-      {
-        "description": "click('Get Started', waitForNavigation(false))"
+        "description": "click('Get Started')\nclick(link('Get Started'))\nclick('Get Started', waitForNavigation(false))"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 11,
+        "lineNumber": 9,
         "description": {
           "type": "root",
           "children": [
@@ -1704,7 +1664,7 @@
       {
         "title": "param",
         "name": "waitForNavigation",
-        "lineNumber": 12,
+        "lineNumber": 10,
         "description": {
           "type": "root",
           "children": [
@@ -1766,7 +1726,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 13,
+        "lineNumber": 11,
         "description": {
           "type": "root",
           "children": [
@@ -1827,7 +1787,7 @@
           {
             "title": "param",
             "name": "options.button",
-            "lineNumber": 14,
+            "lineNumber": 12,
             "description": {
               "type": "root",
               "children": [
@@ -1974,7 +1934,7 @@
           {
             "title": "param",
             "name": "options.number",
-            "lineNumber": 15,
+            "lineNumber": 13,
             "description": {
               "type": "root",
               "children": [
@@ -2036,7 +1996,7 @@
           {
             "title": "param",
             "name": "options.delay",
-            "lineNumber": 16,
+            "lineNumber": 14,
             "description": {
               "type": "root",
               "children": [
@@ -2306,23 +2266,13 @@
       },
       {
         "title": "example",
-        "description": "doubleClick('Get Started')",
+        "description": "doubleClick('Get Started')\ndoubleClick(button('Get Started'))\ndoubleClick('Get Started', waitForNavigation(false))",
         "lineNumber": 4
-      },
-      {
-        "title": "example",
-        "description": "doubleClick(button('Get Started'))",
-        "lineNumber": 6
-      },
-      {
-        "title": "example",
-        "description": "doubleClick('Get Started', waitForNavigation(false))",
-        "lineNumber": 8
       },
       {
         "title": "param",
         "description": "A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be double clicked.",
-        "lineNumber": 11,
+        "lineNumber": 9,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -2341,7 +2291,7 @@
       {
         "title": "param",
         "description": "wait for navigation after the click.",
-        "lineNumber": 12,
+        "lineNumber": 10,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -2355,7 +2305,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 13,
+        "lineNumber": 11,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -2373,22 +2323,22 @@
     ],
     "loc": {
       "start": {
-        "line": 104,
+        "line": 99,
         "column": 0
       },
       "end": {
-        "line": 118,
+        "line": 111,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 119,
+          "line": 112,
           "column": 0
         },
         "end": {
-          "line": 123,
+          "line": 116,
           "column": 2
         }
       },
@@ -2397,20 +2347,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "doubleClick('Get Started')"
-      },
-      {
-        "description": "doubleClick(button('Get Started'))"
-      },
-      {
-        "description": "doubleClick('Get Started', waitForNavigation(false))"
+        "description": "doubleClick('Get Started')\ndoubleClick(button('Get Started'))\ndoubleClick('Get Started', waitForNavigation(false))"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 11,
+        "lineNumber": 9,
         "description": {
           "type": "root",
           "children": [
@@ -2480,7 +2424,7 @@
       {
         "title": "param",
         "name": "waitForNavigation",
-        "lineNumber": 12,
+        "lineNumber": 10,
         "description": {
           "type": "root",
           "children": [
@@ -2747,18 +2691,13 @@
       },
       {
         "title": "example",
-        "description": "rightClick('Get Started')",
+        "description": "rightClick('Get Started')\nrightClick(text('Get Started'))",
         "lineNumber": 4
-      },
-      {
-        "title": "example",
-        "description": "rightClick(text('Get Started'))",
-        "lineNumber": 6
       },
       {
         "title": "param",
         "description": "A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be double clicked.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -2777,7 +2716,7 @@
       {
         "title": "param",
         "description": "wait for navigation after the click.",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -2791,7 +2730,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 11,
+        "lineNumber": 10,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -2809,22 +2748,22 @@
     ],
     "loc": {
       "start": {
-        "line": 125,
+        "line": 118,
         "column": 0
       },
       "end": {
-        "line": 137,
+        "line": 129,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 138,
+          "line": 130,
           "column": 0
         },
         "end": {
-          "line": 142,
+          "line": 134,
           "column": 2
         }
       },
@@ -2833,17 +2772,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "rightClick('Get Started')"
-      },
-      {
-        "description": "rightClick(text('Get Started'))"
+        "description": "rightClick('Get Started')\nrightClick(text('Get Started'))"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -2913,7 +2849,7 @@
       {
         "title": "param",
         "name": "waitForNavigation",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "description": {
           "type": "root",
           "children": [
@@ -3180,18 +3116,13 @@
       },
       {
         "title": "example",
-        "description": "hover('Get Started')",
+        "description": "hover('Get Started')\nhover(link('Get Started'))",
         "lineNumber": 4
-      },
-      {
-        "title": "example",
-        "description": "hover(link('Get Started'))",
-        "lineNumber": 6
       },
       {
         "title": "param",
         "description": "A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be hovered.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -3210,7 +3141,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -3228,22 +3159,22 @@
     ],
     "loc": {
       "start": {
-        "line": 144,
+        "line": 136,
         "column": 0
       },
       "end": {
-        "line": 155,
+        "line": 146,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 156,
+          "line": 147,
           "column": 0
         },
         "end": {
-          "line": 162,
+          "line": 153,
           "column": 2
         }
       },
@@ -3252,17 +3183,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "hover('Get Started')"
-      },
-      {
-        "description": "hover(link('Get Started'))"
+        "description": "hover('Get Started')\nhover(link('Get Started'))"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -3580,22 +3508,22 @@
     ],
     "loc": {
       "start": {
-        "line": 164,
+        "line": 155,
         "column": 0
       },
       "end": {
-        "line": 173,
+        "line": 164,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 174,
+          "line": 165,
           "column": 0
         },
         "end": {
-          "line": 178,
+          "line": 169,
           "column": 2
         }
       },
@@ -3881,23 +3809,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "write('admin', into('Username:'))",
+        "description": "write('admin', into('Username:'))\nwrite('admin', 'Username:')\nwrite('admin')",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "write('admin', 'Username:')",
-        "lineNumber": 5
-      },
-      {
-        "title": "example",
-        "description": "write('admin')",
-        "lineNumber": 7
       },
       {
         "title": "param",
         "description": "Text to type into the element.",
-        "lineNumber": 10,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -3907,7 +3825,7 @@
       {
         "title": "param",
         "description": "A selector of an element to write into.",
-        "lineNumber": 11,
+        "lineNumber": 9,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -3929,7 +3847,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 12,
+        "lineNumber": 10,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -3947,22 +3865,22 @@
     ],
     "loc": {
       "start": {
-        "line": 180,
+        "line": 171,
         "column": 0
       },
       "end": {
-        "line": 193,
+        "line": 182,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 194,
+          "line": 183,
           "column": 0
         },
         "end": {
-          "line": 206,
+          "line": 195,
           "column": 2
         }
       },
@@ -3971,20 +3889,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "write('admin', into('Username:'))"
-      },
-      {
-        "description": "write('admin', 'Username:')"
-      },
-      {
-        "description": "write('admin')"
+        "description": "write('admin', into('Username:'))\nwrite('admin', 'Username:')\nwrite('admin')"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "text",
-        "lineNumber": 10,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -4045,7 +3957,7 @@
       {
         "title": "param",
         "name": "into",
-        "lineNumber": 11,
+        "lineNumber": 9,
         "description": {
           "type": "root",
           "children": [
@@ -4266,18 +4178,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "upload('c:/abc.txt', to('Please select a file:'))",
+        "description": "upload('c:/abc.txt', to('Please select a file:'))\nupload('c:/abc.txt', 'Please select a file:')",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "upload('c:/abc.txt', 'Please select a file:')",
-        "lineNumber": 5
       },
       {
         "title": "param",
         "description": "The path of the file to be attached.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -4287,7 +4194,7 @@
       {
         "title": "param",
         "description": "The file input element to which to upload the file.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -4306,7 +4213,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -4324,22 +4231,22 @@
     ],
     "loc": {
       "start": {
-        "line": 208,
+        "line": 197,
         "column": 0
       },
       "end": {
-        "line": 219,
+        "line": 207,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 220,
+          "line": 208,
           "column": 0
         },
         "end": {
-          "line": 231,
+          "line": 219,
           "column": 2
         }
       },
@@ -4348,17 +4255,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "upload('c:/abc.txt', to('Please select a file:'))"
-      },
-      {
-        "description": "upload('c:/abc.txt', 'Please select a file:')"
+        "description": "upload('c:/abc.txt', to('Please select a file:'))\nupload('c:/abc.txt', 'Please select a file:')"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "filepath",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -4419,7 +4323,7 @@
       {
         "title": "param",
         "name": "to",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -4637,18 +4541,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "press('Enter')",
+        "description": "press('Enter')\npress('a')",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "press('a')",
-        "lineNumber": 5
       },
       {
         "title": "param",
         "description": "Name of key to press, such as ArrowLeft. See [USKeyboardLayout](https://github.com/GoogleChrome/puppeteer/blob/master/lib/USKeyboardLayout.js) for a list of all key names.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -4658,7 +4557,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -4668,7 +4567,7 @@
       {
         "title": "param",
         "description": "If specified, generates an input event with this text.",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -4678,7 +4577,7 @@
       {
         "title": "param",
         "description": "Time to wait between keydown and keyup in milliseconds.",
-        "lineNumber": 11,
+        "lineNumber": 10,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -4692,7 +4591,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 12,
+        "lineNumber": 11,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -4710,22 +4609,22 @@
     ],
     "loc": {
       "start": {
-        "line": 233,
+        "line": 221,
         "column": 0
       },
       "end": {
-        "line": 246,
+        "line": 233,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 247,
+          "line": 234,
           "column": 0
         },
         "end": {
-          "line": 251,
+          "line": 238,
           "column": 2
         }
       },
@@ -4734,17 +4633,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "press('Enter')"
-      },
-      {
-        "description": "press('a')"
+        "description": "press('Enter')\npress('a')"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "key",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -4859,7 +4755,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -4868,7 +4764,7 @@
           {
             "title": "param",
             "name": "options.text",
-            "lineNumber": 10,
+            "lineNumber": 9,
             "description": {
               "type": "root",
               "children": [
@@ -4929,7 +4825,7 @@
           {
             "title": "param",
             "name": "options.delay",
-            "lineNumber": 11,
+            "lineNumber": 10,
             "description": {
               "type": "root",
               "children": [
@@ -5146,18 +5042,13 @@
       },
       {
         "title": "example",
-        "description": "highlight('Get Started')",
+        "description": "highlight('Get Started')\nhighlight(link('Get Started'))",
         "lineNumber": 4
-      },
-      {
-        "title": "example",
-        "description": "highlight(link('Get Started'))",
-        "lineNumber": 6
       },
       {
         "title": "param",
         "description": "A selector of an element to highlight. If there are multiple elements satisfying the selector, the first will be highlighted.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -5176,7 +5067,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -5194,22 +5085,22 @@
     ],
     "loc": {
       "start": {
-        "line": 253,
+        "line": 240,
         "column": 0
       },
       "end": {
-        "line": 264,
+        "line": 250,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 265,
+          "line": 251,
           "column": 0
         },
         "end": {
-          "line": 269,
+          "line": 255,
           "column": 2
         }
       },
@@ -5218,17 +5109,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "highlight('Get Started')"
-      },
-      {
-        "description": "highlight(link('Get Started'))"
+        "description": "highlight('Get Started')\nhighlight(link('Get Started'))"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -5498,18 +5386,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "scrollTo('Get Started')",
+        "description": "scrollTo('Get Started')\nscrollTo(link('Get Started'))",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "scrollTo(link('Get Started'))",
-        "lineNumber": 5
       },
       {
         "title": "param",
         "description": "A selector of an element to scroll to.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -5528,7 +5411,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -5546,22 +5429,22 @@
     ],
     "loc": {
       "start": {
-        "line": 271,
+        "line": 257,
         "column": 0
       },
       "end": {
-        "line": 281,
+        "line": 266,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 282,
+          "line": 267,
           "column": 0
         },
         "end": {
-          "line": 286,
+          "line": 271,
           "column": 2
         }
       },
@@ -5570,17 +5453,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "scrollTo('Get Started')"
-      },
-      {
-        "description": "scrollTo(link('Get Started'))"
+        "description": "scrollTo('Get Started')\nscrollTo(link('Get Started'))"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -5798,28 +5678,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "scrollRight()",
+        "description": "scrollRight()\nscrollRight(1000)\nscrollRight('Element containing text')\nscrollRight('Element containing text', 1000)",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "scrollRight(1000)",
-        "lineNumber": 5
-      },
-      {
-        "title": "example",
-        "description": "scrollRight('Element containing text')",
-        "lineNumber": 7
-      },
-      {
-        "title": "example",
-        "description": "scrollRight('Element containing text', 1000)",
-        "lineNumber": 9
       },
       {
         "title": "param",
         "description": null,
-        "lineNumber": 12,
+        "lineNumber": 9,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -5846,7 +5711,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 13,
+        "lineNumber": 10,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -5860,7 +5725,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 14,
+        "lineNumber": 11,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -5878,22 +5743,22 @@
     ],
     "loc": {
       "start": {
-        "line": 288,
+        "line": 273,
         "column": 0
       },
       "end": {
-        "line": 303,
+        "line": 285,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 304,
+          "line": 286,
           "column": 0
         },
         "end": {
-          "line": 307,
+          "line": 289,
           "column": 2
         }
       },
@@ -5902,23 +5767,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "scrollRight()"
-      },
-      {
-        "description": "scrollRight(1000)"
-      },
-      {
-        "description": "scrollRight('Element containing text')"
-      },
-      {
-        "description": "scrollRight('Element containing text', 1000)"
+        "description": "scrollRight()\nscrollRight(1000)\nscrollRight('Element containing text')\nscrollRight('Element containing text', 1000)"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 12,
+        "lineNumber": 9,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -5941,7 +5797,7 @@
       {
         "title": "param",
         "name": "px",
-        "lineNumber": 13,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "number"
@@ -6099,28 +5955,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "scrollLeft()",
+        "description": "scrollLeft()\nscrollLeft(1000)\nscrollLeft('Element containing text')\nscrollLeft('Element containing text', 1000)",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "scrollLeft(1000)",
-        "lineNumber": 5
-      },
-      {
-        "title": "example",
-        "description": "scrollLeft('Element containing text')",
-        "lineNumber": 7
-      },
-      {
-        "title": "example",
-        "description": "scrollLeft('Element containing text', 1000)",
-        "lineNumber": 9
       },
       {
         "title": "param",
         "description": null,
-        "lineNumber": 12,
+        "lineNumber": 9,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -6147,7 +5988,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 13,
+        "lineNumber": 10,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -6161,7 +6002,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 14,
+        "lineNumber": 11,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -6179,22 +6020,22 @@
     ],
     "loc": {
       "start": {
-        "line": 309,
+        "line": 291,
         "column": 0
       },
       "end": {
-        "line": 324,
+        "line": 303,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 325,
+          "line": 304,
           "column": 0
         },
         "end": {
-          "line": 328,
+          "line": 307,
           "column": 2
         }
       },
@@ -6203,23 +6044,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "scrollLeft()"
-      },
-      {
-        "description": "scrollLeft(1000)"
-      },
-      {
-        "description": "scrollLeft('Element containing text')"
-      },
-      {
-        "description": "scrollLeft('Element containing text', 1000)"
+        "description": "scrollLeft()\nscrollLeft(1000)\nscrollLeft('Element containing text')\nscrollLeft('Element containing text', 1000)"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 12,
+        "lineNumber": 9,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -6242,7 +6074,7 @@
       {
         "title": "param",
         "name": "px",
-        "lineNumber": 13,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "number"
@@ -6400,28 +6232,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "scrollUp()",
+        "description": "scrollUp()\nscrollUp(1000)\nscrollUp('Element containing text')\nscrollUp('Element containing text', 1000)",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "scrollUp(1000)",
-        "lineNumber": 5
-      },
-      {
-        "title": "example",
-        "description": "scrollUp('Element containing text')",
-        "lineNumber": 7
-      },
-      {
-        "title": "example",
-        "description": "scrollUp('Element containing text', 1000)",
-        "lineNumber": 9
       },
       {
         "title": "param",
         "description": null,
-        "lineNumber": 12,
+        "lineNumber": 9,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -6448,7 +6265,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 13,
+        "lineNumber": 10,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -6462,7 +6279,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 14,
+        "lineNumber": 11,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -6480,22 +6297,22 @@
     ],
     "loc": {
       "start": {
-        "line": 330,
+        "line": 309,
         "column": 0
       },
       "end": {
-        "line": 345,
+        "line": 321,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 346,
+          "line": 322,
           "column": 0
         },
         "end": {
-          "line": 349,
+          "line": 325,
           "column": 2
         }
       },
@@ -6504,23 +6321,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "scrollUp()"
-      },
-      {
-        "description": "scrollUp(1000)"
-      },
-      {
-        "description": "scrollUp('Element containing text')"
-      },
-      {
-        "description": "scrollUp('Element containing text', 1000)"
+        "description": "scrollUp()\nscrollUp(1000)\nscrollUp('Element containing text')\nscrollUp('Element containing text', 1000)"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 12,
+        "lineNumber": 9,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -6543,7 +6351,7 @@
       {
         "title": "param",
         "name": "px",
-        "lineNumber": 13,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "number"
@@ -6701,28 +6509,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "scrollDown()",
+        "description": "scrollDown()\nscrollDown(1000)\nscrollDown('Element containing text')\nscrollDown('Element containing text', 1000)",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "scrollDown(1000)",
-        "lineNumber": 5
-      },
-      {
-        "title": "example",
-        "description": "scrollDown('Element containing text')",
-        "lineNumber": 7
-      },
-      {
-        "title": "example",
-        "description": "scrollDown('Element containing text', 1000)",
-        "lineNumber": 9
       },
       {
         "title": "param",
         "description": null,
-        "lineNumber": 12,
+        "lineNumber": 9,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -6749,7 +6542,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 13,
+        "lineNumber": 10,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -6763,7 +6556,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 14,
+        "lineNumber": 11,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -6781,22 +6574,22 @@
     ],
     "loc": {
       "start": {
-        "line": 351,
+        "line": 327,
         "column": 0
       },
       "end": {
-        "line": 366,
+        "line": 339,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 367,
+          "line": 340,
           "column": 0
         },
         "end": {
-          "line": 370,
+          "line": 343,
           "column": 2
         }
       },
@@ -6805,23 +6598,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "scrollDown()"
-      },
-      {
-        "description": "scrollDown(1000)"
-      },
-      {
-        "description": "scrollDown('Element containing text')"
-      },
-      {
-        "description": "scrollDown('Element containing text', 1000)"
+        "description": "scrollDown()\nscrollDown(1000)\nscrollDown('Element containing text')\nscrollDown('Element containing text', 1000)"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 12,
+        "lineNumber": 9,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -6844,7 +6628,7 @@
       {
         "title": "param",
         "name": "px",
-        "lineNumber": 13,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "number"
@@ -7036,22 +6820,22 @@
     ],
     "loc": {
       "start": {
-        "line": 372,
+        "line": 345,
         "column": 0
       },
       "end": {
-        "line": 380,
+        "line": 353,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 381,
+          "line": 354,
           "column": 0
         },
         "end": {
-          "line": 381,
+          "line": 354,
           "column": 67
         }
       },
@@ -7330,18 +7114,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "click($('.class'))",
+        "description": "click($('.class'))\n$('.class').exists()",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "$('.class').exists()",
-        "lineNumber": 5
       },
       {
         "title": "param",
         "description": "XPath or CSS selector.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -7351,7 +7130,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -7360,22 +7139,22 @@
     ],
     "loc": {
       "start": {
-        "line": 383,
+        "line": 356,
         "column": 0
       },
       "end": {
-        "line": 393,
+        "line": 365,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 394,
+          "line": 366,
           "column": 0
         },
         "end": {
-          "line": 398,
+          "line": 370,
           "column": 2
         }
       },
@@ -7384,17 +7163,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "click($('.class'))"
-      },
-      {
-        "description": "$('.class').exists()"
+        "description": "click($('.class'))\n$('.class').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -7558,18 +7334,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "highlight($$(`//*[text()='text']`)[1])",
+        "description": "highlight($$(`//*[text()='text']`)[1])\n$$(`//*[text()='text']`).exists()",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "$$(`//*[text()='text']`).exists()",
-        "lineNumber": 5
       },
       {
         "title": "param",
         "description": "XPath or CSS selector.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -7579,7 +7350,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -7588,22 +7359,22 @@
     ],
     "loc": {
       "start": {
-        "line": 400,
+        "line": 372,
         "column": 0
       },
       "end": {
-        "line": 410,
+        "line": 381,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 411,
+          "line": 382,
           "column": 0
         },
         "end": {
-          "line": 415,
+          "line": 386,
           "column": 2
         }
       },
@@ -7612,17 +7383,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "highlight($$(`//*[text()='text']`)[1])"
-      },
-      {
-        "description": "$$(`//*[text()='text']`).exists()"
+        "description": "highlight($$(`//*[text()='text']`)[1])\n$$(`//*[text()='text']`).exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -7825,18 +7593,13 @@
       },
       {
         "title": "example",
-        "description": "click(image('alt'))",
+        "description": "click(image('alt'))\nimage('alt').exists()",
         "lineNumber": 4
-      },
-      {
-        "title": "example",
-        "description": "image('alt').exists()",
-        "lineNumber": 6
       },
       {
         "title": "param",
         "description": "The image's alt text.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -7846,7 +7609,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -7855,22 +7618,22 @@
     ],
     "loc": {
       "start": {
-        "line": 417,
+        "line": 388,
         "column": 0
       },
       "end": {
-        "line": 428,
+        "line": 398,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 429,
+          "line": 399,
           "column": 0
         },
         "end": {
-          "line": 434,
+          "line": 404,
           "column": 2
         }
       },
@@ -7879,17 +7642,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "click(image('alt'))"
-      },
-      {
-        "description": "image('alt').exists()"
+        "description": "click(image('alt'))\nimage('alt').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "alt",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -8105,18 +7865,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "click(link('Get Started'))",
+        "description": "click(link('Get Started'))\nlink('Get Started').exists()",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "link('Get Started').exists()",
-        "lineNumber": 5
       },
       {
         "title": "param",
         "description": "The link text.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -8126,7 +7881,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8135,22 +7890,22 @@
     ],
     "loc": {
       "start": {
-        "line": 436,
+        "line": 406,
         "column": 0
       },
       "end": {
-        "line": 446,
+        "line": 415,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 447,
+          "line": 416,
           "column": 0
         },
         "end": {
-          "line": 451,
+          "line": 420,
           "column": 2
         }
       },
@@ -8159,17 +7914,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "click(link('Get Started'))"
-      },
-      {
-        "description": "link('Get Started').exists()"
+        "description": "click(link('Get Started'))\nlink('Get Started').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "text",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -8372,18 +8124,13 @@
       },
       {
         "title": "example",
-        "description": "highlight(listItem('Get Started'))",
+        "description": "highlight(listItem('Get Started'))\nlistItem('Get Started').exists()",
         "lineNumber": 4
-      },
-      {
-        "title": "example",
-        "description": "listItem('Get Started').exists()",
-        "lineNumber": 6
       },
       {
         "title": "param",
         "description": "The label of the list item.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -8393,7 +8140,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8402,22 +8149,22 @@
     ],
     "loc": {
       "start": {
-        "line": 453,
+        "line": 422,
         "column": 0
       },
       "end": {
-        "line": 464,
+        "line": 432,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 465,
+          "line": 433,
           "column": 0
         },
         "end": {
-          "line": 469,
+          "line": 437,
           "column": 2
         }
       },
@@ -8426,22 +8173,19 @@
     "augments": [],
     "examples": [
       {
-        "description": "highlight(listItem('Get Started'))"
-      },
-      {
-        "description": "listItem('Get Started').exists()"
+        "description": "highlight(listItem('Get Started'))\nlistItem('Get Started').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "text",
-        "lineNumber": 465
+        "lineNumber": 433
       },
       {
         "title": "param",
         "name": "label",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -8657,18 +8401,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "highlight(button('Get Started'))",
+        "description": "highlight(button('Get Started'))\nbutton('Get Started').exists()",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "button('Get Started').exists()",
-        "lineNumber": 5
       },
       {
         "title": "param",
         "description": "The button label.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -8678,7 +8417,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8687,22 +8426,22 @@
     ],
     "loc": {
       "start": {
-        "line": 471,
+        "line": 439,
         "column": 0
       },
       "end": {
-        "line": 481,
+        "line": 448,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 482,
+          "line": 449,
           "column": 0
         },
         "end": {
-          "line": 486,
+          "line": 453,
           "column": 2
         }
       },
@@ -8711,22 +8450,19 @@
     "augments": [],
     "examples": [
       {
-        "description": "highlight(button('Get Started'))"
-      },
-      {
-        "description": "button('Get Started').exists()"
+        "description": "highlight(button('Get Started'))\nbutton('Get Started').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 482
+        "lineNumber": 449
       },
       {
         "title": "param",
         "name": "label",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -8890,18 +8626,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "focus(inputField('id', 'name'))",
+        "description": "focus(inputField('id', 'name'))\ninputField('id', 'name').exists()",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "inputField('id', 'name').exists()",
-        "lineNumber": 5
       },
       {
         "title": "param",
         "description": "The input field's attribute.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -8915,7 +8646,7 @@
       {
         "title": "param",
         "description": "Value of the attribute specified in the first parameter.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -8925,7 +8656,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8934,22 +8665,22 @@
     ],
     "loc": {
       "start": {
-        "line": 488,
+        "line": 455,
         "column": 0
       },
       "end": {
-        "line": 499,
+        "line": 465,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 500,
+          "line": 466,
           "column": 0
         },
         "end": {
-          "line": 515,
+          "line": 481,
           "column": 2
         }
       },
@@ -8958,17 +8689,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "focus(inputField('id', 'name'))"
-      },
-      {
-        "description": "inputField('id', 'name').exists()"
+        "description": "focus(inputField('id', 'name'))\ninputField('id', 'name').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "attribute",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -9030,7 +8758,7 @@
       {
         "title": "param",
         "name": "value",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -9194,18 +8922,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "focus(textField('Username:'))",
+        "description": "focus(textField('Username:'))\ntextField('Username:').exists()",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "textField('Username:').exists()",
-        "lineNumber": 5
       },
       {
         "title": "param",
         "description": "The label (human-visible name) of the text field.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -9215,7 +8938,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9224,22 +8947,22 @@
     ],
     "loc": {
       "start": {
-        "line": 517,
+        "line": 483,
         "column": 0
       },
       "end": {
-        "line": 527,
+        "line": 492,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 528,
+          "line": 493,
           "column": 0
         },
         "end": {
-          "line": 538,
+          "line": 503,
           "column": 2
         }
       },
@@ -9248,17 +8971,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "focus(textField('Username:'))"
-      },
-      {
-        "description": "textField('Username:').exists()"
+        "description": "focus(textField('Username:'))\ntextField('Username:').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "label",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -9422,23 +9142,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "comboBox('Vehicle:').select('Car')",
+        "description": "comboBox('Vehicle:').select('Car')\ncomboBox('Vehicle:').value()\ncomboBox('Vehicle:').exists()",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "comboBox('Vehicle:').value()",
-        "lineNumber": 5
-      },
-      {
-        "title": "example",
-        "description": "comboBox('Vehicle:').exists()",
-        "lineNumber": 7
       },
       {
         "title": "param",
         "description": "The label (human-visible name) of the combo box.",
-        "lineNumber": 10,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -9448,7 +9158,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 11,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9457,22 +9167,22 @@
     ],
     "loc": {
       "start": {
-        "line": 540,
+        "line": 505,
         "column": 0
       },
       "end": {
-        "line": 552,
+        "line": 515,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 553,
+          "line": 516,
           "column": 0
         },
         "end": {
-          "line": 570,
+          "line": 533,
           "column": 2
         }
       },
@@ -9481,20 +9191,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "comboBox('Vehicle:').select('Car')"
-      },
-      {
-        "description": "comboBox('Vehicle:').value()"
-      },
-      {
-        "description": "comboBox('Vehicle:').exists()"
+        "description": "comboBox('Vehicle:').select('Car')\ncomboBox('Vehicle:').value()\ncomboBox('Vehicle:').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "label",
-        "lineNumber": 10,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -9658,28 +9362,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "checkBox('Vehicle').check()",
+        "description": "checkBox('Vehicle').check()\ncheckBox('Vehicle').uncheck()\ncheckBox('Vehicle').isChecked()\ncheckBox('Vehicle').exists()",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "checkBox('Vehicle').uncheck()",
-        "lineNumber": 5
-      },
-      {
-        "title": "example",
-        "description": "checkBox('Vehicle').isChecked()",
-        "lineNumber": 7
-      },
-      {
-        "title": "example",
-        "description": "checkBox('Vehicle').exists()",
-        "lineNumber": 9
       },
       {
         "title": "param",
         "description": "The label (human-visible name) of the check box.",
-        "lineNumber": 12,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -9689,7 +9378,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 13,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9698,22 +9387,22 @@
     ],
     "loc": {
       "start": {
-        "line": 572,
+        "line": 535,
         "column": 0
       },
       "end": {
-        "line": 586,
+        "line": 546,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 587,
+          "line": 547,
           "column": 0
         },
         "end": {
-          "line": 599,
+          "line": 559,
           "column": 2
         }
       },
@@ -9722,28 +9411,19 @@
     "augments": [],
     "examples": [
       {
-        "description": "checkBox('Vehicle').check()"
-      },
-      {
-        "description": "checkBox('Vehicle').uncheck()"
-      },
-      {
-        "description": "checkBox('Vehicle').isChecked()"
-      },
-      {
-        "description": "checkBox('Vehicle').exists()"
+        "description": "checkBox('Vehicle').check()\ncheckBox('Vehicle').uncheck()\ncheckBox('Vehicle').isChecked()\ncheckBox('Vehicle').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 587
+        "lineNumber": 547
       },
       {
         "title": "param",
         "name": "label",
-        "lineNumber": 12,
+        "lineNumber": 9,
         "description": {
           "type": "root",
           "children": [
@@ -9907,28 +9587,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "radioButton('Vehicle').select()",
+        "description": "radioButton('Vehicle').select()\nradioButton('Vehicle').deselect()\nradioButton('Vehicle').isSelected()\nradioButton('Vehicle').exists()",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "radioButton('Vehicle').deselect()",
-        "lineNumber": 5
-      },
-      {
-        "title": "example",
-        "description": "radioButton('Vehicle').isSelected()",
-        "lineNumber": 7
-      },
-      {
-        "title": "example",
-        "description": "radioButton('Vehicle').exists()",
-        "lineNumber": 9
       },
       {
         "title": "param",
         "description": "The label (human-visible name) of the radio button.",
-        "lineNumber": 12,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -9938,7 +9603,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 13,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9947,22 +9612,22 @@
     ],
     "loc": {
       "start": {
-        "line": 601,
+        "line": 561,
         "column": 0
       },
       "end": {
-        "line": 615,
+        "line": 572,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 616,
+          "line": 573,
           "column": 0
         },
         "end": {
-          "line": 628,
+          "line": 585,
           "column": 2
         }
       },
@@ -9971,28 +9636,19 @@
     "augments": [],
     "examples": [
       {
-        "description": "radioButton('Vehicle').select()"
-      },
-      {
-        "description": "radioButton('Vehicle').deselect()"
-      },
-      {
-        "description": "radioButton('Vehicle').isSelected()"
-      },
-      {
-        "description": "radioButton('Vehicle').exists()"
+        "description": "radioButton('Vehicle').select()\nradioButton('Vehicle').deselect()\nradioButton('Vehicle').isSelected()\nradioButton('Vehicle').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 616
+        "lineNumber": 573
       },
       {
         "title": "param",
         "name": "label",
-        "lineNumber": 12,
+        "lineNumber": 9,
         "description": {
           "type": "root",
           "children": [
@@ -10156,18 +9812,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "highlight(text('Vehicle'))",
+        "description": "highlight(text('Vehicle'))\ntext('Vehicle').exists()",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "text('Vehicle').exists()",
-        "lineNumber": 5
       },
       {
         "title": "param",
         "description": "Text to match.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -10177,7 +9828,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -10186,22 +9837,22 @@
     ],
     "loc": {
       "start": {
-        "line": 630,
+        "line": 587,
         "column": 0
       },
       "end": {
-        "line": 640,
+        "line": 596,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 641,
+          "line": 597,
           "column": 0
         },
         "end": {
-          "line": 646,
+          "line": 602,
           "column": 2
         }
       },
@@ -10210,17 +9861,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "highlight(text('Vehicle'))"
-      },
-      {
-        "description": "text('Vehicle').exists()"
+        "description": "highlight(text('Vehicle'))\ntext('Vehicle').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "text",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -10409,22 +10057,22 @@
     ],
     "loc": {
       "start": {
-        "line": 648,
+        "line": 604,
         "column": 0
       },
       "end": {
-        "line": 656,
+        "line": 612,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 657,
+          "line": 613,
           "column": 0
         },
         "end": {
-          "line": 665,
+          "line": 621,
           "column": 2
         }
       },
@@ -10670,22 +10318,22 @@
     ],
     "loc": {
       "start": {
-        "line": 667,
+        "line": 623,
         "column": 0
       },
       "end": {
-        "line": 675,
+        "line": 631,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 676,
+          "line": 632,
           "column": 0
         },
         "end": {
-          "line": 676,
+          "line": 632,
           "column": 81
         }
       },
@@ -10974,22 +10622,22 @@
     ],
     "loc": {
       "start": {
-        "line": 678,
+        "line": 634,
         "column": 0
       },
       "end": {
-        "line": 686,
+        "line": 642,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 687,
+          "line": 643,
           "column": 0
         },
         "end": {
-          "line": 687,
+          "line": 643,
           "column": 83
         }
       },
@@ -11278,22 +10926,22 @@
     ],
     "loc": {
       "start": {
-        "line": 689,
+        "line": 645,
         "column": 0
       },
       "end": {
-        "line": 697,
+        "line": 653,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 698,
+          "line": 654,
           "column": 0
         },
         "end": {
-          "line": 698,
+          "line": 654,
           "column": 85
         }
       },
@@ -11582,22 +11230,22 @@
     ],
     "loc": {
       "start": {
-        "line": 700,
+        "line": 656,
         "column": 0
       },
       "end": {
-        "line": 708,
+        "line": 664,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 709,
+          "line": 665,
           "column": 0
         },
         "end": {
-          "line": 709,
+          "line": 665,
           "column": 95
         }
       },
@@ -11845,22 +11493,22 @@
     ],
     "loc": {
       "start": {
-        "line": 711,
+        "line": 667,
         "column": 0
       },
       "end": {
-        "line": 719,
+        "line": 675,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 720,
+          "line": 676,
           "column": 0
         },
         "end": {
-          "line": 720,
+          "line": 676,
           "column": 50
         }
       },
@@ -12101,22 +11749,22 @@
     ],
     "loc": {
       "start": {
-        "line": 722,
+        "line": 678,
         "column": 0
       },
       "end": {
-        "line": 730,
+        "line": 686,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 731,
+          "line": 687,
           "column": 0
         },
         "end": {
-          "line": 731,
+          "line": 687,
           "column": 49
         }
       },
@@ -12359,22 +12007,22 @@
     ],
     "loc": {
       "start": {
-        "line": 733,
+        "line": 689,
         "column": 0
       },
       "end": {
-        "line": 741,
+        "line": 697,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 742,
+          "line": 698,
           "column": 0
         },
         "end": {
-          "line": 742,
+          "line": 698,
           "column": 42
         }
       },
@@ -12390,7 +12038,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 742
+        "lineNumber": 698
       },
       {
         "title": "param",
@@ -12606,22 +12254,22 @@
     ],
     "loc": {
       "start": {
-        "line": 744,
+        "line": 700,
         "column": 0
       },
       "end": {
-        "line": 753,
+        "line": 709,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 754,
+          "line": 710,
           "column": 0
         },
         "end": {
-          "line": 754,
+          "line": 710,
           "column": 27
         }
       },
@@ -12637,7 +12285,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 754
+        "lineNumber": 710
       }
     ],
     "properties": [],
@@ -12857,22 +12505,22 @@
     ],
     "loc": {
       "start": {
-        "line": 756,
+        "line": 712,
         "column": 0
       },
       "end": {
-        "line": 765,
+        "line": 721,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 766,
+          "line": 722,
           "column": 0
         },
         "end": {
-          "line": 766,
+          "line": 722,
           "column": 29
         }
       },
@@ -12888,7 +12536,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 766
+        "lineNumber": 722
       }
     ],
     "properties": [],
@@ -13067,22 +12715,22 @@
     ],
     "loc": {
       "start": {
-        "line": 768,
+        "line": 724,
         "column": 0
       },
       "end": {
-        "line": 772,
+        "line": 728,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 773,
+          "line": 729,
           "column": 0
         },
         "end": {
-          "line": 776,
+          "line": 732,
           "column": 2
         }
       },
@@ -13279,22 +12927,22 @@
     ],
     "loc": {
       "start": {
-        "line": 778,
+        "line": 734,
         "column": 0
       },
       "end": {
-        "line": 782,
+        "line": 738,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 783,
+          "line": 739,
           "column": 0
         },
         "end": {
-          "line": 786,
+          "line": 742,
           "column": 2
         }
       },
@@ -13481,28 +13129,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "link('Sign in')",
+        "description": "link('Sign in')\nbutton('Get Started')\n$('#id')\ntext('Home')",
         "lineNumber": 3
-      },
-      {
-        "title": "example",
-        "description": "button('Get Started')",
-        "lineNumber": 5
-      },
-      {
-        "title": "example",
-        "description": "$('#id')",
-        "lineNumber": 7
-      },
-      {
-        "title": "example",
-        "description": "text('Home')",
-        "lineNumber": 9
       },
       {
         "title": "typedef",
         "description": null,
-        "lineNumber": 12,
+        "lineNumber": 9,
         "type": {
           "type": "FunctionType",
           "params": [
@@ -13525,22 +13158,22 @@
     ],
     "loc": {
       "start": {
-        "line": 904,
+        "line": 860,
         "column": 0
       },
       "end": {
-        "line": 917,
+        "line": 870,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 898,
+          "line": 854,
           "column": 0
         },
         "end": {
-          "line": 902,
+          "line": 858,
           "column": 2
         }
       },
@@ -13549,16 +13182,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "link('Sign in')"
-      },
-      {
-        "description": "button('Get Started')"
-      },
-      {
-        "description": "$('#id')"
-      },
-      {
-        "description": "text('Home')"
+        "description": "link('Sign in')\nbutton('Get Started')\n$('#id')\ntext('Home')"
       }
     ],
     "params": [],
@@ -13713,22 +13337,22 @@
     ],
     "loc": {
       "start": {
-        "line": 919,
+        "line": 872,
         "column": 0
       },
       "end": {
-        "line": 928,
+        "line": 881,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 898,
+          "line": 854,
           "column": 0
         },
         "end": {
-          "line": 902,
+          "line": 858,
           "column": 2
         }
       },
@@ -14130,22 +13754,22 @@
     ],
     "loc": {
       "start": {
-        "line": 930,
+        "line": 883,
         "column": 0
       },
       "end": {
-        "line": 933,
+        "line": 886,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 898,
+          "line": 854,
           "column": 0
         },
         "end": {
-          "line": 902,
+          "line": 858,
           "column": 2
         }
       },
@@ -14301,22 +13925,22 @@
     ],
     "loc": {
       "start": {
-        "line": 935,
+        "line": 888,
         "column": 0
       },
       "end": {
-        "line": 938,
+        "line": 891,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 898,
+          "line": 854,
           "column": 0
         },
         "end": {
-          "line": 902,
+          "line": 858,
           "column": 2
         }
       },

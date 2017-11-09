@@ -101,39 +101,9 @@ repl.defineCommand('version', {
 repl.defineCommand('api', {
     help: 'Prints api info',
     action(name) {
-        if (!doc) {
-            console.log('API usage not available.');
-            this.displayPrompt();
-            return;
-        }
-        const desc = d => d.children
-            .map(c => (c.children || []).map((c1) => (c1.type === 'link' ? c1.children[0].value : c1.value).trim()).join(' '))
-            .join(' ');
-        if (name) {
-            const e = doc.find(e => e.name === name);
-            if (!e) {
-                console.log(`Function ${name} doesn't exist.`);
-                this.displayPrompt();
-                return;
-            }
-            console.log();
-            console.log(desc(e.description));
-            if (e.examples.length > 0) {
-                console.log();
-                console.log(e.examples.length > 1 ? 'Examples:' : 'Example:');
-                console.log(e.examples.map((e) => '\t' + e.description).join('\n'));
-                console.log();
-            }
-        } else {
-            const max = Math.max(...(doc.map(e => e.name.length))) + 4;
-            doc.forEach(e => {
-                const api = e.name + ' '.repeat(max - e.name.length);
-                let description = desc(e.description);
-                if (e.summary) description = e.tags.find(t => t.title === 'summary').description;
-                console.log(removeQuotes(util.inspect(api, { colors: true }), api) + description);
-            });
-            console.log('\nRun `.api <name>` for more info on a specific function. For Example: `.api click`.');
-        }
+        if (!doc) console.log('API usage not available.');
+        else if (name) displayUsageFor(name);
+        else displayUsage();
         this.displayPrompt();
     }
 });
@@ -157,5 +127,40 @@ const handleError = (e) => {
     e.message = ' ✘ Error: ' + e.message + ', run `.trace` for more info.';
     return new Error(removeQuotes(util.inspect(e.message, { colors: true }), e.message));
 };
+
+const displayUsageFor = name => {
+    const e = doc.find(e => e.name === name);
+    if (!e) {
+        console.log(`Function ${name} doesn't exist.`);
+        return;
+    }
+    console.log();
+    console.log(desc(e.description));
+    if (e.examples.length > 0) {
+        console.log();
+        console.log(e.examples.length > 1 ? 'Examples:' : 'Example:');
+        console.log(e.examples
+            .map(e => e.description.split('\n').map(e => '\t' + e).join('\n'))
+            .join('\n'));
+        console.log();
+    }
+};
+
+const displayUsage = () => {
+    const max = Math.max(...(doc.map(e => e.name.length))) + 4;
+    doc.forEach(e => {
+        const api = e.name + ' '.repeat(max - e.name.length);
+        let description = desc(e.description);
+        if (e.summary) description = e.tags.find(t => t.title === 'summary').description;
+        console.log(removeQuotes(util.inspect(api, { colors: true }), api) + description);
+    });
+    console.log('\nRun `.api <name>` for more info on a specific function. For Example: `.api click`.');
+};
+
+const desc = d => d.children
+    .map(c => (c.children || [])
+        .map((c1) => (c1.type === 'link' ? c1.children[0].value : c1.value).trim())
+        .join(' '))
+    .join(' ');
 
 const isTaikoFunc = (keyword) => keyword.split('(')[0] in funcs;
