@@ -468,7 +468,6 @@ Lets you identify a list item (HTML <li> element) on a web page.
 
 **Parameters**
 
--   `text`  
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label of the list item.
 
 **Examples**
@@ -486,7 +485,6 @@ Lets you identify a button on a web page.
 
 **Parameters**
 
--   `selector`  
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The button label.
 
 **Examples**
@@ -557,7 +555,6 @@ Lets you identify a checkbox on a web page.
 
 **Parameters**
 
--   `selector`  
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label (human-visible name) of the check box.
 
 **Examples**
@@ -577,7 +574,6 @@ Lets you identify a radio button on a web page.
 
 **Parameters**
 
--   `selector`  
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label (human-visible name) of the radio button.
 
 **Examples**
@@ -722,8 +718,7 @@ This function is used to improve the readability. It simply returns the paramete
 
 **Parameters**
 
--   `e`  
--   `boolean`  
+-   `e` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 **Examples**
 

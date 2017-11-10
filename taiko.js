@@ -430,10 +430,10 @@ module.exports.link = text => {
  * @param {string} label - The label of the list item.
  * @returns {ElementWrapper}
  */
-module.exports.listItem = text => {
+module.exports.listItem = label => {
     validate();
-    const get = async () => element(text, 'li');
-    return { get: get, exists: exists(get), description: description(text).replace('Element', 'List item') };
+    const get = async () => element(label, 'li');
+    return { get: get, exists: exists(get), description: description(label).replace('Element', 'List item') };
 };
 
 /**
@@ -446,10 +446,10 @@ module.exports.listItem = text => {
  * @param {string} label - The button label.
  * @returns {ElementWrapper}
  */
-module.exports.button = selector => {
+module.exports.button = label => {
     validate();
-    const get = async () => element(selector, 'button');
-    return { get: get, exists: exists(get), description: description(selector).replace('Element', 'Button') };
+    const get = async () => element(label, 'button');
+    return { get: get, exists: exists(get), description: description(label).replace('Element', 'Button') };
 };
 
 /**
@@ -544,14 +544,14 @@ module.exports.comboBox = label => {
  * @param {string} label - The label (human-visible name) of the check box.
  * @returns {ElementWrapper}
  */
-module.exports.checkBox = selector => {
+module.exports.checkBox = label => {
     validate();
-    assertType(selector);
-    const get = async () => $xpath(`//input[@type='checkbox'][@id=(//label[contains(text(),"${selector}")]/@for)]`);
+    assertType(label);
+    const get = async () => $xpath(`//input[@type='checkbox'][@id=(//label[contains(text(),"${label}")]/@for)]`);
     return {
         get: get,
         exists: exists(get),
-        description: `Checkbox with label containing "${selector}"`,
+        description: `Checkbox with label containing "${label}"`,
         isChecked: async () => p.evaluate(e => e.checked, await get()),
         check: async () => p.evaluate(e => e.checked = true, await get()),
         uncheck: async () => p.evaluate(e => e.checked = false, await get()),
@@ -570,14 +570,14 @@ module.exports.checkBox = selector => {
  * @param {string} label - The label (human-visible name) of the radio button.
  * @returns {ElementWrapper}
  */
-module.exports.radioButton = selector => {
+module.exports.radioButton = label => {
     validate();
-    assertType(selector);
-    const get = async () => $xpath(`//input[@type='radio'][@id=(//label[contains(text(),"${selector}")]/@for)]`);
+    assertType(label);
+    const get = async () => $xpath(`//input[@type='radio'][@id=(//label[contains(text(),"${label}")]/@for)]`);
     return {
         get: get,
         exists: exists(get),
-        description: `Radio button with label containing "${selector}"`,
+        description: `Radio button with label containing "${label}"`,
         isSelected: async () => p.evaluate(e => e.checked, await get()),
         select: async () => p.evaluate(e => e.checked = true, await get()),
         deselect: async () => p.evaluate(e => e.checked = false, await get()),
@@ -692,7 +692,7 @@ module.exports.timeoutSecs = secs => secs * 1000;
  * @example
  * click('Get Started', waitForNavigation(false))
  *
- * @param {boolean}
+ * @param {boolean} e
  * @return {boolean}
  */
 module.exports.waitForNavigation = e => e;

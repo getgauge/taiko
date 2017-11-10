@@ -8179,11 +8179,6 @@
     "params": [
       {
         "title": "param",
-        "name": "text",
-        "lineNumber": 433
-      },
-      {
-        "title": "param",
         "name": "label",
         "lineNumber": 8,
         "description": {
@@ -8454,11 +8449,6 @@
       }
     ],
     "params": [
-      {
-        "title": "param",
-        "name": "selector",
-        "lineNumber": 449
-      },
       {
         "title": "param",
         "name": "label",
@@ -9417,11 +9407,6 @@
     "params": [
       {
         "title": "param",
-        "name": "selector",
-        "lineNumber": 547
-      },
-      {
-        "title": "param",
         "name": "label",
         "lineNumber": 9,
         "description": {
@@ -9640,11 +9625,6 @@
       }
     ],
     "params": [
-      {
-        "title": "param",
-        "name": "selector",
-        "lineNumber": 573
-      },
       {
         "title": "param",
         "name": "label",
@@ -11992,8 +11972,11 @@
         "title": "param",
         "description": null,
         "lineNumber": 6,
-        "type": null,
-        "name": "boolean"
+        "type": {
+          "type": "NameExpression",
+          "name": "boolean"
+        },
+        "name": "e"
       },
       {
         "title": "return",
@@ -12038,12 +12021,11 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 698
-      },
-      {
-        "title": "param",
-        "name": "boolean",
-        "lineNumber": 6
+        "lineNumber": 6,
+        "type": {
+          "type": "NameExpression",
+          "name": "boolean"
+        }
       }
     ],
     "properties": [],
