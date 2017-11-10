@@ -47,11 +47,11 @@ for (let func in taiko) {
         try {
             lastStack = '';
             const args = await Promise.all(Object.values(arguments));
-            taikoCommands[func] = true;
-            return taiko[func].constructor.name === 'AsyncFunction' ?
+            const res = taiko[func].constructor.name === 'AsyncFunction' ?
                 await taiko[func].apply(this, args) : taiko[func].apply(this, args);
+            taikoCommands[func] = true;
+            return res;
         } catch (e) {
-            delete taikoCommands[func];
             return handleError(e);
         } finally {
             util.inspect.styles.string = stringColor;
