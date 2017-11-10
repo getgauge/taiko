@@ -13140,23 +13140,23 @@
     ],
     "loc": {
       "start": {
-        "line": 860,
+        "line": 866,
         "column": 0
       },
       "end": {
-        "line": 870,
+        "line": 876,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 854,
+          "line": 860,
           "column": 0
         },
         "end": {
-          "line": 858,
-          "column": 2
+          "line": 864,
+          "column": 25
         }
       },
       "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
@@ -13319,23 +13319,23 @@
     ],
     "loc": {
       "start": {
-        "line": 872,
+        "line": 878,
         "column": 0
       },
       "end": {
-        "line": 881,
+        "line": 887,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 854,
+          "line": 860,
           "column": 0
         },
         "end": {
-          "line": 858,
-          "column": 2
+          "line": 864,
+          "column": 25
         }
       },
       "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
@@ -13736,23 +13736,23 @@
     ],
     "loc": {
       "start": {
-        "line": 883,
+        "line": 889,
         "column": 0
       },
       "end": {
-        "line": 886,
+        "line": 892,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 854,
+          "line": 860,
           "column": 0
         },
         "end": {
-          "line": 858,
-          "column": 2
+          "line": 864,
+          "column": 25
         }
       },
       "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
@@ -13907,23 +13907,23 @@
     ],
     "loc": {
       "start": {
-        "line": 888,
+        "line": 894,
         "column": 0
       },
       "end": {
-        "line": 891,
+        "line": 897,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 854,
+          "line": 860,
           "column": 0
         },
         "end": {
-          "line": 858,
-          "column": 2
+          "line": 864,
+          "column": 25
         }
       },
       "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"

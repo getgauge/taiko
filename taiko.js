@@ -208,7 +208,7 @@ module.exports.write = async (text, into) => {
 module.exports.upload = async (filepath, to) => {
     validate();
     if (isString(to)) to = {
-        get: async () => $xpath(`//input[@type='file'][@id=(//label[contains(text(),"${to}")]/@for)]`),
+        get: async () => $xpath(`//input[@type='file'][@id=(//label[contains(text(), ${xpath(to)})]/@for)]`),
         description: `File input field with label containing "${to}"`,
     };
     else if (!isSelector(to)) throw Error('Invalid element passed as paramenter');
@@ -493,7 +493,7 @@ module.exports.inputField = (attribute = 'value', value) => {
 module.exports.textField = label => {
     validate();
     assertType(label);
-    const get = async () => $xpath(`//input[@type='text'][@id=(//label[contains(text(),"${label}")]/@for)]`);
+    const get = async () => $xpath(`//input[@type='text'][@id=(//label[contains(text(), ${xpath(label)})]/@for)]`);
     return {
         get: get,
         exists: exists(get),
@@ -516,7 +516,7 @@ module.exports.textField = label => {
 module.exports.comboBox = label => {
     validate();
     assertType(label);
-    const get = async () => $xpath(`//select[@id=(//label[contains(text(),"${label}")]/@for)]`);
+    const get = async () => $xpath(`//select[@id=(//label[contains(text(), ${xpath(label)})]/@for)]`);
     return {
         get: get,
         exists: exists(get),
@@ -547,7 +547,7 @@ module.exports.comboBox = label => {
 module.exports.checkBox = label => {
     validate();
     assertType(label);
-    const get = async () => $xpath(`//input[@type='checkbox'][@id=(//label[contains(text(),"${label}")]/@for)]`);
+    const get = async () => $xpath(`//input[@type='checkbox'][@id=(//label[contains(text(), ${xpath(label)})]/@for)]`);
     return {
         get: get,
         exists: exists(get),
@@ -573,7 +573,7 @@ module.exports.checkBox = label => {
 module.exports.radioButton = label => {
     validate();
     assertType(label);
-    const get = async () => $xpath(`//input[@type='radio'][@id=(//label[contains(text(),"${label}")]/@for)]`);
+    const get = async () => $xpath(`//input[@type='radio'][@id=(//label[contains(text(), ${xpath(label)})]/@for)]`);
     return {
         get: get,
         exists: exists(get),
@@ -597,7 +597,7 @@ module.exports.radioButton = label => {
 module.exports.text = text => {
     validate();
     assertType(text);
-    const get = async (e = '*') => $xpath('//' + e + `[text()="${text}"]`);
+    const get = async (e = '*') => $xpath('//' + e + `[text()=${xpath(text)}]`);
     return { get: get, exists: exists(get), description: `Element with text "${text}"` };
 };
 
@@ -614,8 +614,8 @@ module.exports.contains = text => {
     validate();
     assertType(text);
     const get = async (e = '*') => {
-        const element = await $xpath('//' + e + `[contains(@value,"${text}")]`);
-        return element ? element : await $xpath('//' + e + `[contains(text(),"${text}")]`);
+        const element = await $xpath('//' + e + `[contains(@value, ${xpath(text)})]`);
+        return element ? element : await $xpath('//' + e + `[contains(text(), ${xpath(text)})]`);
     };
     return { get: get, exists: exists(get), description: `Element containing text "${text}"` };
 };
@@ -856,6 +856,12 @@ const evaluate = async (selector, callback, ...args) => {
     await p.evaluate(callback, e, ...args);
     await e.dispose();
 };
+
+const xpath = s => `concat(${s.match(/[^'"]+|['"]/g).map(part => {
+    if (part === '\'') return '"\'"';
+    if (part === '"')   return '\'"\'';
+    return '\'' + part + '\'';
+}).join(',') + ', ""'})`;
 
 /**
  * Identifies an element on the page.
