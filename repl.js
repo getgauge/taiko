@@ -93,7 +93,7 @@ function code() {
     try {
 ${ text }
     } catch (e) {
-        console.log(e);
+        console.error(e);
         closeBrowser();
     }
 })();`;

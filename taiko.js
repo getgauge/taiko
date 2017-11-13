@@ -93,8 +93,8 @@ async function click(selector, waitForNavigation = true, options = {}) {
     validate();
     const e = await element(selector);
     await e.click(options);
-    await e.dispose();
     if (waitForNavigation) await p.waitForNavigation();
+    await e.dispose();
     return { description: 'Clicked ' + description(selector, true) };
 }
 
