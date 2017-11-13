@@ -156,8 +156,7 @@ function displayUsage() {
     const max = Math.max(...(doc.map(e => e.name.length))) + 4;
     doc.forEach(e => {
         const api = e.name + ' '.repeat(max - e.name.length);
-        let description = desc(e.description);
-        if (e.summary) description = e.tags.find(t => t.title === 'summary').description;
+        const description = e.summary ? e.tags.find(t => t.title === 'summary').description : desc(e.description);
         console.log(removeQuotes(util.inspect(api, { colors: true }), api) + description);
     });
     console.log('\nRun `.api <name>` for more info on a specific function. For Example: `.api click`.');
@@ -173,10 +172,13 @@ function handleError(e) {
 function removeQuotes(textWithQuotes, textWithoutQuotes) {
     return textWithQuotes.replace(`'${textWithoutQuotes}'`, () => textWithoutQuotes);
 }
-
 const desc = d => d.children
     .map(c => (c.children || [])
-        .map((c1) => (c1.type === 'link' ? c1.children[0].value : c1.value).trim())
+        .map((c1, i) => {
+            if (c1.type === 'listItem')
+                return (i === 0 ? '\n\n* ' : '\n* ') + c1.children[0].children.map(c2 => c2.value).join('');
+            return (c1.type === 'link' ? c1.children[0].value : (c1.value || '')).trim();
+        })
         .join(' '))
     .join(' ');
 

@@ -882,8 +882,8 @@ const xpath = s => `concat(${s.match(/[^'"]+|['"]/g).map(part => {
  */
 
 /**
- * Wrapper object for the element present on the web page. There might be extra properties/methods avaliable based on the element type.
- * For example:
+ * Wrapper object for the element present on the web page. Extra methods are avaliable based on the element type.
+ *
  * * `get()`, `exists()`, `description` for all the elements.
  * * `value()` for input field and text field.
  * * `value()`, `select()` for combo box.
