@@ -8,105 +8,121 @@ const { spawnSync } = require('child_process');
 const { aEval } = require('./awaitEval');
 const taiko = require('./taiko');
 
-let version = '';
-let browserVersion = '';
-let doc = '';
-try {
-    version = 'Version: ' + JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'))).version;
-    browserVersion = spawnSync(puppeteer.executablePath(), ['--version']).stdout.toString().trim();
-    doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'docs', 'api.json')));
-} catch (_) {}
-
-displayTaiko();
-
-const repl = require('repl').start({ prompt: '> ', ignoreUndefined: true });
-const dWrite = repl.writer;
 const funcs = {};
 const commands = [];
 const stringColor = util.inspect.styles.string;
-const openBrowser = taiko.openBrowser;
 let taikoCommands = {};
 let lastStack = '';
+let version = '';
+let browserVersion = '';
+let doc = '';
 
-repl.writer = output => {
+module.exports.initiaize = () => {
+    displayVersion();
+    const repl = require('repl').start({ prompt: '> ', ignoreUndefined: true });
+    repl.writer = writer(repl.writer);
+    aEval(repl, (cmd, res) => !util.isError(res) && commands.push(cmd.trim()));
+    initTaiko(repl);
+    initCommands(repl);
+    return repl;
+};
+
+function displayVersion() {
+    try {
+        version = 'Version: ' + JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'))).version;
+        browserVersion = spawnSync(puppeteer.executablePath(), ['--version']).stdout.toString().trim();
+        doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'docs', 'api.json')));
+    } catch (_) {}
+    displayTaiko();
+}
+
+const writer = w => output => {
     if (util.isError(output)) return output.message;
     else if (typeof(output) === 'object' && 'description' in output)
         return removeQuotes(util.inspect(' ✔ ' + output.description, { colors: true }), ' ✔ ' + output.description);
-    else return dWrite(output);
+    else return w(output);
 };
 
-aEval(repl, (cmd, res) => !util.isError(res) && commands.push(cmd.trim()));
-
-taiko.openBrowser = async (options = {}) => {
-    if (!options.headless) options.headless = false;
-    return await openBrowser(options);
-};
-
-for (let func in taiko) {
-    repl.context[func] = async function() {
-        try {
-            lastStack = '';
-            const args = await Promise.all(Object.values(arguments));
-            const res = taiko[func].constructor.name === 'AsyncFunction' ?
-                await taiko[func].apply(this, args) : taiko[func].apply(this, args);
-            taikoCommands[func] = true;
-            return res;
-        } catch (e) {
-            return handleError(e);
-        } finally {
-            util.inspect.styles.string = stringColor;
+function initCommands(repl) {
+    repl.defineCommand('trace', {
+        help: 'Show last error stack trace',
+        action() {
+            console.log(lastStack ? lastStack : util.inspect(undefined, { colors: true }));
+            this.displayPrompt();
         }
-    };
-    funcs[func] = true;
+    });
+    repl.defineCommand('code', {
+        help: 'Prints or saves the code for all evaluated commands in this REPL session',
+        action(file) {
+            if (!file) console.log(code());
+            else fs.writeFileSync(file, code());
+            this.displayPrompt();
+        }
+    });
+    repl.defineCommand('version', {
+        help: 'Prints version info',
+        action() {
+            displayTaiko();
+            this.displayPrompt();
+        }
+    });
+    repl.defineCommand('api', {
+        help: 'Prints api info',
+        action(name) {
+            if (!doc) console.log('API usage not available.');
+            else if (name) displayUsageFor(name);
+            else displayUsage();
+            this.displayPrompt();
+        }
+    });
+    repl.on('reset', () => {
+        commands.length = 0;
+        taikoCommands = {};
+        lastStack = '';
+    });
 }
 
-repl.defineCommand('trace', {
-    help: 'Show last error stack trace',
-    action() {
-        console.log(lastStack ? lastStack : util.inspect(undefined, { colors: true }));
-        this.displayPrompt();
+function code() {
+    const text = commands.map(e => {
+        if (!e.endsWith(';')) e += ';';
+        return isTaikoFunc(e) ? '        await ' + e : '\t' + e;
+    }).join('\n');
+    const cmds = Object.keys(taikoCommands);
+    const importTaiko = cmds.length > 0 ? `const { ${cmds.join(', ')} } = require('taiko');\n\n` : '';
+    return importTaiko + `(async () => {
+    try {
+${ text }
+    } catch (e) {
+        console.log(e);
+        closeBrowser();
     }
-});
+})();`;
+}
 
-repl.on('reset', () => {
-    commands.length = 0;
-    taikoCommands = {};
-    lastStack = '';
-});
-
-repl.defineCommand('code', {
-    help: 'Prints or saves the code for all evaluated commands in this REPL session',
-    action(file) {
-        const text = commands.map(e => {
-            if (!e.endsWith(';')) e += ';';
-            return isTaikoFunc(e) ? '\tawait ' + e : '\t' + e;
-        }).join('\n');
-        const cmds = Object.keys(taikoCommands);
-        const importTaiko = cmds.length > 0 ? `const { ${cmds.join(', ')} } = require('taiko');\n\n` : '';
-        const content = importTaiko + `(async () => {\n${text}\n})();`;
-        if (!file) console.log(content);
-        else fs.writeFileSync(file, content);
-        this.displayPrompt();
+function initTaiko(repl) {
+    const openBrowser = taiko.openBrowser;
+    taiko.openBrowser = async (options = {}) => {
+        if (!options.headless) options.headless = false;
+        return await openBrowser(options);
+    };
+    for (let func in taiko) {
+        repl.context[func] = async function() {
+            try {
+                lastStack = '';
+                const args = await Promise.all(Object.values(arguments));
+                const res = taiko[func].constructor.name === 'AsyncFunction' ?
+                    await taiko[func].apply(this, args) : taiko[func].apply(this, args);
+                taikoCommands[func] = true;
+                return res;
+            } catch (e) {
+                return handleError(e);
+            } finally {
+                util.inspect.styles.string = stringColor;
+            }
+        };
+        funcs[func] = true;
     }
-});
-
-repl.defineCommand('version', {
-    help: 'Prints version info',
-    action() {
-        displayTaiko();
-        this.displayPrompt();
-    }
-});
-
-repl.defineCommand('api', {
-    help: 'Prints api info',
-    action(name) {
-        if (!doc) console.log('API usage not available.');
-        else if (name) displayUsageFor(name);
-        else displayUsage();
-        this.displayPrompt();
-    }
-});
+}
 
 function displayTaiko() {
     console.log('___________      .__ __             Interactive browser automation.');
@@ -118,16 +134,7 @@ function displayTaiko() {
     console.log();
 }
 
-const removeQuotes = (textWithQuotes, textWithoutQuotes) => textWithQuotes.replace(`'${textWithoutQuotes}'`, () => textWithoutQuotes);
-
-const handleError = e => {
-    util.inspect.styles.string = 'red';
-    lastStack = removeQuotes(util.inspect(e.stack, { colors: true }).replace(/\\n/g, '\n'), e.stack);
-    e.message = ' ✘ Error: ' + e.message + ', run `.trace` for more info.';
-    return new Error(removeQuotes(util.inspect(e.message, { colors: true }), e.message));
-};
-
-const displayUsageFor = name => {
+function displayUsageFor(name) {
     const e = doc.find(e => e.name === name);
     if (!e) {
         console.log(`Function ${name} doesn't exist.`);
@@ -143,9 +150,9 @@ const displayUsageFor = name => {
             .join('\n'));
         console.log();
     }
-};
+}
 
-const displayUsage = () => {
+function displayUsage() {
     const max = Math.max(...(doc.map(e => e.name.length))) + 4;
     doc.forEach(e => {
         const api = e.name + ' '.repeat(max - e.name.length);
@@ -154,7 +161,18 @@ const displayUsage = () => {
         console.log(removeQuotes(util.inspect(api, { colors: true }), api) + description);
     });
     console.log('\nRun `.api <name>` for more info on a specific function. For Example: `.api click`.');
-};
+}
+
+function handleError(e) {
+    util.inspect.styles.string = 'red';
+    lastStack = removeQuotes(util.inspect(e.stack, { colors: true }).replace(/\\n/g, '\n'), e.stack);
+    e.message = ' ✘ Error: ' + e.message + ', run `.trace` for more info.';
+    return new Error(removeQuotes(util.inspect(e.message, { colors: true }), e.message));
+}
+
+function removeQuotes(textWithQuotes, textWithoutQuotes) {
+    return textWithQuotes.replace(`'${textWithoutQuotes}'`, () => textWithoutQuotes);
+}
 
 const desc = d => d.children
     .map(c => (c.children || [])

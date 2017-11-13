@@ -87,14 +87,16 @@ module.exports.reload = async options => {
  * @param {number} [options.delay=0] - Time to wait between mousedown and mouseup in milliseconds.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
-module.exports.click = async (selector, waitForNavigation = true, options = {}) => {
+module.exports.click = click;
+
+async function click(selector, waitForNavigation = true, options = {}) {
     validate();
     const e = await element(selector);
     await e.click(options);
     await e.dispose();
     if (waitForNavigation) await p.waitForNavigation();
     return { description: 'Clicked ' + description(selector, true) };
-};
+}
 
 /**
  * Fetches an element with the given selector, scrolls it into view if needed, and then double clicks the element. If there's no element matching selector, the method throws an error.
@@ -111,7 +113,7 @@ module.exports.click = async (selector, waitForNavigation = true, options = {}) 
  */
 module.exports.doubleClick = async (selector, waitForNavigation = true) => {
     validate();
-    await module.exports.click(selector, waitForNavigation, { clickCount: 2, });
+    await click(selector, waitForNavigation, { clickCount: 2, });
     return { description: 'Double clicked ' + description(selector, true) };
 };
 
@@ -124,12 +126,11 @@ module.exports.doubleClick = async (selector, waitForNavigation = true) => {
  * rightClick(text('Get Started'))
  *
  * @param {selector|string} selector - A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be double clicked.
- * @param {boolean} [waitForNavigation=true] - wait for navigation after the click.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
 module.exports.rightClick = async (selector) => {
     validate();
-    await module.exports.click(selector, false, { button: 'right', });
+    await click(selector, false, { button: 'right', });
     return { description: 'Right clicked ' + description(selector, true) };
 };
 
@@ -183,7 +184,7 @@ module.exports.focus = async selector => {
 module.exports.write = async (text, into) => {
     validate();
     if (into) {
-        const selector = isString(into) ? module.exports.textField(into) : into;
+        const selector = isString(into) ? textField(into) : into;
         const e = await _focus(selector);
         await e.type(text);
         await e.dispose();
@@ -354,8 +355,7 @@ module.exports.scrollDown = async (e, px = 100) => {
 module.exports.screenshot = async options => p.screenshot(options);
 
 /**
- * Lets you identify an element on the web page via XPath or CSS selector.
- *
+ * This {@link selector} lets you identify an element on the web page via XPath or CSS selector.
  * @example
  * click($('.class'))
  * $('.class').exists()
@@ -370,8 +370,7 @@ module.exports.$ = selector => {
 };
 
 /**
- * Lets you identify elements on the web page via XPath or CSS selector.
- *
+ * This {@link selector} lets you identify elements on the web page via XPath or CSS selector.
  * @example
  * highlight($$(`//*[text()='text']`)[1])
  * $$(`//*[text()='text']`).exists()
@@ -386,7 +385,7 @@ module.exports.$$ = selector => {
 };
 
 /**
- * Lets you identify an image (HTML <img> element) on a web page. Typically, this is done via the image's alt text.
+ * This {@link selector} lets you identify an image (HTML <img> element) on a web page. Typically, this is done via the image's alt text.
  * @summary Lets you identify an image on a web page.
  *
  * @example
@@ -404,7 +403,7 @@ module.exports.image = alt => {
 };
 
 /**
- * Lets you identify a link on a web page.
+ * This {@link selector} lets you identify a link on a web page.
  *
  * @example
  * click(link('Get Started'))
@@ -420,7 +419,7 @@ module.exports.link = text => {
 };
 
 /**
- * Lets you identify a list item (HTML <li> element) on a web page.
+ * This {@link selector} lets you identify a list item (HTML <li> element) on a web page.
  * @summary Lets you identify a list item on a web page.
  *
  * @example
@@ -437,7 +436,7 @@ module.exports.listItem = label => {
 };
 
 /**
- * Lets you identify a button on a web page.
+ * This {@link selector} lets you identify a button on a web page.
  *
  * @example
  * highlight(button('Get Started'))
@@ -453,7 +452,7 @@ module.exports.button = label => {
 };
 
 /**
- * Lets you identify an input field on a web page.
+ * This {@link selector} lets you identify an input field on a web page.
  *
  * @example
  * focus(inputField('id', 'name'))
@@ -481,7 +480,7 @@ module.exports.inputField = (attribute = 'value', value) => {
 };
 
 /**
- * Lets you identify a text field on a web page.
+ * This {@link selector} lets you identify a text field on a web page.
  *
  * @example
  * focus(textField('Username:'))
@@ -490,7 +489,9 @@ module.exports.inputField = (attribute = 'value', value) => {
  * @param {string} label - The label (human-visible name) of the text field.
  * @returns {ElementWrapper}
  */
-module.exports.textField = label => {
+module.exports.textField = textField;
+
+function textField(label) {
     validate();
     assertType(label);
     const get = async () => $xpath(`//input[@type='text'][@id=(//label[contains(text(), ${xpath(label)})]/@for)]`);
@@ -500,10 +501,10 @@ module.exports.textField = label => {
         description: `Text field with label containing "${label}"`,
         value: async () => p.evaluate(e => e.value, await get()),
     };
-};
+}
 
 /**
- * Lets you identify a combo box on a web page.
+ * This {@link selector} lets you identify a combo box on a web page.
  *
  * @example
  * comboBox('Vehicle:').select('Car')
@@ -533,7 +534,7 @@ module.exports.comboBox = label => {
 };
 
 /**
- * Lets you identify a checkbox on a web page.
+ * This {@link selector} lets you identify a checkbox on a web page.
  *
  * @example
  * checkBox('Vehicle').check()
@@ -559,7 +560,7 @@ module.exports.checkBox = label => {
 };
 
 /**
- * Lets you identify a radio button on a web page.
+ * This {@link selector} lets you identify a radio button on a web page.
  *
  * @example
  * radioButton('Vehicle').select()
@@ -585,7 +586,7 @@ module.exports.radioButton = label => {
 };
 
 /**
- * Lets you identify an element with text.
+ * This {@link selector} lets you identify an element with text.
  *
  * @example
  * highlight(text('Vehicle'))
@@ -602,7 +603,7 @@ module.exports.text = text => {
 };
 
 /**
- * Lets you identify an element containing the text.
+ * This {@link selector} lets you identify an element containing the text.
  *
  * @example
  * contains('Vehicle').exists()
@@ -610,7 +611,9 @@ module.exports.text = text => {
  * @param {string} text - Text to match.
  * @returns {ElementWrapper}
  */
-module.exports.contains = text => {
+module.exports.contains = contains;
+
+function contains(text) {
     validate();
     assertType(text);
     const get = async (e = '*') => {
@@ -618,7 +621,7 @@ module.exports.contains = text => {
         return element ? element : await $xpath('//' + e + `[contains(text(), ${xpath(text)})]`);
     };
     return { get: get, exists: exists(get), description: `Element containing text "${text}"` };
-};
+}
 
 /**
  * Lets you perform an operation when an `alert` with given text is shown.
@@ -722,9 +725,9 @@ module.exports.to = e => e;
 module.exports.into = e => e;
 
 /**
- * Returns the browser created using openBrowser.
+ * Returns the browser insance created using openBrowser.
  *
- * @returns {Browser} - [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser).
+ * @returns {Object} - Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.
  */
 module.exports.browser = () => {
     validate();
@@ -734,7 +737,7 @@ module.exports.browser = () => {
 /**
  * Returns the page instance.
  *
- * @returns {Page} - [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page).
+ * @returns {Object} - Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.
  */
 module.exports.page = () => {
     validate();
@@ -743,7 +746,7 @@ module.exports.page = () => {
 
 const element = async (selector, tag) => {
     const e = await (() => {
-        if (isString(selector)) return module.exports.contains(selector).get(tag);
+        if (isString(selector)) return contains(selector).get(tag);
         else if (isSelector(selector)) return selector.get(tag);
         return null;
     })();
@@ -753,7 +756,7 @@ const element = async (selector, tag) => {
 
 const description = (selector, lowerCase = false) => {
     const d = (() => {
-        if (isString(selector)) return module.exports.contains(selector).description;
+        if (isString(selector)) return contains(selector).description;
         else if (isSelector(selector)) return selector.description;
         return '';
     })();
@@ -865,33 +868,38 @@ const xpath = s => `concat(${s.match(/[^'"]+|['"]/g).map(part => {
 
 /**
  * Identifies an element on the page.
- *
+ * @callback selector
+ * @function
  * @example
  * link('Sign in')
  * button('Get Started')
  * $('#id')
  * text('Home')
  *
- * @typedef {function(string, ...string)} selector
+ * @param {string} text - Text to identify the element.
+ * @param {...string} args
+ *
  */
 
 /**
  * Wrapper object for the element present on the web page. There might be extra properties/methods avaliable based on the element type.
+ * For example:
+ * * `get()`, `exists()`, `description` for all the elements.
+ * * `value()` for input field and text field.
+ * * `value()`, `select()` for combo box.
+ * * `check()`, `uncheck()`, `isChecked()` for checkbox.
+ * * `select()`, `deselect()`, `isSelected()` for radio button.
+ *
  * @summary Wrapper object for the element present on the web page.
  *
  * @typedef {Object} ElementWrapper
- * @property {function} get - DOM element getter.
+ * @property @private {function} get - DOM element getter.
  * @property {function(number, number)} exists - Checks existence for element.
  * @property {string} description - Describing the operation performed.
  *
- */
-
-/**
- * Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.
- * @typedef {Object} Browser
- */
-
-/**
- * Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.
- * @typedef {Object} Page
+ * @example
+ * link('google').exists()
+ * link('google').exists(intervalSecs(1), timeoutSecs(10))
+ * link('google').description
+ * textField('username').value()
  */

@@ -1578,8 +1578,8 @@
           "column": 0
         },
         "end": {
-          "line": 97,
-          "column": 2
+          "line": 90,
+          "column": 29
         }
       },
       "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
@@ -2055,8 +2055,7 @@
             },
             "default": "0"
           }
-        ],
-        "default": "{}"
+        ]
       }
     ],
     "properties": [],
@@ -2186,7 +2185,6 @@
       }
     },
     "name": "click",
-    "kind": "function",
     "memberof": "taiko",
     "scope": "static",
     "members": {
@@ -2199,7 +2197,6 @@
     "path": [
       {
         "name": "click",
-        "kind": "function",
         "scope": "static"
       }
     ],
@@ -2323,22 +2320,22 @@
     ],
     "loc": {
       "start": {
-        "line": 99,
+        "line": 101,
         "column": 0
       },
       "end": {
-        "line": 111,
+        "line": 113,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 112,
+          "line": 114,
           "column": 0
         },
         "end": {
-          "line": 116,
+          "line": 118,
           "column": 2
         }
       },
@@ -2714,23 +2711,9 @@
         "name": "selector"
       },
       {
-        "title": "param",
-        "description": "wait for navigation after the click.",
-        "lineNumber": 9,
-        "type": {
-          "type": "OptionalType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "boolean"
-          }
-        },
-        "name": "waitForNavigation",
-        "default": "true"
-      },
-      {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -2748,22 +2731,22 @@
     ],
     "loc": {
       "start": {
-        "line": 118,
+        "line": 120,
         "column": 0
       },
       "end": {
-        "line": 129,
+        "line": 130,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 130,
+          "line": 131,
           "column": 0
         },
         "end": {
-          "line": 134,
+          "line": 135,
           "column": 2
         }
       },
@@ -2845,68 +2828,6 @@
             }
           ]
         }
-      },
-      {
-        "title": "param",
-        "name": "waitForNavigation",
-        "lineNumber": 9,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "wait for navigation after the click.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 37,
-                      "offset": 36
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 37,
-                  "offset": 36
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 37,
-              "offset": 36
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        },
-        "default": "true"
       }
     ],
     "properties": [],
@@ -3159,22 +3080,22 @@
     ],
     "loc": {
       "start": {
-        "line": 136,
+        "line": 137,
         "column": 0
       },
       "end": {
-        "line": 146,
+        "line": 147,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 147,
+          "line": 148,
           "column": 0
         },
         "end": {
-          "line": 153,
+          "line": 154,
           "column": 2
         }
       },
@@ -3508,22 +3429,22 @@
     ],
     "loc": {
       "start": {
-        "line": 155,
+        "line": 156,
         "column": 0
       },
       "end": {
-        "line": 164,
+        "line": 165,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 165,
+          "line": 166,
           "column": 0
         },
         "end": {
-          "line": 169,
+          "line": 170,
           "column": 2
         }
       },
@@ -3865,22 +3786,22 @@
     ],
     "loc": {
       "start": {
-        "line": 171,
+        "line": 172,
         "column": 0
       },
       "end": {
-        "line": 182,
+        "line": 183,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 183,
+          "line": 184,
           "column": 0
         },
         "end": {
-          "line": 195,
+          "line": 196,
           "column": 2
         }
       },
@@ -4231,22 +4152,22 @@
     ],
     "loc": {
       "start": {
-        "line": 197,
+        "line": 198,
         "column": 0
       },
       "end": {
-        "line": 207,
+        "line": 208,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 208,
+          "line": 209,
           "column": 0
         },
         "end": {
-          "line": 219,
+          "line": 220,
           "column": 2
         }
       },
@@ -4609,22 +4530,22 @@
     ],
     "loc": {
       "start": {
-        "line": 221,
+        "line": 222,
         "column": 0
       },
       "end": {
-        "line": 233,
+        "line": 234,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 234,
+          "line": 235,
           "column": 0
         },
         "end": {
-          "line": 238,
+          "line": 239,
           "column": 2
         }
       },
@@ -5085,22 +5006,22 @@
     ],
     "loc": {
       "start": {
-        "line": 240,
+        "line": 241,
         "column": 0
       },
       "end": {
-        "line": 250,
+        "line": 251,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 251,
+          "line": 252,
           "column": 0
         },
         "end": {
-          "line": 255,
+          "line": 256,
           "column": 2
         }
       },
@@ -5429,22 +5350,22 @@
     ],
     "loc": {
       "start": {
-        "line": 257,
+        "line": 258,
         "column": 0
       },
       "end": {
-        "line": 266,
+        "line": 267,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 267,
+          "line": 268,
           "column": 0
         },
         "end": {
-          "line": 271,
+          "line": 272,
           "column": 2
         }
       },
@@ -5743,22 +5664,22 @@
     ],
     "loc": {
       "start": {
-        "line": 273,
+        "line": 274,
         "column": 0
       },
       "end": {
-        "line": 285,
+        "line": 286,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 286,
+          "line": 287,
           "column": 0
         },
         "end": {
-          "line": 289,
+          "line": 290,
           "column": 2
         }
       },
@@ -6020,22 +5941,22 @@
     ],
     "loc": {
       "start": {
-        "line": 291,
+        "line": 292,
         "column": 0
       },
       "end": {
-        "line": 303,
+        "line": 304,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 304,
+          "line": 305,
           "column": 0
         },
         "end": {
-          "line": 307,
+          "line": 308,
           "column": 2
         }
       },
@@ -6297,22 +6218,22 @@
     ],
     "loc": {
       "start": {
-        "line": 309,
+        "line": 310,
         "column": 0
       },
       "end": {
-        "line": 321,
+        "line": 322,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 322,
+          "line": 323,
           "column": 0
         },
         "end": {
-          "line": 325,
+          "line": 326,
           "column": 2
         }
       },
@@ -6574,22 +6495,22 @@
     ],
     "loc": {
       "start": {
-        "line": 327,
+        "line": 328,
         "column": 0
       },
       "end": {
-        "line": 339,
+        "line": 340,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 340,
+          "line": 341,
           "column": 0
         },
         "end": {
-          "line": 343,
+          "line": 344,
           "column": 2
         }
       },
@@ -6820,22 +6741,22 @@
     ],
     "loc": {
       "start": {
-        "line": 345,
+        "line": 346,
         "column": 0
       },
       "end": {
-        "line": 353,
+        "line": 354,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 354,
+          "line": 355,
           "column": 0
         },
         "end": {
-          "line": 354,
+          "line": 355,
           "column": 67
         }
       },
@@ -7067,7 +6988,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify an element on the web page via XPath or CSS selector.",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -7076,8 +6997,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 72,
-                  "offset": 71
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify an element on the web page via XPath or CSS selector.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 94,
+                  "offset": 93
                 },
                 "indent": []
               }
@@ -7091,8 +7054,8 @@
             },
             "end": {
               "line": 1,
-              "column": 72,
-              "offset": 71
+              "column": 94,
+              "offset": 93
             },
             "indent": []
           }
@@ -7106,8 +7069,8 @@
         },
         "end": {
           "line": 1,
-          "column": 72,
-          "offset": 71
+          "column": 94,
+          "offset": 93
         }
       }
     },
@@ -7115,12 +7078,12 @@
       {
         "title": "example",
         "description": "click($('.class'))\n$('.class').exists()",
-        "lineNumber": 3
+        "lineNumber": 2
       },
       {
         "title": "param",
         "description": "XPath or CSS selector.",
-        "lineNumber": 7,
+        "lineNumber": 6,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -7130,7 +7093,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -7139,7 +7102,7 @@
     ],
     "loc": {
       "start": {
-        "line": 356,
+        "line": 357,
         "column": 0
       },
       "end": {
@@ -7170,7 +7133,7 @@
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 7,
+        "lineNumber": 6,
         "description": {
           "type": "root",
           "children": [
@@ -7287,7 +7250,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify elements on the web page via XPath or CSS selector.",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -7296,8 +7259,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 70,
-                  "offset": 69
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify elements on the web page via XPath or CSS selector.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 92,
+                  "offset": 91
                 },
                 "indent": []
               }
@@ -7311,8 +7316,8 @@
             },
             "end": {
               "line": 1,
-              "column": 70,
-              "offset": 69
+              "column": 92,
+              "offset": 91
             },
             "indent": []
           }
@@ -7326,8 +7331,8 @@
         },
         "end": {
           "line": 1,
-          "column": 70,
-          "offset": 69
+          "column": 92,
+          "offset": 91
         }
       }
     },
@@ -7335,12 +7340,12 @@
       {
         "title": "example",
         "description": "highlight($$(`//*[text()='text']`)[1])\n$$(`//*[text()='text']`).exists()",
-        "lineNumber": 3
+        "lineNumber": 2
       },
       {
         "title": "param",
         "description": "XPath or CSS selector.",
-        "lineNumber": 7,
+        "lineNumber": 6,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -7350,7 +7355,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -7363,18 +7368,18 @@
         "column": 0
       },
       "end": {
-        "line": 381,
+        "line": 380,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 382,
+          "line": 381,
           "column": 0
         },
         "end": {
-          "line": 386,
+          "line": 385,
           "column": 2
         }
       },
@@ -7390,7 +7395,7 @@
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 7,
+        "lineNumber": 6,
         "description": {
           "type": "root",
           "children": [
@@ -7507,7 +7512,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify an image (HTML ",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -7516,8 +7521,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 34,
-                  "offset": 33
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify an image (HTML ",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 56,
+                  "offset": 55
                 },
                 "indent": []
               }
@@ -7528,13 +7575,13 @@
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 34,
-                  "offset": 33
+                  "column": 56,
+                  "offset": 55
                 },
                 "end": {
                   "line": 1,
-                  "column": 39,
-                  "offset": 38
+                  "column": 61,
+                  "offset": 60
                 },
                 "indent": []
               }
@@ -7545,13 +7592,13 @@
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 39,
-                  "offset": 38
+                  "column": 61,
+                  "offset": 60
                 },
                 "end": {
                   "line": 1,
-                  "column": 113,
-                  "offset": 112
+                  "column": 135,
+                  "offset": 134
                 },
                 "indent": []
               }
@@ -7565,8 +7612,8 @@
             },
             "end": {
               "line": 1,
-              "column": 113,
-              "offset": 112
+              "column": 135,
+              "offset": 134
             },
             "indent": []
           }
@@ -7580,8 +7627,8 @@
         },
         "end": {
           "line": 1,
-          "column": 113,
-          "offset": 112
+          "column": 135,
+          "offset": 134
         }
       }
     },
@@ -7618,22 +7665,22 @@
     ],
     "loc": {
       "start": {
-        "line": 388,
+        "line": 387,
         "column": 0
       },
       "end": {
-        "line": 398,
+        "line": 397,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 399,
+          "line": 398,
           "column": 0
         },
         "end": {
-          "line": 404,
+          "line": 403,
           "column": 2
         }
       },
@@ -7818,7 +7865,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify a link on a web page.",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -7827,8 +7874,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 40,
-                  "offset": 39
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify a link on a web page.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 62,
+                  "offset": 61
                 },
                 "indent": []
               }
@@ -7842,8 +7931,8 @@
             },
             "end": {
               "line": 1,
-              "column": 40,
-              "offset": 39
+              "column": 62,
+              "offset": 61
             },
             "indent": []
           }
@@ -7857,8 +7946,8 @@
         },
         "end": {
           "line": 1,
-          "column": 40,
-          "offset": 39
+          "column": 62,
+          "offset": 61
         }
       }
     },
@@ -7890,22 +7979,22 @@
     ],
     "loc": {
       "start": {
-        "line": 406,
+        "line": 405,
         "column": 0
       },
       "end": {
-        "line": 415,
+        "line": 414,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 416,
+          "line": 415,
           "column": 0
         },
         "end": {
-          "line": 420,
+          "line": 419,
           "column": 2
         }
       },
@@ -8038,7 +8127,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify a list item (HTML ",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -8047,8 +8136,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 37,
-                  "offset": 36
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify a list item (HTML ",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 59,
+                  "offset": 58
                 },
                 "indent": []
               }
@@ -8059,13 +8190,13 @@
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 37,
-                  "offset": 36
+                  "column": 59,
+                  "offset": 58
                 },
                 "end": {
                   "line": 1,
-                  "column": 41,
-                  "offset": 40
+                  "column": 63,
+                  "offset": 62
                 },
                 "indent": []
               }
@@ -8076,13 +8207,13 @@
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 41,
-                  "offset": 40
+                  "column": 63,
+                  "offset": 62
                 },
                 "end": {
                   "line": 1,
-                  "column": 65,
-                  "offset": 64
+                  "column": 87,
+                  "offset": 86
                 },
                 "indent": []
               }
@@ -8096,8 +8227,8 @@
             },
             "end": {
               "line": 1,
-              "column": 65,
-              "offset": 64
+              "column": 87,
+              "offset": 86
             },
             "indent": []
           }
@@ -8111,8 +8242,8 @@
         },
         "end": {
           "line": 1,
-          "column": 65,
-          "offset": 64
+          "column": 87,
+          "offset": 86
         }
       }
     },
@@ -8149,22 +8280,22 @@
     ],
     "loc": {
       "start": {
-        "line": 422,
+        "line": 421,
         "column": 0
       },
       "end": {
-        "line": 432,
+        "line": 431,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 433,
+          "line": 432,
           "column": 0
         },
         "end": {
-          "line": 437,
+          "line": 436,
           "column": 2
         }
       },
@@ -8349,7 +8480,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify a button on a web page.",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -8358,8 +8489,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 42,
-                  "offset": 41
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify a button on a web page.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 64,
+                  "offset": 63
                 },
                 "indent": []
               }
@@ -8373,8 +8546,8 @@
             },
             "end": {
               "line": 1,
-              "column": 42,
-              "offset": 41
+              "column": 64,
+              "offset": 63
             },
             "indent": []
           }
@@ -8388,8 +8561,8 @@
         },
         "end": {
           "line": 1,
-          "column": 42,
-          "offset": 41
+          "column": 64,
+          "offset": 63
         }
       }
     },
@@ -8421,22 +8594,22 @@
     ],
     "loc": {
       "start": {
-        "line": 439,
+        "line": 438,
         "column": 0
       },
       "end": {
-        "line": 448,
+        "line": 447,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 449,
+          "line": 448,
           "column": 0
         },
         "end": {
-          "line": 453,
+          "line": 452,
           "column": 2
         }
       },
@@ -8569,7 +8742,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify an input field on a web page.",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -8578,8 +8751,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 48,
-                  "offset": 47
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify an input field on a web page.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 70,
+                  "offset": 69
                 },
                 "indent": []
               }
@@ -8593,8 +8808,8 @@
             },
             "end": {
               "line": 1,
-              "column": 48,
-              "offset": 47
+              "column": 70,
+              "offset": 69
             },
             "indent": []
           }
@@ -8608,8 +8823,8 @@
         },
         "end": {
           "line": 1,
-          "column": 48,
-          "offset": 47
+          "column": 70,
+          "offset": 69
         }
       }
     },
@@ -8655,22 +8870,22 @@
     ],
     "loc": {
       "start": {
-        "line": 455,
+        "line": 454,
         "column": 0
       },
       "end": {
-        "line": 465,
+        "line": 464,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 466,
+          "line": 465,
           "column": 0
         },
         "end": {
-          "line": 481,
+          "line": 480,
           "column": 2
         }
       },
@@ -8865,7 +9080,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify a text field on a web page.",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -8874,8 +9089,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 46,
-                  "offset": 45
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify a text field on a web page.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 68,
+                  "offset": 67
                 },
                 "indent": []
               }
@@ -8889,8 +9146,8 @@
             },
             "end": {
               "line": 1,
-              "column": 46,
-              "offset": 45
+              "column": 68,
+              "offset": 67
             },
             "indent": []
           }
@@ -8904,8 +9161,8 @@
         },
         "end": {
           "line": 1,
-          "column": 46,
-          "offset": 45
+          "column": 68,
+          "offset": 67
         }
       }
     },
@@ -8937,23 +9194,23 @@
     ],
     "loc": {
       "start": {
-        "line": 483,
+        "line": 482,
         "column": 0
       },
       "end": {
-        "line": 492,
+        "line": 491,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 493,
+          "line": 492,
           "column": 0
         },
         "end": {
-          "line": 503,
-          "column": 2
+          "line": 492,
+          "column": 37
         }
       },
       "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
@@ -9057,7 +9314,6 @@
     "throws": [],
     "todos": [],
     "name": "textField",
-    "kind": "function",
     "memberof": "taiko",
     "scope": "static",
     "members": {
@@ -9070,7 +9326,6 @@
     "path": [
       {
         "name": "textField",
-        "kind": "function",
         "scope": "static"
       }
     ],
@@ -9085,7 +9340,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify a combo box on a web page.",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -9094,8 +9349,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 45,
-                  "offset": 44
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify a combo box on a web page.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 67,
+                  "offset": 66
                 },
                 "indent": []
               }
@@ -9109,8 +9406,8 @@
             },
             "end": {
               "line": 1,
-              "column": 45,
-              "offset": 44
+              "column": 67,
+              "offset": 66
             },
             "indent": []
           }
@@ -9124,8 +9421,8 @@
         },
         "end": {
           "line": 1,
-          "column": 45,
-          "offset": 44
+          "column": 67,
+          "offset": 66
         }
       }
     },
@@ -9157,22 +9454,22 @@
     ],
     "loc": {
       "start": {
-        "line": 505,
+        "line": 506,
         "column": 0
       },
       "end": {
-        "line": 515,
+        "line": 516,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 516,
+          "line": 517,
           "column": 0
         },
         "end": {
-          "line": 533,
+          "line": 534,
           "column": 2
         }
       },
@@ -9305,7 +9602,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify a checkbox on a web page.",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -9314,8 +9611,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 44,
-                  "offset": 43
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify a checkbox on a web page.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 66,
+                  "offset": 65
                 },
                 "indent": []
               }
@@ -9329,8 +9668,8 @@
             },
             "end": {
               "line": 1,
-              "column": 44,
-              "offset": 43
+              "column": 66,
+              "offset": 65
             },
             "indent": []
           }
@@ -9344,8 +9683,8 @@
         },
         "end": {
           "line": 1,
-          "column": 44,
-          "offset": 43
+          "column": 66,
+          "offset": 65
         }
       }
     },
@@ -9377,22 +9716,22 @@
     ],
     "loc": {
       "start": {
-        "line": 535,
+        "line": 536,
         "column": 0
       },
       "end": {
-        "line": 546,
+        "line": 547,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 547,
+          "line": 548,
           "column": 0
         },
         "end": {
-          "line": 559,
+          "line": 560,
           "column": 2
         }
       },
@@ -9525,7 +9864,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify a radio button on a web page.",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -9534,8 +9873,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 48,
-                  "offset": 47
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify a radio button on a web page.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 70,
+                  "offset": 69
                 },
                 "indent": []
               }
@@ -9549,8 +9930,8 @@
             },
             "end": {
               "line": 1,
-              "column": 48,
-              "offset": 47
+              "column": 70,
+              "offset": 69
             },
             "indent": []
           }
@@ -9564,8 +9945,8 @@
         },
         "end": {
           "line": 1,
-          "column": 48,
-          "offset": 47
+          "column": 70,
+          "offset": 69
         }
       }
     },
@@ -9597,22 +9978,22 @@
     ],
     "loc": {
       "start": {
-        "line": 561,
+        "line": 562,
         "column": 0
       },
       "end": {
-        "line": 572,
+        "line": 573,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 573,
+          "line": 574,
           "column": 0
         },
         "end": {
-          "line": 585,
+          "line": 586,
           "column": 2
         }
       },
@@ -9745,7 +10126,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify an element with text.",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -9754,8 +10135,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 40,
-                  "offset": 39
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify an element with text.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 62,
+                  "offset": 61
                 },
                 "indent": []
               }
@@ -9769,8 +10192,8 @@
             },
             "end": {
               "line": 1,
-              "column": 40,
-              "offset": 39
+              "column": 62,
+              "offset": 61
             },
             "indent": []
           }
@@ -9784,8 +10207,8 @@
         },
         "end": {
           "line": 1,
-          "column": 40,
-          "offset": 39
+          "column": 62,
+          "offset": 61
         }
       }
     },
@@ -9817,22 +10240,22 @@
     ],
     "loc": {
       "start": {
-        "line": 587,
+        "line": 588,
         "column": 0
       },
       "end": {
-        "line": 596,
+        "line": 597,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 597,
+          "line": 598,
           "column": 0
         },
         "end": {
-          "line": 602,
+          "line": 603,
           "column": 2
         }
       },
@@ -9965,7 +10388,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Lets you identify an element containing the text.",
+              "value": "This ",
               "position": {
                 "start": {
                   "line": 1,
@@ -9974,8 +10397,50 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 50,
-                  "offset": 49
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify an element containing the text.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 72,
+                  "offset": 71
                 },
                 "indent": []
               }
@@ -9989,8 +10454,8 @@
             },
             "end": {
               "line": 1,
-              "column": 50,
-              "offset": 49
+              "column": 72,
+              "offset": 71
             },
             "indent": []
           }
@@ -10004,8 +10469,8 @@
         },
         "end": {
           "line": 1,
-          "column": 50,
-          "offset": 49
+          "column": 72,
+          "offset": 71
         }
       }
     },
@@ -10037,23 +10502,23 @@
     ],
     "loc": {
       "start": {
-        "line": 604,
+        "line": 605,
         "column": 0
       },
       "end": {
-        "line": 612,
+        "line": 613,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 613,
+          "line": 614,
           "column": 0
         },
         "end": {
-          "line": 621,
-          "column": 2
+          "line": 614,
+          "column": 35
         }
       },
       "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
@@ -10157,7 +10622,6 @@
     "throws": [],
     "todos": [],
     "name": "contains",
-    "kind": "function",
     "memberof": "taiko",
     "scope": "static",
     "members": {
@@ -10170,7 +10634,6 @@
     "path": [
       {
         "name": "contains",
-        "kind": "function",
         "scope": "static"
       }
     ],
@@ -10298,22 +10761,22 @@
     ],
     "loc": {
       "start": {
-        "line": 623,
+        "line": 626,
         "column": 0
       },
       "end": {
-        "line": 631,
+        "line": 634,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 632,
+          "line": 635,
           "column": 0
         },
         "end": {
-          "line": 632,
+          "line": 635,
           "column": 81
         }
       },
@@ -10602,22 +11065,22 @@
     ],
     "loc": {
       "start": {
-        "line": 634,
+        "line": 637,
         "column": 0
       },
       "end": {
-        "line": 642,
+        "line": 645,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 643,
+          "line": 646,
           "column": 0
         },
         "end": {
-          "line": 643,
+          "line": 646,
           "column": 83
         }
       },
@@ -10906,22 +11369,22 @@
     ],
     "loc": {
       "start": {
-        "line": 645,
+        "line": 648,
         "column": 0
       },
       "end": {
-        "line": 653,
+        "line": 656,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 654,
+          "line": 657,
           "column": 0
         },
         "end": {
-          "line": 654,
+          "line": 657,
           "column": 85
         }
       },
@@ -11210,22 +11673,22 @@
     ],
     "loc": {
       "start": {
-        "line": 656,
+        "line": 659,
         "column": 0
       },
       "end": {
-        "line": 664,
+        "line": 667,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 665,
+          "line": 668,
           "column": 0
         },
         "end": {
-          "line": 665,
+          "line": 668,
           "column": 95
         }
       },
@@ -11473,22 +11936,22 @@
     ],
     "loc": {
       "start": {
-        "line": 667,
+        "line": 670,
         "column": 0
       },
       "end": {
-        "line": 675,
+        "line": 678,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 676,
+          "line": 679,
           "column": 0
         },
         "end": {
-          "line": 676,
+          "line": 679,
           "column": 50
         }
       },
@@ -11729,22 +12192,22 @@
     ],
     "loc": {
       "start": {
-        "line": 678,
+        "line": 681,
         "column": 0
       },
       "end": {
-        "line": 686,
+        "line": 689,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 687,
+          "line": 690,
           "column": 0
         },
         "end": {
-          "line": 687,
+          "line": 690,
           "column": 49
         }
       },
@@ -11990,22 +12453,22 @@
     ],
     "loc": {
       "start": {
-        "line": 689,
+        "line": 692,
         "column": 0
       },
       "end": {
-        "line": 697,
+        "line": 700,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 698,
+          "line": 701,
           "column": 0
         },
         "end": {
-          "line": 698,
+          "line": 701,
           "column": 42
         }
       },
@@ -12236,22 +12699,22 @@
     ],
     "loc": {
       "start": {
-        "line": 700,
+        "line": 703,
         "column": 0
       },
       "end": {
-        "line": 709,
+        "line": 712,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 710,
+          "line": 713,
           "column": 0
         },
         "end": {
-          "line": 710,
+          "line": 713,
           "column": 27
         }
       },
@@ -12267,7 +12730,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 710
+        "lineNumber": 713
       }
     ],
     "properties": [],
@@ -12487,22 +12950,22 @@
     ],
     "loc": {
       "start": {
-        "line": 712,
+        "line": 715,
         "column": 0
       },
       "end": {
-        "line": 721,
+        "line": 724,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 722,
+          "line": 725,
           "column": 0
         },
         "end": {
-          "line": 722,
+          "line": 725,
           "column": 29
         }
       },
@@ -12518,7 +12981,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 722
+        "lineNumber": 725
       }
     ],
     "properties": [],
@@ -12640,7 +13103,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Returns the browser created using openBrowser.",
+              "value": "Returns the browser insance created using openBrowser.",
               "position": {
                 "start": {
                   "line": 1,
@@ -12649,8 +13112,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 47,
-                  "offset": 46
+                  "column": 55,
+                  "offset": 54
                 },
                 "indent": []
               }
@@ -12664,8 +13127,8 @@
             },
             "end": {
               "line": 1,
-              "column": 47,
-              "offset": 46
+              "column": 55,
+              "offset": 54
             },
             "indent": []
           }
@@ -12679,40 +13142,40 @@
         },
         "end": {
           "line": 1,
-          "column": 47,
-          "offset": 46
+          "column": 55,
+          "offset": 54
         }
       }
     },
     "tags": [
       {
         "title": "returns",
-        "description": "[Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser).",
+        "description": "Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.",
         "lineNumber": 3,
         "type": {
           "type": "NameExpression",
-          "name": "Browser"
+          "name": "Object"
         }
       }
     ],
     "loc": {
       "start": {
-        "line": 724,
+        "line": 727,
         "column": 0
       },
       "end": {
-        "line": 728,
+        "line": 731,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 729,
+          "line": 732,
           "column": 0
         },
         "end": {
-          "line": 732,
+          "line": 735,
           "column": 2
         }
       },
@@ -12731,6 +13194,23 @@
               "type": "paragraph",
               "children": [
                 {
+                  "type": "text",
+                  "value": "Puppeteer's ",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 13,
+                      "offset": 12
+                    },
+                    "indent": []
+                  }
+                },
+                {
                   "type": "link",
                   "title": null,
                   "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser",
@@ -12741,13 +13221,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 2,
-                          "offset": 1
+                          "column": 14,
+                          "offset": 13
                         },
                         "end": {
                           "line": 1,
-                          "column": 9,
-                          "offset": 8
+                          "column": 21,
+                          "offset": 20
                         },
                         "indent": []
                       }
@@ -12756,30 +13236,30 @@
                   "position": {
                     "start": {
                       "line": 1,
-                      "column": 1,
-                      "offset": 0
+                      "column": 13,
+                      "offset": 12
                     },
                     "end": {
                       "line": 1,
-                      "column": 91,
-                      "offset": 90
+                      "column": 103,
+                      "offset": 102
                     },
                     "indent": []
                   }
                 },
                 {
                   "type": "text",
-                  "value": ".",
+                  "value": " instance.",
                   "position": {
                     "start": {
                       "line": 1,
-                      "column": 91,
-                      "offset": 90
+                      "column": 103,
+                      "offset": 102
                     },
                     "end": {
                       "line": 1,
-                      "column": 92,
-                      "offset": 91
+                      "column": 113,
+                      "offset": 112
                     },
                     "indent": []
                   }
@@ -12793,8 +13273,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 92,
-                  "offset": 91
+                  "column": 113,
+                  "offset": 112
                 },
                 "indent": []
               }
@@ -12808,15 +13288,15 @@
             },
             "end": {
               "line": 1,
-              "column": 92,
-              "offset": 91
+              "column": 113,
+              "offset": 112
             }
           }
         },
         "title": "returns",
         "type": {
           "type": "NameExpression",
-          "name": "Browser"
+          "name": "Object"
         }
       }
     ],
@@ -12899,32 +13379,32 @@
     "tags": [
       {
         "title": "returns",
-        "description": "[Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page).",
+        "description": "Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.",
         "lineNumber": 3,
         "type": {
           "type": "NameExpression",
-          "name": "Page"
+          "name": "Object"
         }
       }
     ],
     "loc": {
       "start": {
-        "line": 734,
+        "line": 737,
         "column": 0
       },
       "end": {
-        "line": 738,
+        "line": 741,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 739,
+          "line": 742,
           "column": 0
         },
         "end": {
-          "line": 742,
+          "line": 745,
           "column": 2
         }
       },
@@ -12943,6 +13423,23 @@
               "type": "paragraph",
               "children": [
                 {
+                  "type": "text",
+                  "value": "Puppeteer's ",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 13,
+                      "offset": 12
+                    },
+                    "indent": []
+                  }
+                },
+                {
                   "type": "link",
                   "title": null,
                   "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page",
@@ -12953,13 +13450,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 2,
-                          "offset": 1
+                          "column": 14,
+                          "offset": 13
                         },
                         "end": {
                           "line": 1,
-                          "column": 6,
-                          "offset": 5
+                          "column": 18,
+                          "offset": 17
                         },
                         "indent": []
                       }
@@ -12968,30 +13465,30 @@
                   "position": {
                     "start": {
                       "line": 1,
-                      "column": 1,
-                      "offset": 0
+                      "column": 13,
+                      "offset": 12
                     },
                     "end": {
                       "line": 1,
-                      "column": 85,
-                      "offset": 84
+                      "column": 97,
+                      "offset": 96
                     },
                     "indent": []
                   }
                 },
                 {
                   "type": "text",
-                  "value": ".",
+                  "value": " instance.",
                   "position": {
                     "start": {
                       "line": 1,
-                      "column": 85,
-                      "offset": 84
+                      "column": 97,
+                      "offset": 96
                     },
                     "end": {
                       "line": 1,
-                      "column": 86,
-                      "offset": 85
+                      "column": 107,
+                      "offset": 106
                     },
                     "indent": []
                   }
@@ -13005,8 +13502,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 86,
-                  "offset": 85
+                  "column": 107,
+                  "offset": 106
                 },
                 "indent": []
               }
@@ -13020,15 +13517,15 @@
             },
             "end": {
               "line": 1,
-              "column": 86,
-              "offset": 85
+              "column": 107,
+              "offset": 106
             }
           }
         },
         "title": "returns",
         "type": {
           "type": "NameExpression",
-          "name": "Page"
+          "name": "Object"
         }
       }
     ],
@@ -13110,52 +13607,63 @@
     },
     "tags": [
       {
-        "title": "example",
-        "description": "link('Sign in')\nbutton('Get Started')\n$('#id')\ntext('Home')",
-        "lineNumber": 3
+        "title": "callback",
+        "description": "selector",
+        "lineNumber": 2
       },
       {
-        "title": "typedef",
+        "title": "function",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 3,
+        "name": null
+      },
+      {
+        "title": "example",
+        "description": "link('Sign in')\nbutton('Get Started')\n$('#id')\ntext('Home')",
+        "lineNumber": 4
+      },
+      {
+        "title": "param",
+        "description": "Text to identify the element.",
+        "lineNumber": 10,
         "type": {
-          "type": "FunctionType",
-          "params": [
-            {
-              "type": "NameExpression",
-              "name": "string"
-            },
-            {
-              "type": "RestType",
-              "expression": {
-                "type": "NameExpression",
-                "name": "string"
-              }
-            }
-          ],
-          "result": null
+          "type": "NameExpression",
+          "name": "string"
         },
-        "name": "selector"
+        "name": "text"
+      },
+      {
+        "title": "param",
+        "description": null,
+        "lineNumber": 11,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        },
+        "name": "args"
       }
     ],
     "loc": {
       "start": {
-        "line": 866,
+        "line": 869,
         "column": 0
       },
       "end": {
-        "line": 876,
+        "line": 882,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 860,
+          "line": 863,
           "column": 0
         },
         "end": {
-          "line": 864,
+          "line": 867,
           "column": 25
         }
       },
@@ -13167,56 +13675,35 @@
         "description": "link('Sign in')\nbutton('Get Started')\n$('#id')\ntext('Home')"
       }
     ],
-    "params": [],
-    "properties": [],
-    "returns": [],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "kind": "typedef",
-    "name": "selector",
-    "type": {
-      "type": "FunctionType",
-      "params": [
-        {
-          "type": "NameExpression",
-          "name": "string"
-        },
-        {
-          "type": "RestType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "string"
-          }
-        }
-      ],
-      "result": null
-    },
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
+    "params": [
       {
-        "name": "selector",
-        "kind": "typedef"
-      }
-    ],
-    "namespace": "selector"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
+        "title": "param",
+        "name": "text",
+        "lineNumber": 10,
+        "description": {
+          "type": "root",
           "children": [
             {
-              "type": "text",
-              "value": "Wrapper object for the element present on the web page. There might be extra properties/methods avaliable based on the element type.",
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Text to identify the element.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 30,
+                      "offset": 29
+                    },
+                    "indent": []
+                  }
+                }
+              ],
               "position": {
                 "start": {
                   "line": 1,
@@ -13225,8 +13712,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 133,
-                  "offset": 132
+                  "column": 30,
+                  "offset": 29
                 },
                 "indent": []
               }
@@ -13240,10 +13727,720 @@
             },
             "end": {
               "line": 1,
-              "column": 133,
-              "offset": 132
+              "column": 30,
+              "offset": 29
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 11,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "kind": "function",
+    "name": "selector",
+    "type": {
+      "type": "NameExpression",
+      "name": "Function"
+    },
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "selector",
+        "kind": "function"
+      }
+    ],
+    "namespace": "selector"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Wrapper object for the element present on the web page. There might be extra properties/methods avaliable based on the element type.\nFor example: ",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 2,
+                  "column": 14,
+                  "offset": 146
+                },
+                "indent": [
+                  1
+                ]
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
             },
-            "indent": []
+            "end": {
+              "line": 2,
+              "column": 14,
+              "offset": 146
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "loose": false,
+          "children": [
+            {
+              "type": "listItem",
+              "loose": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "get()",
+                      "position": {
+                        "start": {
+                          "line": 3,
+                          "column": 3,
+                          "offset": 149
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 10,
+                          "offset": 156
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", ",
+                      "position": {
+                        "start": {
+                          "line": 3,
+                          "column": 10,
+                          "offset": 156
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 12,
+                          "offset": 158
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "exists()",
+                      "position": {
+                        "start": {
+                          "line": 3,
+                          "column": 12,
+                          "offset": 158
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 22,
+                          "offset": 168
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", ",
+                      "position": {
+                        "start": {
+                          "line": 3,
+                          "column": 22,
+                          "offset": 168
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 24,
+                          "offset": 170
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "description",
+                      "position": {
+                        "start": {
+                          "line": 3,
+                          "column": 24,
+                          "offset": 170
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 37,
+                          "offset": 183
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " for all the elements.",
+                      "position": {
+                        "start": {
+                          "line": 3,
+                          "column": 37,
+                          "offset": 183
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 59,
+                          "offset": 205
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 3,
+                      "offset": 149
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 59,
+                      "offset": 205
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 1,
+                  "offset": 147
+                },
+                "end": {
+                  "line": 3,
+                  "column": 59,
+                  "offset": 205
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "listItem",
+              "loose": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "value()",
+                      "position": {
+                        "start": {
+                          "line": 4,
+                          "column": 3,
+                          "offset": 208
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 12,
+                          "offset": 217
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " for input field and text field.",
+                      "position": {
+                        "start": {
+                          "line": 4,
+                          "column": 12,
+                          "offset": 217
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 44,
+                          "offset": 249
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 3,
+                      "offset": 208
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 44,
+                      "offset": 249
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 1,
+                  "offset": 206
+                },
+                "end": {
+                  "line": 4,
+                  "column": 44,
+                  "offset": 249
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "listItem",
+              "loose": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "value()",
+                      "position": {
+                        "start": {
+                          "line": 5,
+                          "column": 3,
+                          "offset": 252
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 12,
+                          "offset": 261
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", ",
+                      "position": {
+                        "start": {
+                          "line": 5,
+                          "column": 12,
+                          "offset": 261
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 14,
+                          "offset": 263
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "select()",
+                      "position": {
+                        "start": {
+                          "line": 5,
+                          "column": 14,
+                          "offset": 263
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 24,
+                          "offset": 273
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " for combo box.",
+                      "position": {
+                        "start": {
+                          "line": 5,
+                          "column": 24,
+                          "offset": 273
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 39,
+                          "offset": 288
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 5,
+                      "column": 3,
+                      "offset": 252
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 39,
+                      "offset": 288
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 1,
+                  "offset": 250
+                },
+                "end": {
+                  "line": 5,
+                  "column": 39,
+                  "offset": 288
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "listItem",
+              "loose": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "check()",
+                      "position": {
+                        "start": {
+                          "line": 6,
+                          "column": 3,
+                          "offset": 291
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 12,
+                          "offset": 300
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", ",
+                      "position": {
+                        "start": {
+                          "line": 6,
+                          "column": 12,
+                          "offset": 300
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 14,
+                          "offset": 302
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "uncheck()",
+                      "position": {
+                        "start": {
+                          "line": 6,
+                          "column": 14,
+                          "offset": 302
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 25,
+                          "offset": 313
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", ",
+                      "position": {
+                        "start": {
+                          "line": 6,
+                          "column": 25,
+                          "offset": 313
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 27,
+                          "offset": 315
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "isChecked()",
+                      "position": {
+                        "start": {
+                          "line": 6,
+                          "column": 27,
+                          "offset": 315
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 40,
+                          "offset": 328
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " for checkbox.",
+                      "position": {
+                        "start": {
+                          "line": 6,
+                          "column": 40,
+                          "offset": 328
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 54,
+                          "offset": 342
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 6,
+                      "column": 3,
+                      "offset": 291
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 54,
+                      "offset": 342
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 6,
+                  "column": 1,
+                  "offset": 289
+                },
+                "end": {
+                  "line": 6,
+                  "column": 54,
+                  "offset": 342
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "listItem",
+              "loose": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "select()",
+                      "position": {
+                        "start": {
+                          "line": 7,
+                          "column": 3,
+                          "offset": 345
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 13,
+                          "offset": 355
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", ",
+                      "position": {
+                        "start": {
+                          "line": 7,
+                          "column": 13,
+                          "offset": 355
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 15,
+                          "offset": 357
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "deselect()",
+                      "position": {
+                        "start": {
+                          "line": 7,
+                          "column": 15,
+                          "offset": 357
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 27,
+                          "offset": 369
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", ",
+                      "position": {
+                        "start": {
+                          "line": 7,
+                          "column": 27,
+                          "offset": 369
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 29,
+                          "offset": 371
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "isSelected()",
+                      "position": {
+                        "start": {
+                          "line": 7,
+                          "column": 29,
+                          "offset": 371
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 43,
+                          "offset": 385
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " for radio button.",
+                      "position": {
+                        "start": {
+                          "line": 7,
+                          "column": 43,
+                          "offset": 385
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 61,
+                          "offset": 403
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 3,
+                      "offset": 345
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 61,
+                      "offset": 403
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 1,
+                  "offset": 343
+                },
+                "end": {
+                  "line": 7,
+                  "column": 61,
+                  "offset": 403
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 147
+            },
+            "end": {
+              "line": 7,
+              "column": 61,
+              "offset": 403
+            },
+            "indent": [
+              1,
+              1,
+              1,
+              1
+            ]
           }
         }
       ],
@@ -13254,9 +14451,9 @@
           "offset": 0
         },
         "end": {
-          "line": 1,
-          "column": 133,
-          "offset": 132
+          "line": 7,
+          "column": 61,
+          "offset": 403
         }
       }
     },
@@ -13264,12 +14461,12 @@
       {
         "title": "summary",
         "description": "Wrapper object for the element present on the web page.",
-        "lineNumber": 2
+        "lineNumber": 9
       },
       {
         "title": "typedef",
         "description": null,
-        "lineNumber": 4,
+        "lineNumber": 11,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -13278,18 +14475,18 @@
       },
       {
         "title": "property",
-        "description": "DOM element getter.",
-        "lineNumber": 5,
-        "type": {
-          "type": "NameExpression",
-          "name": "function"
-        },
-        "name": "get"
+        "description": "@private {function} get - DOM element getter.",
+        "lineNumber": 12,
+        "type": null,
+        "errors": [
+          "Missing or invalid tag type"
+        ],
+        "name": "null"
       },
       {
         "title": "property",
         "description": "Checks existence for element.",
-        "lineNumber": 6,
+        "lineNumber": 13,
         "type": {
           "type": "FunctionType",
           "params": [
@@ -13309,106 +14506,54 @@
       {
         "title": "property",
         "description": "Describing the operation performed.",
-        "lineNumber": 7,
+        "lineNumber": 14,
         "type": {
           "type": "NameExpression",
           "name": "string"
         },
         "name": "description"
+      },
+      {
+        "title": "example",
+        "description": "link('google').exists()\nlink('google').exists(intervalSecs(1), timeoutSecs(10))\nlink('google').description\ntextField('username').value()",
+        "lineNumber": 16
       }
     ],
     "loc": {
       "start": {
-        "line": 878,
+        "line": 884,
         "column": 0
       },
       "end": {
-        "line": 887,
+        "line": 905,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 860,
+          "line": 863,
           "column": 0
         },
         "end": {
-          "line": 864,
+          "line": 867,
           "column": 25
         }
       },
       "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
     },
     "augments": [],
-    "examples": [],
+    "examples": [
+      {
+        "description": "link('google').exists()\nlink('google').exists(intervalSecs(1), timeoutSecs(10))\nlink('google').description\ntextField('username').value()"
+      }
+    ],
     "params": [],
     "properties": [
       {
         "title": "property",
-        "name": "get",
-        "lineNumber": 5,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "DOM element getter.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 20,
-                      "offset": 19
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 20,
-                  "offset": 19
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 20,
-              "offset": 19
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "function"
-        }
-      },
-      {
-        "title": "property",
         "name": "exists",
-        "lineNumber": 6,
+        "lineNumber": 13,
         "description": {
           "type": "root",
           "children": [
@@ -13479,7 +14624,7 @@
       {
         "title": "property",
         "name": "description",
-        "lineNumber": 7,
+        "lineNumber": 14,
         "description": {
           "type": "root",
           "children": [
@@ -13614,347 +14759,5 @@
       }
     ],
     "namespace": "ElementWrapper"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Puppeteer's ",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 13,
-                  "offset": 12
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "link",
-              "title": null,
-              "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Browser",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 14,
-                      "offset": 13
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 21,
-                      "offset": 20
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 13,
-                  "offset": 12
-                },
-                "end": {
-                  "line": 1,
-                  "column": 103,
-                  "offset": 102
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": " instance.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 103,
-                  "offset": 102
-                },
-                "end": {
-                  "line": 1,
-                  "column": 113,
-                  "offset": 112
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 113,
-              "offset": 112
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 113,
-          "offset": 112
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "typedef",
-        "description": null,
-        "lineNumber": 2,
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        },
-        "name": "Browser"
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 889,
-        "column": 0
-      },
-      "end": {
-        "line": 892,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 860,
-          "column": 0
-        },
-        "end": {
-          "line": 864,
-          "column": 25
-        }
-      },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
-    },
-    "augments": [],
-    "examples": [],
-    "params": [],
-    "properties": [],
-    "returns": [],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "kind": "typedef",
-    "name": "Browser",
-    "type": {
-      "type": "NameExpression",
-      "name": "Object"
-    },
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "Browser",
-        "kind": "typedef"
-      }
-    ],
-    "namespace": "Browser"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Puppeteer's ",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 13,
-                  "offset": 12
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "link",
-              "title": null,
-              "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Page",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 14,
-                      "offset": 13
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 18,
-                      "offset": 17
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 13,
-                  "offset": 12
-                },
-                "end": {
-                  "line": 1,
-                  "column": 97,
-                  "offset": 96
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": " instance.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 97,
-                  "offset": 96
-                },
-                "end": {
-                  "line": 1,
-                  "column": 107,
-                  "offset": 106
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 107,
-              "offset": 106
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 107,
-          "offset": 106
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "typedef",
-        "description": null,
-        "lineNumber": 2,
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        },
-        "name": "Page"
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 894,
-        "column": 0
-      },
-      "end": {
-        "line": 897,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 860,
-          "column": 0
-        },
-        "end": {
-          "line": 864,
-          "column": 25
-        }
-      },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
-    },
-    "augments": [],
-    "examples": [],
-    "params": [],
-    "properties": [],
-    "returns": [],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "kind": "typedef",
-    "name": "Page",
-    "type": {
-      "type": "NameExpression",
-      "name": "Object"
-    },
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "Page",
-        "kind": "typedef"
-      }
-    ],
-    "namespace": "Page"
   }
 ]

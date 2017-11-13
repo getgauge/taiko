@@ -4,7 +4,7 @@
 	"description": "An easy to use wrapper over Google Chrome's Puppeteer library.",
 	"main": "taiko.js",
 	"bin": {
-		"taiko": "repl.js"
+		"taiko": "cmd.js"
 	},
 	"scripts": {
 		"format": "./node_modules/.bin/js-beautify *.js -r -b collapse,preserve-inline && npm run lint",

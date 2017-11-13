@@ -47,8 +47,6 @@
 -   [page](#page)
 -   [selector](#selector)
 -   [ElementWrapper](#elementwrapper)
--   [Browser](#browser-1)
--   [Page](#page-1)
 
 ## openBrowser
 
@@ -122,7 +120,7 @@ Fetches an element with the given selector, scrolls it into view if needed, and 
 
 -   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.
 -   `waitForNavigation` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** wait for navigation after the click. (optional, default `true`)
--   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** click options. (optional, default `{}`)
+-   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** click options.
     -   `options.button` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** `left`, `right`, or `middle`. (optional, default `'left'`)
     -   `options.number` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** number of times to click on the element. (optional, default `1`)
     -   `options.delay` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Time to wait between mousedown and mouseup in milliseconds. (optional, default `0`)
@@ -163,7 +161,6 @@ Fetches an element with the given selector, scrolls it into view if needed, and 
 **Parameters**
 
 -   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be double clicked.
--   `waitForNavigation` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** wait for navigation after the click. (optional, default `true`)
 
 **Examples**
 
@@ -396,7 +393,7 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 ## $
 
-Lets you identify an element on the web page via XPath or CSS selector.
+This [selector](#selector) lets you identify an element on the web page via XPath or CSS selector.
 
 **Parameters**
 
@@ -413,7 +410,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## $$
 
-Lets you identify elements on the web page via XPath or CSS selector.
+This [selector](#selector) lets you identify elements on the web page via XPath or CSS selector.
 
 **Parameters**
 
@@ -430,7 +427,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## image
 
-Lets you identify an image (HTML <img> element) on a web page. Typically, this is done via the image's alt text.
+This [selector](#selector) lets you identify an image (HTML <img> element) on a web page. Typically, this is done via the image's alt text.
 
 **Parameters**
 
@@ -447,7 +444,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## link
 
-Lets you identify a link on a web page.
+This [selector](#selector) lets you identify a link on a web page.
 
 **Parameters**
 
@@ -464,7 +461,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## listItem
 
-Lets you identify a list item (HTML <li> element) on a web page.
+This [selector](#selector) lets you identify a list item (HTML <li> element) on a web page.
 
 **Parameters**
 
@@ -481,7 +478,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## button
 
-Lets you identify a button on a web page.
+This [selector](#selector) lets you identify a button on a web page.
 
 **Parameters**
 
@@ -498,7 +495,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## inputField
 
-Lets you identify an input field on a web page.
+This [selector](#selector) lets you identify an input field on a web page.
 
 **Parameters**
 
@@ -516,7 +513,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## textField
 
-Lets you identify a text field on a web page.
+This [selector](#selector) lets you identify a text field on a web page.
 
 **Parameters**
 
@@ -533,7 +530,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## comboBox
 
-Lets you identify a combo box on a web page.
+This [selector](#selector) lets you identify a combo box on a web page.
 
 **Parameters**
 
@@ -551,7 +548,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## checkBox
 
-Lets you identify a checkbox on a web page.
+This [selector](#selector) lets you identify a checkbox on a web page.
 
 **Parameters**
 
@@ -570,7 +567,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## radioButton
 
-Lets you identify a radio button on a web page.
+This [selector](#selector) lets you identify a radio button on a web page.
 
 **Parameters**
 
@@ -589,7 +586,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## text
 
-Lets you identify an element with text.
+This [selector](#selector) lets you identify an element with text.
 
 **Parameters**
 
@@ -606,7 +603,7 @@ Returns **[ElementWrapper](#elementwrapper)**
 
 ## contains
 
-Lets you identify an element containing the text.
+This [selector](#selector) lets you identify an element containing the text.
 
 **Parameters**
 
@@ -762,21 +759,26 @@ Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 ## browser
 
-Returns the browser created using openBrowser.
+Returns the browser insance created using openBrowser.
 
-Returns **[Browser](#browser)** [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser).
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.
 
 ## page
 
 Returns the page instance.
 
-Returns **[Page](#page)** [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page).
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.
 
 ## selector
 
 Identifies an element on the page.
 
-Type: function ([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), ...[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))
+Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Text to identify the element.
+-   `args` **...[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 **Examples**
 
@@ -790,23 +792,26 @@ text('Home')
 ## ElementWrapper
 
 Wrapper object for the element present on the web page. There might be extra properties/methods avaliable based on the element type.
+For example: 
+
+-   `get()`, `exists()`, `description` for all the elements.
+-   `value()` for input field and text field.
+-   `value()`, `select()` for combo box.
+-   `check()`, `uncheck()`, `isChecked()` for checkbox.
+-   `select()`, `deselect()`, `isSelected()` for radio button.
 
 Type: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 **Properties**
 
--   `get` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** DOM element getter.
 -   `exists` **function ([number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number))** Checks existence for element.
 -   `description` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Describing the operation performed.
 
-## Browser
+**Examples**
 
-Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.
-
-Type: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
-
-## Page
-
-Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.
-
-Type: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+```javascript
+link('google').exists()
+link('google').exists(intervalSecs(1), timeoutSecs(10))
+link('google').description
+textField('username').value()
+```
