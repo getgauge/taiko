@@ -773,7 +773,7 @@ const scroll = async (e, px, scrollPage, scrollElement, direction) => {
     e = e || 100;
     if (Number.isInteger(e)) {
         await p.evaluate(scrollPage, e);
-        return { description: `Scrolled ${direction} the page by ${px} pixels` };
+        return { description: `Scrolled ${direction} the page by ${e} pixels` };
     }
     await evaluate(e, scrollElement, px);
     return { description: `Scrolled ${direction} ` + description(e, true) + ` by ${px} pixels` };

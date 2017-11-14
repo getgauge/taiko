@@ -172,6 +172,7 @@ function handleError(e) {
 function removeQuotes(textWithQuotes, textWithoutQuotes) {
     return textWithQuotes.replace(`'${textWithoutQuotes}'`, () => textWithoutQuotes);
 }
+
 const desc = d => d.children
     .map(c => (c.children || [])
         .map((c1, i) => {
