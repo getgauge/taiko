@@ -6,7 +6,7 @@ ___________      .__ __
   |____|  (____  /__|__|_ \____/
                \/        \/
 ```
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/taiko.svg)](https://badge.fury.io/js/taiko)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/taiko.svg)](https://badge.fury.io/js/taiko) [![dependencies Status](https://david-dm.org/getgauge/taiko/status.svg)](https://david-dm.org/getgauge/taiko) [![devDependencies Status](https://david-dm.org/getgauge/taiko/dev-status.svg)](https://david-dm.org/getgauge/taiko?type=dev)
 
 **[API](https://getgauge.github.io/Taiko/) | [Example](https://github.com/getgauge-examples/js_puppeteer)**
 
