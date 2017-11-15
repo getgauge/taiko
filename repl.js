@@ -80,6 +80,12 @@ function initCommands(repl) {
         taikoCommands = {};
         lastStack = '';
     });
+    repl.on('exit', () => {
+        try {
+            taiko.browser()
+            taiko.closeBrowser();
+        } catch (_) {}
+    });
 }
 
 function code() {
