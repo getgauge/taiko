@@ -129,7 +129,7 @@ function displayTaiko() {
     console.log('\\__    ___/____  |__|  | ______     ');
     console.log('  |    |  \\__  \\ |  |  |/ /  _ \\    ' + version);
     console.log('  |    |   / __ \\|  |    <  <_> )   ' + browserVersion);
-    console.log('  |____|  (____  /__|__|_ \\____/    Documentation: https://getgauge.github.io/Taiko/');
+    console.log('  |____|  (____  /__|__|_ \\____/    Documentation: https://getgauge.github.io/taiko/');
     console.log('               \\/        \\/         Type .api for help and .exit to quit');
     console.log();
 }

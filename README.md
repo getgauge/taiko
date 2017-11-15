@@ -8,7 +8,7 @@ ___________      .__ __
 ```
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/taiko.svg)](https://badge.fury.io/js/taiko) [![dependencies Status](https://david-dm.org/getgauge/taiko/status.svg)](https://david-dm.org/getgauge/taiko) [![devDependencies Status](https://david-dm.org/getgauge/taiko/dev-status.svg)](https://david-dm.org/getgauge/taiko?type=dev)
 
-**[API](https://getgauge.github.io/Taiko/) | [Example](https://github.com/getgauge-examples/js_puppeteer)**
+**[API](https://getgauge.github.io/taiko/) | [Example](https://github.com/getgauge-examples/js_puppeteer)**
 
 An easy to use wrapper over Google Chrome's Puppeteer library.
 
@@ -37,9 +37,9 @@ npm install taiko
 
 #### Node API
 
-Checkout the **[API documentation](https://getgauge.github.io/Taiko/)** and **[example](https://github.com/getgauge-examples/js_puppeteer)** for more details.
+Checkout the **[API documentation](https://getgauge.github.io/taiko/)** and **[example](https://github.com/getgauge-examples/js_puppeteer)** for more details.
 
-```
+```js
 const { openBrowser, goto, click, closeBrowser } = require('taiko');
 
 (async () => {
@@ -52,10 +52,8 @@ const { openBrowser, goto, click, closeBrowser } = require('taiko');
 
 #### REPL
 
-```
+```js
 $ taiko
-```
-```
 > openBrowser()
  ✔ Browser and page initialized
 
@@ -90,9 +88,4 @@ Run `.api` in the REPL for help.
 ```
 $ taiko code.js
 ```
-```
- ✔ Browser and page initialized
- ✔ Navigated to url "https://getgauge.io/"
- ✔ Clicked element containing text "Get Started"
- ✔ Browser and page closed
-```
+![Run](https://user-images.githubusercontent.com/5915802/32829214-6a4472dc-ca17-11e7-86dd-4944b8545164.gif)
