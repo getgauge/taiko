@@ -119,11 +119,12 @@ Fetches an element with the given selector, scrolls it into view if needed, and 
 **Parameters**
 
 -   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.
--   `waitForNavigation` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** wait for navigation after the click. (optional, default `true`)
--   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** click options.
+-   `waitForNavigation` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass `{ timeout: 10000 }` in `options` parameter. (optional, default `true`)
+-   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Click options.
     -   `options.button` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** `left`, `right`, or `middle`. (optional, default `'left'`)
-    -   `options.number` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** number of times to click on the element. (optional, default `1`)
+    -   `options.number` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Number of times to click on the element. (optional, default `1`)
     -   `options.delay` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Time to wait between mousedown and mouseup in milliseconds. (optional, default `0`)
+    -   `options.timeout` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Timeout value in milliseconds for navigation after click. (optional, default `5000`)
 
 **Examples**
 

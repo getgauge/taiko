@@ -80,11 +80,12 @@ module.exports.reload = async options => {
  * click('Get Started', waitForNavigation(false))
  *
  * @param {selector|string} selector - A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.
- * @param {boolean} [waitForNavigation=true] - wait for navigation after the click.
- * @param {Object} options - click options.
+ * @param {boolean} [waitForNavigation=true] - Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.
+ * @param {Object} options - Click options.
  * @param {string} [options.button='left'] - `left`, `right`, or `middle`.
- * @param {number} [options.number=1] - number of times to click on the element.
+ * @param {number} [options.number=1] - Number of times to click on the element.
  * @param {number} [options.delay=0] - Time to wait between mousedown and mouseup in milliseconds.
+ * @param {number} [options.timeout=5000] - Timeout value in milliseconds for navigation after click.
  * @returns {Promise<Object>} - Object with the description of the action performed.
  */
 module.exports.click = click;
@@ -93,7 +94,9 @@ async function click(selector, waitForNavigation = true, options = {}) {
     validate();
     const e = await element(selector);
     await e.click(options);
-    if (waitForNavigation) await p.waitForNavigation();
+    if (waitForNavigation) try {
+        await p.waitForNavigation({ timeout: options.timeout || 5000 });
+    } catch (_) {}
     await e.dispose();
     return { description: 'Clicked ' + description(selector, true) };
 }
