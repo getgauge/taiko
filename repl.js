@@ -4,7 +4,6 @@ const fs = require('fs');
 const util = require('util');
 const path = require('path');
 const puppeteer = require('puppeteer');
-const { spawnSync } = require('child_process');
 const { aEval } = require('./awaitEval');
 const taiko = require('./taiko');
 
@@ -17,8 +16,8 @@ let version = '';
 let browserVersion = '';
 let doc = '';
 
-module.exports.initiaize = () => {
-    displayVersion();
+module.exports.initiaize = async () => {
+    await displayVersion();
     const repl = require('repl').start({ prompt: '> ', ignoreUndefined: true });
     repl.writer = writer(repl.writer);
     aEval(repl, (cmd, res) => !util.isError(res) && commands.push(cmd.trim()));
@@ -27,11 +26,14 @@ module.exports.initiaize = () => {
     return repl;
 };
 
-function displayVersion() {
+async function displayVersion() {
     try {
-        version = 'Version: ' + JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'))).version;
-        browserVersion = spawnSync(puppeteer.executablePath(), ['--version']).stdout.toString().trim();
-        doc = JSON.parse(fs.readFileSync(path.join(__dirname, 'docs', 'api.json')));
+        version = 'Version: ' + require('./package.json').version;
+        const browser = await puppeteer.launch();
+        const puppeteerVersion = require(path.join(__dirname, 'node_modules', 'puppeteer', 'package.json')).version;
+        browserVersion = `Puppeteer: ${puppeteerVersion} ${await browser.version()}`;
+        browser.close();
+        doc = require(path.join(__dirname, 'docs', 'api.json'));
     } catch (_) {}
     displayTaiko();
 }
@@ -82,7 +84,7 @@ function initCommands(repl) {
     });
     repl.on('exit', () => {
         try {
-            taiko.browser()
+            taiko.browser();
             taiko.closeBrowser();
         } catch (_) {}
     });
