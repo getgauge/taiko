@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const util = require('util');
-const path = require('path');
 const puppeteer = require('puppeteer');
 const { aEval } = require('./awaitEval');
 const taiko = require('./taiko');
@@ -30,10 +29,10 @@ async function displayVersion() {
     try {
         version = 'Version: ' + require('./package.json').version;
         const browser = await puppeteer.launch();
-        const puppeteerVersion = require(path.join(__dirname, 'node_modules', 'puppeteer', 'package.json')).version;
+        const puppeteerVersion = require('./node_modules/puppeteer/package.json').version;
         browserVersion = `Puppeteer: ${puppeteerVersion} ${await browser.version()}`;
         browser.close();
-        doc = require(path.join(__dirname, 'docs', 'api.json'));
+        doc = require('./docs/api.json');
     } catch (_) {}
     displayTaiko();
 }
