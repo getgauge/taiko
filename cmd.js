@@ -3,8 +3,10 @@
 const path = require('path');
 const util = require('util');
 const fs = require('fs');
+const os = require('os');
 const taiko = require('./taiko');
 const repl = require('./repl');
+const isWin = os.platform() === 'win32';
 
 if (process.argv.length > 2) runFile(process.argv[2]);
 else repl.initiaize();
@@ -16,7 +18,8 @@ function runFile(file) {
         realFuncs[func] = taiko[func];
         if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function() {
             const res = await realFuncs[func].apply(this, arguments);
-            console.log(removeQuotes(util.inspect(' ✔ ' + res.description, { colors: true }), ' ✔ ' + res.description));
+            res.description = (isWin ? '[PASS] ' : ' ✔ ') + res.description;
+            console.log(removeQuotes(util.inspect(res.description, { colors: true }), res.description));
             return res;
         };
         else global[func] = function() {

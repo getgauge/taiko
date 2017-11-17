@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 const fs = require('fs');
+const os = require('os');
 const util = require('util');
 const puppeteer = require('puppeteer');
 const { aEval } = require('./awaitEval');
@@ -9,6 +10,7 @@ const taiko = require('./taiko');
 const funcs = {};
 const commands = [];
 const stringColor = util.inspect.styles.string;
+const isWin = os.platform() === 'win32';
 let taikoCommands = {};
 let lastStack = '';
 let version = '';
@@ -39,9 +41,10 @@ async function displayVersion() {
 
 const writer = w => output => {
     if (util.isError(output)) return output.message;
-    else if (typeof(output) === 'object' && 'description' in output)
-        return removeQuotes(util.inspect(' ✔ ' + output.description, { colors: true }), ' ✔ ' + output.description);
-    else return w(output);
+    else if (typeof(output) === 'object' && 'description' in output) {
+        output.description = (isWin ? '[PASS] ' : ' ✔ ') + output.description;
+        return removeQuotes(util.inspect(output.description, { colors: true }), output.description);
+    } else return w(output);
 };
 
 function initCommands(repl) {
@@ -172,7 +175,7 @@ function displayUsage() {
 function handleError(e) {
     util.inspect.styles.string = 'red';
     lastStack = removeQuotes(util.inspect(e.stack, { colors: true }).replace(/\\n/g, '\n'), e.stack);
-    e.message = ' ✘ Error: ' + e.message + ', run `.trace` for more info.';
+    e.message = (isWin ? '[FAIL] ' : ' ✘ ') + 'Error: ' + e.message + ', run `.trace` for more info.';
     return new Error(removeQuotes(util.inspect(e.message, { colors: true }), e.message));
 }
 
