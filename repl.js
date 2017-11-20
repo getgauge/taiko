@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const os = require('os');
-const path = require('path');
 const util = require('util');
 const puppeteer = require('puppeteer');
 const { aEval } = require('./awaitEval');
@@ -19,7 +18,7 @@ let browserVersion = '';
 let doc = '';
 
 module.exports.initiaize = async () => {
-    await displayVersion();
+    await setVersionInfo();
     const repl = require('repl').start({ prompt: '> ', ignoreUndefined: true });
     repl.writer = writer(repl.writer);
     aEval(repl, (cmd, res) => !util.isError(res) && commands.push(cmd.trim()));
@@ -28,17 +27,12 @@ module.exports.initiaize = async () => {
     return repl;
 };
 
-async function displayVersion() {
+async function setVersionInfo() {
     try {
-        version = 'Version: ' + require('./package.json').version;
+        version = require('./package.json').version;
         doc = require('./docs/api.json');
-        let puppeteerVersion = 'N/A';
-        if (fs.existsSync(path.join(__dirname, 'node_modules', 'puppeteer', 'package.json')))
-            puppeteerVersion = require('./node_modules/puppeteer/package.json').version;
-        else if (fs.existsSync(path.join(__dirname, '..', 'puppeteer', 'package.json')))
-            puppeteerVersion = require('../puppeteer/package.json').version;
         const browser = await puppeteer.launch();
-        browserVersion = `Puppeteer: ${puppeteerVersion} ${await browser.version()}`;
+        browserVersion = await browser.version();
         browser.close();
     } catch (_) {}
     displayTaiko();
@@ -71,7 +65,7 @@ function initCommands(repl) {
     repl.defineCommand('version', {
         help: 'Prints version info',
         action() {
-            displayTaiko();
+            console.log(`${version} (${browserVersion})`);
             this.displayPrompt();
         }
     });
@@ -140,13 +134,14 @@ function initTaiko(repl) {
 }
 
 function displayTaiko() {
-    console.log('___________      .__ __             Interactive browser automation.');
-    console.log('\\__    ___/____  |__|  | ______     ');
-    console.log('  |    |  \\__  \\ |  |  |/ /  _ \\    ' + version);
-    console.log('  |    |   / __ \\|  |    <  <_> )   ' + browserVersion);
-    console.log('  |____|  (____  /__|__|_ \\____/    Documentation: https://getgauge.github.io/taiko/');
-    console.log('               \\/        \\/         Type .api for help and .exit to quit');
-    console.log();
+    console.log('___________      .__ __');
+    console.log('\\__    ___/____  |__|  | ______');
+    console.log('  |    |  \\__  \\ |  |  |/ /  _ \\');
+    console.log('  |    |   / __ \\|  |    <  <_> )');
+    console.log('  |____|  (____  /__|__|_ \\____/');
+    console.log('               \\/        \\/');
+    console.log(`\nVersion: ${version} (${browserVersion})`);
+    console.log('Type .api for help and .exit to quit\n');
 }
 
 function displayUsageFor(name) {
@@ -175,6 +170,7 @@ function displayUsage() {
         console.log(removeQuotes(util.inspect(api, { colors: true }), api) + description);
     });
     console.log('\nRun `.api <name>` for more info on a specific function. For Example: `.api click`.');
+    console.log('Complete documentation is available at https://getgauge.github.io/taiko/.');
 }
 
 function handleError(e) {
