@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const os = require('os');
+const path = require('path');
 const util = require('util');
 const puppeteer = require('puppeteer');
 const { aEval } = require('./awaitEval');
@@ -30,11 +31,15 @@ module.exports.initiaize = async () => {
 async function displayVersion() {
     try {
         version = 'Version: ' + require('./package.json').version;
+        doc = require('./docs/api.json');
+        let puppeteerVersion = 'N/A';
+        if (fs.existsSync(path.join(__dirname, 'node_modules', 'puppeteer', 'package.json')))
+            puppeteerVersion = require('./node_modules/puppeteer/package.json').version;
+        else if (fs.existsSync(path.join(__dirname, '..', 'puppeteer', 'package.json')))
+            puppeteerVersion = require('../puppeteer/package.json').version;
         const browser = await puppeteer.launch();
-        const puppeteerVersion = require('./node_modules/puppeteer/package.json').version;
         browserVersion = `Puppeteer: ${puppeteerVersion} ${await browser.version()}`;
         browser.close();
-        doc = require('./docs/api.json');
     } catch (_) {}
     displayTaiko();
 }
