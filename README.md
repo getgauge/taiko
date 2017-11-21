@@ -28,6 +28,8 @@ An easy to use wrapper over Google Chrome's Puppeteer library.
 npm install taiko -g
 ```
 
+> On Windows, make sure that the location `%AppData%\npm`(or wherever `npm` ends up installing the module on your Windows flavor) is present in `PATH` environment variable.
+
 #### Local
 ```
 npm install taiko
