@@ -660,7 +660,7 @@ function contains(text, ...args) {
  */
 module.exports.toLeftOf = selector => {
     validate();
-    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().left < v, rectangle(selector, (r) => r.left), `To left of ${selector}`);
+    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().left < v, rectangle(selector, r => r.left), `To left of ${selector}`);
 };
 
 /**
@@ -674,7 +674,7 @@ module.exports.toLeftOf = selector => {
  */
 module.exports.toRightOf = selector => {
     validate();
-    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().right > v, rectangle(selector, (r) => r.right), `To right of ${selector}`);
+    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().right > v, rectangle(selector, r => r.right), `To right of ${selector}`);
 };
 
 /**
@@ -688,7 +688,7 @@ module.exports.toRightOf = selector => {
  */
 module.exports.above = selector => {
     validate();
-    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().top < v, rectangle(selector, (r) => r.top), `Above ${selector}`);
+    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().top < v, rectangle(selector, r => r.top), `Above ${selector}`);
 };
 
 /**
@@ -702,7 +702,26 @@ module.exports.above = selector => {
  */
 module.exports.below = selector => {
     validate();
-    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().bottom > v, rectangle(selector, (r) => r.bottom), `Below ${selector}`);
+    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().bottom > v, rectangle(selector, r => r.bottom), `Below ${selector}`);
+};
+
+/**
+ * This {@link relativeSelector} lets you perform relative HTML element searches.
+ *
+ * @example
+ * click(link("Block", near("name"))
+ *
+ * @param {selector|string} selector - Web element selector.
+ * @returns {RelativeSearchElement}
+ */
+module.exports.near = selector => {
+    validate();
+    return new RelativeSearchElement((e, v) => {
+        const nearOffset = 300;
+        const rect = e.getBoundingClientRect();
+        return Math.abs(rect.bottom - v.bottom) < nearOffset || Math.abs(rect.top - v.top) < nearOffset ||
+            Math.abs(rect.left - v.left) < nearOffset || Math.abs(rect.right - v.right) < nearOffset;
+    }, rectangle(selector, r => r), `near ${selector}`);
 };
 
 /**
@@ -952,9 +971,10 @@ const rectangle = async (selector, callback) => {
     }, await element(selector)));
 };
 
-const isRelativeSearch = args => args.length && args.every(a => a instanceof RelativeSearchElement);
+const isRelativeSearch = args => args.every(a => a instanceof RelativeSearchElement);
 
 const handleRelativeSearch = async (elements, args) => {
+    if (!args.length) return elements;
     if (!isRelativeSearch(args)) throw new Error('Invalid arguments passed, only relativeSelectors are accepted');
     const filteredElements = [];
     for (let i = 0; i < elements.length; i++) {
@@ -986,6 +1006,7 @@ const handleRelativeSearch = async (elements, args) => {
  * @callback relativeSelector
  * @function
  * @example
+ * near('Home')
  * toLeftOf('Sign in')
  * toRightOf('Get Started')
  * above('Sign in')

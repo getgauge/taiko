@@ -38,6 +38,7 @@
 -   [toRightOf](#torightof)
 -   [above](#above)
 -   [below](#below)
+-   [near](#near)
 -   [alert](#alert)
 -   [prompt](#prompt)
 -   [confirm](#confirm)
@@ -701,6 +702,22 @@ click(link("Block", below("name"))
 
 Returns **[RelativeSearchElement](#relativesearchelement)** 
 
+## near
+
+This [relativeSelector](#relativeselector) lets you perform relative HTML element searches.
+
+**Parameters**
+
+-   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Web element selector.
+
+**Examples**
+
+```javascript
+click(link("Block", near("name"))
+```
+
+Returns **[RelativeSearchElement](#relativesearchelement)** 
+
 ## alert
 
 Lets you perform an operation when an `alert` with given text is shown.
@@ -886,6 +903,7 @@ Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 **Examples**
 
 ```javascript
+near('Home')
 toLeftOf('Sign in')
 toRightOf('Get Started')
 above('Sign in')
