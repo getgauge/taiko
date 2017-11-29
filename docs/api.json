@@ -4311,7 +4311,7 @@
           "column": 0
         },
         "end": {
-          "line": 223,
+          "line": 220,
           "column": 2
         }
       },
@@ -4674,22 +4674,22 @@
     ],
     "loc": {
       "start": {
-        "line": 225,
+        "line": 222,
         "column": 0
       },
       "end": {
-        "line": 237,
+        "line": 234,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 238,
+          "line": 235,
           "column": 0
         },
         "end": {
-          "line": 242,
+          "line": 239,
           "column": 2
         }
       },
@@ -5150,22 +5150,22 @@
     ],
     "loc": {
       "start": {
-        "line": 244,
+        "line": 241,
         "column": 0
       },
       "end": {
-        "line": 254,
+        "line": 251,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 255,
+          "line": 252,
           "column": 0
         },
         "end": {
-          "line": 259,
+          "line": 256,
           "column": 2
         }
       },
@@ -5494,22 +5494,22 @@
     ],
     "loc": {
       "start": {
-        "line": 261,
+        "line": 258,
         "column": 0
       },
       "end": {
-        "line": 270,
+        "line": 267,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 271,
+          "line": 268,
           "column": 0
         },
         "end": {
-          "line": 275,
+          "line": 272,
           "column": 2
         }
       },
@@ -5808,22 +5808,22 @@
     ],
     "loc": {
       "start": {
-        "line": 277,
+        "line": 274,
         "column": 0
       },
       "end": {
-        "line": 289,
+        "line": 286,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 290,
+          "line": 287,
           "column": 0
         },
         "end": {
-          "line": 293,
+          "line": 290,
           "column": 2
         }
       },
@@ -6085,22 +6085,22 @@
     ],
     "loc": {
       "start": {
-        "line": 295,
+        "line": 292,
         "column": 0
       },
       "end": {
-        "line": 307,
+        "line": 304,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 308,
+          "line": 305,
           "column": 0
         },
         "end": {
-          "line": 311,
+          "line": 308,
           "column": 2
         }
       },
@@ -6362,22 +6362,22 @@
     ],
     "loc": {
       "start": {
-        "line": 313,
+        "line": 310,
         "column": 0
       },
       "end": {
-        "line": 325,
+        "line": 322,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 326,
+          "line": 323,
           "column": 0
         },
         "end": {
-          "line": 329,
+          "line": 326,
           "column": 2
         }
       },
@@ -6639,22 +6639,22 @@
     ],
     "loc": {
       "start": {
-        "line": 331,
+        "line": 328,
         "column": 0
       },
       "end": {
-        "line": 343,
+        "line": 340,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 344,
+          "line": 341,
           "column": 0
         },
         "end": {
-          "line": 347,
+          "line": 344,
           "column": 2
         }
       },
@@ -6851,7 +6851,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "screenshot({path: 'screenshot.png'});",
+        "description": "screenshot({path: 'screenshot.png'})",
         "lineNumber": 3
       },
       {
@@ -6885,22 +6885,22 @@
     ],
     "loc": {
       "start": {
-        "line": 349,
+        "line": 346,
         "column": 0
       },
       "end": {
-        "line": 357,
+        "line": 354,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 358,
+          "line": 355,
           "column": 0
         },
         "end": {
-          "line": 358,
+          "line": 355,
           "column": 67
         }
       },
@@ -6909,7 +6909,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "screenshot({path: 'screenshot.png'});"
+        "description": "screenshot({path: 'screenshot.png'})"
       }
     ],
     "params": [
@@ -7174,7 +7174,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify an element on the web page via XPath or CSS selector.",
+              "value": " lets you identify elements on the web page via XPath or CSS selector.",
               "position": {
                 "start": {
                   "line": 1,
@@ -7183,8 +7183,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 94,
-                  "offset": 93
+                  "column": 92,
+                  "offset": 91
                 },
                 "indent": []
               }
@@ -7198,8 +7198,8 @@
             },
             "end": {
               "line": 1,
-              "column": 94,
-              "offset": 93
+              "column": 92,
+              "offset": 91
             },
             "indent": []
           }
@@ -7213,21 +7213,30 @@
         },
         "end": {
           "line": 1,
-          "column": 94,
-          "offset": 93
+          "column": 92,
+          "offset": 91
         }
       }
     },
     "tags": [
       {
+        "title": "type",
+        "description": "function",
+        "lineNumber": 2,
+        "type": null,
+        "errors": [
+          "Missing or invalid tag type"
+        ]
+      },
+      {
         "title": "example",
-        "description": "click($('.class'))\n$('.class').exists()",
-        "lineNumber": 2
+        "description": "highlight($(`//*[text()='text']`))\n$(`//*[text()='text']`).exists()",
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": "XPath or CSS selector.",
-        "lineNumber": 6,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -7235,9 +7244,22 @@
         "name": "selector"
       },
       {
+        "title": "param",
+        "description": null,
+        "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
         "title": "returns",
         "description": null,
-        "lineNumber": 7,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -7246,22 +7268,22 @@
     ],
     "loc": {
       "start": {
-        "line": 360,
+        "line": 357,
         "column": 0
       },
       "end": {
-        "line": 368,
+        "line": 367,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 369,
+          "line": 368,
           "column": 0
         },
         "end": {
-          "line": 373,
+          "line": 372,
           "column": 2
         }
       },
@@ -7270,14 +7292,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "click($('.class'))\n$('.class').exists()"
+        "description": "highlight($(`//*[text()='text']`))\n$(`//*[text()='text']`).exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 6,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -7333,6 +7355,18 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
         }
       }
     ],
@@ -7436,7 +7470,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify elements on the web page via XPath or CSS selector.",
+              "value": " lets you identify an image on a web page. Typically, this is done via the image's alt text.",
               "position": {
                 "start": {
                   "line": 1,
@@ -7445,8 +7479,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 92,
-                  "offset": 91
+                  "column": 114,
+                  "offset": 113
                 },
                 "indent": []
               }
@@ -7460,8 +7494,8 @@
             },
             "end": {
               "line": 1,
-              "column": 92,
-              "offset": 91
+              "column": 114,
+              "offset": 113
             },
             "indent": []
           }
@@ -7475,304 +7509,8 @@
         },
         "end": {
           "line": 1,
-          "column": 92,
-          "offset": 91
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "example",
-        "description": "highlight($$(`//*[text()='text']`)[1])\n$$(`//*[text()='text']`).exists()",
-        "lineNumber": 2
-      },
-      {
-        "title": "param",
-        "description": "XPath or CSS selector.",
-        "lineNumber": 6,
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
-        },
-        "name": "selector"
-      },
-      {
-        "title": "returns",
-        "description": null,
-        "lineNumber": 7,
-        "type": {
-          "type": "NameExpression",
-          "name": "ElementWrapper"
-        }
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 375,
-        "column": 0
-      },
-      "end": {
-        "line": 383,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 384,
-          "column": 0
-        },
-        "end": {
-          "line": 388,
-          "column": 2
-        }
-      },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
-    },
-    "augments": [],
-    "examples": [
-      {
-        "description": "highlight($$(`//*[text()='text']`)[1])\n$$(`//*[text()='text']`).exists()"
-      }
-    ],
-    "params": [
-      {
-        "title": "param",
-        "name": "selector",
-        "lineNumber": 6,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "XPath or CSS selector.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 23,
-                      "offset": 22
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 23,
-                  "offset": 22
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 23,
-              "offset": 22
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
-        }
-      }
-    ],
-    "properties": [],
-    "returns": [
-      {
-        "description": {
-          "type": "root",
-          "children": [],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            }
-          }
-        },
-        "title": "returns",
-        "type": {
-          "type": "NameExpression",
-          "name": "ElementWrapper"
-        }
-      }
-    ],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "$$",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "$$",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".$$"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "This ",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 6,
-                  "offset": 5
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "link",
-              "url": "selector",
-              "title": null,
-              "jsdoc": true,
-              "children": [
-                {
-                  "type": "text",
-                  "value": "selector"
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 6,
-                  "offset": 5
-                },
-                "end": {
-                  "line": 1,
-                  "column": 22,
-                  "offset": 21
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": " lets you identify an image (HTML ",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 22,
-                  "offset": 21
-                },
-                "end": {
-                  "line": 1,
-                  "column": 56,
-                  "offset": 55
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "html",
-              "value": "<img>",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 56,
-                  "offset": 55
-                },
-                "end": {
-                  "line": 1,
-                  "column": 61,
-                  "offset": 60
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": " element) on a web page. Typically, this is done via the image's alt text.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 61,
-                  "offset": 60
-                },
-                "end": {
-                  "line": 1,
-                  "column": 135,
-                  "offset": 134
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 135,
-              "offset": 134
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 135,
-          "offset": 134
+          "column": 114,
+          "offset": 113
         }
       }
     },
@@ -7798,9 +7536,22 @@
         "name": "alt"
       },
       {
-        "title": "returns",
+        "title": "param",
         "description": null,
         "lineNumber": 9,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -7809,22 +7560,22 @@
     ],
     "loc": {
       "start": {
-        "line": 390,
+        "line": 374,
         "column": 0
       },
       "end": {
-        "line": 400,
+        "line": 385,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 401,
+          "line": 386,
           "column": 0
         },
         "end": {
-          "line": 406,
+          "line": 391,
           "column": 2
         }
       },
@@ -7896,6 +7647,18 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 9,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
         }
       }
     ],
@@ -8112,9 +7875,22 @@
         "name": "text"
       },
       {
-        "title": "returns",
+        "title": "param",
         "description": null,
         "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8123,22 +7899,22 @@
     ],
     "loc": {
       "start": {
-        "line": 408,
+        "line": 393,
         "column": 0
       },
       "end": {
-        "line": 417,
+        "line": 403,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 418,
+          "line": 404,
           "column": 0
         },
         "end": {
-          "line": 422,
+          "line": 408,
           "column": 2
         }
       },
@@ -8210,6 +7986,18 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
         }
       }
     ],
@@ -8413,9 +8201,22 @@
         "name": "label"
       },
       {
-        "title": "returns",
+        "title": "param",
         "description": null,
         "lineNumber": 9,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8424,22 +8225,22 @@
     ],
     "loc": {
       "start": {
-        "line": 424,
+        "line": 410,
         "column": 0
       },
       "end": {
-        "line": 434,
+        "line": 421,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 435,
+          "line": 422,
           "column": 0
         },
         "end": {
-          "line": 439,
+          "line": 426,
           "column": 2
         }
       },
@@ -8511,6 +8312,18 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 9,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
         }
       }
     ],
@@ -8727,9 +8540,22 @@
         "name": "label"
       },
       {
-        "title": "returns",
+        "title": "param",
         "description": null,
         "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8738,22 +8564,22 @@
     ],
     "loc": {
       "start": {
-        "line": 441,
+        "line": 428,
         "column": 0
       },
       "end": {
-        "line": 450,
+        "line": 438,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 451,
+          "line": 439,
           "column": 0
         },
         "end": {
-          "line": 455,
+          "line": 443,
           "column": 2
         }
       },
@@ -8825,6 +8651,18 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
         }
       }
     ],
@@ -9003,9 +8841,22 @@
         "name": "value"
       },
       {
-        "title": "returns",
+        "title": "param",
         "description": null,
         "lineNumber": 9,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9014,22 +8865,22 @@
     ],
     "loc": {
       "start": {
-        "line": 457,
+        "line": 445,
         "column": 0
       },
       "end": {
-        "line": 467,
+        "line": 456,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 468,
+          "line": 457,
           "column": 0
         },
         "end": {
-          "line": 483,
+          "line": 476,
           "column": 2
         }
       },
@@ -9164,6 +9015,18 @@
           "type": "NameExpression",
           "name": "string"
         }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 9,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        }
       }
     ],
     "properties": [],
@@ -9214,6 +9077,291 @@
       }
     ],
     "namespace": ".inputField"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This ",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "selector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "selector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you identify a file input field on a web page.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 74,
+                  "offset": 73
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 74,
+              "offset": 73
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 74,
+          "offset": 73
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "fileField('Please select a file:').value()\nfileField('Please select a file:').exists()",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "The label (human-visible name) of the file input field.",
+        "lineNumber": 7,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "label"
+      },
+      {
+        "title": "param",
+        "description": null,
+        "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 9,
+        "type": {
+          "type": "NameExpression",
+          "name": "ElementWrapper"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 478,
+        "column": 0
+      },
+      "end": {
+        "line": 488,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 489,
+          "column": 0
+        },
+        "end": {
+          "line": 489,
+          "column": 37
+        }
+      },
+      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "fileField('Please select a file:').value()\nfileField('Please select a file:').exists()"
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "label",
+        "lineNumber": 7,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "The label (human-visible name) of the file input field.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 56,
+                      "offset": 55
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 56,
+                  "offset": 55
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 56,
+              "offset": 55
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "ElementWrapper"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "fileField",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "fileField",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".fileField"
   },
   {
     "description": {
@@ -9327,9 +9475,22 @@
         "name": "label"
       },
       {
-        "title": "returns",
+        "title": "param",
         "description": null,
         "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9338,22 +9499,22 @@
     ],
     "loc": {
       "start": {
-        "line": 485,
+        "line": 501,
         "column": 0
       },
       "end": {
-        "line": 494,
+        "line": 511,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 495,
+          "line": 512,
           "column": 0
         },
         "end": {
-          "line": 495,
+          "line": 512,
           "column": 37
         }
       },
@@ -9425,6 +9586,18 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
         }
       }
     ],
@@ -9587,9 +9760,22 @@
         "name": "label"
       },
       {
-        "title": "returns",
+        "title": "param",
         "description": null,
         "lineNumber": 9,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9598,22 +9784,22 @@
     ],
     "loc": {
       "start": {
-        "line": 509,
+        "line": 526,
         "column": 0
       },
       "end": {
-        "line": 519,
+        "line": 537,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 520,
+          "line": 538,
           "column": 0
         },
         "end": {
-          "line": 537,
+          "line": 555,
           "column": 2
         }
       },
@@ -9685,6 +9871,18 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 9,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
         }
       }
     ],
@@ -9849,9 +10047,22 @@
         "name": "label"
       },
       {
-        "title": "returns",
+        "title": "param",
         "description": null,
         "lineNumber": 10,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 11,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9860,22 +10071,22 @@
     ],
     "loc": {
       "start": {
-        "line": 539,
+        "line": 557,
         "column": 0
       },
       "end": {
-        "line": 550,
+        "line": 569,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 551,
+          "line": 570,
           "column": 0
         },
         "end": {
-          "line": 563,
+          "line": 582,
           "column": 2
         }
       },
@@ -9947,6 +10158,18 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 10,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
         }
       }
     ],
@@ -10111,9 +10334,22 @@
         "name": "label"
       },
       {
-        "title": "returns",
+        "title": "param",
         "description": null,
         "lineNumber": 10,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 11,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -10122,22 +10358,22 @@
     ],
     "loc": {
       "start": {
-        "line": 565,
+        "line": 584,
         "column": 0
       },
       "end": {
-        "line": 576,
+        "line": 596,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 577,
+          "line": 597,
           "column": 0
         },
         "end": {
-          "line": 589,
+          "line": 609,
           "column": 2
         }
       },
@@ -10209,6 +10445,18 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 10,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
         }
       }
     ],
@@ -10373,9 +10621,22 @@
         "name": "text"
       },
       {
-        "title": "returns",
+        "title": "param",
         "description": null,
         "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -10384,22 +10645,22 @@
     ],
     "loc": {
       "start": {
-        "line": 591,
+        "line": 611,
         "column": 0
       },
       "end": {
-        "line": 600,
+        "line": 621,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 601,
+          "line": 622,
           "column": 0
         },
         "end": {
-          "line": 606,
+          "line": 627,
           "column": 2
         }
       },
@@ -10471,6 +10732,18 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 8,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
         }
       }
     ],
@@ -10635,9 +10908,22 @@
         "name": "text"
       },
       {
-        "title": "returns",
+        "title": "param",
         "description": null,
         "lineNumber": 7,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        },
+        "name": "args"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -10646,22 +10932,22 @@
     ],
     "loc": {
       "start": {
-        "line": 608,
+        "line": 629,
         "column": 0
       },
       "end": {
-        "line": 616,
+        "line": 638,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 617,
+          "line": 639,
           "column": 0
         },
         "end": {
-          "line": 617,
+          "line": 639,
           "column": 35
         }
       },
@@ -10734,6 +11020,18 @@
           "type": "NameExpression",
           "name": "string"
         }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 7,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        }
       }
     ],
     "properties": [],
@@ -10782,6 +11080,1126 @@
       }
     ],
     "namespace": ".contains"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This ",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "relativeSelector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "relativeSelector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 30,
+                  "offset": 29
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you perform relative HTML element searches.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 30,
+                  "offset": 29
+                },
+                "end": {
+                  "line": 1,
+                  "column": 79,
+                  "offset": 78
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 79,
+              "offset": 78
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 79,
+          "offset": 78
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "click(link(\"Block\", toLeftOf(\"name\"))",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "Web element selector.",
+        "lineNumber": 6,
+        "type": {
+          "type": "UnionType",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "selector"
+            },
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        },
+        "name": "selector"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 7,
+        "type": {
+          "type": "NameExpression",
+          "name": "RelativeSearchElement"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 653,
+        "column": 0
+      },
+      "end": {
+        "line": 661,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 662,
+          "column": 0
+        },
+        "end": {
+          "line": 665,
+          "column": 2
+        }
+      },
+      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "click(link(\"Block\", toLeftOf(\"name\"))"
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "selector",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web element selector.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 22,
+                      "offset": 21
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 22,
+              "offset": 21
+            }
+          }
+        },
+        "type": {
+          "type": "UnionType",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "selector"
+            },
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "RelativeSearchElement"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "toLeftOf",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "toLeftOf",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".toLeftOf"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This ",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "relativeSelector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "relativeSelector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 30,
+                  "offset": 29
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you perform relative HTML element searches.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 30,
+                  "offset": 29
+                },
+                "end": {
+                  "line": 1,
+                  "column": 79,
+                  "offset": 78
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 79,
+              "offset": 78
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 79,
+          "offset": 78
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "click(link(\"Block\", toRightOf(\"name\"))",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "Web element selector.",
+        "lineNumber": 6,
+        "type": {
+          "type": "UnionType",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "selector"
+            },
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        },
+        "name": "selector"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 7,
+        "type": {
+          "type": "NameExpression",
+          "name": "RelativeSearchElement"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 667,
+        "column": 0
+      },
+      "end": {
+        "line": 675,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 676,
+          "column": 0
+        },
+        "end": {
+          "line": 679,
+          "column": 2
+        }
+      },
+      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "click(link(\"Block\", toRightOf(\"name\"))"
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "selector",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web element selector.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 22,
+                      "offset": 21
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 22,
+              "offset": 21
+            }
+          }
+        },
+        "type": {
+          "type": "UnionType",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "selector"
+            },
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "RelativeSearchElement"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "toRightOf",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "toRightOf",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".toRightOf"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This ",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "relativeSelector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "relativeSelector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 30,
+                  "offset": 29
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you perform relative HTML element searches.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 30,
+                  "offset": 29
+                },
+                "end": {
+                  "line": 1,
+                  "column": 79,
+                  "offset": 78
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 79,
+              "offset": 78
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 79,
+          "offset": 78
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "click(link(\"Block\", above(\"name\"))",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "Web element selector.",
+        "lineNumber": 6,
+        "type": {
+          "type": "UnionType",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "selector"
+            },
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        },
+        "name": "selector"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 7,
+        "type": {
+          "type": "NameExpression",
+          "name": "RelativeSearchElement"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 681,
+        "column": 0
+      },
+      "end": {
+        "line": 689,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 690,
+          "column": 0
+        },
+        "end": {
+          "line": 693,
+          "column": 2
+        }
+      },
+      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "click(link(\"Block\", above(\"name\"))"
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "selector",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web element selector.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 22,
+                      "offset": 21
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 22,
+              "offset": 21
+            }
+          }
+        },
+        "type": {
+          "type": "UnionType",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "selector"
+            },
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "RelativeSearchElement"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "above",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "above",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".above"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This ",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "relativeSelector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "relativeSelector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 30,
+                  "offset": 29
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " lets you perform relative HTML element searches.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 30,
+                  "offset": 29
+                },
+                "end": {
+                  "line": 1,
+                  "column": 79,
+                  "offset": 78
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 79,
+              "offset": 78
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 79,
+          "offset": 78
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "click(link(\"Block\", below(\"name\"))",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "Web element selector.",
+        "lineNumber": 6,
+        "type": {
+          "type": "UnionType",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "selector"
+            },
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        },
+        "name": "selector"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 7,
+        "type": {
+          "type": "NameExpression",
+          "name": "RelativeSearchElement"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 695,
+        "column": 0
+      },
+      "end": {
+        "line": 703,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 704,
+          "column": 0
+        },
+        "end": {
+          "line": 707,
+          "column": 2
+        }
+      },
+      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "click(link(\"Block\", below(\"name\"))"
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "selector",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web element selector.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 22,
+                      "offset": 21
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 22,
+              "offset": 21
+            }
+          }
+        },
+        "type": {
+          "type": "UnionType",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "selector"
+            },
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "RelativeSearchElement"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "below",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "below",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".below"
   },
   {
     "description": {
@@ -10873,7 +12291,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "alert('Message', async alert => await alert.dismiss());",
+        "description": "alert('Message', async alert => await alert.dismiss())",
         "lineNumber": 3
       },
       {
@@ -10905,22 +12323,22 @@
     ],
     "loc": {
       "start": {
-        "line": 629,
+        "line": 709,
         "column": 0
       },
       "end": {
-        "line": 637,
+        "line": 717,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 638,
+          "line": 718,
           "column": 0
         },
         "end": {
-          "line": 638,
+          "line": 718,
           "column": 81
         }
       },
@@ -10929,7 +12347,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "alert('Message', async alert => await alert.dismiss());"
+        "description": "alert('Message', async alert => await alert.dismiss())"
       }
     ],
     "params": [
@@ -11177,7 +12595,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "prompt('Message', async prompt => await prompt.dismiss());",
+        "description": "prompt('Message', async prompt => await prompt.dismiss())",
         "lineNumber": 3
       },
       {
@@ -11209,22 +12627,22 @@
     ],
     "loc": {
       "start": {
-        "line": 640,
+        "line": 720,
         "column": 0
       },
       "end": {
-        "line": 648,
+        "line": 728,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 649,
+          "line": 729,
           "column": 0
         },
         "end": {
-          "line": 649,
+          "line": 729,
           "column": 83
         }
       },
@@ -11233,7 +12651,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "prompt('Message', async prompt => await prompt.dismiss());"
+        "description": "prompt('Message', async prompt => await prompt.dismiss())"
       }
     ],
     "params": [
@@ -11481,7 +12899,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "confirm('Message', async confirm => await confirm.dismiss());",
+        "description": "confirm('Message', async confirm => await confirm.dismiss())",
         "lineNumber": 3
       },
       {
@@ -11513,22 +12931,22 @@
     ],
     "loc": {
       "start": {
-        "line": 651,
+        "line": 731,
         "column": 0
       },
       "end": {
-        "line": 659,
+        "line": 739,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 660,
+          "line": 740,
           "column": 0
         },
         "end": {
-          "line": 660,
+          "line": 740,
           "column": 85
         }
       },
@@ -11537,7 +12955,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "confirm('Message', async confirm => await confirm.dismiss());"
+        "description": "confirm('Message', async confirm => await confirm.dismiss())"
       }
     ],
     "params": [
@@ -11785,7 +13203,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "beforeunload('Message', async beforeunload => await beforeunload.dismiss());",
+        "description": "beforeunload('Message', async beforeunload => await beforeunload.dismiss())",
         "lineNumber": 3
       },
       {
@@ -11817,22 +13235,22 @@
     ],
     "loc": {
       "start": {
-        "line": 662,
+        "line": 742,
         "column": 0
       },
       "end": {
-        "line": 670,
+        "line": 750,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 671,
+          "line": 751,
           "column": 0
         },
         "end": {
-          "line": 671,
+          "line": 751,
           "column": 95
         }
       },
@@ -11841,7 +13259,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "beforeunload('Message', async beforeunload => await beforeunload.dismiss());"
+        "description": "beforeunload('Message', async beforeunload => await beforeunload.dismiss())"
       }
     ],
     "params": [
@@ -12080,22 +13498,22 @@
     ],
     "loc": {
       "start": {
-        "line": 673,
+        "line": 753,
         "column": 0
       },
       "end": {
-        "line": 681,
+        "line": 761,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 682,
+          "line": 762,
           "column": 0
         },
         "end": {
-          "line": 682,
+          "line": 762,
           "column": 50
         }
       },
@@ -12336,22 +13754,22 @@
     ],
     "loc": {
       "start": {
-        "line": 684,
+        "line": 764,
         "column": 0
       },
       "end": {
-        "line": 692,
+        "line": 772,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 693,
+          "line": 773,
           "column": 0
         },
         "end": {
-          "line": 693,
+          "line": 773,
           "column": 49
         }
       },
@@ -12597,22 +14015,22 @@
     ],
     "loc": {
       "start": {
-        "line": 695,
+        "line": 775,
         "column": 0
       },
       "end": {
-        "line": 703,
+        "line": 783,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 704,
+          "line": 784,
           "column": 0
         },
         "end": {
-          "line": 704,
+          "line": 784,
           "column": 42
         }
       },
@@ -12843,22 +14261,22 @@
     ],
     "loc": {
       "start": {
-        "line": 706,
+        "line": 786,
         "column": 0
       },
       "end": {
-        "line": 715,
+        "line": 795,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 716,
+          "line": 796,
           "column": 0
         },
         "end": {
-          "line": 716,
+          "line": 796,
           "column": 27
         }
       },
@@ -12874,7 +14292,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 716
+        "lineNumber": 796
       }
     ],
     "properties": [],
@@ -13094,22 +14512,22 @@
     ],
     "loc": {
       "start": {
-        "line": 718,
+        "line": 798,
         "column": 0
       },
       "end": {
-        "line": 727,
+        "line": 807,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 728,
+          "line": 808,
           "column": 0
         },
         "end": {
-          "line": 728,
+          "line": 808,
           "column": 29
         }
       },
@@ -13125,7 +14543,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 728
+        "lineNumber": 808
       }
     ],
     "properties": [],
@@ -13304,22 +14722,22 @@
     ],
     "loc": {
       "start": {
-        "line": 730,
+        "line": 810,
         "column": 0
       },
       "end": {
-        "line": 734,
+        "line": 814,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 735,
+          "line": 815,
           "column": 0
         },
         "end": {
-          "line": 738,
+          "line": 818,
           "column": 2
         }
       },
@@ -13533,22 +14951,22 @@
     ],
     "loc": {
       "start": {
-        "line": 740,
+        "line": 820,
         "column": 0
       },
       "end": {
-        "line": 744,
+        "line": 824,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 745,
+          "line": 825,
           "column": 0
         },
         "end": {
-          "line": 748,
+          "line": 828,
           "column": 2
         }
       },
@@ -13792,23 +15210,23 @@
     ],
     "loc": {
       "start": {
-        "line": 872,
+        "line": 971,
         "column": 0
       },
       "end": {
-        "line": 885,
+        "line": 983,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 866,
+          "line": 1010,
           "column": 0
         },
         "end": {
-          "line": 870,
-          "column": 25
+          "line": 1028,
+          "column": 1
         }
       },
       "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
@@ -13919,6 +15337,517 @@
       }
     ],
     "namespace": "selector"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Lets you perform relative HTML element searches.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 49,
+                  "offset": 48
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 49,
+              "offset": 48
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 49,
+          "offset": 48
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "callback",
+        "description": "relativeSelector",
+        "lineNumber": 2
+      },
+      {
+        "title": "function",
+        "description": null,
+        "lineNumber": 3,
+        "name": null
+      },
+      {
+        "title": "example",
+        "description": "toLeftOf('Sign in')\ntoRightOf('Get Started')\nabove('Sign in')\nbelow('Home')",
+        "lineNumber": 4
+      },
+      {
+        "title": "param",
+        "description": "Web element selector.",
+        "lineNumber": 10,
+        "type": {
+          "type": "UnionType",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "selector"
+            },
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        },
+        "name": "selector"
+      },
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 11,
+        "type": {
+          "type": "NameExpression",
+          "name": "RelativeSearchElement"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 985,
+        "column": 0
+      },
+      "end": {
+        "line": 997,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 1010,
+          "column": 0
+        },
+        "end": {
+          "line": 1028,
+          "column": 1
+        }
+      },
+      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "toLeftOf('Sign in')\ntoRightOf('Get Started')\nabove('Sign in')\nbelow('Home')"
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "selector",
+        "lineNumber": 10,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web element selector.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 22,
+                      "offset": 21
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 22,
+              "offset": 21
+            }
+          }
+        },
+        "type": {
+          "type": "UnionType",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "selector"
+            },
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "RelativeSearchElement"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "kind": "function",
+    "name": "relativeSelector",
+    "type": {
+      "type": "NameExpression",
+      "name": "Function"
+    },
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "relativeSelector",
+        "kind": "function"
+      }
+    ],
+    "namespace": "relativeSelector"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Represents a relative HTML element search. This is returned by ",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 64,
+                  "offset": 63
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "relativeSelector",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "relativeSelector"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 64,
+                  "offset": 63
+                },
+                "end": {
+                  "line": 1,
+                  "column": 88,
+                  "offset": 87
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 88,
+              "offset": 87
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 88,
+          "offset": 87
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "summary",
+        "description": "Represents a relative HTML element search.",
+        "lineNumber": 2
+      },
+      {
+        "title": "example",
+        "description": "// returns RelativeSearchElement\nabove('username')",
+        "lineNumber": 5
+      },
+      {
+        "title": "typedef",
+        "description": null,
+        "lineNumber": 9,
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        },
+        "name": "RelativeSearchElement"
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 999,
+        "column": 0
+      },
+      "end": {
+        "line": 1009,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 1010,
+          "column": 0
+        },
+        "end": {
+          "line": 1028,
+          "column": 1
+        }
+      },
+      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "// returns RelativeSearchElement\nabove('username')"
+      }
+    ],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "summary": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Represents a relative HTML element search.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 43,
+                  "offset": 42
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 43,
+              "offset": 42
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 43,
+          "offset": 42
+        }
+      }
+    },
+    "kind": "typedef",
+    "name": "RelativeSearchElement",
+    "type": {
+      "type": "NameExpression",
+      "name": "Object"
+    },
+    "constructorComment": {
+      "description": "",
+      "tags": [
+        {
+          "title": "class",
+          "description": null,
+          "lineNumber": 1,
+          "type": null,
+          "name": null
+        },
+        {
+          "title": "ignore",
+          "description": null,
+          "lineNumber": 2
+        }
+      ],
+      "loc": {
+        "start": {
+          "line": 1011,
+          "column": 4
+        },
+        "end": {
+          "line": 1014,
+          "column": 7
+        }
+      },
+      "context": {
+        "loc": {
+          "start": {
+            "line": 1015,
+            "column": 4
+          },
+          "end": {
+            "line": 1019,
+            "column": 5
+          }
+        },
+        "file": "/Users/gopher/Documents/gauge/taiko/taiko.js",
+        "sortKey": "!/Users/gopher/Documents/gauge/taiko/taiko.js 00001015",
+        "code": "{\n    /**\n     * @class \n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async isValid(e) {\n        return await p.evaluate(this.condition, e, await this.value);\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
+      },
+      "augments": [],
+      "errors": [],
+      "examples": [],
+      "params": [],
+      "properties": [],
+      "returns": [],
+      "sees": [],
+      "throws": [],
+      "todos": [],
+      "kind": "class",
+      "ignore": true
+    },
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "RelativeSearchElement",
+        "kind": "typedef"
+      }
+    ],
+    "namespace": "RelativeSearchElement"
   },
   {
     "description": {
@@ -14132,7 +16061,7 @@
                     },
                     {
                       "type": "text",
-                      "value": " for input field and text field.",
+                      "value": " for input field, fileField and text field.",
                       "position": {
                         "start": {
                           "line": 4,
@@ -14141,8 +16070,8 @@
                         },
                         "end": {
                           "line": 4,
-                          "column": 44,
-                          "offset": 214
+                          "column": 55,
+                          "offset": 225
                         },
                         "indent": []
                       }
@@ -14156,8 +16085,8 @@
                     },
                     "end": {
                       "line": 4,
-                      "column": 44,
-                      "offset": 214
+                      "column": 55,
+                      "offset": 225
                     },
                     "indent": []
                   }
@@ -14171,8 +16100,8 @@
                 },
                 "end": {
                   "line": 4,
-                  "column": 44,
-                  "offset": 214
+                  "column": 55,
+                  "offset": 225
                 },
                 "indent": []
               }
@@ -14192,12 +16121,12 @@
                         "start": {
                           "line": 5,
                           "column": 3,
-                          "offset": 217
+                          "offset": 228
                         },
                         "end": {
                           "line": 5,
                           "column": 12,
-                          "offset": 226
+                          "offset": 237
                         },
                         "indent": []
                       }
@@ -14209,12 +16138,12 @@
                         "start": {
                           "line": 5,
                           "column": 12,
-                          "offset": 226
+                          "offset": 237
                         },
                         "end": {
                           "line": 5,
                           "column": 14,
-                          "offset": 228
+                          "offset": 239
                         },
                         "indent": []
                       }
@@ -14226,12 +16155,12 @@
                         "start": {
                           "line": 5,
                           "column": 14,
-                          "offset": 228
+                          "offset": 239
                         },
                         "end": {
                           "line": 5,
                           "column": 24,
-                          "offset": 238
+                          "offset": 249
                         },
                         "indent": []
                       }
@@ -14243,12 +16172,12 @@
                         "start": {
                           "line": 5,
                           "column": 24,
-                          "offset": 238
+                          "offset": 249
                         },
                         "end": {
                           "line": 5,
                           "column": 39,
-                          "offset": 253
+                          "offset": 264
                         },
                         "indent": []
                       }
@@ -14258,12 +16187,12 @@
                     "start": {
                       "line": 5,
                       "column": 3,
-                      "offset": 217
+                      "offset": 228
                     },
                     "end": {
                       "line": 5,
                       "column": 39,
-                      "offset": 253
+                      "offset": 264
                     },
                     "indent": []
                   }
@@ -14273,12 +16202,12 @@
                 "start": {
                   "line": 5,
                   "column": 1,
-                  "offset": 215
+                  "offset": 226
                 },
                 "end": {
                   "line": 5,
                   "column": 39,
-                  "offset": 253
+                  "offset": 264
                 },
                 "indent": []
               }
@@ -14298,12 +16227,12 @@
                         "start": {
                           "line": 6,
                           "column": 3,
-                          "offset": 256
+                          "offset": 267
                         },
                         "end": {
                           "line": 6,
                           "column": 12,
-                          "offset": 265
+                          "offset": 276
                         },
                         "indent": []
                       }
@@ -14315,12 +16244,12 @@
                         "start": {
                           "line": 6,
                           "column": 12,
-                          "offset": 265
+                          "offset": 276
                         },
                         "end": {
                           "line": 6,
                           "column": 14,
-                          "offset": 267
+                          "offset": 278
                         },
                         "indent": []
                       }
@@ -14332,12 +16261,12 @@
                         "start": {
                           "line": 6,
                           "column": 14,
-                          "offset": 267
+                          "offset": 278
                         },
                         "end": {
                           "line": 6,
                           "column": 25,
-                          "offset": 278
+                          "offset": 289
                         },
                         "indent": []
                       }
@@ -14349,12 +16278,12 @@
                         "start": {
                           "line": 6,
                           "column": 25,
-                          "offset": 278
+                          "offset": 289
                         },
                         "end": {
                           "line": 6,
                           "column": 27,
-                          "offset": 280
+                          "offset": 291
                         },
                         "indent": []
                       }
@@ -14366,12 +16295,12 @@
                         "start": {
                           "line": 6,
                           "column": 27,
-                          "offset": 280
+                          "offset": 291
                         },
                         "end": {
                           "line": 6,
                           "column": 40,
-                          "offset": 293
+                          "offset": 304
                         },
                         "indent": []
                       }
@@ -14383,12 +16312,12 @@
                         "start": {
                           "line": 6,
                           "column": 40,
-                          "offset": 293
+                          "offset": 304
                         },
                         "end": {
                           "line": 6,
                           "column": 54,
-                          "offset": 307
+                          "offset": 318
                         },
                         "indent": []
                       }
@@ -14398,12 +16327,12 @@
                     "start": {
                       "line": 6,
                       "column": 3,
-                      "offset": 256
+                      "offset": 267
                     },
                     "end": {
                       "line": 6,
                       "column": 54,
-                      "offset": 307
+                      "offset": 318
                     },
                     "indent": []
                   }
@@ -14413,12 +16342,12 @@
                 "start": {
                   "line": 6,
                   "column": 1,
-                  "offset": 254
+                  "offset": 265
                 },
                 "end": {
                   "line": 6,
                   "column": 54,
-                  "offset": 307
+                  "offset": 318
                 },
                 "indent": []
               }
@@ -14438,12 +16367,12 @@
                         "start": {
                           "line": 7,
                           "column": 3,
-                          "offset": 310
+                          "offset": 321
                         },
                         "end": {
                           "line": 7,
                           "column": 13,
-                          "offset": 320
+                          "offset": 331
                         },
                         "indent": []
                       }
@@ -14455,12 +16384,12 @@
                         "start": {
                           "line": 7,
                           "column": 13,
-                          "offset": 320
+                          "offset": 331
                         },
                         "end": {
                           "line": 7,
                           "column": 15,
-                          "offset": 322
+                          "offset": 333
                         },
                         "indent": []
                       }
@@ -14472,12 +16401,12 @@
                         "start": {
                           "line": 7,
                           "column": 15,
-                          "offset": 322
+                          "offset": 333
                         },
                         "end": {
                           "line": 7,
                           "column": 27,
-                          "offset": 334
+                          "offset": 345
                         },
                         "indent": []
                       }
@@ -14489,12 +16418,12 @@
                         "start": {
                           "line": 7,
                           "column": 27,
-                          "offset": 334
+                          "offset": 345
                         },
                         "end": {
                           "line": 7,
                           "column": 29,
-                          "offset": 336
+                          "offset": 347
                         },
                         "indent": []
                       }
@@ -14506,12 +16435,12 @@
                         "start": {
                           "line": 7,
                           "column": 29,
-                          "offset": 336
+                          "offset": 347
                         },
                         "end": {
                           "line": 7,
                           "column": 43,
-                          "offset": 350
+                          "offset": 361
                         },
                         "indent": []
                       }
@@ -14523,12 +16452,12 @@
                         "start": {
                           "line": 7,
                           "column": 43,
-                          "offset": 350
+                          "offset": 361
                         },
                         "end": {
                           "line": 7,
                           "column": 61,
-                          "offset": 368
+                          "offset": 379
                         },
                         "indent": []
                       }
@@ -14538,12 +16467,12 @@
                     "start": {
                       "line": 7,
                       "column": 3,
-                      "offset": 310
+                      "offset": 321
                     },
                     "end": {
                       "line": 7,
                       "column": 61,
-                      "offset": 368
+                      "offset": 379
                     },
                     "indent": []
                   }
@@ -14553,12 +16482,12 @@
                 "start": {
                   "line": 7,
                   "column": 1,
-                  "offset": 308
+                  "offset": 319
                 },
                 "end": {
                   "line": 7,
                   "column": 61,
-                  "offset": 368
+                  "offset": 379
                 },
                 "indent": []
               }
@@ -14573,7 +16502,7 @@
             "end": {
               "line": 7,
               "column": 61,
-              "offset": 368
+              "offset": 379
             },
             "indent": [
               1,
@@ -14593,7 +16522,7 @@
         "end": {
           "line": 7,
           "column": 61,
-          "offset": 368
+          "offset": 379
         }
       }
     },
@@ -14661,23 +16590,23 @@
     ],
     "loc": {
       "start": {
-        "line": 887,
+        "line": 1030,
         "column": 0
       },
       "end": {
-        "line": 908,
+        "line": 1051,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 866,
+          "line": 1010,
           "column": 0
         },
         "end": {
-          "line": 870,
-          "column": 25
+          "line": 1028,
+          "column": 1
         }
       },
       "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"

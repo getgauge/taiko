@@ -211,12 +211,9 @@ module.exports.write = async (text, into) => {
  */
 module.exports.upload = async (filepath, to) => {
     validate();
-    if (isString(to)) to = {
-        get: async () => $xpath(`//input[@type='file'][@id=(//label[contains(text(), ${xpath(to)})]/@for)]`),
-        description: `File input field with label containing "${to}"`,
-    };
+    if (isString(to)) to = fileField(to);
     else if (!isSelector(to)) throw Error('Invalid element passed as paramenter');
-    const e = await to.get();
+    const e = await element(to);
     await e.uploadFile(filepath);
     await e.dispose();
     return { description: `Uploaded ${filepath} to the ` + description(to, true) };
@@ -350,7 +347,7 @@ module.exports.scrollDown = async (e, px = 100) => {
  * Captures a screenshot of the page.
  *
  * @example
- * screenshot({path: 'screenshot.png'});
+ * screenshot({path: 'screenshot.png'})
  *
  * @param {Object} options - Options object with properties mentioned [here](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagescreenshotoptions).
  * @returns {Promise<Buffer>} - Promise which resolves to buffer with captured screenshot.
@@ -358,37 +355,23 @@ module.exports.scrollDown = async (e, px = 100) => {
 module.exports.screenshot = async options => p.screenshot(options);
 
 /**
- * This {@link selector} lets you identify an element on the web page via XPath or CSS selector.
- * @example
- * click($('.class'))
- * $('.class').exists()
- *
- * @param {string} selector - XPath or CSS selector.
- * @returns {ElementWrapper}
- */
-module.exports.$ = selector => {
-    validate();
-    const get = async () => selector.startsWith('//') || selector.startsWith('(') ? $xpath(selector) : p.$(selector);
-    return { get: get, exists: exists(get), description: `Custom selector "$(${selector})"` };
-};
-
-/**
  * This {@link selector} lets you identify elements on the web page via XPath or CSS selector.
  * @example
- * highlight($$(`//*[text()='text']`)[1])
- * $$(`//*[text()='text']`).exists()
+ * highlight($(`//*[text()='text']`))
+ * $(`//*[text()='text']`).exists()
  *
  * @param {string} selector - XPath or CSS selector.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
-module.exports.$$ = selector => {
+module.exports.$ = (selector, ...args) => {
     validate();
-    const get = async () => selector.startsWith('//') || selector.startsWith('(') ? $$xpath(selector) : p.$$(selector);
-    return { get: get, exists: async () => (await get()).length > 0, description: `Custom selector $$(${selector})` };
+    const get = async () => await handleRelativeSearch(await (selector.startsWith('//') || selector.startsWith('(') ? $$xpath(selector) : p.$$(selector)), args);
+    return { get: get, exists: exists(get), description: `Custom selector $$(${selector})` };
 };
 
 /**
- * This {@link selector} lets you identify an image (HTML <img> element) on a web page. Typically, this is done via the image's alt text.
+ * This {@link selector} lets you identify an image on a web page. Typically, this is done via the image's alt text.
  * @summary Lets you identify an image on a web page.
  *
  * @example
@@ -396,12 +379,13 @@ module.exports.$$ = selector => {
  * image('alt').exists()
  *
  * @param {string} alt - The image's alt text.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
-module.exports.image = alt => {
+module.exports.image = (alt, ...args) => {
     validate();
     assertType(alt);
-    const get = async () => p.$(`img[alt="${alt}"]`);
+    const get = async () => await handleRelativeSearch(await p.$$(`img[alt="${alt}"]`), args);
     return { get: get, exists: exists(get), description: `Image with "alt=${alt}"` };
 };
 
@@ -413,11 +397,12 @@ module.exports.image = alt => {
  * link('Get Started').exists()
  *
  * @param {string} text - The link text.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
-module.exports.link = text => {
+module.exports.link = (text, ...args) => {
     validate();
-    const get = async () => element(text, 'a');
+    const get = async () => handleRelativeSearch(await elements(text, 'a'), args);
     return { get: get, exists: exists(get), description: description(text).replace('Element', 'Link') };
 };
 
@@ -430,11 +415,12 @@ module.exports.link = text => {
  * listItem('Get Started').exists()
  *
  * @param {string} label - The label of the list item.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
-module.exports.listItem = label => {
+module.exports.listItem = (label, ...args) => {
     validate();
-    const get = async () => element(label, 'li');
+    const get = async () => await handleRelativeSearch(await elements(label, 'li'), args);
     return { get: get, exists: exists(get), description: description(label).replace('Element', 'List item') };
 };
 
@@ -446,11 +432,12 @@ module.exports.listItem = label => {
  * button('Get Started').exists()
  *
  * @param {string} label - The button label.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
-module.exports.button = label => {
+module.exports.button = (label, ...args) => {
     validate();
-    const get = async () => element(label, 'button');
+    const get = async () => await handleRelativeSearch(await elements(label, 'button'), args);
     return { get: get, exists: exists(get), description: description(label).replace('Element', 'Button') };
 };
 
@@ -463,24 +450,52 @@ module.exports.button = label => {
  *
  * @param {string} [attribute='value'] - The input field's attribute.
  * @param {string} value - Value of the attribute specified in the first parameter.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
-module.exports.inputField = (attribute = 'value', value) => {
+module.exports.inputField = (attribute = 'value', value, ...args) => {
     validate();
+    if (value instanceof RelativeSearchElement) {
+        args = [value].concat(args);
+        value = undefined;
+    }
     if (!value) {
         value = attribute;
         attribute = 'value';
     }
     assertType(value);
     assertType(attribute);
-    const get = async () => p.$(`input[${attribute}="${value}"]`);
+    const get = async () => await handleRelativeSearch(await p.$$(`input[${attribute}="${value}"]`), args);
     return {
         get: get,
         exists: exists(get),
         description: `Input field with "${attribute} = ${value}"`,
-        value: async () => p.evaluate(e => e.value, await get()),
+        value: async () => p.evaluate(e => e.value, (await get())[0]),
     };
 };
+
+/**
+ * This {@link selector} lets you identify a file input field on a web page.
+ *
+ * @example
+ * fileField('Please select a file:').value()
+ * fileField('Please select a file:').exists()
+ *
+ * @param {string} label - The label (human-visible name) of the file input field.
+ * @param {...relativeSelector} args
+ * @returns {ElementWrapper}
+ */
+module.exports.fileField = fileField;
+
+function fileField(label, ...args) {
+    const get = async () => await handleRelativeSearch(await $$xpath(`//input[@type='file'][@id=(//label[contains(text(), ${xpath(label)})]/@for)]`), args);
+    return {
+        get: get,
+        exists: exists(get),
+        value: async () => p.evaluate(e => e.value, (await get())[0]),
+        description: `File input field with label containing "${label}"`,
+    };
+}
 
 /**
  * This {@link selector} lets you identify a text field on a web page.
@@ -490,19 +505,20 @@ module.exports.inputField = (attribute = 'value', value) => {
  * textField('Username:').exists()
  *
  * @param {string} label - The label (human-visible name) of the text field.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
 module.exports.textField = textField;
 
-function textField(label) {
+function textField(label, ...args) {
     validate();
     assertType(label);
-    const get = async () => $xpath(`//input[@type='text'][@id=(//label[contains(text(), ${xpath(label)})]/@for)]`);
+    const get = async () => await handleRelativeSearch(await $$xpath(`//input[@type='text'][@id=(//label[contains(text(), ${xpath(label)})]/@for)]`), args);
     return {
         get: get,
         exists: exists(get),
         description: `Text field with label containing "${label}"`,
-        value: async () => p.evaluate(e => e.value, await get()),
+        value: async () => p.evaluate(e => e.value, (await get())[0]),
     };
 }
 
@@ -515,24 +531,25 @@ function textField(label) {
  * comboBox('Vehicle:').exists()
  *
  * @param {string} label - The label (human-visible name) of the combo box.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
-module.exports.comboBox = label => {
+module.exports.comboBox = (label, ...args) => {
     validate();
     assertType(label);
-    const get = async () => $xpath(`//select[@id=(//label[contains(text(), ${xpath(label)})]/@for)]`);
+    const get = async () => await handleRelativeSearch(await $$xpath(`//select[@id=(//label[contains(text(), ${xpath(label)})]/@for)]`), args);
     return {
         get: get,
         exists: exists(get),
         description: `Combo box with label containing "${label}"`,
         select: async (value) => {
-            const box = await get();
+            const box = (await get())[0];
             if (!box) throw new Error('Combo Box not found');
             await p.evaluate((box, value) => {
                 Array.from(box.options).filter(o => o.text === value).forEach(o => o.selected = true);
             }, box, value);
         },
-        value: async () => p.evaluate(e => e.value, await get()),
+        value: async () => p.evaluate(e => e.value, (await get())[0]),
     };
 };
 
@@ -546,19 +563,20 @@ module.exports.comboBox = label => {
  * checkBox('Vehicle').exists()
  *
  * @param {string} label - The label (human-visible name) of the check box.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
-module.exports.checkBox = label => {
+module.exports.checkBox = (label, ...args) => {
     validate();
     assertType(label);
-    const get = async () => $xpath(`//input[@type='checkbox'][@id=(//label[contains(text(), ${xpath(label)})]/@for)]`);
+    const get = async () => await handleRelativeSearch(await $$xpath(`//input[@type='checkbox'][@id=(//label[contains(text(), ${xpath(label)})]/@for)]`), args);
     return {
         get: get,
         exists: exists(get),
         description: `Checkbox with label containing "${label}"`,
-        isChecked: async () => p.evaluate(e => e.checked, await get()),
-        check: async () => p.evaluate(e => e.checked = true, await get()),
-        uncheck: async () => p.evaluate(e => e.checked = false, await get()),
+        isChecked: async () => p.evaluate(e => e.checked, (await get())[0]),
+        check: async () => p.evaluate(e => e.checked = true, (await get())[0]),
+        uncheck: async () => p.evaluate(e => e.checked = false, (await get())[0]),
     };
 };
 
@@ -572,19 +590,20 @@ module.exports.checkBox = label => {
  * radioButton('Vehicle').exists()
  *
  * @param {string} label - The label (human-visible name) of the radio button.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
-module.exports.radioButton = label => {
+module.exports.radioButton = (label, ...args) => {
     validate();
     assertType(label);
-    const get = async () => $xpath(`//input[@type='radio'][@id=(//label[contains(text(), ${xpath(label)})]/@for)]`);
+    const get = async () => await handleRelativeSearch(await $$xpath(`//input[@type='radio'][@id=(//label[contains(text(), ${xpath(label)})]/@for)]`), args);
     return {
         get: get,
         exists: exists(get),
         description: `Radio button with label containing "${label}"`,
-        isSelected: async () => p.evaluate(e => e.checked, await get()),
-        select: async () => p.evaluate(e => e.checked = true, await get()),
-        deselect: async () => p.evaluate(e => e.checked = false, await get()),
+        isSelected: async () => p.evaluate(e => e.checked, (await get())[0]),
+        select: async () => p.evaluate(e => e.checked = true, (await get())[0]),
+        deselect: async () => p.evaluate(e => e.checked = false, (await get())[0]),
     };
 };
 
@@ -596,12 +615,13 @@ module.exports.radioButton = label => {
  * text('Vehicle').exists()
  *
  * @param {string} text - Text to match.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
-module.exports.text = text => {
+module.exports.text = (text, ...args) => {
     validate();
     assertType(text);
-    const get = async (e = '*') => $xpath('//' + e + `[text()=${xpath(text)}]`);
+    const get = async (e = '*') => await handleRelativeSearch(await $$xpath('//' + e + `[text()=${xpath(text)}]`), args);
     return { get: get, exists: exists(get), description: `Element with text "${text}"` };
 };
 
@@ -612,25 +632,84 @@ module.exports.text = text => {
  * contains('Vehicle').exists()
  *
  * @param {string} text - Text to match.
+ * @param {...relativeSelector} args
  * @returns {ElementWrapper}
  */
 module.exports.contains = contains;
 
-function contains(text) {
+function contains(text, ...args) {
     validate();
     assertType(text);
     const get = async (e = '*') => {
-        const element = await $xpath('//' + e + `[contains(@value, ${xpath(text)})]`);
-        return element ? element : await $xpath('//' + e + `[contains(text(), ${xpath(text)})]`);
+        let elements = await $$xpath('//' + e + `[contains(@value, ${xpath(text)})]`);
+        if (!elements || !elements.length)
+            elements = await $$xpath('//' + e + `[contains(text(), ${xpath(text)})]`);
+        return await handleRelativeSearch(elements, args);
     };
     return { get: get, exists: exists(get), description: `Element containing text "${text}"` };
 }
 
 /**
+ * This {@link relativeSelector} lets you perform relative HTML element searches.
+ *
+ * @example
+ * click(link("Block", toLeftOf("name"))
+ *
+ * @param {selector|string} selector - Web element selector.
+ * @returns {RelativeSearchElement}
+ */
+module.exports.toLeftOf = selector => {
+    validate();
+    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().left < v, rectangle(selector, (r) => r.left), `To left of ${selector}`);
+};
+
+/**
+ * This {@link relativeSelector} lets you perform relative HTML element searches.
+ *
+ * @example
+ * click(link("Block", toRightOf("name"))
+ *
+ * @param {selector|string} selector - Web element selector.
+ * @returns {RelativeSearchElement}
+ */
+module.exports.toRightOf = selector => {
+    validate();
+    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().right > v, rectangle(selector, (r) => r.right), `To right of ${selector}`);
+};
+
+/**
+ * This {@link relativeSelector} lets you perform relative HTML element searches.
+ *
+ * @example
+ * click(link("Block", above("name"))
+ *
+ * @param {selector|string} selector - Web element selector.
+ * @returns {RelativeSearchElement}
+ */
+module.exports.above = selector => {
+    validate();
+    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().top < v, rectangle(selector, (r) => r.top), `Above ${selector}`);
+};
+
+/**
+ * This {@link relativeSelector} lets you perform relative HTML element searches.
+ *
+ * @example
+ * click(link("Block", below("name"))
+ *
+ * @param {selector|string} selector - Web element selector.
+ * @returns {RelativeSearchElement}
+ */
+module.exports.below = selector => {
+    validate();
+    return new RelativeSearchElement((e, v) => e.getBoundingClientRect().bottom > v, rectangle(selector, (r) => r.bottom), `Below ${selector}`);
+};
+
+/**
  * Lets you perform an operation when an `alert` with given text is shown.
  *
  * @example
- * alert('Message', async alert => await alert.dismiss());
+ * alert('Message', async alert => await alert.dismiss())
  *
  * @param {string} message - Identify alert based on this message.
  * @param {function(alert)} callback - Operation to perform.
@@ -641,7 +720,7 @@ module.exports.alert = (message, callback) => dialog('alert', message, callback)
  * Lets you perform an operation when a `prompt` with given text is shown.
  *
  * @example
- * prompt('Message', async prompt => await prompt.dismiss());
+ * prompt('Message', async prompt => await prompt.dismiss())
  *
  * @param {string} message - Identify prompt based on this message.
  * @param {function(prompt)} callback - Operation to perform.
@@ -652,7 +731,7 @@ module.exports.prompt = (message, callback) => dialog('prompt', message, callbac
  * Lets you perform an operation when a `confirm` with given text is shown.
  *
  * @example
- * confirm('Message', async confirm => await confirm.dismiss());
+ * confirm('Message', async confirm => await confirm.dismiss())
  *
  * @param {string} message - Identify confirm based on this message.
  * @param {function(confirm)} callback - Operation to perform.
@@ -663,7 +742,7 @@ module.exports.confirm = (message, callback) => dialog('confirm', message, callb
  * Lets you perform an operation when a `beforeunload` with given text is shown.
  *
  * @example
- * beforeunload('Message', async beforeunload => await beforeunload.dismiss());
+ * beforeunload('Message', async beforeunload => await beforeunload.dismiss())
  *
  * @param {string} message - Identify beforeunload based on this message.
  * @param {function(beforeunload)} callback - Operation to perform.
@@ -747,14 +826,16 @@ module.exports.page = () => {
     return p;
 };
 
-const element = async (selector, tag) => {
-    const e = await (() => {
+const element = async (selector, tag) => (await elements(selector, tag))[0];
+
+const elements = async (selector, tag) => {
+    const elements = await (() => {
         if (isString(selector)) return contains(selector).get(tag);
         else if (isSelector(selector)) return selector.get(tag);
         return null;
     })();
-    if (!e) throw new Error('Element not found');
-    return e;
+    if (!elements || !elements.length) throw new Error('Element not found');
+    return elements;
 };
 
 const description = (selector, lowerCase = false) => {
@@ -794,11 +875,6 @@ const isString = obj => typeof obj === 'string' || obj instanceof String;
 
 const isSelector = obj => obj['get'] && obj['exists'];
 
-const $xpath = async selector => {
-    const result = await $$xpath(selector);
-    return result.length > 0 ? result[0] : null;
-};
-
 const $$xpath = async selector => {
     const arrayHandle = await p.mainFrame()._context.evaluateHandle(selector => {
         let result = document.evaluate(selector, document, null, XPathResult.ANY_TYPE, null),
@@ -837,7 +913,7 @@ const sleep = milliseconds => {
 const exists = get => {
     return async (intervalTime = 1000, timeout = 10000) => {
         try {
-            await waitUntil(async () => (await get()) != null, intervalTime, timeout);
+            await waitUntil(async () => ((await get()).length > 0, intervalTime, timeout));
             return true;
         } catch (e) {
             return false;
@@ -869,6 +945,28 @@ const xpath = s => `concat(${s.match(/[^'"]+|['"]/g).map(part => {
     return '\'' + part + '\'';
 }).join(',') + ', ""'})`;
 
+const rectangle = async (selector, callback) => {
+    return callback(await p.evaluate(e => {
+        const rect = e.getBoundingClientRect();
+        return { top: rect.top, left: rect.left, right: rect.right, bottom: rect.bottom };
+    }, await element(selector)));
+};
+
+const isRelativeSearch = args => args.length && args.every(a => a instanceof RelativeSearchElement);
+
+const handleRelativeSearch = async (elements, args) => {
+    if (!isRelativeSearch(args)) throw new Error('Invalid arguments passed, only relativeSelectors are accepted');
+    const filteredElements = [];
+    for (let i = 0; i < elements.length; i++) {
+        let isValid = true;
+        for (let j = 0; j < args.length; j++)
+            if (!await args[j].isValid(elements[i]))
+                isValid = false;
+        if (isValid) filteredElements.push(elements[i]);
+    }
+    return filteredElements;
+};
+
 /**
  * Identifies an element on the page.
  * @callback selector
@@ -881,14 +979,58 @@ const xpath = s => `concat(${s.match(/[^'"]+|['"]/g).map(part => {
  *
  * @param {string} text - Text to identify the element.
  * @param {...string} args
- *
  */
+
+/**
+ * Lets you perform relative HTML element searches.
+ * @callback relativeSelector
+ * @function
+ * @example
+ * toLeftOf('Sign in')
+ * toRightOf('Get Started')
+ * above('Sign in')
+ * below('Home')
+ *
+ * @param {selector|string} selector - Web element selector.
+ * @returns {RelativeSearchElement}
+ */
+
+/**
+ * Represents a relative HTML element search. This is returned by {@link relativeSelector}
+ * @summary
+ * Represents a relative HTML element search.
+ * 
+ * @example
+ * // returns RelativeSearchElement
+ * above('username')
+ * 
+ * @typedef {Object} RelativeSearchElement
+ */
+class RelativeSearchElement {
+    /**
+     * @class 
+     * @ignore
+     */
+    constructor(condition, value, desc) {
+        this.condition = condition;
+        this.value = value;
+        this.desc = desc;
+    }
+
+    async isValid(e) {
+        return await p.evaluate(this.condition, e, await this.value);
+    }
+
+    toString() {
+        return this.desc;
+    }
+}
 
 /**
  * Wrapper object for the element present on the web page. Extra methods are avaliable based on the element type.
  *
  * * `get()`, `exists()`, `description` for all the elements.
- * * `value()` for input field and text field.
+ * * `value()` for input field, fileField and text field.
  * * `value()`, `select()` for combo box.
  * * `check()`, `uncheck()`, `isChecked()` for checkbox.
  * * `select()`, `deselect()`, `isSelected()` for radio button.

@@ -22,18 +22,22 @@
 -   [scrollDown](#scrolldown)
 -   [screenshot](#screenshot)
 -   [$](#)
--   [$$](#-1)
 -   [image](#image)
 -   [link](#link)
 -   [listItem](#listitem)
 -   [button](#button)
 -   [inputField](#inputfield)
+-   [fileField](#filefield)
 -   [textField](#textfield)
 -   [comboBox](#combobox)
 -   [checkBox](#checkbox)
 -   [radioButton](#radiobutton)
 -   [text](#text)
 -   [contains](#contains)
+-   [toLeftOf](#toleftof)
+-   [toRightOf](#torightof)
+-   [above](#above)
+-   [below](#below)
 -   [alert](#alert)
 -   [prompt](#prompt)
 -   [confirm](#confirm)
@@ -46,6 +50,8 @@
 -   [browser](#browser)
 -   [page](#page)
 -   [selector](#selector)
+-   [relativeSelector](#relativeselector)
+-   [RelativeSearchElement](#relativesearchelement)
 -   [ElementWrapper](#elementwrapper)
 
 ## openBrowser
@@ -387,52 +393,37 @@ Captures a screenshot of the page.
 **Examples**
 
 ```javascript
-screenshot({path: 'screenshot.png'});
+screenshot({path: 'screenshot.png'})
 ```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Buffer](https://nodejs.org/api/buffer.html)>** Promise which resolves to buffer with captured screenshot.
 
 ## $
 
-This [selector](#selector) lets you identify an element on the web page via XPath or CSS selector.
-
-**Parameters**
-
--   `selector` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** XPath or CSS selector.
-
-**Examples**
-
-```javascript
-click($('.class'))
-$('.class').exists()
-```
-
-Returns **[ElementWrapper](#elementwrapper)** 
-
-## $$
-
 This [selector](#selector) lets you identify elements on the web page via XPath or CSS selector.
 
 **Parameters**
 
 -   `selector` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** XPath or CSS selector.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
 ```javascript
-highlight($$(`//*[text()='text']`)[1])
-$$(`//*[text()='text']`).exists()
+highlight($(`//*[text()='text']`))
+$(`//*[text()='text']`).exists()
 ```
 
 Returns **[ElementWrapper](#elementwrapper)** 
 
 ## image
 
-This [selector](#selector) lets you identify an image (HTML <img> element) on a web page. Typically, this is done via the image's alt text.
+This [selector](#selector) lets you identify an image on a web page. Typically, this is done via the image's alt text.
 
 **Parameters**
 
 -   `alt` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The image's alt text.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
@@ -450,6 +441,7 @@ This [selector](#selector) lets you identify a link on a web page.
 **Parameters**
 
 -   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The link text.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
@@ -467,6 +459,7 @@ This [selector](#selector) lets you identify a list item (HTML <li> element) on 
 **Parameters**
 
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label of the list item.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
@@ -484,6 +477,7 @@ This [selector](#selector) lets you identify a button on a web page.
 **Parameters**
 
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The button label.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
@@ -502,12 +496,31 @@ This [selector](#selector) lets you identify an input field on a web page.
 
 -   `attribute` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The input field's attribute. (optional, default `'value'`)
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Value of the attribute specified in the first parameter.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
 ```javascript
 focus(inputField('id', 'name'))
 inputField('id', 'name').exists()
+```
+
+Returns **[ElementWrapper](#elementwrapper)** 
+
+## fileField
+
+This [selector](#selector) lets you identify a file input field on a web page.
+
+**Parameters**
+
+-   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label (human-visible name) of the file input field.
+-   `args` **...[relativeSelector](#relativeselector)** 
+
+**Examples**
+
+```javascript
+fileField('Please select a file:').value()
+fileField('Please select a file:').exists()
 ```
 
 Returns **[ElementWrapper](#elementwrapper)** 
@@ -519,6 +532,7 @@ This [selector](#selector) lets you identify a text field on a web page.
 **Parameters**
 
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label (human-visible name) of the text field.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
@@ -536,6 +550,7 @@ This [selector](#selector) lets you identify a combo box on a web page.
 **Parameters**
 
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label (human-visible name) of the combo box.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
@@ -554,6 +569,7 @@ This [selector](#selector) lets you identify a checkbox on a web page.
 **Parameters**
 
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label (human-visible name) of the check box.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
@@ -573,6 +589,7 @@ This [selector](#selector) lets you identify a radio button on a web page.
 **Parameters**
 
 -   `label` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label (human-visible name) of the radio button.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
@@ -592,6 +609,7 @@ This [selector](#selector) lets you identify an element with text.
 **Parameters**
 
 -   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Text to match.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
@@ -609,6 +627,7 @@ This [selector](#selector) lets you identify an element containing the text.
 **Parameters**
 
 -   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Text to match.
+-   `args` **...[relativeSelector](#relativeselector)** 
 
 **Examples**
 
@@ -617,6 +636,70 @@ contains('Vehicle').exists()
 ```
 
 Returns **[ElementWrapper](#elementwrapper)** 
+
+## toLeftOf
+
+This [relativeSelector](#relativeselector) lets you perform relative HTML element searches.
+
+**Parameters**
+
+-   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Web element selector.
+
+**Examples**
+
+```javascript
+click(link("Block", toLeftOf("name"))
+```
+
+Returns **[RelativeSearchElement](#relativesearchelement)** 
+
+## toRightOf
+
+This [relativeSelector](#relativeselector) lets you perform relative HTML element searches.
+
+**Parameters**
+
+-   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Web element selector.
+
+**Examples**
+
+```javascript
+click(link("Block", toRightOf("name"))
+```
+
+Returns **[RelativeSearchElement](#relativesearchelement)** 
+
+## above
+
+This [relativeSelector](#relativeselector) lets you perform relative HTML element searches.
+
+**Parameters**
+
+-   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Web element selector.
+
+**Examples**
+
+```javascript
+click(link("Block", above("name"))
+```
+
+Returns **[RelativeSearchElement](#relativesearchelement)** 
+
+## below
+
+This [relativeSelector](#relativeselector) lets you perform relative HTML element searches.
+
+**Parameters**
+
+-   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Web element selector.
+
+**Examples**
+
+```javascript
+click(link("Block", below("name"))
+```
+
+Returns **[RelativeSearchElement](#relativesearchelement)** 
 
 ## alert
 
@@ -630,7 +713,7 @@ Lets you perform an operation when an `alert` with given text is shown.
 **Examples**
 
 ```javascript
-alert('Message', async alert => await alert.dismiss());
+alert('Message', async alert => await alert.dismiss())
 ```
 
 ## prompt
@@ -645,7 +728,7 @@ Lets you perform an operation when a `prompt` with given text is shown.
 **Examples**
 
 ```javascript
-prompt('Message', async prompt => await prompt.dismiss());
+prompt('Message', async prompt => await prompt.dismiss())
 ```
 
 ## confirm
@@ -660,7 +743,7 @@ Lets you perform an operation when a `confirm` with given text is shown.
 **Examples**
 
 ```javascript
-confirm('Message', async confirm => await confirm.dismiss());
+confirm('Message', async confirm => await confirm.dismiss())
 ```
 
 ## beforeunload
@@ -675,7 +758,7 @@ Lets you perform an operation when a `beforeunload` with given text is shown.
 **Examples**
 
 ```javascript
-beforeunload('Message', async beforeunload => await beforeunload.dismiss());
+beforeunload('Message', async beforeunload => await beforeunload.dismiss())
 ```
 
 ## intervalSecs
@@ -790,12 +873,46 @@ $('#id')
 text('Home')
 ```
 
+## relativeSelector
+
+Lets you perform relative HTML element searches.
+
+Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `selector` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Web element selector.
+
+**Examples**
+
+```javascript
+toLeftOf('Sign in')
+toRightOf('Get Started')
+above('Sign in')
+below('Home')
+```
+
+Returns **[RelativeSearchElement](#relativesearchelement)** 
+
+## RelativeSearchElement
+
+Represents a relative HTML element search. This is returned by [relativeSelector](#relativeselector)
+
+Type: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+**Examples**
+
+```javascript
+// returns RelativeSearchElement
+above('username')
+```
+
 ## ElementWrapper
 
 Wrapper object for the element present on the web page. Extra methods are avaliable based on the element type.
 
 -   `get()`, `exists()`, `description` for all the elements.
--   `value()` for input field and text field.
+-   `value()` for input field, fileField and text field.
 -   `value()`, `select()` for combo box.
 -   `check()`, `uncheck()`, `isChecked()` for checkbox.
 -   `select()`, `deselect()`, `isSelected()` for radio button.
