@@ -652,6 +652,464 @@
           "children": [
             {
               "type": "text",
+              "value": "Returns the browser insance created using openBrowser.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 55,
+                  "offset": 54
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 55,
+              "offset": 54
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 55,
+          "offset": 54
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "returns",
+        "description": "Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.",
+        "lineNumber": 3,
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 38,
+        "column": 0
+      },
+      "end": {
+        "line": 42,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 0
+        },
+        "end": {
+          "line": 46,
+          "column": 2
+        }
+      },
+      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+    },
+    "augments": [],
+    "examples": [],
+    "params": [],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Puppeteer's ",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 13,
+                      "offset": 12
+                    },
+                    "indent": []
+                  }
+                },
+                {
+                  "type": "link",
+                  "title": null,
+                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Browser",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 14,
+                          "offset": 13
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 21,
+                          "offset": 20
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 13,
+                      "offset": 12
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 103,
+                      "offset": 102
+                    },
+                    "indent": []
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " instance.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 103,
+                      "offset": 102
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 113,
+                      "offset": 112
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 113,
+                  "offset": 112
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 113,
+              "offset": 112
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "browser",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "browser",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".browser"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Returns the page instance.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 27,
+                  "offset": 26
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 27,
+              "offset": 26
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 27,
+          "offset": 26
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "returns",
+        "description": "Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.",
+        "lineNumber": 3,
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 48,
+        "column": 0
+      },
+      "end": {
+        "line": 52,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 53,
+          "column": 0
+        },
+        "end": {
+          "line": 56,
+          "column": 2
+        }
+      },
+      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+    },
+    "augments": [],
+    "examples": [],
+    "params": [],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Puppeteer's ",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 13,
+                      "offset": 12
+                    },
+                    "indent": []
+                  }
+                },
+                {
+                  "type": "link",
+                  "title": null,
+                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Page",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 14,
+                          "offset": 13
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 18,
+                          "offset": 17
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 13,
+                      "offset": 12
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 97,
+                      "offset": 96
+                    },
+                    "indent": []
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " instance.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 97,
+                      "offset": 96
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 107,
+                      "offset": 106
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 107,
+                  "offset": 106
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 107,
+              "offset": 106
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "page",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "page",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".page"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
               "value": "Opens the specified URL in the browser's tab. Adds ",
               "position": {
                 "start": {
@@ -782,22 +1240,22 @@
     ],
     "loc": {
       "start": {
-        "line": 38,
+        "line": 58,
         "column": 0
       },
       "end": {
-        "line": 49,
+        "line": 69,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 50,
+          "line": 70,
           "column": 0
         },
         "end": {
-          "line": 55,
+          "line": 75,
           "column": 2
         }
       },
@@ -1189,22 +1647,22 @@
     ],
     "loc": {
       "start": {
-        "line": 57,
+        "line": 77,
         "column": 0
       },
       "end": {
-        "line": 66,
+        "line": 86,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 67,
+          "line": 87,
           "column": 0
         },
         "end": {
-          "line": 71,
+          "line": 91,
           "column": 2
         }
       },
@@ -1577,22 +2035,22 @@
     ],
     "loc": {
       "start": {
-        "line": 73,
+        "line": 93,
         "column": 0
       },
       "end": {
-        "line": 90,
+        "line": 110,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 91,
+          "line": 111,
           "column": 0
         },
         "end": {
-          "line": 91,
+          "line": 111,
           "column": 29
         }
       },
@@ -2464,22 +2922,22 @@
     ],
     "loc": {
       "start": {
-        "line": 104,
+        "line": 124,
         "column": 0
       },
       "end": {
-        "line": 116,
+        "line": 136,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 117,
+          "line": 137,
           "column": 0
         },
         "end": {
-          "line": 121,
+          "line": 141,
           "column": 2
         }
       },
@@ -2875,22 +3333,22 @@
     ],
     "loc": {
       "start": {
-        "line": 123,
+        "line": 143,
         "column": 0
       },
       "end": {
-        "line": 133,
+        "line": 153,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 134,
+          "line": 154,
           "column": 0
         },
         "end": {
-          "line": 138,
+          "line": 158,
           "column": 2
         }
       },
@@ -3224,22 +3682,22 @@
     ],
     "loc": {
       "start": {
-        "line": 140,
+        "line": 160,
         "column": 0
       },
       "end": {
-        "line": 150,
+        "line": 170,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 151,
+          "line": 171,
           "column": 0
         },
         "end": {
-          "line": 157,
+          "line": 177,
           "column": 2
         }
       },
@@ -3573,22 +4031,22 @@
     ],
     "loc": {
       "start": {
-        "line": 159,
+        "line": 179,
         "column": 0
       },
       "end": {
-        "line": 168,
+        "line": 188,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 169,
+          "line": 189,
           "column": 0
         },
         "end": {
-          "line": 173,
+          "line": 193,
           "column": 2
         }
       },
@@ -3930,22 +4388,22 @@
     ],
     "loc": {
       "start": {
-        "line": 175,
+        "line": 195,
         "column": 0
       },
       "end": {
-        "line": 186,
+        "line": 206,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 187,
+          "line": 207,
           "column": 0
         },
         "end": {
-          "line": 199,
+          "line": 219,
           "column": 2
         }
       },
@@ -4296,22 +4754,22 @@
     ],
     "loc": {
       "start": {
-        "line": 201,
+        "line": 221,
         "column": 0
       },
       "end": {
-        "line": 211,
+        "line": 231,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 212,
+          "line": 232,
           "column": 0
         },
         "end": {
-          "line": 220,
+          "line": 240,
           "column": 2
         }
       },
@@ -4674,22 +5132,22 @@
     ],
     "loc": {
       "start": {
-        "line": 222,
+        "line": 242,
         "column": 0
       },
       "end": {
-        "line": 234,
+        "line": 254,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 235,
+          "line": 255,
           "column": 0
         },
         "end": {
-          "line": 239,
+          "line": 259,
           "column": 2
         }
       },
@@ -5150,22 +5608,22 @@
     ],
     "loc": {
       "start": {
-        "line": 241,
+        "line": 261,
         "column": 0
       },
       "end": {
-        "line": 251,
+        "line": 271,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 252,
+          "line": 272,
           "column": 0
         },
         "end": {
-          "line": 256,
+          "line": 276,
           "column": 2
         }
       },
@@ -5494,22 +5952,22 @@
     ],
     "loc": {
       "start": {
-        "line": 258,
+        "line": 278,
         "column": 0
       },
       "end": {
-        "line": 267,
+        "line": 287,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 268,
+          "line": 288,
           "column": 0
         },
         "end": {
-          "line": 272,
+          "line": 292,
           "column": 2
         }
       },
@@ -5808,22 +6266,22 @@
     ],
     "loc": {
       "start": {
-        "line": 274,
+        "line": 294,
         "column": 0
       },
       "end": {
-        "line": 286,
+        "line": 306,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 287,
+          "line": 307,
           "column": 0
         },
         "end": {
-          "line": 290,
+          "line": 310,
           "column": 2
         }
       },
@@ -6085,22 +6543,22 @@
     ],
     "loc": {
       "start": {
-        "line": 292,
+        "line": 312,
         "column": 0
       },
       "end": {
-        "line": 304,
+        "line": 324,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 305,
+          "line": 325,
           "column": 0
         },
         "end": {
-          "line": 308,
+          "line": 328,
           "column": 2
         }
       },
@@ -6362,22 +6820,22 @@
     ],
     "loc": {
       "start": {
-        "line": 310,
+        "line": 330,
         "column": 0
       },
       "end": {
-        "line": 322,
+        "line": 342,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 323,
+          "line": 343,
           "column": 0
         },
         "end": {
-          "line": 326,
+          "line": 346,
           "column": 2
         }
       },
@@ -6639,22 +7097,22 @@
     ],
     "loc": {
       "start": {
-        "line": 328,
+        "line": 348,
         "column": 0
       },
       "end": {
-        "line": 340,
+        "line": 360,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 341,
+          "line": 361,
           "column": 0
         },
         "end": {
-          "line": 344,
+          "line": 364,
           "column": 2
         }
       },
@@ -6885,22 +7343,22 @@
     ],
     "loc": {
       "start": {
-        "line": 346,
+        "line": 366,
         "column": 0
       },
       "end": {
-        "line": 354,
+        "line": 374,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 355,
+          "line": 375,
           "column": 0
         },
         "end": {
-          "line": 355,
+          "line": 375,
           "column": 67
         }
       },
@@ -7259,22 +7717,22 @@
     ],
     "loc": {
       "start": {
-        "line": 357,
+        "line": 377,
         "column": 0
       },
       "end": {
-        "line": 366,
+        "line": 386,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 367,
+          "line": 387,
           "column": 0
         },
         "end": {
-          "line": 371,
+          "line": 391,
           "column": 2
         }
       },
@@ -7551,22 +8009,22 @@
     ],
     "loc": {
       "start": {
-        "line": 373,
+        "line": 393,
         "column": 0
       },
       "end": {
-        "line": 384,
+        "line": 404,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 385,
+          "line": 405,
           "column": 0
         },
         "end": {
-          "line": 390,
+          "line": 410,
           "column": 2
         }
       },
@@ -7890,22 +8348,22 @@
     ],
     "loc": {
       "start": {
-        "line": 392,
+        "line": 412,
         "column": 0
       },
       "end": {
-        "line": 402,
+        "line": 422,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 403,
+          "line": 423,
           "column": 0
         },
         "end": {
-          "line": 407,
+          "line": 427,
           "column": 2
         }
       },
@@ -8216,22 +8674,22 @@
     ],
     "loc": {
       "start": {
-        "line": 409,
+        "line": 429,
         "column": 0
       },
       "end": {
-        "line": 420,
+        "line": 440,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 421,
+          "line": 441,
           "column": 0
         },
         "end": {
-          "line": 425,
+          "line": 445,
           "column": 2
         }
       },
@@ -8555,22 +9013,22 @@
     ],
     "loc": {
       "start": {
-        "line": 427,
+        "line": 447,
         "column": 0
       },
       "end": {
-        "line": 437,
+        "line": 457,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 438,
+          "line": 458,
           "column": 0
         },
         "end": {
-          "line": 442,
+          "line": 462,
           "column": 2
         }
       },
@@ -8856,22 +9314,22 @@
     ],
     "loc": {
       "start": {
-        "line": 444,
+        "line": 464,
         "column": 0
       },
       "end": {
-        "line": 455,
+        "line": 475,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 456,
+          "line": 476,
           "column": 0
         },
         "end": {
-          "line": 475,
+          "line": 495,
           "column": 2
         }
       },
@@ -9205,22 +9663,22 @@
     ],
     "loc": {
       "start": {
-        "line": 477,
+        "line": 497,
         "column": 0
       },
       "end": {
-        "line": 487,
+        "line": 507,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 488,
+          "line": 508,
           "column": 0
         },
         "end": {
-          "line": 488,
+          "line": 508,
           "column": 37
         }
       },
@@ -9490,22 +9948,22 @@
     ],
     "loc": {
       "start": {
-        "line": 500,
+        "line": 520,
         "column": 0
       },
       "end": {
-        "line": 510,
+        "line": 530,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 511,
+          "line": 531,
           "column": 0
         },
         "end": {
-          "line": 511,
+          "line": 531,
           "column": 37
         }
       },
@@ -9775,22 +10233,22 @@
     ],
     "loc": {
       "start": {
-        "line": 525,
+        "line": 545,
         "column": 0
       },
       "end": {
-        "line": 536,
+        "line": 556,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 537,
+          "line": 557,
           "column": 0
         },
         "end": {
-          "line": 554,
+          "line": 574,
           "column": 2
         }
       },
@@ -10062,22 +10520,22 @@
     ],
     "loc": {
       "start": {
-        "line": 556,
+        "line": 576,
         "column": 0
       },
       "end": {
-        "line": 568,
+        "line": 588,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 569,
+          "line": 589,
           "column": 0
         },
         "end": {
-          "line": 581,
+          "line": 601,
           "column": 2
         }
       },
@@ -10349,22 +10807,22 @@
     ],
     "loc": {
       "start": {
-        "line": 583,
+        "line": 603,
         "column": 0
       },
       "end": {
-        "line": 595,
+        "line": 615,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 596,
+          "line": 616,
           "column": 0
         },
         "end": {
-          "line": 608,
+          "line": 628,
           "column": 2
         }
       },
@@ -10636,22 +11094,22 @@
     ],
     "loc": {
       "start": {
-        "line": 610,
+        "line": 630,
         "column": 0
       },
       "end": {
-        "line": 620,
+        "line": 640,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 621,
+          "line": 641,
           "column": 0
         },
         "end": {
-          "line": 626,
+          "line": 646,
           "column": 2
         }
       },
@@ -10923,22 +11381,22 @@
     ],
     "loc": {
       "start": {
-        "line": 628,
+        "line": 648,
         "column": 0
       },
       "end": {
-        "line": 637,
+        "line": 657,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 638,
+          "line": 658,
           "column": 0
         },
         "end": {
-          "line": 638,
+          "line": 658,
           "column": 35
         }
       },
@@ -11204,22 +11662,22 @@
     ],
     "loc": {
       "start": {
-        "line": 652,
+        "line": 672,
         "column": 0
       },
       "end": {
-        "line": 660,
+        "line": 680,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 661,
+          "line": 681,
           "column": 0
         },
         "end": {
-          "line": 664,
+          "line": 684,
           "column": 2
         }
       },
@@ -11484,22 +11942,22 @@
     ],
     "loc": {
       "start": {
-        "line": 666,
+        "line": 686,
         "column": 0
       },
       "end": {
-        "line": 674,
+        "line": 694,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 675,
+          "line": 695,
           "column": 0
         },
         "end": {
-          "line": 678,
+          "line": 698,
           "column": 2
         }
       },
@@ -11764,22 +12222,22 @@
     ],
     "loc": {
       "start": {
-        "line": 680,
+        "line": 700,
         "column": 0
       },
       "end": {
-        "line": 688,
+        "line": 708,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 689,
+          "line": 709,
           "column": 0
         },
         "end": {
-          "line": 692,
+          "line": 712,
           "column": 2
         }
       },
@@ -12044,22 +12502,22 @@
     ],
     "loc": {
       "start": {
-        "line": 694,
+        "line": 714,
         "column": 0
       },
       "end": {
-        "line": 702,
+        "line": 722,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 703,
+          "line": 723,
           "column": 0
         },
         "end": {
-          "line": 706,
+          "line": 726,
           "column": 2
         }
       },
@@ -12324,22 +12782,22 @@
     ],
     "loc": {
       "start": {
-        "line": 708,
+        "line": 728,
         "column": 0
       },
       "end": {
-        "line": 716,
+        "line": 736,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 717,
+          "line": 737,
           "column": 0
         },
         "end": {
-          "line": 725,
+          "line": 745,
           "column": 2
         }
       },
@@ -12594,22 +13052,22 @@
     ],
     "loc": {
       "start": {
-        "line": 727,
+        "line": 747,
         "column": 0
       },
       "end": {
-        "line": 735,
+        "line": 755,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 736,
+          "line": 756,
           "column": 0
         },
         "end": {
-          "line": 736,
+          "line": 756,
           "column": 81
         }
       },
@@ -12898,22 +13356,22 @@
     ],
     "loc": {
       "start": {
-        "line": 738,
+        "line": 758,
         "column": 0
       },
       "end": {
-        "line": 746,
+        "line": 766,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 747,
+          "line": 767,
           "column": 0
         },
         "end": {
-          "line": 747,
+          "line": 767,
           "column": 83
         }
       },
@@ -13202,22 +13660,22 @@
     ],
     "loc": {
       "start": {
-        "line": 749,
+        "line": 769,
         "column": 0
       },
       "end": {
-        "line": 757,
+        "line": 777,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 758,
+          "line": 778,
           "column": 0
         },
         "end": {
-          "line": 758,
+          "line": 778,
           "column": 85
         }
       },
@@ -13506,22 +13964,22 @@
     ],
     "loc": {
       "start": {
-        "line": 760,
+        "line": 780,
         "column": 0
       },
       "end": {
-        "line": 768,
+        "line": 788,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 769,
+          "line": 789,
           "column": 0
         },
         "end": {
-          "line": 769,
+          "line": 789,
           "column": 95
         }
       },
@@ -13769,22 +14227,22 @@
     ],
     "loc": {
       "start": {
-        "line": 771,
+        "line": 791,
         "column": 0
       },
       "end": {
-        "line": 779,
+        "line": 799,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 780,
+          "line": 800,
           "column": 0
         },
         "end": {
-          "line": 780,
+          "line": 800,
           "column": 50
         }
       },
@@ -14025,22 +14483,22 @@
     ],
     "loc": {
       "start": {
-        "line": 782,
+        "line": 802,
         "column": 0
       },
       "end": {
-        "line": 790,
+        "line": 810,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 791,
+          "line": 811,
           "column": 0
         },
         "end": {
-          "line": 791,
+          "line": 811,
           "column": 49
         }
       },
@@ -14286,22 +14744,22 @@
     ],
     "loc": {
       "start": {
-        "line": 793,
+        "line": 813,
         "column": 0
       },
       "end": {
-        "line": 801,
+        "line": 821,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 802,
+          "line": 822,
           "column": 0
         },
         "end": {
-          "line": 802,
+          "line": 822,
           "column": 42
         }
       },
@@ -14532,22 +14990,22 @@
     ],
     "loc": {
       "start": {
-        "line": 804,
+        "line": 824,
         "column": 0
       },
       "end": {
-        "line": 813,
+        "line": 833,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 814,
+          "line": 834,
           "column": 0
         },
         "end": {
-          "line": 814,
+          "line": 834,
           "column": 27
         }
       },
@@ -14563,7 +15021,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 814
+        "lineNumber": 834
       }
     ],
     "properties": [],
@@ -14783,22 +15241,22 @@
     ],
     "loc": {
       "start": {
-        "line": 816,
+        "line": 836,
         "column": 0
       },
       "end": {
-        "line": 825,
+        "line": 845,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 826,
+          "line": 846,
           "column": 0
         },
         "end": {
-          "line": 826,
+          "line": 846,
           "column": 29
         }
       },
@@ -14814,7 +15272,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 826
+        "lineNumber": 846
       }
     ],
     "properties": [],
@@ -14926,464 +15384,6 @@
       }
     ],
     "namespace": ".into"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Returns the browser insance created using openBrowser.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 55,
-                  "offset": 54
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 55,
-              "offset": 54
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 55,
-          "offset": 54
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "returns",
-        "description": "Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.",
-        "lineNumber": 3,
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        }
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 828,
-        "column": 0
-      },
-      "end": {
-        "line": 832,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 833,
-          "column": 0
-        },
-        "end": {
-          "line": 836,
-          "column": 2
-        }
-      },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
-    },
-    "augments": [],
-    "examples": [],
-    "params": [],
-    "properties": [],
-    "returns": [
-      {
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Puppeteer's ",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "Browser",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 14,
-                          "offset": 13
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 21,
-                          "offset": 20
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 103,
-                      "offset": 102
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": " instance.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 103,
-                      "offset": 102
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 113,
-                      "offset": 112
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 113,
-                  "offset": 112
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 113,
-              "offset": 112
-            }
-          }
-        },
-        "title": "returns",
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        }
-      }
-    ],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "browser",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "browser",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".browser"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Returns the page instance.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 27,
-                  "offset": 26
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 27,
-              "offset": 26
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 27,
-          "offset": 26
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "returns",
-        "description": "Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.",
-        "lineNumber": 3,
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        }
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 838,
-        "column": 0
-      },
-      "end": {
-        "line": 842,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 843,
-          "column": 0
-        },
-        "end": {
-          "line": 846,
-          "column": 2
-        }
-      },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
-    },
-    "augments": [],
-    "examples": [],
-    "params": [],
-    "properties": [],
-    "returns": [
-      {
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Puppeteer's ",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "Page",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 14,
-                          "offset": 13
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 18,
-                          "offset": 17
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 97,
-                      "offset": 96
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": " instance.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 97,
-                      "offset": 96
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 107,
-                      "offset": 106
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 107,
-                  "offset": 106
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 107,
-              "offset": 106
-            }
-          }
-        },
-        "title": "returns",
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        }
-      }
-    ],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "page",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "page",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".page"
   },
   {
     "description": {

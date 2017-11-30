@@ -163,14 +163,12 @@ function displayUsageFor(name) {
 }
 
 function displayUsage() {
-    const max = Math.max(...(doc.map(e => e.name.length))) + 4;
-    doc.forEach(e => {
-        const api = e.name + ' '.repeat(max - e.name.length);
-        const description = e.summary ? e.tags.find(t => t.title === 'summary').description : desc(e.description);
-        console.log(removeQuotes(util.inspect(api, { colors: true }), api) + description);
-    });
-    console.log('\nRun `.api <name>` for more info on a specific function. For Example: `.api click`.');
-    console.log('Complete documentation is available at https://getgauge.github.io/taiko/.');
+    console.log(`
+${doc.map(e => e.name).join(', ')}
+
+Run \`.api <name>\` for more info on a specific function. For Example: \`.api click\`.
+Complete documentation is available at https://getgauge.github.io/taiko/.
+`);
 }
 
 function handleError(e) {

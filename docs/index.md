@@ -4,6 +4,8 @@
 
 -   [openBrowser](#openbrowser)
 -   [closeBrowser](#closebrowser)
+-   [browser](#browser)
+-   [page](#page)
 -   [goto](#goto)
 -   [reload](#reload)
 -   [click](#click)
@@ -48,8 +50,6 @@
 -   [waitForNavigation](#waitfornavigation)
 -   [to](#to)
 -   [into](#into)
--   [browser](#browser)
--   [page](#page)
 -   [selector](#selector)
 -   [relativeSelector](#relativeselector)
 -   [RelativeSearchElement](#relativesearchelement)
@@ -83,6 +83,18 @@ closeBrowser()
 ```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
+
+## browser
+
+Returns the browser insance created using openBrowser.
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.
+
+## page
+
+Returns the page instance.
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.
 
 ## goto
 
@@ -857,18 +869,6 @@ write("user", into('Username:'))
 ```
 
 Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [selector](#selector))** 
-
-## browser
-
-Returns the browser insance created using openBrowser.
-
-Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.
-
-## page
-
-Returns the page instance.
-
-Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.
 
 ## selector
 

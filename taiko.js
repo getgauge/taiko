@@ -36,6 +36,26 @@ module.exports.closeBrowser = async () => {
 };
 
 /**
+ * Returns the browser insance created using openBrowser.
+ *
+ * @returns {Object} - Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.
+ */
+module.exports.browser = () => {
+    validate();
+    return b;
+};
+
+/**
+ * Returns the page instance.
+ *
+ * @returns {Object} - Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.
+ */
+module.exports.page = () => {
+    validate();
+    return p;
+};
+
+/**
  * Opens the specified URL in the browser's tab. Adds `http` protocol to the URL if not present.
  * @summary Opens the specified URL in the browser's tab.
  *
@@ -824,26 +844,6 @@ module.exports.to = e => e;
  * @return {string|selector}
  */
 module.exports.into = e => e;
-
-/**
- * Returns the browser insance created using openBrowser.
- *
- * @returns {Object} - Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.
- */
-module.exports.browser = () => {
-    validate();
-    return b;
-};
-
-/**
- * Returns the page instance.
- *
- * @returns {Object} - Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.
- */
-module.exports.page = () => {
-    validate();
-    return p;
-};
 
 const element = async (selector, tag) => (await elements(selector, tag))[0];
 
