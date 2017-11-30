@@ -10,7 +10,8 @@
 		"format": "js-beautify *.js -r -b collapse,preserve-inline && npm run lint",
 		"lint": "eslint *.js",
 		"doc": "./node_modules/documentation/bin/documentation.js build taiko.js -f md -o docs/index.md && ./node_modules/documentation/bin/documentation.js build taiko.js -f json -o docs/api.json",
-		"test": "npm run lint"
+		"test": "npm run lint",
+		"login": "npm-cli-login"
 	},
 	"repository": {
 		"type": "git",
@@ -34,6 +35,7 @@
 	"devDependencies": {
 		"eslint": "^4.10.0",
 		"js-beautify": "^1.7.4",
-		"documentation": "^5.3.3"
+		"documentation": "^5.3.3",
+		"npm-cli-login": "^0.0.10"
 	}
 }
