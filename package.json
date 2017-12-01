@@ -2,15 +2,15 @@
 	"name": "taiko",
 	"version": "0.0.7",
 	"description": "An easy to use wrapper over Google Chrome's Puppeteer library.",
-	"main": "taiko.js",
+	"main": "lib/taiko.js",
 	"bin": {
-		"taiko": "cmd.js"
+		"taiko": "taiko.js"
 	},
 	"scripts": {
-		"format": "js-beautify *.js -r -b collapse,preserve-inline && npm run lint",
-		"lint": "eslint *.js",
+		"format": "js-beautify lib/*.js test/*.js -r -b collapse,preserve-inline && npm run lint",
+		"lint": "eslint lib/*.js test/*.js",
 		"doc": "./node_modules/documentation/bin/documentation.js build taiko.js -f md -o docs/index.md && ./node_modules/documentation/bin/documentation.js build taiko.js -f json -o docs/api.json",
-		"test": "npm run lint",
+		"test": "mocha && npm run lint",
 		"login": "npm-cli-login"
 	},
 	"repository": {
@@ -33,9 +33,10 @@
 		"repl.history": "^0.1.4"
 	},
 	"devDependencies": {
+		"documentation": "^5.3.3",
 		"eslint": "^4.10.0",
 		"js-beautify": "^1.7.4",
-		"documentation": "^5.3.3",
+		"mocha": "^4.0.1",
 		"npm-cli-login": "^0.0.10"
 	}
 }

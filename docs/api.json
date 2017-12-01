@@ -54,19 +54,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Launches a browser.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "openBrowser()\nopenBrowser({ headless: false })",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": "Set of configurable [options](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerlaunchoptions) to set on the browser.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -76,7 +71,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -98,22 +93,22 @@
         "column": 0
       },
       "end": {
-        "line": 15,
+        "line": 14,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 16,
+          "line": 15,
           "column": 0
         },
         "end": {
-          "line": 20,
+          "line": 19,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -125,7 +120,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -312,58 +307,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Launches a browser.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 20,
-                  "offset": 19
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 20,
-              "offset": 19
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 20,
-          "offset": 19
-        }
-      }
-    },
     "name": "openBrowser",
     "kind": "function",
     "memberof": "taiko",
@@ -439,19 +382,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Closes the browser.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "closeBrowser()",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 7,
+        "lineNumber": 6,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -469,26 +407,26 @@
     ],
     "loc": {
       "start": {
-        "line": 22,
+        "line": 21,
         "column": 0
       },
       "end": {
-        "line": 30,
+        "line": 28,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 31,
+          "line": 29,
           "column": 0
         },
         "end": {
-          "line": 36,
+          "line": 34,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -571,58 +509,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Closes the browser.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 20,
-                  "offset": 19
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 20,
-              "offset": 19
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 20,
-          "offset": 19
-        }
-      }
-    },
     "name": "closeBrowser",
     "kind": "function",
     "memberof": "taiko",
@@ -709,26 +595,26 @@
     ],
     "loc": {
       "start": {
-        "line": 38,
+        "line": 36,
         "column": 0
       },
       "end": {
-        "line": 42,
+        "line": 40,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 43,
+          "line": 41,
           "column": 0
         },
         "end": {
-          "line": 46,
+          "line": 44,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [],
@@ -938,26 +824,26 @@
     ],
     "loc": {
       "start": {
-        "line": 48,
+        "line": 46,
         "column": 0
       },
       "end": {
-        "line": 52,
+        "line": 50,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 53,
+          "line": 51,
           "column": 0
         },
         "end": {
-          "line": 56,
+          "line": 54,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [],
@@ -1190,19 +1076,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Opens the specified URL in the browser's tab.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "goto('https://google.com')\ngoto('google.com')",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": "URL to navigate page to.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -1212,7 +1093,7 @@
       {
         "title": "param",
         "description": "[Navigation parameters](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagegotourl-options)",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -1222,7 +1103,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed and the final URL.",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -1240,26 +1121,26 @@
     ],
     "loc": {
       "start": {
-        "line": 58,
+        "line": 56,
         "column": 0
       },
       "end": {
-        "line": 69,
+        "line": 66,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 70,
+          "line": 67,
           "column": 0
         },
         "end": {
-          "line": 75,
+          "line": 72,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -1271,7 +1152,7 @@
       {
         "title": "param",
         "name": "url",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -1332,7 +1213,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -1485,58 +1366,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Opens the specified URL in the browser's tab.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 46,
-                  "offset": 45
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 46,
-              "offset": 45
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 46,
-          "offset": 45
-        }
-      }
-    },
     "name": "goto",
     "kind": "function",
     "memberof": "taiko",
@@ -1647,26 +1476,26 @@
     ],
     "loc": {
       "start": {
-        "line": 77,
+        "line": 74,
         "column": 0
       },
       "end": {
-        "line": 86,
+        "line": 83,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 87,
+          "line": 84,
           "column": 0
         },
         "end": {
-          "line": 91,
+          "line": 88,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -1906,19 +1735,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Clicks on an element.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "click('Get Started')\nclick(link('Get Started'))\nclick('Get Started', waitForNavigation(false))",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": "A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -1937,7 +1761,7 @@
       {
         "title": "param",
         "description": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -1951,7 +1775,7 @@
       {
         "title": "param",
         "description": "Click options.",
-        "lineNumber": 11,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -1961,7 +1785,7 @@
       {
         "title": "param",
         "description": "`left`, `right`, or `middle`.",
-        "lineNumber": 12,
+        "lineNumber": 11,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -1975,7 +1799,7 @@
       {
         "title": "param",
         "description": "Number of times to click on the element.",
-        "lineNumber": 13,
+        "lineNumber": 12,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -1989,7 +1813,7 @@
       {
         "title": "param",
         "description": "Time to wait between mousedown and mouseup in milliseconds.",
-        "lineNumber": 14,
+        "lineNumber": 13,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -2003,7 +1827,7 @@
       {
         "title": "param",
         "description": "Timeout value in milliseconds for navigation after click.",
-        "lineNumber": 15,
+        "lineNumber": 14,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -2017,7 +1841,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 16,
+        "lineNumber": 15,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -2035,26 +1859,26 @@
     ],
     "loc": {
       "start": {
-        "line": 93,
+        "line": 90,
         "column": 0
       },
       "end": {
-        "line": 110,
+        "line": 106,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 111,
+          "line": 107,
           "column": 0
         },
         "end": {
-          "line": 111,
+          "line": 107,
           "column": 29
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -2066,7 +1890,7 @@
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -2136,7 +1960,7 @@
       {
         "title": "param",
         "name": "waitForNavigation",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "description": {
           "type": "root",
           "children": [
@@ -2266,7 +2090,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 11,
+        "lineNumber": 10,
         "description": {
           "type": "root",
           "children": [
@@ -2327,7 +2151,7 @@
           {
             "title": "param",
             "name": "options.button",
-            "lineNumber": 12,
+            "lineNumber": 11,
             "description": {
               "type": "root",
               "children": [
@@ -2474,7 +2298,7 @@
           {
             "title": "param",
             "name": "options.number",
-            "lineNumber": 13,
+            "lineNumber": 12,
             "description": {
               "type": "root",
               "children": [
@@ -2536,7 +2360,7 @@
           {
             "title": "param",
             "name": "options.delay",
-            "lineNumber": 14,
+            "lineNumber": 13,
             "description": {
               "type": "root",
               "children": [
@@ -2598,7 +2422,7 @@
           {
             "title": "param",
             "name": "options.timeout",
-            "lineNumber": 15,
+            "lineNumber": 14,
             "description": {
               "type": "root",
               "children": [
@@ -2734,58 +2558,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Clicks on an element.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 22,
-                  "offset": 21
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 22,
-              "offset": 21
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 22,
-          "offset": 21
-        }
-      }
-    },
     "name": "click",
     "memberof": "taiko",
     "scope": "static",
@@ -2859,19 +2631,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Double clicks on an element.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "doubleClick('Get Started')\ndoubleClick(button('Get Started'))\ndoubleClick('Get Started', waitForNavigation(false))",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": "A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be double clicked.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -2890,7 +2657,7 @@
       {
         "title": "param",
         "description": "wait for navigation after the click.",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -2904,7 +2671,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 11,
+        "lineNumber": 10,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -2922,26 +2689,26 @@
     ],
     "loc": {
       "start": {
-        "line": 124,
+        "line": 120,
         "column": 0
       },
       "end": {
-        "line": 136,
+        "line": 131,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 137,
+          "line": 132,
           "column": 0
         },
         "end": {
-          "line": 141,
+          "line": 136,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -2953,7 +2720,7 @@
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -3023,7 +2790,7 @@
       {
         "title": "param",
         "name": "waitForNavigation",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "description": {
           "type": "root",
           "children": [
@@ -3157,58 +2924,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Double clicks on an element.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 29,
-                  "offset": 28
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 29,
-              "offset": 28
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 29,
-          "offset": 28
-        }
-      }
-    },
     "name": "doubleClick",
     "kind": "function",
     "memberof": "taiko",
@@ -3284,19 +2999,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Right clicks on an element.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "rightClick('Get Started')\nrightClick(text('Get Started'))",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": "A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be double clicked.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -3315,7 +3025,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -3333,26 +3043,26 @@
     ],
     "loc": {
       "start": {
-        "line": 143,
+        "line": 138,
         "column": 0
       },
       "end": {
-        "line": 153,
+        "line": 147,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 154,
+          "line": 148,
           "column": 0
         },
         "end": {
-          "line": 158,
+          "line": 152,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -3364,7 +3074,7 @@
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -3506,58 +3216,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Right clicks on an element.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 28,
-                  "offset": 27
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 28,
-              "offset": 27
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 28,
-          "offset": 27
-        }
-      }
-    },
     "name": "rightClick",
     "kind": "function",
     "memberof": "taiko",
@@ -3633,19 +3291,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Hovers over an element.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "hover('Get Started')\nhover(link('Get Started'))",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": "A selector to search for element to right click. If there are multiple elements satisfying the selector, the first will be hovered.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -3664,7 +3317,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -3682,26 +3335,26 @@
     ],
     "loc": {
       "start": {
-        "line": 160,
+        "line": 154,
         "column": 0
       },
       "end": {
-        "line": 170,
+        "line": 163,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 171,
+          "line": 164,
           "column": 0
         },
         "end": {
-          "line": 177,
+          "line": 170,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -3713,7 +3366,7 @@
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -3855,58 +3508,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Hovers over an element.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 24,
-                  "offset": 23
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 24,
-              "offset": 23
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 24,
-          "offset": 23
-        }
-      }
-    },
     "name": "hover",
     "kind": "function",
     "memberof": "taiko",
@@ -3982,19 +3583,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Focus on an element.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "focus(textField('Username:'))",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": "A selector of an element to focus. If there are multiple elements satisfying the selector, the first will be focused.",
-        "lineNumber": 7,
+        "lineNumber": 6,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -4013,7 +3609,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -4031,26 +3627,26 @@
     ],
     "loc": {
       "start": {
-        "line": 179,
+        "line": 172,
         "column": 0
       },
       "end": {
-        "line": 188,
+        "line": 180,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 189,
+          "line": 181,
           "column": 0
         },
         "end": {
-          "line": 193,
+          "line": 185,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -4062,7 +3658,7 @@
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 7,
+        "lineNumber": 6,
         "description": {
           "type": "root",
           "children": [
@@ -4204,58 +3800,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Focus on an element.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 21,
-                  "offset": 20
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 21,
-              "offset": 20
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 21,
-          "offset": 20
-        }
-      }
-    },
     "name": "focus",
     "kind": "function",
     "memberof": "taiko",
@@ -4388,26 +3932,26 @@
     ],
     "loc": {
       "start": {
-        "line": 195,
+        "line": 187,
         "column": 0
       },
       "end": {
-        "line": 206,
+        "line": 198,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 207,
+          "line": 199,
           "column": 0
         },
         "end": {
-          "line": 219,
+          "line": 211,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -4754,26 +4298,26 @@
     ],
     "loc": {
       "start": {
-        "line": 221,
+        "line": 213,
         "column": 0
       },
       "end": {
-        "line": 231,
+        "line": 223,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 232,
+          "line": 224,
           "column": 0
         },
         "end": {
-          "line": 240,
+          "line": 232,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -5132,26 +4676,26 @@
     ],
     "loc": {
       "start": {
-        "line": 242,
+        "line": 234,
         "column": 0
       },
       "end": {
-        "line": 254,
+        "line": 246,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 255,
+          "line": 247,
           "column": 0
         },
         "end": {
-          "line": 259,
+          "line": 251,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -5559,19 +5103,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Highlights the given element.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "highlight('Get Started')\nhighlight(link('Get Started'))",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": "A selector of an element to highlight. If there are multiple elements satisfying the selector, the first will be highlighted.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -5590,7 +5129,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -5608,26 +5147,26 @@
     ],
     "loc": {
       "start": {
-        "line": 261,
+        "line": 253,
         "column": 0
       },
       "end": {
-        "line": 271,
+        "line": 262,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 272,
+          "line": 263,
           "column": 0
         },
         "end": {
-          "line": 276,
+          "line": 267,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -5639,7 +5178,7 @@
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -5781,58 +5320,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Highlights the given element.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 30,
-                  "offset": 29
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 30,
-              "offset": 29
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 30,
-          "offset": 29
-        }
-      }
-    },
     "name": "highlight",
     "kind": "function",
     "memberof": "taiko",
@@ -5952,26 +5439,26 @@
     ],
     "loc": {
       "start": {
-        "line": 278,
+        "line": 269,
         "column": 0
       },
       "end": {
-        "line": 287,
+        "line": 278,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 288,
+          "line": 279,
           "column": 0
         },
         "end": {
-          "line": 292,
+          "line": 283,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6266,26 +5753,26 @@
     ],
     "loc": {
       "start": {
-        "line": 294,
+        "line": 285,
         "column": 0
       },
       "end": {
-        "line": 306,
+        "line": 297,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 307,
+          "line": 298,
           "column": 0
         },
         "end": {
-          "line": 310,
+          "line": 301,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6543,26 +6030,26 @@
     ],
     "loc": {
       "start": {
-        "line": 312,
+        "line": 303,
         "column": 0
       },
       "end": {
-        "line": 324,
+        "line": 315,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 325,
+          "line": 316,
           "column": 0
         },
         "end": {
-          "line": 328,
+          "line": 319,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6820,26 +6307,26 @@
     ],
     "loc": {
       "start": {
-        "line": 330,
+        "line": 321,
         "column": 0
       },
       "end": {
-        "line": 342,
+        "line": 333,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 343,
+          "line": 334,
           "column": 0
         },
         "end": {
-          "line": 346,
+          "line": 337,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7097,26 +6584,26 @@
     ],
     "loc": {
       "start": {
-        "line": 348,
+        "line": 339,
         "column": 0
       },
       "end": {
-        "line": 360,
+        "line": 351,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 361,
+          "line": 352,
           "column": 0
         },
         "end": {
-          "line": 364,
+          "line": 355,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7343,26 +6830,26 @@
     ],
     "loc": {
       "start": {
-        "line": 366,
+        "line": 357,
         "column": 0
       },
       "end": {
-        "line": 374,
+        "line": 365,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 375,
+          "line": 366,
           "column": 0
         },
         "end": {
-          "line": 375,
+          "line": 366,
           "column": 67
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7717,26 +7204,26 @@
     ],
     "loc": {
       "start": {
-        "line": 377,
+        "line": 368,
         "column": 0
       },
       "end": {
-        "line": 386,
+        "line": 377,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 387,
+          "line": 378,
           "column": 0
         },
         "end": {
-          "line": 391,
+          "line": 382,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7965,19 +7452,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Lets you identify an image on a web page.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "click(image('alt'))\nimage('alt').exists()",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": "The image's alt text.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -7987,7 +7469,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "RestType",
           "expression": {
@@ -8000,7 +7482,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8009,26 +7491,26 @@
     ],
     "loc": {
       "start": {
-        "line": 393,
+        "line": 384,
         "column": 0
       },
       "end": {
-        "line": 404,
+        "line": 394,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 405,
+          "line": 395,
           "column": 0
         },
         "end": {
-          "line": 410,
+          "line": 400,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8040,7 +7522,7 @@
       {
         "title": "param",
         "name": "alt",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -8101,7 +7583,7 @@
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "RestType",
           "expression": {
@@ -8140,58 +7622,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Lets you identify an image on a web page.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 42,
-                  "offset": 41
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 42,
-              "offset": 41
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 42,
-          "offset": 41
-        }
-      }
-    },
     "name": "image",
     "kind": "function",
     "memberof": "taiko",
@@ -8348,26 +7778,26 @@
     ],
     "loc": {
       "start": {
-        "line": 412,
+        "line": 402,
         "column": 0
       },
       "end": {
-        "line": 422,
+        "line": 412,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 423,
+          "line": 413,
           "column": 0
         },
         "end": {
-          "line": 427,
+          "line": 417,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8630,19 +8060,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Lets you identify a list item on a web page.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "highlight(listItem('Get Started'))\nlistItem('Get Started').exists()",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": "The label of the list item.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -8652,7 +8077,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "RestType",
           "expression": {
@@ -8665,7 +8090,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8674,26 +8099,26 @@
     ],
     "loc": {
       "start": {
-        "line": 429,
+        "line": 419,
         "column": 0
       },
       "end": {
-        "line": 440,
+        "line": 429,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 441,
+          "line": 430,
           "column": 0
         },
         "end": {
-          "line": 445,
+          "line": 434,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8705,7 +8130,7 @@
       {
         "title": "param",
         "name": "label",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -8766,7 +8191,7 @@
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "RestType",
           "expression": {
@@ -8805,58 +8230,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Lets you identify a list item on a web page.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 45,
-                  "offset": 44
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 45,
-              "offset": 44
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 45,
-          "offset": 44
-        }
-      }
-    },
     "name": "listItem",
     "kind": "function",
     "memberof": "taiko",
@@ -9013,26 +8386,26 @@
     ],
     "loc": {
       "start": {
-        "line": 447,
+        "line": 436,
         "column": 0
       },
       "end": {
-        "line": 457,
+        "line": 446,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 458,
+          "line": 447,
           "column": 0
         },
         "end": {
-          "line": 462,
+          "line": 451,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9314,26 +8687,26 @@
     ],
     "loc": {
       "start": {
-        "line": 464,
+        "line": 453,
         "column": 0
       },
       "end": {
-        "line": 475,
+        "line": 464,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 476,
+          "line": 465,
           "column": 0
         },
         "end": {
-          "line": 495,
+          "line": 484,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9663,26 +9036,26 @@
     ],
     "loc": {
       "start": {
-        "line": 497,
+        "line": 486,
         "column": 0
       },
       "end": {
-        "line": 507,
+        "line": 496,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 508,
+          "line": 497,
           "column": 0
         },
         "end": {
-          "line": 508,
+          "line": 497,
           "column": 37
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9948,26 +9321,26 @@
     ],
     "loc": {
       "start": {
-        "line": 520,
+        "line": 509,
         "column": 0
       },
       "end": {
-        "line": 530,
+        "line": 519,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 531,
+          "line": 520,
           "column": 0
         },
         "end": {
-          "line": 531,
+          "line": 520,
           "column": 37
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10233,26 +9606,26 @@
     ],
     "loc": {
       "start": {
-        "line": 545,
+        "line": 534,
         "column": 0
       },
       "end": {
-        "line": 556,
+        "line": 545,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 557,
+          "line": 546,
           "column": 0
         },
         "end": {
-          "line": 574,
+          "line": 563,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10520,26 +9893,26 @@
     ],
     "loc": {
       "start": {
-        "line": 576,
+        "line": 565,
         "column": 0
       },
       "end": {
-        "line": 588,
+        "line": 577,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 589,
+          "line": 578,
           "column": 0
         },
         "end": {
-          "line": 601,
+          "line": 590,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10807,26 +10180,26 @@
     ],
     "loc": {
       "start": {
-        "line": 603,
+        "line": 592,
         "column": 0
       },
       "end": {
-        "line": 615,
+        "line": 604,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 616,
+          "line": 605,
           "column": 0
         },
         "end": {
-          "line": 628,
+          "line": 617,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -11094,26 +10467,26 @@
     ],
     "loc": {
       "start": {
-        "line": 630,
+        "line": 619,
         "column": 0
       },
       "end": {
-        "line": 640,
+        "line": 629,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 641,
+          "line": 630,
           "column": 0
         },
         "end": {
-          "line": 646,
+          "line": 635,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -11381,26 +10754,26 @@
     ],
     "loc": {
       "start": {
-        "line": 648,
+        "line": 637,
         "column": 0
       },
       "end": {
-        "line": 657,
+        "line": 646,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 658,
+          "line": 647,
           "column": 0
         },
         "end": {
-          "line": 658,
+          "line": 647,
           "column": 35
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -11662,26 +11035,26 @@
     ],
     "loc": {
       "start": {
-        "line": 672,
+        "line": 661,
         "column": 0
       },
       "end": {
-        "line": 680,
+        "line": 669,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 681,
+          "line": 670,
           "column": 0
         },
         "end": {
-          "line": 684,
+          "line": 673,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -11942,26 +11315,26 @@
     ],
     "loc": {
       "start": {
-        "line": 686,
+        "line": 675,
         "column": 0
       },
       "end": {
-        "line": 694,
+        "line": 683,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 695,
+          "line": 684,
           "column": 0
         },
         "end": {
-          "line": 698,
+          "line": 687,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12222,26 +11595,26 @@
     ],
     "loc": {
       "start": {
-        "line": 700,
+        "line": 689,
         "column": 0
       },
       "end": {
-        "line": 708,
+        "line": 697,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 709,
+          "line": 698,
           "column": 0
         },
         "end": {
-          "line": 712,
+          "line": 701,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12502,26 +11875,26 @@
     ],
     "loc": {
       "start": {
-        "line": 714,
+        "line": 703,
         "column": 0
       },
       "end": {
-        "line": 722,
+        "line": 711,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 723,
+          "line": 712,
           "column": 0
         },
         "end": {
-          "line": 726,
+          "line": 715,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12782,26 +12155,26 @@
     ],
     "loc": {
       "start": {
-        "line": 728,
+        "line": 717,
         "column": 0
       },
       "end": {
-        "line": 736,
+        "line": 725,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 737,
+          "line": 726,
           "column": 0
         },
         "end": {
-          "line": 745,
+          "line": 734,
           "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13052,26 +12425,26 @@
     ],
     "loc": {
       "start": {
-        "line": 747,
+        "line": 736,
         "column": 0
       },
       "end": {
-        "line": 755,
+        "line": 744,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 756,
+          "line": 745,
           "column": 0
         },
         "end": {
-          "line": 756,
+          "line": 745,
           "column": 81
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13356,26 +12729,26 @@
     ],
     "loc": {
       "start": {
-        "line": 758,
+        "line": 747,
         "column": 0
       },
       "end": {
-        "line": 766,
+        "line": 755,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 767,
+          "line": 756,
           "column": 0
         },
         "end": {
-          "line": 767,
+          "line": 756,
           "column": 83
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13660,26 +13033,26 @@
     ],
     "loc": {
       "start": {
-        "line": 769,
+        "line": 758,
         "column": 0
       },
       "end": {
-        "line": 777,
+        "line": 766,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 778,
+          "line": 767,
           "column": 0
         },
         "end": {
-          "line": 778,
+          "line": 767,
           "column": 85
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13964,26 +13337,26 @@
     ],
     "loc": {
       "start": {
-        "line": 780,
+        "line": 769,
         "column": 0
       },
       "end": {
-        "line": 788,
+        "line": 777,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 789,
+          "line": 778,
           "column": 0
         },
         "end": {
-          "line": 789,
+          "line": 778,
           "column": 95
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14227,26 +13600,26 @@
     ],
     "loc": {
       "start": {
-        "line": 791,
+        "line": 780,
         "column": 0
       },
       "end": {
-        "line": 799,
+        "line": 788,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 800,
+          "line": 789,
           "column": 0
         },
         "end": {
-          "line": 800,
+          "line": 789,
           "column": 50
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14483,26 +13856,26 @@
     ],
     "loc": {
       "start": {
-        "line": 802,
+        "line": 791,
         "column": 0
       },
       "end": {
-        "line": 810,
+        "line": 799,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 811,
+          "line": 800,
           "column": 0
         },
         "end": {
-          "line": 811,
+          "line": 800,
           "column": 49
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14713,11 +14086,6 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Improves the readability and returns the parameter passed into it.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "click('Get Started', waitForNavigation(false))",
         "lineNumber": 3
@@ -14744,26 +14112,26 @@
     ],
     "loc": {
       "start": {
-        "line": 813,
+        "line": 802,
         "column": 0
       },
       "end": {
-        "line": 821,
+        "line": 810,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 822,
+          "line": 811,
           "column": 0
         },
         "end": {
-          "line": 822,
+          "line": 811,
           "column": 42
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14811,58 +14179,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Improves the readability and returns the parameter passed into it.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 67,
-                  "offset": 66
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 67,
-              "offset": 66
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 67,
-          "offset": 66
-        }
-      }
-    },
     "name": "waitForNavigation",
     "kind": "function",
     "memberof": "taiko",
@@ -14938,19 +14254,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Improves the readability and returns the parameter passed into it.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "upload('c:/abc.txt', to('Please select a file:'))",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": null,
-        "lineNumber": 7,
+        "lineNumber": 6,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -14972,7 +14283,7 @@
       {
         "title": "return",
         "description": null,
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -14990,26 +14301,26 @@
     ],
     "loc": {
       "start": {
-        "line": 824,
+        "line": 813,
         "column": 0
       },
       "end": {
-        "line": 833,
+        "line": 821,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 834,
+          "line": 822,
           "column": 0
         },
         "end": {
-          "line": 834,
+          "line": 822,
           "column": 27
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15021,7 +14332,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 834
+        "lineNumber": 822
       }
     ],
     "properties": [],
@@ -15062,58 +14373,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Improves the readability and returns the parameter passed into it.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 67,
-                  "offset": 66
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 67,
-              "offset": 66
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 67,
-          "offset": 66
-        }
-      }
-    },
     "name": "to",
     "kind": "function",
     "memberof": "taiko",
@@ -15189,19 +14448,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Improves the readability and returns the parameter passed into it.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "write(\"user\", into('Username:'))",
-        "lineNumber": 4
+        "lineNumber": 3
       },
       {
         "title": "param",
         "description": null,
-        "lineNumber": 7,
+        "lineNumber": 6,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -15223,7 +14477,7 @@
       {
         "title": "return",
         "description": null,
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -15241,26 +14495,26 @@
     ],
     "loc": {
       "start": {
-        "line": 836,
+        "line": 824,
         "column": 0
       },
       "end": {
-        "line": 845,
+        "line": 832,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 846,
+          "line": 833,
           "column": 0
         },
         "end": {
-          "line": 846,
+          "line": 833,
           "column": 29
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15272,7 +14526,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 846
+        "lineNumber": 833
       }
     ],
     "properties": [],
@@ -15313,58 +14567,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Improves the readability and returns the parameter passed into it.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 67,
-                  "offset": 66
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 67,
-              "offset": 66
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 67,
-          "offset": 66
-        }
-      }
-    },
     "name": "into",
     "kind": "function",
     "memberof": "taiko",
@@ -15481,26 +14683,26 @@
     ],
     "loc": {
       "start": {
-        "line": 990,
+        "line": 977,
         "column": 0
       },
       "end": {
-        "line": 1002,
+        "line": 989,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1030,
+          "line": 1015,
           "column": 0
         },
         "end": {
-          "line": 1048,
+          "line": 1033,
           "column": 1
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15710,26 +14912,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1004,
+        "line": 991,
         "column": 0
       },
       "end": {
-        "line": 1017,
+        "line": 1004,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1030,
+          "line": 1015,
           "column": 0
         },
         "end": {
-          "line": 1048,
+          "line": 1033,
           "column": 1
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15939,19 +15141,14 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Represents a relative HTML element search.",
-        "lineNumber": 2
-      },
-      {
         "title": "example",
         "description": "// returns RelativeSearchElement\nabove('username')",
-        "lineNumber": 5
+        "lineNumber": 3
       },
       {
         "title": "typedef",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -15961,26 +15158,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1019,
+        "line": 1006,
         "column": 0
       },
       "end": {
-        "line": 1029,
+        "line": 1014,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1030,
+          "line": 1015,
           "column": 0
         },
         "end": {
-          "line": 1048,
+          "line": 1033,
           "column": 1
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15994,58 +15191,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Represents a relative HTML element search.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 43,
-                  "offset": 42
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 43,
-              "offset": 42
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 43,
-          "offset": 42
-        }
-      }
-    },
     "kind": "typedef",
     "name": "RelativeSearchElement",
     "type": {
@@ -16070,27 +15215,27 @@
       ],
       "loc": {
         "start": {
-          "line": 1031,
+          "line": 1016,
           "column": 4
         },
         "end": {
-          "line": 1034,
+          "line": 1019,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1035,
+            "line": 1020,
             "column": 4
           },
           "end": {
-            "line": 1039,
+            "line": 1024,
             "column": 5
           }
         },
-        "file": "/Users/gopher/Documents/gauge/taiko/taiko.js",
-        "sortKey": "!/Users/gopher/Documents/gauge/taiko/taiko.js 00001035",
+        "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js",
+        "sortKey": "!/Users/gopher/Documents/gauge/taiko/taiko.js:00000004!/Users/gopher/Documents/gauge/taiko/lib/taiko.js 00001020",
         "code": "{\n    /**\n     * @class \n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async isValid(e) {\n        return await p.evaluate(this.condition, e, await this.value);\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -16799,14 +15944,9 @@
     },
     "tags": [
       {
-        "title": "summary",
-        "description": "Wrapper object for the element present on the web page.",
-        "lineNumber": 9
-      },
-      {
         "title": "typedef",
         "description": null,
-        "lineNumber": 11,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -16816,7 +15956,7 @@
       {
         "title": "property",
         "description": "@private {function} get - DOM element getter.",
-        "lineNumber": 12,
+        "lineNumber": 10,
         "type": null,
         "errors": [
           "Missing or invalid tag type"
@@ -16826,7 +15966,7 @@
       {
         "title": "property",
         "description": "Checks existence for element.",
-        "lineNumber": 13,
+        "lineNumber": 11,
         "type": {
           "type": "FunctionType",
           "params": [
@@ -16846,7 +15986,7 @@
       {
         "title": "property",
         "description": "Describing the operation performed.",
-        "lineNumber": 14,
+        "lineNumber": 12,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -16856,31 +15996,31 @@
       {
         "title": "example",
         "description": "link('google').exists()\nlink('google').exists(intervalSecs(1), timeoutSecs(10))\nlink('google').description\ntextField('username').value()",
-        "lineNumber": 16
+        "lineNumber": 14
       }
     ],
     "loc": {
       "start": {
-        "line": 1050,
+        "line": 1035,
         "column": 0
       },
       "end": {
-        "line": 1071,
+        "line": 1054,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1030,
+          "line": 1056,
           "column": 0
         },
         "end": {
-          "line": 1048,
-          "column": 1
+          "line": 1063,
+          "column": 2
         }
       },
-      "file": "/Users/gopher/Documents/gauge/taiko/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -16893,7 +16033,7 @@
       {
         "title": "property",
         "name": "exists",
-        "lineNumber": 13,
+        "lineNumber": 11,
         "description": {
           "type": "root",
           "children": [
@@ -16964,7 +16104,7 @@
       {
         "title": "property",
         "name": "description",
-        "lineNumber": 14,
+        "lineNumber": 12,
         "description": {
           "type": "root",
           "children": [
@@ -17027,58 +16167,6 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "summary": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Wrapper object for the element present on the web page.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 56,
-                  "offset": 55
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 56,
-              "offset": 55
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 56,
-          "offset": 55
-        }
-      }
-    },
     "kind": "typedef",
     "name": "ElementWrapper",
     "type": {
