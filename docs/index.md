@@ -4,6 +4,7 @@
 
 -   [openBrowser](#openbrowser)
 -   [closeBrowser](#closebrowser)
+-   [setup](#setup)
 -   [browser](#browser)
 -   [page](#page)
 -   [goto](#goto)
@@ -81,6 +82,17 @@ Closes the browser and all of its tabs (if any were opened).
 ```javascript
 closeBrowser()
 ```
+
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
+
+## setup
+
+Sets the browser and page instance.
+
+**Parameters**
+
+-   `browser` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.
+-   `page` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
