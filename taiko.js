@@ -25,7 +25,7 @@ function runFile(file) {
         else global[func] = function() {
             return realFuncs[func].apply(this, arguments);
         };
-        require.cache[path.join(__dirname, 'lib', 'taiko.js')].exports[func] = global[func];
+        require.cache[path.join(__dirname, 'taiko.js')].exports[func] = global[func];
     }
     const oldNodeModulesPaths = module.constructor._nodeModulePaths;
     module.constructor._nodeModulePaths = function() {
