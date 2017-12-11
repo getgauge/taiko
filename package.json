@@ -7,7 +7,7 @@
 		"taiko": "taiko.js"
 	},
 	"scripts": {
-		"format": "js-beautify lib/*.js test/*.js -r -b collapse,preserve-inline && npm run lint",
+		"format": "js-beautify *.js lib/*.js test/*.js -r -b collapse,preserve-inline && npm run lint",
 		"lint": "eslint lib/*.js test/*.js",
 		"doc": "./node_modules/documentation/bin/documentation.js build taiko.js -f md -o docs/index.md && ./node_modules/documentation/bin/documentation.js build taiko.js -f json -o docs/api.json",
 		"test": "mocha && npm run lint",

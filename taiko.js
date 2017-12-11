@@ -18,8 +18,10 @@ function runFile(file) {
         realFuncs[func] = taiko[func];
         if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function() {
             const res = await realFuncs[func].apply(this, arguments);
-            res.description = (isWin ? '[PASS] ' : ' ✔ ') + res.description;
-            console.log(removeQuotes(util.inspect(res.description, { colors: true }), res.description));
+            if (res.description) {
+                res.description = (isWin ? '[PASS] ' : ' ✔ ') + res.description;
+                console.log(removeQuotes(util.inspect(res.description, { colors: true }), res.description));
+            }
             return res;
         };
         else global[func] = function() {
@@ -48,5 +50,6 @@ function validate(file) {
 }
 
 function removeQuotes(textWithQuotes, textWithoutQuotes) {
-    return textWithQuotes.replace(`'${textWithoutQuotes}'`, () => textWithoutQuotes);
+    return textWithQuotes.replace(/\\'/g, '\'').replace(/\\n/g, '\n')
+        .replace(`'${textWithoutQuotes}'`, () => textWithoutQuotes);
 }
