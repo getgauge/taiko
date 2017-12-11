@@ -108,7 +108,7 @@
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -426,7 +426,7 @@
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -643,7 +643,7 @@
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [],
@@ -1058,7 +1058,7 @@
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [],
@@ -1287,7 +1287,7 @@
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [],
@@ -1584,7 +1584,7 @@
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -1939,7 +1939,7 @@
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -2133,6 +2133,199 @@
           "children": [
             {
               "type": "text",
+              "value": "Returns page's title.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 22,
+                  "offset": 21
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 22,
+              "offset": 21
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 22,
+          "offset": 21
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "returns",
+        "description": "Object with the description of the action performed and the final URL.",
+        "lineNumber": 3,
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "String"
+            }
+          ]
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 106,
+        "column": 0
+      },
+      "end": {
+        "line": 110,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 111,
+          "column": 0
+        },
+        "end": {
+          "line": 114,
+          "column": 2
+        }
+      },
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
+    },
+    "augments": [],
+    "examples": [],
+    "params": [],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Object with the description of the action performed and the final URL.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 71,
+                      "offset": 70
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 71,
+                  "offset": 70
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 71,
+              "offset": 70
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "String"
+            }
+          ]
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "title",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "title",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".title"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
               "value": "Fetches an element with the given selector, scrolls it into view if needed, and then clicks in the center of the element. If there's no element matching selector, the method throws an error.",
               "position": {
                 "start": {
@@ -2303,26 +2496,26 @@
     ],
     "loc": {
       "start": {
-        "line": 106,
+        "line": 116,
         "column": 0
       },
       "end": {
-        "line": 122,
+        "line": 132,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 123,
+          "line": 133,
           "column": 0
         },
         "end": {
-          "line": 123,
+          "line": 133,
           "column": 29
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -3133,26 +3326,26 @@
     ],
     "loc": {
       "start": {
-        "line": 136,
+        "line": 146,
         "column": 0
       },
       "end": {
-        "line": 147,
+        "line": 157,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 148,
+          "line": 158,
           "column": 0
         },
         "end": {
-          "line": 152,
+          "line": 162,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -3487,26 +3680,26 @@
     ],
     "loc": {
       "start": {
-        "line": 154,
+        "line": 164,
         "column": 0
       },
       "end": {
-        "line": 163,
+        "line": 173,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 164,
+          "line": 174,
           "column": 0
         },
         "end": {
-          "line": 168,
+          "line": 178,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -3779,26 +3972,26 @@
     ],
     "loc": {
       "start": {
-        "line": 170,
+        "line": 180,
         "column": 0
       },
       "end": {
-        "line": 179,
+        "line": 189,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 180,
+          "line": 190,
           "column": 0
         },
         "end": {
-          "line": 186,
+          "line": 196,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -4071,26 +4264,26 @@
     ],
     "loc": {
       "start": {
-        "line": 188,
+        "line": 198,
         "column": 0
       },
       "end": {
-        "line": 196,
+        "line": 206,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 197,
+          "line": 207,
           "column": 0
         },
         "end": {
-          "line": 201,
+          "line": 211,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -4376,26 +4569,26 @@
     ],
     "loc": {
       "start": {
-        "line": 203,
+        "line": 213,
         "column": 0
       },
       "end": {
-        "line": 214,
+        "line": 224,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 215,
+          "line": 225,
           "column": 0
         },
         "end": {
-          "line": 227,
+          "line": 237,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -4742,26 +4935,26 @@
     ],
     "loc": {
       "start": {
-        "line": 229,
+        "line": 239,
         "column": 0
       },
       "end": {
-        "line": 239,
+        "line": 249,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 240,
+          "line": 250,
           "column": 0
         },
         "end": {
-          "line": 248,
+          "line": 258,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -5120,26 +5313,26 @@
     ],
     "loc": {
       "start": {
-        "line": 250,
+        "line": 260,
         "column": 0
       },
       "end": {
-        "line": 262,
+        "line": 272,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 263,
+          "line": 273,
           "column": 0
         },
         "end": {
-          "line": 267,
+          "line": 277,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -5591,26 +5784,26 @@
     ],
     "loc": {
       "start": {
-        "line": 269,
+        "line": 279,
         "column": 0
       },
       "end": {
-        "line": 278,
+        "line": 288,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 279,
+          "line": 289,
           "column": 0
         },
         "end": {
-          "line": 283,
+          "line": 293,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -5883,26 +6076,26 @@
     ],
     "loc": {
       "start": {
-        "line": 285,
+        "line": 295,
         "column": 0
       },
       "end": {
-        "line": 294,
+        "line": 304,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 295,
+          "line": 305,
           "column": 0
         },
         "end": {
-          "line": 299,
+          "line": 309,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6197,26 +6390,26 @@
     ],
     "loc": {
       "start": {
-        "line": 301,
+        "line": 311,
         "column": 0
       },
       "end": {
-        "line": 313,
+        "line": 323,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 314,
+          "line": 324,
           "column": 0
         },
         "end": {
-          "line": 317,
+          "line": 327,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6474,26 +6667,26 @@
     ],
     "loc": {
       "start": {
-        "line": 319,
+        "line": 329,
         "column": 0
       },
       "end": {
-        "line": 331,
+        "line": 341,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 332,
+          "line": 342,
           "column": 0
         },
         "end": {
-          "line": 335,
+          "line": 345,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6751,26 +6944,26 @@
     ],
     "loc": {
       "start": {
-        "line": 337,
+        "line": 347,
         "column": 0
       },
       "end": {
-        "line": 349,
+        "line": 359,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 350,
+          "line": 360,
           "column": 0
         },
         "end": {
-          "line": 353,
+          "line": 363,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7028,26 +7221,26 @@
     ],
     "loc": {
       "start": {
-        "line": 355,
+        "line": 365,
         "column": 0
       },
       "end": {
-        "line": 367,
+        "line": 377,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 368,
+          "line": 378,
           "column": 0
         },
         "end": {
-          "line": 371,
+          "line": 381,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7274,26 +7467,26 @@
     ],
     "loc": {
       "start": {
-        "line": 373,
+        "line": 383,
         "column": 0
       },
       "end": {
-        "line": 381,
+        "line": 391,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 382,
+          "line": 392,
           "column": 0
         },
         "end": {
-          "line": 382,
+          "line": 392,
           "column": 67
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7648,26 +7841,26 @@
     ],
     "loc": {
       "start": {
-        "line": 384,
+        "line": 394,
         "column": 0
       },
       "end": {
-        "line": 393,
+        "line": 403,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 394,
+          "line": 404,
           "column": 0
         },
         "end": {
-          "line": 398,
+          "line": 408,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7935,26 +8128,26 @@
     ],
     "loc": {
       "start": {
-        "line": 400,
+        "line": 410,
         "column": 0
       },
       "end": {
-        "line": 410,
+        "line": 420,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 411,
+          "line": 421,
           "column": 0
         },
         "end": {
-          "line": 416,
+          "line": 426,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8222,26 +8415,26 @@
     ],
     "loc": {
       "start": {
-        "line": 418,
+        "line": 428,
         "column": 0
       },
       "end": {
-        "line": 428,
+        "line": 438,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 429,
+          "line": 439,
           "column": 0
         },
         "end": {
-          "line": 433,
+          "line": 443,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8543,26 +8736,26 @@
     ],
     "loc": {
       "start": {
-        "line": 435,
+        "line": 445,
         "column": 0
       },
       "end": {
-        "line": 445,
+        "line": 455,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 446,
+          "line": 456,
           "column": 0
         },
         "end": {
-          "line": 450,
+          "line": 460,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8830,26 +9023,26 @@
     ],
     "loc": {
       "start": {
-        "line": 452,
+        "line": 462,
         "column": 0
       },
       "end": {
-        "line": 462,
+        "line": 472,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 463,
+          "line": 473,
           "column": 0
         },
         "end": {
-          "line": 467,
+          "line": 477,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9131,26 +9324,26 @@
     ],
     "loc": {
       "start": {
-        "line": 469,
+        "line": 479,
         "column": 0
       },
       "end": {
-        "line": 480,
+        "line": 490,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 481,
+          "line": 491,
           "column": 0
         },
         "end": {
-          "line": 500,
+          "line": 510,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9480,26 +9673,26 @@
     ],
     "loc": {
       "start": {
-        "line": 502,
+        "line": 512,
         "column": 0
       },
       "end": {
-        "line": 512,
+        "line": 522,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 513,
+          "line": 523,
           "column": 0
         },
         "end": {
-          "line": 513,
+          "line": 523,
           "column": 37
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9765,26 +9958,26 @@
     ],
     "loc": {
       "start": {
-        "line": 525,
+        "line": 535,
         "column": 0
       },
       "end": {
-        "line": 535,
+        "line": 545,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 536,
+          "line": 546,
           "column": 0
         },
         "end": {
-          "line": 536,
+          "line": 546,
           "column": 37
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10050,26 +10243,26 @@
     ],
     "loc": {
       "start": {
-        "line": 550,
+        "line": 560,
         "column": 0
       },
       "end": {
-        "line": 561,
+        "line": 571,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 562,
+          "line": 572,
           "column": 0
         },
         "end": {
-          "line": 579,
+          "line": 589,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10337,26 +10530,26 @@
     ],
     "loc": {
       "start": {
-        "line": 581,
+        "line": 591,
         "column": 0
       },
       "end": {
-        "line": 593,
+        "line": 603,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 594,
+          "line": 604,
           "column": 0
         },
         "end": {
-          "line": 606,
+          "line": 616,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10624,26 +10817,26 @@
     ],
     "loc": {
       "start": {
-        "line": 608,
+        "line": 618,
         "column": 0
       },
       "end": {
-        "line": 620,
+        "line": 630,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 621,
+          "line": 631,
           "column": 0
         },
         "end": {
-          "line": 633,
+          "line": 643,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10911,26 +11104,26 @@
     ],
     "loc": {
       "start": {
-        "line": 635,
+        "line": 645,
         "column": 0
       },
       "end": {
-        "line": 645,
+        "line": 655,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 646,
+          "line": 656,
           "column": 0
         },
         "end": {
-          "line": 651,
+          "line": 661,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -11198,26 +11391,26 @@
     ],
     "loc": {
       "start": {
-        "line": 653,
+        "line": 663,
         "column": 0
       },
       "end": {
-        "line": 662,
+        "line": 672,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 663,
+          "line": 673,
           "column": 0
         },
         "end": {
-          "line": 663,
+          "line": 673,
           "column": 35
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -11479,26 +11672,26 @@
     ],
     "loc": {
       "start": {
-        "line": 677,
+        "line": 687,
         "column": 0
       },
       "end": {
-        "line": 685,
+        "line": 695,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 686,
+          "line": 696,
           "column": 0
         },
         "end": {
-          "line": 689,
+          "line": 699,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -11759,26 +11952,26 @@
     ],
     "loc": {
       "start": {
-        "line": 691,
+        "line": 701,
         "column": 0
       },
       "end": {
-        "line": 699,
+        "line": 709,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 700,
+          "line": 710,
           "column": 0
         },
         "end": {
-          "line": 703,
+          "line": 713,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12039,26 +12232,26 @@
     ],
     "loc": {
       "start": {
-        "line": 705,
+        "line": 715,
         "column": 0
       },
       "end": {
-        "line": 713,
+        "line": 723,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 714,
+          "line": 724,
           "column": 0
         },
         "end": {
-          "line": 717,
+          "line": 727,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12319,26 +12512,26 @@
     ],
     "loc": {
       "start": {
-        "line": 719,
+        "line": 729,
         "column": 0
       },
       "end": {
-        "line": 727,
+        "line": 737,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 728,
+          "line": 738,
           "column": 0
         },
         "end": {
-          "line": 731,
+          "line": 741,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12599,26 +12792,26 @@
     ],
     "loc": {
       "start": {
-        "line": 733,
+        "line": 743,
         "column": 0
       },
       "end": {
-        "line": 741,
+        "line": 751,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 742,
+          "line": 752,
           "column": 0
         },
         "end": {
-          "line": 750,
+          "line": 760,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12869,26 +13062,26 @@
     ],
     "loc": {
       "start": {
-        "line": 752,
+        "line": 762,
         "column": 0
       },
       "end": {
-        "line": 760,
+        "line": 770,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 761,
+          "line": 771,
           "column": 0
         },
         "end": {
-          "line": 761,
+          "line": 771,
           "column": 81
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13173,26 +13366,26 @@
     ],
     "loc": {
       "start": {
-        "line": 763,
+        "line": 773,
         "column": 0
       },
       "end": {
-        "line": 771,
+        "line": 781,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 772,
+          "line": 782,
           "column": 0
         },
         "end": {
-          "line": 772,
+          "line": 782,
           "column": 83
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13477,26 +13670,26 @@
     ],
     "loc": {
       "start": {
-        "line": 774,
+        "line": 784,
         "column": 0
       },
       "end": {
-        "line": 782,
+        "line": 792,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 783,
+          "line": 793,
           "column": 0
         },
         "end": {
-          "line": 783,
+          "line": 793,
           "column": 85
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13781,26 +13974,26 @@
     ],
     "loc": {
       "start": {
-        "line": 785,
+        "line": 795,
         "column": 0
       },
       "end": {
-        "line": 793,
+        "line": 803,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 794,
+          "line": 804,
           "column": 0
         },
         "end": {
-          "line": 794,
+          "line": 804,
           "column": 95
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14044,26 +14237,26 @@
     ],
     "loc": {
       "start": {
-        "line": 796,
+        "line": 806,
         "column": 0
       },
       "end": {
-        "line": 804,
+        "line": 814,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 805,
+          "line": 815,
           "column": 0
         },
         "end": {
-          "line": 805,
+          "line": 815,
           "column": 50
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14300,26 +14493,26 @@
     ],
     "loc": {
       "start": {
-        "line": 807,
+        "line": 817,
         "column": 0
       },
       "end": {
-        "line": 815,
+        "line": 825,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 816,
+          "line": 826,
           "column": 0
         },
         "end": {
-          "line": 816,
+          "line": 826,
           "column": 49
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14556,26 +14749,26 @@
     ],
     "loc": {
       "start": {
-        "line": 818,
+        "line": 828,
         "column": 0
       },
       "end": {
-        "line": 826,
+        "line": 836,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 827,
+          "line": 837,
           "column": 0
         },
         "end": {
-          "line": 827,
+          "line": 837,
           "column": 42
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14745,26 +14938,26 @@
     ],
     "loc": {
       "start": {
-        "line": 829,
+        "line": 839,
         "column": 0
       },
       "end": {
-        "line": 837,
+        "line": 847,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 838,
+          "line": 848,
           "column": 0
         },
         "end": {
-          "line": 838,
+          "line": 848,
           "column": 27
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14776,7 +14969,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 838
+        "lineNumber": 848
       }
     ],
     "properties": [],
@@ -14939,26 +15132,26 @@
     ],
     "loc": {
       "start": {
-        "line": 840,
+        "line": 850,
         "column": 0
       },
       "end": {
-        "line": 848,
+        "line": 858,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 849,
+          "line": 859,
           "column": 0
         },
         "end": {
-          "line": 849,
+          "line": 859,
           "column": 29
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14970,7 +15163,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 849
+        "lineNumber": 859
       }
     ],
     "properties": [],
@@ -15127,26 +15320,26 @@
     ],
     "loc": {
       "start": {
-        "line": 993,
+        "line": 1003,
         "column": 0
       },
       "end": {
-        "line": 1005,
+        "line": 1015,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1031,
+          "line": 1041,
           "column": 0
         },
         "end": {
-          "line": 1049,
+          "line": 1059,
           "column": 1
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15356,26 +15549,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1007,
+        "line": 1017,
         "column": 0
       },
       "end": {
-        "line": 1020,
+        "line": 1030,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1031,
+          "line": 1041,
           "column": 0
         },
         "end": {
-          "line": 1049,
+          "line": 1059,
           "column": 1
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15602,26 +15795,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1022,
+        "line": 1032,
         "column": 0
       },
       "end": {
-        "line": 1030,
+        "line": 1040,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1031,
+          "line": 1041,
           "column": 0
         },
         "end": {
-          "line": 1049,
+          "line": 1059,
           "column": 1
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15659,27 +15852,27 @@
       ],
       "loc": {
         "start": {
-          "line": 1032,
+          "line": 1042,
           "column": 4
         },
         "end": {
-          "line": 1035,
+          "line": 1045,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1036,
+            "line": 1046,
             "column": 4
           },
           "end": {
-            "line": 1040,
+            "line": 1050,
             "column": 5
           }
         },
-        "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js",
-        "sortKey": "!/Users/nehashrl/Documents/gauge/taiko/taiko.js:00000004!/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js 00001036",
+        "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js",
+        "sortKey": "!/Users/gopher/Documents/gauge/taiko/taiko.js:00000004!/Users/gopher/Documents/gauge/taiko/lib/taiko.js 00001046",
         "code": "{\n    /**\n     * @class \n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async isValid(e) {\n        return await p.evaluate(this.condition, e, await this.value);\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -16445,26 +16638,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1051,
+        "line": 1061,
         "column": 0
       },
       "end": {
-        "line": 1070,
+        "line": 1080,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1072,
+          "line": 1082,
           "column": 0
         },
         "end": {
-          "line": 1079,
+          "line": 1089,
           "column": 2
         }
       },
-      "file": "/Users/nehashrl/Documents/gauge/taiko/lib/taiko.js"
+      "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [

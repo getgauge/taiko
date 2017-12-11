@@ -9,6 +9,7 @@
 -   [page](#page)
 -   [goto](#goto)
 -   [reload](#reload)
+-   [title](#title)
 -   [click](#click)
 -   [doubleClick](#doubleclick)
 -   [rightClick](#rightclick)
@@ -142,6 +143,12 @@ reload('https://google.com', { timeout: 10000 })
 ```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed and the final URL.
+
+## title
+
+Returns page's title.
+
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** Object with the description of the action performed and the final URL.
 
 ## click
 
