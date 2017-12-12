@@ -16,7 +16,7 @@
 -   [hover](#hover)
 -   [focus](#focus)
 -   [write](#write)
--   [attachFile](#attachfile)
+-   [attach](#attach)
 -   [press](#press)
 -   [highlight](#highlight)
 -   [scrollTo](#scrollto)
@@ -262,7 +262,7 @@ write('admin')
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
-## attachFile
+## attach
 
 Attaches a file to a file input element.
 
@@ -274,8 +274,8 @@ Attaches a file to a file input element.
 **Examples**
 
 ```javascript
-attachFile('c:/abc.txt', to('Please select a file:'))
-attachFile('c:/abc.txt', 'Please select a file:')
+attach('c:/abc.txt', to('Please select a file:'))
+attach('c:/abc.txt', 'Please select a file:')
 ```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
@@ -868,7 +868,7 @@ This function is used to improve the readability. It simply returns the paramete
 **Examples**
 
 ```javascript
-attachFile('c:/abc.txt', to('Please select a file:'))
+attach('c:/abc.txt', to('Please select a file:'))
 ```
 
 Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [selector](#selector))** 

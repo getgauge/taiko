@@ -4846,7 +4846,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "attachFile('c:/abc.txt', to('Please select a file:'))\nattachFile('c:/abc.txt', 'Please select a file:')",
+        "description": "attach('c:/abc.txt', to('Please select a file:'))\nattach('c:/abc.txt', 'Please select a file:')",
         "lineNumber": 3
       },
       {
@@ -4923,7 +4923,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "attachFile('c:/abc.txt', to('Please select a file:'))\nattachFile('c:/abc.txt', 'Please select a file:')"
+        "description": "attach('c:/abc.txt', to('Please select a file:'))\nattach('c:/abc.txt', 'Please select a file:')"
       }
     ],
     "params": [
@@ -5133,7 +5133,7 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "name": "attachFile",
+    "name": "attach",
     "kind": "function",
     "memberof": "taiko",
     "scope": "static",
@@ -5146,12 +5146,12 @@
     },
     "path": [
       {
-        "name": "attachFile",
+        "name": "attach",
         "kind": "function",
         "scope": "static"
       }
     ],
-    "namespace": ".attachFile"
+    "namespace": ".attach"
   },
   {
     "description": {
@@ -14856,7 +14856,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "attachFile('c:/abc.txt', to('Please select a file:'))",
+        "description": "attach('c:/abc.txt', to('Please select a file:'))",
         "lineNumber": 3
       },
       {
@@ -14926,7 +14926,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "attachFile('c:/abc.txt', to('Please select a file:'))"
+        "description": "attach('c:/abc.txt', to('Please select a file:'))"
       }
     ],
     "params": [
