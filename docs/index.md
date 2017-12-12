@@ -251,6 +251,8 @@ Types the given text into the focused or given element.
 
 -   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Text to type into the element.
 -   `into` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))?** A selector of an element to write into.
+-   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?**  (optional, default `{delay:10}`)
+    -   `options.delay` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Time to wait between key presses in milliseconds.
 
 **Examples**
 
