@@ -3,10 +3,9 @@
 const path = require('path');
 const util = require('util');
 const fs = require('fs');
-const os = require('os');
 const taiko = require('./lib/taiko');
 const repl = require('./lib/repl');
-const isWin = os.platform() === 'win32';
+const { removeQuotes, symbols } = require('./lib/util');
 
 if (process.argv.length > 2) runFile(process.argv[2]);
 else repl.initiaize();
@@ -19,7 +18,7 @@ function runFile(file) {
         if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function() {
             const res = await realFuncs[func].apply(this, arguments);
             if (res.description) {
-                res.description = (isWin ? '[PASS] ' : ' ✔ ') + res.description;
+                res.description = symbols.pass + res.description;
                 console.log(removeQuotes(util.inspect(res.description, { colors: true }), res.description));
             }
             return res;
@@ -47,9 +46,4 @@ function validate(file) {
         console.log('File does not exist.');
         process.exit(1);
     }
-}
-
-function removeQuotes(textWithQuotes, textWithoutQuotes) {
-    return textWithQuotes.replace(/\\'/g, '\'').replace(/\\n/g, '\n')
-        .replace(`'${textWithoutQuotes}'`, () => textWithoutQuotes);
 }

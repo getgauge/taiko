@@ -15836,7 +15836,7 @@
           }
         },
         "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js",
-        "sortKey": "!/Users/gopher/Documents/gauge/taiko/taiko.js:00000004!/Users/gopher/Documents/gauge/taiko/lib/taiko.js 00001046",
+        "sortKey": "!/Users/gopher/Documents/gauge/taiko/taiko.js:00000003!/Users/gopher/Documents/gauge/taiko/lib/taiko.js 00001046",
         "code": "{\n    /**\n     * @class \n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async isValid(e) {\n        return await p.evaluate(this.condition, e, await this.value);\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
