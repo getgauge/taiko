@@ -16,7 +16,7 @@
 -   [hover](#hover)
 -   [focus](#focus)
 -   [write](#write)
--   [upload](#upload)
+-   [attachFile](#attachfile)
 -   [press](#press)
 -   [highlight](#highlight)
 -   [scrollTo](#scrollto)
@@ -262,20 +262,20 @@ write('admin')
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
 
-## upload
+## attachFile
 
-Uploads a file to a file input element.
+Attaches a file to a file input element.
 
 **Parameters**
 
 -   `filepath` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The path of the file to be attached.
--   `to` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** The file input element to which to upload the file.
+-   `to` **([selector](#selector) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** The file input element to which to attach the file.
 
 **Examples**
 
 ```javascript
-upload('c:/abc.txt', to('Please select a file:'))
-upload('c:/abc.txt', 'Please select a file:')
+attachFile('c:/abc.txt', to('Please select a file:'))
+attachFile('c:/abc.txt', 'Please select a file:')
 ```
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Object with the description of the action performed.
@@ -868,7 +868,7 @@ This function is used to improve the readability. It simply returns the paramete
 **Examples**
 
 ```javascript
-upload('c:/abc.txt', to('Please select a file:'))
+attachFile('c:/abc.txt', to('Please select a file:'))
 ```
 
 Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [selector](#selector))** 
