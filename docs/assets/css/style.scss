@@ -3,37 +3,10 @@
 
 @import "{{ site.theme }}";
 
-html * {
-    font-family: Andale Mono, monospace !important;
-}
-
-li code {
-    background: #191919;
-    border-radius: 3px;
-}
-
-section #title p {
-    font-size: 16px;
-}
-
-section #title h1 {
-    font-size: 32px;
-}
-
-#header {
-    display: none;
-}
-
-section {
-    margin-top: 0px;
-}
-
-#title h1 {
+h1 a {
     text-transform: capitalize;
 }
 
-h2 {
-    padding-bottom: 0.3em;
-    border-bottom: 2px solid #3f3f3f;
-    margin-top: 30px;
+code {
+    font-family: monospace !important;
 }
