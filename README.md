@@ -41,17 +41,19 @@ $ taiko
  ✔ Clicked element containing text "Get Started"
 
 > .code
-const { openBrowser, goto, click, closeBrowser } = require('taiko');
+const { browser, openBrowser, goto, click, closeBrowser } = require('taiko');
 
 (async () => {
     try {
         await openBrowser();
         await goto('https://getgauge.io');
         await click('Get Started');
-        await closeBrowser();
     } catch (e) {
         console.error(e);
-        closeBrowser();
+    } finally {
+        if (browser()) {
+            closeBrowser();
+        }
     }
 })();
 
@@ -65,7 +67,6 @@ $ taiko code.js
 ```
 
 ### As a Module
-
 
 ```js
 const { openBrowser, goto, click, closeBrowser } = require('taiko');
