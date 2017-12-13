@@ -1,6 +1,6 @@
 {
 	"name": "taiko",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "An easy to use wrapper over Google Chrome's Puppeteer library.",
 	"main": "lib/taiko.js",
 	"bin": {
