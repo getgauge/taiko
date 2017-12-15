@@ -58,3 +58,5 @@ typings/
 .env
 
 .DS_Store
+docs/site
+docs/index.md

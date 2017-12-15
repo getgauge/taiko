@@ -9,7 +9,7 @@
 	"scripts": {
 		"format": "js-beautify *.js lib/*.js test/*.js -r -b collapse,preserve-inline && npm run lint",
 		"lint": "eslint lib/*.js test/*.js",
-		"doc": "./node_modules/documentation/bin/documentation.js build taiko.js -f md -o docs/index.md && ./node_modules/documentation/bin/documentation.js build taiko.js -f json -o docs/api.json",
+		"doc": "./node_modules/documentation/bin/documentation.js build taiko.js -f md -o docs/index.md --markdown-toc=false && ./node_modules/documentation/bin/documentation.js build taiko.js -f json -o docs/api.json && node docs/setup.js",
 		"test": "mocha && npm run lint",
 		"login": "npm-cli-login"
 	},
@@ -36,6 +36,7 @@
 		"documentation": "^5.3.3",
 		"eslint": "^4.10.0",
 		"js-beautify": "^1.7.4",
+		"markdown-styles": "^3.1.10",
 		"mocha": "^4.0.1",
 		"npm-cli-login": "^0.0.10"
 	}
