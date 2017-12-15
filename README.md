@@ -81,7 +81,7 @@ const { openBrowser, goto, click, closeBrowser } = require('taiko');
 
 ## Documentation
 
-* [API](https://getgauge.github.io/taiko/)
+* [API](http://taiko.gauge.org)
 
 ## Talk to us
 
