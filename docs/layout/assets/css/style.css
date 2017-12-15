@@ -1,0 +1,10 @@
+code {
+    font-family: monospace !important;
+}
+
+ul.nav.nav-list {
+    background: #fbfbfb;
+    border: 2px solid #eeeeee;
+    border-radius: 10px;
+    padding-top: 2%;
+}
