@@ -12,7 +12,7 @@ fs.writeFileSync('docs/index.md', content, 'utf-8');
 mds.render(mds.resolveArgs({
     input: 'docs/index.md',
     output: 'docs/site',
-    layout: 'docs/layout'
+    layout: 'docs/layout',
 }), function() {
     console.log('All done!');
 });
