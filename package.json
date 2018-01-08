@@ -29,15 +29,15 @@
 	"dependencies": {
 		"babylon": "^6.18.0",
 		"puppeteer": "^0.13.0",
-		"recast": "^0.12.8",
+		"recast": "^0.13.0",
 		"repl.history": "^0.1.4"
 	},
 	"devDependencies": {
 		"documentation": "^5.3.3",
-		"eslint": "^4.10.0",
+		"eslint": "^4.15.0",
 		"js-beautify": "^1.7.4",
 		"markdown-styles": "^3.1.10",
-		"mocha": "^4.0.1",
+		"mocha": "^4.1.0",
 		"npm-cli-login": "^0.0.10"
 	}
 }
