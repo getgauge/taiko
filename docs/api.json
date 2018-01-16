@@ -15383,22 +15383,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1002,
+        "line": 993,
         "column": 0
       },
       "end": {
-        "line": 1014,
+        "line": 1005,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1040,
+          "line": 1031,
           "column": 0
         },
         "end": {
-          "line": 1058,
+          "line": 1049,
           "column": 1
         }
       },
@@ -15612,22 +15612,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1016,
+        "line": 1007,
         "column": 0
       },
       "end": {
-        "line": 1029,
+        "line": 1020,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1040,
+          "line": 1031,
           "column": 0
         },
         "end": {
-          "line": 1058,
+          "line": 1049,
           "column": 1
         }
       },
@@ -15858,22 +15858,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1031,
+        "line": 1022,
         "column": 0
       },
       "end": {
-        "line": 1039,
+        "line": 1030,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1040,
+          "line": 1031,
           "column": 0
         },
         "end": {
-          "line": 1058,
+          "line": 1049,
           "column": 1
         }
       },
@@ -15915,27 +15915,27 @@
       ],
       "loc": {
         "start": {
-          "line": 1041,
+          "line": 1032,
           "column": 4
         },
         "end": {
-          "line": 1044,
+          "line": 1035,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1045,
+            "line": 1036,
             "column": 4
           },
           "end": {
-            "line": 1049,
+            "line": 1040,
             "column": 5
           }
         },
         "file": "/Users/gopher/Documents/gauge/taiko/lib/taiko.js",
-        "sortKey": "!/Users/gopher/Documents/gauge/taiko/taiko.js:00000003!/Users/gopher/Documents/gauge/taiko/lib/taiko.js 00001045",
+        "sortKey": "!/Users/gopher/Documents/gauge/taiko/taiko.js:00000003!/Users/gopher/Documents/gauge/taiko/lib/taiko.js 00001036",
         "code": "{\n    /**\n     * @class \n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async isValid(e) {\n        return await p.evaluate(this.condition, e, await this.value);\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -16701,22 +16701,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1060,
+        "line": 1051,
         "column": 0
       },
       "end": {
-        "line": 1079,
+        "line": 1070,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1081,
+          "line": 1072,
           "column": 0
         },
         "end": {
-          "line": 1088,
+          "line": 1079,
           "column": 2
         }
       },
