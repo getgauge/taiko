@@ -34,10 +34,10 @@
 	},
 	"devDependencies": {
 		"documentation": "^5.3.3",
-		"eslint": "^4.15.0",
+		"eslint": "^4.16.0",
 		"js-beautify": "^1.7.4",
 		"markdown-styles": "^3.1.10",
-		"mocha": "^4.1.0",
+		"mocha": "^5.0.0",
 		"npm-cli-login": "^0.0.10"
 	}
 }
