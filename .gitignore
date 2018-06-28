@@ -60,3 +60,6 @@ typings/
 .DS_Store
 docs/site
 docs/index.md
+
+#local chromium
+.local-chromium
