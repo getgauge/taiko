@@ -79,18 +79,7 @@ const mb = bytes / 1024 / 1024;
 return `${Math.round(mb * 10) / 10} Mb`;
 }
 
-function supportsAsyncAwait() {
-    try {
-      new Function('async function test(){await 1}');
-    } catch (error) {
-      return false;
-    }
-    return true;
-  }
-
 function generateProtocolTypesIfNecessary(updated) {
-    if (!supportsAsyncAwait())
-      return;
     const fs = require('fs');
     const path = require('path');
     if (!fs.existsSync(path.join(__dirname, 'utils', 'protocol-types-generator')))
