@@ -2,6 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![alpha software]( https://img.shields.io/badge/status-alpha-lightgrey.svg)](https://github.com/getgauge/taiko/issues) [![npm version](https://badge.fury.io/js/taiko.svg?style=flat-square)](https://badge.fury.io/js/taiko) [![dependencies Status](https://david-dm.org/getgauge/taiko/status.svg)](https://david-dm.org/getgauge/taiko) [![devDependencies Status](https://david-dm.org/getgauge/taiko/dev-status.svg)](https://david-dm.org/getgauge/taiko?type=dev) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/getgauge/taiko/issues)
 
+### Taiko is being rewritten using [Chrome Remote Interface](https://github.com/cyrus-and/chrome-remote-interface) which will make it support browsers adopting CDP(Chrome Devtools Protocol) in future.
+
 An easy to use wrapper over Google Chrome's Puppeteer library.
 
 ![peek 2017-12-11 17-05](https://user-images.githubusercontent.com/54427/33867170-c2d1b8a6-df20-11e7-927b-4a5e007a6c1e.gif)
