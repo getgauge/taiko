@@ -11,7 +11,8 @@
 		"lint": "eslint lib/*.js test/*.js",
 		"doc": "./node_modules/documentation/bin/documentation.js build taiko.js -f md -o docs/index.md --markdown-toc=false && ./node_modules/documentation/bin/documentation.js build taiko.js -f json -o docs/api.json && node docs/setup.js",
 		"test": "mocha && npm run lint",
-		"login": "npm-cli-login"
+		"login": "npm-cli-login",
+		"install": "node install.js"
 	},
 	"repository": {
 		"type": "git",
@@ -24,11 +25,14 @@
 		"headless-browser",
 		"puppeteer"
 	],
+	"taiko": {
+		"chromium_revision": "571040"
+	  },
 	"author": "getgauge",
 	"license": "MIT",
 	"dependencies": {
 		"babylon": "^6.18.0",
-		"puppeteer": "^1.5.0",
+		"chrome-remote-interface": "^0.25.6",
 		"recast": "^0.12.8",
 		"repl.history": "^0.1.4"
 	},
