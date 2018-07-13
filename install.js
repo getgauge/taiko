@@ -17,7 +17,7 @@
  * This module is imported from Puppeteer(https://github.com/GoogleChrome/puppeteer)
  * Few modifications are done on the file.
  */
-const BrowserFetcher = require('./lib/BrowserFetcher');
+const BrowserFetcher = require('./lib/browserFetcher');
 
 
 const revision = require('./package.json').taiko.chromium_revision;
