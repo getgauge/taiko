@@ -4,7 +4,6 @@
 
 
 >Taiko is being rewritten using [Chrome Remote Interface](https://github.com/cyrus-and/chrome-remote-interface) which will make it support browsers adopting CDP(Chrome Devtools Protocol) in future.
-Check branch [taiko-cri](https://github.com/getgauge/taiko/tree/taiko-cri) for progress.
 
 
 An easy to use wrapper over Google Chrome's Puppeteer library.
