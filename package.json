@@ -9,7 +9,7 @@
 	"scripts": {
 		"format": "js-beautify *.js lib/*.js test/*.js -r -b collapse,preserve-inline && npm run lint",
 		"lint": "eslint lib/*.js test/*.js",
-		"doc": "./node_modules/documentation/bin/documentation.js build taiko.js -f md -o docs/index.md --markdown-toc=false && ./node_modules/documentation/bin/documentation.js build taiko.js -f json -o docs/api.json && node docs/setup.js",
+		"doc": "./node_modules/documentation/bin/documentation.js build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && ./node_modules/documentation/bin/documentation.js build lib/taiko.js -f json --shallow -o docs/api.json && node docs/setup.js",
 		"test": "mocha && npm run lint",
 		"login": "npm-cli-login",
 		"install": "node install.js"

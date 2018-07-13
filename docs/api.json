@@ -60,7 +60,7 @@
       },
       {
         "title": "param",
-        "description": "Set of configurable [options](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerlaunchoptions) to set on the browser.",
+        "description": "{headless: true|false}.",
         "lineNumber": 7,
         "type": {
           "type": "NameExpression",
@@ -89,26 +89,26 @@
     ],
     "loc": {
       "start": {
-        "line": 7,
+        "line": 35,
         "column": 0
       },
       "end": {
-        "line": 16,
+        "line": 44,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 17,
+          "line": 45,
           "column": 0
         },
         "end": {
-          "line": 21,
+          "line": 55,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -129,7 +129,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Set of configurable ",
+                  "value": "{headless: true|false}.",
                   "position": {
                     "start": {
                       "line": 1,
@@ -138,62 +138,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 21,
-                      "offset": 20
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerlaunchoptions",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "options",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 22,
-                          "offset": 21
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 29,
-                          "offset": 28
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 21,
-                      "offset": 20
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 120,
-                      "offset": 119
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": " to set on the browser.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 120,
-                      "offset": 119
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 143,
-                      "offset": 142
+                      "column": 24,
+                      "offset": 23
                     },
                     "indent": []
                   }
@@ -207,8 +153,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 143,
-                  "offset": 142
+                  "column": 24,
+                  "offset": 23
                 },
                 "indent": []
               }
@@ -222,8 +168,8 @@
             },
             "end": {
               "line": 1,
-              "column": 143,
-              "offset": 142
+              "column": 24,
+              "offset": 23
             }
           }
         },
@@ -336,6 +282,320 @@
           "children": [
             {
               "type": "text",
+              "value": "Gives the browser version packaged with Taiko.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 47,
+                  "offset": 46
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 47,
+              "offset": 46
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 47,
+          "offset": 46
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 3,
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 57,
+        "column": 0
+      },
+      "end": {
+        "line": 61,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 62,
+          "column": 0
+        },
+        "end": {
+          "line": 69,
+          "column": 2
+        }
+      },
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+    },
+    "augments": [],
+    "examples": [],
+    "params": [],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "getBrowserVersion",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "getBrowserVersion",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".getBrowserVersion"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Gives the browser version packaged with Taiko.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 47,
+                  "offset": 46
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 47,
+              "offset": 46
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 47,
+          "offset": 46
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "returns",
+        "description": null,
+        "lineNumber": 3,
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 71,
+        "column": 0
+      },
+      "end": {
+        "line": 75,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 76,
+          "column": 0
+        },
+        "end": {
+          "line": 76,
+          "column": 37
+        }
+      },
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+    },
+    "augments": [],
+    "examples": [],
+    "params": [],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "string"
+            }
+          ]
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "client",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "client",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".client"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
               "value": "Closes the browser and all of its tabs (if any were opened).",
               "position": {
                 "start": {
@@ -407,26 +667,26 @@
     ],
     "loc": {
       "start": {
-        "line": 23,
+        "line": 78,
         "column": 0
       },
       "end": {
-        "line": 30,
+        "line": 85,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 31,
+          "line": 86,
           "column": 0
         },
         "end": {
-          "line": 36,
+          "line": 92,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -538,908 +798,6 @@
           "children": [
             {
               "type": "text",
-              "value": "Sets the browser and page instance.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 36,
-                  "offset": 35
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 36,
-              "offset": 35
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 36,
-          "offset": 35
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "param",
-        "description": "Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.",
-        "lineNumber": 2,
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        },
-        "name": "browser"
-      },
-      {
-        "title": "param",
-        "description": "Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.",
-        "lineNumber": 3,
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        },
-        "name": "page"
-      },
-      {
-        "title": "returns",
-        "description": "Object with the description of the action performed.",
-        "lineNumber": 4,
-        "type": {
-          "type": "TypeApplication",
-          "expression": {
-            "type": "NameExpression",
-            "name": "Promise"
-          },
-          "applications": [
-            {
-              "type": "NameExpression",
-              "name": "Object"
-            }
-          ]
-        }
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 38,
-        "column": 0
-      },
-      "end": {
-        "line": 43,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 44,
-          "column": 0
-        },
-        "end": {
-          "line": 50,
-          "column": 2
-        }
-      },
-      "file": "../lib/taiko.js"
-    },
-    "augments": [],
-    "examples": [],
-    "params": [
-      {
-        "title": "param",
-        "name": "browser",
-        "lineNumber": 2,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Puppeteer's ",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "Browser",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 14,
-                          "offset": 13
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 21,
-                          "offset": 20
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 103,
-                      "offset": 102
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": " instance.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 103,
-                      "offset": 102
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 113,
-                      "offset": 112
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 113,
-                  "offset": 112
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 113,
-              "offset": 112
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        }
-      },
-      {
-        "title": "param",
-        "name": "page",
-        "lineNumber": 3,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Puppeteer's ",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "Page",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 14,
-                          "offset": 13
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 18,
-                          "offset": 17
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 97,
-                      "offset": 96
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": " instance.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 97,
-                      "offset": 96
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 107,
-                      "offset": 106
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 107,
-                  "offset": 106
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 107,
-              "offset": 106
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        }
-      }
-    ],
-    "properties": [],
-    "returns": [
-      {
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Object with the description of the action performed.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 53,
-                      "offset": 52
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 53,
-                  "offset": 52
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 53,
-              "offset": 52
-            }
-          }
-        },
-        "title": "returns",
-        "type": {
-          "type": "TypeApplication",
-          "expression": {
-            "type": "NameExpression",
-            "name": "Promise"
-          },
-          "applications": [
-            {
-              "type": "NameExpression",
-              "name": "Object"
-            }
-          ]
-        }
-      }
-    ],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "setup",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "setup",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".setup"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Returns the browser insance created using openBrowser.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 55,
-                  "offset": 54
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 55,
-              "offset": 54
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 55,
-          "offset": 54
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "returns",
-        "description": "Puppeteer's [Browser](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser) instance.",
-        "lineNumber": 3,
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        }
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 52,
-        "column": 0
-      },
-      "end": {
-        "line": 56,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 57,
-          "column": 0
-        },
-        "end": {
-          "line": 57,
-          "column": 33
-        }
-      },
-      "file": "../lib/taiko.js"
-    },
-    "augments": [],
-    "examples": [],
-    "params": [],
-    "properties": [],
-    "returns": [
-      {
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Puppeteer's ",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "Browser",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 14,
-                          "offset": 13
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 21,
-                          "offset": 20
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 103,
-                      "offset": 102
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": " instance.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 103,
-                      "offset": 102
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 113,
-                      "offset": 112
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 113,
-                  "offset": 112
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 113,
-              "offset": 112
-            }
-          }
-        },
-        "title": "returns",
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        }
-      }
-    ],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "browser",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "browser",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".browser"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Returns the page instance.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 27,
-                  "offset": 26
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 27,
-              "offset": 26
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 27,
-          "offset": 26
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "returns",
-        "description": "Puppeteer's [Page](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page) instance.",
-        "lineNumber": 3,
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        }
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 59,
-        "column": 0
-      },
-      "end": {
-        "line": 63,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 64,
-          "column": 0
-        },
-        "end": {
-          "line": 64,
-          "column": 30
-        }
-      },
-      "file": "../lib/taiko.js"
-    },
-    "augments": [],
-    "examples": [],
-    "params": [],
-    "properties": [],
-    "returns": [
-      {
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Puppeteer's ",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "Page",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 14,
-                          "offset": 13
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 18,
-                          "offset": 17
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 13,
-                      "offset": 12
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 97,
-                      "offset": 96
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": " instance.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 97,
-                      "offset": 96
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 107,
-                      "offset": 106
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 107,
-                  "offset": 106
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 107,
-              "offset": 106
-            }
-          }
-        },
-        "title": "returns",
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        }
-      }
-    ],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "page",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "page",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".page"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
               "value": "Opens the specified URL in the browser's tab. Adds ",
               "position": {
                 "start": {
@@ -1535,19 +893,9 @@
         "name": "url"
       },
       {
-        "title": "param",
-        "description": "[Navigation parameters](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagegotourl-options)",
-        "lineNumber": 8,
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        },
-        "name": "options"
-      },
-      {
         "title": "returns",
         "description": "Object with the description of the action performed and the final URL.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -1565,26 +913,26 @@
     ],
     "loc": {
       "start": {
-        "line": 66,
+        "line": 94,
         "column": 0
       },
       "end": {
-        "line": 76,
+        "line": 103,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 77,
+          "line": 104,
           "column": 0
         },
         "end": {
-          "line": 82,
+          "line": 110,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -1652,87 +1000,6 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
-        }
-      },
-      {
-        "title": "param",
-        "name": "options",
-        "lineNumber": 8,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "link",
-                  "title": null,
-                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagegotourl-options",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "Navigation parameters",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 2,
-                          "offset": 1
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 23,
-                          "offset": 22
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 111,
-                      "offset": 110
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 111,
-                  "offset": 110
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 111,
-              "offset": 110
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
         }
       }
     ],
@@ -1890,19 +1157,9 @@
         "lineNumber": 3
       },
       {
-        "title": "param",
-        "description": "[Navigation parameters](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagereloadoptions)",
-        "lineNumber": 7,
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        },
-        "name": "options"
-      },
-      {
         "title": "returns",
         "description": "Object with the description of the action performed and the final URL.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -1920,26 +1177,26 @@
     ],
     "loc": {
       "start": {
-        "line": 84,
+        "line": 112,
         "column": 0
       },
       "end": {
-        "line": 93,
+        "line": 120,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 94,
+          "line": 121,
           "column": 0
         },
         "end": {
-          "line": 98,
+          "line": 125,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -1950,84 +1207,8 @@
     "params": [
       {
         "title": "param",
-        "name": "options",
-        "lineNumber": 7,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "link",
-                  "title": null,
-                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagereloadoptions",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "Navigation parameters",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 2,
-                          "offset": 1
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 23,
-                          "offset": 22
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 109,
-                      "offset": 108
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 109,
-                  "offset": 108
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 109,
-              "offset": 108
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "Object"
-        }
+        "name": "url",
+        "lineNumber": 121
       }
     ],
     "properties": [],
@@ -2199,26 +1380,26 @@
     ],
     "loc": {
       "start": {
-        "line": 100,
+        "line": 127,
         "column": 0
       },
       "end": {
-        "line": 104,
+        "line": 131,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 105,
+          "line": 132,
           "column": 0
         },
         "end": {
-          "line": 108,
+          "line": 139,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [],
@@ -2361,22 +1542,8 @@
       },
       {
         "title": "param",
-        "description": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
-        "lineNumber": 9,
-        "type": {
-          "type": "OptionalType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "boolean"
-          }
-        },
-        "name": "waitForNavigation",
-        "default": "true"
-      },
-      {
-        "title": "param",
         "description": "Click options.",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -2385,8 +1552,36 @@
       },
       {
         "title": "param",
-        "description": "`left`, `right`, or `middle`.",
+        "description": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
+        "lineNumber": 10,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        },
+        "name": "options.waitForNavigation",
+        "default": "true"
+      },
+      {
+        "title": "param",
+        "description": "`true`, or `false`.",
         "lineNumber": 11,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        },
+        "name": "options.exactMatch",
+        "default": "true"
+      },
+      {
+        "title": "param",
+        "description": "`left`, `right`, or `middle`.",
+        "lineNumber": 12,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -2400,20 +1595,6 @@
       {
         "title": "param",
         "description": "Number of times to click on the element.",
-        "lineNumber": 12,
-        "type": {
-          "type": "OptionalType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "number"
-          }
-        },
-        "name": "options.number",
-        "default": "1"
-      },
-      {
-        "title": "param",
-        "description": "Time to wait between mousedown and mouseup in milliseconds.",
         "lineNumber": 13,
         "type": {
           "type": "OptionalType",
@@ -2422,12 +1603,12 @@
             "name": "number"
           }
         },
-        "name": "options.delay",
-        "default": "0"
+        "name": "options.clickCount",
+        "default": "1"
       },
       {
         "title": "param",
-        "description": "Timeout value in milliseconds for navigation after click.",
+        "description": "-TODO: Timeout value in milliseconds for navigation after click.",
         "lineNumber": 14,
         "type": {
           "type": "OptionalType",
@@ -2460,26 +1641,26 @@
     ],
     "loc": {
       "start": {
-        "line": 110,
+        "line": 141,
         "column": 0
       },
       "end": {
-        "line": 126,
+        "line": 157,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 127,
+          "line": 158,
           "column": 0
         },
         "end": {
-          "line": 127,
+          "line": 158,
           "column": 29
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -2560,138 +1741,8 @@
       },
       {
         "title": "param",
-        "name": "waitForNavigation",
-        "lineNumber": 9,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass ",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 95,
-                      "offset": 94
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "inlineCode",
-                  "value": "{ timeout: 10000 }",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 95,
-                      "offset": 94
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 115,
-                      "offset": 114
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": " in ",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 115,
-                      "offset": 114
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 119,
-                      "offset": 118
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "inlineCode",
-                  "value": "options",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 119,
-                      "offset": 118
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 128,
-                      "offset": 127
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": " parameter.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 128,
-                      "offset": 127
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 139,
-                      "offset": 138
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 139,
-                  "offset": 138
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 139,
-              "offset": 138
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        },
-        "default": "true"
-      },
-      {
-        "title": "param",
         "name": "options",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "description": {
           "type": "root",
           "children": [
@@ -2751,8 +1802,251 @@
         "properties": [
           {
             "title": "param",
-            "name": "options.button",
+            "name": "options.waitForNavigation",
+            "lineNumber": 10,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 95,
+                          "offset": 94
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "{ timeout: 10000 }",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 95,
+                          "offset": 94
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 115,
+                          "offset": 114
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " in ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 115,
+                          "offset": 114
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 119,
+                          "offset": 118
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "options",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 119,
+                          "offset": 118
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 128,
+                          "offset": 127
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " parameter.",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 128,
+                          "offset": 127
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 139,
+                          "offset": 138
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 139,
+                      "offset": 138
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 139,
+                  "offset": 138
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "boolean"
+            },
+            "default": "true"
+          },
+          {
+            "title": "param",
+            "name": "options.exactMatch",
             "lineNumber": 11,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "true",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 7,
+                          "offset": 6
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", or ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 7,
+                          "offset": 6
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 12,
+                          "offset": 11
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "false",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 12,
+                          "offset": 11
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 19,
+                          "offset": 18
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ".",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 19,
+                          "offset": 18
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 20,
+                          "offset": 19
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "boolean"
+            },
+            "default": "true"
+          },
+          {
+            "title": "param",
+            "name": "options.button",
+            "lineNumber": 12,
             "description": {
               "type": "root",
               "children": [
@@ -2898,8 +2192,8 @@
           },
           {
             "title": "param",
-            "name": "options.number",
-            "lineNumber": 12,
+            "name": "options.clickCount",
+            "lineNumber": 13,
             "description": {
               "type": "root",
               "children": [
@@ -2960,68 +2254,6 @@
           },
           {
             "title": "param",
-            "name": "options.delay",
-            "lineNumber": 13,
-            "description": {
-              "type": "root",
-              "children": [
-                {
-                  "type": "paragraph",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "Time to wait between mousedown and mouseup in milliseconds.",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 1,
-                          "offset": 0
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 60,
-                          "offset": 59
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 60,
-                      "offset": 59
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 60,
-                  "offset": 59
-                }
-              }
-            },
-            "type": {
-              "type": "NameExpression",
-              "name": "number"
-            },
-            "default": "0"
-          },
-          {
-            "title": "param",
             "name": "options.timeout",
             "lineNumber": 14,
             "description": {
@@ -3032,7 +2264,7 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "Timeout value in milliseconds for navigation after click.",
+                      "value": "-TODO: Timeout value in milliseconds for navigation after click.",
                       "position": {
                         "start": {
                           "line": 1,
@@ -3041,8 +2273,8 @@
                         },
                         "end": {
                           "line": 1,
-                          "column": 58,
-                          "offset": 57
+                          "column": 65,
+                          "offset": 64
                         },
                         "indent": []
                       }
@@ -3056,8 +2288,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 58,
-                      "offset": 57
+                      "column": 65,
+                      "offset": 64
                     },
                     "indent": []
                   }
@@ -3071,8 +2303,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 58,
-                  "offset": 57
+                  "column": 65,
+                  "offset": 64
                 }
               }
             },
@@ -3257,8 +2489,18 @@
       },
       {
         "title": "param",
-        "description": "wait for navigation after the click.",
+        "description": "Click options.",
         "lineNumber": 9,
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        },
+        "name": "options"
+      },
+      {
+        "title": "param",
+        "description": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
+        "lineNumber": 10,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -3266,13 +2508,27 @@
             "name": "boolean"
           }
         },
-        "name": "waitForNavigation",
+        "name": "options.waitForNavigation",
+        "default": "true"
+      },
+      {
+        "title": "param",
+        "description": "`true`, or `false`.",
+        "lineNumber": 11,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        },
+        "name": "options.exactMatch",
         "default": "true"
       },
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 10,
+        "lineNumber": 12,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -3290,26 +2546,26 @@
     ],
     "loc": {
       "start": {
-        "line": 142,
+        "line": 193,
         "column": 0
       },
       "end": {
-        "line": 153,
+        "line": 206,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 154,
+          "line": 207,
           "column": 0
         },
         "end": {
-          "line": 158,
+          "line": 215,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -3390,7 +2646,7 @@
       },
       {
         "title": "param",
-        "name": "waitForNavigation",
+        "name": "options",
         "lineNumber": 9,
         "description": {
           "type": "root",
@@ -3400,7 +2656,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "wait for navigation after the click.",
+                  "value": "Click options.",
                   "position": {
                     "start": {
                       "line": 1,
@@ -3409,8 +2665,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 37,
-                      "offset": 36
+                      "column": 15,
+                      "offset": 14
                     },
                     "indent": []
                   }
@@ -3424,8 +2680,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 37,
-                  "offset": 36
+                  "column": 15,
+                  "offset": 14
                 },
                 "indent": []
               }
@@ -3439,16 +2695,261 @@
             },
             "end": {
               "line": 1,
-              "column": 37,
-              "offset": 36
+              "column": 15,
+              "offset": 14
             }
           }
         },
         "type": {
           "type": "NameExpression",
-          "name": "boolean"
+          "name": "Object"
         },
-        "default": "true"
+        "properties": [
+          {
+            "title": "param",
+            "name": "options.waitForNavigation",
+            "lineNumber": 10,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 95,
+                          "offset": 94
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "{ timeout: 10000 }",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 95,
+                          "offset": 94
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 115,
+                          "offset": 114
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " in ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 115,
+                          "offset": 114
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 119,
+                          "offset": 118
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "options",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 119,
+                          "offset": 118
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 128,
+                          "offset": 127
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " parameter.",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 128,
+                          "offset": 127
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 139,
+                          "offset": 138
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 139,
+                      "offset": 138
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 139,
+                  "offset": 138
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "boolean"
+            },
+            "default": "true"
+          },
+          {
+            "title": "param",
+            "name": "options.exactMatch",
+            "lineNumber": 11,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "true",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 7,
+                          "offset": 6
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", or ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 7,
+                          "offset": 6
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 12,
+                          "offset": 11
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "false",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 12,
+                          "offset": 11
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 19,
+                          "offset": 18
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ".",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 19,
+                          "offset": 18
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 20,
+                          "offset": 19
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "boolean"
+            },
+            "default": "true"
+          }
+        ],
+        "default": "{}"
       }
     ],
     "properties": [],
@@ -3624,9 +3125,47 @@
         "name": "selector"
       },
       {
+        "title": "param",
+        "description": "Click options.",
+        "lineNumber": 8,
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        },
+        "name": "options"
+      },
+      {
+        "title": "param",
+        "description": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
+        "lineNumber": 9,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        },
+        "name": "options.waitForNavigation",
+        "default": "true"
+      },
+      {
+        "title": "param",
+        "description": "`true`, or `false`.",
+        "lineNumber": 10,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        },
+        "name": "options.exactMatch",
+        "default": "true"
+      },
+      {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 8,
+        "lineNumber": 11,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -3644,26 +3183,26 @@
     ],
     "loc": {
       "start": {
-        "line": 160,
+        "line": 217,
         "column": 0
       },
       "end": {
-        "line": 169,
+        "line": 229,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 170,
+          "line": 230,
           "column": 0
         },
         "end": {
-          "line": 174,
+          "line": 238,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -3741,6 +3280,313 @@
             }
           ]
         }
+      },
+      {
+        "title": "param",
+        "name": "options",
+        "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Click options.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 15,
+                      "offset": 14
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 15,
+                  "offset": 14
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 15,
+              "offset": 14
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        },
+        "properties": [
+          {
+            "title": "param",
+            "name": "options.waitForNavigation",
+            "lineNumber": 9,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 95,
+                          "offset": 94
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "{ timeout: 10000 }",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 95,
+                          "offset": 94
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 115,
+                          "offset": 114
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " in ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 115,
+                          "offset": 114
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 119,
+                          "offset": 118
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "options",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 119,
+                          "offset": 118
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 128,
+                          "offset": 127
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " parameter.",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 128,
+                          "offset": 127
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 139,
+                          "offset": 138
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 139,
+                      "offset": 138
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 139,
+                  "offset": 138
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "boolean"
+            },
+            "default": "true"
+          },
+          {
+            "title": "param",
+            "name": "options.exactMatch",
+            "lineNumber": 10,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "true",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 7,
+                          "offset": 6
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", or ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 7,
+                          "offset": 6
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 12,
+                          "offset": 11
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "false",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 12,
+                          "offset": 11
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 19,
+                          "offset": 18
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ".",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 19,
+                          "offset": 18
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 20,
+                          "offset": 19
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "boolean"
+            },
+            "default": "true"
+          }
+        ],
+        "default": "{}"
       }
     ],
     "properties": [],
@@ -3916,9 +3762,33 @@
         "name": "selector"
       },
       {
+        "title": "param",
+        "description": "Click options.",
+        "lineNumber": 8,
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        },
+        "name": "options"
+      },
+      {
+        "title": "param",
+        "description": "`true`, or `false`.",
+        "lineNumber": 9,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        },
+        "name": "options.exactMatch",
+        "default": "true"
+      },
+      {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 8,
+        "lineNumber": 10,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -3936,26 +3806,26 @@
     ],
     "loc": {
       "start": {
-        "line": 176,
+        "line": 240,
         "column": 0
       },
       "end": {
-        "line": 185,
+        "line": 251,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 186,
+          "line": 252,
           "column": 0
         },
         "end": {
-          "line": 192,
+          "line": 270,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -4033,6 +3903,183 @@
             }
           ]
         }
+      },
+      {
+        "title": "param",
+        "name": "options",
+        "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Click options.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 15,
+                      "offset": 14
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 15,
+                  "offset": 14
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 15,
+              "offset": 14
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        },
+        "properties": [
+          {
+            "title": "param",
+            "name": "options.exactMatch",
+            "lineNumber": 9,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "true",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 7,
+                          "offset": 6
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", or ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 7,
+                          "offset": 6
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 12,
+                          "offset": 11
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "false",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 12,
+                          "offset": 11
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 19,
+                          "offset": 18
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ".",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 19,
+                          "offset": 18
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 20,
+                          "offset": 19
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "boolean"
+            },
+            "default": "true"
+          }
+        ],
+        "default": "{}"
       }
     ],
     "properties": [],
@@ -4228,26 +4275,26 @@
     ],
     "loc": {
       "start": {
-        "line": 194,
+        "line": 272,
         "column": 0
       },
       "end": {
-        "line": 202,
+        "line": 280,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 203,
+          "line": 281,
           "column": 0
         },
         "end": {
-          "line": 207,
+          "line": 285,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -4556,26 +4603,26 @@
     ],
     "loc": {
       "start": {
-        "line": 209,
+        "line": 287,
         "column": 0
       },
       "end": {
-        "line": 222,
+        "line": 300,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 223,
+          "line": 301,
           "column": 0
         },
         "end": {
-          "line": 235,
+          "line": 312,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -4978,9 +5025,33 @@
         "name": "to"
       },
       {
+        "title": "param",
+        "description": "Click options.",
+        "lineNumber": 9,
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        },
+        "name": "options"
+      },
+      {
+        "title": "param",
+        "description": "`true`, or `false`.",
+        "lineNumber": 10,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        },
+        "name": "options.exactMatch",
+        "default": "true"
+      },
+      {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 9,
+        "lineNumber": 11,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -4998,26 +5069,26 @@
     ],
     "loc": {
       "start": {
-        "line": 237,
+        "line": 321,
         "column": 0
       },
       "end": {
-        "line": 247,
+        "line": 333,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 248,
+          "line": 334,
           "column": 0
         },
         "end": {
-          "line": 256,
+          "line": 347,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -5156,6 +5227,183 @@
             }
           ]
         }
+      },
+      {
+        "title": "param",
+        "name": "options",
+        "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Click options.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 15,
+                      "offset": 14
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 15,
+                  "offset": 14
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 15,
+              "offset": 14
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        },
+        "properties": [
+          {
+            "title": "param",
+            "name": "options.exactMatch",
+            "lineNumber": 10,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "true",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 7,
+                          "offset": 6
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ", or ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 7,
+                          "offset": 6
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 12,
+                          "offset": 11
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "false",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 12,
+                          "offset": 11
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 19,
+                          "offset": 18
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ".",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 19,
+                          "offset": 18
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 20,
+                          "offset": 19
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "boolean"
+            },
+            "default": "true"
+          }
+        ],
+        "default": "{}"
       }
     ],
     "properties": [],
@@ -5376,26 +5624,26 @@
     ],
     "loc": {
       "start": {
-        "line": 258,
+        "line": 349,
         "column": 0
       },
       "end": {
-        "line": 270,
+        "line": 361,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 271,
+          "line": 362,
           "column": 0
         },
         "end": {
-          "line": 275,
+          "line": 368,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -5847,26 +6095,26 @@
     ],
     "loc": {
       "start": {
-        "line": 277,
+        "line": 370,
         "column": 0
       },
       "end": {
-        "line": 286,
+        "line": 379,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 287,
+          "line": 380,
           "column": 0
         },
         "end": {
-          "line": 291,
+          "line": 388,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6139,26 +6387,26 @@
     ],
     "loc": {
       "start": {
-        "line": 293,
+        "line": 390,
         "column": 0
       },
       "end": {
-        "line": 302,
+        "line": 399,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 303,
+          "line": 400,
           "column": 0
         },
         "end": {
-          "line": 307,
+          "line": 408,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6453,26 +6701,26 @@
     ],
     "loc": {
       "start": {
-        "line": 309,
+        "line": 427,
         "column": 0
       },
       "end": {
-        "line": 321,
+        "line": 439,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 322,
+          "line": 440,
           "column": 0
         },
         "end": {
-          "line": 325,
+          "line": 443,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6730,26 +6978,26 @@
     ],
     "loc": {
       "start": {
-        "line": 327,
+        "line": 445,
         "column": 0
       },
       "end": {
-        "line": 339,
+        "line": 457,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 340,
+          "line": 458,
           "column": 0
         },
         "end": {
-          "line": 343,
+          "line": 461,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7007,26 +7255,26 @@
     ],
     "loc": {
       "start": {
-        "line": 345,
+        "line": 463,
         "column": 0
       },
       "end": {
-        "line": 357,
+        "line": 475,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 358,
+          "line": 476,
           "column": 0
         },
         "end": {
-          "line": 361,
+          "line": 479,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7284,26 +7532,26 @@
     ],
     "loc": {
       "start": {
-        "line": 363,
+        "line": 481,
         "column": 0
       },
       "end": {
-        "line": 375,
+        "line": 493,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 376,
+          "line": 494,
           "column": 0
         },
         "end": {
-          "line": 379,
+          "line": 497,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7496,18 +7744,18 @@
     "tags": [
       {
         "title": "example",
-        "description": "screenshot({path: 'screenshot.png'})",
+        "description": "screenshot('screenshot.png')",
         "lineNumber": 3
       },
       {
         "title": "param",
-        "description": "Options object with properties mentioned [here](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagescreenshotoptions).",
+        "description": "path to save screenshot",
         "lineNumber": 6,
         "type": {
           "type": "NameExpression",
-          "name": "Object"
+          "name": "string"
         },
-        "name": "options"
+        "name": "path"
       },
       {
         "title": "returns",
@@ -7530,37 +7778,37 @@
     ],
     "loc": {
       "start": {
-        "line": 381,
+        "line": 499,
         "column": 0
       },
       "end": {
-        "line": 389,
+        "line": 507,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 390,
+          "line": 508,
           "column": 0
         },
         "end": {
-          "line": 390,
-          "column": 67
+          "line": 514,
+          "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
       {
-        "description": "screenshot({path: 'screenshot.png'})"
+        "description": "screenshot('screenshot.png')"
       }
     ],
     "params": [
       {
         "title": "param",
-        "name": "options",
+        "name": "path",
         "lineNumber": 6,
         "description": {
           "type": "root",
@@ -7570,7 +7818,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Options object with properties mentioned ",
+                  "value": "path to save screenshot",
                   "position": {
                     "start": {
                       "line": 1,
@@ -7579,62 +7827,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 42,
-                      "offset": 41
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagescreenshotoptions",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "here",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 43,
-                          "offset": 42
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 47,
-                          "offset": 46
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 42,
-                      "offset": 41
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 137,
-                      "offset": 136
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": ".",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 137,
-                      "offset": 136
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 138,
-                      "offset": 137
+                      "column": 24,
+                      "offset": 23
                     },
                     "indent": []
                   }
@@ -7648,8 +7842,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 138,
-                  "offset": 137
+                  "column": 24,
+                  "offset": 23
                 },
                 "indent": []
               }
@@ -7663,14 +7857,14 @@
             },
             "end": {
               "line": 1,
-              "column": 138,
-              "offset": 137
+              "column": 24,
+              "offset": 23
             }
           }
         },
         "type": {
           "type": "NameExpression",
-          "name": "Object"
+          "name": "string"
         }
       }
     ],
@@ -7904,26 +8098,26 @@
     ],
     "loc": {
       "start": {
-        "line": 392,
+        "line": 516,
         "column": 0
       },
       "end": {
-        "line": 401,
+        "line": 525,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 402,
+          "line": 526,
           "column": 0
         },
         "end": {
-          "line": 406,
+          "line": 530,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8191,26 +8385,26 @@
     ],
     "loc": {
       "start": {
-        "line": 408,
+        "line": 532,
         "column": 0
       },
       "end": {
-        "line": 418,
+        "line": 542,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 419,
+          "line": 543,
           "column": 0
         },
         "end": {
-          "line": 424,
+          "line": 548,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8478,26 +8672,26 @@
     ],
     "loc": {
       "start": {
-        "line": 426,
+        "line": 550,
         "column": 0
       },
       "end": {
-        "line": 436,
+        "line": 560,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 437,
+          "line": 561,
           "column": 0
         },
         "end": {
-          "line": 441,
+          "line": 565,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8799,26 +8993,26 @@
     ],
     "loc": {
       "start": {
-        "line": 443,
+        "line": 567,
         "column": 0
       },
       "end": {
-        "line": 453,
+        "line": 577,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 454,
+          "line": 578,
           "column": 0
         },
         "end": {
-          "line": 458,
+          "line": 582,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9086,26 +9280,26 @@
     ],
     "loc": {
       "start": {
-        "line": 460,
+        "line": 584,
         "column": 0
       },
       "end": {
-        "line": 470,
+        "line": 594,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 471,
+          "line": 595,
           "column": 0
         },
         "end": {
-          "line": 476,
+          "line": 599,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9387,26 +9581,26 @@
     ],
     "loc": {
       "start": {
-        "line": 478,
+        "line": 601,
         "column": 0
       },
       "end": {
-        "line": 489,
+        "line": 612,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 490,
+          "line": 613,
           "column": 0
         },
         "end": {
-          "line": 509,
+          "line": 632,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9651,7 +9845,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a file input field on a web page.",
+              "value": " lets you identify a file input field on a web page either with label or with attribute and value pair.",
               "position": {
                 "start": {
                   "line": 1,
@@ -9660,8 +9854,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 74,
-                  "offset": 73
+                  "column": 125,
+                  "offset": 124
                 },
                 "indent": []
               }
@@ -9675,8 +9869,8 @@
             },
             "end": {
               "line": 1,
-              "column": 74,
-              "offset": 73
+              "column": 125,
+              "offset": 124
             },
             "indent": []
           }
@@ -9690,21 +9884,21 @@
         },
         "end": {
           "line": 1,
-          "column": 74,
-          "offset": 73
+          "column": 125,
+          "offset": 124
         }
       }
     },
     "tags": [
       {
         "title": "example",
-        "description": "fileField('Please select a file:').value()\nfileField('Please select a file:').exists()",
+        "description": "fileField('Please select a file:').value()\nfileField('Please select a file:').exists()\nfileField('id','file').exists()",
         "lineNumber": 3
       },
       {
         "title": "param",
         "description": "The label (human-visible name) of the file input field.",
-        "lineNumber": 7,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -9713,8 +9907,32 @@
       },
       {
         "title": "param",
+        "description": "The file field's attribute.",
+        "lineNumber": 9,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        },
+        "name": "attribute",
+        "default": "'value'"
+      },
+      {
+        "title": "param",
+        "description": "Value of the attribute specified in the first parameter.",
+        "lineNumber": 10,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "value"
+      },
+      {
+        "title": "param",
         "description": null,
-        "lineNumber": 8,
+        "lineNumber": 11,
         "type": {
           "type": "RestType",
           "expression": {
@@ -9727,7 +9945,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 12,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9736,38 +9954,38 @@
     ],
     "loc": {
       "start": {
-        "line": 511,
+        "line": 634,
         "column": 0
       },
       "end": {
-        "line": 521,
+        "line": 647,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 522,
+          "line": 648,
           "column": 0
         },
         "end": {
-          "line": 522,
+          "line": 648,
           "column": 37
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
       {
-        "description": "fileField('Please select a file:').value()\nfileField('Please select a file:').exists()"
+        "description": "fileField('Please select a file:').value()\nfileField('Please select a file:').exists()\nfileField('id','file').exists()"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "label",
-        "lineNumber": 7,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -9827,8 +10045,131 @@
       },
       {
         "title": "param",
+        "name": "attribute",
+        "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "The file field's attribute.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 28,
+                      "offset": 27
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 28,
+                  "offset": 27
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 28,
+              "offset": 27
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "default": "'value'"
+      },
+      {
+        "title": "param",
+        "name": "value",
+        "lineNumber": 10,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Value of the attribute specified in the first parameter.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 57,
+                      "offset": 56
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 57,
+                  "offset": 56
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 57,
+              "offset": 56
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      },
+      {
+        "title": "param",
         "name": "args",
-        "lineNumber": 8,
+        "lineNumber": 11,
         "type": {
           "type": "RestType",
           "expression": {
@@ -9936,7 +10277,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a text field on a web page.",
+              "value": " lets you identify a text field on a web page either with label or with attribute and value pair.",
               "position": {
                 "start": {
                   "line": 1,
@@ -9945,8 +10286,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 68,
-                  "offset": 67
+                  "column": 119,
+                  "offset": 118
                 },
                 "indent": []
               }
@@ -9960,8 +10301,8 @@
             },
             "end": {
               "line": 1,
-              "column": 68,
-              "offset": 67
+              "column": 119,
+              "offset": 118
             },
             "indent": []
           }
@@ -9975,8 +10316,8 @@
         },
         "end": {
           "line": 1,
-          "column": 68,
-          "offset": 67
+          "column": 119,
+          "offset": 118
         }
       }
     },
@@ -9988,8 +10329,32 @@
       },
       {
         "title": "param",
-        "description": "The label (human-visible name) of the text field.",
+        "description": "The text field's attribute.",
         "lineNumber": 7,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        },
+        "name": "attribute",
+        "default": "'value'"
+      },
+      {
+        "title": "param",
+        "description": "Value of the attribute specified in the first parameter.",
+        "lineNumber": 8,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "value"
+      },
+      {
+        "title": "param",
+        "description": "The label (human-visible name) of the text field.",
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -9999,7 +10364,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 8,
+        "lineNumber": 10,
         "type": {
           "type": "RestType",
           "expression": {
@@ -10012,7 +10377,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 11,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -10021,26 +10386,26 @@
     ],
     "loc": {
       "start": {
-        "line": 534,
+        "line": 667,
         "column": 0
       },
       "end": {
-        "line": 544,
+        "line": 679,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 545,
+          "line": 680,
           "column": 0
         },
         "end": {
-          "line": 545,
+          "line": 680,
           "column": 37
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10051,8 +10416,131 @@
     "params": [
       {
         "title": "param",
-        "name": "label",
+        "name": "attribute",
         "lineNumber": 7,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "The text field's attribute.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 28,
+                      "offset": 27
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 28,
+                  "offset": 27
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 28,
+              "offset": 27
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "default": "'value'"
+      },
+      {
+        "title": "param",
+        "name": "value",
+        "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Value of the attribute specified in the first parameter.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 57,
+                      "offset": 56
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 57,
+                  "offset": 56
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 57,
+              "offset": 56
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "label",
+        "lineNumber": 9,
         "description": {
           "type": "root",
           "children": [
@@ -10113,7 +10601,7 @@
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 8,
+        "lineNumber": 10,
         "type": {
           "type": "RestType",
           "expression": {
@@ -10221,7 +10709,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a combo box on a web page.",
+              "value": " lets you identify a combo box on a web page either with label or with attribute and value pair.",
               "position": {
                 "start": {
                   "line": 1,
@@ -10230,8 +10718,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 67,
-                  "offset": 66
+                  "column": 118,
+                  "offset": 117
                 },
                 "indent": []
               }
@@ -10245,8 +10733,8 @@
             },
             "end": {
               "line": 1,
-              "column": 67,
-              "offset": 66
+              "column": 118,
+              "offset": 117
             },
             "indent": []
           }
@@ -10260,8 +10748,8 @@
         },
         "end": {
           "line": 1,
-          "column": 67,
-          "offset": 66
+          "column": 118,
+          "offset": 117
         }
       }
     },
@@ -10273,8 +10761,32 @@
       },
       {
         "title": "param",
-        "description": "The label (human-visible name) of the combo box.",
+        "description": "The comboBox's attribute.",
         "lineNumber": 8,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        },
+        "name": "attribute",
+        "default": "'value'"
+      },
+      {
+        "title": "param",
+        "description": "Value of the attribute specified in the first parameter.",
+        "lineNumber": 9,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "value"
+      },
+      {
+        "title": "param",
+        "description": "The label (human-visible name) of the combo box.",
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -10284,7 +10796,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 11,
         "type": {
           "type": "RestType",
           "expression": {
@@ -10297,7 +10809,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 10,
+        "lineNumber": 12,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -10306,26 +10818,26 @@
     ],
     "loc": {
       "start": {
-        "line": 559,
+        "line": 700,
         "column": 0
       },
       "end": {
-        "line": 570,
+        "line": 713,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 571,
+          "line": 714,
           "column": 0
         },
         "end": {
-          "line": 588,
+          "line": 746,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10336,8 +10848,143 @@
     "params": [
       {
         "title": "param",
-        "name": "label",
+        "name": "attribute",
         "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "The comboBox's attribute.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 26,
+                      "offset": 25
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 26,
+                  "offset": 25
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 26,
+              "offset": 25
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "default": "'value'"
+      },
+      {
+        "title": "param",
+        "name": "value",
+        "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Value of the attribute specified in the first parameter.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 57,
+                      "offset": 56
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 57,
+                  "offset": 56
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 57,
+              "offset": 56
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 11,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        }
+      },
+      {
+        "title": "param",
+        "name": "label",
+        "lineNumber": 10,
         "description": {
           "type": "root",
           "children": [
@@ -10393,18 +11040,6 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
-        }
-      },
-      {
-        "title": "param",
-        "name": "args",
-        "lineNumber": 9,
-        "type": {
-          "type": "RestType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "relativeSelector"
-          }
         }
       }
     ],
@@ -10508,7 +11143,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a checkbox on a web page.",
+              "value": " lets you identify a checkbox on a web page either with label or with attribute and value pair.",
               "position": {
                 "start": {
                   "line": 1,
@@ -10517,8 +11152,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 66,
-                  "offset": 65
+                  "column": 117,
+                  "offset": 116
                 },
                 "indent": []
               }
@@ -10532,8 +11167,8 @@
             },
             "end": {
               "line": 1,
-              "column": 66,
-              "offset": 65
+              "column": 117,
+              "offset": 116
             },
             "indent": []
           }
@@ -10547,8 +11182,8 @@
         },
         "end": {
           "line": 1,
-          "column": 66,
-          "offset": 65
+          "column": 117,
+          "offset": 116
         }
       }
     },
@@ -10560,8 +11195,32 @@
       },
       {
         "title": "param",
-        "description": "The label (human-visible name) of the check box.",
+        "description": "The checkBox's attribute.",
         "lineNumber": 9,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        },
+        "name": "attribute",
+        "default": "'value'"
+      },
+      {
+        "title": "param",
+        "description": "Value of the attribute specified in the first parameter.",
+        "lineNumber": 10,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "value"
+      },
+      {
+        "title": "param",
+        "description": "The label (human-visible name) of the check box.",
+        "lineNumber": 11,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -10571,7 +11230,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 10,
+        "lineNumber": 12,
         "type": {
           "type": "RestType",
           "expression": {
@@ -10584,7 +11243,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 11,
+        "lineNumber": 13,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -10593,26 +11252,26 @@
     ],
     "loc": {
       "start": {
-        "line": 590,
+        "line": 748,
         "column": 0
       },
       "end": {
-        "line": 602,
+        "line": 762,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 603,
+          "line": 763,
           "column": 0
         },
         "end": {
-          "line": 615,
+          "line": 781,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10623,8 +11282,143 @@
     "params": [
       {
         "title": "param",
-        "name": "label",
+        "name": "attribute",
         "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "The checkBox's attribute.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 26,
+                      "offset": 25
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 26,
+                  "offset": 25
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 26,
+              "offset": 25
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "default": "'value'"
+      },
+      {
+        "title": "param",
+        "name": "value",
+        "lineNumber": 10,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Value of the attribute specified in the first parameter.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 57,
+                      "offset": 56
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 57,
+                  "offset": 56
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 57,
+              "offset": 56
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 12,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        }
+      },
+      {
+        "title": "param",
+        "name": "label",
+        "lineNumber": 11,
         "description": {
           "type": "root",
           "children": [
@@ -10680,18 +11474,6 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
-        }
-      },
-      {
-        "title": "param",
-        "name": "args",
-        "lineNumber": 10,
-        "type": {
-          "type": "RestType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "relativeSelector"
-          }
         }
       }
     ],
@@ -10795,7 +11577,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a radio button on a web page.",
+              "value": " lets you identify a radio button on a web page either with label or with attribute and value pair.",
               "position": {
                 "start": {
                   "line": 1,
@@ -10804,8 +11586,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 70,
-                  "offset": 69
+                  "column": 121,
+                  "offset": 120
                 },
                 "indent": []
               }
@@ -10819,8 +11601,8 @@
             },
             "end": {
               "line": 1,
-              "column": 70,
-              "offset": 69
+              "column": 121,
+              "offset": 120
             },
             "indent": []
           }
@@ -10834,8 +11616,8 @@
         },
         "end": {
           "line": 1,
-          "column": 70,
-          "offset": 69
+          "column": 121,
+          "offset": 120
         }
       }
     },
@@ -10847,8 +11629,32 @@
       },
       {
         "title": "param",
-        "description": "The label (human-visible name) of the radio button.",
+        "description": "The radioButton's attribute.",
         "lineNumber": 9,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        },
+        "name": "attribute",
+        "default": "'value'"
+      },
+      {
+        "title": "param",
+        "description": "Value of the attribute specified in the first parameter.",
+        "lineNumber": 10,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "value"
+      },
+      {
+        "title": "param",
+        "description": "The label (human-visible name) of the radio button.",
+        "lineNumber": 11,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -10858,7 +11664,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 10,
+        "lineNumber": 12,
         "type": {
           "type": "RestType",
           "expression": {
@@ -10871,7 +11677,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 11,
+        "lineNumber": 13,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -10880,26 +11686,26 @@
     ],
     "loc": {
       "start": {
-        "line": 617,
+        "line": 783,
         "column": 0
       },
       "end": {
-        "line": 629,
+        "line": 797,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 630,
+          "line": 798,
           "column": 0
         },
         "end": {
-          "line": 642,
+          "line": 816,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10910,8 +11716,143 @@
     "params": [
       {
         "title": "param",
-        "name": "label",
+        "name": "attribute",
         "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "The radioButton's attribute.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 29,
+                      "offset": 28
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 29,
+                  "offset": 28
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 29,
+              "offset": 28
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "default": "'value'"
+      },
+      {
+        "title": "param",
+        "name": "value",
+        "lineNumber": 10,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Value of the attribute specified in the first parameter.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 57,
+                      "offset": 56
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 57,
+                  "offset": 56
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 57,
+              "offset": 56
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      },
+      {
+        "title": "param",
+        "name": "args",
+        "lineNumber": 12,
+        "type": {
+          "type": "RestType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "relativeSelector"
+          }
+        }
+      },
+      {
+        "title": "param",
+        "name": "label",
+        "lineNumber": 11,
         "description": {
           "type": "root",
           "children": [
@@ -10967,18 +11908,6 @@
         "type": {
           "type": "NameExpression",
           "name": "string"
-        }
-      },
-      {
-        "title": "param",
-        "name": "args",
-        "lineNumber": 10,
-        "type": {
-          "type": "RestType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "relativeSelector"
-          }
         }
       }
     ],
@@ -11167,26 +12096,26 @@
     ],
     "loc": {
       "start": {
-        "line": 644,
+        "line": 818,
         "column": 0
       },
       "end": {
-        "line": 654,
+        "line": 828,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 655,
+          "line": 829,
           "column": 0
         },
         "end": {
-          "line": 660,
+          "line": 834,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -11454,26 +12383,26 @@
     ],
     "loc": {
       "start": {
-        "line": 662,
+        "line": 836,
         "column": 0
       },
       "end": {
-        "line": 671,
+        "line": 845,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 672,
+          "line": 846,
           "column": 0
         },
         "end": {
-          "line": 672,
+          "line": 846,
           "column": 35
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -11735,26 +12664,26 @@
     ],
     "loc": {
       "start": {
-        "line": 686,
+        "line": 870,
         "column": 0
       },
       "end": {
-        "line": 694,
+        "line": 878,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 695,
+          "line": 879,
           "column": 0
         },
         "end": {
-          "line": 698,
+          "line": 884,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12015,26 +12944,26 @@
     ],
     "loc": {
       "start": {
-        "line": 700,
+        "line": 886,
         "column": 0
       },
       "end": {
-        "line": 708,
+        "line": 894,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 709,
+          "line": 895,
           "column": 0
         },
         "end": {
-          "line": 712,
+          "line": 900,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12295,26 +13224,26 @@
     ],
     "loc": {
       "start": {
-        "line": 714,
+        "line": 902,
         "column": 0
       },
       "end": {
-        "line": 722,
+        "line": 910,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 723,
+          "line": 911,
           "column": 0
         },
         "end": {
-          "line": 726,
+          "line": 916,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12575,26 +13504,26 @@
     ],
     "loc": {
       "start": {
-        "line": 728,
+        "line": 918,
         "column": 0
       },
       "end": {
-        "line": 736,
+        "line": 926,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 737,
+          "line": 927,
           "column": 0
         },
         "end": {
-          "line": 740,
+          "line": 932,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12855,26 +13784,26 @@
     ],
     "loc": {
       "start": {
-        "line": 742,
+        "line": 934,
         "column": 0
       },
       "end": {
-        "line": 750,
+        "line": 942,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 751,
+          "line": 943,
           "column": 0
         },
         "end": {
-          "line": 759,
+          "line": 951,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13125,26 +14054,26 @@
     ],
     "loc": {
       "start": {
-        "line": 761,
+        "line": 953,
         "column": 0
       },
       "end": {
-        "line": 769,
+        "line": 961,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 770,
+          "line": 962,
           "column": 0
         },
         "end": {
-          "line": 770,
+          "line": 962,
           "column": 81
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13429,26 +14358,26 @@
     ],
     "loc": {
       "start": {
-        "line": 772,
+        "line": 964,
         "column": 0
       },
       "end": {
-        "line": 780,
+        "line": 972,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 781,
+          "line": 973,
           "column": 0
         },
         "end": {
-          "line": 781,
+          "line": 973,
           "column": 83
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13733,26 +14662,26 @@
     ],
     "loc": {
       "start": {
-        "line": 783,
+        "line": 975,
         "column": 0
       },
       "end": {
-        "line": 791,
+        "line": 983,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 792,
+          "line": 984,
           "column": 0
         },
         "end": {
-          "line": 792,
+          "line": 984,
           "column": 85
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14037,26 +14966,26 @@
     ],
     "loc": {
       "start": {
-        "line": 794,
+        "line": 986,
         "column": 0
       },
       "end": {
-        "line": 802,
+        "line": 994,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 803,
+          "line": 995,
           "column": 0
         },
         "end": {
-          "line": 803,
+          "line": 995,
           "column": 95
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14300,26 +15229,26 @@
     ],
     "loc": {
       "start": {
-        "line": 805,
+        "line": 997,
         "column": 0
       },
       "end": {
-        "line": 813,
+        "line": 1005,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 814,
+          "line": 1006,
           "column": 0
         },
         "end": {
-          "line": 814,
+          "line": 1006,
           "column": 50
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14556,26 +15485,26 @@
     ],
     "loc": {
       "start": {
-        "line": 816,
+        "line": 1008,
         "column": 0
       },
       "end": {
-        "line": 824,
+        "line": 1016,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 825,
+          "line": 1017,
           "column": 0
         },
         "end": {
-          "line": 825,
+          "line": 1017,
           "column": 49
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14812,26 +15741,26 @@
     ],
     "loc": {
       "start": {
-        "line": 827,
+        "line": 1019,
         "column": 0
       },
       "end": {
-        "line": 835,
+        "line": 1027,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 836,
+          "line": 1028,
           "column": 0
         },
         "end": {
-          "line": 836,
+          "line": 1028,
           "column": 42
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15001,26 +15930,26 @@
     ],
     "loc": {
       "start": {
-        "line": 838,
+        "line": 1030,
         "column": 0
       },
       "end": {
-        "line": 846,
+        "line": 1038,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 847,
+          "line": 1039,
           "column": 0
         },
         "end": {
-          "line": 847,
+          "line": 1039,
           "column": 27
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15032,7 +15961,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 847
+        "lineNumber": 1039
       }
     ],
     "properties": [],
@@ -15195,26 +16124,26 @@
     ],
     "loc": {
       "start": {
-        "line": 849,
+        "line": 1041,
         "column": 0
       },
       "end": {
-        "line": 857,
+        "line": 1049,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 858,
+          "line": 1050,
           "column": 0
         },
         "end": {
-          "line": 858,
+          "line": 1050,
           "column": 29
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15226,7 +16155,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 858
+        "lineNumber": 1050
       }
     ],
     "properties": [],
@@ -15286,6 +16215,182 @@
       }
     ],
     "namespace": ".into"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This function is used to wait for number of secs given.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 56,
+                  "offset": 55
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 56,
+              "offset": 55
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 56,
+          "offset": 55
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "waitFor(intervalSecs(5))",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": null,
+        "lineNumber": 6,
+        "type": {
+          "type": "UnionType",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "number"
+            },
+            {
+              "type": "NameExpression",
+              "name": "time"
+            }
+          ]
+        },
+        "name": null,
+        "errors": [
+          "Missing or invalid tag name"
+        ]
+      },
+      {
+        "title": "return",
+        "description": null,
+        "lineNumber": 7,
+        "type": {
+          "type": "NameExpression",
+          "name": "promise"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 1052,
+        "column": 0
+      },
+      "end": {
+        "line": 1060,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 1061,
+          "column": 0
+        },
+        "end": {
+          "line": 1061,
+          "column": 85
+        }
+      },
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "waitFor(intervalSecs(5))"
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "time",
+        "lineNumber": 1061
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "promise"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "waitFor",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "waitFor",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".waitFor"
   },
   {
     "description": {
@@ -15383,26 +16488,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1003,
+        "line": 1223,
         "column": 0
       },
       "end": {
-        "line": 1015,
+        "line": 1235,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1041,
+          "line": 1261,
           "column": 0
         },
         "end": {
-          "line": 1059,
+          "line": 1284,
           "column": 1
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15612,26 +16717,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1017,
+        "line": 1237,
         "column": 0
       },
       "end": {
-        "line": 1030,
+        "line": 1250,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1041,
+          "line": 1261,
           "column": 0
         },
         "end": {
-          "line": 1059,
+          "line": 1284,
           "column": 1
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15858,26 +16963,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1032,
+        "line": 1252,
         "column": 0
       },
       "end": {
-        "line": 1040,
+        "line": 1260,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1041,
+          "line": 1261,
           "column": 0
         },
         "end": {
-          "line": 1059,
+          "line": 1284,
           "column": 1
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15915,28 +17020,28 @@
       ],
       "loc": {
         "start": {
-          "line": 1042,
+          "line": 1262,
           "column": 4
         },
         "end": {
-          "line": 1045,
+          "line": 1265,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1046,
+            "line": 1266,
             "column": 4
           },
           "end": {
-            "line": 1050,
+            "line": 1270,
             "column": 5
           }
         },
-        "file": "../lib/taiko.js",
-        "sortKey": "!../taiko.js:00000003!../lib/taiko.js 00001046",
-        "code": "{\n    /**\n     * @class \n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async isValid(e) {\n        return await p.evaluate(this.condition, e, await this.value);\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
+        "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js",
+        "sortKey": "undefined 00001266",
+        "code": "{\n    /**\n     * @class \n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async isValid(nodeId) {\n        let valid = true;\n        const rect_values = await this.value;\n        for(const rect_value of rect_values){\n            valid = await this.condition(nodeId, rect_value);\n        }\n        return valid;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
       "errors": [],
@@ -16701,26 +17806,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1061,
+        "line": 1286,
         "column": 0
       },
       "end": {
-        "line": 1080,
+        "line": 1305,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1082,
+          "line": 1307,
           "column": 0
         },
         "end": {
-          "line": 1089,
+          "line": 1314,
           "column": 2
         }
       },
-      "file": "../lib/taiko.js"
+      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
     },
     "augments": [],
     "examples": [
