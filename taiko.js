@@ -20,6 +20,7 @@ function runFile(file) {
             try{
                 res = await realFuncs[func].apply(this, arguments);
             }catch(e){console.error(e);
+                await taiko.closeBrowser();
                 process.exit(1);
             }
             if (res.description) {
