@@ -14,19 +14,24 @@ function runFile(file) {
     validate(file);
     const realFuncs = {};
     for (let func in taiko) {
-        realFuncs[func] = taiko[func];
-        if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function() {
-            const res = await realFuncs[func].apply(this, arguments);
-            if (res.description) {
-                res.description = symbols.pass + res.description;
-                console.log(removeQuotes(util.inspect(res.description, { colors: true }), res.description));
-            }
-            return res;
-        };
-        else global[func] = function() {
-            return realFuncs[func].apply(this, arguments);
-        };
-        require.cache[path.join(__dirname, 'taiko.js')].exports[func] = global[func];
+        try{
+            realFuncs[func] = taiko[func];
+            if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function() {
+                const res = await realFuncs[func].apply(this, arguments);
+                if (res.description) {
+                    res.description = symbols.pass + res.description;
+                    console.log(removeQuotes(util.inspect(res.description, { colors: true }), res.description));
+                }
+                return res;
+            };
+            else global[func] = function() {
+                return realFuncs[func].apply(this, arguments);
+            };
+            require.cache[path.join(__dirname, 'taiko.js')].exports[func] = global[func];
+        }
+        catch(e){
+            console.log(e);
+        }
     }
     const oldNodeModulesPaths = module.constructor._nodeModulePaths;
     module.constructor._nodeModulePaths = function() {
