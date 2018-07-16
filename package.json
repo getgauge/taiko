@@ -12,7 +12,8 @@
 		"doc": "./node_modules/documentation/bin/documentation.js build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && ./node_modules/documentation/bin/documentation.js build lib/taiko.js -f json --shallow -o docs/api.json && node docs/setup.js",
 		"test": "mocha && npm run lint",
 		"login": "npm-cli-login",
-		"install": "node install.js"
+		"install": "node install.js",
+		"publish:nightly": "node publishNightly.js"
 	},
 	"repository": {
 		"type": "git",
