@@ -8,10 +8,15 @@
 
 ## Getting started
 
+Clone taiko repo
+```
+git clone https://github.com/getgauge/taiko.git
+```
+
 ### Command Line Interface
 
 ```
-npm install -g taiko
+npm install -g <path_to_taiko_repo>
 ```
 
 > On Windows, make sure that the location `%AppData%\npm`(or wherever `npm` ends up installing the module on your Windows flavor) is present in `PATH` environment variable.
@@ -20,7 +25,7 @@ npm install -g taiko
 
 ### As a Module
 ```
-npm install taiko --save
+npm install <path_to_taiko_repo> --save
 ```
 
 ### Installing nightly version
