@@ -1,7 +1,7 @@
 {
 	"name": "taiko",
 	"version": "0.0.9",
-	"description": "An easy to use wrapper over Google Chrome's Puppeteer library.",
+	"description": "An easy to use wrapper over Chrome Remote Interface.",
 	"main": "lib/taiko.js",
 	"bin": {
 		"taiko": "taiko.js"
