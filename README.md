@@ -23,6 +23,11 @@ npm install -g taiko
 npm install taiko --save
 ```
 
+### Installing nightly version
+```
+npm install taiko@nightly
+```
+
 ## Usage
 
 #### Command line
