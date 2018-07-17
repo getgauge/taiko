@@ -52,7 +52,7 @@ return Promise.all([...cleanupOldVersions, generateProtocolTypesIfNecessary(true
 * @param {!Error} error
 */
 function onError(error) {
-console.error(`ERROR: Failed to download Chromium r${revision}! Set "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD" env variable to skip download.`);
+console.error(`ERROR: Failed to download Chromium r${revision}! Set "SKIP_CHROMIUM_DOWNLOAD" env variable to skip download.`);
 console.error(error);
 process.exit(1);
 }
