@@ -60,7 +60,6 @@ typings/
 .DS_Store
 docs/site
 docs/index.md
-docs/api.json
 
 #local chromium
 .local-chromium
