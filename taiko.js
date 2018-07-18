@@ -7,6 +7,15 @@ const taiko = require('./lib/taiko');
 const repl = require('./lib/repl');
 const { removeQuotes, symbols } = require('./lib/util');
 
+async function exitOnUnhandledFailures(e){
+    console.error(e);
+    if(await taiko.client())await taiko.closeBrowser();
+    process.exit(1);
+}
+
+process.on('unhandledRejection', exitOnUnhandledFailures);
+process.on('uncaughtException',exitOnUnhandledFailures);
+
 if (process.argv.length > 2) runFile(process.argv[2]);
 else repl.initiaize();
 
