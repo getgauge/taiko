@@ -22,8 +22,7 @@
 		"headless",
 		"headless-chrome",
 		"headless-testing",
-		"headless-browser",
-		"puppeteer"
+		"headless-browser"
 	],
 	"taiko": {
 		"chromium_revision": "571040"
