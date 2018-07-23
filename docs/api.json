@@ -364,7 +364,7 @@
           "column": 0
         },
         "end": {
-          "line": 70,
+          "line": 69,
           "column": 2
         }
       },
@@ -506,22 +506,22 @@
     ],
     "loc": {
       "start": {
-        "line": 72,
+        "line": 71,
         "column": 0
       },
       "end": {
-        "line": 76,
+        "line": 75,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 77,
+          "line": 76,
           "column": 0
         },
         "end": {
-          "line": 77,
+          "line": 76,
           "column": 37
         }
       },
@@ -668,22 +668,22 @@
     ],
     "loc": {
       "start": {
-        "line": 79,
+        "line": 78,
         "column": 0
       },
       "end": {
-        "line": 86,
+        "line": 85,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 87,
+          "line": 86,
           "column": 0
         },
         "end": {
-          "line": 93,
+          "line": 94,
           "column": 2
         }
       },
@@ -894,9 +894,19 @@
         "name": "url"
       },
       {
+        "title": "param",
+        "description": "{timeout:5000} Default timeout is 2 seconds to override set options = {timeout:10000}",
+        "lineNumber": 8,
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        },
+        "name": "options"
+      },
+      {
         "title": "returns",
         "description": "Object with the description of the action performed and the final URL.",
-        "lineNumber": 8,
+        "lineNumber": 9,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -914,22 +924,22 @@
     ],
     "loc": {
       "start": {
-        "line": 95,
+        "line": 96,
         "column": 0
       },
       "end": {
-        "line": 104,
+        "line": 106,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 105,
+          "line": 107,
           "column": 0
         },
         "end": {
-          "line": 111,
+          "line": 113,
           "column": 2
         }
       },
@@ -1002,6 +1012,68 @@
           "type": "NameExpression",
           "name": "string"
         }
+      },
+      {
+        "title": "param",
+        "name": "options",
+        "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "{timeout:5000} Default timeout is 2 seconds to override set options = {timeout:10000}",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 86,
+                      "offset": 85
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 86,
+                  "offset": 85
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 86,
+              "offset": 85
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        },
+        "default": "{timeout:default_timeout}"
       }
     ],
     "properties": [],
@@ -1178,22 +1250,22 @@
     ],
     "loc": {
       "start": {
-        "line": 113,
+        "line": 115,
         "column": 0
       },
       "end": {
-        "line": 121,
+        "line": 123,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 122,
+          "line": 124,
           "column": 0
         },
         "end": {
-          "line": 126,
+          "line": 128,
           "column": 2
         }
       },
@@ -1209,7 +1281,7 @@
       {
         "title": "param",
         "name": "url",
-        "lineNumber": 122
+        "lineNumber": 124
       }
     ],
     "properties": [],
@@ -1381,22 +1453,22 @@
     ],
     "loc": {
       "start": {
-        "line": 128,
+        "line": 130,
         "column": 0
       },
       "end": {
-        "line": 132,
+        "line": 134,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 133,
+          "line": 135,
           "column": 0
         },
         "end": {
-          "line": 140,
+          "line": 142,
           "column": 2
         }
       },
@@ -1553,7 +1625,7 @@
       },
       {
         "title": "param",
-        "description": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
+        "description": "Wait for navigation after the click. Default navigation timout is 2 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
         "lineNumber": 9,
         "type": {
           "type": "OptionalType",
@@ -1628,22 +1700,22 @@
     ],
     "loc": {
       "start": {
-        "line": 153,
+        "line": 155,
         "column": 0
       },
       "end": {
-        "line": 167,
+        "line": 169,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 168,
+          "line": 170,
           "column": 0
         },
         "end": {
-          "line": 168,
+          "line": 170,
           "column": 29
         }
       },
@@ -1799,7 +1871,7 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass ",
+                      "value": "Wait for navigation after the click. Default navigation timout is 2 seconds, to override pass ",
                       "position": {
                         "start": {
                           "line": 1,
@@ -2406,22 +2478,22 @@
     ],
     "loc": {
       "start": {
-        "line": 198,
+        "line": 200,
         "column": 0
       },
       "end": {
-        "line": 209,
+        "line": 211,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 210,
+          "line": 212,
           "column": 0
         },
         "end": {
-          "line": 217,
+          "line": 219,
           "column": 2
         }
       },
@@ -2916,22 +2988,22 @@
     ],
     "loc": {
       "start": {
-        "line": 219,
+        "line": 221,
         "column": 0
       },
       "end": {
-        "line": 230,
+        "line": 232,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 231,
+          "line": 233,
           "column": 0
         },
         "end": {
-          "line": 238,
+          "line": 240,
           "column": 2
         }
       },
@@ -3402,22 +3474,22 @@
     ],
     "loc": {
       "start": {
-        "line": 240,
+        "line": 242,
         "column": 0
       },
       "end": {
-        "line": 249,
+        "line": 251,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 250,
+          "line": 252,
           "column": 0
         },
         "end": {
-          "line": 266,
+          "line": 268,
           "column": 2
         }
       },
@@ -3694,22 +3766,22 @@
     ],
     "loc": {
       "start": {
-        "line": 268,
+        "line": 270,
         "column": 0
       },
       "end": {
-        "line": 276,
+        "line": 278,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 277,
+          "line": 279,
           "column": 0
         },
         "end": {
-          "line": 281,
+          "line": 283,
           "column": 2
         }
       },
@@ -4022,22 +4094,22 @@
     ],
     "loc": {
       "start": {
-        "line": 283,
+        "line": 285,
         "column": 0
       },
       "end": {
-        "line": 296,
+        "line": 298,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 297,
+          "line": 299,
           "column": 0
         },
         "end": {
-          "line": 308,
+          "line": 316,
           "column": 2
         }
       },
@@ -4464,22 +4536,22 @@
     ],
     "loc": {
       "start": {
-        "line": 317,
+        "line": 325,
         "column": 0
       },
       "end": {
-        "line": 327,
+        "line": 335,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 328,
+          "line": 336,
           "column": 0
         },
         "end": {
-          "line": 338,
+          "line": 346,
           "column": 2
         }
       },
@@ -4842,22 +4914,22 @@
     ],
     "loc": {
       "start": {
-        "line": 340,
+        "line": 348,
         "column": 0
       },
       "end": {
-        "line": 352,
+        "line": 360,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 353,
+          "line": 361,
           "column": 0
         },
         "end": {
-          "line": 359,
+          "line": 367,
           "column": 2
         }
       },
@@ -5313,22 +5385,22 @@
     ],
     "loc": {
       "start": {
-        "line": 361,
+        "line": 369,
         "column": 0
       },
       "end": {
-        "line": 370,
+        "line": 378,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 371,
+          "line": 379,
           "column": 0
         },
         "end": {
-          "line": 380,
+          "line": 388,
           "column": 2
         }
       },
@@ -5605,22 +5677,22 @@
     ],
     "loc": {
       "start": {
-        "line": 382,
+        "line": 390,
         "column": 0
       },
       "end": {
-        "line": 391,
+        "line": 399,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 392,
+          "line": 400,
           "column": 0
         },
         "end": {
-          "line": 392,
+          "line": 400,
           "column": 35
         }
       },
@@ -5917,22 +5989,22 @@
     ],
     "loc": {
       "start": {
-        "line": 421,
+        "line": 429,
         "column": 0
       },
       "end": {
-        "line": 433,
+        "line": 441,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 434,
+          "line": 442,
           "column": 0
         },
         "end": {
-          "line": 437,
+          "line": 445,
           "column": 2
         }
       },
@@ -6194,22 +6266,22 @@
     ],
     "loc": {
       "start": {
-        "line": 439,
+        "line": 447,
         "column": 0
       },
       "end": {
-        "line": 451,
+        "line": 459,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 452,
+          "line": 460,
           "column": 0
         },
         "end": {
-          "line": 455,
+          "line": 463,
           "column": 2
         }
       },
@@ -6471,22 +6543,22 @@
     ],
     "loc": {
       "start": {
-        "line": 457,
+        "line": 465,
         "column": 0
       },
       "end": {
-        "line": 469,
+        "line": 477,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 470,
+          "line": 478,
           "column": 0
         },
         "end": {
-          "line": 473,
+          "line": 481,
           "column": 2
         }
       },
@@ -6748,22 +6820,22 @@
     ],
     "loc": {
       "start": {
-        "line": 475,
+        "line": 483,
         "column": 0
       },
       "end": {
-        "line": 487,
+        "line": 495,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 488,
+          "line": 496,
           "column": 0
         },
         "end": {
-          "line": 491,
+          "line": 499,
           "column": 2
         }
       },
@@ -6994,22 +7066,22 @@
     ],
     "loc": {
       "start": {
-        "line": 493,
+        "line": 501,
         "column": 0
       },
       "end": {
-        "line": 501,
+        "line": 509,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 502,
+          "line": 510,
           "column": 0
         },
         "end": {
-          "line": 508,
+          "line": 516,
           "column": 2
         }
       },
@@ -7314,22 +7386,22 @@
     ],
     "loc": {
       "start": {
-        "line": 510,
+        "line": 518,
         "column": 0
       },
       "end": {
-        "line": 519,
+        "line": 527,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 520,
+          "line": 528,
           "column": 0
         },
         "end": {
-          "line": 524,
+          "line": 532,
           "column": 2
         }
       },
@@ -7516,7 +7588,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify an image on a web page. Typically, this is done via the image's alt text.",
+              "value": " lets you identify an image on a web page. Typically, this is done via the image's alt text or attribute and value pairs.",
               "position": {
                 "start": {
                   "line": 1,
@@ -7525,8 +7597,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 114,
-                  "offset": 113
+                  "column": 143,
+                  "offset": 142
                 },
                 "indent": []
               }
@@ -7540,8 +7612,8 @@
             },
             "end": {
               "line": 1,
-              "column": 114,
-              "offset": 113
+              "column": 143,
+              "offset": 142
             },
             "indent": []
           }
@@ -7555,8 +7627,8 @@
         },
         "end": {
           "line": 1,
-          "column": 114,
-          "offset": 113
+          "column": 143,
+          "offset": 142
         }
       }
     },
@@ -7578,8 +7650,18 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
         "lineNumber": 8,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        },
+        "name": "attrValuePairs"
+      },
+      {
+        "title": "param",
+        "description": null,
+        "lineNumber": 9,
         "type": {
           "type": "RestType",
           "expression": {
@@ -7592,7 +7674,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -7601,22 +7683,22 @@
     ],
     "loc": {
       "start": {
-        "line": 567,
+        "line": 578,
         "column": 0
       },
       "end": {
-        "line": 577,
+        "line": 589,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 578,
+          "line": 590,
           "column": 0
         },
         "end": {
-          "line": 583,
+          "line": 595,
           "column": 2
         }
       },
@@ -7631,18 +7713,69 @@
     "params": [
       {
         "title": "param",
-        "name": "attribute",
-        "lineNumber": 578
-      },
-      {
-        "title": "param",
-        "name": "value",
-        "lineNumber": 578
+        "name": "attrValuePairs",
+        "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 69,
+                      "offset": 68
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 69,
+                  "offset": 68
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 69,
+              "offset": 68
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
       },
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 8,
+        "lineNumber": 9,
         "type": {
           "type": "RestType",
           "expression": {
@@ -7813,7 +7946,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a link on a web page.",
+              "value": " lets you identify a link on a web page with text or attribute and value pairs.",
               "position": {
                 "start": {
                   "line": 1,
@@ -7822,8 +7955,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 62,
-                  "offset": 61
+                  "column": 101,
+                  "offset": 100
                 },
                 "indent": []
               }
@@ -7837,8 +7970,8 @@
             },
             "end": {
               "line": 1,
-              "column": 62,
-              "offset": 61
+              "column": 101,
+              "offset": 100
             },
             "indent": []
           }
@@ -7852,8 +7985,8 @@
         },
         "end": {
           "line": 1,
-          "column": 62,
-          "offset": 61
+          "column": 101,
+          "offset": 100
         }
       }
     },
@@ -7875,8 +8008,18 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
         "lineNumber": 8,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        },
+        "name": "attrValuePairs"
+      },
+      {
+        "title": "param",
+        "description": null,
+        "lineNumber": 9,
         "type": {
           "type": "RestType",
           "expression": {
@@ -7889,7 +8032,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -7898,22 +8041,22 @@
     ],
     "loc": {
       "start": {
-        "line": 585,
+        "line": 597,
         "column": 0
       },
       "end": {
-        "line": 595,
+        "line": 608,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 596,
+          "line": 609,
           "column": 0
         },
         "end": {
-          "line": 601,
+          "line": 614,
           "column": 2
         }
       },
@@ -7928,18 +8071,69 @@
     "params": [
       {
         "title": "param",
-        "name": "attribute",
-        "lineNumber": 596
-      },
-      {
-        "title": "param",
-        "name": "value",
-        "lineNumber": 596
+        "name": "attrValuePairs",
+        "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 69,
+                      "offset": 68
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 69,
+                  "offset": 68
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 69,
+              "offset": 68
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
       },
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 8,
+        "lineNumber": 9,
         "type": {
           "type": "RestType",
           "expression": {
@@ -8144,7 +8338,7 @@
             },
             {
               "type": "text",
-              "value": " element) on a web page.",
+              "value": " element) on a web page with label or attribute and value pairs.",
               "position": {
                 "start": {
                   "line": 1,
@@ -8153,8 +8347,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 87,
-                  "offset": 86
+                  "column": 127,
+                  "offset": 126
                 },
                 "indent": []
               }
@@ -8168,8 +8362,8 @@
             },
             "end": {
               "line": 1,
-              "column": 87,
-              "offset": 86
+              "column": 127,
+              "offset": 126
             },
             "indent": []
           }
@@ -8183,8 +8377,8 @@
         },
         "end": {
           "line": 1,
-          "column": 87,
-          "offset": 86
+          "column": 127,
+          "offset": 126
         }
       }
     },
@@ -8206,8 +8400,18 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
         "lineNumber": 8,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        },
+        "name": "attrValuePairs"
+      },
+      {
+        "title": "param",
+        "description": null,
+        "lineNumber": 9,
         "type": {
           "type": "RestType",
           "expression": {
@@ -8220,7 +8424,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8229,22 +8433,22 @@
     ],
     "loc": {
       "start": {
-        "line": 603,
+        "line": 616,
         "column": 0
       },
       "end": {
-        "line": 613,
+        "line": 627,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 614,
+          "line": 628,
           "column": 0
         },
         "end": {
-          "line": 619,
+          "line": 633,
           "column": 2
         }
       },
@@ -8259,18 +8463,69 @@
     "params": [
       {
         "title": "param",
-        "name": "attribute",
-        "lineNumber": 614
-      },
-      {
-        "title": "param",
-        "name": "value",
-        "lineNumber": 614
+        "name": "attrValuePairs",
+        "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 69,
+                      "offset": 68
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 69,
+                  "offset": 68
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 69,
+              "offset": 68
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
       },
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 8,
+        "lineNumber": 9,
         "type": {
           "type": "RestType",
           "expression": {
@@ -8441,7 +8696,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a button on a web page.",
+              "value": " lets you identify a button on a web page with label or attribute and value pairs.",
               "position": {
                 "start": {
                   "line": 1,
@@ -8450,8 +8705,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 64,
-                  "offset": 63
+                  "column": 104,
+                  "offset": 103
                 },
                 "indent": []
               }
@@ -8465,8 +8720,8 @@
             },
             "end": {
               "line": 1,
-              "column": 64,
-              "offset": 63
+              "column": 104,
+              "offset": 103
             },
             "indent": []
           }
@@ -8480,8 +8735,8 @@
         },
         "end": {
           "line": 1,
-          "column": 64,
-          "offset": 63
+          "column": 104,
+          "offset": 103
         }
       }
     },
@@ -8503,8 +8758,18 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
         "lineNumber": 8,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        },
+        "name": "attrValuePairs"
+      },
+      {
+        "title": "param",
+        "description": null,
+        "lineNumber": 9,
         "type": {
           "type": "RestType",
           "expression": {
@@ -8517,7 +8782,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8526,22 +8791,22 @@
     ],
     "loc": {
       "start": {
-        "line": 621,
+        "line": 635,
         "column": 0
       },
       "end": {
-        "line": 631,
+        "line": 646,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 632,
+          "line": 647,
           "column": 0
         },
         "end": {
-          "line": 637,
+          "line": 652,
           "column": 2
         }
       },
@@ -8556,18 +8821,69 @@
     "params": [
       {
         "title": "param",
-        "name": "attribute",
-        "lineNumber": 632
-      },
-      {
-        "title": "param",
-        "name": "value",
-        "lineNumber": 632
+        "name": "attrValuePairs",
+        "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 69,
+                      "offset": 68
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 69,
+                  "offset": 68
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 69,
+              "offset": 68
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
       },
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 8,
+        "lineNumber": 9,
         "type": {
           "type": "RestType",
           "expression": {
@@ -8738,7 +9054,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify an input field on a web page.",
+              "value": " lets you identify an input field on a web page with label or attribute and value pairs.",
               "position": {
                 "start": {
                   "line": 1,
@@ -8747,8 +9063,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 70,
-                  "offset": 69
+                  "column": 110,
+                  "offset": 109
                 },
                 "indent": []
               }
@@ -8762,8 +9078,8 @@
             },
             "end": {
               "line": 1,
-              "column": 70,
-              "offset": 69
+              "column": 110,
+              "offset": 109
             },
             "indent": []
           }
@@ -8777,8 +9093,8 @@
         },
         "end": {
           "line": 1,
-          "column": 70,
-          "offset": 69
+          "column": 110,
+          "offset": 109
         }
       }
     },
@@ -8790,32 +9106,18 @@
       },
       {
         "title": "param",
-        "description": "The input field's attribute.",
+        "description": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
         "lineNumber": 7,
         "type": {
-          "type": "OptionalType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "string"
-          }
-        },
-        "name": "attribute",
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "description": "Value of the attribute specified in the first parameter.",
-        "lineNumber": 8,
-        "type": {
           "type": "NameExpression",
-          "name": "string"
+          "name": "object"
         },
-        "name": "value"
+        "name": "attrValuePairs"
       },
       {
         "title": "param",
         "description": null,
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "RestType",
           "expression": {
@@ -8828,7 +9130,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -8837,22 +9139,22 @@
     ],
     "loc": {
       "start": {
-        "line": 639,
+        "line": 654,
         "column": 0
       },
       "end": {
-        "line": 650,
+        "line": 664,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 651,
+          "line": 665,
           "column": 0
         },
         "end": {
-          "line": 662,
+          "line": 676,
           "column": 2
         }
       },
@@ -8867,7 +9169,7 @@
     "params": [
       {
         "title": "param",
-        "name": "attribute",
+        "name": "attrValuePairs",
         "lineNumber": 7,
         "description": {
           "type": "root",
@@ -8877,7 +9179,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "The input field's attribute.",
+                  "value": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
                   "position": {
                     "start": {
                       "line": 1,
@@ -8886,8 +9188,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 29,
-                      "offset": 28
+                      "column": 69,
+                      "offset": 68
                     },
                     "indent": []
                   }
@@ -8901,8 +9203,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 29,
-                  "offset": 28
+                  "column": 69,
+                  "offset": 68
                 },
                 "indent": []
               }
@@ -8916,82 +9218,20 @@
             },
             "end": {
               "line": 1,
-              "column": 29,
-              "offset": 28
+              "column": 69,
+              "offset": 68
             }
           }
         },
         "type": {
           "type": "NameExpression",
-          "name": "string"
-        },
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "name": "value",
-        "lineNumber": 8,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Value of the attribute specified in the first parameter.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 57,
-                      "offset": 56
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 57,
-                  "offset": 56
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 57,
-              "offset": 56
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
+          "name": "object"
         }
       },
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "RestType",
           "expression": {
@@ -9101,7 +9341,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a file input field on a web page either with label or with attribute and value pair.",
+              "value": " lets you identify a file input field on a web page either with label or with attribute and value pairs.",
               "position": {
                 "start": {
                   "line": 1,
@@ -9110,8 +9350,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 125,
-                  "offset": 124
+                  "column": 126,
+                  "offset": 125
                 },
                 "indent": []
               }
@@ -9125,8 +9365,8 @@
             },
             "end": {
               "line": 1,
-              "column": 125,
-              "offset": 124
+              "column": 126,
+              "offset": 125
             },
             "indent": []
           }
@@ -9140,8 +9380,8 @@
         },
         "end": {
           "line": 1,
-          "column": 125,
-          "offset": 124
+          "column": 126,
+          "offset": 125
         }
       }
     },
@@ -9163,32 +9403,18 @@
       },
       {
         "title": "param",
-        "description": "The file field's attribute.",
+        "description": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
         "lineNumber": 9,
         "type": {
-          "type": "OptionalType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "string"
-          }
-        },
-        "name": "attribute",
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "description": "Value of the attribute specified in the first parameter.",
-        "lineNumber": 10,
-        "type": {
           "type": "NameExpression",
-          "name": "string"
+          "name": "object"
         },
-        "name": "value"
+        "name": "attrValuePairs"
       },
       {
         "title": "param",
         "description": null,
-        "lineNumber": 11,
+        "lineNumber": 10,
         "type": {
           "type": "RestType",
           "expression": {
@@ -9201,7 +9427,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 12,
+        "lineNumber": 11,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9210,22 +9436,22 @@
     ],
     "loc": {
       "start": {
-        "line": 664,
+        "line": 678,
         "column": 0
       },
       "end": {
-        "line": 677,
+        "line": 690,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 678,
+          "line": 691,
           "column": 0
         },
         "end": {
-          "line": 678,
+          "line": 691,
           "column": 37
         }
       },
@@ -9301,7 +9527,7 @@
       },
       {
         "title": "param",
-        "name": "attribute",
+        "name": "attrValuePairs",
         "lineNumber": 9,
         "description": {
           "type": "root",
@@ -9311,7 +9537,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "The file field's attribute.",
+                  "value": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
                   "position": {
                     "start": {
                       "line": 1,
@@ -9320,8 +9546,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 28,
-                      "offset": 27
+                      "column": 69,
+                      "offset": 68
                     },
                     "indent": []
                   }
@@ -9335,8 +9561,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 28,
-                  "offset": 27
+                  "column": 69,
+                  "offset": 68
                 },
                 "indent": []
               }
@@ -9350,82 +9576,20 @@
             },
             "end": {
               "line": 1,
-              "column": 28,
-              "offset": 27
+              "column": 69,
+              "offset": 68
             }
           }
         },
         "type": {
           "type": "NameExpression",
-          "name": "string"
-        },
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "name": "value",
-        "lineNumber": 10,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Value of the attribute specified in the first parameter.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 57,
-                      "offset": 56
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 57,
-                  "offset": 56
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 57,
-              "offset": 56
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
+          "name": "object"
         }
       },
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 11,
+        "lineNumber": 10,
         "type": {
           "type": "RestType",
           "expression": {
@@ -9533,7 +9697,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a text field on a web page either with label or with attribute and value pair.",
+              "value": " lets you identify a text field on a web page either with label or with attribute and value pairs.",
               "position": {
                 "start": {
                   "line": 1,
@@ -9542,8 +9706,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 119,
-                  "offset": 118
+                  "column": 120,
+                  "offset": 119
                 },
                 "indent": []
               }
@@ -9557,8 +9721,8 @@
             },
             "end": {
               "line": 1,
-              "column": 119,
-              "offset": 118
+              "column": 120,
+              "offset": 119
             },
             "indent": []
           }
@@ -9572,8 +9736,8 @@
         },
         "end": {
           "line": 1,
-          "column": 119,
-          "offset": 118
+          "column": 120,
+          "offset": 119
         }
       }
     },
@@ -9585,32 +9749,18 @@
       },
       {
         "title": "param",
-        "description": "The text field's attribute.",
+        "description": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
         "lineNumber": 7,
         "type": {
-          "type": "OptionalType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "string"
-          }
-        },
-        "name": "attribute",
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "description": "Value of the attribute specified in the first parameter.",
-        "lineNumber": 8,
-        "type": {
           "type": "NameExpression",
-          "name": "string"
+          "name": "object"
         },
-        "name": "value"
+        "name": "attrValuePairs"
       },
       {
         "title": "param",
         "description": "The label (human-visible name) of the text field.",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -9620,7 +9770,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "RestType",
           "expression": {
@@ -9633,7 +9783,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 11,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9642,22 +9792,22 @@
     ],
     "loc": {
       "start": {
-        "line": 693,
+        "line": 706,
         "column": 0
       },
       "end": {
-        "line": 705,
+        "line": 717,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 706,
+          "line": 718,
           "column": 0
         },
         "end": {
-          "line": 706,
+          "line": 718,
           "column": 37
         }
       },
@@ -9672,7 +9822,7 @@
     "params": [
       {
         "title": "param",
-        "name": "attribute",
+        "name": "attrValuePairs",
         "lineNumber": 7,
         "description": {
           "type": "root",
@@ -9682,7 +9832,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "The text field's attribute.",
+                  "value": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
                   "position": {
                     "start": {
                       "line": 1,
@@ -9691,8 +9841,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 28,
-                      "offset": 27
+                      "column": 69,
+                      "offset": 68
                     },
                     "indent": []
                   }
@@ -9706,8 +9856,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 28,
-                  "offset": 27
+                  "column": 69,
+                  "offset": 68
                 },
                 "indent": []
               }
@@ -9721,82 +9871,20 @@
             },
             "end": {
               "line": 1,
-              "column": 28,
-              "offset": 27
+              "column": 69,
+              "offset": 68
             }
           }
         },
         "type": {
           "type": "NameExpression",
-          "name": "string"
-        },
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "name": "value",
-        "lineNumber": 8,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Value of the attribute specified in the first parameter.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 57,
-                      "offset": 56
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 57,
-                  "offset": 56
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 57,
-              "offset": 56
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
+          "name": "object"
         }
       },
       {
         "title": "param",
         "name": "label",
-        "lineNumber": 9,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -9857,7 +9945,7 @@
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 10,
+        "lineNumber": 9,
         "type": {
           "type": "RestType",
           "expression": {
@@ -9965,7 +10053,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a combo box on a web page either with label or with attribute and value pair.",
+              "value": " lets you identify a combo box on a web page either with label or with attribute and value pairs. \nAny value can be selected using value or text of the options.",
               "position": {
                 "start": {
                   "line": 1,
@@ -9973,11 +10061,13 @@
                   "offset": 21
                 },
                 "end": {
-                  "line": 1,
-                  "column": 118,
-                  "offset": 117
+                  "line": 2,
+                  "column": 62,
+                  "offset": 181
                 },
-                "indent": []
+                "indent": [
+                  1
+                ]
               }
             }
           ],
@@ -9988,11 +10078,13 @@
               "offset": 0
             },
             "end": {
-              "line": 1,
-              "column": 118,
-              "offset": 117
+              "line": 2,
+              "column": 62,
+              "offset": 181
             },
-            "indent": []
+            "indent": [
+              1
+            ]
           }
         }
       ],
@@ -10003,9 +10095,9 @@
           "offset": 0
         },
         "end": {
-          "line": 1,
-          "column": 118,
-          "offset": 117
+          "line": 2,
+          "column": 62,
+          "offset": 181
         }
       }
     },
@@ -10013,31 +10105,17 @@
       {
         "title": "example",
         "description": "comboBox('Vehicle:').select('Car')\ncomboBox('Vehicle:').value()\ncomboBox('Vehicle:').exists()",
-        "lineNumber": 3
+        "lineNumber": 4
       },
       {
         "title": "param",
-        "description": "The comboBox's attribute.",
-        "lineNumber": 8,
-        "type": {
-          "type": "OptionalType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "string"
-          }
-        },
-        "name": "attribute",
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "description": "Value of the attribute specified in the first parameter.",
+        "description": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
         "lineNumber": 9,
         "type": {
           "type": "NameExpression",
-          "name": "string"
+          "name": "object"
         },
-        "name": "value"
+        "name": "attrValuePairs"
       },
       {
         "title": "param",
@@ -10074,22 +10152,22 @@
     ],
     "loc": {
       "start": {
-        "line": 722,
+        "line": 734,
         "column": 0
       },
       "end": {
-        "line": 735,
+        "line": 747,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 736,
+          "line": 748,
           "column": 0
         },
         "end": {
-          "line": 764,
+          "line": 785,
           "column": 2
         }
       },
@@ -10104,69 +10182,7 @@
     "params": [
       {
         "title": "param",
-        "name": "attribute",
-        "lineNumber": 8,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "The comboBox's attribute.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 26,
-                      "offset": 25
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 26,
-                  "offset": 25
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 26,
-              "offset": 25
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
-        },
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "name": "value",
+        "name": "attrValuePairs",
         "lineNumber": 9,
         "description": {
           "type": "root",
@@ -10176,7 +10192,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Value of the attribute specified in the first parameter.",
+                  "value": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
                   "position": {
                     "start": {
                       "line": 1,
@@ -10185,8 +10201,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 57,
-                      "offset": 56
+                      "column": 69,
+                      "offset": 68
                     },
                     "indent": []
                   }
@@ -10200,8 +10216,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 57,
-                  "offset": 56
+                  "column": 69,
+                  "offset": 68
                 },
                 "indent": []
               }
@@ -10215,14 +10231,14 @@
             },
             "end": {
               "line": 1,
-              "column": 57,
-              "offset": 56
+              "column": 69,
+              "offset": 68
             }
           }
         },
         "type": {
           "type": "NameExpression",
-          "name": "string"
+          "name": "object"
         }
       },
       {
@@ -10399,7 +10415,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a checkbox on a web page either with label or with attribute and value pair.",
+              "value": " lets you identify a checkbox on a web page either with label or with attribute and value pairs.",
               "position": {
                 "start": {
                   "line": 1,
@@ -10408,8 +10424,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 117,
-                  "offset": 116
+                  "column": 118,
+                  "offset": 117
                 },
                 "indent": []
               }
@@ -10423,8 +10439,8 @@
             },
             "end": {
               "line": 1,
-              "column": 117,
-              "offset": 116
+              "column": 118,
+              "offset": 117
             },
             "indent": []
           }
@@ -10438,8 +10454,8 @@
         },
         "end": {
           "line": 1,
-          "column": 117,
-          "offset": 116
+          "column": 118,
+          "offset": 117
         }
       }
     },
@@ -10451,32 +10467,18 @@
       },
       {
         "title": "param",
-        "description": "The checkBox's attribute.",
+        "description": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
         "lineNumber": 9,
         "type": {
-          "type": "OptionalType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "string"
-          }
-        },
-        "name": "attribute",
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "description": "Value of the attribute specified in the first parameter.",
-        "lineNumber": 10,
-        "type": {
           "type": "NameExpression",
-          "name": "string"
+          "name": "object"
         },
-        "name": "value"
+        "name": "attributeValuePairs"
       },
       {
         "title": "param",
         "description": "The label (human-visible name) of the check box.",
-        "lineNumber": 11,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -10486,7 +10488,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 12,
+        "lineNumber": 11,
         "type": {
           "type": "RestType",
           "expression": {
@@ -10499,7 +10501,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 13,
+        "lineNumber": 12,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -10508,22 +10510,22 @@
     ],
     "loc": {
       "start": {
-        "line": 766,
+        "line": 787,
         "column": 0
       },
       "end": {
-        "line": 780,
+        "line": 800,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 781,
+          "line": 801,
           "column": 0
         },
         "end": {
-          "line": 795,
+          "line": 815,
           "column": 2
         }
       },
@@ -10538,131 +10540,13 @@
     "params": [
       {
         "title": "param",
-        "name": "attribute",
-        "lineNumber": 9,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "The checkBox's attribute.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 26,
-                      "offset": 25
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 26,
-                  "offset": 25
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 26,
-              "offset": 25
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
-        },
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "name": "value",
-        "lineNumber": 10,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Value of the attribute specified in the first parameter.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 57,
-                      "offset": 56
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 57,
-                  "offset": 56
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 57,
-              "offset": 56
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
-        }
+        "name": "attrValuePairs",
+        "lineNumber": 801
       },
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 12,
+        "lineNumber": 11,
         "type": {
           "type": "RestType",
           "expression": {
@@ -10673,8 +10557,69 @@
       },
       {
         "title": "param",
+        "name": "attributeValuePairs",
+        "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 69,
+                      "offset": 68
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 69,
+                  "offset": 68
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 69,
+              "offset": 68
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
+      },
+      {
+        "title": "param",
         "name": "label",
-        "lineNumber": 11,
+        "lineNumber": 10,
         "description": {
           "type": "root",
           "children": [
@@ -10833,7 +10778,7 @@
             },
             {
               "type": "text",
-              "value": " lets you identify a radio button on a web page either with label or with attribute and value pair.",
+              "value": " lets you identify a radio button on a web page either with label or with attribute and value pairs.",
               "position": {
                 "start": {
                   "line": 1,
@@ -10842,8 +10787,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 121,
-                  "offset": 120
+                  "column": 122,
+                  "offset": 121
                 },
                 "indent": []
               }
@@ -10857,8 +10802,8 @@
             },
             "end": {
               "line": 1,
-              "column": 121,
-              "offset": 120
+              "column": 122,
+              "offset": 121
             },
             "indent": []
           }
@@ -10872,8 +10817,8 @@
         },
         "end": {
           "line": 1,
-          "column": 121,
-          "offset": 120
+          "column": 122,
+          "offset": 121
         }
       }
     },
@@ -10885,32 +10830,18 @@
       },
       {
         "title": "param",
-        "description": "The radioButton's attribute.",
+        "description": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
         "lineNumber": 9,
         "type": {
-          "type": "OptionalType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "string"
-          }
-        },
-        "name": "attribute",
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "description": "Value of the attribute specified in the first parameter.",
-        "lineNumber": 10,
-        "type": {
           "type": "NameExpression",
-          "name": "string"
+          "name": "object"
         },
-        "name": "value"
+        "name": "attributeValuePairs"
       },
       {
         "title": "param",
         "description": "The label (human-visible name) of the radio button.",
-        "lineNumber": 11,
+        "lineNumber": 10,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -10920,7 +10851,7 @@
       {
         "title": "param",
         "description": null,
-        "lineNumber": 12,
+        "lineNumber": 11,
         "type": {
           "type": "RestType",
           "expression": {
@@ -10933,7 +10864,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 13,
+        "lineNumber": 12,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -10942,22 +10873,22 @@
     ],
     "loc": {
       "start": {
-        "line": 797,
+        "line": 817,
         "column": 0
       },
       "end": {
-        "line": 811,
+        "line": 830,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 812,
+          "line": 831,
           "column": 0
         },
         "end": {
-          "line": 827,
+          "line": 846,
           "column": 2
         }
       },
@@ -10972,131 +10903,13 @@
     "params": [
       {
         "title": "param",
-        "name": "attribute",
-        "lineNumber": 9,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "The radioButton's attribute.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 29,
-                      "offset": 28
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 29,
-                  "offset": 28
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 29,
-              "offset": 28
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
-        },
-        "default": "'value'"
-      },
-      {
-        "title": "param",
-        "name": "value",
-        "lineNumber": 10,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Value of the attribute specified in the first parameter.",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 57,
-                      "offset": 56
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 57,
-                  "offset": 56
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 57,
-              "offset": 56
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "string"
-        }
+        "name": "attrValuePairs",
+        "lineNumber": 831
       },
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 12,
+        "lineNumber": 11,
         "type": {
           "type": "RestType",
           "expression": {
@@ -11107,8 +10920,69 @@
       },
       {
         "title": "param",
+        "name": "attributeValuePairs",
+        "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Pairs of attribute and value like {\"id\":\"name\",\"class\":\"class-name\"}",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 69,
+                      "offset": 68
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 69,
+                  "offset": 68
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 69,
+              "offset": 68
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
+      },
+      {
+        "title": "param",
         "name": "label",
-        "lineNumber": 11,
+        "lineNumber": 10,
         "description": {
           "type": "root",
           "children": [
@@ -11352,22 +11226,22 @@
     ],
     "loc": {
       "start": {
-        "line": 829,
+        "line": 848,
         "column": 0
       },
       "end": {
-        "line": 839,
+        "line": 858,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 840,
+          "line": 859,
           "column": 0
         },
         "end": {
-          "line": 845,
+          "line": 863,
           "column": 2
         }
       },
@@ -11639,22 +11513,22 @@
     ],
     "loc": {
       "start": {
-        "line": 847,
+        "line": 865,
         "column": 0
       },
       "end": {
-        "line": 856,
+        "line": 874,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 857,
+          "line": 875,
           "column": 0
         },
         "end": {
-          "line": 857,
+          "line": 875,
           "column": 35
         }
       },
@@ -11920,22 +11794,22 @@
     ],
     "loc": {
       "start": {
-        "line": 881,
+        "line": 899,
         "column": 0
       },
       "end": {
-        "line": 889,
+        "line": 907,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 890,
+          "line": 908,
           "column": 0
         },
         "end": {
-          "line": 896,
+          "line": 914,
           "column": 2
         }
       },
@@ -12200,22 +12074,22 @@
     ],
     "loc": {
       "start": {
-        "line": 898,
+        "line": 916,
         "column": 0
       },
       "end": {
-        "line": 906,
+        "line": 924,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 907,
+          "line": 925,
           "column": 0
         },
         "end": {
-          "line": 913,
+          "line": 931,
           "column": 2
         }
       },
@@ -12480,22 +12354,22 @@
     ],
     "loc": {
       "start": {
-        "line": 915,
+        "line": 933,
         "column": 0
       },
       "end": {
-        "line": 923,
+        "line": 941,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 924,
+          "line": 942,
           "column": 0
         },
         "end": {
-          "line": 930,
+          "line": 948,
           "column": 2
         }
       },
@@ -12760,22 +12634,22 @@
     ],
     "loc": {
       "start": {
-        "line": 932,
+        "line": 950,
         "column": 0
       },
       "end": {
-        "line": 940,
+        "line": 958,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 941,
+          "line": 959,
           "column": 0
         },
         "end": {
-          "line": 947,
+          "line": 965,
           "column": 2
         }
       },
@@ -13040,22 +12914,22 @@
     ],
     "loc": {
       "start": {
-        "line": 949,
+        "line": 967,
         "column": 0
       },
       "end": {
-        "line": 957,
+        "line": 975,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 958,
+          "line": 976,
           "column": 0
         },
         "end": {
-          "line": 967,
+          "line": 985,
           "column": 2
         }
       },
@@ -13310,22 +13184,22 @@
     ],
     "loc": {
       "start": {
-        "line": 969,
+        "line": 987,
         "column": 0
       },
       "end": {
-        "line": 977,
+        "line": 995,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 978,
+          "line": 996,
           "column": 0
         },
         "end": {
-          "line": 978,
+          "line": 996,
           "column": 81
         }
       },
@@ -13614,22 +13488,22 @@
     ],
     "loc": {
       "start": {
-        "line": 980,
+        "line": 998,
         "column": 0
       },
       "end": {
-        "line": 988,
+        "line": 1006,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 989,
+          "line": 1007,
           "column": 0
         },
         "end": {
-          "line": 989,
+          "line": 1007,
           "column": 83
         }
       },
@@ -13918,22 +13792,22 @@
     ],
     "loc": {
       "start": {
-        "line": 991,
+        "line": 1009,
         "column": 0
       },
       "end": {
-        "line": 999,
+        "line": 1017,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1000,
+          "line": 1018,
           "column": 0
         },
         "end": {
-          "line": 1000,
+          "line": 1018,
           "column": 85
         }
       },
@@ -14222,22 +14096,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1002,
+        "line": 1020,
         "column": 0
       },
       "end": {
-        "line": 1010,
+        "line": 1028,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1011,
+          "line": 1029,
           "column": 0
         },
         "end": {
-          "line": 1011,
+          "line": 1029,
           "column": 95
         }
       },
@@ -14485,22 +14359,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1013,
+        "line": 1031,
         "column": 0
       },
       "end": {
-        "line": 1021,
+        "line": 1039,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1022,
+          "line": 1040,
           "column": 0
         },
         "end": {
-          "line": 1022,
+          "line": 1040,
           "column": 50
         }
       },
@@ -14741,22 +14615,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1024,
+        "line": 1042,
         "column": 0
       },
       "end": {
-        "line": 1032,
+        "line": 1050,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1033,
+          "line": 1051,
           "column": 0
         },
         "end": {
-          "line": 1033,
+          "line": 1051,
           "column": 49
         }
       },
@@ -14997,22 +14871,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1035,
+        "line": 1053,
         "column": 0
       },
       "end": {
-        "line": 1043,
+        "line": 1061,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1044,
+          "line": 1062,
           "column": 0
         },
         "end": {
-          "line": 1044,
+          "line": 1062,
           "column": 42
         }
       },
@@ -15186,22 +15060,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1046,
+        "line": 1064,
         "column": 0
       },
       "end": {
-        "line": 1054,
+        "line": 1072,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1055,
+          "line": 1073,
           "column": 0
         },
         "end": {
-          "line": 1055,
+          "line": 1073,
           "column": 27
         }
       },
@@ -15217,7 +15091,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1055
+        "lineNumber": 1073
       }
     ],
     "properties": [],
@@ -15380,22 +15254,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1057,
+        "line": 1075,
         "column": 0
       },
       "end": {
-        "line": 1065,
+        "line": 1083,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1066,
+          "line": 1084,
           "column": 0
         },
         "end": {
-          "line": 1066,
+          "line": 1084,
           "column": 29
         }
       },
@@ -15411,7 +15285,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1066
+        "lineNumber": 1084
       }
     ],
     "properties": [],
@@ -15565,22 +15439,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1068,
+        "line": 1086,
         "column": 0
       },
       "end": {
-        "line": 1076,
+        "line": 1094,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1077,
+          "line": 1095,
           "column": 0
         },
         "end": {
-          "line": 1077,
+          "line": 1095,
           "column": 33
         }
       },
@@ -15736,22 +15610,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1251,
+        "line": 1280,
         "column": 0
       },
       "end": {
-        "line": 1263,
+        "line": 1292,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1289,
+          "line": 1318,
           "column": 0
         },
         "end": {
-          "line": 1312,
+          "line": 1341,
           "column": 1
         }
       },
@@ -15965,22 +15839,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1265,
+        "line": 1294,
         "column": 0
       },
       "end": {
-        "line": 1278,
+        "line": 1307,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1289,
+          "line": 1318,
           "column": 0
         },
         "end": {
-          "line": 1312,
+          "line": 1341,
           "column": 1
         }
       },
@@ -16211,22 +16085,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1280,
+        "line": 1309,
         "column": 0
       },
       "end": {
-        "line": 1288,
+        "line": 1317,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1289,
+          "line": 1318,
           "column": 0
         },
         "end": {
-          "line": 1312,
+          "line": 1341,
           "column": 1
         }
       },
@@ -16268,27 +16142,27 @@
       ],
       "loc": {
         "start": {
-          "line": 1290,
+          "line": 1319,
           "column": 4
         },
         "end": {
-          "line": 1293,
+          "line": 1322,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1294,
+            "line": 1323,
             "column": 4
           },
           "end": {
-            "line": 1298,
+            "line": 1327,
             "column": 5
           }
         },
         "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js",
-        "sortKey": "undefined 00001294",
+        "sortKey": "undefined 00001323",
         "code": "{\n    /**\n     * @class \n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async isValid(nodeId) {\n        let valid = true;\n        const rect_values = await this.value;\n        for(const rect_value of rect_values){\n            valid = await this.condition(nodeId, rect_value);\n        }\n        return valid;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -17054,22 +16928,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1314,
+        "line": 1343,
         "column": 0
       },
       "end": {
-        "line": 1333,
+        "line": 1362,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1335,
+          "line": 1364,
           "column": 0
         },
         "end": {
-          "line": 1342,
+          "line": 1371,
           "column": 2
         }
       },
