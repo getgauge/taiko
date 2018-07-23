@@ -6,6 +6,8 @@ const fs = require('fs');
 const taiko = require('./lib/taiko');
 const repl = require('./lib/repl');
 const { removeQuotes, symbols } = require('./lib/util');
+const observeAgrv = ['--observe','--slow-mo','--watch'];
+const argv = process.argv;
 
 async function exitOnUnhandledFailures(e){
     console.error(e);
@@ -26,16 +28,15 @@ function runFile(file) {
         realFuncs[func] = taiko[func];
         if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function() {
             let res;
-            try{
-                res = await realFuncs[func].apply(this, arguments);
-            }catch(e){console.error(e);
-                if(await taiko.client())await taiko.closeBrowser();
-                process.exit(1);
-            }
+            res = await realFuncs[func].apply(this, arguments);
+           
             if (res.description) {
                 res.description = symbols.pass + res.description;
                 console.log(removeQuotes(util.inspect(res.description, { colors: true }), res.description));
             }
+            
+            if(observeAgrv.some((val) => argv.includes(val))) await taiko.waitFor(3000);
+
             return res;
         };
         else global[func] = function() {
