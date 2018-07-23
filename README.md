@@ -2,9 +2,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![alpha software]( https://img.shields.io/badge/status-alpha-lightgrey.svg)](https://github.com/getgauge/taiko/issues) [![npm version](https://badge.fury.io/js/taiko.svg?style=flat-square)](https://badge.fury.io/js/taiko) [![dependencies Status](https://david-dm.org/getgauge/taiko/status.svg)](https://david-dm.org/getgauge/taiko) [![devDependencies Status](https://david-dm.org/getgauge/taiko/dev-status.svg)](https://david-dm.org/getgauge/taiko?type=dev) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/getgauge/taiko/issues)
 
-### Browser automation simplified.
+### Browser automation simplified
 
-![peek 2017-12-11 17-05](https://user-images.githubusercontent.com/54427/33867170-c2d1b8a6-df20-11e7-927b-4a5e007a6c1e.gif)
+![Taiko REPL](https://user-images.githubusercontent.com/54427/43075023-f4d18878-8e9c-11e8-91b2-227a3d02e0f6.gif)
 
 ## Getting started
 
@@ -23,16 +23,6 @@ npm install -g <path_to_taiko_repo>
 
 > On Linux, install `taiko` to a [`NODE_PATH`](https://nodejs.org/api/modules.html#modules_loading_from_the_global_folders) with executable permission.
 
-### As a Module
-```
-npm install <path_to_taiko_repo> --save
-```
-
-### Installing nightly version
-```
-npm install taiko@nightly
-```
-
 ## Usage
 
 #### Command line
@@ -41,30 +31,32 @@ Use the [Read–eval–print Loop](https://en.wikipedia.org/wiki/Read%E2%80%93ev
 
 ```js
 $ taiko
+
 > openBrowser()
- ✔ Browser and page initialized
+✔ Browser and page initialized
 
-> goto('https://getgauge.io')
- ✔ Navigated to url "https://getgauge.io/"
+> goto("http://todomvc.com/examples/react/#/");
+✔ Navigated to url "http://todomvc.com/examples/react/#/"
 
-> click('Get Started')
- ✔ Clicked element containing text "Get Started"
+> write("automate with taiko");
+✔ Wrote automate with taiko into the focused element.
+
+> press("Enter");
+✔ Pressed the Enter key
+
+> click(checkBox(near("automate with taiko")));
+✔ Clicked checkbox Near automate with taiko
 
 > .code
-const { browser, openBrowser, goto, click, closeBrowser } = require('taiko');
+const { openBrowser, goto, write, press, near, checkBox, click } = require('taiko');
 
 (async () => {
-    try {
-        await openBrowser();
-        await goto('https://getgauge.io');
-        await click('Get Started');
-    } catch (e) {
-        console.error(e);
-    } finally {
-        if (browser()) {
-            closeBrowser();
-        }
-    }
+    await openBrowser({headless:false});
+    await goto("http://todomvc.com/examples/react/#/");
+    await write("automate with taiko");
+    await press("Enter");
+    await click(checkBox(near("automate with taiko")));
+    closeBrowser();
 })();
 
 > .code code.js
@@ -77,22 +69,24 @@ $ taiko code.js
 ```
 
 ### As a Module
-
-```js
-const { openBrowser, goto, click, closeBrowser } = require('taiko');
-
-(async () => {
-    await openBrowser();
-    await goto('https://getgauge.io');
-    await click('Get Started');
-    await closeBrowser();
-})();
+```
+$ npm install <path_to_taiko_repo> --save
+$ node code.js
 ```
 
 ## Documentation
 
 * [API](http://taiko.gauge.org)
 
+## Inspired by
+
+* [Helium](https://heliumhq.com/)
+* [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+
 ## Talk to us
 
-The [Gauge](https://github.com/getgauge/gauge/#talk-to-us) team maintains taiko. Reach out to us at the same forums for questions. 
+For queries and contributions talk to the [Gauge](https://github.com/getgauge/gauge/#talk-to-us) team.
+
+## Copyright
+
+Copyright 2018 [ThoughtWorks, Inc](https://www.thoughtworks.com/)
