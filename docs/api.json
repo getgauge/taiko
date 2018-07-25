@@ -104,11 +104,11 @@
           "column": 0
         },
         "end": {
-          "line": 55,
+          "line": 57,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -349,26 +349,26 @@
     ],
     "loc": {
       "start": {
-        "line": 57,
+        "line": 59,
         "column": 0
       },
       "end": {
-        "line": 61,
+        "line": 63,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 62,
+          "line": 64,
           "column": 0
         },
         "end": {
-          "line": 69,
+          "line": 71,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [],
@@ -506,26 +506,26 @@
     ],
     "loc": {
       "start": {
-        "line": 71,
+        "line": 73,
         "column": 0
       },
       "end": {
-        "line": 75,
+        "line": 77,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 76,
+          "line": 78,
           "column": 0
         },
         "end": {
-          "line": 76,
+          "line": 78,
           "column": 37
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [],
@@ -668,26 +668,26 @@
     ],
     "loc": {
       "start": {
-        "line": 78,
+        "line": 80,
         "column": 0
       },
       "end": {
-        "line": 85,
+        "line": 87,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 86,
+          "line": 88,
           "column": 0
         },
         "end": {
-          "line": 94,
+          "line": 96,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -924,26 +924,26 @@
     ],
     "loc": {
       "start": {
-        "line": 96,
+        "line": 98,
         "column": 0
       },
       "end": {
-        "line": 106,
+        "line": 108,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 107,
+          "line": 109,
           "column": 0
         },
         "end": {
-          "line": 113,
+          "line": 115,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -1250,26 +1250,26 @@
     ],
     "loc": {
       "start": {
-        "line": 115,
+        "line": 117,
         "column": 0
       },
       "end": {
-        "line": 123,
+        "line": 125,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 124,
+          "line": 126,
           "column": 0
         },
         "end": {
-          "line": 128,
+          "line": 130,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -1281,7 +1281,7 @@
       {
         "title": "param",
         "name": "url",
-        "lineNumber": 124
+        "lineNumber": 126
       }
     ],
     "properties": [],
@@ -1453,26 +1453,26 @@
     ],
     "loc": {
       "start": {
-        "line": 130,
+        "line": 132,
         "column": 0
       },
       "end": {
-        "line": 134,
+        "line": 136,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 135,
+          "line": 137,
           "column": 0
         },
         "end": {
-          "line": 142,
+          "line": 144,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [],
@@ -1700,26 +1700,26 @@
     ],
     "loc": {
       "start": {
-        "line": 155,
+        "line": 157,
         "column": 0
       },
       "end": {
-        "line": 169,
+        "line": 171,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 170,
+          "line": 172,
           "column": 0
         },
         "end": {
-          "line": 170,
+          "line": 172,
           "column": 29
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -2478,26 +2478,26 @@
     ],
     "loc": {
       "start": {
-        "line": 200,
+        "line": 205,
         "column": 0
       },
       "end": {
-        "line": 211,
+        "line": 216,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 212,
+          "line": 217,
           "column": 0
         },
         "end": {
-          "line": 219,
+          "line": 224,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -2988,26 +2988,26 @@
     ],
     "loc": {
       "start": {
-        "line": 221,
+        "line": 226,
         "column": 0
       },
       "end": {
-        "line": 232,
+        "line": 237,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 233,
+          "line": 238,
           "column": 0
         },
         "end": {
-          "line": 240,
+          "line": 245,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -3474,26 +3474,26 @@
     ],
     "loc": {
       "start": {
-        "line": 242,
+        "line": 247,
         "column": 0
       },
       "end": {
-        "line": 251,
+        "line": 256,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 252,
+          "line": 257,
           "column": 0
         },
         "end": {
-          "line": 268,
+          "line": 273,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -3766,26 +3766,26 @@
     ],
     "loc": {
       "start": {
-        "line": 270,
+        "line": 275,
         "column": 0
       },
       "end": {
-        "line": 278,
+        "line": 283,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 279,
+          "line": 284,
           "column": 0
         },
         "end": {
-          "line": 283,
+          "line": 288,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -4094,26 +4094,26 @@
     ],
     "loc": {
       "start": {
-        "line": 285,
+        "line": 290,
         "column": 0
       },
       "end": {
-        "line": 298,
+        "line": 303,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 299,
+          "line": 304,
           "column": 0
         },
         "end": {
-          "line": 316,
+          "line": 321,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -4536,26 +4536,26 @@
     ],
     "loc": {
       "start": {
-        "line": 325,
+        "line": 330,
         "column": 0
       },
       "end": {
-        "line": 335,
+        "line": 340,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 336,
+          "line": 341,
           "column": 0
         },
         "end": {
-          "line": 346,
+          "line": 353,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -4914,26 +4914,26 @@
     ],
     "loc": {
       "start": {
-        "line": 348,
+        "line": 355,
         "column": 0
       },
       "end": {
-        "line": 360,
+        "line": 367,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 361,
+          "line": 368,
           "column": 0
         },
         "end": {
-          "line": 367,
+          "line": 374,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -5385,26 +5385,26 @@
     ],
     "loc": {
       "start": {
-        "line": 369,
+        "line": 376,
         "column": 0
       },
       "end": {
-        "line": 378,
+        "line": 385,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 379,
+          "line": 386,
           "column": 0
         },
         "end": {
-          "line": 388,
+          "line": 395,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -5677,26 +5677,26 @@
     ],
     "loc": {
       "start": {
-        "line": 390,
+        "line": 397,
         "column": 0
       },
       "end": {
-        "line": 399,
+        "line": 406,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 400,
+          "line": 407,
           "column": 0
         },
         "end": {
-          "line": 400,
+          "line": 407,
           "column": 35
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -5989,26 +5989,26 @@
     ],
     "loc": {
       "start": {
-        "line": 429,
+        "line": 436,
         "column": 0
       },
       "end": {
-        "line": 441,
+        "line": 448,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 442,
+          "line": 449,
           "column": 0
         },
         "end": {
-          "line": 445,
+          "line": 452,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6266,26 +6266,26 @@
     ],
     "loc": {
       "start": {
-        "line": 447,
+        "line": 454,
         "column": 0
       },
       "end": {
-        "line": 459,
+        "line": 466,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 460,
+          "line": 467,
           "column": 0
         },
         "end": {
-          "line": 463,
+          "line": 470,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6543,26 +6543,26 @@
     ],
     "loc": {
       "start": {
-        "line": 465,
+        "line": 472,
         "column": 0
       },
       "end": {
-        "line": 477,
+        "line": 484,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 478,
+          "line": 485,
           "column": 0
         },
         "end": {
-          "line": 481,
+          "line": 488,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -6820,26 +6820,26 @@
     ],
     "loc": {
       "start": {
-        "line": 483,
+        "line": 490,
         "column": 0
       },
       "end": {
-        "line": 495,
+        "line": 502,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 496,
+          "line": 503,
           "column": 0
         },
         "end": {
-          "line": 499,
+          "line": 506,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7066,26 +7066,26 @@
     ],
     "loc": {
       "start": {
-        "line": 501,
+        "line": 508,
         "column": 0
       },
       "end": {
-        "line": 509,
+        "line": 516,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 510,
+          "line": 517,
           "column": 0
         },
         "end": {
-          "line": 516,
+          "line": 523,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7386,26 +7386,26 @@
     ],
     "loc": {
       "start": {
-        "line": 518,
+        "line": 525,
         "column": 0
       },
       "end": {
-        "line": 527,
+        "line": 534,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 528,
+          "line": 535,
           "column": 0
         },
         "end": {
-          "line": 532,
+          "line": 539,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -7683,26 +7683,26 @@
     ],
     "loc": {
       "start": {
-        "line": 578,
+        "line": 585,
         "column": 0
       },
       "end": {
-        "line": 589,
+        "line": 596,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 590,
+          "line": 597,
           "column": 0
         },
         "end": {
-          "line": 595,
+          "line": 602,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8041,26 +8041,26 @@
     ],
     "loc": {
       "start": {
-        "line": 597,
+        "line": 604,
         "column": 0
       },
       "end": {
-        "line": 608,
+        "line": 615,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 609,
+          "line": 616,
           "column": 0
         },
         "end": {
-          "line": 614,
+          "line": 621,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8433,26 +8433,26 @@
     ],
     "loc": {
       "start": {
-        "line": 616,
+        "line": 623,
         "column": 0
       },
       "end": {
-        "line": 627,
+        "line": 634,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 628,
+          "line": 635,
           "column": 0
         },
         "end": {
-          "line": 633,
+          "line": 640,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -8791,26 +8791,26 @@
     ],
     "loc": {
       "start": {
-        "line": 635,
+        "line": 642,
         "column": 0
       },
       "end": {
-        "line": 646,
+        "line": 653,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 647,
+          "line": 654,
           "column": 0
         },
         "end": {
-          "line": 652,
+          "line": 659,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9139,26 +9139,26 @@
     ],
     "loc": {
       "start": {
-        "line": 654,
+        "line": 661,
         "column": 0
       },
       "end": {
-        "line": 664,
+        "line": 671,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 665,
+          "line": 672,
           "column": 0
         },
         "end": {
-          "line": 676,
+          "line": 683,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9436,26 +9436,26 @@
     ],
     "loc": {
       "start": {
-        "line": 678,
+        "line": 685,
         "column": 0
       },
       "end": {
-        "line": 690,
+        "line": 697,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 691,
+          "line": 698,
           "column": 0
         },
         "end": {
-          "line": 691,
+          "line": 698,
           "column": 37
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -9792,26 +9792,26 @@
     ],
     "loc": {
       "start": {
-        "line": 706,
+        "line": 713,
         "column": 0
       },
       "end": {
-        "line": 717,
+        "line": 724,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 718,
+          "line": 725,
           "column": 0
         },
         "end": {
-          "line": 718,
+          "line": 725,
           "column": 37
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10152,26 +10152,26 @@
     ],
     "loc": {
       "start": {
-        "line": 734,
+        "line": 741,
         "column": 0
       },
       "end": {
-        "line": 747,
+        "line": 754,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 748,
+          "line": 755,
           "column": 0
         },
         "end": {
-          "line": 785,
+          "line": 792,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10510,26 +10510,26 @@
     ],
     "loc": {
       "start": {
-        "line": 787,
+        "line": 794,
         "column": 0
       },
       "end": {
-        "line": 800,
+        "line": 807,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 801,
+          "line": 808,
           "column": 0
         },
         "end": {
-          "line": 815,
+          "line": 822,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10541,7 +10541,7 @@
       {
         "title": "param",
         "name": "attrValuePairs",
-        "lineNumber": 801
+        "lineNumber": 808
       },
       {
         "title": "param",
@@ -10873,26 +10873,26 @@
     ],
     "loc": {
       "start": {
-        "line": 817,
+        "line": 824,
         "column": 0
       },
       "end": {
-        "line": 830,
+        "line": 837,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 831,
+          "line": 838,
           "column": 0
         },
         "end": {
-          "line": 846,
+          "line": 853,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -10904,7 +10904,7 @@
       {
         "title": "param",
         "name": "attrValuePairs",
-        "lineNumber": 831
+        "lineNumber": 838
       },
       {
         "title": "param",
@@ -11226,26 +11226,26 @@
     ],
     "loc": {
       "start": {
-        "line": 848,
+        "line": 855,
         "column": 0
       },
       "end": {
-        "line": 858,
+        "line": 865,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 859,
+          "line": 866,
           "column": 0
         },
         "end": {
-          "line": 863,
+          "line": 870,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -11513,26 +11513,26 @@
     ],
     "loc": {
       "start": {
-        "line": 865,
+        "line": 872,
         "column": 0
       },
       "end": {
-        "line": 874,
+        "line": 881,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 875,
+          "line": 882,
           "column": 0
         },
         "end": {
-          "line": 875,
+          "line": 882,
           "column": 35
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -11794,26 +11794,26 @@
     ],
     "loc": {
       "start": {
-        "line": 899,
+        "line": 906,
         "column": 0
       },
       "end": {
-        "line": 907,
+        "line": 914,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 908,
+          "line": 915,
           "column": 0
         },
         "end": {
-          "line": 914,
+          "line": 921,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12074,26 +12074,26 @@
     ],
     "loc": {
       "start": {
-        "line": 916,
+        "line": 923,
         "column": 0
       },
       "end": {
-        "line": 924,
+        "line": 931,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 925,
+          "line": 932,
           "column": 0
         },
         "end": {
-          "line": 931,
+          "line": 938,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12354,26 +12354,26 @@
     ],
     "loc": {
       "start": {
-        "line": 933,
+        "line": 940,
         "column": 0
       },
       "end": {
-        "line": 941,
+        "line": 948,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 942,
+          "line": 949,
           "column": 0
         },
         "end": {
-          "line": 948,
+          "line": 955,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12634,26 +12634,26 @@
     ],
     "loc": {
       "start": {
-        "line": 950,
+        "line": 957,
         "column": 0
       },
       "end": {
-        "line": 958,
+        "line": 965,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 959,
+          "line": 966,
           "column": 0
         },
         "end": {
-          "line": 965,
+          "line": 972,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -12914,26 +12914,26 @@
     ],
     "loc": {
       "start": {
-        "line": 967,
+        "line": 974,
         "column": 0
       },
       "end": {
-        "line": 975,
+        "line": 982,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 976,
+          "line": 983,
           "column": 0
         },
         "end": {
-          "line": 985,
+          "line": 992,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13184,26 +13184,26 @@
     ],
     "loc": {
       "start": {
-        "line": 987,
+        "line": 994,
         "column": 0
       },
       "end": {
-        "line": 995,
+        "line": 1002,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 996,
+          "line": 1003,
           "column": 0
         },
         "end": {
-          "line": 996,
+          "line": 1003,
           "column": 81
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13488,26 +13488,26 @@
     ],
     "loc": {
       "start": {
-        "line": 998,
+        "line": 1005,
         "column": 0
       },
       "end": {
-        "line": 1006,
+        "line": 1013,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1007,
+          "line": 1014,
           "column": 0
         },
         "end": {
-          "line": 1007,
+          "line": 1014,
           "column": 83
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -13792,26 +13792,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1009,
+        "line": 1016,
         "column": 0
       },
       "end": {
-        "line": 1017,
+        "line": 1024,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1018,
+          "line": 1025,
           "column": 0
         },
         "end": {
-          "line": 1018,
+          "line": 1025,
           "column": 85
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14096,26 +14096,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1020,
+        "line": 1027,
         "column": 0
       },
       "end": {
-        "line": 1028,
+        "line": 1035,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1029,
+          "line": 1036,
           "column": 0
         },
         "end": {
-          "line": 1029,
+          "line": 1036,
           "column": 95
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14359,26 +14359,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1031,
+        "line": 1038,
         "column": 0
       },
       "end": {
-        "line": 1039,
+        "line": 1046,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1040,
+          "line": 1047,
           "column": 0
         },
         "end": {
-          "line": 1040,
+          "line": 1047,
           "column": 50
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14615,26 +14615,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1042,
+        "line": 1049,
         "column": 0
       },
       "end": {
-        "line": 1050,
+        "line": 1057,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1051,
+          "line": 1058,
           "column": 0
         },
         "end": {
-          "line": 1051,
+          "line": 1058,
           "column": 49
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -14871,26 +14871,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1053,
+        "line": 1060,
         "column": 0
       },
       "end": {
-        "line": 1061,
+        "line": 1068,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1062,
+          "line": 1069,
           "column": 0
         },
         "end": {
-          "line": 1062,
+          "line": 1069,
           "column": 42
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15060,26 +15060,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1064,
+        "line": 1071,
         "column": 0
       },
       "end": {
-        "line": 1072,
+        "line": 1079,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1073,
+          "line": 1080,
           "column": 0
         },
         "end": {
-          "line": 1073,
+          "line": 1080,
           "column": 27
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15091,7 +15091,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1073
+        "lineNumber": 1080
       }
     ],
     "properties": [],
@@ -15254,26 +15254,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1075,
+        "line": 1082,
         "column": 0
       },
       "end": {
-        "line": 1083,
+        "line": 1090,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1084,
+          "line": 1091,
           "column": 0
         },
         "end": {
-          "line": 1084,
+          "line": 1091,
           "column": 29
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15285,7 +15285,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1084
+        "lineNumber": 1091
       }
     ],
     "properties": [],
@@ -15439,26 +15439,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1086,
+        "line": 1093,
         "column": 0
       },
       "end": {
-        "line": 1094,
+        "line": 1101,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1095,
+          "line": 1102,
           "column": 0
         },
         "end": {
-          "line": 1095,
+          "line": 1102,
           "column": 33
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15610,26 +15610,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1280,
+        "line": 1287,
         "column": 0
       },
       "end": {
-        "line": 1292,
+        "line": 1299,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1318,
+          "line": 1325,
           "column": 0
         },
         "end": {
-          "line": 1341,
+          "line": 1348,
           "column": 1
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -15839,26 +15839,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1294,
+        "line": 1301,
         "column": 0
       },
       "end": {
-        "line": 1307,
+        "line": 1314,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1318,
+          "line": 1325,
           "column": 0
         },
         "end": {
-          "line": 1341,
+          "line": 1348,
           "column": 1
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -16085,26 +16085,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1309,
+        "line": 1316,
         "column": 0
       },
       "end": {
-        "line": 1317,
+        "line": 1324,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1318,
+          "line": 1325,
           "column": 0
         },
         "end": {
-          "line": 1341,
+          "line": 1348,
           "column": 1
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
@@ -16142,27 +16142,27 @@
       ],
       "loc": {
         "start": {
-          "line": 1319,
+          "line": 1326,
           "column": 4
         },
         "end": {
-          "line": 1322,
+          "line": 1329,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1323,
+            "line": 1330,
             "column": 4
           },
           "end": {
-            "line": 1327,
+            "line": 1334,
             "column": 5
           }
         },
-        "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js",
-        "sortKey": "undefined 00001323",
+        "file": "../lib/taiko.js",
+        "sortKey": "undefined 00001330",
         "code": "{\n    /**\n     * @class \n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async isValid(nodeId) {\n        let valid = true;\n        const rect_values = await this.value;\n        for(const rect_value of rect_values){\n            valid = await this.condition(nodeId, rect_value);\n        }\n        return valid;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -16928,26 +16928,26 @@
     ],
     "loc": {
       "start": {
-        "line": 1343,
+        "line": 1350,
         "column": 0
       },
       "end": {
-        "line": 1362,
+        "line": 1369,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1364,
+          "line": 1371,
           "column": 0
         },
         "end": {
-          "line": 1371,
+          "line": 1378,
           "column": 2
         }
       },
-      "file": "/Users/nivedhasenthil/go/src/github.com/getgauge/taiko/lib/taiko.js"
+      "file": "../lib/taiko.js"
     },
     "augments": [],
     "examples": [
