@@ -8,18 +8,25 @@ const repl = require('./lib/repl');
 const { removeQuotes, symbols } = require('./lib/util');
 const observeAgrv = ['--observe','--slow-mo','--watch'];
 const argv = process.argv;
+let repl_mode = false;
 
 async function exitOnUnhandledFailures(e){
-    console.error(e);
-    if(await taiko.client())await taiko.closeBrowser();
-    process.exit(1);
+    if(!repl_mode){
+        console.error(e);
+        if(await taiko.client())await taiko.closeBrowser();
+        process.exit(1);
+    }
 }
 
 process.on('unhandledRejection', exitOnUnhandledFailures);
 process.on('uncaughtException',exitOnUnhandledFailures);
 
-if (process.argv.length > 2) runFile(process.argv[2]);
-else repl.initiaize();
+if (process.argv.length > 2){ 
+    runFile(process.argv[2]);
+}else{
+    repl_mode = true;
+    repl.initiaize();
+}
 
 function runFile(file) {
     validate(file);
