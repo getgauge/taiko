@@ -9,7 +9,7 @@
 	"scripts": {
 		"format": "js-beautify *.js lib/*.js test/*.js -r -b collapse,preserve-inline && npm run lint",
 		"lint": "eslint lib/*.js test/*.js",
-		"doc": "documentation build lib/taiko.js -f md --shallow -o docs/api.md --markdown-toc=false && node docs/setup.js",
+		"doc": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
 		"test": "mocha && npm run lint",
 		"install": "node install.js",
 		"publish:nightly": "node publishNightly.js"

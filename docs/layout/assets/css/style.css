@@ -4,18 +4,14 @@
   -webkit-box-shadow: 0 0 20px #d2d2d2;
   box-shadow: 0 0 20px #d2d2d2;
 }
-.container {
-  width: 1100px;
-}
+
 .nav-list {
   font-size: 17px;
 }
-.nav-header {
-  font-size: 17px;
-  text-transform: none;
-  line-height: 30px;
-}
+
 .sidebar-header-2 { margin-left: 10px; }
-.sidebar-header-3 { margin-left: 20px; }
-.sidebar-header-4 { margin-left: 30px; }
-.sidebar-header-5 { margin-left: 40px; }
+
+.scrollable {
+  max-height: 815px;
+  overflow-y: scroll;
+}

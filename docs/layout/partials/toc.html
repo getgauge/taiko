@@ -1,0 +1,10 @@
+<ul class="toc nav nav-list">
+{{#each toc}}
+    <h3 class="collapsible">{{@key}}</h3>
+    {{#each this}}
+    <li class="sidebar-header-2">
+            <a href=#{{{lowerCase this}}}>{{this}}</a>
+    </li>
+    {{/each}}
+{{/each}}
+</ul>
