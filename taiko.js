@@ -34,8 +34,9 @@ function runFile(file) {
     for (let func in taiko) {
         realFuncs[func] = taiko[func];
         if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function() {
-            let res;
-            res = await realFuncs[func].apply(this, arguments);
+            let res,args = arguments;
+            if(func === 'openBrowser' && observeAgrv.some((val) => argv.includes(val))) args = [{headless: false}];
+            res = await realFuncs[func].apply(this, args);
            
             if (res.description) {
                 res.description = symbols.pass + res.description;
