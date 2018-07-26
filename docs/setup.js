@@ -2,17 +2,11 @@ const fs = require('fs');
 const mds = require('markdown-styles');
 const { metadata } = require('../lib/taiko');
 
-const content = `
-title: Taiko
-toc: ${JSON.stringify(metadata)}
----
-` + fs.readFileSync('docs/index.md', 'utf-8');
-
-fs.writeFileSync('docs/index.md', content, 'utf-8');
 mds.render(mds.resolveArgs({
-    input: 'docs/index.md',
+    input: 'docs/api.md',
     output: 'docs/site',
     layout: 'docs/layout',
 }), function() {
+    fs.copyFileSync('docs/index.html', 'docs/site/index.html')
     console.log('All done!');
 });

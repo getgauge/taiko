@@ -1,18 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{{title}}</title>
-    <link type="text/css" rel="stylesheet" href="{{asset 'css/github-markdown.css'}}">
-    <link type="text/css" rel="stylesheet" href="{{asset 'css/pilcrow.css'}}">
+    <link type="text/css" rel="stylesheet" href="{{asset 'css/bootstrap.css'}}"/>
+    <link type="text/css" rel="stylesheet" href="{{asset 'css/bootstrap-responsive.css'}}"/>
+    <link type="text/css" rel="stylesheet" href="{{asset 'css/pilcrow.css'}}"/>
     <link type="text/css" rel="stylesheet" href="{{asset 'css/hljs-github.min.css'}}"/>
     <link type="text/css" rel="stylesheet" href="{{asset 'css/style.css'}}"/>
   </head>
-  <body>
-    <article class="markdown-body">
-      {{~> toc}}
-      {{~> content}}
-    </article>
-  </body>
+<body>
+
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span3">
+        {{~> toc }}
+      </div>
+      <div class="span9 main">
+        {{~> content}}
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="{{asset 'js/bootstrap.min.js'}}"></script>
+</body>
 </html>

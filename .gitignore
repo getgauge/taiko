@@ -59,7 +59,7 @@ typings/
 
 .DS_Store
 docs/site
-docs/index.md
+docs/api.md
 
 #local chromium
 .local-chromium
