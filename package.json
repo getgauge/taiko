@@ -4,15 +4,14 @@
 	"description": "An easy to use wrapper over Chrome Remote Interface.",
 	"main": "lib/taiko.js",
 	"bin": {
-		"taiko": "taiko.js"
+		"taiko": "bin/taiko.js"
 	},
 	"scripts": {
 		"format": "js-beautify *.js lib/*.js test/*.js -r -b collapse,preserve-inline && npm run lint",
-		"lint": "eslint lib/*.js test/*.js",
+		"lint": "eslint bin/*.js lib/*.js test/*.js",
 		"doc": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
 		"test": "mocha && npm run lint",
-		"install": "node install.js",
-		"publish:nightly": "node publishNightly.js"
+		"install": "node lib/install.js"
 	},
 	"repository": {
 		"type": "git",
@@ -39,14 +38,15 @@
 		"proxy-from-env": "^1.0.0",
 		"rimraf": "^2.6.1",
 		"recast": "^0.12.8",
-		"repl.history": "^0.1.4",
-		"documentation": "^5.5.0"
+		"repl.history": "^0.1.4"
 	},
 	"devDependencies": {
 		"eslint": "^4.19.1",
 		"js-beautify": "^1.7.4",
 		"markdown-styles": "^3.1.10",
 		"marked": "^0.4.0",
-		"mocha": "^4.1.0"
+		"mocha": "^4.1.0",
+		"documentation": "^5.5.0",
+		"pre-commit": "^1.2.2"
 	}
 }
