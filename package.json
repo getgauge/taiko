@@ -46,7 +46,6 @@
 		"markdown-styles": "^3.1.10",
 		"marked": "^0.4.0",
 		"mocha": "^4.1.0",
-		"documentation": "^5.5.0",
-		"pre-commit": "^1.2.2"
+		"documentation": "^5.5.0"
 	}
 }
