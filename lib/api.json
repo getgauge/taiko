@@ -15560,22 +15560,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1334,
+        "line": 1337,
         "column": 0
       },
       "end": {
-        "line": 1346,
+        "line": 1349,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1372,
+          "line": 1375,
           "column": 0
         },
         "end": {
-          "line": 1395,
+          "line": 1398,
           "column": 1
         }
       }
@@ -15788,22 +15788,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1348,
+        "line": 1351,
         "column": 0
       },
       "end": {
-        "line": 1361,
+        "line": 1364,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1372,
+          "line": 1375,
           "column": 0
         },
         "end": {
-          "line": 1395,
+          "line": 1398,
           "column": 1
         }
       }
@@ -16033,22 +16033,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1363,
+        "line": 1366,
         "column": 0
       },
       "end": {
-        "line": 1371,
+        "line": 1374,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1372,
+          "line": 1375,
           "column": 0
         },
         "end": {
-          "line": 1395,
+          "line": 1398,
           "column": 1
         }
       }
@@ -16089,26 +16089,26 @@
       ],
       "loc": {
         "start": {
-          "line": 1373,
+          "line": 1376,
           "column": 4
         },
         "end": {
-          "line": 1376,
+          "line": 1379,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1377,
+            "line": 1380,
             "column": 4
           },
           "end": {
-            "line": 1381,
+            "line": 1384,
             "column": 5
           }
         },
-        "sortKey": "undefined 00001377",
+        "sortKey": "undefined 00001380",
         "code": "{\n    /**\n     * @class\n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async isValid(nodeId) {\n        let valid = true;\n        const rect_values = await this.value;\n        for (const rect_value of rect_values) {\n            valid = await this.condition(nodeId, rect_value);\n        }\n        return valid;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -16874,22 +16874,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1397,
+        "line": 1400,
         "column": 0
       },
       "end": {
-        "line": 1416,
+        "line": 1419,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1418,
+          "line": 1421,
           "column": 0
         },
         "end": {
-          "line": 1425,
+          "line": 1428,
           "column": 2
         }
       }
