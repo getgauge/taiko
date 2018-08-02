@@ -1,9 +1,19 @@
 const assert = require('assert');
 const taiko = require('../lib/taiko');
+const util = require('util');
+const { removeQuotes, symbols } = require('../lib/util');
 
-it('All the exported functions are present in metadata', function() {
-    const allFuncs = Object.keys(taiko);
-    const funcsInMetadata = [].concat.apply(['metadata'], Object.values(taiko.metadata));
+(() => {
+    try{
+       
+        const allFuncs = Object.keys(taiko);
+        const funcsInMetadata = [].concat.apply(['metadata'], Object.values(taiko.metadata));
+        assert.deepEqual(allFuncs.sort(), funcsInMetadata.sort());
+        const description = symbols.pass + 'All the exported functions are present in metadata';
+        console.log(removeQuotes(util.inspect(description, { colors: true }), description));
+    }catch(e){
+        console.error(e);
+        process.exit(1);
+    }
 
-    assert.deepEqual(allFuncs.sort(), funcsInMetadata.sort());
-});
+})();

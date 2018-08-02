@@ -10,7 +10,7 @@
 		"format": "js-beautify *.js lib/*.js test/*.js -r -b collapse,preserve-inline && npm run lint",
 		"lint": "eslint bin/*.js lib/*.js test/*.js",
 		"doc": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
-		"test": "mocha && npm run lint",
+		"test": "node test/taiko-test.js && npm run lint",
 		"install": "node lib/install.js",
 		"update-json-doc": "node build/updateJsonDoc.js"
 	},
@@ -51,7 +51,6 @@
 		"js-beautify": "^1.7.4",
 		"markdown-styles": "^3.1.10",
 		"marked": "^0.4.0",
-		"mocha": "^4.1.0",
 		"pre-commit": "^1.2.2"
 	}
 }
