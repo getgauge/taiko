@@ -23,6 +23,18 @@ npm install -g <path_to_taiko_repo>
 
 > On Linux, install `taiko` to a [`NODE_PATH`](https://nodejs.org/api/modules.html#modules_loading_from_the_global_folders) with executable permission.
 
+### Run tests
+Test are written using [gauge](https://gauge.org). Install and setup gauge following instructions [here](https://gauge.org/get_started/)
+
+```
+git clone https://github.com/getgauge-examples/js-taiko.git
+cd js-taiko
+npm install
+```
+```gauge run specs``` or ```gauge run specs --tags=\!knownIssue``` (to ignore specs for knownissue)
+
+
+
 ## Usage
 
 #### Command line
