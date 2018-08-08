@@ -7032,7 +7032,7 @@
       },
       {
         "title": "param",
-        "description": "{path:'screenshot.png'} or {encoding:true}",
+        "description": "{path:'screenshot.png'} or {encoding:'base64'}",
         "lineNumber": 6,
         "type": {
           "type": "NameExpression",
@@ -7106,7 +7106,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "{path:'screenshot.png'} or {encoding:true}",
+                  "value": "{path:'screenshot.png'} or {encoding:'base64'}",
                   "position": {
                     "start": {
                       "line": 1,
@@ -7115,8 +7115,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 43,
-                      "offset": 42
+                      "column": 47,
+                      "offset": 46
                     },
                     "indent": []
                   }
@@ -7130,8 +7130,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 43,
-                  "offset": 42
+                  "column": 47,
+                  "offset": 46
                 },
                 "indent": []
               }
@@ -7145,8 +7145,8 @@
             },
             "end": {
               "line": 1,
-              "column": 43,
-              "offset": 42
+              "column": 47,
+              "offset": 46
             }
           }
         },
