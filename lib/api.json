@@ -13134,7 +13134,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "alert('Message', async alert => await alert.dismiss())",
+        "description": "alert('Message', async () => await dismiss())",
         "lineNumber": 3
       },
       {
@@ -13149,17 +13149,11 @@
       },
       {
         "title": "param",
-        "description": "Operation to perform.",
+        "description": "Operation to perform. Accept/Dismiss",
         "lineNumber": 7,
         "type": {
-          "type": "FunctionType",
-          "params": [
-            {
-              "type": "NameExpression",
-              "name": "alert"
-            }
-          ],
-          "result": null
+          "type": "NameExpression",
+          "name": "function"
         },
         "name": "callback"
       }
@@ -13189,7 +13183,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "alert('Message', async alert => await alert.dismiss())"
+        "description": "alert('Message', async () => await dismiss())"
       }
     ],
     "params": [
@@ -13266,7 +13260,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Operation to perform.",
+                  "value": "Operation to perform. Accept/Dismiss",
                   "position": {
                     "start": {
                       "line": 1,
@@ -13275,8 +13269,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 22,
-                      "offset": 21
+                      "column": 37,
+                      "offset": 36
                     },
                     "indent": []
                   }
@@ -13290,8 +13284,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 22,
-                  "offset": 21
+                  "column": 37,
+                  "offset": 36
                 },
                 "indent": []
               }
@@ -13305,20 +13299,14 @@
             },
             "end": {
               "line": 1,
-              "column": 22,
-              "offset": 21
+              "column": 37,
+              "offset": 36
             }
           }
         },
         "type": {
-          "type": "FunctionType",
-          "params": [
-            {
-              "type": "NameExpression",
-              "name": "alert"
-            }
-          ],
-          "result": null
+          "type": "NameExpression",
+          "name": "function"
         }
       }
     ],
@@ -13437,7 +13425,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "prompt('Message', async prompt => await prompt.dismiss())",
+        "description": "prompt('Message', async () => await dismiss())",
         "lineNumber": 3
       },
       {
@@ -13452,17 +13440,11 @@
       },
       {
         "title": "param",
-        "description": "Operation to perform.",
+        "description": "Operation to perform.Accept/Dismiss",
         "lineNumber": 7,
         "type": {
-          "type": "FunctionType",
-          "params": [
-            {
-              "type": "NameExpression",
-              "name": "prompt"
-            }
-          ],
-          "result": null
+          "type": "NameExpression",
+          "name": "function"
         },
         "name": "callback"
       }
@@ -13492,7 +13474,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "prompt('Message', async prompt => await prompt.dismiss())"
+        "description": "prompt('Message', async () => await dismiss())"
       }
     ],
     "params": [
@@ -13569,7 +13551,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Operation to perform.",
+                  "value": "Operation to perform.Accept/Dismiss",
                   "position": {
                     "start": {
                       "line": 1,
@@ -13578,8 +13560,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 22,
-                      "offset": 21
+                      "column": 36,
+                      "offset": 35
                     },
                     "indent": []
                   }
@@ -13593,8 +13575,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 22,
-                  "offset": 21
+                  "column": 36,
+                  "offset": 35
                 },
                 "indent": []
               }
@@ -13608,20 +13590,14 @@
             },
             "end": {
               "line": 1,
-              "column": 22,
-              "offset": 21
+              "column": 36,
+              "offset": 35
             }
           }
         },
         "type": {
-          "type": "FunctionType",
-          "params": [
-            {
-              "type": "NameExpression",
-              "name": "prompt"
-            }
-          ],
-          "result": null
+          "type": "NameExpression",
+          "name": "function"
         }
       }
     ],
@@ -13740,7 +13716,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "confirm('Message', async confirm => await confirm.dismiss())",
+        "description": "confirm('Message', async () => await dismiss())",
         "lineNumber": 3
       },
       {
@@ -13755,17 +13731,11 @@
       },
       {
         "title": "param",
-        "description": "Operation to perform.",
+        "description": "Operation to perform.Accept/Dismiss",
         "lineNumber": 7,
         "type": {
-          "type": "FunctionType",
-          "params": [
-            {
-              "type": "NameExpression",
-              "name": "confirm"
-            }
-          ],
-          "result": null
+          "type": "NameExpression",
+          "name": "function"
         },
         "name": "callback"
       }
@@ -13795,7 +13765,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "confirm('Message', async confirm => await confirm.dismiss())"
+        "description": "confirm('Message', async () => await dismiss())"
       }
     ],
     "params": [
@@ -13872,7 +13842,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Operation to perform.",
+                  "value": "Operation to perform.Accept/Dismiss",
                   "position": {
                     "start": {
                       "line": 1,
@@ -13881,8 +13851,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 22,
-                      "offset": 21
+                      "column": 36,
+                      "offset": 35
                     },
                     "indent": []
                   }
@@ -13896,8 +13866,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 22,
-                  "offset": 21
+                  "column": 36,
+                  "offset": 35
                 },
                 "indent": []
               }
@@ -13911,20 +13881,14 @@
             },
             "end": {
               "line": 1,
-              "column": 22,
-              "offset": 21
+              "column": 36,
+              "offset": 35
             }
           }
         },
         "type": {
-          "type": "FunctionType",
-          "params": [
-            {
-              "type": "NameExpression",
-              "name": "confirm"
-            }
-          ],
-          "result": null
+          "type": "NameExpression",
+          "name": "function"
         }
       }
     ],
@@ -14043,7 +14007,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "beforeunload('Message', async beforeunload => await beforeunload.dismiss())",
+        "description": "beforeunload('Message', async () => await dismiss())",
         "lineNumber": 3
       },
       {
@@ -14058,17 +14022,11 @@
       },
       {
         "title": "param",
-        "description": "Operation to perform.",
+        "description": "Operation to perform.Accept/Dismiss",
         "lineNumber": 7,
         "type": {
-          "type": "FunctionType",
-          "params": [
-            {
-              "type": "NameExpression",
-              "name": "beforeunload"
-            }
-          ],
-          "result": null
+          "type": "NameExpression",
+          "name": "function"
         },
         "name": "callback"
       }
@@ -14098,7 +14056,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "beforeunload('Message', async beforeunload => await beforeunload.dismiss())"
+        "description": "beforeunload('Message', async () => await dismiss())"
       }
     ],
     "params": [
@@ -14175,7 +14133,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Operation to perform.",
+                  "value": "Operation to perform.Accept/Dismiss",
                   "position": {
                     "start": {
                       "line": 1,
@@ -14184,8 +14142,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 22,
-                      "offset": 21
+                      "column": 36,
+                      "offset": 35
                     },
                     "indent": []
                   }
@@ -14199,8 +14157,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 22,
-                  "offset": 21
+                  "column": 36,
+                  "offset": 35
                 },
                 "indent": []
               }
@@ -14214,20 +14172,14 @@
             },
             "end": {
               "line": 1,
-              "column": 22,
-              "offset": 21
+              "column": 36,
+              "offset": 35
             }
           }
         },
         "type": {
-          "type": "FunctionType",
-          "params": [
-            {
-              "type": "NameExpression",
-              "name": "beforeunload"
-            }
-          ],
-          "result": null
+          "type": "NameExpression",
+          "name": "function"
         }
       }
     ],
@@ -14255,6 +14207,214 @@
       }
     ],
     "namespace": ".beforeunload"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Accept callback for dialogs",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 28,
+                  "offset": 27
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 28,
+              "offset": 27
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 28,
+          "offset": 27
+        }
+      }
+    },
+    "tags": [],
+    "loc": {
+      "start": {
+        "line": 1075,
+        "column": 0
+      },
+      "end": {
+        "line": 1077,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 1078,
+          "column": 0
+        },
+        "end": {
+          "line": 1082,
+          "column": 2
+        }
+      }
+    },
+    "augments": [],
+    "examples": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "accept",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "accept",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".accept"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Dismiss callback for dialogs",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 29,
+                  "offset": 28
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 29,
+              "offset": 28
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 29,
+          "offset": 28
+        }
+      }
+    },
+    "tags": [],
+    "loc": {
+      "start": {
+        "line": 1084,
+        "column": 0
+      },
+      "end": {
+        "line": 1086,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 1087,
+          "column": 0
+        },
+        "end": {
+          "line": 1091,
+          "column": 2
+        }
+      }
+    },
+    "augments": [],
+    "examples": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "dismiss",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "dismiss",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".dismiss"
   },
   {
     "description": {
@@ -14353,6 +14513,7 @@
         },
         "end": {
           "line": 1085,
+
           "column": 50
         }
       }
