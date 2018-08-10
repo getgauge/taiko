@@ -282,7 +282,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Allows to switch between targets using URL.",
+              "value": "Allows to switch between tabs using URL.",
               "position": {
                 "start": {
                   "line": 1,
@@ -291,8 +291,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 44,
-                  "offset": 43
+                  "column": 41,
+                  "offset": 40
                 },
                 "indent": []
               }
@@ -306,8 +306,8 @@
             },
             "end": {
               "line": 1,
-              "column": 44,
-              "offset": 43
+              "column": 41,
+              "offset": 40
             },
             "indent": []
           }
@@ -321,8 +321,8 @@
         },
         "end": {
           "line": 1,
-          "column": 44,
-          "offset": 43
+          "column": 41,
+          "offset": 40
         }
       }
     },
@@ -517,7 +517,7 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "name": "switchToTarget",
+    "name": "switchTo",
     "kind": "function",
     "memberof": "taiko",
     "scope": "static",
@@ -530,12 +530,12 @@
     },
     "path": [
       {
-        "name": "switchToTarget",
+        "name": "switchTo",
         "kind": "function",
         "scope": "static"
       }
     ],
-    "namespace": ".switchToTarget"
+    "namespace": ".switchTo"
   },
   {
     "description": {
