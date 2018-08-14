@@ -1,0 +1,19 @@
+code {
+    font-family: monospace !important;
+}
+
+ul.nav.nav-list {
+    background: #fbfbfb;
+    border: 2px solid #eeeeee;
+    border-radius: 10px;
+    padding-top: 2%;
+}
+
+.markdown-body {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+body {
+    max-width: 900px !important;
+}
