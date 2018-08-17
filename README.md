@@ -8,20 +8,20 @@
 
 ## Getting started
 
-Clone taiko repo
 ```
-git clone https://github.com/getgauge/taiko.git
-```
-
-### Command Line Interface
-
-```
-npm install -g <path_to_taiko_repo>
+$ npm install -g taiko
 ```
 
 > On Windows, make sure that the location `%AppData%\npm`(or wherever `npm` ends up installing the module on your Windows flavor) is present in `PATH` environment variable.
 
 > On Linux, install `taiko` to a [`NODE_PATH`](https://nodejs.org/api/modules.html#modules_loading_from_the_global_folders) with executable permission.
+
+## From source
+
+```
+$ git clone https://github.com/getgauge/taiko.git
+$ npm install -g <path_to_taiko_repo>
+```
 
 ### Run tests
 Test are written using [gauge](https://gauge.org). Install and setup gauge following instructions [here](https://gauge.org/get_started/)
