@@ -14589,28 +14589,28 @@
     "tags": [
       {
         "title": "example",
-        "description": "intercept({url:\"https://taiko.gauge.org/assets/css/pilcrow.css\",method:'GET'},{errorCode:'Aborted'})",
+        "description": "intercept(request({url:\"https://taiko.gauge.org/assets/css/pilcrow.css\",method:'GET'}),override({errorCode:'Aborted'}))",
         "lineNumber": 3
       },
       {
         "title": "param",
-        "description": "values to match a request(url, post-data, method, resourceType, headers) any of these can be used. eg. {url:\"https://taiko.gauge.org/assets/css/pilcrow.css\",method:'GET'}",
+        "description": null,
         "lineNumber": 6,
         "type": {
           "type": "NameExpression",
           "name": "object"
         },
-        "name": "requestIdentifier"
+        "name": "request"
       },
       {
         "title": "param",
-        "description": "values to override request (url, method, post-data, headers) or mock-response (errorCode, status, headers, contentType, body)",
+        "description": null,
         "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "object"
         },
-        "name": "override"
+        "name": "action"
       }
     ],
     "loc": {
@@ -14630,7 +14630,7 @@
           "column": 0
         },
         "end": {
-          "line": 1116,
+          "line": 1119,
           "column": 2
         }
       }
@@ -14638,14 +14638,148 @@
     "augments": [],
     "examples": [
       {
-        "description": "intercept({url:\"https://taiko.gauge.org/assets/css/pilcrow.css\",method:'GET'},{errorCode:'Aborted'})"
+        "description": "intercept(request({url:\"https://taiko.gauge.org/assets/css/pilcrow.css\",method:'GET'}),override({errorCode:'Aborted'}))"
       }
     ],
     "params": [
       {
         "title": "param",
-        "name": "requestIdentifier",
+        "name": "request",
         "lineNumber": 6,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
+      },
+      {
+        "title": "param",
+        "name": "action",
+        "lineNumber": 7,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "intercept",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "intercept",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".intercept"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Gives back request objects improves readability",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 48,
+                  "offset": 47
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 48,
+              "offset": 47
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 48,
+          "offset": 47
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "param",
+        "description": "values to match a request(url, post-data, method, resourceType, headers) any of these can be used. eg. {url:\"https://taiko.gauge.org/assets/css/pilcrow.css\",method:'GET'}",
+        "lineNumber": 3,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        },
+        "name": "requestIdentifier"
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 1121,
+        "column": 0
+      },
+      "end": {
+        "line": 1125,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 1126,
+          "column": 0
+        },
+        "end": {
+          "line": 1126,
+          "column": 66
+        }
+      }
+    },
+    "augments": [],
+    "examples": [],
+    "params": [
+      {
+        "title": "param",
+        "name": "requestIdentifier",
+        "lineNumber": 3,
         "description": {
           "type": "root",
           "children": [
@@ -14739,35 +14873,43 @@
           "type": "NameExpression",
           "name": "object"
         }
-      },
+      }
+    ],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "request",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
       {
-        "title": "param",
-        "name": "override",
-        "lineNumber": 7,
-        "description": {
-          "type": "root",
+        "name": "request",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".request"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
           "children": [
             {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "values to override request (url, method, post-data, headers) or mock-response (errorCode, status, headers, contentType, body)",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 126,
-                      "offset": 125
-                    },
-                    "indent": []
-                  }
-                }
-              ],
+              "type": "text",
+              "value": "Gives back request override objects improves readability",
               "position": {
                 "start": {
                   "line": 1,
@@ -14776,8 +14918,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 126,
-                  "offset": 125
+                  "column": 57,
+                  "offset": 56
                 },
                 "indent": []
               }
@@ -14791,8 +14933,116 @@
             },
             "end": {
               "line": 1,
-              "column": 126,
-              "offset": 125
+              "column": 57,
+              "offset": 56
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 57,
+          "offset": 56
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "param",
+        "description": "values to override request (url, method, post-data, headers, errorReason)",
+        "lineNumber": 3,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        },
+        "name": "override"
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 1128,
+        "column": 0
+      },
+      "end": {
+        "line": 1132,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 1133,
+          "column": 0
+        },
+        "end": {
+          "line": 1135,
+          "column": 2
+        }
+      }
+    },
+    "augments": [],
+    "examples": [],
+    "params": [
+      {
+        "title": "param",
+        "name": "override",
+        "lineNumber": 3,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "values to override request (url, method, post-data, headers, errorReason)",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 74,
+                      "offset": 73
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 74,
+                  "offset": 73
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 74,
+              "offset": 73
             }
           }
         },
@@ -14807,7 +15057,7 @@
     "sees": [],
     "throws": [],
     "todos": [],
-    "name": "intercept",
+    "name": "override",
     "kind": "function",
     "memberof": "taiko",
     "scope": "static",
@@ -14820,12 +15070,12 @@
     },
     "path": [
       {
-        "name": "intercept",
+        "name": "override",
         "kind": "function",
         "scope": "static"
       }
     ],
-    "namespace": ".intercept"
+    "namespace": ".override"
   },
   {
     "description": {
@@ -14908,22 +15158,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1118,
+        "line": 1137,
         "column": 0
       },
       "end": {
-        "line": 1126,
+        "line": 1145,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1127,
+          "line": 1146,
           "column": 0
         },
         "end": {
-          "line": 1127,
+          "line": 1146,
           "column": 50
         }
       }
@@ -15163,22 +15413,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1129,
+        "line": 1148,
         "column": 0
       },
       "end": {
-        "line": 1137,
+        "line": 1156,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1138,
+          "line": 1157,
           "column": 0
         },
         "end": {
-          "line": 1138,
+          "line": 1157,
           "column": 49
         }
       }
@@ -15393,173 +15643,6 @@
     "tags": [
       {
         "title": "example",
-        "description": "click('Get Started', waitForNavigation(false))",
-        "lineNumber": 3
-      },
-      {
-        "title": "param",
-        "description": null,
-        "lineNumber": 6,
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        },
-        "name": "e"
-      },
-      {
-        "title": "return",
-        "description": null,
-        "lineNumber": 7,
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        }
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 1140,
-        "column": 0
-      },
-      "end": {
-        "line": 1148,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 1149,
-          "column": 0
-        },
-        "end": {
-          "line": 1149,
-          "column": 42
-        }
-      }
-    },
-    "augments": [],
-    "examples": [
-      {
-        "description": "click('Get Started', waitForNavigation(false))"
-      }
-    ],
-    "params": [
-      {
-        "title": "param",
-        "name": "e",
-        "lineNumber": 6,
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        }
-      }
-    ],
-    "properties": [],
-    "returns": [
-      {
-        "description": {
-          "type": "root",
-          "children": [],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            }
-          }
-        },
-        "title": "returns",
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        }
-      }
-    ],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "waitForNavigation",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "waitForNavigation",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".waitForNavigation"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "This function is used to improve the readability. It simply returns the parameter passed into it.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 98,
-                  "offset": 97
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 98,
-              "offset": 97
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 98,
-          "offset": 97
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "example",
         "description": "attach('c:/abc.txt', to('Please select a file:'))",
         "lineNumber": 3
       },
@@ -15606,22 +15689,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1151,
+        "line": 1159,
         "column": 0
       },
       "end": {
-        "line": 1159,
+        "line": 1167,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1160,
+          "line": 1168,
           "column": 0
         },
         "end": {
-          "line": 1160,
+          "line": 1168,
           "column": 27
         }
       }
@@ -15636,7 +15719,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1160
+        "lineNumber": 1168
       }
     ],
     "properties": [],
@@ -15799,22 +15882,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1162,
+        "line": 1170,
         "column": 0
       },
       "end": {
-        "line": 1170,
+        "line": 1178,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1171,
+          "line": 1179,
           "column": 0
         },
         "end": {
-          "line": 1171,
+          "line": 1179,
           "column": 29
         }
       }
@@ -15829,7 +15912,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1171
+        "lineNumber": 1179
       }
     ],
     "properties": [],
@@ -15983,22 +16066,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1173,
+        "line": 1181,
         "column": 0
       },
       "end": {
-        "line": 1181,
+        "line": 1189,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1182,
+          "line": 1190,
           "column": 0
         },
         "end": {
-          "line": 1182,
+          "line": 1190,
           "column": 33
         }
       }
@@ -16153,22 +16236,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1394,
+        "line": 1402,
         "column": 0
       },
       "end": {
-        "line": 1406,
+        "line": 1414,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1432,
+          "line": 1440,
           "column": 0
         },
         "end": {
-          "line": 1461,
+          "line": 1469,
           "column": 1
         }
       }
@@ -16381,22 +16464,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1408,
+        "line": 1416,
         "column": 0
       },
       "end": {
-        "line": 1421,
+        "line": 1429,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1432,
+          "line": 1440,
           "column": 0
         },
         "end": {
-          "line": 1461,
+          "line": 1469,
           "column": 1
         }
       }
@@ -16626,22 +16709,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1423,
+        "line": 1431,
         "column": 0
       },
       "end": {
-        "line": 1431,
+        "line": 1439,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1432,
+          "line": 1440,
           "column": 0
         },
         "end": {
-          "line": 1461,
+          "line": 1469,
           "column": 1
         }
       }
@@ -16682,26 +16765,26 @@
       ],
       "loc": {
         "start": {
-          "line": 1433,
+          "line": 1441,
           "column": 4
         },
         "end": {
-          "line": 1436,
+          "line": 1444,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1437,
+            "line": 1445,
             "column": 4
           },
           "end": {
-            "line": 1441,
+            "line": 1449,
             "column": 5
           }
         },
-        "sortKey": "undefined 00001437",
+        "sortKey": "undefined 00001445",
         "code": "{\n    /**\n     * @class\n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async validNodes(nodeId) {\n        let matchingNode, minDiff = Infinity;\n        const results = await this.value;\n        for (const result of results) {\n            if (await this.condition(nodeId, result.result)) {\n                const diff = await boundingBox.getPositionalDifference(dom, nodeId, result.elem);\n                if (diff < minDiff) {\n                    minDiff = diff;\n                    matchingNode = { elem: result.elem, dist: diff };\n                }\n            }\n        }\n        return matchingNode;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -17467,22 +17550,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1463,
+        "line": 1471,
         "column": 0
       },
       "end": {
-        "line": 1482,
+        "line": 1490,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1484,
+          "line": 1492,
           "column": 0
         },
         "end": {
-          "line": 1491,
+          "line": 1499,
           "column": 2
         }
       }
