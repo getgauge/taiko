@@ -15086,6 +15086,183 @@
           "children": [
             {
               "type": "text",
+              "value": "Gives back mock response objects improves readability",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 54,
+                  "offset": 53
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 54,
+              "offset": 53
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 54,
+          "offset": 53
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "param",
+        "description": "values to mock response (status, header, content-type, body)",
+        "lineNumber": 3,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        },
+        "name": "mockResponse"
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 1138,
+        "column": 0
+      },
+      "end": {
+        "line": 1142,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 1143,
+          "column": 0
+        },
+        "end": {
+          "line": 1145,
+          "column": 2
+        }
+      }
+    },
+    "augments": [],
+    "examples": [],
+    "params": [
+      {
+        "title": "param",
+        "name": "mockResponse",
+        "lineNumber": 3,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "values to mock response (status, header, content-type, body)",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 61,
+                      "offset": 60
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 61,
+                  "offset": 60
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 61,
+              "offset": 60
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "mockResponse",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "mockResponse",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".mockResponse"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
               "value": "Converts seconds to milliseconds.",
               "position": {
                 "start": {
@@ -15158,22 +15335,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1137,
+        "line": 1147,
         "column": 0
       },
       "end": {
-        "line": 1145,
+        "line": 1155,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1146,
+          "line": 1156,
           "column": 0
         },
         "end": {
-          "line": 1146,
+          "line": 1156,
           "column": 50
         }
       }
@@ -15413,22 +15590,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1148,
+        "line": 1158,
         "column": 0
       },
       "end": {
-        "line": 1156,
+        "line": 1166,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1157,
+          "line": 1167,
           "column": 0
         },
         "end": {
-          "line": 1157,
+          "line": 1167,
           "column": 49
         }
       }
@@ -15689,22 +15866,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1159,
+        "line": 1169,
         "column": 0
       },
       "end": {
-        "line": 1167,
+        "line": 1177,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1168,
+          "line": 1178,
           "column": 0
         },
         "end": {
-          "line": 1168,
+          "line": 1178,
           "column": 27
         }
       }
@@ -15719,7 +15896,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1168
+        "lineNumber": 1178
       }
     ],
     "properties": [],
@@ -15882,22 +16059,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1170,
+        "line": 1180,
         "column": 0
       },
       "end": {
-        "line": 1178,
+        "line": 1188,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1179,
+          "line": 1189,
           "column": 0
         },
         "end": {
-          "line": 1179,
+          "line": 1189,
           "column": 29
         }
       }
@@ -15912,7 +16089,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1179
+        "lineNumber": 1189
       }
     ],
     "properties": [],
@@ -16066,22 +16243,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1181,
+        "line": 1191,
         "column": 0
       },
       "end": {
-        "line": 1189,
+        "line": 1199,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1190,
+          "line": 1200,
           "column": 0
         },
         "end": {
-          "line": 1190,
+          "line": 1200,
           "column": 33
         }
       }
@@ -16236,22 +16413,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1402,
+        "line": 1412,
         "column": 0
       },
       "end": {
-        "line": 1414,
+        "line": 1424,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1440,
+          "line": 1450,
           "column": 0
         },
         "end": {
-          "line": 1469,
+          "line": 1479,
           "column": 1
         }
       }
@@ -16464,22 +16641,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1416,
+        "line": 1426,
         "column": 0
       },
       "end": {
-        "line": 1429,
+        "line": 1439,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1440,
+          "line": 1450,
           "column": 0
         },
         "end": {
-          "line": 1469,
+          "line": 1479,
           "column": 1
         }
       }
@@ -16709,22 +16886,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1431,
+        "line": 1441,
         "column": 0
       },
       "end": {
-        "line": 1439,
+        "line": 1449,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1440,
+          "line": 1450,
           "column": 0
         },
         "end": {
-          "line": 1469,
+          "line": 1479,
           "column": 1
         }
       }
@@ -16765,26 +16942,26 @@
       ],
       "loc": {
         "start": {
-          "line": 1441,
+          "line": 1451,
           "column": 4
         },
         "end": {
-          "line": 1444,
+          "line": 1454,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1445,
+            "line": 1455,
             "column": 4
           },
           "end": {
-            "line": 1449,
+            "line": 1459,
             "column": 5
           }
         },
-        "sortKey": "undefined 00001445",
+        "sortKey": "undefined 00001455",
         "code": "{\n    /**\n     * @class\n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async validNodes(nodeId) {\n        let matchingNode, minDiff = Infinity;\n        const results = await this.value;\n        for (const result of results) {\n            if (await this.condition(nodeId, result.result)) {\n                const diff = await boundingBox.getPositionalDifference(dom, nodeId, result.elem);\n                if (diff < minDiff) {\n                    minDiff = diff;\n                    matchingNode = { elem: result.elem, dist: diff };\n                }\n            }\n        }\n        return matchingNode;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -17550,22 +17727,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1471,
+        "line": 1481,
         "column": 0
       },
       "end": {
-        "line": 1490,
+        "line": 1500,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1492,
+          "line": 1502,
           "column": 0
         },
         "end": {
-          "line": 1499,
+          "line": 1509,
           "column": 2
         }
       }
