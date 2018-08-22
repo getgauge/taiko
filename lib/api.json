@@ -14589,28 +14589,27 @@
     "tags": [
       {
         "title": "example",
-        "description": "intercept(request({url:\"https://taiko.gauge.org/assets/css/pilcrow.css\",method:'GET'}),override({errorCode:'Aborted'}))",
+        "description": "intercept({ \n   request: {url:'https://taiko.gauge.org/assets/css/pilcrow.css'},\n   mock: {errorReason:\"Failed\"}\n})\n\nintercept({ \n   request: {url:'https://taiko.gauge.org/assets/css/pilcrow.css'},\n   mock: {response:{status: 404, contentType: 'text/plain',body: 'Not Found!'}}\n})\n\nintercept({ \n   request: {url:'https://taiko.gauge.org/assets/css/pilcrow.css'},\n   callback: doOnIntercept\n})",
         "lineNumber": 3
       },
       {
         "title": "param",
         "description": null,
-        "lineNumber": 6,
+        "lineNumber": 19,
         "type": {
           "type": "NameExpression",
           "name": "object"
         },
-        "name": "request"
+        "name": "requestWithAction"
       },
       {
-        "title": "param",
-        "description": null,
-        "lineNumber": 7,
+        "title": "returns",
+        "description": "Object with the description of the action performed.",
+        "lineNumber": 20,
         "type": {
           "type": "NameExpression",
           "name": "object"
-        },
-        "name": "action"
+        }
       }
     ],
     "loc": {
@@ -14619,18 +14618,18 @@
         "column": 0
       },
       "end": {
-        "line": 1112,
+        "line": 1125,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1113,
+          "line": 1126,
           "column": 0
         },
         "end": {
-          "line": 1119,
+          "line": 1129,
           "column": 2
         }
       }
@@ -14638,23 +14637,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "intercept(request({url:\"https://taiko.gauge.org/assets/css/pilcrow.css\",method:'GET'}),override({errorCode:'Aborted'}))"
+        "description": "intercept({ \n   request: {url:'https://taiko.gauge.org/assets/css/pilcrow.css'},\n   mock: {errorReason:\"Failed\"}\n})\n\nintercept({ \n   request: {url:'https://taiko.gauge.org/assets/css/pilcrow.css'},\n   mock: {response:{status: 404, contentType: 'text/plain',body: 'Not Found!'}}\n})\n\nintercept({ \n   request: {url:'https://taiko.gauge.org/assets/css/pilcrow.css'},\n   callback: doOnIntercept\n})"
       }
     ],
     "params": [
       {
         "title": "param",
-        "name": "request",
-        "lineNumber": 6,
-        "type": {
-          "type": "NameExpression",
-          "name": "object"
-        }
-      },
-      {
-        "title": "param",
-        "name": "action",
-        "lineNumber": 7,
+        "name": "requestWithAction",
+        "lineNumber": 19,
         "type": {
           "type": "NameExpression",
           "name": "object"
@@ -14662,7 +14652,67 @@
       }
     ],
     "properties": [],
-    "returns": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Object with the description of the action performed.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 53,
+                      "offset": 52
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 53,
+                  "offset": 52
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 53,
+              "offset": 52
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
+      }
+    ],
     "sees": [],
     "throws": [],
     "todos": [],
@@ -14685,574 +14735,6 @@
       }
     ],
     "namespace": ".intercept"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Gives back request objects improves readability",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 48,
-                  "offset": 47
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 48,
-              "offset": 47
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 48,
-          "offset": 47
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "param",
-        "description": "values to match a request(url, post-data, method, resourceType, headers) any of these can be used. eg. {url:\"https://taiko.gauge.org/assets/css/pilcrow.css\",method:'GET'}",
-        "lineNumber": 3,
-        "type": {
-          "type": "NameExpression",
-          "name": "object"
-        },
-        "name": "requestIdentifier"
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 1121,
-        "column": 0
-      },
-      "end": {
-        "line": 1125,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 1126,
-          "column": 0
-        },
-        "end": {
-          "line": 1126,
-          "column": 66
-        }
-      }
-    },
-    "augments": [],
-    "examples": [],
-    "params": [
-      {
-        "title": "param",
-        "name": "requestIdentifier",
-        "lineNumber": 3,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "values to match a request(url, post-data, method, resourceType, headers) any of these can be used. eg. {url:\"",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 110,
-                      "offset": 109
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "url": "https://taiko.gauge.org/assets/css/pilcrow.css\",method:'GET'}",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "https://taiko.gauge.org/assets/css/pilcrow.css\",method:'GET'}",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 110,
-                          "offset": 109
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 171,
-                          "offset": 170
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 110,
-                      "offset": 109
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 171,
-                      "offset": 170
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 171,
-                  "offset": 170
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 171,
-              "offset": 170
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "object"
-        }
-      }
-    ],
-    "properties": [],
-    "returns": [],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "request",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "request",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".request"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Gives back request override objects improves readability",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 57,
-                  "offset": 56
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 57,
-              "offset": 56
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 57,
-          "offset": 56
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "param",
-        "description": "values to override request (url, method, post-data, headers, errorReason)",
-        "lineNumber": 3,
-        "type": {
-          "type": "NameExpression",
-          "name": "object"
-        },
-        "name": "override"
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 1128,
-        "column": 0
-      },
-      "end": {
-        "line": 1132,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 1133,
-          "column": 0
-        },
-        "end": {
-          "line": 1135,
-          "column": 2
-        }
-      }
-    },
-    "augments": [],
-    "examples": [],
-    "params": [
-      {
-        "title": "param",
-        "name": "override",
-        "lineNumber": 3,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "values to override request (url, method, post-data, headers, errorReason)",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 74,
-                      "offset": 73
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 74,
-                  "offset": 73
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 74,
-              "offset": 73
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "object"
-        }
-      }
-    ],
-    "properties": [],
-    "returns": [],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "override",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "override",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".override"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "Gives back mock response objects improves readability",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 54,
-                  "offset": 53
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 54,
-              "offset": 53
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 54,
-          "offset": 53
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "param",
-        "description": "values to mock response (status, header, content-type, body)",
-        "lineNumber": 3,
-        "type": {
-          "type": "NameExpression",
-          "name": "object"
-        },
-        "name": "mockResponse"
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 1138,
-        "column": 0
-      },
-      "end": {
-        "line": 1142,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 1143,
-          "column": 0
-        },
-        "end": {
-          "line": 1145,
-          "column": 2
-        }
-      }
-    },
-    "augments": [],
-    "examples": [],
-    "params": [
-      {
-        "title": "param",
-        "name": "mockResponse",
-        "lineNumber": 3,
-        "description": {
-          "type": "root",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "values to mock response (status, header, content-type, body)",
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 61,
-                      "offset": 60
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 61,
-                  "offset": 60
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 61,
-              "offset": 60
-            }
-          }
-        },
-        "type": {
-          "type": "NameExpression",
-          "name": "object"
-        }
-      }
-    ],
-    "properties": [],
-    "returns": [],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "mockResponse",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "mockResponse",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".mockResponse"
   },
   {
     "description": {
@@ -15335,22 +14817,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1147,
+        "line": 1131,
         "column": 0
       },
       "end": {
-        "line": 1155,
+        "line": 1139,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1156,
+          "line": 1140,
           "column": 0
         },
         "end": {
-          "line": 1156,
+          "line": 1140,
           "column": 50
         }
       }
@@ -15590,22 +15072,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1158,
+        "line": 1142,
         "column": 0
       },
       "end": {
-        "line": 1166,
+        "line": 1150,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1167,
+          "line": 1151,
           "column": 0
         },
         "end": {
-          "line": 1167,
+          "line": 1151,
           "column": 49
         }
       }
@@ -15866,22 +15348,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1169,
+        "line": 1153,
         "column": 0
       },
       "end": {
-        "line": 1177,
+        "line": 1161,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1178,
+          "line": 1162,
           "column": 0
         },
         "end": {
-          "line": 1178,
+          "line": 1162,
           "column": 27
         }
       }
@@ -15896,7 +15378,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1178
+        "lineNumber": 1162
       }
     ],
     "properties": [],
@@ -16059,22 +15541,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1180,
+        "line": 1164,
         "column": 0
       },
       "end": {
-        "line": 1188,
+        "line": 1172,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1189,
+          "line": 1173,
           "column": 0
         },
         "end": {
-          "line": 1189,
+          "line": 1173,
           "column": 29
         }
       }
@@ -16089,7 +15571,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1189
+        "lineNumber": 1173
       }
     ],
     "properties": [],
@@ -16243,22 +15725,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1191,
+        "line": 1175,
         "column": 0
       },
       "end": {
-        "line": 1199,
+        "line": 1183,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1200,
+          "line": 1184,
           "column": 0
         },
         "end": {
-          "line": 1200,
+          "line": 1184,
           "column": 33
         }
       }
@@ -16413,22 +15895,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1412,
+        "line": 1396,
         "column": 0
       },
       "end": {
-        "line": 1424,
+        "line": 1408,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1450,
+          "line": 1434,
           "column": 0
         },
         "end": {
-          "line": 1479,
+          "line": 1463,
           "column": 1
         }
       }
@@ -16641,22 +16123,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1426,
+        "line": 1410,
         "column": 0
       },
       "end": {
-        "line": 1439,
+        "line": 1423,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1450,
+          "line": 1434,
           "column": 0
         },
         "end": {
-          "line": 1479,
+          "line": 1463,
           "column": 1
         }
       }
@@ -16886,22 +16368,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1441,
+        "line": 1425,
         "column": 0
       },
       "end": {
-        "line": 1449,
+        "line": 1433,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1450,
+          "line": 1434,
           "column": 0
         },
         "end": {
-          "line": 1479,
+          "line": 1463,
           "column": 1
         }
       }
@@ -16942,26 +16424,26 @@
       ],
       "loc": {
         "start": {
-          "line": 1451,
+          "line": 1435,
           "column": 4
         },
         "end": {
-          "line": 1454,
+          "line": 1438,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1455,
+            "line": 1439,
             "column": 4
           },
           "end": {
-            "line": 1459,
+            "line": 1443,
             "column": 5
           }
         },
-        "sortKey": "undefined 00001455",
+        "sortKey": "undefined 00001439",
         "code": "{\n    /**\n     * @class\n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async validNodes(nodeId) {\n        let matchingNode, minDiff = Infinity;\n        const results = await this.value;\n        for (const result of results) {\n            if (await this.condition(nodeId, result.result)) {\n                const diff = await boundingBox.getPositionalDifference(dom, nodeId, result.elem);\n                if (diff < minDiff) {\n                    minDiff = diff;\n                    matchingNode = { elem: result.elem, dist: diff };\n                }\n            }\n        }\n        return matchingNode;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -17727,22 +17209,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1481,
+        "line": 1465,
         "column": 0
       },
       "end": {
-        "line": 1500,
+        "line": 1484,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1502,
+          "line": 1486,
           "column": 0
         },
         "end": {
-          "line": 1509,
+          "line": 1493,
           "column": 2
         }
       }
