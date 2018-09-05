@@ -15947,22 +15947,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1504,
+        "line": 1505,
         "column": 0
       },
       "end": {
-        "line": 1516,
+        "line": 1517,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1542,
+          "line": 1543,
           "column": 0
         },
         "end": {
-          "line": 1571,
+          "line": 1572,
           "column": 1
         }
       }
@@ -16175,22 +16175,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1518,
+        "line": 1519,
         "column": 0
       },
       "end": {
-        "line": 1531,
+        "line": 1532,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1542,
+          "line": 1543,
           "column": 0
         },
         "end": {
-          "line": 1571,
+          "line": 1572,
           "column": 1
         }
       }
@@ -16420,22 +16420,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1533,
+        "line": 1534,
         "column": 0
       },
       "end": {
-        "line": 1541,
+        "line": 1542,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1542,
+          "line": 1543,
           "column": 0
         },
         "end": {
-          "line": 1571,
+          "line": 1572,
           "column": 1
         }
       }
@@ -16476,26 +16476,26 @@
       ],
       "loc": {
         "start": {
-          "line": 1543,
+          "line": 1544,
           "column": 4
         },
         "end": {
-          "line": 1546,
+          "line": 1547,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1547,
+            "line": 1548,
             "column": 4
           },
           "end": {
-            "line": 1551,
+            "line": 1552,
             "column": 5
           }
         },
-        "sortKey": "undefined 00001547",
+        "sortKey": "undefined 00001548",
         "code": "{\n    /**\n     * @class\n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async validNodes(nodeId) {\n        let matchingNode, minDiff = Infinity;\n        const results = await this.value;\n        for (const result of results) {\n            if (await this.condition(nodeId, result.result)) {\n                const diff = await boundingBox.getPositionalDifference(dom, nodeId, result.elem);\n                if (diff < minDiff) {\n                    minDiff = diff;\n                    matchingNode = { elem: result.elem, dist: diff };\n                }\n            }\n        }\n        return matchingNode;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -17261,22 +17261,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1573,
+        "line": 1574,
         "column": 0
       },
       "end": {
-        "line": 1592,
+        "line": 1593,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1594,
+          "line": 1595,
           "column": 0
         },
         "end": {
-          "line": 1601,
+          "line": 1602,
           "column": 2
         }
       }
