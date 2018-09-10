@@ -14732,6 +14732,16 @@
     "params": [
       {
         "title": "param",
+        "name": "requestUrl",
+        "lineNumber": 1278
+      },
+      {
+        "title": "param",
+        "name": "action",
+        "lineNumber": 1278
+      },
+      {
+        "title": "param",
         "name": "requestWithAction",
         "lineNumber": 19,
         "type": {
