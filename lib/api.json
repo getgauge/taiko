@@ -14631,6 +14631,318 @@
           "children": [
             {
               "type": "text",
+              "value": "Add interceptor for the network call to override request or mock response.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 75,
+                  "offset": 74
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 75,
+              "offset": 74
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 75,
+          "offset": 74
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "case 1: block url => intercept(url)\ncase 2: mockResponse => intercept(url,{mockObject})\ncase 3: override request => intercept(url,(request) => {request.continue({overrideObject})})\ncase 4: redirect => intercept(url,redirectUrl)\ncase 5: mockResponse based on request => intercept(url,(request) => { //someaction; request.respond({mockResponseObject})} )",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "request URL to intercept",
+        "lineNumber": 10,
+        "type": null,
+        "name": "requestUrl"
+      },
+      {
+        "title": "param",
+        "description": "action to be done after interception",
+        "lineNumber": 11,
+        "type": null,
+        "name": "action"
+      },
+      {
+        "title": "returns",
+        "description": "Object with the description of the action performed.",
+        "lineNumber": 12,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 1256,
+        "column": 0
+      },
+      "end": {
+        "line": 1269,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 1270,
+          "column": 0
+        },
+        "end": {
+          "line": 1273,
+          "column": 2
+        }
+      }
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "case 1: block url => intercept(url)\ncase 2: mockResponse => intercept(url,{mockObject})\ncase 3: override request => intercept(url,(request) => {request.continue({overrideObject})})\ncase 4: redirect => intercept(url,redirectUrl)\ncase 5: mockResponse based on request => intercept(url,(request) => { //someaction; request.respond({mockResponseObject})} )"
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "requestUrl",
+        "lineNumber": 10,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "request URL to intercept",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 25,
+                      "offset": 24
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 25,
+                  "offset": 24
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 25,
+              "offset": 24
+            }
+          }
+        }
+      },
+      {
+        "title": "param",
+        "name": "action",
+        "lineNumber": 11,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "action to be done after interception",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 37,
+                      "offset": 36
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 37,
+                  "offset": 36
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 37,
+              "offset": 36
+            }
+          }
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Object with the description of the action performed.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 53,
+                      "offset": 52
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 53,
+                  "offset": 52
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 53,
+              "offset": 52
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "intercept",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "intercept",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".intercept"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
               "value": "Converts seconds to milliseconds.",
               "position": {
                 "start": {
@@ -14703,22 +15015,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1256,
+        "line": 1275,
         "column": 0
       },
       "end": {
-        "line": 1264,
+        "line": 1283,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1265,
+          "line": 1284,
           "column": 0
         },
         "end": {
-          "line": 1265,
+          "line": 1284,
           "column": 50
         }
       }
@@ -14958,22 +15270,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1267,
+        "line": 1286,
         "column": 0
       },
       "end": {
-        "line": 1275,
+        "line": 1294,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1276,
+          "line": 1295,
           "column": 0
         },
         "end": {
-          "line": 1276,
+          "line": 1295,
           "column": 49
         }
       }
@@ -15188,173 +15500,6 @@
     "tags": [
       {
         "title": "example",
-        "description": "click('Get Started', waitForNavigation(false))",
-        "lineNumber": 3
-      },
-      {
-        "title": "param",
-        "description": null,
-        "lineNumber": 6,
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        },
-        "name": "e"
-      },
-      {
-        "title": "return",
-        "description": null,
-        "lineNumber": 7,
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        }
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 1278,
-        "column": 0
-      },
-      "end": {
-        "line": 1286,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 1287,
-          "column": 0
-        },
-        "end": {
-          "line": 1287,
-          "column": 42
-        }
-      }
-    },
-    "augments": [],
-    "examples": [
-      {
-        "description": "click('Get Started', waitForNavigation(false))"
-      }
-    ],
-    "params": [
-      {
-        "title": "param",
-        "name": "e",
-        "lineNumber": 6,
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        }
-      }
-    ],
-    "properties": [],
-    "returns": [
-      {
-        "description": {
-          "type": "root",
-          "children": [],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            }
-          }
-        },
-        "title": "returns",
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        }
-      }
-    ],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "waitForNavigation",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "waitForNavigation",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".waitForNavigation"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "This function is used to improve the readability. It simply returns the parameter passed into it.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 98,
-                  "offset": 97
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 98,
-              "offset": 97
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 98,
-          "offset": 97
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "example",
         "description": "attach('c:/abc.txt', to('Please select a file:'))",
         "lineNumber": 3
       },
@@ -15401,22 +15546,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1289,
+        "line": 1297,
         "column": 0
       },
       "end": {
-        "line": 1297,
+        "line": 1305,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1298,
+          "line": 1306,
           "column": 0
         },
         "end": {
-          "line": 1298,
+          "line": 1306,
           "column": 27
         }
       }
@@ -15431,7 +15576,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1298
+        "lineNumber": 1306
       }
     ],
     "properties": [],
@@ -15594,22 +15739,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1300,
+        "line": 1308,
         "column": 0
       },
       "end": {
-        "line": 1308,
+        "line": 1316,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1309,
+          "line": 1317,
           "column": 0
         },
         "end": {
-          "line": 1309,
+          "line": 1317,
           "column": 29
         }
       }
@@ -15624,7 +15769,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1309
+        "lineNumber": 1317
       }
     ],
     "properties": [],
@@ -15778,22 +15923,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1311,
+        "line": 1319,
         "column": 0
       },
       "end": {
-        "line": 1319,
+        "line": 1327,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1320,
+          "line": 1328,
           "column": 0
         },
         "end": {
-          "line": 1320,
+          "line": 1328,
           "column": 33
         }
       }
@@ -15948,22 +16093,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1577,
+        "line": 1585,
         "column": 0
       },
       "end": {
-        "line": 1589,
+        "line": 1597,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1615,
+          "line": 1623,
           "column": 0
         },
         "end": {
-          "line": 1644,
+          "line": 1652,
           "column": 1
         }
       }
@@ -16176,22 +16321,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1591,
+        "line": 1599,
         "column": 0
       },
       "end": {
-        "line": 1604,
+        "line": 1612,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1615,
+          "line": 1623,
           "column": 0
         },
         "end": {
-          "line": 1644,
+          "line": 1652,
           "column": 1
         }
       }
@@ -16421,22 +16566,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1606,
+        "line": 1614,
         "column": 0
       },
       "end": {
-        "line": 1614,
+        "line": 1622,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1615,
+          "line": 1623,
           "column": 0
         },
         "end": {
-          "line": 1644,
+          "line": 1652,
           "column": 1
         }
       }
@@ -16477,26 +16622,26 @@
       ],
       "loc": {
         "start": {
-          "line": 1616,
+          "line": 1624,
           "column": 4
         },
         "end": {
-          "line": 1619,
+          "line": 1627,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1620,
+            "line": 1628,
             "column": 4
           },
           "end": {
-            "line": 1624,
+            "line": 1632,
             "column": 5
           }
         },
-        "sortKey": "undefined 00001620",
+        "sortKey": "undefined 00001628",
         "code": "{\n    /**\n     * @class\n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async validNodes(nodeId) {\n        let matchingNode, minDiff = Infinity;\n        const results = await this.value;\n        for (const result of results) {\n            if (await this.condition(nodeId, result.result)) {\n                const diff = await boundingBox.getPositionalDifference(dom, nodeId, result.elem);\n                if (diff < minDiff) {\n                    minDiff = diff;\n                    matchingNode = { elem: result.elem, dist: diff };\n                }\n            }\n        }\n        return matchingNode;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -17262,22 +17407,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1646,
+        "line": 1654,
         "column": 0
       },
       "end": {
-        "line": 1665,
+        "line": 1673,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1667,
+          "line": 1675,
           "column": 0
         },
         "end": {
-          "line": 1674,
+          "line": 1682,
           "column": 2
         }
       }
