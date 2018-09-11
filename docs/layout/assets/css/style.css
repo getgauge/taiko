@@ -1,3 +1,50 @@
+* {
+  font-family: "Open Sans";
+}
+
+h1 {
+  font-family: "URWGeometric-ExtraBold";
+}
+
+h2, h3 {
+  font-family: "URWGeometric-SemiBold";
+  color: rgb(51, 51, 51);
+}
+
+p {
+  color: rgb(85, 85, 85);
+  font-size: 16px;
+}
+
+li a {
+  color: rgb(85, 85, 85);
+  border-bottom: 1px dotted #ccc;
+}
+
+nav {
+  background: #1e1e1e;
+  color: #fff;
+  height:65px;
+}
+
+.logo {
+  height: 65px;
+  font-family: "URWGeometric-ExtraBold";
+  font-size: 40px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 75px;
+  padding: 0px 30px; 
+  color: rgb(245, 193, 14);
+  margin: 0 50px;
+}
+
+.logo:hover, .logo:active, .logo:focus{
+  color: rgb(245, 193, 14);
+  text-decoration: none;
+}
+
 .main {
   padding: 0px 40px;
   background: rgba(255,255,255,0.5);
@@ -7,11 +54,42 @@
 
 .nav-list {
   font-size: 17px;
+  padding: 0px 0px 50px;
 }
 
-.sidebar-header-2 { margin-left: 10px; }
+.sidebar-header-2 { 
+  margin-left: 10px; 
+  transition: all 0.25s linear;
+}
+
+.sidebar-header-2 a:hover {
+  background-color: transparent !important;
+  color: rgb(85, 85, 85);
+  border-bottom: 2px solid rgb(245, 193, 14);
+}
 
 .scrollable {
-  max-height: 815px;
+  max-height: 98vh;
   overflow-y: scroll;
+  padding: 50px;
+}
+
+.banner-text-container { 
+  width: 65%;
+  padding: 20px 0px;
+  margin: 0px
+}
+
+.get-started {
+  margin: 65px 0px;
+}
+
+.banner-text-container_desc {
+  font-size: 22px;
+}
+
+code pre, .hljs {
+  background: #222222;
+  color: #fff;
+  font-size: 16px;
 }
