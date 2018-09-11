@@ -1008,7 +1008,7 @@
       },
       {
         "title": "param",
-        "description": "{timeout:5000} Default timeout is 5 seconds to override set options = {timeout:10000}",
+        "description": "{timeout:5000} Default timeout is 30 seconds to override set options = {timeout:10000}",
         "lineNumber": 8,
         "type": {
           "type": "NameExpression",
@@ -1137,7 +1137,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "{timeout:5000} Default timeout is 5 seconds to override set options = {timeout:10000}",
+                  "value": "{timeout:5000} Default timeout is 30 seconds to override set options = {timeout:10000}",
                   "position": {
                     "start": {
                       "line": 1,
@@ -1146,8 +1146,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 86,
-                      "offset": 85
+                      "column": 87,
+                      "offset": 86
                     },
                     "indent": []
                   }
@@ -1161,8 +1161,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 86,
-                  "offset": 85
+                  "column": 87,
+                  "offset": 86
                 },
                 "indent": []
               }
@@ -1176,8 +1176,8 @@
             },
             "end": {
               "line": 1,
-              "column": 86,
-              "offset": 85
+              "column": 87,
+              "offset": 86
             }
           }
         },
@@ -1185,7 +1185,7 @@
           "type": "NameExpression",
           "name": "Object"
         },
-        "default": "{timeout:5000}"
+        "default": "{timeout:30000}"
       }
     ],
     "properties": [],
