@@ -25,6 +25,7 @@ nav {
   background: #1e1e1e;
   color: #fff;
   height:65px;
+  border-bottom: 5px solid #ffcc00;
 }
 
 .logo {
@@ -59,6 +60,8 @@ nav {
 
 .sidebar-header-2 { 
   margin-left: 10px; 
+  padding: 10px;
+  border-left: 1px dashed #ccc;
   transition: all 0.25s linear;
 }
 
@@ -66,12 +69,13 @@ nav {
   background-color: transparent !important;
   color: rgb(85, 85, 85);
   border-bottom: 2px solid rgb(245, 193, 14);
+  text-decoration: none;
 }
 
 .scrollable {
   max-height: 98vh;
   overflow-y: scroll;
-  padding: 50px;
+  padding: 50px 20px;
 }
 
 .banner-text-container { 
@@ -92,4 +96,31 @@ code pre, .hljs {
   background: #222222;
   color: #fff;
   font-size: 16px;
+}
+
+.collapsible-header a{
+  color: rgb(51, 51, 51);
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.collapse-header_text {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.collapsible-header a:hover, .collapsible-header a:focus {
+  color: rgb(51, 51, 51);
+  text-decoration: none;
+}
+
+.collapse-icon {
+  font-size: 12px;
+  border: 1px solid #ccc;
+  padding: 0px 5px;
+}
+
+.sidebar {
+  height: 100vh;
+  border-right: 1px solid #ccc;
 }
