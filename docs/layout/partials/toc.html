@@ -1,10 +1,30 @@
 <ul class="toc nav nav-list">
 {{#each toc}}
-    <h3 class="collapsible">{{@key}}</h3>
-    {{#each this}}
-    <li class="sidebar-header-2">
-            <a href=#{{{lowerCase this}}}>{{this}}</a>
-    </li>
-    {{/each}}
+    <h3 class="collapsible-header"> 
+        <a href=#{{@key}} data-toggle="collapse" aria-expanded="false">
+            <span class="collapse-icon">+</span>
+            <span class="collapse-header_text">{{@key}}</span>
+        </a>
+    </h3>
+    
+    <div class="collapse" id={{@key}}>
+        {{#each this}}
+            <li class="sidebar-header-2">
+                    <a href=#{{{lowerCase this}}}>{{this}}</a>
+            </li>
+        {{/each}}
+    </div>
 {{/each}}
 </ul>
+
+<script>
+    $(document).ready(function() {
+        $('.collapsible-header a').click(function(){
+            if($(this).attr('aria-expanded') == "false") {
+                $(this).find('.collapse-icon').text('-')
+            }else {
+                $(this).find('.collapse-icon').text('+')
+            }
+        });
+    })
+</script>
