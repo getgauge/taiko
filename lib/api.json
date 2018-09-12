@@ -89,22 +89,22 @@
     ],
     "loc": {
       "start": {
-        "line": 44,
+        "line": 45,
         "column": 0
       },
       "end": {
-        "line": 53,
+        "line": 54,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 54,
+          "line": 55,
           "column": 0
         },
         "end": {
-          "line": 66,
+          "line": 67,
           "column": 2
         }
       }
@@ -282,6 +282,279 @@
           "children": [
             {
               "type": "text",
+              "value": "Launches a new tab with given url.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 35,
+                  "offset": 34
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 35,
+              "offset": 34
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 35,
+          "offset": 34
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "openTab('https://taiko.gauge.org/')",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "URL/Page title of the tab to switch.",
+        "lineNumber": 6,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "targetUrl"
+      },
+      {
+        "title": "returns",
+        "description": "Object with the description of the action performed.",
+        "lineNumber": 7,
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "Object"
+            }
+          ]
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 70,
+        "column": 0
+      },
+      "end": {
+        "line": 78,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 79,
+          "column": 0
+        },
+        "end": {
+          "line": 85,
+          "column": 2
+        }
+      }
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "openTab('https://taiko.gauge.org/')"
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "targetUrl",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "URL/Page title of the tab to switch.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 37,
+                      "offset": 36
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 37,
+                  "offset": 36
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 37,
+              "offset": 36
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Object with the description of the action performed.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 53,
+                      "offset": 52
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 53,
+                  "offset": 52
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 53,
+              "offset": 52
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "Object"
+            }
+          ]
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "openTab",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "openTab",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".openTab"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
               "value": "Allows to switch between tabs using URL or page title.",
               "position": {
                 "start": {
@@ -363,22 +636,22 @@
     ],
     "loc": {
       "start": {
-        "line": 68,
+        "line": 87,
         "column": 0
       },
       "end": {
-        "line": 77,
+        "line": 96,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 78,
+          "line": 97,
           "column": 0
         },
         "end": {
-          "line": 84,
+          "line": 103,
           "column": 2
         }
       }
@@ -621,22 +894,22 @@
     ],
     "loc": {
       "start": {
-        "line": 86,
+        "line": 105,
         "column": 0
       },
       "end": {
-        "line": 90,
+        "line": 109,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 91,
+          "line": 110,
           "column": 0
         },
         "end": {
-          "line": 91,
+          "line": 110,
           "column": 37
         }
       }
@@ -782,22 +1055,22 @@
     ],
     "loc": {
       "start": {
-        "line": 93,
+        "line": 112,
         "column": 0
       },
       "end": {
-        "line": 100,
+        "line": 119,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 101,
+          "line": 120,
           "column": 0
         },
         "end": {
-          "line": 109,
+          "line": 128,
           "column": 2
         }
       }
@@ -912,6 +1185,213 @@
           "children": [
             {
               "type": "text",
+              "value": "Closes the given tab with given url or closes current tab.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 59,
+                  "offset": 58
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 59,
+              "offset": 58
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 59,
+          "offset": 58
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "closeTab() - Closes the current tab.\ncloseTab('https://gauge.org') - Closes the tab with url 'https://gauge.org'.",
+        "lineNumber": 3
+      },
+      {
+        "title": "returns",
+        "description": "Object with the description of the action performed.",
+        "lineNumber": 7,
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "Object"
+            }
+          ]
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 131,
+        "column": 0
+      },
+      "end": {
+        "line": 139,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 140,
+          "column": 0
+        },
+        "end": {
+          "line": 151,
+          "column": 2
+        }
+      }
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "closeTab() - Closes the current tab.\ncloseTab('https://gauge.org') - Closes the tab with url 'https://gauge.org'."
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "targetUrl",
+        "lineNumber": 140
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Object with the description of the action performed.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 53,
+                      "offset": 52
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 53,
+                  "offset": 52
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 53,
+              "offset": 52
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "Object"
+            }
+          ]
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "closeTab",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "closeTab",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".closeTab"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
               "value": "Opens the specified URL in the browser's tab. Adds ",
               "position": {
                 "start": {
@@ -1008,7 +1488,7 @@
       },
       {
         "title": "param",
-        "description": "{timeout:5000} Default timeout is 5 seconds to override set options = {timeout:10000}",
+        "description": "{timeout:5000} Default timeout is 30 seconds to override set options = {timeout:10000}",
         "lineNumber": 8,
         "type": {
           "type": "NameExpression",
@@ -1037,22 +1517,22 @@
     ],
     "loc": {
       "start": {
-        "line": 111,
+        "line": 153,
         "column": 0
       },
       "end": {
-        "line": 121,
+        "line": 163,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 122,
+          "line": 164,
           "column": 0
         },
         "end": {
-          "line": 133,
+          "line": 175,
           "column": 2
         }
       }
@@ -1137,7 +1617,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "{timeout:5000} Default timeout is 5 seconds to override set options = {timeout:10000}",
+                  "value": "{timeout:5000} Default timeout is 30 seconds to override set options = {timeout:10000}",
                   "position": {
                     "start": {
                       "line": 1,
@@ -1146,8 +1626,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 86,
-                      "offset": 85
+                      "column": 87,
+                      "offset": 86
                     },
                     "indent": []
                   }
@@ -1161,8 +1641,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 86,
-                  "offset": 85
+                  "column": 87,
+                  "offset": 86
                 },
                 "indent": []
               }
@@ -1176,8 +1656,8 @@
             },
             "end": {
               "line": 1,
-              "column": 86,
-              "offset": 85
+              "column": 87,
+              "offset": 86
             }
           }
         },
@@ -1185,7 +1665,7 @@
           "type": "NameExpression",
           "name": "Object"
         },
-        "default": "{timeout:5000}"
+        "default": "{timeout:30000}"
       }
     ],
     "properties": [],
@@ -1362,22 +1842,22 @@
     ],
     "loc": {
       "start": {
-        "line": 135,
+        "line": 177,
         "column": 0
       },
       "end": {
-        "line": 143,
+        "line": 185,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 144,
+          "line": 186,
           "column": 0
         },
         "end": {
-          "line": 148,
+          "line": 190,
           "column": 2
         }
       }
@@ -1392,7 +1872,7 @@
       {
         "title": "param",
         "name": "url",
-        "lineNumber": 144
+        "lineNumber": 186
       }
     ],
     "properties": [],
@@ -1498,6 +1978,299 @@
           "children": [
             {
               "type": "text",
+              "value": "Sets page viewport",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 19,
+                  "offset": 18
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 19,
+              "offset": 18
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 19,
+          "offset": 18
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "setViewPort({width:600,height:800})",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "https://chromedevtools.github.io/devtools-protocol/tot/Emulation#method-setDeviceMetricsOverride",
+        "lineNumber": 6,
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        },
+        "name": "options"
+      },
+      {
+        "title": "returns",
+        "description": "Object with the description of the action performed.",
+        "lineNumber": 8,
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "Object"
+            }
+          ]
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 192,
+        "column": 0
+      },
+      "end": {
+        "line": 201,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 202,
+          "column": 0
+        },
+        "end": {
+          "line": 208,
+          "column": 2
+        }
+      }
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "setViewPort({width:600,height:800})"
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "options",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "link",
+                  "title": null,
+                  "url": "https://chromedevtools.github.io/devtools-protocol/tot/Emulation#method-setDeviceMetricsOverride",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "https://chromedevtools.github.io/devtools-protocol/tot/Emulation#method-setDeviceMetricsOverride",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 97,
+                          "offset": 96
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 97,
+                      "offset": 96
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 97,
+                  "offset": 96
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 97,
+              "offset": 96
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "Object"
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Object with the description of the action performed.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 53,
+                      "offset": 52
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 53,
+                  "offset": 52
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 53,
+              "offset": 52
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "Object"
+            }
+          ]
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "setViewPort",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "setViewPort",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".setViewPort"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
               "value": "Returns page's title.",
               "position": {
                 "start": {
@@ -1564,22 +2337,22 @@
     ],
     "loc": {
       "start": {
-        "line": 150,
+        "line": 210,
         "column": 0
       },
       "end": {
-        "line": 154,
+        "line": 214,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 155,
+          "line": 215,
           "column": 0
         },
         "end": {
-          "line": 162,
+          "line": 222,
           "column": 2
         }
       }
@@ -1824,22 +2597,22 @@
     ],
     "loc": {
       "start": {
-        "line": 235,
+        "line": 295,
         "column": 0
       },
       "end": {
-        "line": 250,
+        "line": 310,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 251,
+          "line": 311,
           "column": 0
         },
         "end": {
-          "line": 251,
+          "line": 311,
           "column": 29
         }
       }
@@ -2663,22 +3436,22 @@
     ],
     "loc": {
       "start": {
-        "line": 291,
+        "line": 351,
         "column": 0
       },
       "end": {
-        "line": 302,
+        "line": 362,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 303,
+          "line": 363,
           "column": 0
         },
         "end": {
-          "line": 314,
+          "line": 374,
           "column": 2
         }
       }
@@ -2957,7 +3730,7 @@
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 303,
+        "lineNumber": 363,
         "type": {
           "type": "RestType"
         }
@@ -3180,22 +3953,22 @@
     ],
     "loc": {
       "start": {
-        "line": 316,
+        "line": 376,
         "column": 0
       },
       "end": {
-        "line": 327,
+        "line": 387,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 328,
+          "line": 388,
           "column": 0
         },
         "end": {
-          "line": 339,
+          "line": 399,
           "column": 2
         }
       }
@@ -3474,7 +4247,7 @@
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 328,
+        "lineNumber": 388,
         "type": {
           "type": "RestType"
         }
@@ -3673,22 +4446,22 @@
     ],
     "loc": {
       "start": {
-        "line": 341,
+        "line": 401,
         "column": 0
       },
       "end": {
-        "line": 350,
+        "line": 410,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 351,
+          "line": 411,
           "column": 0
         },
         "end": {
-          "line": 370,
+          "line": 430,
           "column": 2
         }
       }
@@ -3773,7 +4546,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 351,
+        "lineNumber": 411,
         "default": "{}"
       }
     ],
@@ -3970,22 +4743,22 @@
     ],
     "loc": {
       "start": {
-        "line": 372,
+        "line": 432,
         "column": 0
       },
       "end": {
-        "line": 380,
+        "line": 440,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 381,
+          "line": 441,
           "column": 0
         },
         "end": {
-          "line": 388,
+          "line": 448,
           "column": 2
         }
       }
@@ -4070,7 +4843,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 381,
+        "lineNumber": 441,
         "default": "{}"
       }
     ],
@@ -4303,22 +5076,22 @@
     ],
     "loc": {
       "start": {
-        "line": 390,
+        "line": 450,
         "column": 0
       },
       "end": {
-        "line": 403,
+        "line": 463,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 404,
+          "line": 464,
           "column": 0
         },
         "end": {
-          "line": 427,
+          "line": 487,
           "column": 2
         }
       }
@@ -4744,22 +5517,22 @@
     ],
     "loc": {
       "start": {
-        "line": 478,
+        "line": 546,
         "column": 0
       },
       "end": {
-        "line": 488,
+        "line": 556,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 489,
+          "line": 557,
           "column": 0
         },
         "end": {
-          "line": 505,
+          "line": 573,
           "column": 2
         }
       }
@@ -5121,22 +5894,22 @@
     ],
     "loc": {
       "start": {
-        "line": 507,
+        "line": 575,
         "column": 0
       },
       "end": {
-        "line": 519,
+        "line": 587,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 520,
+          "line": 588,
           "column": 0
         },
         "end": {
-          "line": 529,
+          "line": 597,
           "column": 2
         }
       }
@@ -5592,22 +6365,22 @@
     ],
     "loc": {
       "start": {
-        "line": 531,
+        "line": 599,
         "column": 0
       },
       "end": {
-        "line": 540,
+        "line": 608,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 541,
+          "line": 609,
           "column": 0
         },
         "end": {
-          "line": 550,
+          "line": 618,
           "column": 2
         }
       }
@@ -5883,22 +6656,22 @@
     ],
     "loc": {
       "start": {
-        "line": 552,
+        "line": 620,
         "column": 0
       },
       "end": {
-        "line": 561,
+        "line": 629,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 562,
+          "line": 630,
           "column": 0
         },
         "end": {
-          "line": 562,
+          "line": 630,
           "column": 35
         }
       }
@@ -6194,22 +6967,22 @@
     ],
     "loc": {
       "start": {
-        "line": 598,
+        "line": 666,
         "column": 0
       },
       "end": {
-        "line": 610,
+        "line": 678,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 611,
+          "line": 679,
           "column": 0
         },
         "end": {
-          "line": 614,
+          "line": 682,
           "column": 2
         }
       }
@@ -6470,22 +7243,22 @@
     ],
     "loc": {
       "start": {
-        "line": 616,
+        "line": 684,
         "column": 0
       },
       "end": {
-        "line": 628,
+        "line": 696,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 629,
+          "line": 697,
           "column": 0
         },
         "end": {
-          "line": 632,
+          "line": 700,
           "column": 2
         }
       }
@@ -6746,22 +7519,22 @@
     ],
     "loc": {
       "start": {
-        "line": 634,
+        "line": 702,
         "column": 0
       },
       "end": {
-        "line": 646,
+        "line": 714,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 647,
+          "line": 715,
           "column": 0
         },
         "end": {
-          "line": 650,
+          "line": 718,
           "column": 2
         }
       }
@@ -7022,22 +7795,22 @@
     ],
     "loc": {
       "start": {
-        "line": 652,
+        "line": 720,
         "column": 0
       },
       "end": {
-        "line": 664,
+        "line": 732,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 665,
+          "line": 733,
           "column": 0
         },
         "end": {
-          "line": 668,
+          "line": 736,
           "column": 2
         }
       }
@@ -7267,22 +8040,22 @@
     ],
     "loc": {
       "start": {
-        "line": 670,
+        "line": 738,
         "column": 0
       },
       "end": {
-        "line": 678,
+        "line": 746,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 679,
+          "line": 747,
           "column": 0
         },
         "end": {
-          "line": 686,
+          "line": 754,
           "column": 2
         }
       }
@@ -7297,7 +8070,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 679,
+        "lineNumber": 747,
         "default": "{}"
       },
       {
@@ -7592,22 +8365,22 @@
     ],
     "loc": {
       "start": {
-        "line": 688,
+        "line": 756,
         "column": 0
       },
       "end": {
-        "line": 697,
+        "line": 765,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 698,
+          "line": 766,
           "column": 0
         },
         "end": {
-          "line": 702,
+          "line": 770,
           "column": 2
         }
       }
@@ -7888,22 +8661,22 @@
     ],
     "loc": {
       "start": {
-        "line": 749,
+        "line": 817,
         "column": 0
       },
       "end": {
-        "line": 760,
+        "line": 828,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 761,
+          "line": 829,
           "column": 0
         },
         "end": {
-          "line": 766,
+          "line": 834,
           "column": 2
         }
       }
@@ -8245,22 +9018,22 @@
     ],
     "loc": {
       "start": {
-        "line": 768,
+        "line": 836,
         "column": 0
       },
       "end": {
-        "line": 779,
+        "line": 847,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 780,
+          "line": 848,
           "column": 0
         },
         "end": {
-          "line": 785,
+          "line": 853,
           "column": 2
         }
       }
@@ -8636,22 +9409,22 @@
     ],
     "loc": {
       "start": {
-        "line": 787,
+        "line": 855,
         "column": 0
       },
       "end": {
-        "line": 798,
+        "line": 866,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 799,
+          "line": 867,
           "column": 0
         },
         "end": {
-          "line": 804,
+          "line": 872,
           "column": 2
         }
       }
@@ -8993,22 +9766,22 @@
     ],
     "loc": {
       "start": {
-        "line": 806,
+        "line": 874,
         "column": 0
       },
       "end": {
-        "line": 817,
+        "line": 885,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 818,
+          "line": 886,
           "column": 0
         },
         "end": {
-          "line": 823,
+          "line": 891,
           "column": 2
         }
       }
@@ -9340,22 +10113,22 @@
     ],
     "loc": {
       "start": {
-        "line": 825,
+        "line": 893,
         "column": 0
       },
       "end": {
-        "line": 835,
+        "line": 903,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 836,
+          "line": 904,
           "column": 0
         },
         "end": {
-          "line": 847,
+          "line": 915,
           "column": 2
         }
       }
@@ -9636,22 +10409,22 @@
     ],
     "loc": {
       "start": {
-        "line": 849,
+        "line": 917,
         "column": 0
       },
       "end": {
-        "line": 861,
+        "line": 929,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 862,
+          "line": 930,
           "column": 0
         },
         "end": {
-          "line": 862,
+          "line": 930,
           "column": 37
         }
       }
@@ -9991,22 +10764,22 @@
     ],
     "loc": {
       "start": {
-        "line": 877,
+        "line": 945,
         "column": 0
       },
       "end": {
-        "line": 888,
+        "line": 956,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 889,
+          "line": 957,
           "column": 0
         },
         "end": {
-          "line": 889,
+          "line": 957,
           "column": 37
         }
       }
@@ -10350,22 +11123,22 @@
     ],
     "loc": {
       "start": {
-        "line": 905,
+        "line": 973,
         "column": 0
       },
       "end": {
-        "line": 918,
+        "line": 986,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 919,
+          "line": 987,
           "column": 0
         },
         "end": {
-          "line": 960,
+          "line": 1028,
           "column": 2
         }
       }
@@ -10707,22 +11480,22 @@
     ],
     "loc": {
       "start": {
-        "line": 962,
+        "line": 1030,
         "column": 0
       },
       "end": {
-        "line": 975,
+        "line": 1043,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 976,
+          "line": 1044,
           "column": 0
         },
         "end": {
-          "line": 1000,
+          "line": 1068,
           "column": 2
         }
       }
@@ -10737,7 +11510,7 @@
       {
         "title": "param",
         "name": "attrValuePairs",
-        "lineNumber": 976
+        "lineNumber": 1044
       },
       {
         "title": "param",
@@ -11069,22 +11842,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1002,
+        "line": 1070,
         "column": 0
       },
       "end": {
-        "line": 1015,
+        "line": 1083,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1016,
+          "line": 1084,
           "column": 0
         },
         "end": {
-          "line": 1041,
+          "line": 1109,
           "column": 2
         }
       }
@@ -11099,7 +11872,7 @@
       {
         "title": "param",
         "name": "attrValuePairs",
-        "lineNumber": 1016
+        "lineNumber": 1084
       },
       {
         "title": "param",
@@ -11421,22 +12194,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1043,
+        "line": 1111,
         "column": 0
       },
       "end": {
-        "line": 1053,
+        "line": 1121,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1054,
+          "line": 1122,
           "column": 0
         },
         "end": {
-          "line": 1058,
+          "line": 1126,
           "column": 2
         }
       }
@@ -11707,22 +12480,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1060,
+        "line": 1128,
         "column": 0
       },
       "end": {
-        "line": 1069,
+        "line": 1137,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1070,
+          "line": 1138,
           "column": 0
         },
         "end": {
-          "line": 1070,
+          "line": 1138,
           "column": 35
         }
       }
@@ -11987,22 +12760,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1097,
+        "line": 1165,
         "column": 0
       },
       "end": {
-        "line": 1105,
+        "line": 1173,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1106,
+          "line": 1174,
           "column": 0
         },
         "end": {
-          "line": 1112,
+          "line": 1180,
           "column": 2
         }
       }
@@ -12266,22 +13039,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1114,
+        "line": 1182,
         "column": 0
       },
       "end": {
-        "line": 1122,
+        "line": 1190,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1123,
+          "line": 1191,
           "column": 0
         },
         "end": {
-          "line": 1131,
+          "line": 1199,
           "column": 2
         }
       }
@@ -12545,22 +13318,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1133,
+        "line": 1201,
         "column": 0
       },
       "end": {
-        "line": 1141,
+        "line": 1209,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1142,
+          "line": 1210,
           "column": 0
         },
         "end": {
-          "line": 1150,
+          "line": 1218,
           "column": 2
         }
       }
@@ -12824,22 +13597,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1152,
+        "line": 1220,
         "column": 0
       },
       "end": {
-        "line": 1160,
+        "line": 1228,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1161,
+          "line": 1229,
           "column": 0
         },
         "end": {
-          "line": 1169,
+          "line": 1237,
           "column": 2
         }
       }
@@ -13103,22 +13876,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1171,
+        "line": 1239,
         "column": 0
       },
       "end": {
-        "line": 1179,
+        "line": 1247,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1180,
+          "line": 1248,
           "column": 0
         },
         "end": {
-          "line": 1190,
+          "line": 1258,
           "column": 2
         }
       }
@@ -13366,22 +14139,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1192,
+        "line": 1260,
         "column": 0
       },
       "end": {
-        "line": 1200,
+        "line": 1268,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1201,
+          "line": 1269,
           "column": 0
         },
         "end": {
-          "line": 1201,
+          "line": 1269,
           "column": 81
         }
       }
@@ -13657,22 +14430,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1203,
+        "line": 1271,
         "column": 0
       },
       "end": {
-        "line": 1211,
+        "line": 1279,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1212,
+          "line": 1280,
           "column": 0
         },
         "end": {
-          "line": 1212,
+          "line": 1280,
           "column": 83
         }
       }
@@ -13948,22 +14721,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1214,
+        "line": 1282,
         "column": 0
       },
       "end": {
-        "line": 1222,
+        "line": 1290,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1223,
+          "line": 1291,
           "column": 0
         },
         "end": {
-          "line": 1223,
+          "line": 1291,
           "column": 85
         }
       }
@@ -14239,22 +15012,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1225,
+        "line": 1293,
         "column": 0
       },
       "end": {
-        "line": 1233,
+        "line": 1301,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1234,
+          "line": 1302,
           "column": 0
         },
         "end": {
-          "line": 1234,
+          "line": 1302,
           "column": 95
         }
       }
@@ -14470,22 +15243,22 @@
     "tags": [],
     "loc": {
       "start": {
-        "line": 1236,
+        "line": 1304,
         "column": 0
       },
       "end": {
-        "line": 1238,
+        "line": 1306,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1239,
+          "line": 1307,
           "column": 0
         },
         "end": {
-          "line": 1244,
+          "line": 1312,
           "column": 2
         }
       }
@@ -14574,22 +15347,22 @@
     "tags": [],
     "loc": {
       "start": {
-        "line": 1246,
+        "line": 1314,
         "column": 0
       },
       "end": {
-        "line": 1248,
+        "line": 1316,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1249,
+          "line": 1317,
           "column": 0
         },
         "end": {
-          "line": 1254,
+          "line": 1322,
           "column": 2
         }
       }
@@ -14621,6 +15394,318 @@
       }
     ],
     "namespace": ".dismiss"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Add interceptor for the network call to override request or mock response.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 75,
+                  "offset": 74
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 75,
+              "offset": 74
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 75,
+          "offset": 74
+        }
+      }
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "case 1: block url => intercept(url)\ncase 2: mockResponse => intercept(url,{mockObject})\ncase 3: override request => intercept(url,(request) => {request.continue({overrideObject})})\ncase 4: redirect => intercept(url,redirectUrl)\ncase 5: mockResponse based on request => intercept(url,(request) => { //someaction; request.respond({mockResponseObject})} )",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "request URL to intercept",
+        "lineNumber": 10,
+        "type": null,
+        "name": "requestUrl"
+      },
+      {
+        "title": "param",
+        "description": "action to be done after interception",
+        "lineNumber": 11,
+        "type": null,
+        "name": "action"
+      },
+      {
+        "title": "returns",
+        "description": "Object with the description of the action performed.",
+        "lineNumber": 12,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 1324,
+        "column": 0
+      },
+      "end": {
+        "line": 1337,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 1338,
+          "column": 0
+        },
+        "end": {
+          "line": 1341,
+          "column": 2
+        }
+      }
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "case 1: block url => intercept(url)\ncase 2: mockResponse => intercept(url,{mockObject})\ncase 3: override request => intercept(url,(request) => {request.continue({overrideObject})})\ncase 4: redirect => intercept(url,redirectUrl)\ncase 5: mockResponse based on request => intercept(url,(request) => { //someaction; request.respond({mockResponseObject})} )"
+      }
+    ],
+    "params": [
+      {
+        "title": "param",
+        "name": "requestUrl",
+        "lineNumber": 10,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "request URL to intercept",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 25,
+                      "offset": 24
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 25,
+                  "offset": 24
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 25,
+              "offset": 24
+            }
+          }
+        }
+      },
+      {
+        "title": "param",
+        "name": "action",
+        "lineNumber": 11,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "action to be done after interception",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 37,
+                      "offset": 36
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 37,
+                  "offset": 36
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 37,
+              "offset": 36
+            }
+          }
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Object with the description of the action performed.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 53,
+                      "offset": 52
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 53,
+                  "offset": 52
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 53,
+              "offset": 52
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "intercept",
+    "kind": "function",
+    "memberof": "taiko",
+    "scope": "static",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "intercept",
+        "kind": "function",
+        "scope": "static"
+      }
+    ],
+    "namespace": ".intercept"
   },
   {
     "description": {
@@ -14703,22 +15788,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1256,
+        "line": 1343,
         "column": 0
       },
       "end": {
-        "line": 1264,
+        "line": 1351,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1265,
+          "line": 1352,
           "column": 0
         },
         "end": {
-          "line": 1265,
+          "line": 1352,
           "column": 50
         }
       }
@@ -14958,22 +16043,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1267,
+        "line": 1354,
         "column": 0
       },
       "end": {
-        "line": 1275,
+        "line": 1362,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1276,
+          "line": 1363,
           "column": 0
         },
         "end": {
-          "line": 1276,
+          "line": 1363,
           "column": 49
         }
       }
@@ -15188,173 +16273,6 @@
     "tags": [
       {
         "title": "example",
-        "description": "click('Get Started', waitForNavigation(false))",
-        "lineNumber": 3
-      },
-      {
-        "title": "param",
-        "description": null,
-        "lineNumber": 6,
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        },
-        "name": "e"
-      },
-      {
-        "title": "return",
-        "description": null,
-        "lineNumber": 7,
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        }
-      }
-    ],
-    "loc": {
-      "start": {
-        "line": 1278,
-        "column": 0
-      },
-      "end": {
-        "line": 1286,
-        "column": 3
-      }
-    },
-    "context": {
-      "loc": {
-        "start": {
-          "line": 1287,
-          "column": 0
-        },
-        "end": {
-          "line": 1287,
-          "column": 42
-        }
-      }
-    },
-    "augments": [],
-    "examples": [
-      {
-        "description": "click('Get Started', waitForNavigation(false))"
-      }
-    ],
-    "params": [
-      {
-        "title": "param",
-        "name": "e",
-        "lineNumber": 6,
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        }
-      }
-    ],
-    "properties": [],
-    "returns": [
-      {
-        "description": {
-          "type": "root",
-          "children": [],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            }
-          }
-        },
-        "title": "returns",
-        "type": {
-          "type": "NameExpression",
-          "name": "boolean"
-        }
-      }
-    ],
-    "sees": [],
-    "throws": [],
-    "todos": [],
-    "name": "waitForNavigation",
-    "kind": "function",
-    "memberof": "taiko",
-    "scope": "static",
-    "members": {
-      "global": [],
-      "inner": [],
-      "instance": [],
-      "events": [],
-      "static": []
-    },
-    "path": [
-      {
-        "name": "waitForNavigation",
-        "kind": "function",
-        "scope": "static"
-      }
-    ],
-    "namespace": ".waitForNavigation"
-  },
-  {
-    "description": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "This function is used to improve the readability. It simply returns the parameter passed into it.",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 98,
-                  "offset": 97
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 98,
-              "offset": 97
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 98,
-          "offset": 97
-        }
-      }
-    },
-    "tags": [
-      {
-        "title": "example",
         "description": "attach('c:/abc.txt', to('Please select a file:'))",
         "lineNumber": 3
       },
@@ -15401,22 +16319,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1289,
+        "line": 1365,
         "column": 0
       },
       "end": {
-        "line": 1297,
+        "line": 1373,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1298,
+          "line": 1374,
           "column": 0
         },
         "end": {
-          "line": 1298,
+          "line": 1374,
           "column": 27
         }
       }
@@ -15431,7 +16349,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1298
+        "lineNumber": 1374
       }
     ],
     "properties": [],
@@ -15594,22 +16512,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1300,
+        "line": 1376,
         "column": 0
       },
       "end": {
-        "line": 1308,
+        "line": 1384,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1309,
+          "line": 1385,
           "column": 0
         },
         "end": {
-          "line": 1309,
+          "line": 1385,
           "column": 29
         }
       }
@@ -15624,7 +16542,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1309
+        "lineNumber": 1385
       }
     ],
     "properties": [],
@@ -15778,22 +16696,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1311,
+        "line": 1387,
         "column": 0
       },
       "end": {
-        "line": 1319,
+        "line": 1395,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1320,
+          "line": 1396,
           "column": 0
         },
         "end": {
-          "line": 1320,
+          "line": 1396,
           "column": 33
         }
       }
@@ -15948,22 +16866,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1578,
+        "line": 1645,
         "column": 0
       },
       "end": {
-        "line": 1590,
+        "line": 1657,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1616,
+          "line": 1683,
           "column": 0
         },
         "end": {
-          "line": 1645,
+          "line": 1712,
           "column": 1
         }
       }
@@ -16176,22 +17094,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1592,
+        "line": 1659,
         "column": 0
       },
       "end": {
-        "line": 1605,
+        "line": 1672,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1616,
+          "line": 1683,
           "column": 0
         },
         "end": {
-          "line": 1645,
+          "line": 1712,
           "column": 1
         }
       }
@@ -16421,22 +17339,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1607,
+        "line": 1674,
         "column": 0
       },
       "end": {
-        "line": 1615,
+        "line": 1682,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1616,
+          "line": 1683,
           "column": 0
         },
         "end": {
-          "line": 1645,
+          "line": 1712,
           "column": 1
         }
       }
@@ -16477,26 +17395,26 @@
       ],
       "loc": {
         "start": {
-          "line": 1617,
+          "line": 1684,
           "column": 4
         },
         "end": {
-          "line": 1620,
+          "line": 1687,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1621,
+            "line": 1688,
             "column": 4
           },
           "end": {
-            "line": 1625,
+            "line": 1692,
             "column": 5
           }
         },
-        "sortKey": "undefined 00001621",
+        "sortKey": "undefined 00001688",
         "code": "{\n    /**\n     * @class\n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async validNodes(nodeId) {\n        let matchingNode, minDiff = Infinity;\n        const results = await this.value;\n        for (const result of results) {\n            if (await this.condition(nodeId, result.result)) {\n                const diff = await boundingBox.getPositionalDifference(dom, nodeId, result.elem);\n                if (diff < minDiff) {\n                    minDiff = diff;\n                    matchingNode = { elem: result.elem, dist: diff };\n                }\n            }\n        }\n        return matchingNode;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -17262,22 +18180,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1647,
+        "line": 1714,
         "column": 0
       },
       "end": {
-        "line": 1666,
+        "line": 1733,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1668,
+          "line": 1735,
           "column": 0
         },
         "end": {
-          "line": 1675,
+          "line": 1742,
           "column": 2
         }
       }
