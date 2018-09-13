@@ -16,15 +16,3 @@
     </div>
 {{/each}}
 </ul>
-
-<script>
-    $(document).ready(function() {
-        $('.collapsible-header a').click(function(){
-            if($(this).attr('aria-expanded') == "false") {
-                $(this).find('.collapse-icon').text('-')
-            }else {
-                $(this).find('.collapse-icon').text('+')
-            }
-        });
-    })
-</script>
