@@ -1371,7 +1371,7 @@
           "column": 0
         },
         "end": {
-          "line": 157,
+          "line": 153,
           "column": 2
         }
       }
@@ -1673,22 +1673,22 @@
     ],
     "loc": {
       "start": {
-        "line": 159,
+        "line": 155,
         "column": 0
       },
       "end": {
-        "line": 169,
+        "line": 165,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 170,
+          "line": 166,
           "column": 0
         },
         "end": {
-          "line": 181,
+          "line": 177,
           "column": 2
         }
       }
@@ -2008,22 +2008,22 @@
     ],
     "loc": {
       "start": {
-        "line": 183,
+        "line": 179,
         "column": 0
       },
       "end": {
-        "line": 192,
+        "line": 188,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 193,
+          "line": 189,
           "column": 0
         },
         "end": {
-          "line": 197,
+          "line": 193,
           "column": 2
         }
       }
@@ -2281,22 +2281,22 @@
     ],
     "loc": {
       "start": {
-        "line": 199,
+        "line": 195,
         "column": 0
       },
       "end": {
-        "line": 207,
+        "line": 203,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 208,
+          "line": 204,
           "column": 0
         },
         "end": {
-          "line": 214,
+          "line": 210,
           "column": 2
         }
       }
@@ -2559,22 +2559,22 @@
     ],
     "loc": {
       "start": {
-        "line": 216,
+        "line": 212,
         "column": 0
       },
       "end": {
-        "line": 220,
+        "line": 216,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 221,
+          "line": 217,
           "column": 0
         },
         "end": {
-          "line": 228,
+          "line": 224,
           "column": 2
         }
       }
@@ -2833,22 +2833,22 @@
     ],
     "loc": {
       "start": {
-        "line": 301,
+        "line": 297,
         "column": 0
       },
       "end": {
-        "line": 317,
+        "line": 313,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 318,
+          "line": 314,
           "column": 0
         },
         "end": {
-          "line": 318,
+          "line": 314,
           "column": 29
         }
       }
@@ -3734,22 +3734,22 @@
     ],
     "loc": {
       "start": {
-        "line": 362,
+        "line": 358,
         "column": 0
       },
       "end": {
-        "line": 373,
+        "line": 369,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 374,
+          "line": 370,
           "column": 0
         },
         "end": {
-          "line": 385,
+          "line": 381,
           "column": 2
         }
       }
@@ -4028,7 +4028,7 @@
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 374,
+        "lineNumber": 370,
         "type": {
           "type": "RestType"
         }
@@ -4251,22 +4251,22 @@
     ],
     "loc": {
       "start": {
-        "line": 387,
+        "line": 383,
         "column": 0
       },
       "end": {
-        "line": 398,
+        "line": 394,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 399,
+          "line": 395,
           "column": 0
         },
         "end": {
-          "line": 410,
+          "line": 406,
           "column": 2
         }
       }
@@ -4545,7 +4545,7 @@
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 399,
+        "lineNumber": 395,
         "type": {
           "type": "RestType"
         }
@@ -4744,22 +4744,22 @@
     ],
     "loc": {
       "start": {
-        "line": 412,
+        "line": 408,
         "column": 0
       },
       "end": {
-        "line": 421,
+        "line": 417,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 422,
+          "line": 418,
           "column": 0
         },
         "end": {
-          "line": 443,
+          "line": 439,
           "column": 2
         }
       }
@@ -4844,7 +4844,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 422,
+        "lineNumber": 418,
         "default": "{}"
       }
     ],
@@ -5051,22 +5051,22 @@
     ],
     "loc": {
       "start": {
-        "line": 445,
+        "line": 441,
         "column": 0
       },
       "end": {
-        "line": 454,
+        "line": 450,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 455,
+          "line": 451,
           "column": 0
         },
         "end": {
-          "line": 464,
+          "line": 460,
           "column": 2
         }
       }
@@ -5482,22 +5482,22 @@
     ],
     "loc": {
       "start": {
-        "line": 466,
+        "line": 462,
         "column": 0
       },
       "end": {
-        "line": 482,
+        "line": 478,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 483,
+          "line": 479,
           "column": 0
         },
         "end": {
-          "line": 508,
+          "line": 504,
           "column": 2
         }
       }
@@ -6177,22 +6177,22 @@
     ],
     "loc": {
       "start": {
-        "line": 567,
+        "line": 563,
         "column": 0
       },
       "end": {
-        "line": 577,
+        "line": 573,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 578,
+          "line": 574,
           "column": 0
         },
         "end": {
-          "line": 594,
+          "line": 590,
           "column": 2
         }
       }
@@ -6599,22 +6599,22 @@
     ],
     "loc": {
       "start": {
-        "line": 596,
+        "line": 592,
         "column": 0
       },
       "end": {
-        "line": 611,
+        "line": 607,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 612,
+          "line": 608,
           "column": 0
         },
         "end": {
-          "line": 621,
+          "line": 617,
           "column": 2
         }
       }
@@ -7327,22 +7327,22 @@
     ],
     "loc": {
       "start": {
-        "line": 623,
+        "line": 619,
         "column": 0
       },
       "end": {
-        "line": 632,
+        "line": 628,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 633,
+          "line": 629,
           "column": 0
         },
         "end": {
-          "line": 633,
+          "line": 629,
           "column": 37
         }
       }
@@ -7616,22 +7616,22 @@
     ],
     "loc": {
       "start": {
-        "line": 657,
+        "line": 653,
         "column": 0
       },
       "end": {
-        "line": 666,
+        "line": 662,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 667,
+          "line": 663,
           "column": 0
         },
         "end": {
-          "line": 667,
+          "line": 663,
           "column": 35
         }
       }
@@ -7927,22 +7927,22 @@
     ],
     "loc": {
       "start": {
-        "line": 703,
+        "line": 699,
         "column": 0
       },
       "end": {
-        "line": 715,
+        "line": 711,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 716,
+          "line": 712,
           "column": 0
         },
         "end": {
-          "line": 719,
+          "line": 715,
           "column": 2
         }
       }
@@ -8203,22 +8203,22 @@
     ],
     "loc": {
       "start": {
-        "line": 721,
+        "line": 717,
         "column": 0
       },
       "end": {
-        "line": 733,
+        "line": 729,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 734,
+          "line": 730,
           "column": 0
         },
         "end": {
-          "line": 737,
+          "line": 733,
           "column": 2
         }
       }
@@ -8479,22 +8479,22 @@
     ],
     "loc": {
       "start": {
-        "line": 739,
+        "line": 735,
         "column": 0
       },
       "end": {
-        "line": 751,
+        "line": 747,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 752,
+          "line": 748,
           "column": 0
         },
         "end": {
-          "line": 755,
+          "line": 751,
           "column": 2
         }
       }
@@ -8755,22 +8755,22 @@
     ],
     "loc": {
       "start": {
-        "line": 757,
+        "line": 753,
         "column": 0
       },
       "end": {
-        "line": 769,
+        "line": 765,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 770,
+          "line": 766,
           "column": 0
         },
         "end": {
-          "line": 773,
+          "line": 769,
           "column": 2
         }
       }
@@ -8977,7 +8977,7 @@
           "type": "NameExpression",
           "name": "object"
         },
-        "name": "null"
+        "name": "options"
       },
       {
         "title": "returns",
@@ -9018,22 +9018,22 @@
     ],
     "loc": {
       "start": {
-        "line": 775,
+        "line": 771,
         "column": 0
       },
       "end": {
-        "line": 785,
+        "line": 781,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 786,
+          "line": 782,
           "column": 0
         },
         "end": {
-          "line": 793,
+          "line": 789,
           "column": 2
         }
       }
@@ -9048,12 +9048,6 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 786,
-        "default": "{}"
-      },
-      {
-        "title": "param",
-        "name": "null",
         "lineNumber": 7,
         "description": {
           "type": "root",
@@ -9110,7 +9104,8 @@
         "type": {
           "type": "NameExpression",
           "name": "object"
-        }
+        },
+        "default": "{}"
       }
     ],
     "properties": [],
@@ -9373,13 +9368,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "highlight($(`//*[text()='text']`))\n$(`//*[text()='text']`).exists()",
+        "description": "highlight($(`//*[text()='text']`))\n$(`//*[text()='text']`).exists()\n$(`#id`)",
         "lineNumber": 2
       },
       {
         "title": "param",
         "description": "XPath or CSS selector.",
-        "lineNumber": 6,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -9388,8 +9383,8 @@
       },
       {
         "title": "param",
-        "description": null,
-        "lineNumber": 7,
+        "description": "Proximity selectors",
+        "lineNumber": 8,
         "type": {
           "type": "RestType",
           "expression": {
@@ -9402,7 +9397,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 8,
+        "lineNumber": 9,
         "type": {
           "type": "NameExpression",
           "name": "ElementWrapper"
@@ -9411,22 +9406,22 @@
     ],
     "loc": {
       "start": {
-        "line": 795,
+        "line": 791,
         "column": 0
       },
       "end": {
-        "line": 804,
+        "line": 801,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 805,
+          "line": 802,
           "column": 0
         },
         "end": {
-          "line": 809,
+          "line": 806,
           "column": 2
         }
       }
@@ -9434,14 +9429,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "highlight($(`//*[text()='text']`))\n$(`//*[text()='text']`).exists()"
+        "description": "highlight($(`//*[text()='text']`))\n$(`//*[text()='text']`).exists()\n$(`#id`)"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 6,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -9502,7 +9497,59 @@
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 7,
+        "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -9684,7 +9731,7 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Proximity selectors",
         "lineNumber": 9,
         "type": {
           "type": "RestType",
@@ -9707,22 +9754,22 @@
     ],
     "loc": {
       "start": {
-        "line": 856,
+        "line": 853,
         "column": 0
       },
       "end": {
-        "line": 867,
+        "line": 864,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 868,
+          "line": 865,
           "column": 0
         },
         "end": {
-          "line": 873,
+          "line": 870,
           "column": 2
         }
       }
@@ -9799,6 +9846,58 @@
         "title": "param",
         "name": "args",
         "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -10041,7 +10140,7 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Proximity selectors",
         "lineNumber": 9,
         "type": {
           "type": "RestType",
@@ -10064,22 +10163,22 @@
     ],
     "loc": {
       "start": {
-        "line": 875,
+        "line": 872,
         "column": 0
       },
       "end": {
-        "line": 886,
+        "line": 883,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 887,
+          "line": 884,
           "column": 0
         },
         "end": {
-          "line": 892,
+          "line": 889,
           "column": 2
         }
       }
@@ -10156,6 +10255,58 @@
         "title": "param",
         "name": "args",
         "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -10432,7 +10583,7 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Proximity selectors",
         "lineNumber": 9,
         "type": {
           "type": "RestType",
@@ -10455,22 +10606,22 @@
     ],
     "loc": {
       "start": {
-        "line": 894,
+        "line": 891,
         "column": 0
       },
       "end": {
-        "line": 905,
+        "line": 902,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 906,
+          "line": 903,
           "column": 0
         },
         "end": {
-          "line": 911,
+          "line": 908,
           "column": 2
         }
       }
@@ -10547,6 +10698,58 @@
         "title": "param",
         "name": "args",
         "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -10789,7 +10992,7 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Proximity selectors",
         "lineNumber": 9,
         "type": {
           "type": "RestType",
@@ -10812,22 +11015,22 @@
     ],
     "loc": {
       "start": {
-        "line": 913,
+        "line": 910,
         "column": 0
       },
       "end": {
-        "line": 924,
+        "line": 921,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 925,
+          "line": 922,
           "column": 0
         },
         "end": {
-          "line": 930,
+          "line": 927,
           "column": 2
         }
       }
@@ -10904,6 +11107,58 @@
         "title": "param",
         "name": "args",
         "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -11121,7 +11376,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "focus(inputField('id', 'name'))\ninputField('id', 'name').exists()",
+        "description": "focus(inputField({'id':'name'})\ninputField({'id': 'name'}).exists()",
         "lineNumber": 3
       },
       {
@@ -11136,7 +11391,7 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Proximity selectors",
         "lineNumber": 8,
         "type": {
           "type": "RestType",
@@ -11159,22 +11414,22 @@
     ],
     "loc": {
       "start": {
-        "line": 932,
+        "line": 929,
         "column": 0
       },
       "end": {
-        "line": 942,
+        "line": 939,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 943,
+          "line": 940,
           "column": 0
         },
         "end": {
-          "line": 954,
+          "line": 951,
           "column": 2
         }
       }
@@ -11182,7 +11437,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "focus(inputField('id', 'name'))\ninputField('id', 'name').exists()"
+        "description": "focus(inputField({'id':'name'})\ninputField({'id': 'name'}).exists()"
       }
     ],
     "params": [
@@ -11251,6 +11506,58 @@
         "title": "param",
         "name": "args",
         "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -11407,7 +11714,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "fileField('Please select a file:').value()\nfileField('Please select a file:').exists()\nfileField('id','file').exists()",
+        "description": "fileField('Please select a file:').value()\nfileField('Please select a file:').exists()\nfileField({'id':'file'}).exists()",
         "lineNumber": 3
       },
       {
@@ -11432,7 +11739,7 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Proximity selectors",
         "lineNumber": 10,
         "type": {
           "type": "RestType",
@@ -11455,22 +11762,22 @@
     ],
     "loc": {
       "start": {
-        "line": 956,
+        "line": 953,
         "column": 0
       },
       "end": {
-        "line": 968,
+        "line": 965,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 969,
+          "line": 966,
           "column": 0
         },
         "end": {
-          "line": 969,
+          "line": 966,
           "column": 37
         }
       }
@@ -11478,7 +11785,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "fileField('Please select a file:').value()\nfileField('Please select a file:').exists()\nfileField('id','file').exists()"
+        "description": "fileField('Please select a file:').value()\nfileField('Please select a file:').exists()\nfileField({'id':'file'}).exists()"
       }
     ],
     "params": [
@@ -11608,6 +11915,58 @@
         "title": "param",
         "name": "args",
         "lineNumber": 10,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -11787,7 +12146,7 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Proximity selectors",
         "lineNumber": 9,
         "type": {
           "type": "RestType",
@@ -11810,22 +12169,22 @@
     ],
     "loc": {
       "start": {
-        "line": 984,
+        "line": 981,
         "column": 0
       },
       "end": {
-        "line": 995,
+        "line": 992,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 996,
+          "line": 993,
           "column": 0
         },
         "end": {
-          "line": 996,
+          "line": 993,
           "column": 37
         }
       }
@@ -11963,6 +12322,58 @@
         "title": "param",
         "name": "args",
         "lineNumber": 9,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -12146,7 +12557,7 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Proximity selectors",
         "lineNumber": 11,
         "type": {
           "type": "RestType",
@@ -12169,22 +12580,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1012,
+        "line": 1009,
         "column": 0
       },
       "end": {
-        "line": 1025,
+        "line": 1022,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1026,
+          "line": 1023,
           "column": 0
         },
         "end": {
-          "line": 1067,
+          "line": 1064,
           "column": 2
         }
       }
@@ -12261,6 +12672,58 @@
         "title": "param",
         "name": "args",
         "lineNumber": 11,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -12503,7 +12966,7 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Proximity selectors",
         "lineNumber": 11,
         "type": {
           "type": "RestType",
@@ -12526,22 +12989,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1069,
+        "line": 1066,
         "column": 0
       },
       "end": {
-        "line": 1082,
+        "line": 1079,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1083,
+          "line": 1080,
           "column": 0
         },
         "end": {
-          "line": 1107,
+          "line": 1104,
           "column": 2
         }
       }
@@ -12556,12 +13019,64 @@
       {
         "title": "param",
         "name": "attrValuePairs",
-        "lineNumber": 1083
+        "lineNumber": 1080
       },
       {
         "title": "param",
         "name": "args",
         "lineNumber": 11,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -12888,22 +13403,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1109,
+        "line": 1106,
         "column": 0
       },
       "end": {
-        "line": 1122,
+        "line": 1119,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1123,
+          "line": 1120,
           "column": 0
         },
         "end": {
-          "line": 1148,
+          "line": 1145,
           "column": 2
         }
       }
@@ -12918,7 +13433,7 @@
       {
         "title": "param",
         "name": "attrValuePairs",
-        "lineNumber": 1123
+        "lineNumber": 1120
       },
       {
         "title": "param",
@@ -13217,7 +13732,7 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Proximity selectors",
         "lineNumber": 8,
         "type": {
           "type": "RestType",
@@ -13240,22 +13755,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1150,
+        "line": 1147,
         "column": 0
       },
       "end": {
-        "line": 1160,
+        "line": 1157,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1161,
+          "line": 1158,
           "column": 0
         },
         "end": {
-          "line": 1165,
+          "line": 1162,
           "column": 2
         }
       }
@@ -13332,6 +13847,58 @@
         "title": "param",
         "name": "args",
         "lineNumber": 8,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -13503,7 +14070,7 @@
       },
       {
         "title": "param",
-        "description": null,
+        "description": "Proximity selectors",
         "lineNumber": 7,
         "type": {
           "type": "RestType",
@@ -13526,22 +14093,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1167,
+        "line": 1164,
         "column": 0
       },
       "end": {
-        "line": 1176,
+        "line": 1173,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1177,
+          "line": 1174,
           "column": 0
         },
         "end": {
-          "line": 1177,
+          "line": 1174,
           "column": 35
         }
       }
@@ -13618,6 +14185,58 @@
         "title": "param",
         "name": "args",
         "lineNumber": 7,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Proximity selectors",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 19
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 19
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 20,
+              "offset": 19
+            }
+          }
+        },
         "type": {
           "type": "RestType",
           "expression": {
@@ -13806,22 +14425,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1204,
+        "line": 1201,
         "column": 0
       },
       "end": {
-        "line": 1212,
+        "line": 1209,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1213,
+          "line": 1210,
           "column": 0
         },
         "end": {
-          "line": 1219,
+          "line": 1216,
           "column": 2
         }
       }
@@ -14085,22 +14704,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1221,
+        "line": 1218,
         "column": 0
       },
       "end": {
-        "line": 1229,
+        "line": 1226,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1230,
+          "line": 1227,
           "column": 0
         },
         "end": {
-          "line": 1238,
+          "line": 1235,
           "column": 2
         }
       }
@@ -14364,22 +14983,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1240,
+        "line": 1237,
         "column": 0
       },
       "end": {
-        "line": 1248,
+        "line": 1245,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1249,
+          "line": 1246,
           "column": 0
         },
         "end": {
-          "line": 1257,
+          "line": 1254,
           "column": 2
         }
       }
@@ -14643,22 +15262,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1259,
+        "line": 1256,
         "column": 0
       },
       "end": {
-        "line": 1267,
+        "line": 1264,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1268,
+          "line": 1265,
           "column": 0
         },
         "end": {
-          "line": 1276,
+          "line": 1273,
           "column": 2
         }
       }
@@ -14922,22 +15541,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1278,
+        "line": 1275,
         "column": 0
       },
       "end": {
-        "line": 1286,
+        "line": 1283,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1287,
+          "line": 1284,
           "column": 0
         },
         "end": {
-          "line": 1297,
+          "line": 1294,
           "column": 2
         }
       }
@@ -15185,22 +15804,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1299,
+        "line": 1296,
         "column": 0
       },
       "end": {
-        "line": 1307,
+        "line": 1304,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1308,
+          "line": 1305,
           "column": 0
         },
         "end": {
-          "line": 1308,
+          "line": 1305,
           "column": 81
         }
       }
@@ -15476,22 +16095,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1310,
+        "line": 1307,
         "column": 0
       },
       "end": {
-        "line": 1318,
+        "line": 1315,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1319,
+          "line": 1316,
           "column": 0
         },
         "end": {
-          "line": 1319,
+          "line": 1316,
           "column": 83
         }
       }
@@ -15767,22 +16386,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1321,
+        "line": 1318,
         "column": 0
       },
       "end": {
-        "line": 1329,
+        "line": 1326,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1330,
+          "line": 1327,
           "column": 0
         },
         "end": {
-          "line": 1330,
+          "line": 1327,
           "column": 85
         }
       }
@@ -16058,22 +16677,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1332,
+        "line": 1329,
         "column": 0
       },
       "end": {
-        "line": 1340,
+        "line": 1337,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1341,
+          "line": 1338,
           "column": 0
         },
         "end": {
-          "line": 1341,
+          "line": 1338,
           "column": 95
         }
       }
@@ -16289,22 +16908,22 @@
     "tags": [],
     "loc": {
       "start": {
-        "line": 1343,
+        "line": 1340,
         "column": 0
       },
       "end": {
-        "line": 1345,
+        "line": 1342,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1346,
+          "line": 1343,
           "column": 0
         },
         "end": {
-          "line": 1351,
+          "line": 1348,
           "column": 2
         }
       }
@@ -16393,22 +17012,22 @@
     "tags": [],
     "loc": {
       "start": {
-        "line": 1353,
+        "line": 1350,
         "column": 0
       },
       "end": {
-        "line": 1355,
+        "line": 1352,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1356,
+          "line": 1353,
           "column": 0
         },
         "end": {
-          "line": 1361,
+          "line": 1358,
           "column": 2
         }
       }
@@ -16497,7 +17116,7 @@
     "tags": [
       {
         "title": "example",
-        "description": "case 1: block url => intercept(url)\ncase 2: mockResponse => intercept(url,{mockObject})\ncase 3: override request => intercept(url,(request) => {request.continue({overrideObject})})\ncase 4: redirect => intercept(url,redirectUrl)\ncase 5: mockResponse based on request => intercept(url,(request) => { //someaction; request.respond({mockResponseObject})} )",
+        "description": "case 1: block url => intercept(url)\ncase 2: mockResponse => intercept(url,{mockObject})\ncase 3: override request => intercept(url,(request) => {request.continue({overrideObject})})\ncase 4: redirect => intercept(url,redirectUrl)\ncase 5: mockResponse based on request => intercept(url,(request) => { request.respond({mockResponseObject})} )",
         "lineNumber": 3
       },
       {
@@ -16526,22 +17145,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1363,
+        "line": 1360,
         "column": 0
       },
       "end": {
-        "line": 1376,
+        "line": 1373,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1377,
+          "line": 1374,
           "column": 0
         },
         "end": {
-          "line": 1380,
+          "line": 1377,
           "column": 2
         }
       }
@@ -16549,7 +17168,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "case 1: block url => intercept(url)\ncase 2: mockResponse => intercept(url,{mockObject})\ncase 3: override request => intercept(url,(request) => {request.continue({overrideObject})})\ncase 4: redirect => intercept(url,redirectUrl)\ncase 5: mockResponse based on request => intercept(url,(request) => { //someaction; request.respond({mockResponseObject})} )"
+        "description": "case 1: block url => intercept(url)\ncase 2: mockResponse => intercept(url,{mockObject})\ncase 3: override request => intercept(url,(request) => {request.continue({overrideObject})})\ncase 4: redirect => intercept(url,redirectUrl)\ncase 5: mockResponse based on request => intercept(url,(request) => { request.respond({mockResponseObject})} )"
       }
     ],
     "params": [
@@ -16834,22 +17453,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1382,
+        "line": 1379,
         "column": 0
       },
       "end": {
-        "line": 1390,
+        "line": 1387,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1391,
+          "line": 1388,
           "column": 0
         },
         "end": {
-          "line": 1391,
+          "line": 1388,
           "column": 50
         }
       }
@@ -17089,22 +17708,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1393,
+        "line": 1390,
         "column": 0
       },
       "end": {
-        "line": 1401,
+        "line": 1398,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1402,
+          "line": 1399,
           "column": 0
         },
         "end": {
-          "line": 1402,
+          "line": 1399,
           "column": 49
         }
       }
@@ -17365,22 +17984,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1404,
+        "line": 1401,
         "column": 0
       },
       "end": {
-        "line": 1412,
+        "line": 1409,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1413,
+          "line": 1410,
           "column": 0
         },
         "end": {
-          "line": 1413,
+          "line": 1410,
           "column": 27
         }
       }
@@ -17395,7 +18014,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1413
+        "lineNumber": 1410
       }
     ],
     "properties": [],
@@ -17558,22 +18177,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1415,
+        "line": 1412,
         "column": 0
       },
       "end": {
-        "line": 1423,
+        "line": 1420,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1424,
+          "line": 1421,
           "column": 0
         },
         "end": {
-          "line": 1424,
+          "line": 1421,
           "column": 29
         }
       }
@@ -17588,7 +18207,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1424
+        "lineNumber": 1421
       }
     ],
     "properties": [],
@@ -17742,22 +18361,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1426,
+        "line": 1423,
         "column": 0
       },
       "end": {
-        "line": 1434,
+        "line": 1431,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1435,
+          "line": 1432,
           "column": 0
         },
         "end": {
-          "line": 1435,
+          "line": 1432,
           "column": 33
         }
       }
@@ -17912,22 +18531,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1684,
+        "line": 1681,
         "column": 0
       },
       "end": {
-        "line": 1696,
+        "line": 1693,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1722,
+          "line": 1720,
           "column": 0
         },
         "end": {
-          "line": 1751,
+          "line": 1749,
           "column": 1
         }
       }
@@ -18106,13 +18725,13 @@
       },
       {
         "title": "example",
-        "description": "near('Home')\ntoLeftOf('Sign in')\ntoRightOf('Get Started')\nabove('Sign in')\nbelow('Home')",
+        "description": "near('Home')\ntoLeftOf('Sign in')\ntoRightOf('Get Started')\nabove('Sign in')\nbelow('Home')\nlink('Sign In',near(\"Home\"),toLeftOf(\"Sign Out\")) - Multiple selectors can be used to perform relative search",
         "lineNumber": 4
       },
       {
         "title": "param",
         "description": "Web element selector.",
-        "lineNumber": 11,
+        "lineNumber": 12,
         "type": {
           "type": "UnionType",
           "elements": [
@@ -18131,7 +18750,7 @@
       {
         "title": "returns",
         "description": null,
-        "lineNumber": 12,
+        "lineNumber": 13,
         "type": {
           "type": "NameExpression",
           "name": "RelativeSearchElement"
@@ -18140,22 +18759,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1698,
+        "line": 1695,
         "column": 0
       },
       "end": {
-        "line": 1711,
+        "line": 1709,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1722,
+          "line": 1720,
           "column": 0
         },
         "end": {
-          "line": 1751,
+          "line": 1749,
           "column": 1
         }
       }
@@ -18163,14 +18782,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "near('Home')\ntoLeftOf('Sign in')\ntoRightOf('Get Started')\nabove('Sign in')\nbelow('Home')"
+        "description": "near('Home')\ntoLeftOf('Sign in')\ntoRightOf('Get Started')\nabove('Sign in')\nbelow('Home')\nlink('Sign In',near(\"Home\"),toLeftOf(\"Sign Out\")) - Multiple selectors can be used to perform relative search"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "selector",
-        "lineNumber": 11,
+        "lineNumber": 12,
         "description": {
           "type": "root",
           "children": [
@@ -18385,22 +19004,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1713,
+        "line": 1711,
         "column": 0
       },
       "end": {
-        "line": 1721,
+        "line": 1719,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1722,
+          "line": 1720,
           "column": 0
         },
         "end": {
-          "line": 1751,
+          "line": 1749,
           "column": 1
         }
       }
@@ -18441,26 +19060,26 @@
       ],
       "loc": {
         "start": {
-          "line": 1723,
+          "line": 1721,
           "column": 4
         },
         "end": {
-          "line": 1726,
+          "line": 1724,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1727,
+            "line": 1725,
             "column": 4
           },
           "end": {
-            "line": 1731,
+            "line": 1729,
             "column": 5
           }
         },
-        "sortKey": "undefined 00001727",
+        "sortKey": "undefined 00001725",
         "code": "{\n    /**\n     * @class\n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async validNodes(nodeId) {\n        let matchingNode, minDiff = Infinity;\n        const results = await this.value;\n        for (const result of results) {\n            if (await this.condition(nodeId, result.result)) {\n                const diff = await boundingBox.getPositionalDifference(dom, nodeId, result.elem);\n                if (diff < minDiff) {\n                    minDiff = diff;\n                    matchingNode = { elem: result.elem, dist: diff };\n                }\n            }\n        }\n        return matchingNode;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -19180,7 +19799,7 @@
       },
       {
         "title": "property",
-        "description": "@private {function} get - DOM element getter.",
+        "description": "@private {function} get - DOM element getter. Implicitly wait for the element to appears with timeout of 10 seconds.",
         "lineNumber": 10,
         "type": null,
         "errors": [
@@ -19226,22 +19845,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1753,
+        "line": 1751,
         "column": 0
       },
       "end": {
-        "line": 1772,
+        "line": 1770,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1774,
+          "line": 1772,
           "column": 0
         },
         "end": {
-          "line": 1781,
+          "line": 1779,
           "column": 2
         }
       }
