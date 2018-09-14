@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>{{title}}</title>
+  <link rel='shortcut icon' type='image/x-icon' href="{{asset 'images/taiko_favicon.ico'}}" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="{{asset 'js/main.js'}}"></script>
+
   <link type="text/css" rel="stylesheet" href="{{asset 'css/fonts.css'}}" />
   <link type="text/css" rel="stylesheet" href="{{asset 'css/pilcrow.css'}}" />
   <link type="text/css" rel="stylesheet" href="{{asset 'css/hljs-github.min.css'}}" />
@@ -15,15 +18,17 @@
 </head>
 <body>
   {{~> navbar }}
-  <div class="container-fluid">    
-    <div class="col-md-3 sidebar">
+  <div class="container-fluid flex-container">    
+    <div class="sidebar">
       <div class="scrollable">
         {{~> toc }}
       </div>
     </div>
-    <div class="scrollable col-md-9">
+    <div class="scrollable main-content">
       {{~> header }}
-      {{~> content}}
+      <div class="content-section">
+        {{~> content}}
+      </div>
     </div>
   </div>
   </div>
