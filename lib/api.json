@@ -9048,6 +9048,12 @@
       {
         "title": "param",
         "name": "options",
+        "lineNumber": 783,
+        "default": "{}"
+      },
+      {
+        "title": "param",
+        "name": "null",
         "lineNumber": 7,
         "description": {
           "type": "root",
