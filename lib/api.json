@@ -55,13 +55,13 @@
     "tags": [
       {
         "title": "example",
-        "description": "openBrowser()\nopenBrowser({ headless: false })",
+        "description": "openBrowser()\nopenBrowser({ headless: false })\nopenBrowser({args:['--window-size=1440,900']})",
         "lineNumber": 3
       },
       {
         "title": "param",
-        "description": "{headless: true|false}.",
-        "lineNumber": 7,
+        "description": "{headless: true|false, args:['--window-size=1440,900]} Args to open chromium https://peter.sh/experiments/chromium-command-line-switches/.",
+        "lineNumber": 8,
         "type": {
           "type": "NameExpression",
           "name": "Object"
@@ -71,7 +71,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 8,
+        "lineNumber": 9,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -93,18 +93,18 @@
         "column": 0
       },
       "end": {
-        "line": 54,
+        "line": 55,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 55,
+          "line": 56,
           "column": 0
         },
         "end": {
-          "line": 67,
+          "line": 68,
           "column": 2
         }
       }
@@ -112,14 +112,14 @@
     "augments": [],
     "examples": [
       {
-        "description": "openBrowser()\nopenBrowser({ headless: false })"
+        "description": "openBrowser()\nopenBrowser({ headless: false })\nopenBrowser({args:['--window-size=1440,900']})"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 7,
+        "lineNumber": 8,
         "description": {
           "type": "root",
           "children": [
@@ -128,7 +128,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "{headless: true|false}.",
+                  "value": "{headless: true|false, args:",
                   "position": {
                     "start": {
                       "line": 1,
@@ -137,8 +137,116 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 24,
-                      "offset": 23
+                      "column": 29,
+                      "offset": 28
+                    },
+                    "indent": []
+                  }
+                },
+                {
+                  "type": "linkReference",
+                  "identifier": "'--window-size=1440,900",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "'--window-size=1440,900",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 30,
+                          "offset": 29
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 53,
+                          "offset": 52
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 29,
+                      "offset": 28
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 54,
+                      "offset": 53
+                    },
+                    "indent": []
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "} Args to open chromium ",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 54,
+                      "offset": 53
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 78,
+                      "offset": 77
+                    },
+                    "indent": []
+                  }
+                },
+                {
+                  "type": "link",
+                  "title": null,
+                  "url": "https://peter.sh/experiments/chromium-command-line-switches/",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "https://peter.sh/experiments/chromium-command-line-switches/",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 78,
+                          "offset": 77
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 138,
+                          "offset": 137
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 78,
+                      "offset": 77
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 138,
+                      "offset": 137
+                    },
+                    "indent": []
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ".",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 138,
+                      "offset": 137
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 139,
+                      "offset": 138
                     },
                     "indent": []
                   }
@@ -152,8 +260,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 24,
-                  "offset": 23
+                  "column": 139,
+                  "offset": 138
                 },
                 "indent": []
               }
@@ -167,8 +275,8 @@
             },
             "end": {
               "line": 1,
-              "column": 24,
-              "offset": 23
+              "column": 139,
+              "offset": 138
             }
           }
         },
@@ -363,22 +471,22 @@
     ],
     "loc": {
       "start": {
-        "line": 70,
+        "line": 71,
         "column": 0
       },
       "end": {
-        "line": 78,
+        "line": 79,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 79,
+          "line": 80,
           "column": 0
         },
         "end": {
-          "line": 85,
+          "line": 86,
           "column": 2
         }
       }
@@ -636,22 +744,22 @@
     ],
     "loc": {
       "start": {
-        "line": 87,
+        "line": 88,
         "column": 0
       },
       "end": {
-        "line": 96,
+        "line": 97,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 97,
+          "line": 98,
           "column": 0
         },
         "end": {
-          "line": 103,
+          "line": 104,
           "column": 2
         }
       }
@@ -878,38 +986,29 @@
         "description": null,
         "lineNumber": 3,
         "type": {
-          "type": "TypeApplication",
-          "expression": {
-            "type": "NameExpression",
-            "name": "Promise"
-          },
-          "applications": [
-            {
-              "type": "NameExpression",
-              "name": "string"
-            }
-          ]
+          "type": "NameExpression",
+          "name": "Object"
         }
       }
     ],
     "loc": {
       "start": {
-        "line": 105,
+        "line": 106,
         "column": 0
       },
       "end": {
-        "line": 109,
+        "line": 110,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 110,
+          "line": 111,
           "column": 0
         },
         "end": {
-          "line": 110,
+          "line": 111,
           "column": 37
         }
       }
@@ -938,17 +1037,8 @@
         },
         "title": "returns",
         "type": {
-          "type": "TypeApplication",
-          "expression": {
-            "type": "NameExpression",
-            "name": "Promise"
-          },
-          "applications": [
-            {
-              "type": "NameExpression",
-              "name": "string"
-            }
-          ]
+          "type": "NameExpression",
+          "name": "Object"
         }
       }
     ],
@@ -1055,22 +1145,22 @@
     ],
     "loc": {
       "start": {
-        "line": 112,
+        "line": 113,
         "column": 0
       },
       "end": {
-        "line": 119,
+        "line": 120,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 120,
+          "line": 121,
           "column": 0
         },
         "end": {
-          "line": 128,
+          "line": 129,
           "column": 2
         }
       }
@@ -1236,9 +1326,19 @@
         "lineNumber": 3
       },
       {
+        "title": "param",
+        "description": "URL/Page title of the tab to switch.",
+        "lineNumber": 7,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "targetUrl"
+      },
+      {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 7,
+        "lineNumber": 8,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -1256,22 +1356,22 @@
     ],
     "loc": {
       "start": {
-        "line": 131,
+        "line": 132,
         "column": 0
       },
       "end": {
-        "line": 139,
+        "line": 141,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 140,
+          "line": 142,
           "column": 0
         },
         "end": {
-          "line": 151,
+          "line": 153,
           "column": 2
         }
       }
@@ -1286,7 +1386,63 @@
       {
         "title": "param",
         "name": "targetUrl",
-        "lineNumber": 140
+        "lineNumber": 7,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "URL/Page title of the tab to switch.",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 37,
+                      "offset": 36
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 37,
+                  "offset": 36
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 37,
+              "offset": 36
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
       }
     ],
     "properties": [],
@@ -1488,7 +1644,7 @@
       },
       {
         "title": "param",
-        "description": "{timeout:5000} Default timeout is 30 seconds to override set options = {timeout:10000}",
+        "description": "{timeout:5000, headers:{'Authorization':'Basic cG9zdG1hbjpwYXNzd29y2A=='}} Default timeout is 30 seconds to override set options = {timeout:10000}, headers to override defaults.",
         "lineNumber": 8,
         "type": {
           "type": "NameExpression",
@@ -1517,22 +1673,22 @@
     ],
     "loc": {
       "start": {
-        "line": 153,
+        "line": 155,
         "column": 0
       },
       "end": {
-        "line": 163,
+        "line": 165,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 164,
+          "line": 166,
           "column": 0
         },
         "end": {
-          "line": 175,
+          "line": 177,
           "column": 2
         }
       }
@@ -1617,7 +1773,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "{timeout:5000} Default timeout is 30 seconds to override set options = {timeout:10000}",
+                  "value": "{timeout:5000, headers:{'Authorization':'Basic cG9zdG1hbjpwYXNzd29y2A=='}} Default timeout is 30 seconds to override set options = {timeout:10000}, headers to override defaults.",
                   "position": {
                     "start": {
                       "line": 1,
@@ -1626,8 +1782,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 87,
-                      "offset": 86
+                      "column": 178,
+                      "offset": 177
                     },
                     "indent": []
                   }
@@ -1641,8 +1797,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 87,
-                  "offset": 86
+                  "column": 178,
+                  "offset": 177
                 },
                 "indent": []
               }
@@ -1656,8 +1812,8 @@
             },
             "end": {
               "line": 1,
-              "column": 87,
-              "offset": 86
+              "column": 178,
+              "offset": 177
             }
           }
         },
@@ -1822,9 +1978,19 @@
         "lineNumber": 3
       },
       {
+        "title": "param",
+        "description": "URL to reload",
+        "lineNumber": 7,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "url"
+      },
+      {
         "title": "returns",
         "description": "Object with the description of the action performed and the final URL.",
-        "lineNumber": 7,
+        "lineNumber": 8,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -1842,22 +2008,22 @@
     ],
     "loc": {
       "start": {
-        "line": 177,
+        "line": 179,
         "column": 0
       },
       "end": {
-        "line": 185,
+        "line": 188,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 186,
+          "line": 189,
           "column": 0
         },
         "end": {
-          "line": 190,
+          "line": 193,
           "column": 2
         }
       }
@@ -1872,7 +2038,63 @@
       {
         "title": "param",
         "name": "url",
-        "lineNumber": 186
+        "lineNumber": 7,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "URL to reload",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 14,
+                      "offset": 13
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 14,
+                  "offset": 13
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 14,
+              "offset": 13
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
       }
     ],
     "properties": [],
@@ -2041,7 +2263,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 8,
+        "lineNumber": 7,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -2059,22 +2281,22 @@
     ],
     "loc": {
       "start": {
-        "line": 192,
+        "line": 195,
         "column": 0
       },
       "end": {
-        "line": 201,
+        "line": 203,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 202,
+          "line": 204,
           "column": 0
         },
         "end": {
-          "line": 208,
+          "line": 210,
           "column": 2
         }
       }
@@ -2337,22 +2559,22 @@
     ],
     "loc": {
       "start": {
-        "line": 210,
+        "line": 212,
         "column": 0
       },
       "end": {
-        "line": 214,
+        "line": 216,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 215,
+          "line": 217,
           "column": 0
         },
         "end": {
-          "line": 222,
+          "line": 224,
           "column": 2
         }
       }
@@ -2508,7 +2730,7 @@
       },
       {
         "title": "param",
-        "description": "Wait for navigation after the click. Default navigation timout is 2 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
+        "description": "Wait for navigation after the click. Default navigation timeout is 15 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
         "lineNumber": 9,
         "type": {
           "type": "OptionalType",
@@ -2522,8 +2744,36 @@
       },
       {
         "title": "param",
-        "description": "`left`, `right`, or `middle`.",
+        "description": "wait for navigation to start. Default to 500ms",
         "lineNumber": 10,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "number"
+          }
+        },
+        "name": "options.waitForStart",
+        "default": "500"
+      },
+      {
+        "title": "param",
+        "description": "Timeout value in milliseconds for navigation after click.",
+        "lineNumber": 11,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "number"
+          }
+        },
+        "name": "options.timeout",
+        "default": "5000"
+      },
+      {
+        "title": "param",
+        "description": "`left`, `right`, or `middle`.",
+        "lineNumber": 12,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -2537,7 +2787,7 @@
       {
         "title": "param",
         "description": "Number of times to click on the element.",
-        "lineNumber": 11,
+        "lineNumber": 13,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -2550,22 +2800,8 @@
       },
       {
         "title": "param",
-        "description": "-TODO: Timeout value in milliseconds for navigation after click.",
-        "lineNumber": 12,
-        "type": {
-          "type": "OptionalType",
-          "expression": {
-            "type": "NameExpression",
-            "name": "number"
-          }
-        },
-        "name": "options.timeout",
-        "default": "5000"
-      },
-      {
-        "title": "param",
         "description": "Number of elements to loop through to match the element with given selector.",
-        "lineNumber": 13,
+        "lineNumber": 14,
         "type": {
           "type": "OptionalType",
           "expression": {
@@ -2579,7 +2815,7 @@
       {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 14,
+        "lineNumber": 15,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -2597,22 +2833,22 @@
     ],
     "loc": {
       "start": {
-        "line": 295,
+        "line": 297,
         "column": 0
       },
       "end": {
-        "line": 310,
+        "line": 313,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 311,
+          "line": 314,
           "column": 0
         },
         "end": {
-          "line": 311,
+          "line": 314,
           "column": 29
         }
       }
@@ -2767,7 +3003,7 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "Wait for navigation after the click. Default navigation timout is 2 seconds, to override pass ",
+                      "value": "Wait for navigation after the click. Default navigation timeout is 15 seconds, to override pass ",
                       "position": {
                         "start": {
                           "line": 1,
@@ -2776,8 +3012,8 @@
                         },
                         "end": {
                           "line": 1,
-                          "column": 95,
-                          "offset": 94
+                          "column": 97,
+                          "offset": 96
                         },
                         "indent": []
                       }
@@ -2788,13 +3024,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 95,
-                          "offset": 94
+                          "column": 97,
+                          "offset": 96
                         },
                         "end": {
                           "line": 1,
-                          "column": 115,
-                          "offset": 114
+                          "column": 117,
+                          "offset": 116
                         },
                         "indent": []
                       }
@@ -2805,13 +3041,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 115,
-                          "offset": 114
+                          "column": 117,
+                          "offset": 116
                         },
                         "end": {
                           "line": 1,
-                          "column": 119,
-                          "offset": 118
+                          "column": 121,
+                          "offset": 120
                         },
                         "indent": []
                       }
@@ -2822,13 +3058,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 119,
-                          "offset": 118
+                          "column": 121,
+                          "offset": 120
                         },
                         "end": {
                           "line": 1,
-                          "column": 128,
-                          "offset": 127
+                          "column": 130,
+                          "offset": 129
                         },
                         "indent": []
                       }
@@ -2839,13 +3075,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 128,
-                          "offset": 127
+                          "column": 130,
+                          "offset": 129
                         },
                         "end": {
                           "line": 1,
-                          "column": 139,
-                          "offset": 138
+                          "column": 141,
+                          "offset": 140
                         },
                         "indent": []
                       }
@@ -2859,8 +3095,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 139,
-                      "offset": 138
+                      "column": 141,
+                      "offset": 140
                     },
                     "indent": []
                   }
@@ -2874,8 +3110,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 139,
-                  "offset": 138
+                  "column": 141,
+                  "offset": 140
                 }
               }
             },
@@ -2887,8 +3123,132 @@
           },
           {
             "title": "param",
-            "name": "options.button",
+            "name": "options.waitForStart",
             "lineNumber": 10,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "wait for navigation to start. Default to 500ms",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 47,
+                          "offset": 46
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 47,
+                      "offset": 46
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 47,
+                  "offset": 46
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "number"
+            },
+            "default": "500"
+          },
+          {
+            "title": "param",
+            "name": "options.timeout",
+            "lineNumber": 11,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Timeout value in milliseconds for navigation after click.",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 58,
+                          "offset": 57
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 58,
+                      "offset": 57
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 58,
+                  "offset": 57
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "number"
+            },
+            "default": "5000"
+          },
+          {
+            "title": "param",
+            "name": "options.button",
+            "lineNumber": 12,
             "description": {
               "type": "root",
               "children": [
@@ -3035,7 +3395,7 @@
           {
             "title": "param",
             "name": "options.clickCount",
-            "lineNumber": 11,
+            "lineNumber": 13,
             "description": {
               "type": "root",
               "children": [
@@ -3096,70 +3456,8 @@
           },
           {
             "title": "param",
-            "name": "options.timeout",
-            "lineNumber": 12,
-            "description": {
-              "type": "root",
-              "children": [
-                {
-                  "type": "paragraph",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "-TODO: Timeout value in milliseconds for navigation after click.",
-                      "position": {
-                        "start": {
-                          "line": 1,
-                          "column": 1,
-                          "offset": 0
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 65,
-                          "offset": 64
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 1,
-                      "column": 1,
-                      "offset": 0
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 65,
-                      "offset": 64
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 1,
-                  "offset": 0
-                },
-                "end": {
-                  "line": 1,
-                  "column": 65,
-                  "offset": 64
-                }
-              }
-            },
-            "type": {
-              "type": "NameExpression",
-              "name": "number"
-            },
-            "default": "5000"
-          },
-          {
-            "title": "param",
             "name": "options.elementsToMatch",
-            "lineNumber": 13,
+            "lineNumber": 14,
             "description": {
               "type": "root",
               "children": [
@@ -3403,7 +3701,7 @@
       },
       {
         "title": "param",
-        "description": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
+        "description": "Wait for navigation after the click. Default navigation timout is 15 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
         "lineNumber": 9,
         "type": {
           "type": "OptionalType",
@@ -3436,22 +3734,22 @@
     ],
     "loc": {
       "start": {
-        "line": 351,
+        "line": 354,
         "column": 0
       },
       "end": {
-        "line": 362,
+        "line": 365,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 363,
+          "line": 366,
           "column": 0
         },
         "end": {
-          "line": 374,
+          "line": 377,
           "column": 2
         }
       }
@@ -3606,7 +3904,7 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass ",
+                      "value": "Wait for navigation after the click. Default navigation timout is 15 seconds, to override pass ",
                       "position": {
                         "start": {
                           "line": 1,
@@ -3615,8 +3913,8 @@
                         },
                         "end": {
                           "line": 1,
-                          "column": 95,
-                          "offset": 94
+                          "column": 96,
+                          "offset": 95
                         },
                         "indent": []
                       }
@@ -3627,13 +3925,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 95,
-                          "offset": 94
+                          "column": 96,
+                          "offset": 95
                         },
                         "end": {
                           "line": 1,
-                          "column": 115,
-                          "offset": 114
+                          "column": 116,
+                          "offset": 115
                         },
                         "indent": []
                       }
@@ -3644,13 +3942,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 115,
-                          "offset": 114
+                          "column": 116,
+                          "offset": 115
                         },
                         "end": {
                           "line": 1,
-                          "column": 119,
-                          "offset": 118
+                          "column": 120,
+                          "offset": 119
                         },
                         "indent": []
                       }
@@ -3661,13 +3959,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 119,
-                          "offset": 118
+                          "column": 120,
+                          "offset": 119
                         },
                         "end": {
                           "line": 1,
-                          "column": 128,
-                          "offset": 127
+                          "column": 129,
+                          "offset": 128
                         },
                         "indent": []
                       }
@@ -3678,13 +3976,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 128,
-                          "offset": 127
+                          "column": 129,
+                          "offset": 128
                         },
                         "end": {
                           "line": 1,
-                          "column": 139,
-                          "offset": 138
+                          "column": 140,
+                          "offset": 139
                         },
                         "indent": []
                       }
@@ -3698,8 +3996,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 139,
-                      "offset": 138
+                      "column": 140,
+                      "offset": 139
                     },
                     "indent": []
                   }
@@ -3713,8 +4011,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 139,
-                  "offset": 138
+                  "column": 140,
+                  "offset": 139
                 }
               }
             },
@@ -3730,7 +4028,7 @@
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 363,
+        "lineNumber": 366,
         "type": {
           "type": "RestType"
         }
@@ -3920,7 +4218,7 @@
       },
       {
         "title": "param",
-        "description": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
+        "description": "Wait for navigation after the click. Default navigation timout is 15 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
         "lineNumber": 9,
         "type": {
           "type": "OptionalType",
@@ -3953,22 +4251,22 @@
     ],
     "loc": {
       "start": {
-        "line": 376,
+        "line": 379,
         "column": 0
       },
       "end": {
-        "line": 387,
+        "line": 390,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 388,
+          "line": 391,
           "column": 0
         },
         "end": {
-          "line": 399,
+          "line": 402,
           "column": 2
         }
       }
@@ -4123,7 +4421,7 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "Wait for navigation after the click. Default navigation timout is 5 seconds, to override pass ",
+                      "value": "Wait for navigation after the click. Default navigation timout is 15 seconds, to override pass ",
                       "position": {
                         "start": {
                           "line": 1,
@@ -4132,8 +4430,8 @@
                         },
                         "end": {
                           "line": 1,
-                          "column": 95,
-                          "offset": 94
+                          "column": 96,
+                          "offset": 95
                         },
                         "indent": []
                       }
@@ -4144,13 +4442,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 95,
-                          "offset": 94
+                          "column": 96,
+                          "offset": 95
                         },
                         "end": {
                           "line": 1,
-                          "column": 115,
-                          "offset": 114
+                          "column": 116,
+                          "offset": 115
                         },
                         "indent": []
                       }
@@ -4161,13 +4459,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 115,
-                          "offset": 114
+                          "column": 116,
+                          "offset": 115
                         },
                         "end": {
                           "line": 1,
-                          "column": 119,
-                          "offset": 118
+                          "column": 120,
+                          "offset": 119
                         },
                         "indent": []
                       }
@@ -4178,13 +4476,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 119,
-                          "offset": 118
+                          "column": 120,
+                          "offset": 119
                         },
                         "end": {
                           "line": 1,
-                          "column": 128,
-                          "offset": 127
+                          "column": 129,
+                          "offset": 128
                         },
                         "indent": []
                       }
@@ -4195,13 +4493,13 @@
                       "position": {
                         "start": {
                           "line": 1,
-                          "column": 128,
-                          "offset": 127
+                          "column": 129,
+                          "offset": 128
                         },
                         "end": {
                           "line": 1,
-                          "column": 139,
-                          "offset": 138
+                          "column": 140,
+                          "offset": 139
                         },
                         "indent": []
                       }
@@ -4215,8 +4513,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 139,
-                      "offset": 138
+                      "column": 140,
+                      "offset": 139
                     },
                     "indent": []
                   }
@@ -4230,8 +4528,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 139,
-                  "offset": 138
+                  "column": 140,
+                  "offset": 139
                 }
               }
             },
@@ -4247,7 +4545,7 @@
       {
         "title": "param",
         "name": "args",
-        "lineNumber": 388,
+        "lineNumber": 391,
         "type": {
           "type": "RestType"
         }
@@ -4446,22 +4744,22 @@
     ],
     "loc": {
       "start": {
-        "line": 401,
+        "line": 404,
         "column": 0
       },
       "end": {
-        "line": 410,
+        "line": 413,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 411,
+          "line": 414,
           "column": 0
         },
         "end": {
-          "line": 430,
+          "line": 433,
           "column": 2
         }
       }
@@ -4546,7 +4844,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 411,
+        "lineNumber": 414,
         "default": "{}"
       }
     ],
@@ -4723,9 +5021,19 @@
         "name": "selector"
       },
       {
+        "title": "param",
+        "description": "{waitForNavigation:true,waitForStart:500,timeout:10000}",
+        "lineNumber": 7,
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        },
+        "name": "options"
+      },
+      {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 7,
+        "lineNumber": 8,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -4743,22 +5051,22 @@
     ],
     "loc": {
       "start": {
-        "line": 432,
+        "line": 435,
         "column": 0
       },
       "end": {
-        "line": 440,
+        "line": 444,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 441,
+          "line": 445,
           "column": 0
         },
         "end": {
-          "line": 448,
+          "line": 452,
           "column": 2
         }
       }
@@ -4843,7 +5151,63 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 441,
+        "lineNumber": 7,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "{waitForNavigation:true,waitForStart:500,timeout:10000}",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 56,
+                      "offset": 55
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 56,
+                  "offset": 55
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 56,
+              "offset": 55
+            }
+          }
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "object"
+        },
         "default": "{}"
       }
     ],
@@ -5056,9 +5420,51 @@
         "name": "options.delay"
       },
       {
+        "title": "param",
+        "description": "Wait for navigation after the click. Default navigation timeout is 15 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
+        "lineNumber": 12,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        },
+        "name": "options.waitForNavigation",
+        "default": "true"
+      },
+      {
+        "title": "param",
+        "description": "wait for navigation to start. Default to 500ms",
+        "lineNumber": 13,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "number"
+          }
+        },
+        "name": "options.waitForStart",
+        "default": "500"
+      },
+      {
+        "title": "param",
+        "description": "Timeout value in milliseconds for navigation after click",
+        "lineNumber": 14,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "number"
+          }
+        },
+        "name": "options.timeout",
+        "default": "5000"
+      },
+      {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 12,
+        "lineNumber": 15,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -5076,22 +5482,22 @@
     ],
     "loc": {
       "start": {
-        "line": 450,
+        "line": 454,
         "column": 0
       },
       "end": {
-        "line": 463,
+        "line": 470,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 464,
+          "line": 471,
           "column": 0
         },
         "end": {
-          "line": 487,
+          "line": 494,
           "column": 2
         }
       }
@@ -5309,6 +5715,260 @@
               "type": "NameExpression",
               "name": "number"
             }
+          },
+          {
+            "title": "param",
+            "name": "options.waitForNavigation",
+            "lineNumber": 12,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Wait for navigation after the click. Default navigation timeout is 15 seconds, to override pass ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 97,
+                          "offset": 96
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "{ timeout: 10000 }",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 97,
+                          "offset": 96
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 117,
+                          "offset": 116
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " in ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 117,
+                          "offset": 116
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 121,
+                          "offset": 120
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "options",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 121,
+                          "offset": 120
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 130,
+                          "offset": 129
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " parameter.",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 130,
+                          "offset": 129
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 141,
+                          "offset": 140
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 141,
+                      "offset": 140
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 141,
+                  "offset": 140
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "boolean"
+            },
+            "default": "true"
+          },
+          {
+            "title": "param",
+            "name": "options.waitForStart",
+            "lineNumber": 13,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "wait for navigation to start. Default to 500ms",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 47,
+                          "offset": 46
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 47,
+                      "offset": 46
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 47,
+                  "offset": 46
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "number"
+            },
+            "default": "500"
+          },
+          {
+            "title": "param",
+            "name": "options.timeout",
+            "lineNumber": 14,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Timeout value in milliseconds for navigation after click",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 57,
+                          "offset": 56
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 57,
+                      "offset": 56
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 57,
+                  "offset": 56
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "number"
+            },
+            "default": "5000"
           }
         ],
         "default": "{delay:10}"
@@ -5517,22 +6177,22 @@
     ],
     "loc": {
       "start": {
-        "line": 546,
+        "line": 553,
         "column": 0
       },
       "end": {
-        "line": 556,
+        "line": 563,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 557,
+          "line": 564,
           "column": 0
         },
         "end": {
-          "line": 573,
+          "line": 580,
           "column": 2
         }
       }
@@ -5831,7 +6491,7 @@
       },
       {
         "title": "param",
-        "description": "Name of key to press, such as ArrowLeft. See [USKeyboardLayout](https://github.com/GoogleChrome/puppeteer/blob/master/lib/USKeyboardLayout.js) for a list of all key names.",
+        "description": "Name of key to press, such as ArrowLeft. See [USKeyboardLayout](https://github.com/getgauge/taiko/blob/master/lib/USKeyboardLayout.js) for a list of all key names.",
         "lineNumber": 7,
         "type": {
           "type": "NameExpression",
@@ -5854,8 +6514,11 @@
         "description": "If specified, generates an input event with this text.",
         "lineNumber": 9,
         "type": {
-          "type": "NameExpression",
-          "name": "string"
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "string"
+          }
         },
         "name": "options.text"
       },
@@ -5874,9 +6537,51 @@
         "default": "0"
       },
       {
+        "title": "param",
+        "description": "Wait for navigation after the click. Default navigation timeout is 15 seconds, to override pass `{ timeout: 10000 }` in `options` parameter.",
+        "lineNumber": 11,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        },
+        "name": "options.waitForNavigation",
+        "default": "true"
+      },
+      {
+        "title": "param",
+        "description": "wait for navigation to start. Default to 500ms",
+        "lineNumber": 12,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "number"
+          }
+        },
+        "name": "options.waitForStart",
+        "default": "500"
+      },
+      {
+        "title": "param",
+        "description": "Timeout value in milliseconds for navigation after click.",
+        "lineNumber": 13,
+        "type": {
+          "type": "OptionalType",
+          "expression": {
+            "type": "NameExpression",
+            "name": "number"
+          }
+        },
+        "name": "options.timeout",
+        "default": "5000"
+      },
+      {
         "title": "returns",
         "description": "Object with the description of the action performed.",
-        "lineNumber": 11,
+        "lineNumber": 14,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -5894,22 +6599,22 @@
     ],
     "loc": {
       "start": {
-        "line": 575,
+        "line": 582,
         "column": 0
       },
       "end": {
-        "line": 587,
+        "line": 597,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 588,
+          "line": 598,
           "column": 0
         },
         "end": {
-          "line": 597,
+          "line": 607,
           "column": 2
         }
       }
@@ -5951,7 +6656,7 @@
                 {
                   "type": "link",
                   "title": null,
-                  "url": "https://github.com/GoogleChrome/puppeteer/blob/master/lib/USKeyboardLayout.js",
+                  "url": "https://github.com/getgauge/taiko/blob/master/lib/USKeyboardLayout.js",
                   "children": [
                     {
                       "type": "text",
@@ -5979,8 +6684,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 143,
-                      "offset": 142
+                      "column": 135,
+                      "offset": 134
                     },
                     "indent": []
                   }
@@ -5991,13 +6696,13 @@
                   "position": {
                     "start": {
                       "line": 1,
-                      "column": 143,
-                      "offset": 142
+                      "column": 135,
+                      "offset": 134
                     },
                     "end": {
                       "line": 1,
-                      "column": 172,
-                      "offset": 171
+                      "column": 164,
+                      "offset": 163
                     },
                     "indent": []
                   }
@@ -6011,8 +6716,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 172,
-                  "offset": 171
+                  "column": 164,
+                  "offset": 163
                 },
                 "indent": []
               }
@@ -6026,8 +6731,8 @@
             },
             "end": {
               "line": 1,
-              "column": 172,
-              "offset": 171
+              "column": 164,
+              "offset": 163
             }
           }
         },
@@ -6102,8 +6807,11 @@
               }
             },
             "type": {
-              "type": "NameExpression",
-              "name": "string"
+              "type": "OptionalType",
+              "expression": {
+                "type": "NameExpression",
+                "name": "string"
+              }
             }
           },
           {
@@ -6167,6 +6875,260 @@
               "name": "number"
             },
             "default": "0"
+          },
+          {
+            "title": "param",
+            "name": "options.waitForNavigation",
+            "lineNumber": 11,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Wait for navigation after the click. Default navigation timeout is 15 seconds, to override pass ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 97,
+                          "offset": 96
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "{ timeout: 10000 }",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 97,
+                          "offset": 96
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 117,
+                          "offset": 116
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " in ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 117,
+                          "offset": 116
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 121,
+                          "offset": 120
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "options",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 121,
+                          "offset": 120
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 130,
+                          "offset": 129
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " parameter.",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 130,
+                          "offset": 129
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 141,
+                          "offset": 140
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 141,
+                      "offset": 140
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 141,
+                  "offset": 140
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "boolean"
+            },
+            "default": "true"
+          },
+          {
+            "title": "param",
+            "name": "options.waitForStart",
+            "lineNumber": 12,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "wait for navigation to start. Default to 500ms",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 47,
+                          "offset": 46
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 47,
+                      "offset": 46
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 47,
+                  "offset": 46
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "number"
+            },
+            "default": "500"
+          },
+          {
+            "title": "param",
+            "name": "options.timeout",
+            "lineNumber": 13,
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Timeout value in milliseconds for navigation after click.",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 1,
+                          "offset": 0
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 58,
+                          "offset": 57
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 58,
+                      "offset": 57
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 58,
+                  "offset": 57
+                }
+              }
+            },
+            "type": {
+              "type": "NameExpression",
+              "name": "number"
+            },
+            "default": "5000"
           }
         ],
         "default": "{}"
@@ -6365,22 +7327,22 @@
     ],
     "loc": {
       "start": {
-        "line": 599,
+        "line": 609,
         "column": 0
       },
       "end": {
-        "line": 608,
+        "line": 618,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 609,
+          "line": 619,
           "column": 0
         },
         "end": {
-          "line": 618,
+          "line": 628,
           "column": 2
         }
       }
@@ -6656,22 +7618,22 @@
     ],
     "loc": {
       "start": {
-        "line": 620,
+        "line": 630,
         "column": 0
       },
       "end": {
-        "line": 629,
+        "line": 639,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 630,
+          "line": 640,
           "column": 0
         },
         "end": {
-          "line": 630,
+          "line": 640,
           "column": 35
         }
       }
@@ -6967,22 +7929,22 @@
     ],
     "loc": {
       "start": {
-        "line": 666,
+        "line": 676,
         "column": 0
       },
       "end": {
-        "line": 678,
+        "line": 688,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 679,
+          "line": 689,
           "column": 0
         },
         "end": {
-          "line": 682,
+          "line": 692,
           "column": 2
         }
       }
@@ -7243,22 +8205,22 @@
     ],
     "loc": {
       "start": {
-        "line": 684,
+        "line": 694,
         "column": 0
       },
       "end": {
-        "line": 696,
+        "line": 706,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 697,
+          "line": 707,
           "column": 0
         },
         "end": {
-          "line": 700,
+          "line": 710,
           "column": 2
         }
       }
@@ -7519,22 +8481,22 @@
     ],
     "loc": {
       "start": {
-        "line": 702,
+        "line": 712,
         "column": 0
       },
       "end": {
-        "line": 714,
+        "line": 724,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 715,
+          "line": 725,
           "column": 0
         },
         "end": {
-          "line": 718,
+          "line": 728,
           "column": 2
         }
       }
@@ -7795,22 +8757,22 @@
     ],
     "loc": {
       "start": {
-        "line": 720,
+        "line": 730,
         "column": 0
       },
       "end": {
-        "line": 732,
+        "line": 742,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 733,
+          "line": 743,
           "column": 0
         },
         "end": {
-          "line": 736,
+          "line": 746,
           "column": 2
         }
       }
@@ -7959,7 +8921,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Captures a screenshot of the page.",
+              "value": "Captures a screenshot of the page. Appends timeStamp to filename if no filepath given.",
               "position": {
                 "start": {
                   "line": 1,
@@ -7968,8 +8930,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 35,
-                  "offset": 34
+                  "column": 87,
+                  "offset": 86
                 },
                 "indent": []
               }
@@ -7983,8 +8945,8 @@
             },
             "end": {
               "line": 1,
-              "column": 35,
-              "offset": 34
+              "column": 87,
+              "offset": 86
             },
             "indent": []
           }
@@ -7998,21 +8960,21 @@
         },
         "end": {
           "line": 1,
-          "column": 35,
-          "offset": 34
+          "column": 87,
+          "offset": 86
         }
       }
     },
     "tags": [
       {
         "title": "example",
-        "description": "screenshot({path : 'screenshot.png'})",
+        "description": "screenshot()\nscreenshot({path : 'screenshot.png'})",
         "lineNumber": 3
       },
       {
         "title": "param",
         "description": "{path:'screenshot.png'} or {encoding:'base64'}",
-        "lineNumber": 6,
+        "lineNumber": 7,
         "type": {
           "type": "NameExpression",
           "name": "object"
@@ -8021,8 +8983,8 @@
       },
       {
         "title": "returns",
-        "description": "Promise which resolves to buffer with captured screenshot.",
-        "lineNumber": 7,
+        "description": "Promise which resolves to buffer with captured screenshot if {encoding:'base64} given.",
+        "lineNumber": 8,
         "type": {
           "type": "TypeApplication",
           "expression": {
@@ -8036,26 +8998,44 @@
             }
           ]
         }
+      },
+      {
+        "title": "returns",
+        "description": "Object with the description of the action performed",
+        "lineNumber": 9,
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "object"
+            }
+          ]
+        }
       }
     ],
     "loc": {
       "start": {
-        "line": 738,
+        "line": 748,
         "column": 0
       },
       "end": {
-        "line": 746,
+        "line": 758,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 747,
+          "line": 759,
           "column": 0
         },
         "end": {
-          "line": 754,
+          "line": 766,
           "column": 2
         }
       }
@@ -8063,20 +9043,20 @@
     "augments": [],
     "examples": [
       {
-        "description": "screenshot({path : 'screenshot.png'})"
+        "description": "screenshot()\nscreenshot({path : 'screenshot.png'})"
       }
     ],
     "params": [
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 747,
+        "lineNumber": 759,
         "default": "{}"
       },
       {
         "title": "param",
         "name": "null",
-        "lineNumber": 6,
+        "lineNumber": 7,
         "description": {
           "type": "root",
           "children": [
@@ -8146,7 +9126,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Promise which resolves to buffer with captured screenshot.",
+                  "value": "Promise which resolves to buffer with captured screenshot if {encoding:'base64} given.",
                   "position": {
                     "start": {
                       "line": 1,
@@ -8155,8 +9135,8 @@
                     },
                     "end": {
                       "line": 1,
-                      "column": 59,
-                      "offset": 58
+                      "column": 87,
+                      "offset": 86
                     },
                     "indent": []
                   }
@@ -8170,8 +9150,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 59,
-                  "offset": 58
+                  "column": 87,
+                  "offset": 86
                 },
                 "indent": []
               }
@@ -8185,8 +9165,8 @@
             },
             "end": {
               "line": 1,
-              "column": 59,
-              "offset": 58
+              "column": 87,
+              "offset": 86
             }
           }
         },
@@ -8201,6 +9181,74 @@
             {
               "type": "NameExpression",
               "name": "Buffer"
+            }
+          ]
+        }
+      },
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Object with the description of the action performed",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 52,
+                      "offset": 51
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 52,
+                  "offset": 51
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 52,
+              "offset": 51
+            }
+          }
+        },
+        "title": "returns",
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "object"
             }
           ]
         }
@@ -8365,22 +9413,22 @@
     ],
     "loc": {
       "start": {
-        "line": 756,
+        "line": 768,
         "column": 0
       },
       "end": {
-        "line": 765,
+        "line": 777,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 766,
+          "line": 778,
           "column": 0
         },
         "end": {
-          "line": 770,
+          "line": 782,
           "column": 2
         }
       }
@@ -8661,22 +9709,22 @@
     ],
     "loc": {
       "start": {
-        "line": 817,
+        "line": 829,
         "column": 0
       },
       "end": {
-        "line": 828,
+        "line": 840,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 829,
+          "line": 841,
           "column": 0
         },
         "end": {
-          "line": 834,
+          "line": 846,
           "column": 2
         }
       }
@@ -9018,22 +10066,22 @@
     ],
     "loc": {
       "start": {
-        "line": 836,
+        "line": 848,
         "column": 0
       },
       "end": {
-        "line": 847,
+        "line": 859,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 848,
+          "line": 860,
           "column": 0
         },
         "end": {
-          "line": 853,
+          "line": 865,
           "column": 2
         }
       }
@@ -9409,22 +10457,22 @@
     ],
     "loc": {
       "start": {
-        "line": 855,
+        "line": 867,
         "column": 0
       },
       "end": {
-        "line": 866,
+        "line": 878,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 867,
+          "line": 879,
           "column": 0
         },
         "end": {
-          "line": 872,
+          "line": 884,
           "column": 2
         }
       }
@@ -9766,22 +10814,22 @@
     ],
     "loc": {
       "start": {
-        "line": 874,
+        "line": 886,
         "column": 0
       },
       "end": {
-        "line": 885,
+        "line": 897,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 886,
+          "line": 898,
           "column": 0
         },
         "end": {
-          "line": 891,
+          "line": 903,
           "column": 2
         }
       }
@@ -10113,22 +11161,22 @@
     ],
     "loc": {
       "start": {
-        "line": 893,
+        "line": 905,
         "column": 0
       },
       "end": {
-        "line": 903,
+        "line": 915,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 904,
+          "line": 916,
           "column": 0
         },
         "end": {
-          "line": 915,
+          "line": 927,
           "column": 2
         }
       }
@@ -10409,22 +11457,22 @@
     ],
     "loc": {
       "start": {
-        "line": 917,
+        "line": 929,
         "column": 0
       },
       "end": {
-        "line": 929,
+        "line": 941,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 930,
+          "line": 942,
           "column": 0
         },
         "end": {
-          "line": 930,
+          "line": 942,
           "column": 37
         }
       }
@@ -10764,22 +11812,22 @@
     ],
     "loc": {
       "start": {
-        "line": 945,
+        "line": 957,
         "column": 0
       },
       "end": {
-        "line": 956,
+        "line": 968,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 957,
+          "line": 969,
           "column": 0
         },
         "end": {
-          "line": 957,
+          "line": 969,
           "column": 37
         }
       }
@@ -11123,22 +12171,22 @@
     ],
     "loc": {
       "start": {
-        "line": 973,
+        "line": 985,
         "column": 0
       },
       "end": {
-        "line": 986,
+        "line": 998,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 987,
+          "line": 999,
           "column": 0
         },
         "end": {
-          "line": 1028,
+          "line": 1040,
           "column": 2
         }
       }
@@ -11480,22 +12528,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1030,
+        "line": 1042,
         "column": 0
       },
       "end": {
-        "line": 1043,
+        "line": 1055,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1044,
+          "line": 1056,
           "column": 0
         },
         "end": {
-          "line": 1068,
+          "line": 1080,
           "column": 2
         }
       }
@@ -11510,7 +12558,7 @@
       {
         "title": "param",
         "name": "attrValuePairs",
-        "lineNumber": 1044
+        "lineNumber": 1056
       },
       {
         "title": "param",
@@ -11842,22 +12890,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1070,
+        "line": 1082,
         "column": 0
       },
       "end": {
-        "line": 1083,
+        "line": 1095,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1084,
+          "line": 1096,
           "column": 0
         },
         "end": {
-          "line": 1109,
+          "line": 1121,
           "column": 2
         }
       }
@@ -11872,7 +12920,7 @@
       {
         "title": "param",
         "name": "attrValuePairs",
-        "lineNumber": 1084
+        "lineNumber": 1096
       },
       {
         "title": "param",
@@ -12194,22 +13242,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1111,
+        "line": 1123,
         "column": 0
       },
       "end": {
-        "line": 1121,
+        "line": 1133,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1122,
+          "line": 1134,
           "column": 0
         },
         "end": {
-          "line": 1126,
+          "line": 1138,
           "column": 2
         }
       }
@@ -12480,22 +13528,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1128,
+        "line": 1140,
         "column": 0
       },
       "end": {
-        "line": 1137,
+        "line": 1149,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1138,
+          "line": 1150,
           "column": 0
         },
         "end": {
-          "line": 1138,
+          "line": 1150,
           "column": 35
         }
       }
@@ -12760,22 +13808,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1165,
+        "line": 1177,
         "column": 0
       },
       "end": {
-        "line": 1173,
+        "line": 1185,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1174,
+          "line": 1186,
           "column": 0
         },
         "end": {
-          "line": 1180,
+          "line": 1192,
           "column": 2
         }
       }
@@ -13039,22 +14087,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1182,
+        "line": 1194,
         "column": 0
       },
       "end": {
-        "line": 1190,
+        "line": 1202,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1191,
+          "line": 1203,
           "column": 0
         },
         "end": {
-          "line": 1199,
+          "line": 1211,
           "column": 2
         }
       }
@@ -13318,22 +14366,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1201,
+        "line": 1213,
         "column": 0
       },
       "end": {
-        "line": 1209,
+        "line": 1221,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1210,
+          "line": 1222,
           "column": 0
         },
         "end": {
-          "line": 1218,
+          "line": 1230,
           "column": 2
         }
       }
@@ -13597,22 +14645,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1220,
+        "line": 1232,
         "column": 0
       },
       "end": {
-        "line": 1228,
+        "line": 1240,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1229,
+          "line": 1241,
           "column": 0
         },
         "end": {
-          "line": 1237,
+          "line": 1249,
           "column": 2
         }
       }
@@ -13876,22 +14924,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1239,
+        "line": 1251,
         "column": 0
       },
       "end": {
-        "line": 1247,
+        "line": 1259,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1248,
+          "line": 1260,
           "column": 0
         },
         "end": {
-          "line": 1258,
+          "line": 1270,
           "column": 2
         }
       }
@@ -14139,22 +15187,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1260,
+        "line": 1272,
         "column": 0
       },
       "end": {
-        "line": 1268,
+        "line": 1280,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1269,
+          "line": 1281,
           "column": 0
         },
         "end": {
-          "line": 1269,
+          "line": 1281,
           "column": 81
         }
       }
@@ -14430,22 +15478,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1271,
+        "line": 1283,
         "column": 0
       },
       "end": {
-        "line": 1279,
+        "line": 1291,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1280,
+          "line": 1292,
           "column": 0
         },
         "end": {
-          "line": 1280,
+          "line": 1292,
           "column": 83
         }
       }
@@ -14721,22 +15769,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1282,
+        "line": 1294,
         "column": 0
       },
       "end": {
-        "line": 1290,
+        "line": 1302,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1291,
+          "line": 1303,
           "column": 0
         },
         "end": {
-          "line": 1291,
+          "line": 1303,
           "column": 85
         }
       }
@@ -15012,22 +16060,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1293,
+        "line": 1305,
         "column": 0
       },
       "end": {
-        "line": 1301,
+        "line": 1313,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1302,
+          "line": 1314,
           "column": 0
         },
         "end": {
-          "line": 1302,
+          "line": 1314,
           "column": 95
         }
       }
@@ -15243,22 +16291,22 @@
     "tags": [],
     "loc": {
       "start": {
-        "line": 1304,
+        "line": 1316,
         "column": 0
       },
       "end": {
-        "line": 1306,
+        "line": 1318,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1307,
+          "line": 1319,
           "column": 0
         },
         "end": {
-          "line": 1312,
+          "line": 1324,
           "column": 2
         }
       }
@@ -15347,22 +16395,22 @@
     "tags": [],
     "loc": {
       "start": {
-        "line": 1314,
+        "line": 1326,
         "column": 0
       },
       "end": {
-        "line": 1316,
+        "line": 1328,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1317,
+          "line": 1329,
           "column": 0
         },
         "end": {
-          "line": 1322,
+          "line": 1334,
           "column": 2
         }
       }
@@ -15480,22 +16528,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1324,
+        "line": 1336,
         "column": 0
       },
       "end": {
-        "line": 1337,
+        "line": 1349,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1338,
+          "line": 1350,
           "column": 0
         },
         "end": {
-          "line": 1341,
+          "line": 1353,
           "column": 2
         }
       }
@@ -15788,22 +16836,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1343,
+        "line": 1355,
         "column": 0
       },
       "end": {
-        "line": 1351,
+        "line": 1363,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1352,
+          "line": 1364,
           "column": 0
         },
         "end": {
-          "line": 1352,
+          "line": 1364,
           "column": 50
         }
       }
@@ -16043,22 +17091,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1354,
+        "line": 1366,
         "column": 0
       },
       "end": {
-        "line": 1362,
+        "line": 1374,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1363,
+          "line": 1375,
           "column": 0
         },
         "end": {
-          "line": 1363,
+          "line": 1375,
           "column": 49
         }
       }
@@ -16319,22 +17367,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1365,
+        "line": 1377,
         "column": 0
       },
       "end": {
-        "line": 1373,
+        "line": 1385,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1374,
+          "line": 1386,
           "column": 0
         },
         "end": {
-          "line": 1374,
+          "line": 1386,
           "column": 27
         }
       }
@@ -16349,7 +17397,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1374
+        "lineNumber": 1386
       }
     ],
     "properties": [],
@@ -16512,22 +17560,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1376,
+        "line": 1388,
         "column": 0
       },
       "end": {
-        "line": 1384,
+        "line": 1396,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1385,
+          "line": 1397,
           "column": 0
         },
         "end": {
-          "line": 1385,
+          "line": 1397,
           "column": 29
         }
       }
@@ -16542,7 +17590,7 @@
       {
         "title": "param",
         "name": "e",
-        "lineNumber": 1385
+        "lineNumber": 1397
       }
     ],
     "properties": [],
@@ -16696,22 +17744,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1387,
+        "line": 1399,
         "column": 0
       },
       "end": {
-        "line": 1395,
+        "line": 1407,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1396,
+          "line": 1408,
           "column": 0
         },
         "end": {
-          "line": 1396,
+          "line": 1408,
           "column": 33
         }
       }
@@ -16866,22 +17914,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1645,
+        "line": 1657,
         "column": 0
       },
       "end": {
-        "line": 1657,
+        "line": 1669,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1683,
+          "line": 1695,
           "column": 0
         },
         "end": {
-          "line": 1712,
+          "line": 1724,
           "column": 1
         }
       }
@@ -17094,22 +18142,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1659,
+        "line": 1671,
         "column": 0
       },
       "end": {
-        "line": 1672,
+        "line": 1684,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1683,
+          "line": 1695,
           "column": 0
         },
         "end": {
-          "line": 1712,
+          "line": 1724,
           "column": 1
         }
       }
@@ -17339,22 +18387,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1674,
+        "line": 1686,
         "column": 0
       },
       "end": {
-        "line": 1682,
+        "line": 1694,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1683,
+          "line": 1695,
           "column": 0
         },
         "end": {
-          "line": 1712,
+          "line": 1724,
           "column": 1
         }
       }
@@ -17395,26 +18443,26 @@
       ],
       "loc": {
         "start": {
-          "line": 1684,
+          "line": 1696,
           "column": 4
         },
         "end": {
-          "line": 1687,
+          "line": 1699,
           "column": 7
         }
       },
       "context": {
         "loc": {
           "start": {
-            "line": 1688,
+            "line": 1700,
             "column": 4
           },
           "end": {
-            "line": 1692,
+            "line": 1704,
             "column": 5
           }
         },
-        "sortKey": "undefined 00001688",
+        "sortKey": "undefined 00001700",
         "code": "{\n    /**\n     * @class\n     * @ignore\n     */\n    constructor(condition, value, desc) {\n        this.condition = condition;\n        this.value = value;\n        this.desc = desc;\n    }\n\n    async validNodes(nodeId) {\n        let matchingNode, minDiff = Infinity;\n        const results = await this.value;\n        for (const result of results) {\n            if (await this.condition(nodeId, result.result)) {\n                const diff = await boundingBox.getPositionalDifference(dom, nodeId, result.elem);\n                if (diff < minDiff) {\n                    minDiff = diff;\n                    matchingNode = { elem: result.elem, dist: diff };\n                }\n            }\n        }\n        return matchingNode;\n    }\n\n    toString() {\n        return this.desc;\n    }\n}"
       },
       "augments": [],
@@ -18180,22 +19228,22 @@
     ],
     "loc": {
       "start": {
-        "line": 1714,
+        "line": 1726,
         "column": 0
       },
       "end": {
-        "line": 1733,
+        "line": 1745,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1735,
+          "line": 1747,
           "column": 0
         },
         "end": {
-          "line": 1742,
+          "line": 1754,
           "column": 2
         }
       }
