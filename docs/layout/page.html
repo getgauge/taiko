@@ -20,10 +20,26 @@
   {{~> navbar }}
   <div class="container-fluid flex-container">    
     <div class="sidebar">
-      <div class="scrollable">
+
+      <div class="search-bar">
+        <form class="search-form">
+          <label for="#search" class="search-label">
+            <img src="{{asset 'images/search.svg'}}" class="search-icon"/> Search Docs
+          </label>
+          <input type="search" id="search"/>
+        </form>
+      </div>
+        
+      <div class="scrollable menu-list">
         {{~> toc }}
       </div>
+
+      <div class="sidebar-footer">
+          <p class="powered-by">Powered by <a href="#"><img src="{{asset 'images/gauge.svg'}}" /></a></p>
+          <p class="license-text">Licensed under the MIT License</p>
+      </div>
     </div>
+
     <div class="scrollable main-content">
       {{~> header }}
       <div class="content-section">
