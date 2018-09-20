@@ -18,7 +18,6 @@ p {
 
 li a {
   color: rgb(85, 85, 85);
-  border-bottom: 1px dotted #ccc;
 }
 
 nav {
@@ -40,12 +39,11 @@ nav {
   color: #fff;
   line-height: 75px;
   padding: 0px 30px; 
-  color: rgb(245, 193, 14);
-  margin: 0 50px;
+  margin: 0;
 }
 
 .logo:hover, .logo:active, .logo:focus{
-  color: rgb(245, 193, 14);
+  color: #fff;
   text-decoration: none;
 }
 
@@ -58,7 +56,7 @@ nav {
 
 .nav-list {
   font-size: 17px;
-  padding: 0px 0px 50px;
+  /* padding: 0px 0px 50px; */
 }
 
 
@@ -67,6 +65,8 @@ nav {
   flex: 1 1 auto;
   flex-wrap: wrap;
   position: relative;
+  z-index: 99;
+  padding: 0;
 }
 
 .sidebar {
@@ -86,41 +86,32 @@ nav {
   left: 0;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .sidebar {
-    flex: 2.5;
+    width: 320px;
     display: flex;
     position: relative;
     left: 0;
     top: 65px;
   }
 }
-
-@media (min-width: 1280px) {
-  .sidebar {
-    flex: 1.5;
-    display: flex;
-    position: relative;
-    left: 0;
-    top: 65px;
-  }
-}
-
-@media (min-width: 1670px) {
-  .sidebar {
-    flex: 1;
-    display: flex;
-    position: relative;
-    left: 0;
-    top: 65px;
-  }
-}
-
-
 
 .main-content {
   flex: 6;
-  padding: 50px !important;
+  margin: 150px auto;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin: 56px auto;
+  }
+
+}
+
+@media (min-width: 1200px) {
+  .main-content {
+    padding: 50px 200px 50px 50px !important;
+  }  
 }
 
 
@@ -129,6 +120,12 @@ nav {
   padding: 10px;
   border-left: 1px dashed #ccc;
   transition: all 0.25s linear;
+  font-size: 14px;
+}
+
+.sidebar-header-2 a {
+  display: block;
+  width: 100%;
 }
 
 .sidebar-header-2 a:hover {
@@ -136,27 +133,28 @@ nav {
   color: rgb(85, 85, 85);
   border-bottom: 2px solid rgb(245, 193, 14);
   text-decoration: none;
+  font-weight: 600;
 }
 
 .scrollable {
   max-height: 98vh;
   overflow-y: scroll;
-  padding: 50px 20px;
+  padding: 50px 33px;
   width: 100%;
-}
-
-.banner-text-container { 
-  width: 65%;
-  padding: 20px 0px;
-  margin: 70px 0px 0px;
 }
 
 .get-started {
   margin: 65px 0px;
 }
 
+.banner-heading {
+  font-size: 36px;
+  font-family: "URWGeometric-ExtraBold";
+  color: #1E1E1E;
+}
+
 .banner-text-container_desc {
-  font-size: 22px;
+  font-size: 16px;
 }
 
 code pre, .hljs {
@@ -165,20 +163,32 @@ code pre, .hljs {
   font-size: 16px;
 }
 
+.menu-title{
+  font-size: 14px;
+  color: #999999;
+  text-transform: uppercase;
+  font-family: "Open Sans";
+  font-weight: Bold;
+} 
+
+.collapsible-header {
+  margin-top: 0px;
+}
+
 .collapsible-header a{
   color: rgb(51, 51, 51);
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .collapse-header_text {
-  border-bottom: 1px solid #ccc;
   padding-bottom: 5px;
 }
 
 .collapsible-header a:hover, .collapsible-header a:focus {
   color: rgb(51, 51, 51);
   text-decoration: none;
+  font-weight: 400;
 }
 
 .collapse-icon {
@@ -186,6 +196,11 @@ code pre, .hljs {
   border: 1px solid #ccc;
   padding: 0px 5px;
 }
+
+.contribute-link, .contribute-link:hover {
+  color: #555555;
+  text-decoration: none;
+} 
 
 .sidebar {
   height: 100vh;
@@ -198,11 +213,11 @@ code pre, .hljs {
   border: none;
   background: transparent;
   position: absolute;
-  right: 15px;
-  top: 25px;
+  right: 30px;
+  top: 30px;
 }
 
-@media (min-width: 992px)  {
+@media (min-width: 768px)  {
   .hamburger {
     display: none;
   }
@@ -212,10 +227,115 @@ code pre, .hljs {
   width: 25px;
   height: 1px;
   margin: 5px auto;
-  background: #fff;
+  background: #000;
 }
-
 
 .content-section h2 {
   margin: 75px 0px 0px;
+}
+
+.search-bar {
+  width: 100%;
+  position: fixed;
+  padding: 25px 0;
+  background: #fff;
+  z-index: 1000;
+  top: 60px;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-form {
+  position: relative;
+  padding: 0px 20px;
+}
+
+#search  {
+  border-radius: 3px;
+  width: 80%;
+  position: relative;
+  background: transparent;
+  display: block;
+  margin: 0;
+  outline: none;
+  border: 1px solid #CCCCCC;
+  box-shadow: none;
+  padding: 8px;
+}
+
+.search-label {
+  position: absolute;
+  left: 46px;
+  top: 8px;
+  line-height: 1.5;
+  color: #999999;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: 'Open Sans';
+}
+
+.search-icon {
+  vertical-align: baseline;
+}
+
+@media (min-width: 768px) {
+  .search-bar {
+    width: 319px;
+    top: 100px;
+  } 
+
+  #search {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+
+.menu-list {
+  margin: 100px 0px 120px;
+}
+
+.sidebar-footer {
+  position: fixed;
+  bottom: 4px;
+  margin: 0px 33px;
+  padding: 15px 0px;
+  background: #fff;
+  z-index: 15;
+  border-top: 1px solid #CCCC;
+  width: 266px;
+}
+
+.powered-by {
+  color: #333333;
+  font-size: 12px;
+}
+
+.license-text {
+  color: #999999;
+  font-size: 10px;
+}
+
+.content-section h2 {
+  margin: 75px 0px 0px;
+}
+
+.note {
+  border: 1px solid #FFCC00;
+  padding: 10px;
+  margin: 10px 0;
+  border-left: 3px solid #FFCC00;
+}
+
+.note-heading {
+  font-weight: bold;
+}
+
+.highlight {
+  background: #F2F2F2;
+  color: #1E1E1E;
+  text-decoration: none;
+}
+
+.hightlight::hover {
+  text-decoration: none;
 }

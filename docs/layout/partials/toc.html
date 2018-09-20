@@ -1,3 +1,19 @@
+
+<h3 class="menu-title">Introduction</h3>
+<ul class="toc nav nav-list">
+    <h3 class="collapsible-header"> 
+        <a href="#overview" data-toggle="collapse" aria-expanded="false">
+            <span class="collapse-icon">+</span>
+            <span class="collapse-header_text">Overview</span>
+        </a>
+    </h3>    
+    <div class="collapse in" id="overview">
+        <li class="sidebar-header-2"><a href="#whats-taiko"> - What's Taiko</a></li>
+        <li class="sidebar-header-2"><a href="#features">   - Features </a></li>
+    </div>
+</ul>
+
+<h3 class="menu-title">API</h3>
 <ul class="toc nav nav-list">
 {{#each toc}}
     <h3 class="collapsible-header"> 
@@ -17,14 +33,5 @@
 {{/each}}
 </ul>
 
-<script>
-    $(document).ready(function() {
-        $('.collapsible-header a').click(function(){
-            if($(this).attr('aria-expanded') == "false") {
-                $(this).find('.collapse-icon').text('-')
-            }else {
-                $(this).find('.collapse-icon').text('+')
-            }
-        });
-    })
-</script>
+<h3 class="menu-title">Contribute</h3>
+<a href="#" class="collapsible-header contribute-link">Contributing</a>

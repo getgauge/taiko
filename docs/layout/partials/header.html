@@ -1,13 +1,23 @@
-<div class="banner-text-container">
-  <p class="banner-text-container_desc">Taiko is a node library with a clear and concise API to automate the chrome browser. Tests written in Taiko are highly readable and maintainable. Taiko is built ground up to test modern web applications, and knows how to handle AJAX and dynamic content.</p>
-  <p class="banner-text-container_desc">
-    Taiko comes with a REPL to easily record and write tests. Taiko’s unique API and selectors allows you to write tests without peeking into web application’s source code or dealing with XPaths.
-  </p>
+<div class="banner-text-container" id="whats-taiko">
+  <h1 class="banner-heading"> Reliable browser automation </h1>
+  <p class="banner-text-container_desc">Taiko is a browser automation tool built by the team behind Gauge by ThoughtWorks. It is a JavaScript library (on Node.js) built with a clear and concise API to automate the chrome browser.</p>
 </div>
 <hr />
-<section class="get-started">
-  <h2>Get Started with Taiko</h2>
-  <h3>INSTALLATION</h3>
+
+<section class="features" id="features">
+  <h3>Features</h3>    
+  <p>
+    Tests written in Taiko are highly readable and maintainable. Taiko is built ground up to test modern web applications, and knows how to handle AJAX and dynamic content.
+  </p>
+
+  <p>
+      Taiko comes with a REPL to easily record and write tests. Taiko’s unique API and selectors allows you to write tests without peeking into web application’s source code or dealing with XPaths.
+  </p>
+</section>
+
+<section class="get-started" id="get-started">
+  <h2>Installation</h2>
+  <h3>Get Started with Taiko </h3>
   <div class="code-section">
     <p>Install with npm globally:</p>
     <code>
@@ -24,4 +34,40 @@
       </pre>
     </code>
 </div>
+<div class="note">
+  <span class="note-heading">Note:</span>
+  <p>
+    On Windows, make sure that the location <span class="highlight">%AppData%\npm </span>(or wherever npm ends up installing the module on your Windows flavor) is present in PATH environment variable.
+  </p>
+</div>
+<div class="note">
+    <span class="note-heading">Note:</span>
+    <p>
+        On Linux, install taiko to a <a href="https://nodejs.org/api/modules.html#modules_loading_from_the_global_folders" class="highlight">[NODE_PATH]</a> with executable permission.
+    </p>
+</div>
+</section>
+
+<section class="source-install" id="source">
+  <h2>Install from Source</h2>
+  <code>
+    <pre>
+        $ git clone https://github.com/getgauge/taiko.git
+        $ npm install -g <path_to_taiko_repo>
+    </pre>
+  </code>
+  <h3>
+    Run tests
+  </h3>
+  <p>Test are written using gauge. Install and setup gauge following instructions here</p>
+  <code>
+    <pre>
+        git clone https://github.com/getgauge-examples/js-taiko.git
+        cd js-taiko
+        npm install
+    </pre>
+  </code>
+  <p>
+    <span class="highlight">gauge run specs</span> or <span class="highlight">gauge run specs --tags=\!knownIssue</span> (to ignore specs for knownissue)
+  </p>
 </section>
