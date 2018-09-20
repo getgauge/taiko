@@ -39,11 +39,11 @@ nav {
   color: #fff;
   line-height: 75px;
   padding: 0px 30px; 
-  margin: 0 50px;
+  margin: 0;
 }
 
 .logo:hover, .logo:active, .logo:focus{
-  color: rgb(245, 193, 14);
+  color: #fff;
   text-decoration: none;
 }
 
@@ -98,13 +98,19 @@ nav {
 
 .main-content {
   flex: 6;
-  padding: 50px !important;
-  margin: 60px auto;
+  margin: 150px auto;
 }
 
 @media (min-width: 768px) {
   .main-content {
-    margin: 0;
+    margin: 75px auto;
+  }
+
+}
+
+@media (min-width: 1200px) {
+  .main-content {
+    padding: 50px 200px 50px 50px !important;
   }  
 }
 
@@ -133,14 +139,8 @@ nav {
 .scrollable {
   max-height: 98vh;
   overflow-y: scroll;
-  padding: 50px 20px;
+  padding: 50px 33px;
   width: 100%;
-}
-
-.banner-text-container { 
-  width: 65%;
-  padding: 20px 0px;
-  margin: 70px 0px 0px;
 }
 
 .get-started {
@@ -154,7 +154,7 @@ nav {
 }
 
 .banner-text-container_desc {
-  font-size: 22px;
+  font-size: 16px;
 }
 
 code pre, .hljs {
@@ -213,7 +213,7 @@ code pre, .hljs {
   border: none;
   background: transparent;
   position: absolute;
-  right: 50px;
+  right: 30px;
   top: 50px;
 }
 
@@ -297,7 +297,7 @@ code pre, .hljs {
 .sidebar-footer {
   position: fixed;
   bottom: 4px;
-  margin: 0px 20px;
+  margin: 0px 33px;
   padding: 15px 0px;
   background: #fff;
   z-index: 15;
@@ -317,4 +317,25 @@ code pre, .hljs {
 
 .content-section h2 {
   margin: 75px 0px 0px;
+}
+
+.note {
+  border: 1px solid #FFCC00;
+  padding: 10px;
+  margin: 10px 0;
+  border-left: 3px solid #FFCC00;
+}
+
+.note-heading {
+  font-weight: bold;
+}
+
+.hightlight {
+  background: #F2F2F2;
+  color: #1E1E1E;
+  text-decoration: none;
+}
+
+.hightlight::hover {
+  text-decoration: none;
 }
