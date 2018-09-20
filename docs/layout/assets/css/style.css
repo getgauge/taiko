@@ -103,7 +103,7 @@ nav {
 
 @media (min-width: 768px) {
   .main-content {
-    margin: 75px auto;
+    margin: 56px auto;
   }
 
 }
@@ -214,7 +214,7 @@ code pre, .hljs {
   background: transparent;
   position: absolute;
   right: 30px;
-  top: 50px;
+  top: 30px;
 }
 
 @media (min-width: 768px)  {
@@ -237,7 +237,7 @@ code pre, .hljs {
 .search-bar {
   width: 100%;
   position: fixed;
-  padding: 44px 0;
+  padding: 25px 0;
   background: #fff;
   z-index: 1000;
   top: 60px;
@@ -330,7 +330,7 @@ code pre, .hljs {
   font-weight: bold;
 }
 
-.hightlight {
+.highlight {
   background: #F2F2F2;
   color: #1E1E1E;
   text-decoration: none;

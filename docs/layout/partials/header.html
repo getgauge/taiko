@@ -15,7 +15,7 @@
   </p>
 </section>
 
-<section class="get-started" id="">
+<section class="get-started" id="get-started">
   <h2>Installation</h2>
   <h3>Get Started with Taiko </h3>
   <div class="code-section">
@@ -37,13 +37,37 @@
 <div class="note">
   <span class="note-heading">Note:</span>
   <p>
-    On Windows, make sure that the location <span class="hightlight">%AppData%\npm </span>(or wherever npm ends up installing the module on your Windows flavor) is present in PATH environment variable.
+    On Windows, make sure that the location <span class="highlight">%AppData%\npm </span>(or wherever npm ends up installing the module on your Windows flavor) is present in PATH environment variable.
   </p>
 </div>
 <div class="note">
     <span class="note-heading">Note:</span>
     <p>
-        On Linux, install taiko to a <a href="https://nodejs.org/api/modules.html#modules_loading_from_the_global_folders" class="hightlight">[NODE_PATH]</a> with executable permission.
+        On Linux, install taiko to a <a href="https://nodejs.org/api/modules.html#modules_loading_from_the_global_folders" class="highlight">[NODE_PATH]</a> with executable permission.
     </p>
 </div>
+</section>
+
+<section class="source-install" id="source">
+  <h2>Install from Source</h2>
+  <code>
+    <pre>
+        $ git clone https://github.com/getgauge/taiko.git
+        $ npm install -g <path_to_taiko_repo>
+    </pre>
+  </code>
+  <h3>
+    Run tests
+  </h3>
+  <p>Test are written using gauge. Install and setup gauge following instructions here</p>
+  <code>
+    <pre>
+        git clone https://github.com/getgauge-examples/js-taiko.git
+        cd js-taiko
+        npm install
+    </pre>
+  </code>
+  <p>
+    <span class="highlight">gauge run specs</span> or <span class="highlight">gauge run specs --tags=\!knownIssue</span> (to ignore specs for knownissue)
+  </p>
 </section>
