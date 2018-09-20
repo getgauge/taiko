@@ -65,6 +65,7 @@ nav {
   flex: 1 1 auto;
   flex-wrap: wrap;
   position: relative;
+  z-index: 99;
   padding: 0;
 }
 
@@ -85,96 +86,26 @@ nav {
   left: 0;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .sidebar {
-    flex: 2.5;
+    width: 320px;
     display: flex;
     position: relative;
     left: 0;
     top: 65px;
   }
 }
-
-@media (min-width: 1280px) {
-  .sidebar {
-    flex: 1.5;
-    display: flex;
-    position: relative;
-    left: 0;
-    top: 65px;
-  }
-}
-
-@media (min-width: 1670px) {
-  .sidebar {
-    flex: 1;
-    display: flex;
-    position: relative;
-    left: 0;
-    top: 65px;
-  }
-}
-
-
-.flex-container {
-  display: flex;
-  flex: 1 1 auto;
-  flex-wrap: wrap;
-  position: relative;
-}
-
-.sidebar {
-  flex: none;
-  display: block;
-  width: 100%;
-  height: 100vh ;
-  position: absolute;
-  left: -100%;
-  top: 65px;
-  background: white;
-  transition: all 0.25s linear;
-  z-index: 100;
-}
-
-.sidebar-show {
-  left: 0;
-}
-
-@media (min-width: 992px) {
-  .sidebar {
-    flex: 2.5;
-    display: flex;
-    position: relative;
-    left: 0;
-    top: 65px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .sidebar {
-    flex: 1.5;
-    display: flex;
-    position: relative;
-    left: 0;
-    top: 65px;
-  }
-}
-
-@media (min-width: 1670px) {
-  .sidebar {
-    flex: 1;
-    display: flex;
-    position: relative;
-    left: 0;
-    top: 65px;
-  }
-}
-
-
 
 .main-content {
   flex: 6;
   padding: 50px !important;
+  margin: 60px auto;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin: 0;
+  }  
 }
 
 
@@ -282,11 +213,11 @@ code pre, .hljs {
   border: none;
   background: transparent;
   position: absolute;
-  right: 15px;
-  top: 25px;
+  right: 50px;
+  top: 50px;
 }
 
-@media (min-width: 992px)  {
+@media (min-width: 768px)  {
   .hamburger {
     display: none;
   }
@@ -296,7 +227,7 @@ code pre, .hljs {
   width: 25px;
   height: 1px;
   margin: 5px auto;
-  background: #fff;
+  background: #000;
 }
 
 .content-section h2 {
@@ -304,11 +235,12 @@ code pre, .hljs {
 }
 
 .search-bar {
-  width: 13%;
+  width: 100%;
   position: fixed;
   padding: 44px 0;
   background: #fff;
-  z-index: 10;
+  z-index: 1000;
+  top: 60px;
   border-bottom: 1px solid #ccc;
 }
 
@@ -319,11 +251,11 @@ code pre, .hljs {
 
 #search  {
   border-radius: 3px;
-  width: 100%;
+  width: 80%;
   position: relative;
   background: transparent;
   display: block;
-  margin: 0 auto;
+  margin: 0;
   outline: none;
   border: 1px solid #CCCCCC;
   box-shadow: none;
@@ -345,8 +277,21 @@ code pre, .hljs {
   vertical-align: baseline;
 }
 
+@media (min-width: 768px) {
+  .search-bar {
+    width: 319px;
+    top: 100px;
+  } 
+
+  #search {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+
 .menu-list {
-  margin-top: 100px;
+  margin: 100px 0px 120px;
 }
 
 .sidebar-footer {
@@ -357,7 +302,7 @@ code pre, .hljs {
   background: #fff;
   z-index: 15;
   border-top: 1px solid #CCCC;
-  width: 11%;
+  width: 266px;
 }
 
 .powered-by {
