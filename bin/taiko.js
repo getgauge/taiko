@@ -5,7 +5,7 @@ const util = require('util');
 const fs = require('fs');
 const taiko = require('../lib/taiko');
 const repl = require('../lib/repl');
-const { removeQuotes, symbols } = require('../lib/util');
+const { removeQuotes, symbols, isTaikoRunner } = require('../lib/util');
 const observeAgrv = ['--observe','--slow-mo','--watch'];
 const argv = process.argv;
 let repl_mode = false;
@@ -20,13 +20,15 @@ async function exitOnUnhandledFailures(e){
 
 process.on('unhandledRejection', exitOnUnhandledFailures);
 process.on('uncaughtException',exitOnUnhandledFailures);
-
-if (process.argv.length > 2){
-    runFile(process.argv[2]);
-}else{
-    repl_mode = true;
-    repl.initiaize();
-}
+if(isTaikoRunner(process.argv[1]))
+    if (process.argv.length > 2){
+        runFile(process.argv[2]);
+    }else{
+        repl_mode = true;
+        repl.initiaize();
+    }
+else
+    module.exports = taiko;    
 
 function runFile(file) {
     validate(file);
