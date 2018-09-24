@@ -5,83 +5,185 @@
 
 ![Taiko REPL](https://user-images.githubusercontent.com/54427/43075023-f4d18878-8e9c-11e8-91b2-227a3d02e0f6.gif)
 
-## Getting started
+# What’s Taiko?
 
-```
-$ npm install -g taiko
-```
+Taiko is a free and open source browser automation tool built by the team behind [Gauge](https://gauge.org/) by [ThoughtWorks](https://www.thoughtworks.com/). Taiko is a node library with a clear and concise API to automate the chrome browser. Tests written in Taiko are highly readable and maintainable. 
 
-> On Windows, make sure that the location `%AppData%\npm`(or wherever `npm` ends up installing the module on your Windows flavor) is present in `PATH` environment variable.
+With taiko it’s easy to
 
-> On Linux, install `taiko` to a [`NODE_PATH`](https://nodejs.org/api/modules.html#modules_loading_from_the_global_folders) with executable permission.
+* Get Started
+* Record/Write/Run tests
 
-## Usage
+Taiko’s smart selectors make tests reliable by adapting to changes in the structure of your web application. With Taiko there’s no need for id/css/xpath selectors or adding explicit waits (for XHR requests) in test scripts.
 
-#### Command line
+## Features
 
-Use the [Read–eval–print Loop](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) to record a script.
+Taiko is built ground up to test modern web applications. Here’s a list of a few unique features that sets it apart from other browser automation tools. 
 
-```js
-$ taiko
+* Easy Installation
+* Interactive Recorder
+* Smart Selectors
+* Handle XHR and dynamic content
+* Request/Response stubbing and mocking
 
-> openBrowser()
-✔ Browser and page initialized
+# Getting Started
 
-> goto("http://todomvc.com/examples/react/#/");
-✔ Navigated to url "http://todomvc.com/examples/react/#/"
+## Easy Installation
 
-> write("automate with taiko");
-✔ Wrote automate with taiko into the focused element.
+Taiko works on Windows, MacOS and linux. You only need to have [Node.js](https://nodejs.org/en/) installed in your system to start writing Taiko scripts in JavaScript. After you’ve installed Node.js open a terminal application (or powershell in the case of windows) and install Taiko using npm with the command
 
-> press("Enter");
-✔ Pressed the Enter key
+    $ npm install -g taiko
 
-> click(checkBox(near("automate with taiko")));
-✔ Clicked checkbox Near automate with taiko
+This installs Taiko and the latest version of Chromium browser. We are all set to do some testing!
 
-> .code
-const { openBrowser, goto, write, press, near, checkBox, click } = require('taiko');
+## Interactive Recorder
 
-(async () => {
-    await openBrowser({headless:false});
-    await goto("http://todomvc.com/examples/react/#/");
-    await write("automate with taiko");
-    await press("Enter");
-    await click(checkBox(near("automate with taiko")));
-    closeBrowser();
-})();
+Taiko comes with a Recorder that’s a REPL for writing test scripts. We can use Taiko’s JavaScript API to control the browser from the REPL. To launch the REPL type taiko in your favorite terminal application
 
-> .code code.js
-```
+    $ taiko
+    Version: 0.2.0 (Chromium:69.0.3476.0)
+    Type .api for help and .exit to quit
+    > 
 
-### Running a taiko script
+This launches the Taiko prompt. We can now use Taiko’s API as commands in this prompt. For example, launch a Chromium browser instance using
 
-```
-$ taiko code.js
-```
+    > openBrowser()
 
-### As a Module
-```
-$ npm install <path_to_taiko_repo> --save
-$ node code.js
-```
+Let’s automate this Chrome browser instance with commands, for example let’s make the browser search google for something. 
 
-## Install from source
+    > goto(“google.com”)
+    > write(“taiko test automation”)
+    > click(“Google Search”)
 
-```
-$ git clone https://github.com/getgauge/taiko.git
-$ npm install -g <path_to_taiko_repo>
-```
+These commands make the browser go to google’s home page, type the text “taiko test automation” and click on the “Google Search” button. You can see the browser performing these actions as you type and press enter for each command.
 
-### Run tests
-Test are written using [gauge](https://gauge.org). Install and setup gauge following instructions [here](https://gauge.org/get_started/)
+Taiko’s REPL keeps a history of all successful commands. Once we finish a flow of execution, we can generate a test script using the special command .code 
 
-```
-git clone https://github.com/getgauge-examples/js-taiko.git
-cd js-taiko
-npm install
-```
-```gauge run specs``` or ```gauge run specs --tags=\!knownIssue``` (to ignore specs for knownissue)
+    > .code
+    const { openBrowser, goto, write, click } = require('taiko');
+
+    (async () => {
+        try {
+            await openBrowser();
+            await goto("google.com");
+            await write("taiko test automation");
+            await click("Google Search");
+        } catch (e) {
+                console.error(e);
+        } finally {
+                closeBrowser();
+        }
+    })();
+
+Taiko generates readable and maintainable JavaScript code. Copy and modify this code or
+save it directly to a file using
+
+    > .code googlesearch.js
+
+We can choose to continue automating or finish the recording using 
+
+    > .exit
+
+To run a Taiko script pass the file as an argument to taiko
+
+    $ taiko googlesearch.js
+    ✔ Browser opened
+    ✔ Navigated to url "http://google.com"
+    ✔ Wrote taiko test automation into the focused element.
+    ✔ Clicked element containing text "Google Search"
+    ✔ Browser closed
+
+By default Taiko runs the script in headless mode, that means it does not launch a browser window. This makes it easy to run Taiko in containers a.k.a Docker. To view the browser when the script executes use 
+
+    $ taiko googlesearch.js --observe
+
+Taiko’s REPL also documents all the API’s. To view all available API’s use the special command `.api`
+
+    $ taiko
+    Version: 0.2.0 (Chromium:69.0.3476.0)
+    Type .api for help and .exit to quit
+    > .api
+    Browser actions
+        openBrowser, closeBrowser, client, switchTo, setViewPort, openTab, closeTab
+    ...
+
+To see more details of an API along with examples use
+
+    >.api openBrowser
+
+    Launches a browser with a tab. The browser will be closed when the parent node.js process is closed.
+
+    Example:
+        openBrowser()
+        openBrowser({ headless: false })
+        openBrowser({args:['--window-size=1440,900']})
+
+
+## Smart Selectors
+
+Taiko’s API treats the browser as a black box. With Taiko we can write scripts by looking at a web page and without inspecting it’s source code For example on `google.com` the command
+
+    > click(“Google Search”)
+
+clicks on any element with the text `Google Search` (a button on the page at https://google.com). Taiko’s API mimics user interactions with the browser. For example if you want to write into an element that’s currently in focus use 
+
+    > write(“something”)
+
+Or if you want to write into a specific text field 
+
+    > write(“something”, into(textField({placeholder: “Username”})))
+
+With Taiko’s API we can avoid using ids/css/xpath selectors to create reliable tests that don’t break with changes in the web page’s structure.
+
+We can also use Taiko’s proximity selectors to visually locate elements. For example
+
+    > click(checkbox(near(“Username”)))
+
+Will click the checkbox that is nearest to any element with the text `Username`. 
+
+Taiko’s also supports XPath and CSS selectors
+
+    > click($(“#button_id”)) // Using CSS selectors
+    > click($(“//input[name=`button_name`]”)) // Xpath selectors
+
+## Handle XHR and dynamic content
+
+Taiko’s API listens to actions that trigger XHR request or fetch dynamic content and automatically waits for them to complete before moving on to the next action. Taiko implicitly waits for elements to load on the page before performing executing the command. Scripts written in Taiko are free of explicit local or global waits and the flakiness. 
+
+## Request/Response stubbing and mocking
+
+Setting up test infrastructure and test data is hard. Taiko makes this easy with the intercept API. For example, block requests on a page  (like Google Analytics or any other resource)
+
+    > intercept("https://www.google-analytics.com/analytics.js");
+
+Or redirect an XHR request on the page to a test instance
+
+    > intercept(“https://fetchdata.com”, “http://fetchtestdata.com”)
+
+Or stub an XHR request to return custom data
+
+    > intercept(“https://fetchdata.com”, {“test”: data})
+ 
+Or even modify data sent by XHR requests
+
+    > intercept(“https://fetchdata.com”, intercept(url,(request) => {request.continue({“custom”: “data”})}))
+
+This simplifies our test setups as we don’t have to set up mock servers, or replace url’s in tests to point to test instances.
+
+## Integrating with Gauge
+
+We recommend using Taiko with [Gauge](https://gauge.org/). Gauge is a framework for writing readable and reusable acceptance tests. With features like markdown specifications, data driven execution, parallel execution and reporting Gauge makes test maintenance easy. Gaige is easy to install and well integrated with Taiko. With Gauge and Taiko we can write reliable acceptance tests.
+
+Install Gauge using npm and initialize an initialize and sample Taiko project using
+
+    $ npm install @getgauge/cli
+    $ gauge init js
+
+Learn more about [Gauge](https://docs.gauge.org)!
+
+# Our mission
+
+We built Gauge and Taiko to make browser automation easy and reliable and take the pain out of acceptance testing. It’s free and open source with a growing community of developers and testers. We hope it makes testing easy!
 
 ## Documentation
 
