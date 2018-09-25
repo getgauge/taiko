@@ -7,9 +7,9 @@
 
 # What’s Taiko?
 
-Taiko is a free and open source browser automation tool built by the team behind [Gauge](https://gauge.org/) by [ThoughtWorks](https://www.thoughtworks.com/). Taiko is a node library with a clear and concise API to automate the chrome browser. Tests written in Taiko are highly readable and maintainable. 
+Taiko is a free and open source browser automation tool built by the team behind [Gauge](https://gauge.org/) from [ThoughtWorks](https://www.thoughtworks.com/). Taiko is a node library with a clear and concise API to automate the chrome browser. Tests written in Taiko are highly readable and maintainable. 
 
-With taiko it’s easy to
+With Taiko it’s easy to
 
 * Get Started
 * Record/Write/Run tests
@@ -30,7 +30,7 @@ Taiko is built ground up to test modern web applications. Here’s a list of a f
 
 ## Easy Installation
 
-Taiko works on Windows, MacOS and linux. You only need to have [Node.js](https://nodejs.org/en/) installed in your system to start writing Taiko scripts in JavaScript. After you’ve installed Node.js open a terminal application (or powershell in the case of windows) and install Taiko using npm with the command
+Taiko works on Windows, MacOS and Linux. You only need to have [Node.js](https://nodejs.org/en/) installed in your system to start writing Taiko scripts in JavaScript. After you’ve installed Node.js open a terminal application (or powershell in the case of Windows) and install Taiko using [npm](https://www.npmjs.com/) with the command
 
     $ npm install -g taiko
 
@@ -38,18 +38,18 @@ This installs Taiko and the latest version of Chromium browser. We are all set t
 
 ## Interactive Recorder
 
-Taiko comes with a Recorder that’s a REPL for writing test scripts. We can use Taiko’s JavaScript API to control the browser from the REPL. To launch the REPL type taiko in your favorite terminal application
+Taiko comes with a Recorder that’s a REPL for writing test scripts. You can use Taiko’s JavaScript API to control the browser from the REPL. To launch the REPL type taiko in your favorite terminal application
 
     $ taiko
     Version: 0.2.0 (Chromium:69.0.3476.0)
     Type .api for help and .exit to quit
     > 
 
-This launches the Taiko prompt. We can now use Taiko’s API as commands in this prompt. For example, launch a Chromium browser instance using
+This launches the Taiko prompt. You can now use Taiko’s API as commands in this prompt. For example, launch a Chromium browser instance using
 
     > openBrowser()
 
-Let’s automate this Chrome browser instance with commands, for example let’s make the browser search google for something. 
+You can now automate this Chrome browser instance with commands, for example, make the browser search google for something.
 
     > goto(“google.com”)
     > write(“taiko test automation”)
@@ -57,7 +57,7 @@ Let’s automate this Chrome browser instance with commands, for example let’s
 
 These commands make the browser go to google’s home page, type the text “taiko test automation” and click on the “Google Search” button. You can see the browser performing these actions as you type and press enter for each command.
 
-Taiko’s REPL keeps a history of all successful commands. Once we finish a flow of execution, we can generate a test script using the special command .code 
+Taiko’s REPL keeps a history of all successful commands. Once you have finished a flow of execution, you can generate a test script using the special command .code 
 
     > .code
     const { openBrowser, goto, write, click } = require('taiko');
@@ -80,7 +80,7 @@ save it directly to a file using
 
     > .code googlesearch.js
 
-We can choose to continue automating or finish the recording using 
+You can choose to continue automating or finish the recording using 
 
     > .exit
 
@@ -93,7 +93,7 @@ To run a Taiko script pass the file as an argument to taiko
     ✔ Clicked element containing text "Google Search"
     ✔ Browser closed
 
-By default Taiko runs the script in headless mode, that means it does not launch a browser window. This makes it easy to run Taiko in containers a.k.a Docker. To view the browser when the script executes use 
+By default Taiko runs the script in headless mode, that means it does not launch a browser window. This makes it easy to run Taiko in containers (ex. Docker). To view the browser when the script executes use 
 
     $ taiko googlesearch.js --observe
 
@@ -135,7 +135,7 @@ Or if you want to write into a specific text field
 
 With Taiko’s API we can avoid using ids/css/xpath selectors to create reliable tests that don’t break with changes in the web page’s structure.
 
-We can also use Taiko’s proximity selectors to visually locate elements. For example
+You can also use Taiko’s proximity selectors to visually locate elements. For example
 
     > click(checkbox(near(“Username”)))
 
@@ -172,7 +172,7 @@ This simplifies our test setups as we don’t have to set up mock servers, or re
 
 ## Integrating with Gauge
 
-We recommend using Taiko with [Gauge](https://gauge.org/). Gauge is a framework for writing readable and reusable acceptance tests. With features like markdown specifications, data driven execution, parallel execution and reporting Gauge makes test maintenance easy. Gaige is easy to install and well integrated with Taiko. With Gauge and Taiko we can write reliable acceptance tests.
+We recommend using Taiko with [Gauge](https://gauge.org/). Gauge is a framework for writing readable and reusable acceptance tests. With features like markdown specifications, data driven execution, parallel execution and reporting Gauge makes test maintenance easy. Gauge is easy to install and well integrated with Taiko. With Gauge and Taiko we can write reliable acceptance tests.
 
 Install Gauge using npm and initialize an initialize and sample Taiko project using
 
