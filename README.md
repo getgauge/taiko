@@ -57,7 +57,7 @@ You can now automate this Chrome browser instance with commands, for example, ma
 
 These commands make the browser go to google’s home page, type the text “taiko test automation” and click on the “Google Search” button. You can see the browser performing these actions as you type and press enter for each command.
 
-Taiko’s REPL keeps a history of all successful commands. Once you have finished a flow of execution, you can generate a test script using the special command .code 
+Taiko’s REPL keeps a history of all successful commands. Once you finish a flow of execution, you can generate a test script using the special command .code 
 
     > .code
     const { openBrowser, goto, write, click } = require('taiko');
