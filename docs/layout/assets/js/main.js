@@ -37,4 +37,30 @@ $(document).ready(function() {
     debug: false // Set debug to true if you want to inspect the dropdown 
     }); 
 
+    $('#search').focusin(function(){
+      $('.search-label').fadeOut(500);
+    });
+
+    $('#search').focusout(function(){
+      $('.search-label').fadeIn(500);
+    });
+    setGithubStar();
 });
+
+
+function gitHubStars(){
+  $.ajax({
+    url: "https://api.github.com/repos/getgauge/taiko",
+    success: function(data){
+      if(data['stargazers_count'] != undefined){
+        window.localStorage.setItem('star',data['stargazers_count'])
+      }
+    }
+  })
+}
+
+function setGithubStar(){
+  gitHubStars();
+  var star = window.localStorage.getItem('star')
+  $('.github-count').text(star);
+}

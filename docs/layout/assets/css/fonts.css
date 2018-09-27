@@ -71,3 +71,26 @@
   font-weight: 700;
   src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../font/opensans/v13/k3k702ZOKiLJc3WVjuplzInF5uFdDttMLvmWuJdhhgs.ttf') format('truetype');
 }
+
+
+/* Source code font */
+
+@font-face {
+    font-family: 'SourceCodePro-Bold';
+    src: url('SourceCodePro-Bold.eot?#iefix') format('embedded-opentype'),  url('../font/source-code/SourceCodePro-Bold.otf')  format('opentype'),
+           url('../font/source-code/SourceCodePro-Bold.woff') format('woff'), url('../font/source-code/SourceCodePro-Bold.ttf')  format('truetype'), url('../font/source-code/SourceCodePro-Bold.svg#SourceCodePro-Bold') format('svg');
+  }
+  
+  @font-face {
+    font-family: 'SourceCodePro-Regular';
+    src: url('../font/source-code/SourceCodePro-Regular.eot?#iefix') format('embedded-opentype'),  url('../font/source-code/SourceCodePro-Regular.otf')  format('opentype'),
+           url('../font/source-code/SourceCodePro-Regular.woff') format('woff'), url('../font/source-code/SourceCodePro-Regular.ttf')  format('truetype'), url('../font/source-code/SourceCodePro-Regular.svg#SourceCodePro-Regular') format('svg');
+  }
+  
+  
+  @font-face {
+    font-family: 'SourceCodePro-Medium';
+    src: url('../font/source-code/SourceCodePro-Medium.eot?#iefix') format('embedded-opentype'),  url('../font/source-code/SourceCodePro-Medium.otf')  format('opentype'),
+           url('../font/source-code/SourceCodePro-Medium.woff') format('woff'), url('../font/source-code/SourceCodePro-Medium.ttf')  format('truetype'), url('../font/source-code/SourceCodePro-Medium.svg#SourceCodePro-Medium') format('svg');
+  }
+  

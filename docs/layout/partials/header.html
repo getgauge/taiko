@@ -1,3 +1,4 @@
+
 <div class="banner-text-container" id="whats-taiko">
   <h1 class="banner-heading"> Reliable browser automation </h1>
   <p class="banner-text-container_desc">Taiko is a browser automation tool built by the team behind Gauge by ThoughtWorks. It is a JavaScript library (on Node.js) built with a clear and concise API to automate the chrome browser.</p>
@@ -50,23 +51,27 @@
 
 <section class="source-install" id="source">
   <h2>Install from Source</h2>
-  <code>
-    <pre>
-        $ git clone https://github.com/getgauge/taiko.git
-        $ npm install -g <path_to_taiko_repo>
-    </pre>
-  </code>
+  <div class="code-section">
+    <code>
+      <pre>
+          $ git clone https://github.com/getgauge/taiko.git
+          $ npm install -g <path_to_taiko_repo>
+      </pre>
+    </code>
+  </div>
   <h3>
     Run tests
   </h3>
   <p>Test are written using gauge. Install and setup gauge following instructions here</p>
-  <code>
-    <pre>
-        git clone https://github.com/getgauge-examples/js-taiko.git
-        cd js-taiko
-        npm install
-    </pre>
-  </code>
+  <div class="code-section">
+    <code>
+      <pre>
+          git clone https://github.com/getgauge-examples/js-taiko.git
+          cd js-taiko
+          npm install
+      </pre>
+    </code>
+  </div>
   <p>
     <span class="highlight">gauge run specs</span> or <span class="highlight">gauge run specs --tags=\!knownIssue</span> (to ignore specs for knownissue)
   </p>
