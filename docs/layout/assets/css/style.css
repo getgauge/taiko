@@ -307,7 +307,7 @@ code pre, .hljs {
 @media (min-width: 768px) {
   .search-bar {
     width: 319px;
-    top: 70px;
+    top: 65px;
   } 
 
   #search {
@@ -320,6 +320,8 @@ code pre, .hljs {
 .menu-list {
   margin: 100px 0px 120px;
   padding: 20px 33px;
+  height: 100%;
+  background-color: #fff;
 }
 
 .sidebar-footer {
