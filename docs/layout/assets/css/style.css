@@ -21,6 +21,7 @@ li a {
 }
 
 nav {
+  position: relative;
   background: #1e1e1e;
   color: #fff;
   height:65px;
@@ -157,10 +158,36 @@ nav {
   font-size: 16px;
 }
 
+.highlight {
+  padding: 7px;
+  border-radius: 3px;
+}
+
+code, .highlight  {
+  font-family: 'SourceCodePro-Regular';
+  color: #1e1e1e;
+  background-color: #ececec;
+  text-decoration: none;
+}
+
+
 code pre, .hljs {
+  font-family: 'SourceCodePro-Regular';
   background: #222222;
   color: #fff;
   font-size: 16px;
+}
+
+.code-section code {
+  background-color: transparent;
+}
+
+.code-section code pre {
+  padding: 15px 0px 0px 0px;
+}
+
+.list  li {
+  line-height: 2;
 }
 
 .menu-title{
@@ -280,7 +307,7 @@ code pre, .hljs {
 @media (min-width: 768px) {
   .search-bar {
     width: 319px;
-    top: 100px;
+    top: 70px;
   } 
 
   #search {
@@ -292,6 +319,7 @@ code pre, .hljs {
 
 .menu-list {
   margin: 100px 0px 120px;
+  padding: 20px 33px;
 }
 
 .sidebar-footer {
@@ -323,6 +351,7 @@ code pre, .hljs {
   border: 1px solid #FFCC00;
   padding: 10px;
   margin: 10px 0;
+  border-radius: 3px;
   border-left: 3px solid #FFCC00;
 }
 
@@ -330,12 +359,83 @@ code pre, .hljs {
   font-weight: bold;
 }
 
-.highlight {
-  background: #F2F2F2;
-  color: #1E1E1E;
+.hightlight::hover {
   text-decoration: none;
 }
 
-.hightlight::hover {
-  text-decoration: none;
+.hljs-keyword {
+  font-family: 'SourceCodePro-Bold';
+  color: #fff;
+}
+
+.hljs-string {
+  font-family: 'SourceCodePro-Regular';
+  color: #ffcc00;
+}
+
+.hljs-number {
+  color: #61cde1;
+}
+
+.algolia-autocomplete {
+  width: 100%;
+}
+
+/* Github Icon */
+
+.github {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  width: 100px;
+  transform: translate(0, -50%);
+  display: flex;
+}
+
+.github-icon {
+  width: 20px;
+  height: 20px;
+  margin: 3px auto;
+}
+
+.star-count {
+  border: 1px solid #fff;
+  border-radius: 25px;
+  width: 75px;
+  margin: 0px 10px;
+}
+
+.github-star {
+  width: 12px; 
+  height: 12px;
+  margin: 5px;
+  vertical-align: text-bottom;
+}
+
+.github-count {
+  color: #fff;
+  font-size: 12px;
+  line-height: 2;
+}
+
+@media (min-width: 768px) {
+  .github { 
+    width: 125px;
+  }
+
+  .github-icon {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+  }
+
+  .star-count {
+    border: 1px solid #fff;
+    border-radius: 25px;
+    width: 60%;
+  }
+
+  .github-count { 
+    font-size: 14px;
+  }
 }
