@@ -159,8 +159,9 @@ nav {
 }
 
 .highlight {
-  padding: 7px;
+  padding: 2px 3px;
   border-radius: 3px;
+  font-size: 12px;
 }
 
 code, .highlight  {
