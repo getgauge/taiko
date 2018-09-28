@@ -57,7 +57,6 @@ nav {
 
 .nav-list {
   font-size: 17px;
-  /* padding: 0px 0px 50px; */
 }
 
 
@@ -81,6 +80,7 @@ nav {
   background: white;
   transition: all 0.25s linear;
   z-index: 100;
+  overflow-y:scroll; 
 }
 
 .sidebar-show {
@@ -91,7 +91,7 @@ nav {
   .sidebar {
     width: 320px;
     display: flex;
-    position: relative;
+    position: fixed;
     left: 0;
     top: 65px;
   }
@@ -100,11 +100,12 @@ nav {
 .main-content {
   flex: 6;
   margin: 150px auto;
+  height: auto;
 }
 
 @media (min-width: 768px) {
   .main-content {
-    margin: 56px auto;
+    margin: 56px auto 56px 300px;
   }
 
 }
@@ -138,7 +139,6 @@ nav {
 }
 
 .scrollable {
-  max-height: 98vh;
   overflow-y: scroll;
   padding: 50px 33px;
   width: 100%;
@@ -170,7 +170,6 @@ code, .highlight  {
   text-decoration: none;
 }
 
-
 code pre, .hljs {
   font-family: 'SourceCodePro-Regular';
   background: #222222;
@@ -183,7 +182,8 @@ code pre, .hljs {
 }
 
 .code-section code pre {
-  padding: 15px 0px 0px 0px;
+  padding: 15px;
+  white-space: normal;
 }
 
 .list  li {
@@ -318,9 +318,8 @@ code pre, .hljs {
 
 
 .menu-list {
-  margin: 100px 0px 120px;
+  margin: 100px 0px 185px;
   padding: 20px 33px;
-  height: 100%;
   background-color: #fff;
 }
 
@@ -440,4 +439,70 @@ code pre, .hljs {
   .github-count { 
     font-size: 14px;
   }
+}
+
+
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.7);
+  width: 50px;
+  height: 50px;
+  display: block;
+  text-decoration: none;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  display: none;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.scroll-top_icon {
+  display: inline-block;
+  border-right: 4px solid #f5c10e;
+  border-bottom: 4px solid #f5c10e;
+  width: 20px;
+  height: 20px;
+  transform: rotate(-135deg);
+  margin: 16px 0px 0px 14px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.main-content h3, .content-section h2 {
+  position: relative;
+  cursor: pointer;
+}
+
+.main-content h3::after, .content-section h2::after {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 3px;
+  height: 18px;
+  width: 18px;
+  background-image: url('../images/anchor.svg');
+  transition: all 0.25s;
+  opacity: 0;
+}
+
+.content-section h2::after {
+  top: 9px;
+}
+
+.main-content h3:hover::after, .content-section h2:hover::after {
+  opacity: 1;
+} 
+
+.grey {
+  color: #999999;
 }
