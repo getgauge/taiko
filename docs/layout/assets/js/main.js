@@ -1,6 +1,10 @@
 $(document).ready(function() {
-  var $window = $(window);
+  scrollHightlight('section');
+  scrollHightlight('.content-section h2');
+  copyCode();
+  setGithubStar();
 
+  var $window = $(window);
   $('.collapsible-header a').click(function(){
       if($(this).attr('aria-expanded') == "false") {
           $(this).find('.collapse-icon').text('-')
@@ -44,7 +48,7 @@ $(document).ready(function() {
     $('#search').focusout(function(){
       $('.search-label').fadeIn(500);
     });
-    setGithubStar();
+    
 
     $(window).scroll(function() {
       if ($(this).scrollTop() >= 50) {      
@@ -79,3 +83,40 @@ function setGithubStar(){
   var star = window.localStorage.getItem('star')
   $('.github-count').text(star);
 }
+
+
+function scrollHightlight(element) {
+  var $headers = $(element);
+  $(window).scroll(function(){  
+    var currentScroll = $(this).scrollTop();
+    var $currentSection
+
+    $headers.each(function(){
+      var divPosition = $(this).offset().top;
+      if( divPosition - 1 < currentScroll ){
+        $currentSection = $(this);
+      }
+      var id = $currentSection.attr('id');
+      $('a').removeClass('active');
+      id = "'#" + id + "'";
+      $("[href=" + id + "]").addClass('active');
+    })
+  });
+}
+
+
+function copyCode() {
+  $('.content-section .hljs').each(function() { 
+    $(this).append("<button class='copyBtn'>Copy</button>");
+    $(this).append("<input class='codeBox' value='none'> </input>")
+  });
+
+  $('.copyBtn').click(function() {
+    var value = $(this).prev().text();
+    codeBox = $(this).next();
+    codeBox.val(value);
+    codeBox.select();
+    document.execCommand('copy');
+  });
+}
+

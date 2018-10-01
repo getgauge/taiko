@@ -138,6 +138,14 @@ nav {
   font-weight: 600;
 }
 
+.active {
+  background-color: transparent !important;
+  border-bottom: 2px solid rgb(245, 193, 14);
+  color: rgb(85, 85, 85);
+  font-weight: 600;
+  text-decoration: none;
+}
+
 .scrollable {
   overflow-y: scroll;
   padding: 50px 33px;
@@ -506,4 +514,32 @@ code pre, .hljs {
 
 .grey {
   color: #999999;
+}
+
+.hljs {
+  position: relative;
+}
+
+.copyBtn {
+  position: absolute;
+  width: 44px;
+  height: 20px;
+  background: #D8D8D8;
+  outline: none;
+  border: none;
+  font-size: 13px;
+  font-family: 'SourceCodePro-Medium';
+  color: #1E1E1E;
+  right: 15px;
+  top: 15px;
+  border-radius: 3px;
+  transition: all 0.25s;
+}
+
+.copyBtn:hover {
+  opacity: 0.8;
+}
+
+.codeBox {
+  opacity: 0;
 }
