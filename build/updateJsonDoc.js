@@ -1,21 +1,19 @@
-const { build, formats } = require('documentation');
+const { build } = require('documentation');
 const { writeFileSync } = require('fs');
-const {execSync} = require('child_process');
+const { execSync } = require('child_process');
+
+const keysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path', 'loose', 'checked', 'todos', 'errors'];
+
 function removeLocation(comments) {
-    comments.forEach(function (comment) {
-        if (comment.context) {
-            delete comment.context.file;
-        }
-        if (comment.constructorComment) {
-            delete comment.constructorComment.context.file;
-        }
-    });
+    const stringified = JSON.stringify(comments, (k, v) => {
+        return (keysToIgnore.includes(k)) ? void 0 : v;
+    }, 0);
+    return stringified;
 }
 
 async function updateDoc() {
     const comments = await build('./lib/taiko.js', { shallow: true });
-    removeLocation(comments);
-    const jsonDocString = await formats.json(comments);
+    const jsonDocString = removeLocation(comments);
     writeFileSync('./lib/api.json', jsonDocString);
     console.log('Successfully save json docs to lib/api.json.');
 }
