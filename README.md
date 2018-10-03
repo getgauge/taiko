@@ -166,7 +166,7 @@ Or stub an XHR request to return custom data
  
 Or even modify data sent by XHR requests
 
-    > intercept(“https://fetchdata.com”, intercept(url,(request) => {request.continue({“custom”: “data”})}))
+    > intercept(“https://fetchdata.com”, (request) => {request.continue({“custom”: “data”})})
 
 This simplifies our test setups as we don’t have to set up mock servers, or replace url’s in tests to point to test instances.
 
