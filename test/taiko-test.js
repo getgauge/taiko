@@ -4,14 +4,14 @@ const util = require('util');
 const { removeQuotes, symbols } = require('../lib/util');
 
 (() => {
-    try{
-       
+    try {
+
         const allFuncs = Object.keys(taiko);
         const funcsInMetadata = [].concat.apply(['metadata'], Object.values(taiko.metadata));
         assert.deepEqual(allFuncs.sort(), funcsInMetadata.sort());
         const description = symbols.pass + 'All the exported functions are present in metadata';
         console.log(removeQuotes(util.inspect(description, { colors: true }), description));
-    }catch(e){
+    } catch (e) {
         console.error(e);
         process.exit(1);
     }
