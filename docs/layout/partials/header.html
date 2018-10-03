@@ -1,83 +1,348 @@
 
-<section class="banner-text-container" id="whats-taiko">
-  <h1 class="banner-heading"> Reliable browser automation </h1>
-  <p class="banner-text-container_desc">Taiko is a browser automation tool built by the team behind Gauge by ThoughtWorks. It is a JavaScript library (on Node.js) built with a clear and concise API to automate the chrome browser.</p>
-</sectio>
+<section class="banner-text-container">
+  <h2 class="banner-heading" id="whats-taiko"> Reliable browser automation </h1>
+  <p class="banner-text-container_desc">
+      Taiko is a free and open source browser automation tool built by the team behind <a href="https://gauge.org">Gauge by ThoughtWorks</a>. Taiko is a node library with a clear and concise API to automate the chrome browser. 
+  </p>
+  <p class="banner-text-container_desc">
+      Taiko’s smart selectors make tests reliable by adapting to changes in the structure of your web application. With Taiko there’s no need for id/css/xpath selectors or adding explicit waits (for XHR requests) in test scripts. Tests written in Taiko are highly readable and maintainable. 
+
+  </p>
+</section>
+<hr />
+<section class="why-taiko">
+  <h2 id="why-taiko"> Why Taiko</h3>
+  <p>
+    Taiko is built ground up to test modern web applications. Here’s what sets Taiko apart from other browser automation tools. 
+    <ul>
+      <li><a href="#installation">Easy Installation</a></li>
+      <li><a href="#interactive-recorder">Interactive Recorder </a></li>
+      <li><a href="#smart-selectors">Smart Selectors</a></li>
+      <li><a href="#xhr-dynamic-content">Handle XHR and dynamic content</a></li>
+      <li><a href="#request-response">Request/Response stubbing and mocking</a></li>
+    </ul>
+  </p>
+</section>
 <hr />
 
-<section class="features" id="features">
-  <h3>Features</h3>    
-  <p>
-    Tests written in Taiko are highly readable and maintainable. Taiko is built ground up to test modern web applications, and knows how to handle AJAX and dynamic content.
-  </p>
+<section class="get-started">
+  <h2 id="get-started">Getting Started with Taiko</h2>
 
-  <p>
-      Taiko comes with a REPL to easily record and write tests. Taiko’s unique API and selectors allows you to write tests without peeking into web application’s source code or dealing with XPaths.
-  </p>
-</section>
+  <div class="sub-section">
+    <h3 id="installation">Installation</h3>
+    <div class="code-section">
+      <p>
+        Taiko works on Windows, MacOS and linux. You need to have Node.js installed in your system to start writing Taiko scripts in JavaScript. After you’ve installed Node.js, open a terminal application (or powershell in the case of windows) and install Taiko using npm with this command
+      </p>
+      <code>
+        <pre>
+            <span class="grey">$</span> npm install --global taiko
+        </pre>
+      </code>
+      <p>
+        This installs the taiko and the latest version of the chromium browser. 
+      </p>
+      <p>
+        Now, we are all set to do some testing!
+      </p>
+    </div>
+  </div>
 
-<section class="usage" id="usage">
-  <h3>Usage</h3>    
-  <img src="{{asset 'images/usage.gif'}}"  class="img-responsive"/>
-</section>
-
-<section class="get-started" id="get-started">
-  <h2>Installation</h2>
-  <h3>Get Started with Taiko </h3>
-  <div class="code-section">
-    <p>Install with npm globally:</p>
-    <code>
-      <pre>
-          <span class="grey">$</span> npm install --global taiko
-      </pre>
-    </code>
-</div>
-<div class="code-section">
-    <p>or as a development dependency for your project:</p>
-    <code>
-      <pre>
-          <span class="grey">$</span> npm install --save-dev taiko
-      </pre>
-    </code>
-</div>
-<div class="note">
-  <span class="note-heading">Note:</span>
-  <p>
-    On Windows, make sure that the location <span class="highlight">%AppData%\npm </span>(or wherever npm ends up installing the module on your Windows flavor) is present in PATH environment variable.
-  </p>
-</div>
-<div class="note">
-    <span class="note-heading">Note:</span>
+  <div class="sub-section">
+    <h3 id="interactive-recorder">Interactive Recorder</h3>
     <p>
-        On Linux, install taiko to a <a href="https://nodejs.org/api/modules.html#modules_loading_from_the_global_folders" class="highlight">[NODE_PATH]</a> with executable permission.
+      Taiko comes with a Recorder that’s a REPL to write test scripts. We can use Taiko’s JavaScript API to control the browser from REPL. 
     </p>
-</div>
+    <p>
+      To launch the REPL type taiko in your favorite terminal application
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          taiko
+          Version: 0.2.0 (Chromium:69.0.3476.0)
+          Type .api for help and .exit to quit
+          > 
+        </pre>
+      </code>
+    </div>
+    <p>
+      This launches the Taiko prompt. We can now use Taiko’s API as commands in this prompt. For example, you can launch a Chrome browser instance using
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          > openBrowser()
+        </pre>
+      </code>
+    </div>
+    <p>
+      To automate this Chrome browser instance, you can use other commands from the Taiko API. For example, to get the browser to search google for something, you can use this. 
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+            > goto(“google.com”)
+            > write(“taiko test automation”)
+            > click(“Google Search”)
+        </pre>
+      </code>
+    </div>
+    <p>These commands get the browser to 
+      <ul>
+        <li>go to google’s home page, </li>
+        <li>type the text “taiko test automation” and then </li>
+        <li>click on the “Google Search” button. </li>
+      </ul>
+    </p>
+    <p>
+      You can see the browser performing these actions as you type and press enter for each command.
+    </p>
+    <img src="{{asset 'images/usage.gif'}}" class="img-responsive" />
+    <p> 
+      Taiko’s REPL keeps a history of all successful commands. Once we finish a flow of execution, we can generate a test script using the special command .code 
+    </p>
+
+    <div class="code-section">
+      <code>
+        <pre>
+          
+          > .code
+          const { openBrowser, goto, write, click } = require('taiko');
+
+          (async () => {
+            try {
+                await openBrowser();
+                await goto("google.com");
+                await write("taiko test automation");
+                await click("Google Search");
+            } catch (e) {
+                  console.error(e);
+            } finally {
+                  closeBrowser();
+            }
+          })();
+        </pre>
+      </code>
+    </div>
+    <p>
+      Taiko generates readable and maintainable JavaScript code. Copy and modify this code or
+      save it directly to a file using            
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          > .code googlesearch.js
+        </pre>
+      </code>
+    </div>
+
+    <p>
+      We can choose to continue automating or finish the recording using 
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          > .exit
+        </pre>
+      </code>
+    </div>
+    <p>
+        To run a Taiko script pass the file as an argument to taiko
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          $ taiko googlesearch.js
+          ✔ Browser opened
+          ✔ Navigated to url "http://google.com"
+          ✔ Wrote taiko test automation into the focused element.
+          ✔ Clicked element containing text "Google Search"
+          ✔ Browser closed
+        </pre>
+      </code>
+    </div>
+    <p>
+        By default Taiko runs the script in headless mode - that means it does not launch a browser window. This makes it easy to run Taiko in containers like Docker. 
+    </p>
+    <p>
+      To view the browser when the script executes use 
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          taiko googlesearch.js --observe
+        </pre>
+      </code>
+    </div>
+
+    <p>
+      Taiko’s REPL also documents all the API’s. To view the documentation
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          $ taiko
+          Version: 0.2.0 (Chromium:69.0.3476.0)
+          Type .api for help and .exit to quit
+          > .api
+          Browser actions
+            openBrowser, closeBrowser, client, switchTo, setViewPort, openTab, closeTab
+          ...
+        </pre>
+      </code>
+    </div>
+    <p>
+      To see more details of an API along with examples use
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          >.api openBrowser
+
+          Launches a browser with a tab. The browser will be closed when the parent node.js process is closed.
+          
+          Example:
+              openBrowser()
+              openBrowser({ headless: false })
+              openBrowser({args:['--window-size=1440,900']})            
+        </pre>
+      </code>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h3 id="smart-selectors">Smart Selectors</h3>
+    <p>
+        Taiko’s API treats the browser as a black box. With Taiko we can write scripts by looking at a web page and without inspecting it’s source code. For example on google.com, this command will click on any element with the text “Google Search” (a button on the page).
+    </p>
+    <div class="code-section">
+    <code>
+      <pre>
+        > click(“Google Search”)
+      </pre>
+    </code>
+  </div>
+    <p>
+      Taiko’s API mimics user interactions with the browser. For example if you want to write into an element that’s currently in focus, use 
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          > write(“something”)
+        </pre>
+      </code>
+    </div>
+    <p>
+      Or if you want to write into a specific text field 
+    </p>
+    <div class="code-section">
+    <code>
+        <pre>
+            > write(“something”, into(textField({placeholder: “Username”})))
+        </pre>
+    </code>
+  </div>
+    <p>
+        With Taiko’s API you can avoid using ids/css/xpath selectors to create reliable tests that don’t break with changes in the web page’s structure.
+    </p>
+    <p>
+        You can also use Taiko’s proximity selectors to visually locate elements. For example, this command will click the checkbox that is nearest to any element with the text “Username”. 
+    </p>
+    <div class="code-section">
+    <code>
+        <pre>
+          > click(checkbox(near(“Username”)))
+        </pre>
+    </code>
+  </div>
+    <p>
+      Taiko’s also supports XPath and CSS selectors.
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          > click($(“#button_id”)) // Using CSS selectors
+          > click($(“//input[name=`button_name`]”)) // Xpath selectors
+        </pre>
+      </code>
+    </div>
+  </div>
+  <div class="sub-section">
+    <h3 id="xhr-dynamic-content">Handle XHR and dynamic content</h3>
+    <p>
+      Taiko’s API listens to actions that trigger XHR request or fetch dynamic content and automatically waits for them to complete before moving on to the next action. Taiko implicitly waits for elements to load on the page before performing executing the command. Scripts written in Taiko are free of explicit local or global waits to reduce ‘flakiness’. 
+    </p>
+  </div>
+
+  <div class="sub-section">
+    <h3 id="request-response">Request/Response stubbing and mocking</h3>
+    <p>
+      Setting up test infrastructure and test data is hard. Taiko makes this easy with the intercept API. For example, 
+    </p>
+    <p>
+      blocking requests on a page  (like Google Analytics or any other resource)
+    </p>
+
+    <div class="code-section">
+      <code>
+        <pre>
+          > intercept("https://www.google-analytics.com/analytics.js");
+        </pre>
+      </code>
+    </div>
+    <p>
+      Or redirecting an XHR request on the page to a test instance
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          > intercept(“https://fetchdata.com”, “http://fetchtestdata.com”)
+        </pre>
+      </code>
+    </div>
+    <p>
+      Or stubbing an XHR request to return custom data
+    </p>
+    <div class="code-section">
+      <code>
+        <pre>
+          > intercept(“https://fetchdata.com”, {“test”: data})
+        </pre>
+      </code>
+    </div>
+    <p>
+        Or modify data sent by the XHR request
+    </p>
+    <div class="code-section">
+      <code>
+        <pre> 
+          > intercept(“https://fetchdata.com”, intercept(url,(request) => 
+          {request.continue({“custom”: “data”})}))
+        </pre>
+      </code>
+    </div>
+    <p>
+      This simplifies our test setups as Taiko doesn’t have to set up mock servers, or replace URLs in tests to point to test instances.
+    </p>
+  </div>
 </section>
 
-<section class="source-install" id="source">
-  <h2>Install from Source</h2>
-  <div class="code-section">
-    <code>
-      <pre>
-          <span class="grey">$</span> git clone https://github.com/getgauge/taiko.git
-          <span class="grey">$</span> npm install -g <path_to_taiko_repo>
-      </pre>
-    </code>
-  </div>
-  <h3>
-    Run tests
-  </h3>
-  <p>Test are written using gauge. Install and setup gauge following instructions here</p>
-  <div class="code-section">
-    <code>
-      <pre>
-          <span class="grey">$</span> git clone https://github.com/getgauge-examples/js-taiko.git
-          <span class="grey">$</span> cd js-taiko
-          <span class="grey">$</span> npm install
-      </pre>
-    </code>
-  </div>
+<section class="gauage-integration">
+  <h2 id="integrating-gauge">Integrating with Gauge</h3>
   <p>
-    <span class="highlight">gauge run specs</span> or <span class="highlight">gauge run specs --tags=\!knownIssue</span> (to ignore specs for knownissue)
+    We recommend using Taiko with Gauge. Gauge is a test runner for writing readable and reusable acceptance tests. It is  easy to install and well integrated with Taiko. 
   </p>
+  <p>
+    Install Gauge using npm and initialize an initialize a sample Taiko project using
+  </p>
+  <div class="code-section">
+    <code>
+      <pre>
+        npm install @getgauge/cli
+        gauge init js
+      </pre>
+    </code>
+  </div>
+  <p>Learn more about Gauge <a href="https://docs.gauge.org" target="_blank">here</a>.</p>
 </section>

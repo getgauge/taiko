@@ -128,6 +128,8 @@ nav {
 .sidebar-header-2 a {
   display: block;
   width: 100%;
+  border-bottom: 2px solid #fff;
+  transition: all 0.25s;
 }
 
 .sidebar-header-2 a:hover {
@@ -140,7 +142,7 @@ nav {
 
 .active {
   background-color: transparent !important;
-  border-bottom: 2px solid rgb(245, 193, 14);
+  border-bottom: 2px solid rgb(245, 193, 14) !important;
   color: rgb(85, 85, 85);
   font-weight: 600;
   text-decoration: none;
@@ -187,6 +189,8 @@ code pre, .hljs {
 }
 
 .code-section code {
+  position: relative;
+  display: block;
   background-color: transparent;
 }
 
@@ -228,9 +232,13 @@ code pre, .hljs {
 }
 
 .collapse-icon {
+  display: inline-block;
   font-size: 12px;
   border: 1px solid #ccc;
-  padding: 0px 5px;
+  height: 18px;
+  width: 18px;
+  text-align:center;
+  line-height: 16px;
 }
 
 .contribute-link, .contribute-link:hover {
@@ -456,7 +464,7 @@ code pre, .hljs {
   bottom: 20px;
   right: 20px;
   background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 1);
   width: 50px;
   height: 50px;
   display: block;
@@ -470,6 +478,7 @@ code pre, .hljs {
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  z-index: 1000;
 }
 
 .scroll-top_icon {
@@ -492,23 +501,25 @@ code pre, .hljs {
   cursor: pointer;
 }
 
-.main-content h3::after, .content-section h2::after {
-  content: '';
+
+.link-icon {
   position: absolute;
   left: -20px;
-  top: 3px;
+  top: 82px;
   height: 18px;
   width: 18px;
   background-image: url('../images/anchor.svg');
   transition: all 0.25s;
   opacity: 0;
+  text-decoration: none;
 }
 
-.content-section h2::after {
-  top: 9px;
+
+.content-section h2 .link-icon{
+  top: 88px;
 }
 
-.main-content h3:hover::after, .content-section h2:hover::after {
+h2:hover .link-icon, h3:hover .link-icon{
   opacity: 1;
 } 
 
@@ -534,12 +545,42 @@ code pre, .hljs {
   top: 15px;
   border-radius: 3px;
   transition: all 0.25s;
+  display:none;
+}
+
+@media (min-width: 768px) {
+  .copyBtn {
+    display: block;
+  }
 }
 
 .copyBtn:hover {
   opacity: 0.8;
 }
 
+.copied-text {
+  position: absolute;
+  font-size: 13px;
+  font-family: 'SourceCodePro-Medium';
+  color: grey;
+  right: 63px;
+  top: 16px;
+  display: none;
+}
+
 .codeBox {
   opacity: 0;
+}
+
+
+section h2::before, .sub-section h3::before, .content-section h2::before {
+  content: '';
+  display: block;
+  height: 80px;
+  margin-top: -80px;
+  visibility: hidden;
+}
+
+.sub-section {
+  margin: 10px auto 60px;
 }
