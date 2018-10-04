@@ -74,13 +74,15 @@ nav {
   display: block;
   width: 100%;
   height: 100vh ;
-  position: absolute;
+  position: fixed;
   left: -100%;
   top: 65px;
   background: white;
   transition: all 0.25s linear;
   z-index: 100;
   overflow-y:scroll; 
+  height: 100vh;
+  border-right: 1px solid #ccc;
 }
 
 .sidebar-show {
@@ -246,12 +248,6 @@ code pre, .hljs {
   text-decoration: none;
 } 
 
-.sidebar {
-  height: 100vh;
-  border-right: 1px solid #ccc;
-}
-
-
 .hamburger {
   outline: none;
   border: none;
@@ -341,14 +337,21 @@ code pre, .hljs {
 }
 
 .sidebar-footer {
-  position: fixed;
-  bottom: 4px;
+  position: relative;
+  bottom: 60px;
   margin: 0px 33px;
   padding: 15px 0px;
   background: #fff;
   z-index: 15;
   border-top: 1px solid #CCCC;
   width: 266px;
+}
+
+@media (min-width: 768px) {
+  .sidebar-footer {
+    position: fixed;
+    bottom: 4px;
+  }
 }
 
 .powered-by {
@@ -583,4 +586,21 @@ section h2::before, .sub-section h3::before, .content-section h2::before {
 
 .sub-section {
   margin: 10px auto 60px;
+}
+
+.white {
+  color: #fff;
+  font-family: 'SourceCodePro-Regular';
+  font-size: 14px;
+  width: 85%;
+  display: block;
+}
+
+.desc-list {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.img-responsive {
+  margin: 30px auto 40px;
 }

@@ -14,7 +14,7 @@
   <h2 id="why-taiko"> Why Taiko</h3>
   <p>
     Taiko is built ground up to test modern web applications. Here’s what sets Taiko apart from other browser automation tools. 
-    <ul>
+    <ul class="desc-list">
       <li><a href="#installation">Easy Installation</a></li>
       <li><a href="#interactive-recorder">Interactive Recorder </a></li>
       <li><a href="#smart-selectors">Smart Selectors</a></li>
@@ -36,7 +36,10 @@
       </p>
       <code>
         <pre>
-            <span class="grey">$</span> npm install --global taiko
+            <span class="grey">$</span> 
+            <span class="white">
+              npm install --global taiko
+            </span>
         </pre>
       </code>
       <p>
@@ -59,10 +62,12 @@
     <div class="code-section">
       <code>
         <pre>
-          taiko
-          Version: 0.2.0 (Chromium:69.0.3476.0)
-          Type .api for help and .exit to quit
-          > 
+          <span class="white">
+            taiko
+            Version: 0.2.0 (Chromium:69.0.3476.0)
+            Type .api for help and .exit to quit
+            > 
+          </span>
         </pre>
       </code>
     </div>
@@ -72,7 +77,7 @@
     <div class="code-section">
       <code>
         <pre>
-          > openBrowser()
+            <span class="white"> > openBrowser() </span>
         </pre>
       </code>
     </div>
@@ -82,9 +87,11 @@
     <div class="code-section">
       <code>
         <pre>
-            > goto(“google.com”)
-            > write(“taiko test automation”)
-            > click(“Google Search”)
+            <span class="white">
+              > goto(“google.com”)
+              > write(“taiko test automation”)
+              > click(“Google Search”)
+            </span>
         </pre>
       </code>
     </div>
@@ -106,7 +113,7 @@
     <div class="code-section">
       <code>
         <pre>
-          
+          <span class="white">
           > .code
           const { openBrowser, goto, write, click } = require('taiko');
 
@@ -122,6 +129,7 @@
                   closeBrowser();
             }
           })();
+          </span>
         </pre>
       </code>
     </div>
@@ -132,7 +140,9 @@
     <div class="code-section">
       <code>
         <pre>
-          > .code googlesearch.js
+          <span class="white">
+            > .code googlesearch.js
+          </span>
         </pre>
       </code>
     </div>
@@ -143,7 +153,9 @@
     <div class="code-section">
       <code>
         <pre>
-          > .exit
+          <span class="white">
+            > .exit
+          </span>
         </pre>
       </code>
     </div>
@@ -153,12 +165,14 @@
     <div class="code-section">
       <code>
         <pre>
-          $ taiko googlesearch.js
-          ✔ Browser opened
-          ✔ Navigated to url "http://google.com"
-          ✔ Wrote taiko test automation into the focused element.
-          ✔ Clicked element containing text "Google Search"
-          ✔ Browser closed
+          <span class="white">
+            $ taiko googlesearch.js
+            ✔ Browser opened
+            ✔ Navigated to url "http://google.com"
+            ✔ Wrote taiko test automation into the focused element.
+            ✔ Clicked element containing text "Google Search"
+            ✔ Browser closed
+          </span>
         </pre>
       </code>
     </div>
@@ -171,7 +185,9 @@
     <div class="code-section">
       <code>
         <pre>
-          taiko googlesearch.js --observe
+          <span class="white">
+            taiko googlesearch.js --observe
+          </span>
         </pre>
       </code>
     </div>
@@ -182,13 +198,15 @@
     <div class="code-section">
       <code>
         <pre>
-          $ taiko
-          Version: 0.2.0 (Chromium:69.0.3476.0)
-          Type .api for help and .exit to quit
-          > .api
-          Browser actions
-            openBrowser, closeBrowser, client, switchTo, setViewPort, openTab, closeTab
-          ...
+          <span class="white">
+            $ taiko
+            Version: 0.2.0 (Chromium:69.0.3476.0)
+            Type .api for help and .exit to quit
+            > .api
+            Browser actions
+              openBrowser, closeBrowser, client, switchTo, setViewPort, openTab, closeTab
+            ...
+          </span>
         </pre>
       </code>
     </div>
@@ -198,14 +216,16 @@
     <div class="code-section">
       <code>
         <pre>
-          >.api openBrowser
+          <span class="white">
+            >.api openBrowser
 
-          Launches a browser with a tab. The browser will be closed when the parent node.js process is closed.
-          
-          Example:
-              openBrowser()
-              openBrowser({ headless: false })
-              openBrowser({args:['--window-size=1440,900']})            
+            Launches a browser with a tab. The browser will be closed when the parent node.js process is closed.
+            
+            Example:
+                openBrowser()
+                openBrowser({ headless: false })
+                openBrowser({args:['--window-size=1440,900']})
+          </span>
         </pre>
       </code>
     </div>
@@ -219,7 +239,9 @@
     <div class="code-section">
     <code>
       <pre>
-        > click(“Google Search”)
+        <span class="white">
+          > click(“Google Search”)
+        </span>
       </pre>
     </code>
   </div>
@@ -229,7 +251,9 @@
     <div class="code-section">
       <code>
         <pre>
-          > write(“something”)
+          <span class="white">
+            > write(“something”)
+          </span>
         </pre>
       </code>
     </div>
@@ -239,7 +263,9 @@
     <div class="code-section">
     <code>
         <pre>
+          <span class="white">
             > write(“something”, into(textField({placeholder: “Username”})))
+          </span>
         </pre>
     </code>
   </div>
@@ -262,8 +288,10 @@
     <div class="code-section">
       <code>
         <pre>
-          > click($(“#button_id”)) // Using CSS selectors
-          > click($(“//input[name=`button_name`]”)) // Xpath selectors
+          <span class="white">
+            > click($(“#button_id”)) // Using CSS selectors
+            > click($(“//input[name=`button_name`]”)) // Xpath selectors
+          </span>
         </pre>
       </code>
     </div>
@@ -287,7 +315,9 @@
     <div class="code-section">
       <code>
         <pre>
-          > intercept("https://www.google-analytics.com/analytics.js");
+          <span class="white">
+            > intercept("https://www.google-analytics.com/analytics.js");
+          </span>
         </pre>
       </code>
     </div>
@@ -297,7 +327,9 @@
     <div class="code-section">
       <code>
         <pre>
-          > intercept(“https://fetchdata.com”, “http://fetchtestdata.com”)
+          <span class="white">
+            > intercept(“https://fetchdata.com”, “http://fetchtestdata.com”)
+          </span>
         </pre>
       </code>
     </div>
@@ -307,7 +339,9 @@
     <div class="code-section">
       <code>
         <pre>
-          > intercept(“https://fetchdata.com”, {“test”: data})
+          <span class="white">
+            > intercept(“https://fetchdata.com”, {“test”: data})
+          </span>
         </pre>
       </code>
     </div>
@@ -317,8 +351,10 @@
     <div class="code-section">
       <code>
         <pre> 
-          > intercept(“https://fetchdata.com”, intercept(url,(request) => 
-          {request.continue({“custom”: “data”})}))
+          <span class="white">
+            > intercept(“https://fetchdata.com”, intercept(url,(request) => 
+            {request.continue({“custom”: “data”})}))
+          </span>
         </pre>
       </code>
     </div>
@@ -339,8 +375,10 @@
   <div class="code-section">
     <code>
       <pre>
-        npm install @getgauge/cli
-        gauge init js
+        <span class="white">
+          npm install @getgauge/cli
+          gauge init js
+        </span>
       </pre>
     </code>
   </div>
