@@ -20,6 +20,10 @@ li a {
   color: rgb(85, 85, 85);
 }
 
+a {
+  font-weight: 400;
+}
+
 nav {
   position: relative;
   background: #1e1e1e;
@@ -203,6 +207,7 @@ code pre, .hljs {
 
 .list  li {
   line-height: 2;
+  overflow-wrap: break-word;
 }
 
 .menu-title{
@@ -592,8 +597,14 @@ section h2::before, .sub-section h3::before, .content-section h2::before {
   color: #fff;
   font-family: 'SourceCodePro-Regular';
   font-size: 14px;
-  width: 85%;
+  width: 100%;
   display: block;
+}
+
+@media (min-width: 768px) {
+  .white {
+    width: 85%;
+  }
 }
 
 .desc-list {
