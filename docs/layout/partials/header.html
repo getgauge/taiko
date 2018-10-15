@@ -9,8 +9,9 @@
   <h2 id="quick-install">Quick Install</h2>
   <p>Taiko works on Windows, MacOS and linux. 
   </p>
-  <p><i>Note: You need to have <a href="https://nodejs.org/">Node.js</a> installed in your system to start writing Taiko scripts in JavaScript. 
-  </i></p>
+  <p class="note">
+    Note: You need to have <a href="https://nodejs.org/">Node.js</a> installed in your system to start writing Taiko scripts in JavaScript. 
+  </p>
   <p>Open a terminal application (or powershell in the case of windows) and install Taiko using <span class="highlight">npm</span>
   </p>
   <div class="code-section">
@@ -22,7 +23,11 @@
 </div>
 <p>This installs the taiko and the latest version of the chromium browser. Now, we are all set to do some testing!
 </p>
-<p><i>You can use Taiko with a test runner of your choice. We highly recommend using <a href="#integrating-gauge">Taiko with Gauge</a>.</i></p>
+
+<p class="note">
+  You can use Taiko with a test runner of your choice. We highly recommend using <a href="#integrating-gauge">Taiko with Gauge</a>.
+</p>
+
 </section>
 
 <section class="taiko-features">
@@ -63,9 +68,9 @@
         <code>
           <pre>
             <span class="white">
-              Version: 0.2.0 (Chromium:69.0.3476.0)
-              Type .api for help and .exit to quit
-              > 
+              Version: 0.2.0 (Chromium:69.0.3476.0) <br />
+              Type .api for help and .exit to quit <br />
+              > <br />
             </span>
           </pre>
         </code>
@@ -86,9 +91,9 @@
       <code>
         <pre>
             <span class="white">
-            goto(“google.com”)
-            write(“taiko test automation”)
-            click(“Google Search”)
+            goto(“google.com”) <br />
+            write(“taiko test automation”) <br />
+            click(“Google Search”) <br />
             </span>
         </pre>
       </code>
@@ -120,20 +125,20 @@
       <code>
         <pre>
           <span class="white">
-          const { openBrowser, goto, write, click } = require('taiko');
+          const { openBrowser, goto, write, click } = require('taiko');<br />
 
-          (async () => {
-            try {
-                await openBrowser();
-                await goto("google.com");
-                await write("taiko test automation");
-                await click("Google Search");
-            } catch (e) {
-                  console.error(e);
-            } finally {
-                  closeBrowser();
-            }
-          })();
+          (async () => {<br />
+            try {<br />
+                await openBrowser();<br />
+                await goto("google.com");<br />
+                await write("taiko test automation");<br />
+                await click("Google Search");<br />
+            } catch (e) {<br />
+                  console.error(e);<br />
+            } finally {<br />
+                  closeBrowser();<br />
+            }<br />
+          })();<br />
           </span>
         </pre>
       </code>
@@ -173,15 +178,15 @@
     </div>
     <p>By default Taiko runs the script in headless mode - that means it does not launch a browser window. This makes it easy to run Taiko in containers like Docker. 
     </p>
-    <div class="code-section">
+    <div class="code-section code-section_output">
       <code>
         <pre>
           <span class="white">
-          ✔ Browser opened
-          ✔ Navigated to url "http://google.com"
-          ✔ Wrote taiko test automation into the focused element.
-          ✔ Clicked element containing text "Google Search"
-          ✔ Browser closed
+          ✔ Browser opened<br />
+          ✔ Navigated to url "http://google.com" <br />
+          ✔ Wrote taiko test automation into the focused element.<br />
+          ✔ Clicked element containing text "Google Search"<br />
+          ✔ Browser closed<br />
           </span>
         </pre>
       </code>
@@ -225,10 +230,10 @@
     <code>
       <pre>
         <span class="white">
-            <p>Launches a browser with a tab. The browser will be closed when the parent node.js process is closed.</p> 
-          openBrowser()
-          openBrowser({ headless: false })
-          openBrowser({args:['--window-size=1440,900']})
+          Launches a browser with a tab. The browser will be closed when the parent node.js process is closed. <br />
+          openBrowser() <br />
+          openBrowser({ headless: false }) <br />
+          openBrowser({args:['--window-size=1440,900']}) <br />
         </span>
       </pre>
     </code>
@@ -362,8 +367,8 @@
       <code>
         <pre> 
           <span class="white">
-          intercept(“https://fetchdata.com”, (request) => 
-            {request.continue({“custom”: “data”})}))
+          intercept(“https://fetchdata.com”, (request) =>  <br />
+            {request.continue({“custom”: “data”})})) <br />
           </span>
         </pre>
       </code>
