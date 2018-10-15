@@ -82,7 +82,7 @@ function scrollHightlight(element) {
     var $currentSection
 
     $headers.each(function(){
-      var divPosition = $(this).offset().top - 75;
+      var divPosition = $(this).offset().top - 100;
       if( divPosition - 1 < currentScroll ){
         $currentSection = $(this);
       }
@@ -126,14 +126,15 @@ function appendLink(elements) {
 
 
 function smoothScroll() {
-  $("a").on('click', function(event) {
+  $(".main-content a").on('click', function(event) {
     if (this.hash !== "") {
       event.preventDefault();
       var hash = this.hash;
+      $('.headbutt_blocker').removeClass('show');
+      $(hash).find('.headbutt_blocker').addClass('show');
       $('html, body').animate({
         scrollTop: $(hash).offset().top
       }, 800, function(){
-
         window.location.hash = hash;
       });
     } 
@@ -147,7 +148,10 @@ function alogoliaSearch() {
     inputSelector: '#search', 
     debug: false // Set debug to true if you want to inspect the dropdown 
     }); 
+}
 
+function headButtresolve(element) {
+  $(element).prepend('<span class="headbutt_blocker"></span>')
 }
 
 function init() {
@@ -162,6 +166,7 @@ function init() {
   appendLink($('.content-section h2'));
   appendLink($('.main-content h3'));
   appendLink($('.get-started h2'));
-  
+  headButtresolve($('section h2'));
+  headButtresolve($('.sub-section h3'));
+  headButtresolve($('.content-section h2'));
 }
-
