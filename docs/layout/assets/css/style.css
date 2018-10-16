@@ -186,6 +186,7 @@ section {
 }
 
 code, .highlight  {
+  padding: 0px;
   font-family: 'SourceCodePro-Regular';
   color: #1e1e1e;
   background-color: #dddd;
@@ -522,15 +523,11 @@ code pre, .hljs {
   top: 0px;
   height: 18px;
   width: 18px;
-  background-image: url('../images/anchor.svg') no-repeat;
+  background: url('../images/anchor.svg');
+  background-repeat: no-repeat;
   transition: all 0.25s;
   opacity: 0;
   text-decoration: none;
-}
-
-
-.content-section h2 .link-icon{
-  top: 88px;
 }
 
 h2:hover .link-icon, h3:hover .link-icon{
@@ -618,7 +615,9 @@ h2:hover .link-icon, h3:hover .link-icon{
 .desc-list {
   font-size: 16px;
   line-height: 1.5;
+  margin: 20px 0px;
 }
+
 .desc-list li a{
   color: #337ab7;
 }

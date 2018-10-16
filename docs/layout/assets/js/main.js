@@ -126,7 +126,7 @@ function appendLink(elements) {
 
 
 function smoothScroll() {
-  $(".main-content a").on('click', function(event) {
+  $(".sidebar-header-2 a").on('click', function(event) {
     if (this.hash !== "") {
       event.preventDefault();
       var hash = this.hash;
@@ -138,7 +138,7 @@ function smoothScroll() {
         window.location.hash = hash;
       });
     } 
-  });
+  }); 
 }
 
 function alogoliaSearch() {
@@ -163,9 +163,8 @@ function init() {
   setGithubStar();
   smoothScroll();
   alogoliaSearch();
-  appendLink($('.content-section h2'));
+  appendLink($('.main-content h2'));
   appendLink($('.main-content h3'));
-  appendLink($('.get-started h2'));
   headButtresolve($('section h2'));
   headButtresolve($('.sub-section h3'));
   headButtresolve($('.content-section h2'));
