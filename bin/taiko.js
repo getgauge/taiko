@@ -37,15 +37,17 @@ function runFile(file) {
         realFuncs[func] = taiko[func];
         if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function() {
             let res,args = arguments;
-            if(func === 'openBrowser' && observeAgrv.some((val) => argv.includes(val)))
-                if (args['0']) args['0'].headless = false;
-                else args = [{headless:false}] ;
+            const observe = observeAgrv.filter((val) => argv.includes(val));
+            if(func === 'openBrowser' && observe.length){
+                const observeTime = isNaN(argv[argv.indexOf(observe[0])+1]) ? 3000 : argv[argv.indexOf(observe[0])+1]; 
+                if (args['0']) {args['0'].headless = false; args[0].observe = true; args['0'].observeTime = observeTime;}
+                else args = [{headless:false, observe:true, observeTime:observeTime}] ;
+            }    
             res = await realFuncs[func].apply(this, args);
             if (res.description) {
                 res.description = symbols.pass + res.description;
                 console.log(removeQuotes(util.inspect(res.description, { colors: true }), res.description));
             }
-            if(observeAgrv.some((val) => argv.includes(val))) await taiko.waitFor(3000);
             return res;
         };
         else global[func] = function() {
