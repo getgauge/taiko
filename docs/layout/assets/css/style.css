@@ -637,3 +637,7 @@ h2:hover .link-icon, h3:hover .link-icon{
 #openbrowser {
   margin: 20px 0;
 }
+
+.pull-down {
+  top: 85px;
+}
