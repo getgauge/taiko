@@ -132,6 +132,8 @@ function smoothScroll() {
       var hash = this.hash;
       $('.headbutt_blocker').removeClass('show');
       $(hash).find('.headbutt_blocker').addClass('show');
+      $('.link-icon').removeClass('pull-down');
+      $(hash).find('.link-icon').addClass('pull-down');
       $('html, body').animate({
         scrollTop: $(hash).offset().top
       }, 800, function(){
