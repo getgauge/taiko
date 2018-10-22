@@ -92,6 +92,7 @@ section {
   overflow-y:scroll; 
   height: 100vh;
   border-right: 1px solid #ccc;
+  overflow: hidden;
 }
 
 .sidebar-show {
@@ -112,6 +113,7 @@ section {
   flex: 6;
   margin: 150px auto;
   height: auto;
+  overflow: hidden !important;
 }
 
 @media (min-width: 768px) {
@@ -187,14 +189,14 @@ section {
 
 code, .highlight  {
   padding: 0px;
-  font-family: 'SourceCodePro-Regular';
+  font-family: monospace;
   color: #1e1e1e;
   background-color: #dddd;
   text-decoration: none;
 }
 
 code pre, .hljs {
-  font-family: 'SourceCodePro-Regular';
+  font-family: monospace;
   background: #222222;
   color: #fff;
   font-size: 16px;
@@ -209,6 +211,10 @@ code pre, .hljs {
 .code-section code pre {
   padding: 15px;
   white-space: normal;
+}
+
+code pre > span {
+  font-family: monospace;
 }
 
 .list  li {
@@ -397,12 +403,12 @@ code pre, .hljs {
 }
 
 .hljs-keyword {
-  font-family: 'SourceCodePro-Bold';
+  font-family: monospace;
   color: #fff;
 }
 
 .hljs-string {
-  font-family: 'SourceCodePro-Regular';
+  font-family: monospace;
   color: #ffcc00;
 }
 
@@ -600,7 +606,7 @@ h2:hover .link-icon, h3:hover .link-icon{
 
 .white {
   color: #fff;
-  font-family: 'SourceCodePro-Regular';
+  /* font-family: 'SourceCodePro-Regular'; */
   font-size: 14px;
   width: 100%;
   display: block;
