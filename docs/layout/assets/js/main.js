@@ -167,6 +167,7 @@ function init() {
   alogoliaSearch();
   appendLink($('.main-content h2'));
   appendLink($('.main-content h3'));
+  headButtresolve($('.banner-heading'));
   headButtresolve($('section h2'));
   headButtresolve($('.sub-section h3'));
   headButtresolve($('.content-section h2'));
