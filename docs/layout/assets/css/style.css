@@ -566,7 +566,7 @@ h2:hover .link-icon, h3:hover .link-icon{
 .copied-text {
   position: absolute;
   font-size: 13px;
-  font-family: 'SourceCodePro-Medium';
+  font-family: monospace;
   color: grey;
   right: 63px;
   top: 16px;
