@@ -181,40 +181,28 @@ section {
   font-size: 16px;
 }
 
-.highlight {
-  padding: 2px 3px;
-  border-radius: 3px;
-  font-size: 14px;
+.code-section {
+  margin: 20px 0 40px;
 }
 
-code, .highlight  {
-  padding: 0px;
+.highlight, code  {
+  font-size: 14px;
+  border-radius: 3px;
+  padding: 2px 3px;
   font-family: monospace;
   color: #1e1e1e;
   background-color: #dddd;
   text-decoration: none;
 }
 
-code pre, .hljs {
+ .hljs {
+  position: relative;
   font-family: monospace;
   background: #222222;
   color: #fff;
   font-size: 16px;
-}
-
-.code-section code {
-  position: relative;
   display: block;
-  background-color: transparent;
-}
-
-.code-section code pre {
   padding: 15px;
-  white-space: normal;
-}
-
-code pre > span {
-  font-family: monospace;
 }
 
 .list  li {
@@ -602,20 +590,6 @@ h2:hover .link-icon, h3:hover .link-icon{
 
 .sub-section {
   margin: 10px auto 60px;
-}
-
-.white {
-  color: #fff;
-  /* font-family: 'SourceCodePro-Regular'; */
-  font-size: 14px;
-  width: 100%;
-  display: block;
-}
-
-@media (min-width: 768px) {
-  .white {
-    width: 85%;
-  }
 }
 
 .desc-list {
