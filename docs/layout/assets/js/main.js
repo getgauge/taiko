@@ -161,7 +161,7 @@ function init() {
   scrollHightlight('.sub-section h3');
   scrollHightlight('.content-section h2');
   copyCode($('.content-section .hljs'));
-  copyCode($('.code-section code'));
+  copyCode($('.code-section .hljs'));
   setGithubStar();
   smoothScroll();
   alogoliaSearch();
