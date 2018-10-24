@@ -108,15 +108,12 @@ click(<span class="hljs-string">“Google Search”</span>)</code></pre>
     <p>You can copy and modify this code or save it directly to a file using          
     </p>
     <div class="code-section">
-      <pre class="hljs"><code>.code googlesearch.js</code>
-      </pre>
+      <pre class="hljs"><code>.code googlesearch.js</code></pre>
     </div>
 
-    <p>Choose to continue automating or finish the recording using 
-    </p>
+    <p>Choose to continue automating or finish the recording using</p>
     <div class="code-section">
-      <pre class="hljs"><code>.exit</code>
-      </pre>
+      <pre class="hljs"><code>.exit</code></pre>
     </div>
     <p>To run a Taiko script pass the file as an argument to <span class="highlight">taiko</span>
     </p>
@@ -126,11 +123,11 @@ click(<span class="hljs-string">“Google Search”</span>)</code></pre>
     <p>By default Taiko runs the script in headless mode - that means it does not launch a browser window. This makes it easy to run Taiko in containers like Docker. 
     </p>
     <div class="code-section code-section_output">
-      <pre class="hljs"><code>✔ Browser opened<br />
-✔ Navigated to url "http://google.com" <br />
-✔ Wrote taiko test automation into the focused element.<br />
-✔ Clicked element containing text "Google Search"<br />
-✔ Browser closed<br /></code></pre>
+      <pre class="hljs"><code>✔ Browser opened
+✔ Navigated to url "http://google.com"
+✔ Wrote taiko test automation into the focused element.
+✔ Clicked element containing text "Google Search"
+✔ Browser closed</code></pre>
     </div>
     <p>To view the browser when the script executes use 
     </p>
@@ -165,8 +162,7 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
         <p>For example on google.com, this command will click on any element with the text 'Google Search' (a button on the page).
     </p>
     <div class="code-section">
-      <pre class="hljs"><code>click(<span class="hljs-string">“Google Search”</span>)</code>
-    </pre>
+      <pre class="hljs"><code>click(<span class="hljs-string">“Google Search”</span>)</code></pre>
   </div>
     <p>
       Taiko’s API mimics user interactions with the browser. For example if you want to write into an element that’s currently in focus, use 
@@ -178,8 +174,7 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
       Or if you want to write into a specific text field 
     </p>
     <div class="code-section">
-      <pre class="hljs"><code>write(<span class="hljs-string">“something”</span>, into(textField({placeholder: <span class="hljs-string">“Username”</span>})))</code>
-      </pre>
+      <pre class="hljs"><code>write(<span class="hljs-string">“something”</span>, into(textField({placeholder: <span class="hljs-string">“Username”</span>})))</code></pre>
   </div>
     <p>
         With Taiko’s API you can avoid using ids/css/xpath selectors to create reliable tests that don’t break with changes in the web page’s structure.
@@ -192,12 +187,10 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
       Taiko’s also supports XPath and CSS selectors.
     </p>
     <div class="code-section">
-      <pre class="hljs"><code>click($(“#button_id”)) // Using CSS selectors</code>
-      </pre>
+      <pre class="hljs"><code>click($(“#button_id”)) // Using CSS selectors</code></pre>
     </div>
     <div class="code-section">
-      <pre class="hljs"><code>click($(<span class="hljs-string">“//input[name=`button_name`]”</span>)) <span class="comment-code">// Xpath selectors</span></code>
-      </pre>
+      <pre class="hljs"><code>click($(<span class="hljs-string">“//input[name=`button_name`]”</span>)) <span class="comment-code">// Xpath selectors</span></code></pre>
     </div>
   </div>
   <div class="sub-section">
@@ -235,7 +228,7 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
     </p>
     <div class="code-section">
       <pre class="hljs"> <code>intercept(<span class="hljs-string">“https://fetchdata.com”</span>, (request) =>  
-  {request.continue({<span class="hljs-string">“custom”: “data”</span>})})) <br /></code></pre>
+  {request.continue({<span class="hljs-string">“custom”: “data”</span>})}))</code></pre>
     </div>
     <p>This simplifies test setups as Taiko doesn’t have to set up mock servers, or replace URLs in tests to point to test instances.
     </p>
@@ -251,8 +244,7 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
     Install Gauge using <span class="highlight">npm</span>
   </p>
   <div class="code-section">
-    <pre class="hljs"><code>npm install @getgauge/cli</code>
-    </pre>
+    <pre class="hljs"><code>npm install @getgauge/cli</code></pre>
   </div>
   <p> and initialize a sample Taiko project using</p>
   <div class="code-section">
