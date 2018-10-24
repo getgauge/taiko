@@ -6,9 +6,19 @@ const fs = require('fs');
 const taiko = require('../lib/taiko');
 const repl = require('../lib/repl');
 const { removeQuotes, symbols, isTaikoRunner } = require('../lib/util');
-const observeAgrv = ['--observe','--slow-mo','--watch'];
+const observeAgrv = ['--observe','--slow-mo','--watch','-o'];
 const argv = process.argv;
 let repl_mode = false;
+const commands = {'-h':printHelpText,'--help':printHelpText,'-v':printVersion,'--version':printVersion};
+
+function printHelpText(){
+    console.log('Usage: taiko   [script.js] [arguments]\ntaiko script.js --observe 5000\nOptions:\n-v, --version display the version\n-o, --observe disable headless mode, optionally takes observeTime in millisecond eg: --observe 5000\n    Alternatives --slow-mo,--watch');
+}
+
+function printVersion(){
+    const packageJson = require('../package.json');
+    console.log(`Version: ${packageJson.version} (Chromium:${packageJson.taiko.chromium_version})`);
+}
 
 async function exitOnUnhandledFailures(e){
     if(!repl_mode){
@@ -22,7 +32,7 @@ process.on('unhandledRejection', exitOnUnhandledFailures);
 process.on('uncaughtException',exitOnUnhandledFailures);
 if(isTaikoRunner(process.argv[1]))
     if (process.argv.length > 2){
-        runFile(process.argv[2]);
+        (process.argv[2] in commands) ? commands[process.argv[2]]() : runFile(process.argv[2]);
     }else{
         repl_mode = true;
         repl.initiaize();
