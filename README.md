@@ -181,10 +181,6 @@ Install Gauge using npm and initialize an initialize and sample Taiko project us
 
 Learn more about [Gauge](https://docs.gauge.org)!
 
-# Our mission
-
-We built Gauge and Taiko to make browser automation easy and reliable and take the pain out of acceptance testing. It’s free and open source with a growing community of developers and testers. We hope it makes testing easy!
-
 ## Documentation
 
 * [API](http://taiko.gauge.org)
