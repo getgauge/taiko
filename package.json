@@ -37,11 +37,11 @@
 	"license": "MIT",
 	"dependencies": {
 		"babylon": "^6.18.0",
-		"chrome-remote-interface": "^0.26.1",
+		"chrome-remote-interface": "^0.27.0",
 		"extract-zip": "^1.6.6",
 		"fs-extra": "^7.0.1",
 		"https-proxy-agent": "^2.2.1",
-		"progress": "^2.0.0",
+		"progress": "^2.0.3",
 		"proxy-from-env": "^1.0.0",
 		"recast": "^0.12.8",
 		"repl.history": "^0.1.4",
@@ -50,7 +50,7 @@
 	"devDependencies": {
 		"documentation": "^5.5.0",
 		"eslint": "^4.19.1",
-		"js-beautify": "^1.7.4",
+		"js-beautify": "^1.8.9",
 		"markdown-styles": "^3.1.10",
 		"marked": "^0.4.0",
 		"pre-commit": "^1.2.2"
