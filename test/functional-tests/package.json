@@ -1,0 +1,12 @@
+{
+  "name": "gauge-js-template",
+  "version": "0.0.1",
+  "description": "Starter template for writing JavaScript tests for Gauge",
+  "scripts": {
+    "test": "gauge run specs"
+  },
+  "dependencies": {
+    "taiko": "git+https://github.com/getgauge/taiko.git",
+    "@getgauge/cli": "latest"
+  }
+}

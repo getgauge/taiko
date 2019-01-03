@@ -11,7 +11,7 @@
 		"lint": "eslint bin/*.js lib/*.js test/*.js",
 		"doc-new": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js --new",
 		"doc": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
-		"test": "node test/taiko-test.js && npm run lint",
+		"test": "node test/unit-tests/taiko-test.js && npm run lint",
 		"install": "node lib/install.js",
 		"update-json-doc": "node build/updateJsonDoc.js"
 	},

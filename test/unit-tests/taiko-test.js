@@ -1,7 +1,7 @@
 const assert = require('assert');
-const taiko = require('../lib/taiko');
+const taiko = require('../../lib/taiko');
 const util = require('util');
-const { removeQuotes, symbols } = require('../lib/util');
+const { removeQuotes, symbols } = require('../../lib/util');
 
 (() => {
     try {
