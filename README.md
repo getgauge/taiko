@@ -34,7 +34,13 @@ Taiko works on Windows, MacOS and Linux. You only need to have [Node.js](https:/
 
     $ npm install -g taiko
 
-This installs Taiko and the latest version of Chromium browser. We are all set to do some testing!
+This installs Taiko and the latest version of Chromium browser. 
+
+Then you need to install gauge JavaScript plugin to do the coding.
+
+    $ gauge install js
+
+Now we are all set to do some testing!
 
 ## Interactive Recorder
 
