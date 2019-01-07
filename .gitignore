@@ -64,3 +64,7 @@ docs/index.md
 
 #local chromium
 .local-chromium
+
+#test report
+test/functional-tests/reports/
+test/functional-tests/.gauge/
