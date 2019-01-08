@@ -134,12 +134,16 @@ step('Scroll', async() => {
     await scrollUp($('#myDIV'), 100);
 });
 
-step('Alert', async() => {
-    alert('Message 1', async () => await dismiss());
-    alert('Message 2', async () => await accept());
+step("Wait for Accept message <message> on click of button <buttonName>", async (message, buttonName) => {
+    alert(message, async () => await accept());
 
-    await click(button("Alert"));
-    await click(button("Alert1"));
+    await click(button(buttonName));
+});
+
+step("Wait for dismiss message <message> on click of button <buttonName>", async (message, buttonName) => {
+    alert(message, async () => await dismiss());
+
+    await click(button(buttonName));
 });
 
 step("Intercept Google Analytics", async function() {

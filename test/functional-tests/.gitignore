@@ -64,3 +64,5 @@ docs/index.md
 
 #local chromium
 .local-chromium
+
+.gauge

@@ -38,6 +38,7 @@ Scroll
 
 * Scroll
 
-Alert
------
-* Alert
+Button with alert
+-----------------
+* Wait for dismiss message "Message 1" on click of button "Alert"
+* Wait for Accept message "Message 2" on click of button "Alert1"
