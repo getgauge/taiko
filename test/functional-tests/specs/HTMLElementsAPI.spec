@@ -6,12 +6,14 @@ API
 Combo Box
 ---------
 
-* Combo Box
+* Ensure Combo Box "Cars" exists
+* Select "Saab" of Combo Box "Cars". The value now should be "saab"
 
 Check Box
 ---------
 
-* Check Box
+* Ensure Check Box "Vehicle" exists
+* Check the value of Check Box "Vehicle"
 
 Radio Button
 ------------
@@ -23,18 +25,18 @@ Radio Button without for
 tags: knownIssue
 * Radio Button "Y"
 
-Attach file
------------
+File field
+----------
 
-* Attach file
+* Attach file "file.txt" to file field "File"
 
 Text Field
 ----------
 
-* Should be able to focus on Text Field "Username"
-* Should be able to write "Gopher" on Text Field "Username"
+* Focus on Text Field "Username"
+* Write "Gopher" on Text Field "Username"
 * An existing text field "Username" value should give exists true
-* Should be able to get value "Gopher" of text field "Username"
+* Get value "Gopher" of text field "Username"
 
 $ element
 ---------

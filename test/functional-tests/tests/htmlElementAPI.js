@@ -79,17 +79,24 @@ step('Display the IDE plugins', async() => {
     assert.ok(await link('Visual Studio Code').exists());
 });
 
-step('Combo Box', async() => {
-    const box = comboBox('Cars');
+step('Ensure Combo Box <comboBoxName> exists', async(comboBoxName) => {
+    const box = comboBox(comboBoxName);
     assert.ok(await box.exists());
-    await box.select('Saab');
-    assert.equal(await box.value(), 'saab');
 });
 
-step('Check Box', async() => {
-    const box = checkBox('Vehicle');
+step('Select <value> of Combo Box <comboBoxName>. The value now should be <fieldValue>', async(value, comboBoxName,fieldValue) => {
+    const box = comboBox(comboBoxName);
+    await box.select(value);
+    assert.equal(await box.value(), fieldValue);
+});
+
+step('Ensure Check Box <checkBoxName> exists', async(checkBoxName) => {
+    const box = checkBox(checkBoxName);
     assert.ok(await box.exists());
-    await checkBox('Vehicle').check();
+});
+step('Check the value of Check Box <checkBoxName>', async(checkBoxName) => {
+    const box = checkBox(checkBoxName);
+    await box.check();
     assert.ok(await box.isChecked());
 });
 
@@ -100,13 +107,13 @@ step("Radio Button <label>", async (label) => {
     assert.ok(await button.isSelected());
 });
 
-step('Attach file', async() => {
-    const field = fileField('File');
-    await attach('file.txt', to(field));
-    assert.ok((await field.value()).endsWith('file.txt'));
+step("Attach file <fileName> to file field <FileFieldName>", async (fileName, FileFieldName) => {
+    const field = fileField(FileFieldName);
+    await attach(fileName, to(field));
+    assert.ok((await field.value()).endsWith(fileName));
 });
 
-step('Should be able to get value <text> of text field <textFieldName>', async(text,textFieldName) => {
+step("Get value <text> of text field <textFieldName>", async (text, textFieldName) => {
     const field = textField(textFieldName);
     assert.equal(await field.value(), text);
 });
@@ -116,11 +123,11 @@ step('An existing text field <textFieldName> value should give exists true', asy
     assert.ok(await field.exists());
 });
 
-step('Should be able to write <text> on Text Field <textFieldName>', async(text,textFieldName) => {
+step("Write <text> on Text Field <textFieldName>", async (text, textFieldName) => {
     await write(text, into(textFieldName));
 });
 
-step('Should be able to focus on Text Field <textFieldName>', async(textFieldName) => {
+step("Focus on Text Field <textFieldName>", async (textFieldName) => {
     await focus(textFieldName);
 });
 
