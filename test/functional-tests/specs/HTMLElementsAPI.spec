@@ -33,10 +33,26 @@ Text Field
 
 * Text Field 
 
-Scroll
-------
+$ element
+---------
 
-* Scroll
+* Scroll to element "#myDIV"
+* Scroll element "#myDIV" right by pixels "200"
+* Scroll element "#myDIV" left by pixels "200"
+* Scroll element "#myDIV" down by pixels "200"
+* Scroll element "#myDIV" up by pixels "200"
+
+Page
+----
+
+* Scroll the page right by pixels "200"
+* Scroll the page left
+* Scroll the page left by pixels "100"
+* Scroll the page down by pixels "200"
+* Scroll the page up by pixels "100"
+* Scroll the page up
+* Scroll the page down
+* Scroll the page right
 
 Button with alert
 -----------------

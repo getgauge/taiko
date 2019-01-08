@@ -114,25 +114,17 @@ step('Text Field', async() => {
     assert.equal(await field.value(), 'Gopher');
 });
 
-step('Scroll', async() => {
-    await scrollTo($('#myDIV'));
-
-    // Scrolling the page
-    await scrollRight(200);
-    await scrollLeft();
-    await scrollLeft(100);
-    await scrollDown(200);
-    await scrollUp(100);
-    await scrollUp();
-
-    // Scrolling a specific element
-    await scrollRight($('#myDIV'), 200);
-    await scrollLeft($('#myDIV'), 100);
-    await scrollLeft($('#myDIV'));
-    await scrollDown($('#myDIV'), 200);
-    await scrollUp($('#myDIV'));
-    await scrollUp($('#myDIV'), 100);
+step("Scroll the page right by pixels <pixels>", async (pixels) => {
+    await scrollRight(pixels);
 });
+
+step('Scroll element <element> right by pixels <pixels>', async(element,pixels) => {
+    await scrollRight($(element), pixels);
+});
+
+step('Scroll the page left',async() =>{
+    await scrollLeft();
+})
 
 step("Wait for Accept message <message> on click of button <buttonName>", async (message, buttonName) => {
     alert(message, async () => await accept());
@@ -163,3 +155,43 @@ step("Navigate to relative path <relativePath>", async function(relativePath) {
     var absolutePath = _path.resolve(relativePath)
     await goto("file:///"+absolutePath)
 });
+
+step("Scroll to element <arg0>", async function(arg0) {
+    await scrollTo($('#myDIV'));
+});
+
+step("Scroll the page left by pixels <pixels>", async (pixels) => {
+    await scrollLeft(pixels);
+});
+
+step("Scroll element <element> left by pixels <pixels>", async function(element, pixels) {
+    await scrollLeft($(element), pixels);
+});
+
+step('Scroll the page right',async() =>{
+    await scrollRight();
+})
+
+step("Scroll the page up by pixels <pixels>", async (pixels) => {
+    await scrollUp(pixels);
+});
+
+step("Scroll element <element> up by pixels <pixels>", async function(element, pixels) {
+    await scrollUp($(element), pixels);
+});
+
+step('Scroll the page up',async() =>{
+    await scrollUp();
+})
+
+step("Scroll the page down by pixels <pixels>", async (pixels) => {
+    await scrollDown(pixels);
+});
+
+step("Scroll element <element> down by pixels <pixels>", async function(element, pixels) {
+    await scrollDown($(element), pixels);
+});
+
+step('Scroll the page down',async() =>{
+    await scrollDown();
+})
