@@ -16,7 +16,7 @@
 
 ## Write, Press, Click
 
-* Navigate to "http://todomvc.com/examples/react/#/"
+* Navigate to relative path "./specs/data/IFrameTodoApp.html"
 * Write "flow"
 * Press "Enter"
 * Click link "Active"
@@ -30,7 +30,7 @@
 
 ## Right Click
 
-* Navigate to file with relative Path "/specs/data/rightClick.html"
+* Navigate to relative path "./specs/data/IFrameRightClick.html"
 * Right click
 
    |Type|Selector       |
@@ -39,7 +39,7 @@
 * Click "Share On Facebook"
 
 ## Hover
-* Navigate to "http://react-compare-app.surge.sh/"
+* Navigate to relative path "./specs/data/IFrameCompare.html"
 * Hover on element
 
    |Type|Selector        |
@@ -54,7 +54,7 @@
 * Click "Remove"
 
 ## Drag and drop
-* Navigate to "https://marcojakob.github.io/dart-dnd/basic/"
+* Navigate to relative path "./specs/data/IFrameDragAndDrop.html"
 * Drag ".document" and drop to ".trash"
 * Drag ".document" and drop at
    |direction|pixel|
