@@ -28,3 +28,7 @@ step("Assert text is not empty <table>", async function(table) {
 step("Assert text <content> exists on the page.", async function(content) {
 	assert.ok(await text(content).exists());
 });
+
+step("Assert text <content> does not exist", async function (content) {
+	assert.ok(!await text(content).exists());
+});
