@@ -34,7 +34,7 @@ Text Field
 ----------
 
 * Focus on Text Field "Username"
-* Write "Gopher" on Text Field "Username"
+* Write "Gopher" into Text Field "Username"
 * An existing text field "Username" value should give exists true
 * Get value "Gopher" of text field "Username"
 

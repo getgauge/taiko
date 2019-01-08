@@ -123,8 +123,12 @@ step('An existing text field <textFieldName> value should give exists true', asy
     assert.ok(await field.exists());
 });
 
-step("Write <text> on Text Field <textFieldName>", async (text, textFieldName) => {
+step("Write <text> into Text Field <textFieldName>", async (text, textFieldName) => {
     await write(text, into(textFieldName));
+});
+
+step("Write <text> to Text Field <textFieldName>", async (text, textFieldName) => {
+    await write(text, to(textFieldName));
 });
 
 step("Focus on Text Field <textFieldName>", async (textFieldName) => {
