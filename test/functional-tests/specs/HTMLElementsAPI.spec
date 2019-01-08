@@ -31,7 +31,10 @@ Attach file
 Text Field
 ----------
 
-* Text Field 
+* Should be able to focus on Text Field "Username"
+* Should be able to write "Gopher" on Text Field "Username"
+* An existing text field "Username" value should give exists true
+* Should be able to get value "Gopher" of text field "Username"
 
 $ element
 ---------

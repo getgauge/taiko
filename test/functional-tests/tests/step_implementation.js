@@ -106,12 +106,22 @@ step('Attach file', async() => {
     assert.ok((await field.value()).endsWith('file.txt'));
 });
 
-step('Text Field', async() => {
-    await focus('Username');
-    await write('Gopher', into('Username'));
-    const field = textField('Username');
+step('Should be able to get value <text> of text field <textFieldName>', async(text,textFieldName) => {
+    const field = textField(textFieldName);
+    assert.equal(await field.value(), text);
+});
+
+step('An existing text field <textFieldName> value should give exists true', async(textFieldName) => {
+    const field = textField(textFieldName);
     assert.ok(await field.exists());
-    assert.equal(await field.value(), 'Gopher');
+});
+
+step('Should be able to write <text> on Text Field <textFieldName>', async(text,textFieldName) => {
+    await write(text, into(textFieldName));
+});
+
+step('Should be able to focus on Text Field <textFieldName>', async(textFieldName) => {
+    await focus(textFieldName);
 });
 
 step("Scroll the page right by pixels <pixels>", async (pixels) => {
