@@ -1,18 +1,4 @@
 # Page Actions
-## Scroll To, Up
-
-* Navigate to "https://reactjs.org/community/examples.html"
-* Scroll to 
-
-   |Type|Selector    |
-   |----|------------|
-   |link|Installation|
-
-* Scroll up 
-
-   |Type|Selector  |
-   |----|----------|
-   |link|Calculator|
 
 ## Write, Press, Click
 
