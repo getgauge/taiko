@@ -131,15 +131,15 @@ step("Focus on Text Field <textFieldName>", async (textFieldName) => {
     await focus(textFieldName);
 });
 
-step("Scroll the page right by pixels <pixels>", async (pixels) => {
-    await scrollRight(pixels);
+step("Scroll the page right by pixels <pixels>", { continueOnFailure: true},async (pixels) => {
+    await scrollRight(parseInt(pixels, 10));
 });
 
-step('Scroll element <element> right by pixels <pixels>', async(element,pixels) => {
-    await scrollRight($(element), pixels);
+step('Scroll element <element> right by pixels <pixels>', { continueOnFailure: true},async(element,pixels) => {
+    await scrollRight($(element), parseInt(pixels, 10));
 });
 
-step('Scroll the page left',async() =>{
+step('Scroll the page left',{ continueOnFailure: true},async() =>{
     await scrollLeft();
 })
 
@@ -173,42 +173,42 @@ step("Navigate to relative path <relativePath>", async function(relativePath) {
     await goto("file:///"+absolutePath)
 });
 
-step("Scroll to element <arg0>", async function(arg0) {
+step("Scroll to element <arg0>",{ continueOnFailure: true}, async function(arg0) {
     await scrollTo($('#myDIV'));
 });
 
-step("Scroll the page left by pixels <pixels>", async (pixels) => {
-    await scrollLeft(pixels);
+step("Scroll the page left by pixels <pixels>",{ continueOnFailure: true}, async (pixels) => {
+    await scrollLeft(parseInt(pixels, 10));
 });
 
-step("Scroll element <element> left by pixels <pixels>", async function(element, pixels) {
-    await scrollLeft($(element), pixels);
+step("Scroll element <element> left by pixels <pixels>",{ continueOnFailure: true}, async function(element, pixels) {
+    await scrollLeft($(element), parseInt(pixels, 10));
 });
 
-step('Scroll the page right',async() =>{
+step('Scroll the page right',{ continueOnFailure: true},async() =>{
     await scrollRight();
 })
 
-step("Scroll the page up by pixels <pixels>", async (pixels) => {
-    await scrollUp(pixels);
+step("Scroll the page up by pixels <pixels>",{ continueOnFailure: true}, async (pixels) => {
+    await scrollUp(parseInt(pixels, 10));
 });
 
-step("Scroll element <element> up by pixels <pixels>", async function(element, pixels) {
-    await scrollUp($(element), pixels);
+step("Scroll element <element> up by pixels <pixels>", { continueOnFailure: true},async function(element, pixels) {
+    await scrollUp($(element), parseInt(pixels, 10));
 });
 
-step('Scroll the page up',async() =>{
+step('Scroll the page up',{ continueOnFailure: true},async() =>{
     await scrollUp();
 })
 
-step("Scroll the page down by pixels <pixels>", async (pixels) => {
-    await scrollDown(pixels);
+step("Scroll the page down by pixels <pixels>",{ continueOnFailure: true}, async (pixels) => {
+    await scrollDown(parseInt(pixels, 10));
 });
 
-step("Scroll element <element> down by pixels <pixels>", async function(element, pixels) {
-    await scrollDown($(element), pixels);
+step("Scroll element <element> down by pixels <pixels>", { continueOnFailure: true},async function(element, pixels) {
+    await scrollDown($(element), parseInt(pixels, 10));
 });
 
-step('Scroll the page down',async() =>{
+step('Scroll the page down',{ continueOnFailure: true},async() =>{
     await scrollDown();
 })
