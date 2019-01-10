@@ -52,4 +52,4 @@ tags: knownIssue
    |----|------------|
    |$   |.github_star|
 
-* Assert title to be "Supported Plugins | Gauge" 
+* Assert text "Language Runners" exists on the page.
