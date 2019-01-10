@@ -9,7 +9,7 @@ const {
     hover, screenshot, timeoutSecs, intervalSecs, waitForNavigation, to, into, dismiss, accept,intercept
 } = require('taiko');
 
-beforeScenario(async() => await openBrowser({headless:false,args: [ 
+beforeScenario(async() => await openBrowser({args: [ 
         '--disable-gpu',
         '--disable-dev-shm-usage',
         '--disable-setuid-sandbox',
