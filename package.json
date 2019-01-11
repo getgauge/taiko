@@ -30,7 +30,7 @@
 		"headless-browser"
 	],
 	"taiko": {
-		"chromium_revision": "615489",
+		"chromium_revision": "620317",
 		"chromium_version": "73.0.3638.0"
 	},
 	"author": "getgauge",
@@ -53,6 +53,7 @@
 		"js-beautify": "^1.8.9",
 		"markdown-styles": "^3.1.10",
 		"marked": "^0.4.0",
-		"pre-commit": "^1.2.2"
+		"pre-commit": "^1.2.2",
+		"lodash": "^4.17.11"
 	}
 }
