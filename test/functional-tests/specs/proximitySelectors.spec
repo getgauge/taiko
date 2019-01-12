@@ -10,7 +10,7 @@
    |link|Gauge Commands|
 
 ## Near by
-
+tags: knownIssue
 * Navigate to relative path "./specs/data/HTMLElements.html"
 * Write "Blah" into Input Field near 
 
