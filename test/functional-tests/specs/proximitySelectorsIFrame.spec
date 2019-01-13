@@ -1,4 +1,4 @@
-# Proximity Selectors
+# Proximity Selectors in IFrame
 ## Below
 
 * Intercept Google Analytics
@@ -11,15 +11,14 @@
 
 ## Near by
 tags: knownIssue
-* Navigate to "google.com"
-* Click "I'm Feeling Lucky"
-* Click "About"
-* Select "हिन्दी" of Combo Box near 
 
-   |Type      |Selector                        |
-   |----------|--------------------------------|
-   |inputField|{"placeholder":"Search Doodles"}|
-* Click "Doodles संग्रह"
+* Navigate to relative path "./specs/data/IFrameElements.html"
+* Write "Blah" into Input Field near 
+
+   |Type|Selector  |
+   |----|----------|
+   |text|First Name|
+* Assert text "Blah" exists on the page.
 
 ## Above
 
@@ -52,4 +51,4 @@ tags: knownIssue
    |----|------------|
    |$   |.github_star|
 
-* Assert title to be "Supported Plugins | Gauge" 
+* Assert text "Language Runners" exists on the page.

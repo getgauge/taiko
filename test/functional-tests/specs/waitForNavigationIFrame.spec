@@ -1,4 +1,4 @@
-# Wait for navigation
+# Wait for navigation IFrame
 ## Should get the text of an element after page is loaded
 * Navigate to relative path "./specs/data/IFrameWaitForNavigation.html"
 * length of parse int should be "20" 

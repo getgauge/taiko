@@ -31,12 +31,12 @@
 ## Write, Clear
 
 * Navigate to relative path "./specs/data/IFrameTodoApp.html"
-* Write "flow"
+* Write "abcd"
 * Clear element that is in focus
 * Write "Clear it"
 * Press "Enter"
 * Assert text "Clear it" exists on the page.
-* Assert text "flow" does not exist
+* Assert text "abcd" does not exist
 
 ## Double Click
 * Assert text "Hello World" does not exist
