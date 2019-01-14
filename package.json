@@ -53,7 +53,6 @@
 		"js-beautify": "^1.8.9",
 		"markdown-styles": "^3.1.10",
 		"marked": "^0.4.0",
-		"pre-commit": "^1.2.2",
-		"lodash": "^4.17.11"
+		"pre-commit": "^1.2.2"
 	}
 }
