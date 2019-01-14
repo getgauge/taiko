@@ -250,8 +250,7 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
   <div class="code-section">
     <pre class="hljs"><code>gauge init js</code></pre>
     </div>
-  <p>Now that you've created your project with Gauge and Taiko, you can start to <a href="https://gauge.org/getting-started-guide/create-specification" target="_blank">write test specifications using Gauge</a>. You can see how Gauge and Taiko work together from this <a href="https://github.com/getgauge-examples/js-taiko" target="_blank">sample project</a>.</p>
-  <p>Gauge steps can be created using <span class="highlight">.step</span> command in REPL once you record a flow</p>
+  <p>You can then use Taiko's REPL to record a flow and create step implementation stubs using the command <span class="highlight">.step</span></p>
   <div class="code-section">
       <pre class="hljs"><code>.step</code></pre>
     </div>
@@ -263,10 +262,11 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
       press("Enter")
   });</code></pre>
   </div>
-  <p> you can also save it directly to a new step implementation file</p>
+  <p>you can also save it directly to a new or existing step implementation file</p>
   <div class="code-section">
     <pre class="hljs"><code>.step tests/google.js</code></pre>
   </div>
+  <p>Now that you've created your project with Gauge and Taiko, you can start to <a href="https://gauge.org/getting-started-guide/create-specification" target="_blank">write test specifications using Gauge</a>. You can see how Gauge and Taiko work together from this <a href="https://github.com/getgauge-examples/js-taiko" target="_blank">sample project</a>.</p>
 </section>
 <section class="taiko-env-variables">
     <h2 id="taiko-env-variables">Environment Variables</h2>
