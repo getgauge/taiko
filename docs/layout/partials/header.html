@@ -236,7 +236,7 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
 </section>
 
 <section class="gauage-integration">
-  <h2 id="integrating-gauge">Integrating with Gauge</h3>
+  <h2 id="integrating-gauge">Integrating with Gauge</h2>
   <p>
     We recommend using Taiko with Gauge. Gauge is a test runner for writing readable and reusable acceptance tests. It is easy to install and well integrated with Taiko. 
   </p>
@@ -250,5 +250,30 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
   <div class="code-section">
     <pre class="hljs"><code>gauge init js</code></pre>
     </div>
+  <p>You can then use Taiko's REPL to record a flow and create step implementation stubs using the command <span class="highlight">.step</span></p>
+  <div class="code-section">
+      <pre class="hljs"><code>.step</code></pre>
+    </div>
+  <p>It generates a step like below</p>
+  <div class="code-section">
+    <pre class="hljs"><code>step(" ", async () => {
+      goto("google.com");
+      write("Gauge test automation")
+      press("Enter")
+  });</code></pre>
+  </div>
+  <p>you can also save it directly to a new or existing step implementation file</p>
+  <div class="code-section">
+    <pre class="hljs"><code>.step tests/google.js</code></pre>
+  </div>
   <p>Now that you've created your project with Gauge and Taiko, you can start to <a href="https://gauge.org/getting-started-guide/create-specification" target="_blank">write test specifications using Gauge</a>. You can see how Gauge and Taiko work together from this <a href="https://github.com/getgauge-examples/js-taiko" target="_blank">sample project</a>.</p>
+</section>
+<section class="taiko-env-variables">
+    <h2 id="taiko-env-variables">Environment Variables</h2>
+    <p>Taiko lets you specify certain Environment varibles to customise its behaviour</p>
+    <ul class="desc-list">
+        <li><span class="highlight">TAIKO_SKIP_CHROMIUM_DOWNLOAD</span> - set to true to skip downloading chromium</li>
+        <li><span class="highlight">TAIKO_CHROMIUM_URL</span> - set to host url of mirror to download chromium </li>
+        <li><span class="highlight">TAIKO_BROWSER_PATH</span> - set to launch browser from different location</li>
+      </ul>
 </section>
