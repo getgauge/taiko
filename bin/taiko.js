@@ -9,7 +9,7 @@ const { removeQuotes, symbols, isTaikoRunner } = require('../lib/util');
 const observeAgrv = ['--observe','--slow-mo','--watch','-o'];
 const argv = process.argv;
 let repl_mode = false;
-const commands = {'-h':printHelpText,'--help':printHelpText,'-v':printVersion,'--version':printVersion};
+const commands = {'--load': loadScript, '-h':printHelpText,'--help':printHelpText,'-v':printVersion,'--version':printVersion};
 
 function printHelpText(){
     console.log('Usage: taiko   [script.js] [arguments]\ntaiko script.js --observe 5000\nOptions:\n-v, --version display the version\n-o, --observe Enables headful mode and runs script with 3000ms delay by default,\n              optionally takes observeTime in millisecond eg: --observe 5000\n              Alternatives --slow-mo,--watch');
@@ -26,6 +26,12 @@ async function exitOnUnhandledFailures(e){
         if(await taiko.client())await taiko.closeBrowser();
         process.exit(1);
     }
+}
+
+async function loadScript() {
+    await runFile(process.argv[3]);
+    repl_mode = true;
+    await repl.initiaize();
 }
 
 process.on('unhandledRejection', exitOnUnhandledFailures);
