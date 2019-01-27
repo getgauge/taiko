@@ -45,7 +45,8 @@
 		"proxy-from-env": "^1.0.0",
 		"recast": "^0.12.8",
 		"repl.history": "^0.1.4",
-		"rimraf": "^2.6.1"
+		"rimraf": "^2.6.1",
+		"speedline": "^1.4.2"
 	},
 	"devDependencies": {
 		"documentation": "^5.5.0",
