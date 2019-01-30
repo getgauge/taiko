@@ -55,7 +55,7 @@ function runFile(file) {
                 else args = [{headless:false, observe:true, observeTime:observeTime}] ;
             }  
             if (func === 'openBrowser' && commandlineArgs().emulateDevice)  
-                args[0].emulateDevice = commandlineArgs().emulateDevice;      
+                process.env['TAIKO_EMULATE_DEVICE'] = commandlineArgs().emulateDevice;      
             res = await realFuncs[func].apply(this, args);
             if (res.description) {
                 res.description = symbols.pass + res.description;
