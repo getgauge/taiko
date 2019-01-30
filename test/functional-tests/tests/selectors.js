@@ -1,7 +1,7 @@
 'use strict';
 const {
     link, comboBox,inputField,text,$
-} = require('taiko');
+} = require('../../../lib/taiko');
 
 function getElementWithSelector(element,selector){
     var selectedElement = null

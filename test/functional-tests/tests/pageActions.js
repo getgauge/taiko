@@ -2,7 +2,7 @@ var _selectors = require('./selectors')
 const assert = require('assert');
 const {
     scrollTo,scrollUp,press,highlight,hover,dragAndDrop,$
-} = require('taiko');
+} = require('../../../lib/taiko');
 
 step("Scroll to <table>", async function(table) {
 	await scrollTo(_selectors.getElement(table));

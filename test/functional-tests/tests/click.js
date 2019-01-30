@@ -4,7 +4,7 @@ var _selectors = require('./selectors')
 
 const {
     link, click,below,image,above,toRightOf,toLeftOf,button,rightClick,doubleClick
-} = require('taiko');
+} = require('../../../lib/taiko');
 
 step("Click link <userlink> below <table>", async function (userlink,table) {
     await click(link(userlink,below(_selectors.getElement(table))));

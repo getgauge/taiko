@@ -1,6 +1,6 @@
 const {
     switchTo,openTab,closeTab,reload,goto
-} = require('taiko');
+} = require('../../../lib/taiko');
 const cwd = process.cwd();
 
 step("Switch to tab with title <title>",async function(title){
