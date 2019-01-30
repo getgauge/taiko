@@ -44,6 +44,7 @@ else
 function runFile(file) {
     validate(file);
     const realFuncs = {};
+    if (commandlineArgs().emulateDevice) process.env['TAIKO_EMULATE_DEVICE'] = commandlineArgs().emulateDevice;    
     for (let func in taiko) {
         realFuncs[func] = taiko[func];
         if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function() {
@@ -54,8 +55,6 @@ function runFile(file) {
                 if (args['0']) {args['0'].headless = false; args[0].observe = true; args['0'].observeTime = observeTime;}
                 else args = [{headless:false, observe:true, observeTime:observeTime}] ;
             }  
-            if (func === 'openBrowser' && commandlineArgs().emulateDevice)  
-                process.env['TAIKO_EMULATE_DEVICE'] = commandlineArgs().emulateDevice;      
             res = await realFuncs[func].apply(this, args);
             if (res.description) {
                 res.description = symbols.pass + res.description;
