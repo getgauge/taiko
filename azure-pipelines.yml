@@ -32,4 +32,16 @@ jobs:
       npm test
       npm run test-functional
 
-  displayName: 'npm install and Run Test'
+- job: Windows
+  pool:
+    vmImage: 'vs2017-win2016'
+
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '8.x'
+
+  - script: |
+      npm install
+      npm test
+      npm run test-functional
