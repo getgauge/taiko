@@ -6,6 +6,7 @@ const fs = require('fs');
 const taiko = require('../lib/taiko');
 const repl = require('../lib/repl');
 const { removeQuotes, symbols, isTaikoRunner } = require('../lib/util');
+const { commandlineArgs } = require('../lib/helper');
 const observeAgrv = ['--observe','--slow-mo','--watch','-o'];
 const argv = process.argv;
 let repl_mode = false;
@@ -52,7 +53,9 @@ function runFile(file) {
                 const observeTime = isNaN(argv[argv.indexOf(observe[0])+1]) ? 3000 : argv[argv.indexOf(observe[0])+1]; 
                 if (args['0']) {args['0'].headless = false; args[0].observe = true; args['0'].observeTime = observeTime;}
                 else args = [{headless:false, observe:true, observeTime:observeTime}] ;
-            }    
+            }  
+            if (func === 'openBrowser' && commandlineArgs().emulateDevice)  
+                process.env['TAIKO_EMULATE_DEVICE'] = commandlineArgs().emulateDevice;      
             res = await realFuncs[func].apply(this, args);
             if (res.description) {
                 res.description = symbols.pass + res.description;
