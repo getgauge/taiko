@@ -15,6 +15,6 @@ steps:
 - script: |
     npm install
     npm test
-    npm test-functional
+    npm run test-functional
 
   displayName: 'npm install and Run Test'
