@@ -41,7 +41,7 @@ jobs:
     inputs:
       versionSpec: '8.x'
 
-  - script: |
+  - powershell: |
       npm install
       npm test
       npm run test-functional
