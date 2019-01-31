@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
-    "test": "gauge run specs"
+    "test": "gauge run specs -v --tags=\\!knownIssue"
   },
   "dependencies": {
     "@getgauge/cli": "latest"
