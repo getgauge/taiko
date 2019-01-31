@@ -3,7 +3,7 @@ var _selectors = require('./selectors')
 
 const {
     title, text
-} = require('taiko');
+} = require('../../../lib/taiko');
 
 step("Assert ok <table>", async function(table) {
 	await assert.ok(_selectors.getElement(table))

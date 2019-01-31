@@ -1,6 +1,6 @@
 const {
     write,focus,clear,near,inputField,into
-} = require('taiko');
+} = require('../../../lib/taiko');
 var _selectors = require('./selectors')
 
 step("Write <text>", async function(text) {

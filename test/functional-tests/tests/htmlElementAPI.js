@@ -7,7 +7,7 @@ const {
     prompt, confirm, beforeunload, text, click, doubleClick, rightClick, write, press,
     attach, highlight, focus, scrollTo, scrollRight, scrollLeft, scrollUp, scrollDown,
     hover, screenshot, timeoutSecs, intervalSecs, waitForNavigation, to, into, dismiss, accept,intercept
-} = require('taiko');
+} = require('../../../lib/taiko');
 
 beforeScenario(async() => await openBrowser({args: [ 
         '--disable-gpu',

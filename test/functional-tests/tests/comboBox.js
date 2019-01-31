@@ -4,7 +4,7 @@ var _selectors = require('./selectors')
 
 const {
     link, comboBox,near,inputField,toRightOf
-} = require('taiko');
+} = require('../../../lib/taiko');
 
 step("Select <value> of Combo Box near <table>", async function(value, table) {
     var element = _selectors.getElement(table);
