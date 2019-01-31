@@ -77,6 +77,7 @@ function setGithubStar(){
 
 function scrollHightlight(element) {
   var $headers = $(element);
+
   $(window).scroll(function(){  
     var currentScroll = $(this).scrollTop();
     var $currentSection
@@ -86,7 +87,10 @@ function scrollHightlight(element) {
       if( divPosition - 1 < currentScroll ){
         $currentSection = $(this);
       }
-      var id = $currentSection.attr('id');
+      if($currentSection.attr('id')){
+        var id = $currentSection.attr('id');
+      }
+
       $('.sidebar-header-2 a').removeClass('active');
       id = "'#" + id + "'";
       $(".sidebar-header-2 [href=" + id + "]").addClass('active');
@@ -126,7 +130,7 @@ function appendLink(elements) {
 
 
 function smoothScroll() {
-  $(".sidebar-header-2 a").on('click', function(event) {
+  $(".sidebar-header-2 a, .link-icon").on('click', function(event) {
     if (this.hash !== "") {
       event.preventDefault();
       var hash = this.hash;
@@ -139,7 +143,7 @@ function smoothScroll() {
       }, 800, function(){
         window.location.hash = hash;
       });
-    } 
+    };
   }); 
 }
 
@@ -157,13 +161,10 @@ function headButtresolve(element) {
 }
 
 function init() {
-  scrollHightlight('section h2');
-  scrollHightlight('.sub-section h3');
-  scrollHightlight('.content-section h2');
-  copyCode($('.content-section .hljs'));
-  copyCode($('.code-section .hljs'));
   setGithubStar();
-  smoothScroll();
+  setTimeout(function(){
+    smoothScroll();
+  }, 100);
   alogoliaSearch();
   appendLink($('.main-content h2'));
   appendLink($('.main-content h3'));
@@ -171,4 +172,9 @@ function init() {
   headButtresolve($('section h2'));
   headButtresolve($('.sub-section h3'));
   headButtresolve($('.content-section h2'));
+  copyCode($('.content-section .hljs'));
+  copyCode($('.code-section .hljs'));
+  scrollHightlight('section h2');
+  scrollHightlight('.sub-section h3');
+  scrollHightlight('.content-section h2');
 }

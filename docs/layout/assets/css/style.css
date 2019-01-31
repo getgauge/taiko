@@ -519,7 +519,7 @@ section {
   width: 18px;
   background: url('../images/anchor.svg');
   background-repeat: no-repeat;
-  transition: all 0.25s;
+  transition: all 300ms;
   opacity: 0;
   text-decoration: none;
 }
