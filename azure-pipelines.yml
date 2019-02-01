@@ -51,9 +51,6 @@ jobs:
 
   - powershell:
       npm install
-
-  - powershell:    
-      npm test
   
   - powershell:    
       npm run test-functional
