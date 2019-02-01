@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"format": "js-beautify lib/*.js test/*.js -r -b collapse,preserve-inline && npm run lint",
-		"lint": "eslint bin/*.js lib/*.js test/*.js",
+		"lint": "eslint bin/*.js lib/*.js test/*/*.js",
 		"doc-new": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js --new",
 		"doc": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
 		"test": "node test/unit-tests/taiko-test.js && npm run lint",
@@ -49,11 +49,11 @@
 		"rimraf": "^2.6.1"
 	},
 	"devDependencies": {
-		"documentation": "^5.5.0",
-		"eslint": "^4.19.1",
+		"documentation": "^9.1.1",
+		"eslint": "^5.12.1",
 		"js-beautify": "^1.8.9",
 		"markdown-styles": "^3.1.10",
-		"marked": "^0.4.0",
+		"marked": "^0.6.0",
 		"pre-commit": "^1.2.2"
 	}
 }
