@@ -13,9 +13,13 @@ jobs:
     inputs:
       versionSpec: '8.x'
  
-  - script: |
+  - script:
       npm install
+  
+  - script:    
       npm test
+  
+  - script:    
       npm run test-functional
 
 - job: macOS
@@ -27,9 +31,13 @@ jobs:
     inputs:
       versionSpec: '8.x'
 
-  - script: |
+  - script:
       npm install
+      
+  - script:    
       npm test
+
+  - script:    
       npm run test-functional
 
 - job: Windows
@@ -41,7 +49,11 @@ jobs:
     inputs:
       versionSpec: '8.x'
 
-  - powershell: |
+  - powershell:
       npm install
+
+  - powershell:    
       npm test
+  
+  - powershell:    
       npm run test-functional
