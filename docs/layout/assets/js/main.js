@@ -1,6 +1,8 @@
 $(document).ready(function() {
   init();
-  onLoad();
+  setTimeout(function(){
+    onLoad();
+  },100);
 
   var $window = $(window);
   $('.collapsible-header a').click(function(){
@@ -171,7 +173,7 @@ function onLoad(){
     $(hash).find('.link-icon').addClass('pull-down');
     $('html, body').animate({
       scrollTop: $(hash).offset().top
-    }, 800);
+    }, 1000);
   }
 }
 
