@@ -3,6 +3,9 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+pr:
+- master
+
 jobs:
 - job: Linux
   pool:
@@ -13,9 +16,13 @@ jobs:
     inputs:
       versionSpec: '8.x'
  
-  - script: |
+  - script:
       npm install
+  
+  - script:    
       npm test
+  
+  - script:    
       npm run test-functional
 
 - job: macOS
@@ -27,9 +34,13 @@ jobs:
     inputs:
       versionSpec: '8.x'
 
-  - script: |
+  - script:
       npm install
+      
+  - script:    
       npm test
+
+  - script:    
       npm run test-functional
 
 - job: Windows
@@ -41,7 +52,8 @@ jobs:
     inputs:
       versionSpec: '8.x'
 
-  - script: |
+  - powershell:
       npm install
-      npm test
+  
+  - powershell:    
       npm run test-functional
