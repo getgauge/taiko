@@ -50,3 +50,9 @@
 * Press "Enter"
 * Reload the page
 * Assert text "flow" exists on the page.
+
+## Set mock location
+* Override browser permission with "geolocation" for site "https://the-internet.herokuapp.com/geolocation"
+* Setlocation with longitude as "78.040009" and latitude as "27.1752868"
+* Navigate to "https://the-internet.herokuapp.com/geolocation"
+* Assert location longitude as "78.040009" and latitude as "27.1752868"

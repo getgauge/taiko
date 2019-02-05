@@ -3,8 +3,12 @@ const {
   openTab,
   closeTab,
   reload,
-  goto
+  goto,
+  overridePermissions,
+  setLocation,
+  evaluate
 } = require('../../../lib/taiko');
+const assert = require('assert');
 const cwd = process.cwd();
 
 step('Switch to tab with title <title>', async function(title) {
@@ -36,3 +40,39 @@ step('Navigate to file with relative Path <filePath>', async function(
 ) {
   await goto('file:///' + cwd + filePath);
 });
+
+step(
+  'Override browser permission with <geolocation> for site <url>',
+  async function(geolocation, url) {
+    await overridePermissions(url, [geolocation]);
+  }
+);
+
+step(
+  'Setlocation with longitude as <longitude> and latitude as <latitude>',
+  async function(longitude, latitude) {
+    await setLocation({
+      longitude: parseFloat(longitude),
+      latitude: parseFloat(latitude)
+    });
+  }
+);
+
+step(
+  'Assert location longitude as <longitude> and latitude as <latitude>',
+  async function(longitude, latitude) {
+    const geolocation = await evaluate(
+      () =>
+        new Promise(resolve =>
+          navigator.geolocation.getCurrentPosition(position => {
+            resolve({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            });
+          })
+        )
+    );
+    assert.equal(geolocation.result.longitude, parseFloat(longitude));
+    assert.equal(geolocation.result.latitude, parseFloat(latitude));
+  }
+);
