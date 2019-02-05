@@ -7,8 +7,10 @@ const {
   highlight,
   hover,
   dragAndDrop,
-  $
+  $,
+  currentURL
 } = require('../../../lib/taiko');
+var URL = require('url').URL;
 
 step('Scroll to <table>', async function(table) {
   await scrollTo(_selectors.getElement(table));
@@ -50,4 +52,9 @@ step('Drag <source> and drop at <directionTable>', async function(
   });
   await dragAndDrop($(source), direction);
   assert.equal(2, (await $('.document').get()).length);
+});
+
+step("Assert url host is <hostName>", async function(hostName) {
+  const url = await currentURL();
+  assert.equal((new URL(url).hostname), hostName);
 });
