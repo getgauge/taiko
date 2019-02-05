@@ -7,7 +7,9 @@ const {
   overridePermissions,
   setLocation,
   evaluate,
-  emulateDevice
+  emulateDevice,
+  goBack,
+  goForward
 } = require('../../../lib/taiko');
 const assert = require('assert');
 const cwd = process.cwd();
@@ -90,4 +92,12 @@ step('Assert width is <width> and height is <height>', async function(
   const innerHeight = (await evaluate(() => window.innerHeight)).result;
   assert.equal(innerWidth, width);
   assert.equal(innerHeight, height);
+});
+
+step('Navigate back', async function() {
+  await goBack();
+});
+
+step('Navigate forward', async function() {
+  await goForward();
 });

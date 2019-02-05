@@ -54,7 +54,17 @@ step('Drag <source> and drop at <directionTable>', async function(
   assert.equal(2, (await $('.document').get()).length);
 });
 
-step("Assert url host is <hostName>", async function(hostName) {
+step('Assert url host is <hostName>', async function(hostName) {
   const url = await currentURL();
-  assert.equal((new URL(url).hostname), hostName);
+  assert.equal(new URL(url).hostname, hostName);
+});
+
+step('Assert page navigated back', async function() {
+  const url = await currentURL();
+  assert.equal(new URL(url).hostname, 'the-internet.herokuapp.com');
+});
+
+step('Assert page navigated forward', async function() {
+  const url = await currentURL();
+  assert.equal(new URL(url).pathname, '/checkboxes');
 });
