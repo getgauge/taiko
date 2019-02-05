@@ -56,3 +56,8 @@
 * Setlocation with longitude as "78.040009" and latitude as "27.1752868"
 * Navigate to "https://the-internet.herokuapp.com/geolocation"
 * Assert location longitude as "78.040009" and latitude as "27.1752868"
+
+## Emulate device
+* Navigate to "https://the-internet.herokuapp.com/"
+* Emulate device "iPhone 6"
+* Assert width is "375" and height is "667"

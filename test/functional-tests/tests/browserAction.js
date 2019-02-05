@@ -6,7 +6,8 @@ const {
   goto,
   overridePermissions,
   setLocation,
-  evaluate
+  evaluate,
+  emulateDevice
 } = require('../../../lib/taiko');
 const assert = require('assert');
 const cwd = process.cwd();
@@ -76,3 +77,17 @@ step(
     assert.equal(geolocation.result.latitude, parseFloat(latitude));
   }
 );
+
+step('Emulate device <deviceModel>', async function(deviceModel) {
+  await emulateDevice(deviceModel);
+});
+
+step('Assert width is <width> and height is <height>', async function(
+  width,
+  height
+) {
+  const innerWidth = (await evaluate(() => window.innerWidth)).result;
+  const innerHeight = (await evaluate(() => window.innerHeight)).result;
+  assert.equal(innerWidth, width);
+  assert.equal(innerHeight, height);
+});
