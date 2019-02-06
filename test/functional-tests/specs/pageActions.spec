@@ -82,3 +82,7 @@
    |---------|-----|
    |right    |300  |
    |down     |100  |
+
+## Validate Current Url
+* Navigate to "https://the-internet.herokuapp.com/"
+* Assert url host is "the-internet.herokuapp.com"

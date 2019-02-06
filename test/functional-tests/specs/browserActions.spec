@@ -50,3 +50,22 @@
 * Press "Enter"
 * Reload the page
 * Assert text "flow" exists on the page.
+
+## Set mock location
+* Override browser permission with "geolocation" for site "https://the-internet.herokuapp.com/geolocation"
+* Setlocation with longitude as "78.040009" and latitude as "27.1752868"
+* Navigate to "https://the-internet.herokuapp.com/geolocation"
+* Assert location longitude as "78.040009" and latitude as "27.1752868"
+
+## Emulate device
+* Navigate to "https://the-internet.herokuapp.com/"
+* Emulate device "iPhone 6"
+* Assert width is "375" and height is "667"
+
+## Browser forward and back
+* Navigate to "https://the-internet.herokuapp.com/"
+* Click "Checkboxes"
+* Navigate back
+* Assert page navigated back
+* Navigate forward
+* Assert page navigated forward
