@@ -9,7 +9,8 @@ const {
   evaluate,
   emulateDevice,
   goBack,
-  goForward
+  goForward,
+  getCookies
 } = require('../../../lib/taiko');
 const assert = require('assert');
 const cwd = process.cwd();
@@ -36,6 +37,22 @@ step('Close Tab', async function() {
 
 step('Reload the page', async function() {
   await reload();
+});
+
+step("Assert cookies to be present", async function() {
+	const cookies = await getCookies();
+	assert.ok(cookies.length > 0);
+
+});
+
+step("Assert cookie with valid options url <arg>", async function(arg) {
+	const cookies = await getCookies({urls: [arg]});
+	assert.ok(cookies.length > 0);
+});
+
+step("Assert cookie with invalid options url <arg>", async function(arg) {
+	const cookies = await getCookies({urls: [arg]});
+	assert.ok(cookies.length === 0);
 });
 
 step('Navigate to file with relative Path <filePath>', async function(
