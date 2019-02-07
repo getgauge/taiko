@@ -51,6 +51,19 @@
 * Reload the page
 * Assert text "flow" exists on the page.
 
+
+## Get all cookies
+* Navigate to "https://the-internet.herokuapp.com/"
+* Assert cookies to be present
+
+## Cookie should be present for valid options urls
+* Navigate to "https://the-internet.herokuapp.com/"
+* Assert cookie with valid options url "https://the-internet.herokuapp.com/"
+
+## Cookie not should be present for invalid options urls
+* Navigate to "https://the-internet.herokuapp.com/"
+* Assert cookie with invalid options url "https://www.google.com/"
+
 ## Set mock location
 * Override browser permission with "geolocation" for site "https://the-internet.herokuapp.com/geolocation"
 * Setlocation with longitude as "78.040009" and latitude as "27.1752868"
