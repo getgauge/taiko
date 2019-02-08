@@ -6,6 +6,9 @@
 pr:
 - master
 
+variables:
+  GAUGE_TELEMETRY_ENABLED: false
+
 jobs:
 - job: Linux
   pool:
