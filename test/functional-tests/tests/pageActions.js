@@ -8,7 +8,9 @@ const {
   hover,
   dragAndDrop,
   $,
-  currentURL
+  currentURL,
+  waitFor,
+  intervalSecs
 } = require('../../../lib/taiko');
 var URL = require('url').URL;
 
@@ -60,6 +62,7 @@ step('Assert url host is <hostName>', async function(hostName) {
 });
 
 step('Assert page navigated back', async function() {
+  waitFor(intervalSecs(5));
   const url = await currentURL();
   assert.equal(new URL(url).hostname, 'the-internet.herokuapp.com');
 });
