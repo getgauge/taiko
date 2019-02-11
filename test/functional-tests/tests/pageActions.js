@@ -63,3 +63,8 @@ step('Assert page navigated forward', async function() {
   const url = await currentURL();
   assert.equal(new URL(url).pathname, '/checkboxes');
 });
+
+step("Validate part of current url <partOfURL> after redirecting", async function (partOfURL) {
+	var urlValue = await currentURL();
+	await assert.ok(urlValue.includes(partOfURL));
+});

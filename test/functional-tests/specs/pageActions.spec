@@ -86,3 +86,8 @@
 ## Validate Current Url
 * Navigate to "https://the-internet.herokuapp.com/"
 * Assert url host is "the-internet.herokuapp.com"
+
+## Get cuttent url after redirecting
+* Navigate to "http://the-internet.herokuapp.com/"
+* Click "A/B Testing"
+* Validate part of current url "abtest" after redirecting
