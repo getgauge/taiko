@@ -6,9 +6,6 @@ const {
   closeBrowser,
   goto,
   $,
-  link,
-  listItem,
-  inputField,
   fileField,
   textField,
   button,
@@ -16,22 +13,16 @@ const {
   checkBox,
   radioButton,
   alert,
-  text,
   click,
   write,
-  press,
   attach,
-  highlight,
   focus,
   scrollTo,
   scrollRight,
   scrollLeft,
   scrollUp,
   scrollDown,
-  hover,
   screenshot,
-  timeoutSecs,
-  intervalSecs,
   to,
   into,
   dismiss,
@@ -61,70 +52,6 @@ afterScenario(async () => await closeBrowser());
 
 step('Navigate to <url>', async url => {
   await goto(url);
-});
-
-step(
-  'Navigate to <url> with timeout <timeout> ms',
-  async (url, timeout) => await goto(url, { timeout: timeout })
-);
-
-step('Display the Gauge logo', async () =>
-  assert.ok(await link('Gauge').exists())
-);
-
-step('Go to Gauge get started page', async () => await click('Get Started'));
-
-step('Click on Quick Install', async () =>
-  assert.ok(await click('Quick Install'))
-);
-
-step('Check <heading> exists', async heading =>
-  assert.ok(await text(heading).exists())
-);
-
-step(
-  'Go to Gauge documentation page',
-  async () => await click($(`//*[text()='Documentation']`))
-);
-
-step('Display quick start', async () =>
-  assert.ok(await text('quick start').exists())
-);
-
-step('Go to plugins page', async () => {
-  assert.ok(await link('Get Started').exists());
-  assert.ok(await link(text('Get Started')).exists());
-  assert.ok(await $(`//a[contains(text(),'Get Started')]`).exists());
-
-  await hover('Get Started');
-  await click('Plugins');
-});
-
-step('Display the language plugins', async () => {
-  assert.ok(await text('Plugins').exists(intervalSecs(1), timeoutSecs(10)));
-
-  assert.ok(await text('Java Runner').exists());
-  await highlight(text('Java Runner'));
-
-  assert.ok(await text('Ruby runner').exists());
-});
-
-step('Search for Hooks', async () => {
-  const field = inputField({ placeholder: 'Search Docs' });
-  await write('Hooks', into(field), { delay: 100 });
-  assert.equal(await field.value(), 'Hooks');
-  await press('Enter');
-  assert.ok(await link('CSharp').exists());
-});
-
-step('Click on IDE plugins', async () => {
-  assert.ok(await listItem('IDE Plugins').exists());
-  assert.ok(await click('IDE Plugins'));
-});
-
-step('Display the IDE plugins', async () => {
-  assert.ok(await link('IntelliJ').exists());
-  assert.ok(await link('Visual Studio Code').exists());
 });
 
 step('Ensure Combo Box <comboBoxName> exists', async comboBoxName => {

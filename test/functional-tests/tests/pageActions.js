@@ -4,7 +4,6 @@ const {
   scrollTo,
   scrollUp,
   press,
-  highlight,
   hover,
   dragAndDrop,
   $,
@@ -22,10 +21,6 @@ step('Scroll up <table>', async function(table) {
 
 step('Press <key>', async function(key) {
   await press(key);
-});
-
-step('Highlight <selector>', async function(selector) {
-  await highlight(selector);
 });
 
 step('Hover on element <table>', async function(table) {

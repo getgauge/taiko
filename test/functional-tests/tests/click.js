@@ -26,13 +26,6 @@ step('Click link <userlink>', async function(userlink) {
   await click(link(userlink));
 });
 
-step('Click <selector> with timeout <timeout>', async function(
-  selector,
-  timeout
-) {
-  await click(link(selector), { timeout: timeout });
-});
-
 step('Click <selector>', async function(selector) {
   await click(selector);
 });

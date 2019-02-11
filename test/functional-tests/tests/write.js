@@ -9,22 +9,22 @@ const {
 var _selectors = require('./selectors');
 
 step('Write <text>', async function(text) {
-  return write(text);
+  await write(text);
 });
 
 step('Focus <table>', async function(table) {
-  return await focus(_selectors.getElement(table));
+  await focus(_selectors.getElement(table));
 });
 
 step('Clear element that is in focus', async function() {
-  return await clear();
+  await clear();
 });
 
 step('Write <text> into Input Field near <element>', async function(
   text,
   element
 ) {
-  return await write(
+  await write(
     text,
     into(inputField(near(_selectors.getElement(element))))
   );
