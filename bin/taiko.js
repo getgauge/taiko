@@ -3,58 +3,40 @@
 const path = require('path');
 const util = require('util');
 const fs = require('fs');
+const program = require('commander');
 const taiko = require('../lib/taiko');
 const repl = require('../lib/repl');
 const { removeQuotes, symbols, isTaikoRunner } = require('../lib/util');
 const { commandlineArgs } = require('../lib/helper');
-const observeAgrv = ['--observe','--slow-mo','--watch','-o'];
-const argv = process.argv;
 let repl_mode = false;
-const commands = {'-h':printHelpText,'--help':printHelpText,'-v':printVersion,'--version':printVersion};
 
-function printHelpText(){
-    console.log('Usage: taiko   [script.js] [arguments]\ntaiko script.js --observe 5000\nOptions:\n-v, --version display the version\n-o, --observe Enables headful mode and runs script with 3000ms delay by default,\n              optionally takes observeTime in millisecond eg: --observe 5000\n              Alternatives --slow-mo,--watch');
-}
-
-function printVersion(){
+function printVersion() {
     const packageJson = require('../package.json');
-    console.log(`Version: ${packageJson.version} (Chromium:${packageJson.taiko.chromium_version})`);
+    return `Version: ${packageJson.version} (Chromium: ${packageJson.taiko.chromium_version})`;
 }
 
-async function exitOnUnhandledFailures(e){
-    if(!repl_mode){
+async function exitOnUnhandledFailures(e) {
+    if (!repl_mode) {
         console.error(e);
-        if(await taiko.client())await taiko.closeBrowser();
+        if (await taiko.client()) await taiko.closeBrowser();
         process.exit(1);
     }
 }
 
 process.on('unhandledRejection', exitOnUnhandledFailures);
-process.on('uncaughtException',exitOnUnhandledFailures);
-if(isTaikoRunner(process.argv[1]))
-    if (process.argv.length > 2){
-        (process.argv[2] in commands) ? commands[process.argv[2]]() : runFile(process.argv[2]);
-    }else{
-        repl_mode = true;
-        repl.initiaize();
-    }
-else
-    module.exports = taiko;    
+process.on('uncaughtException', exitOnUnhandledFailures);
 
-function runFile(file) {
-    validate(file);
+function runFile(file, observe, observeTime) {
     const realFuncs = {};
-    if (commandlineArgs().emulateDevice) process.env['TAIKO_EMULATE_DEVICE'] = commandlineArgs().emulateDevice;    
+    if (commandlineArgs().emulateDevice) process.env['TAIKO_EMULATE_DEVICE'] = commandlineArgs().emulateDevice;
     for (let func in taiko) {
         realFuncs[func] = taiko[func];
-        if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function() {
-            let res,args = arguments;
-            const observe = observeAgrv.filter((val) => argv.includes(val));
-            if(func === 'openBrowser' && observe.length){
-                const observeTime = isNaN(argv[argv.indexOf(observe[0])+1]) ? 3000 : argv[argv.indexOf(observe[0])+1]; 
-                if (args['0']) {args['0'].headless = false; args[0].observe = true; args['0'].observeTime = observeTime;}
-                else args = [{headless:false, observe:true, observeTime:observeTime}] ;
-            }  
+        if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function () {
+            let res, args = arguments;
+            if (func === 'openBrowser' && observe) {
+                if (args['0']) { args['0'].headless = false; args[0].observe = true; args['0'].observeTime = observeTime; }
+                else args = [{ headless: false, observe: true, observeTime: observeTime }];
+            }
             res = await realFuncs[func].apply(this, args);
             if (res.description) {
                 res.description = symbols.pass + res.description;
@@ -62,13 +44,13 @@ function runFile(file) {
             }
             return res;
         };
-        else global[func] = function() {
+        else global[func] = function () {
             return realFuncs[func].apply(this, arguments);
         };
         require.cache[path.join(__dirname, 'taiko.js')].exports[func] = global[func];
     }
     const oldNodeModulesPaths = module.constructor._nodeModulePaths;
-    module.constructor._nodeModulePaths = function() {
+    module.constructor._nodeModulePaths = function () {
         const ret = oldNodeModulesPaths.apply(this, arguments);
         ret.push(__dirname);
         return ret;
@@ -86,3 +68,32 @@ function validate(file) {
         process.exit(1);
     }
 }
+
+program
+    .version(printVersion(), '-v, --version')
+    .usage(`<file> [options]
+       taiko [options]`)
+    .option(
+        '-o, --observe [observeTime]',
+        'enables headful mode and runs script with 3000ms delay by default\n\t\t\t\toptionally takes observeTime in millisecond eg: --observe 5000',
+        parseInt, false
+    )
+    .option(
+        '--slow-mod [observeTime]',
+        'similar to --observe option'
+    )
+    .action(function () {
+        if(!isTaikoRunner(program.rawArgs[1])){
+            module.exports = taiko;
+        } else if (program.args.length) {
+            const fileName = program.args[0];
+            validate(fileName);
+            const observe = (program.observe || program['slow-mo'] || program.watch);
+            let observeTime = typeof observe === 'number' ? observe : 3000;
+            runFile(fileName, Boolean(observe), observeTime);
+        } else {
+            repl_mode = true;
+            repl.initiaize();
+        }
+    })
+    .parse(process.argv);
