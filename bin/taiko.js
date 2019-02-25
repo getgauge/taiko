@@ -104,5 +104,10 @@ program
             repl_mode = true;
             repl.initiaize();
         }
-    })
-    .parse(process.argv);
+    });
+program.unknownOption = (option) => {
+    console.error('error: unknown option `%s', option);
+    program.outputHelp();
+    process.exit(1);
+};
+program.parse(process.argv);
