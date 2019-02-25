@@ -7,7 +7,7 @@ const program = require('commander');
 const taiko = require('../lib/taiko');
 const repl = require('../lib/repl');
 const { removeQuotes, symbols, isTaikoRunner } = require('../lib/util');
-const { commandlineArgs } = require('../lib/helper');
+const devices = require('../lib/device').default;
 let repl_mode = false;
 
 function printVersion() {
@@ -28,7 +28,6 @@ process.on('uncaughtException', exitOnUnhandledFailures);
 
 function runFile(file, observe, observeTime) {
     const realFuncs = {};
-    if (commandlineArgs().emulateDevice) process.env['TAIKO_EMULATE_DEVICE'] = commandlineArgs().emulateDevice;
     for (let func in taiko) {
         realFuncs[func] = taiko[func];
         if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function () {
@@ -69,6 +68,15 @@ function validate(file) {
     }
 }
 
+function setupEmulateDevice(device) {
+    if (devices.hasOwnProperty(device))
+        process.env['TAIKO_EMULATE_DEVICE'] = device;
+    else {
+        console.log(`Invalid value ${device} for --emulate-device`);
+        console.log(`Available devices ${Object.keys(devices).join(', ')}`);
+        process.exit(1);
+    }
+}
 program
     .version(printVersion(), '-v, --version')
     .usage(`<file> [options]
@@ -82,8 +90,9 @@ program
         '--slow-mod [observeTime]',
         'similar to --observe option'
     )
+    .option('--emulate-device <device>', 'Allows to simulate device viewport. Visit https://github.com/getgauge/taiko/blob/master/lib/device.js for all the available options', setupEmulateDevice)
     .action(function () {
-        if(!isTaikoRunner(program.rawArgs[1])){
+        if (!isTaikoRunner(program.rawArgs[1])) {
             module.exports = taiko;
         } else if (program.args.length) {
             const fileName = program.args[0];
