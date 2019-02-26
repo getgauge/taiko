@@ -32,9 +32,9 @@ function runFile(file, observe, observeTime) {
         realFuncs[func] = taiko[func];
         if (realFuncs[func].constructor.name === 'AsyncFunction') global[func] = async function () {
             let res, args = arguments;
-            if (func === 'openBrowser' && observe) {
-                if (args['0']) { args['0'].headless = false; args[0].observe = true; args['0'].observeTime = observeTime; }
-                else args = [{ headless: false, observe: true, observeTime: observeTime }];
+            if (func === 'openBrowser') {
+                if (args['0']) { args['0'].headless = !observe; args[0].observe = observe; args['0'].observeTime = observeTime; }
+                else args = [{ headless: !observe, observe: observe, observeTime: observeTime }];
             }
             res = await realFuncs[func].apply(this, args);
             if (res.description) {
@@ -77,29 +77,42 @@ function setupEmulateDevice(device) {
         process.exit(1);
     }
 }
+
+function calcObserveDelay(shouldObserve, observeTime) {
+    if( shouldObserve ) {
+        return observeTime || 3000;
+    }else {
+        return observeTime || 0;
+    }
+}
+
 program
     .version(printVersion(), '-v, --version')
     .usage(`[options]
        taiko <file> [options]`)
     .option(
-        '-o, --observe [observeTime]',
-        'enables headful mode and runs script with 3000ms delay by default\n\t\t\t\toptionally takes observeTime in millisecond eg: --observe 5000',
-        parseInt, false
+        '-o, --observe',
+        ` enables headful mode and runs script with 3000ms delay by default.
+        \t\t\tpass --wait-time option to override the default 3000ms\n`
     )
     .option(
-        '--slow-mod [observeTime]',
-        'similar to --observe option'
+        '--slow-mod', 'similar to --observe option\n'
     )
-    .option('--emulate-device <device>', 'Allows to simulate device viewport. Visit https://github.com/getgauge/taiko/blob/master/lib/device.js for all the available devices', setupEmulateDevice)
+    .option('-w, --wait-time <time in ms>', 'runs script with provided delay\n', parseInt)
+    .option(
+        '--emulate-device <device>',
+        'Allows to simulate device viewport. Visit https://github.com/getgauge/taiko/blob/master/lib/device.js for all the available devices\n',
+        setupEmulateDevice
+    )
     .action(function () {
         if (!isTaikoRunner(program.rawArgs[1])) {
             module.exports = taiko;
         } else if (program.args.length) {
             const fileName = program.args[0];
             validate(fileName);
-            const observe = (program.observe || program['slow-mo'] || program.watch);
-            let observeTime = typeof observe === 'number' ? observe : 3000;
-            runFile(fileName, Boolean(observe), observeTime);
+            const observe = Boolean(program.observe || program.slowMod );
+            let observeTime = calcObserveDelay(observe, program.waitTime);
+            runFile(fileName, observe, observeTime);
         } else {
             repl_mode = true;
             repl.initiaize();
