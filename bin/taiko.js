@@ -55,9 +55,6 @@ program
         `enables headful mode and runs script with 3000ms delay by default.
         \t\t\tpass --wait-time option to override the default 3000ms\n`
     )
-    .option(
-        '--slow-mod', 'similar to --observe option\n'
-    )
     .option('-w, --wait-time <time in ms>', 'runs script with provided delay\n', parseInt)
     .option(
         '--emulate-device <device>',
