@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-const { runFile } = require('./runFile');
+const runFile = require('./runFile');
 const fs = require('fs');
 const program = require('commander');
 const taiko = require('../lib/taiko');
