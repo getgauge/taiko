@@ -78,14 +78,6 @@ function setupEmulateDevice(device) {
     }
 }
 
-function calcObserveDelay(shouldObserve, observeTime) {
-    if( shouldObserve ) {
-        return observeTime || 3000;
-    }else {
-        return observeTime || 0;
-    }
-}
-
 program
     .version(printVersion(), '-v, --version')
     .usage(`[options]
@@ -111,8 +103,7 @@ program
             const fileName = program.args[0];
             validate(fileName);
             const observe = Boolean(program.observe || program.slowMod );
-            let observeTime = calcObserveDelay(observe, program.waitTime);
-            runFile(fileName, observe, observeTime);
+            runFile(fileName, observe, program.waitTime);
         } else {
             repl_mode = true;
             repl.initiaize();
