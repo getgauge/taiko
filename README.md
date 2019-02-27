@@ -52,11 +52,11 @@ This launches the Taiko prompt. You can now use Taiko’s API as commands in thi
 
 You can now automate this Chrome browser instance with commands, for example, make the browser search google for something.
 
-    > goto(“google.com”)
-    > write(“taiko test automation”)
-    > click(“Google Search”)
+    > goto("google.com")
+    > write("taiko test automation")
+    > click("Google Search")
 
-These commands make the browser go to google’s home page, type the text “taiko test automation” and click on the “Google Search” button. You can see the browser performing these actions as you type and press enter for each command.
+These commands make the browser go to google’s home page, type the text "taiko test automation" and click on the "Google Search" button. You can see the browser performing these actions as you type and press enter for each command.
 
 Taiko’s REPL keeps a history of all successful commands. Once you finish a flow of execution, you can generate a test script using the special command .code 
 
@@ -124,28 +124,28 @@ To see more details of an API along with examples use
 
 Taiko’s API treats the browser as a black box. With Taiko we can write scripts by looking at a web page and without inspecting it’s source code For example on `google.com` the command
 
-    > click(“Google Search”)
+    > click("Google Search")
 
 clicks on any element with the text `Google Search` (a button on the page at https://google.com). Taiko’s API mimics user interactions with the browser. For example if you want to write into an element that’s currently in focus use 
 
-    > write(“something”)
+    > write("something")
 
 Or if you want to write into a specific text field 
 
-    > write(“something”, into(textField({placeholder: “Username”})))
+    > write("something", into(textField({placeholder: "Username"})))
 
 With Taiko’s API we can avoid using ids/css/xpath selectors to create reliable tests that don’t break with changes in the web page’s structure.
 
 You can also use Taiko’s proximity selectors to visually locate elements. For example
 
-    > click(checkbox(near(“Username”)))
+    > click(checkbox(near("Username")))
 
 Will click the checkbox that is nearest to any element with the text `Username`. 
 
 Taiko’s also supports XPath and CSS selectors
 
-    > click($(“#button_id”)) // Using CSS selectors
-    > click($(“//input[name=`button_name`]”)) // Xpath selectors
+    > click($("#button_id")) // Using CSS selectors
+    > click($("//input[name=`button_name`]")) // Xpath selectors
 
 ## Handle XHR and dynamic content
 
@@ -159,15 +159,15 @@ Setting up test infrastructure and test data is hard. Taiko makes this easy with
 
 Or redirect an XHR request on the page to a test instance
 
-    > intercept(“https://fetchdata.com”, “http://fetchtestdata.com”)
+    > intercept("https://fetchdata.com", "http://fetchtestdata.com")
 
 Or stub an XHR request to return custom data
 
-    > intercept(“https://fetchdata.com”, {“test”: data})
+    > intercept("https://fetchdata.com", {"test": data})
  
 Or even modify data sent by XHR requests
 
-    > intercept(“https://fetchdata.com”, (request) => {request.continue({“custom”: “data”})})
+    > intercept("https://fetchdata.com", (request) => {request.continue({"custom": "data"})})
 
 This simplifies our test setups as we don’t have to set up mock servers, or replace url’s in tests to point to test instances.
 
