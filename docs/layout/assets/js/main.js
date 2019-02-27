@@ -164,6 +164,16 @@ function headButtresolve(element) {
   $(element).prepend('<span class="headbutt_blocker"></span>')
 }
 
+function updateDollarLink() {
+    let link = document.getElementById('$');
+    link.id = 'dollar';
+    link.children[1].setAttribute('href', '#dollar');
+
+    let reference = document.querySelector('#Selectors > li:nth-child(1) > a');
+    reference.setAttribute('href', '#dollar');
+}
+
+
 function onLoad(){
   var hash = window.location.hash;
   if (hash !== "") {
@@ -194,4 +204,5 @@ function init() {
   scrollHightlight('section h2');
   scrollHightlight('.sub-section h3');
   scrollHightlight('.content-section h2');
+  updateDollarLink();
 }
