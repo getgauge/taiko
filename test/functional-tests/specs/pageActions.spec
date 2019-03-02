@@ -28,16 +28,6 @@
 * Click link "Completed"
 * Click button "Clear completed"
 
-## Write, Clear
-
-* Navigate to relative path "./specs/data/IFrameTodoApp.html"
-* Write "abcd"
-* Clear element that is in focus
-* Write "Clear it"
-* Press "Enter"
-* Assert text "Clear it" exists on the page.
-* Assert text "abcd" does not exist
-
 ## Double Click
 * Assert text "Hello World" does not exist
 * Navigate to file with relative Path "/specs/data/doubleClick.html"
