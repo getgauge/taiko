@@ -7,7 +7,9 @@ const {
   hover,
   dragAndDrop,
   $,
-  currentURL
+  currentURL,
+  tap,
+  evaluate
 } = require('../../../lib/taiko');
 var URL = require('url').URL;
 
@@ -62,4 +64,14 @@ step('Assert page navigated back', async function() {
 step('Assert page navigated forward', async function() {
   const url = await currentURL();
   assert.equal(new URL(url).pathname, '/checkboxes');
+});
+
+step("Tap on <arg0>", async function(arg0) {
+	 await tap(arg0);
+});
+
+step("Assert tap on screen", async function() {
+  // eslint-disable-next-line no-undef
+  const touch = await evaluate(() => getResult());
+	assert.deepEqual(touch.result, ['Touchstart: 0', 'Touchend: 0']);
 });
