@@ -2,27 +2,20 @@
 
 ## Write, Press, Click
 
-* Navigate to relative path "./specs/data/IFrameTodoApp.html"
-* Write "flow"
-* Press "Enter"
-* Click link "Active"
-* Click checkBox with attribute "{\"class\":\"toggle\"}" near 
-
-   |Type|Selector|
-   |----|--------|
-   |text|flow    |
-* Click link "Completed"
-* Click button "Clear completed"
-
-## Write, Clear
-
-* Navigate to relative path "./specs/data/IFrameTodoApp.html"
-* Write "abcd"
+* Navigate to "http://the-internet.herokuapp.com/iframe"
 * Clear element that is in focus
 * Write "Clear it"
 * Press "Enter"
+* Click "File"
+* Click "New document"
+* Assert text "Clear it" does not exist
+
+## Write, Clear
+
+* Navigate to "http://the-internet.herokuapp.com/iframe"
+* Clear element that is in focus
+* Write "Clear it"
 * Assert text "Clear it" exists on the page.
-* Assert text "abcd" does not exist
 
 ## Double Click
 * Assert text "Hello World" does not exist
