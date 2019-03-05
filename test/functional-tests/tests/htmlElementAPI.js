@@ -253,3 +253,12 @@ step(
 step('Scroll the page down', { continueOnFailure: true }, async () => {
   await scrollDown();
 });
+
+step("Navigate to relative path <path> with timeout <timeout> ms", async function(path, timeout) {
+	var absolutePath = _path.resolve(path);
+  await goto('file:///' + absolutePath,{timeout:timeout});
+});
+
+step("Navigate to <url> with timeout <timeout> ms", async function(url, timeout) {
+  await goto(url,{timeout});
+});
