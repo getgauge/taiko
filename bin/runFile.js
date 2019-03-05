@@ -9,7 +9,7 @@ module.exports = (file, observe, observeTime) => {
         if (realFuncs[func].constructor.name === 'AsyncFunction')
             global[func] = async function () {
                 let res, args = arguments;
-                if (func === 'openBrowser') {
+                if (func === 'openBrowser' && observe) {
                     if (args['0']) {
                         args['0'].headless = !observe;
                         args[0].observe = observe;
