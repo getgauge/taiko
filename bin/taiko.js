@@ -46,37 +46,39 @@ function setupEmulateDevice(device) {
     }
 }
 
-program
-    .version(printVersion(), '-v, --version')
-    .usage(`[options]
+if(isTaikoRunner(process.argv[1])){
+    program
+        .version(printVersion(), '-v, --version')
+        .usage(`[options]
        taiko <file> [options]`)
-    .option(
-        '-o, --observe',
-        `enables headful mode and runs script with 3000ms delay by default.
+        .option(
+            '-o, --observe',
+            `enables headful mode and runs script with 3000ms delay by default.
         \t\t\tpass --wait-time option to override the default 3000ms\n`
-    )
-    .option('-w, --wait-time <time in ms>', 'runs script with provided delay\n', parseInt)
-    .option(
-        '--emulate-device <device>',
-        'Allows to simulate device viewport. Visit https://github.com/getgauge/taiko/blob/master/lib/device.js for all the available devices\n',
-        setupEmulateDevice
-    )
-    .action(function () {
-        if (!isTaikoRunner(program.rawArgs[1])) {
-            module.exports = taiko;
-        } else if (program.args.length) {
-            const fileName = program.args[0];
-            validate(fileName);
-            const observe = Boolean(program.observe || program.slowMod );
-            runFile(fileName, observe, program.waitTime);
-        } else {
-            repl_mode = true;
-            repl.initiaize();
-        }
-    });
-program.unknownOption = (option) => {
-    console.error('error: unknown option `%s', option);
-    program.outputHelp();
-    process.exit(1);
-};
-program.parse(process.argv);
+        )
+        .option('-w, --wait-time <time in ms>', 'runs script with provided delay\n', parseInt)
+        .option(
+            '--emulate-device <device>',
+            'Allows to simulate device viewport. Visit https://github.com/getgauge/taiko/blob/master/lib/device.js for all the available devices\n',
+            setupEmulateDevice
+        )
+        .action(function () {
+            if (program.args.length) {
+                const fileName = program.args[0];
+                validate(fileName);
+                const observe = Boolean(program.observe || program.slowMod );
+                runFile(fileName, observe, program.waitTime);
+            } else {
+                repl_mode = true;
+                repl.initiaize();
+            }
+        });
+    program.unknownOption = (option) => {
+        console.error('error: unknown option `%s', option);
+        program.outputHelp();
+        process.exit(1);
+    };
+    program.parse(process.argv);
+} else {
+    module.exports = taiko; 
+}
