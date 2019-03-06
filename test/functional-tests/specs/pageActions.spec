@@ -76,3 +76,8 @@
 ## Validate Current Url
 * Navigate to "https://the-internet.herokuapp.com/"
 * Assert url host is "the-internet.herokuapp.com"
+
+## Tap
+* Navigate to file with relative Path "/specs/data/touch.html"
+* Tap on "Click"
+* Assert tap on screen
