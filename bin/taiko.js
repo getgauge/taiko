@@ -46,7 +46,7 @@ function setupEmulateDevice(device) {
     }
 }
 
-if(isTaikoRunner(process.argv[1])){
+if (isTaikoRunner(process.argv[1])) {
     program
         .version(printVersion(), '-v, --version')
         .usage(`[options]
@@ -66,7 +66,7 @@ if(isTaikoRunner(process.argv[1])){
             if (program.args.length) {
                 const fileName = program.args[0];
                 validate(fileName);
-                const observe = Boolean(program.observe || program.slowMod );
+                const observe = Boolean(program.observe || program.slowMod);
                 runFile(fileName, observe, program.waitTime);
             } else {
                 repl_mode = true;
@@ -80,5 +80,5 @@ if(isTaikoRunner(process.argv[1])){
     };
     program.parse(process.argv);
 } else {
-    module.exports = taiko; 
+    module.exports = taiko;
 }
