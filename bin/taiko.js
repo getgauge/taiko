@@ -2,12 +2,15 @@
 
 const runFile = require('./runFile');
 const fs = require('fs');
+const path = require('path');
 const program = require('commander');
+const { spawnSync } = require('child_process');
 const taiko = require('../lib/taiko');
 const repl = require('../lib/repl');
 const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/device').default;
 let repl_mode = false;
+let plugins = new Map();
 
 function printVersion() {
     const packageJson = require('../package.json');
@@ -46,6 +49,36 @@ function setupEmulateDevice(device) {
     }
 }
 
+function getPossibleModulePaths() {
+    let paths = [];
+    let o = spawnSync('npm', ['root']);
+    if (!o.error) paths.push(o.stdout.toString().trim());
+    o = spawnSync('npm', ['root', '-g']);
+    if (!o.error) paths.push(o.stdout.toString().trim());
+    return paths;
+}
+
+
+function loadPlugin(plugin) {
+    try {
+        let paths = getPossibleModulePaths();
+        let location = paths.find((p) => { return fs.existsSync(path.join(p, 'taiko-' + plugin)); });
+        if (!location) throw new Error(`The plugin ${plugin} is not installed.`);
+        let p = require(path.join(location, 'taiko-' + plugin));
+        taiko.loadPlugin(p.ID, p.clientHandler);
+        plugins.set(p.ID, p);
+    } catch (error) {
+        console.log(error);
+        process.exit(1);
+    }
+}
+
+function loadPlugins(plugins) {
+    plugins.split(',').forEach((plugin) => {
+        loadPlugin(plugin.trim());
+    });
+}
+
 if (isTaikoRunner(process.argv[1])) {
     program
         .version(printVersion(), '-v, --version')
@@ -62,6 +95,11 @@ if (isTaikoRunner(process.argv[1])) {
             'Allows to simulate device viewport. Visit https://github.com/getgauge/taiko/blob/master/lib/device.js for all the available devices\n',
             setupEmulateDevice
         )
+        .option(
+            '--plugin <plugin1,plugin2...>',
+            'Load the taiko plugin.',
+            loadPlugins
+        )
         .action(function () {
             if (program.args.length) {
                 const fileName = program.args[0];
@@ -70,7 +108,7 @@ if (isTaikoRunner(process.argv[1])) {
                 runFile(fileName, observe, program.waitTime);
             } else {
                 repl_mode = true;
-                repl.initiaize();
+                repl.initiaize(plugins);
             }
         });
     program.unknownOption = (option) => {
