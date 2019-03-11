@@ -1,11 +1,11 @@
 # Positional Selectors
 * Navigate to relative path "./specs/data/HTMLElements.html"
-* Focus on Text Field "Username"
+* Focus on Text Box "Username"
 
 ## Into
-* Write "Gopher" into Text Field "Username"
-* Get value "Gopher" of text field "Username"
+* Write "Gopher" into Text Box "Username"
+* Get value "Gopher" of Text Box "Username"
 
 ## To
-* Write "Gopher" to Text Field "Username"
-* Get value "Gopher" of text field "Username"
+* Write "Gopher" to Text Box "Username"
+* Get value "Gopher" of Text Box "Username"
