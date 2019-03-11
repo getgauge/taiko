@@ -7,7 +7,7 @@ const {
   goto,
   $,
   fileField,
-  textField,
+ textBox,
   button,
   comboBox,
   checkBox,
@@ -95,37 +95,37 @@ step(
 );
 
 step(
-  'Get value <text> of text field <textFieldName>',
-  async (text, textFieldName) => {
-    const field = textField(textFieldName);
+  'Get value <text> of Text Box <textBoxName>',
+  async (text, textBoxName) => {
+    const field = textBox(textBoxName);
     assert.equal(await field.value(), text);
   }
 );
 
 step(
-  'An existing text field <textFieldName> value should give exists true',
-  async textFieldName => {
-    const field = textField(textFieldName);
+  'An existing Text Box <textBoxName> value should give exists true',
+  async textBoxName => {
+    const field = textBox(textBoxName);
     assert.ok(await field.exists());
   }
 );
 
 step(
-  'Write <text> into Text Field <textFieldName>',
-  async (text, textFieldName) => {
-    await write(text, into(textFieldName));
+  'Write <text> into Text Box <textBoxName>',
+  async (text, textBoxName) => {
+    await write(text, into(textBoxName));
   }
 );
 
 step(
-  'Write <text> to Text Field <textFieldName>',
-  async (text, textFieldName) => {
-    await write(text, to(textFieldName));
+  'Write <text> to Text Box <textBoxName>',
+  async (text, textBoxName) => {
+    await write(text, to(textBoxName));
   }
 );
 
-step('Focus on Text Field <textFieldName>', async textFieldName => {
-  await focus(textFieldName);
+step('Focus on Text Box <textBoxName>', async textBoxName => {
+  await focus(textBoxName);
 });
 
 step(
