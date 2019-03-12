@@ -1,0 +1,29 @@
+{
+  "name": "taiko-examples",
+  "version": "0.8.0",
+  "description": "examples illustrating taiko for https://github.com/tourdedave/elemental-selenium-tips",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getgauge/taiko.git"
+  },
+  "keywords": [
+    "taiko",
+    "tips"
+  ],
+  "author": "getgauge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/getgauge/taiko/issues"
+  },
+  "homepage": "https://github.com/getgauge/taiko/tree/master/examples#readme",
+  "dependencies": {
+    "taiko": "file:.."
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
+  }
+}
