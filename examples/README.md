@@ -5,3 +5,4 @@ This folder contains a port of some selenium tips published by [elemental seleni
 ## Table of Contents
 
 1. [Upload a file](file_upload.js)
+2. [Download a file](file_download.js)
