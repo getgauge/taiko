@@ -5,7 +5,7 @@ const { openBrowser, goto, fileField, attach, click, text, closeBrowser } = requ
 (async () => {
     try {
         await openBrowser();
-        await goto('http://the-internet.herokuapp.com/upload');
+        await goto('http://localhost:3000/upload');
         await attach(path.join(__dirname, 'data', 'foo.txt'), fileField());
         await click('Upload');
         expect(await text('file uploaded!').exists()).to.be.true;

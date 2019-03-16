@@ -4,7 +4,7 @@
   "description": "examples illustrating taiko for https://github.com/tourdedave/elemental-selenium-tips",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node runner.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/getgauge/taiko/tree/master/examples#readme",
   "dependencies": {
-    "taiko": "file:.."
+    "taiko": "file:..",
+    "the-internet-express": "git+file:///home/steam/projects/the-internet-express"
   },
   "devDependencies": {
     "chai": "^4.2.0"

@@ -13,7 +13,7 @@ const { openBrowser, goto, client, click, closeBrowser } = require('taiko')
         await openBrowser();
         await client().send('Page.setDownloadBehavior', {
             behavior: 'allow', downloadPath: downloadPath});
-        await goto('http://the-internet.herokuapp.com/download');
+        await goto('http://localhost:3000/download');
         
         // ensure that file_upload.js is run before this, to allow the file to be available for download
         await click('foo.txt');
