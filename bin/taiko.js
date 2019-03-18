@@ -111,8 +111,17 @@ if (isTaikoRunner(process.argv[1])) {
                 const observe = Boolean(program.observe || program.slowMod);
                 if (program.load) {
                     runFile(fileName, observe, program.waitTime, (fileName) => {
-                        repl_mode = true;
-                        repl.initialize(plugins, fileName);
+                        return new Promise((resolve) => {
+                            repl_mode = true;
+                            repl.initialize(plugins, fileName).then((r) => {
+                                let listeners = r.listeners('exit');
+                                r.removeAllListeners('exit');
+                                r.on('exit', () => {
+                                    listeners.forEach((l) => r.addListener('exit', l));
+                                    resolve();
+                                });
+                            });
+                        });
                     });
                 } else {
                     runFile(fileName, observe, program.waitTime);

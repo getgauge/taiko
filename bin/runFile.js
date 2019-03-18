@@ -1,6 +1,7 @@
 const path = require('path');
 const util = require('util');
 const taiko = require('../lib/taiko');
+const recorder = require('../recorder');
 
 const { removeQuotes, symbols } = require('../lib/util');
 module.exports = async (file, observe, observeTime, continueRepl) => {
@@ -33,10 +34,12 @@ module.exports = async (file, observe, observeTime, continueRepl) => {
             global[func] = function () {
                 return realFuncs[func].apply(this, arguments);
             };
-        if (continueRepl) global['closeBrowser'] = async () => {
-            console.log(removeQuotes(util.inspect('Starting REPL..', { colors: true }), 'Starting REPL..'));
-            continueRepl(file);
-        };
+        if (continueRepl) {
+            recorder.repl = async () => {
+                console.log(removeQuotes(util.inspect('Starting REPL..', { colors: true }), 'Starting REPL..'));
+                await continueRepl(file);
+            };
+        }
         require.cache[path.join(__dirname, 'taiko.js')].exports[func] = global[func];
     }
     const oldNodeModulesPaths = module.constructor._nodeModulePaths;
