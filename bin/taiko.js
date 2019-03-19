@@ -62,9 +62,13 @@ function getPossibleModulePaths() {
 function loadPlugin(plugin) {
     try {
         let paths = getPossibleModulePaths();
-        let location = paths.find((p) => { return fs.existsSync(path.join(p, 'taiko-' + plugin)); });
+        let location =  paths.map(p => {
+            if(fs.existsSync(path.join(p, plugin))) {
+                return path.join(p, plugin);
+            }
+        }).filter(function(p){return p;})[0];
         if (!location) throw new Error(`The plugin ${plugin} is not installed.`);
-        let p = require(path.join(location, 'taiko-' + plugin));
+        let p = require(location);
         taiko.loadPlugin(p.ID, p.clientHandler);
         plugins.set(p.ID, p);
     } catch (error) {
