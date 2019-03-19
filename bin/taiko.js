@@ -110,7 +110,7 @@ if (isTaikoRunner(process.argv[1])) {
                 validate(fileName);
                 const observe = Boolean(program.observe || program.slowMod);
                 if (program.load) {
-                    runFile(fileName, observe, program.waitTime, (fileName) => {
+                    runFile(fileName, true, program.waitTime, (fileName) => {
                         return new Promise((resolve) => {
                             repl_mode = true;
                             repl.initialize(plugins, fileName).then((r) => {
