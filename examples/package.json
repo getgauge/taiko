@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/getgauge/taiko/tree/master/examples#readme",
   "dependencies": {
-    "taiko": "file:..",
-    "the-internet-express": "git+file:///home/steam/projects/the-internet-express"
+    "taiko": "file:.."
   },
   "devDependencies": {
-    "chai": "^4.2.0"
+    "chai": "^4.2.0",
+    "the-internet-express": "git+https://github.com/getgauge-contrib/the-internet-express.git"
   }
 }
