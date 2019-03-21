@@ -62,9 +62,13 @@ function getPossibleModulePaths() {
 function loadPlugin(plugin) {
     try {
         let paths = getPossibleModulePaths();
-        let location = paths.find((p) => { return fs.existsSync(path.join(p, 'taiko-' + plugin)); });
+        let location =  paths.map(p => {
+            if(fs.existsSync(path.join(p, plugin))) {
+                return path.join(p, plugin);
+            }
+        }).filter(function(p){return p;})[0];
         if (!location) throw new Error(`The plugin ${plugin} is not installed.`);
-        let p = require(path.join(location, 'taiko-' + plugin));
+        let p = require(location);
         taiko.loadPlugin(p.ID, p.clientHandler);
         plugins.set(p.ID, p);
     } catch (error) {
@@ -89,6 +93,10 @@ if (isTaikoRunner(process.argv[1])) {
             `enables headful mode and runs script with 3000ms delay by default.
         \t\t\tpass --wait-time option to override the default 3000ms\n`
         )
+        .option(
+            '-l, --load',
+            'run the given file and start the repl to record further steps.\n'
+        )
         .option('-w, --wait-time <time in ms>', 'runs script with provided delay\n', parseInt)
         .option(
             '--emulate-device <device>',
@@ -105,10 +113,26 @@ if (isTaikoRunner(process.argv[1])) {
                 const fileName = program.args[0];
                 validate(fileName);
                 const observe = Boolean(program.observe || program.slowMod);
-                runFile(fileName, observe, program.waitTime);
+                if (program.load) {
+                    runFile(fileName, true, program.waitTime, (fileName) => {
+                        return new Promise((resolve) => {
+                            repl_mode = true;
+                            repl.initialize(plugins, fileName).then((r) => {
+                                let listeners = r.listeners('exit');
+                                r.removeAllListeners('exit');
+                                r.on('exit', () => {
+                                    listeners.forEach((l) => r.addListener('exit', l));
+                                    resolve();
+                                });
+                            });
+                        });
+                    });
+                } else {
+                    runFile(fileName, observe, program.waitTime);
+                }
             } else {
                 repl_mode = true;
-                repl.initiaize(plugins);
+                repl.initialize(plugins);
             }
         });
     program.unknownOption = (option) => {
