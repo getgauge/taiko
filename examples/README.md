@@ -9,3 +9,4 @@ This folder contains a port of some selenium tips published by [elemental seleni
 3. [Working with frames](03-work-with-frames.js)
 4. [Handling windows/tabs](04-windows-tabs.js)
 5. [Dropdown](05-dropdown.js)
+6. [Basic Auth](06-basic-auth.js)

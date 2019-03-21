@@ -1,6 +1,6 @@
 {
   "name": "taiko-examples",
-  "version": "0.8.0",
+  "version": "0.7.0",
   "description": "examples illustrating taiko for https://github.com/tourdedave/elemental-selenium-tips",
   "main": "index.js",
   "scripts": {
