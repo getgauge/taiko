@@ -51,8 +51,8 @@
 		"rimraf": "^2.6.1"
 	},
 	"devDependencies": {
-		"documentation": "^9.1.1",
-		"eslint": "^5.12.1",
+		"documentation": "^9.3.1",
+		"eslint": "^5.15.1",
 		"js-beautify": "^1.8.9",
 		"markdown-styles": "^3.1.10",
 		"marked": "^0.6.0",
