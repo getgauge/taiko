@@ -17,7 +17,7 @@ jobs:
   steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: '8.x'
+      versionSpec: '9.x'
  
   - script:
       npm install
@@ -35,7 +35,7 @@ jobs:
   steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: '8.x'
+      versionSpec: '9.x'
 
   - script:
       npm install
@@ -53,7 +53,7 @@ jobs:
   steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: '8.x'
+      versionSpec: '9.x'
 
   - powershell:
       npm install
