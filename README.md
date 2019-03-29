@@ -61,7 +61,7 @@ These commands make the browser go to google’s home page, type the text "taiko
 Taiko’s REPL keeps a history of all successful commands. Once you finish a flow of execution, you can generate a test script using the special command .code 
 
     > .code
-    const { openBrowser, goto, write, click } = require('taiko');
+    const { openBrowser, goto, write, click, closeBrowser } = require('taiko');
 
     (async () => {
         try {
