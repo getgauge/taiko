@@ -13,8 +13,9 @@ var server = app.listen(3000, async () => {
         p.on('error', reject);
     });
     
+    var prefix = process.argv[2] || '';
     var examples = glob.sync('*.js')
-        .filter(f => path.resolve(f) !== __filename)
+        .filter(f => path.resolve(f) !== __filename && f.startsWith(prefix))
         .map(f => {return {file:f, task: () => run(f)};});
     
     for (let example of examples){
