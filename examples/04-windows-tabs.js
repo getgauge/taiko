@@ -8,7 +8,7 @@ loadPlugin(ID, clientHandler);
 (async () => {
     try {
         const url = 'http://localhost:3000/windows';
-        await openBrowser();
+        await openBrowser({args: ['--no-first-run']});
         await startScreencast(path.join('captures', 'windows', 'windows.gif'))
         await goto(url);
         await click('click here');

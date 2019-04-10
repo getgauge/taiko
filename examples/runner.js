@@ -4,16 +4,19 @@ var glob = require( 'glob' )
 var app = require('the-internet-express');
 
 var server = app.listen(3000, async () => {
+    var args = process.argv;
+    var observe = args[args.length-1] === '--observe';
     var run = (f) => new Promise((resolve, reject) => {
         console.log(path.parse(f).name);
-        var p = cp.exec('taiko ' + f);
+        var a = observe ? f + ' --observe': f;
+        var p = cp.exec('taiko ' + a);
         p.stdout.pipe(process.stdout);
         p.stderr.pipe(process.stderr);
         p.on('exit', resolve);
         p.on('error', reject);
     });
     
-    var prefix = process.argv[2] || '';
+    var prefix = args[2] || '';
     var examples = glob.sync('*.js')
         .filter(f => path.resolve(f) !== __filename && f.startsWith(prefix))
         .map(f => {return {file:f, task: () => run(f)};});
