@@ -257,9 +257,9 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
   <p>It generates a step like below</p>
   <div class="code-section">
     <pre class="hljs"><code>step(" ", async () => {
-      goto("google.com");
-      write("Gauge test automation")
-      press("Enter")
+      await goto("google.com");
+      await write("Gauge test automation");
+      await press("Enter");
   });</code></pre>
   </div>
   <p>you can also save it directly to a new or existing step implementation file</p>
@@ -268,6 +268,27 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
   </div>
   <p>Now that you've created your project with Gauge and Taiko, you can start to <a href="https://gauge.org/getting-started-guide/create-specification" target="_blank">write test specifications using Gauge</a>. You can see how Gauge and Taiko work together from this <a href="https://github.com/getgauge-examples/js-taiko" target="_blank">sample project</a>.</p>
 </section>
+
+<section class="mocha-integration">
+  <h2 id="integrating-mocha">Integrating with Mocha</h2>
+  <p>
+    Install <a href="https://mochajs.org/#installation">Mocha </a>using <span class="highlight">npm</span>
+  </p>
+  <div class="code-section">
+    <pre class="hljs"><code>npm install mocha -g</code></pre>
+  </div>
+  <p>You can then use Taiko's REPL to record a flow and create tests.</p>
+  <p>Add tests like below</p>
+  <div class="code-section">
+    <pre class="hljs"><code>it("Search Google", async () => {
+      await goto("google.com");
+      await write("Gauge test automation");
+      await press("Enter");
+  });</code></pre>
+  </div>
+  <p>You can see how Mocha and Taiko work together from this <a href="https://github.com/getgauge-examples/mocha-taiko" target="_blank">sample project</a>.</p>
+</section>
+
 <section class="taiko-env-variables">
     <h2 id="taiko-env-variables">Environment Variables</h2>
     <p>Taiko lets you specify certain Environment varibles to customise its behaviour</p>
