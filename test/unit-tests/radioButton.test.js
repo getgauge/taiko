@@ -20,12 +20,12 @@ describe('radio button', () => {
     describe('with inline text', () => {
         let filePath;
         beforeAll(() => {
-            let document = `<form>
-        <input type="radio" name="color" value="red" checked>Red</input>
-        <input type="radio" name="color" value="yellow">Yellow</input>
-        <input type="radio" name="color" value="green">Green</input>
-        </form>`;
-            filePath = createHtml(document);
+            let innerHtml = '<form>' +
+                '<input type="radio" name="color" value="red" checked>Red</input>' +
+                '<input type="radio" name="color" value="yellow">Yellow</input>' +
+                '<input type="radio" name="color" value="green">Green</input>' +
+                '</form>';
+            filePath = createHtml(innerHtml);
         });
 
         beforeEach(async () => {
@@ -61,21 +61,21 @@ describe('radio button', () => {
     describe('wrapped in label', () => {
         let filePath;
         beforeAll(() => {
-            let document = `<form>
-        <label>
-          <input name="color" type="radio" value="red" checked />
-          <span>Red</span>
-        </label>
-        <label>
-          <input name="color" type="radio" value="yello" />
-          <span>Yellow</span>
-        </label>
-        <label>
-          <input name="color" type="radio" value="green" />
-          <span>Green</span>
-        </label>
-        </form>`;
-            filePath = createHtml(document);
+            let innerHtml = '<form>' +
+                '<label>' +
+                '<input name="color" type="radio" value="red" checked />' +
+                '<span>Red</span>' +
+                '</label>' +
+                '<label>' +
+                '<input name="color" type="radio" value="yello" />' +
+                '<span>Yellow</span>' +
+                '</label>' +
+                '<label>' +
+                '<input name="color" type="radio" value="green" />' +
+                '<span>Green</span>' +
+                '</label>' +
+                '</form>';
+            filePath = createHtml(innerHtml);
         });
 
         beforeEach(async () => {
@@ -95,20 +95,20 @@ describe('radio button', () => {
     describe('using label for', () => {
         let filePath;
         beforeAll(() => {
-            let document = `<form>
-        <p>
-        <input id="c1" name="color" type="radio" value="red" checked />
-        <label for="c1">Red</label>
-        </p>
-        <p>
-          <label for="c2">Yellow</label>
-          <input id="c2" name="color" type="radio" value="yellow" />
-        </p>
-        <p>
-          <label for="c3"><input id="c3" name="color" type="radio" value="green" />Green</label>
-        </p>
-        </form>`;
-            filePath = createHtml(document);
+            let innerHtml = '<form>' +
+                '<p>' +
+                '<input id="c1" name="color" type="radio" value="red" checked />' +
+                '<label for="c1">Red</label>' +
+                '</p>' +
+                '<p>' +
+                '<label for="c2">Yellow</label>' +
+                '<input id="c2" name="color" type="radio" value="yellow" />' +
+                '</p>' +
+                '<p>' +
+                '<label for="c3"><input id="c3" name="color" type="radio" value="green" />Green</label>' +
+                '</p>' +
+                '</form>';
+            filePath = createHtml(innerHtml);
         });
 
         beforeEach(async () => {
