@@ -11,13 +11,15 @@
 		"lint": "eslint bin/*.js lib/*.js test/*/*.js",
 		"doc-new": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js --new",
 		"doc": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
-		"test": "node test/unit-tests/taiko-test.js && npm run lint",
+		"test:api": "node test/unit-tests/taiko-test.js",
+		"test": "npm run test:api && npm run lint && jest",
 		"test-functional": "cd test/functional-tests && npm install && npm test",
 		"install": "node lib/install.js",
 		"update-json-doc": "node build/updateJsonDoc.js"
 	},
 	"pre-commit": [
-		"test",
+		"test:api",
+		"lint",
 		"update-json-doc"
 	],
 	"repository": {
@@ -53,6 +55,8 @@
 	"devDependencies": {
 		"documentation": "^9.3.1",
 		"eslint": "^5.15.1",
+		"eslint-plugin-jest": "^22.4.1",
+		"jest": "^24.7.1",
 		"js-beautify": "^1.8.9",
 		"markdown-styles": "^3.1.10",
 		"marked": "^0.6.0",
