@@ -1,20 +1,5 @@
 let { openBrowser, goto, radioButton, closeBrowser, evaluate, $, intervalSecs, timeoutSecs } = require('../../lib/taiko');
-let { createHtml, removeFile } = require('./test-util');
-
-beforeEach(async () =>
-    await openBrowser({
-        args: [
-            '--disable-gpu',
-            '--disable-dev-shm-usage',
-            '--disable-setuid-sandbox',
-            '--no-first-run',
-            '--no-sandbox',
-            '--no-zygote'
-        ]
-    })
-);
-
-afterEach(async () => await closeBrowser());
+let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 
 describe('radio button', () => {
     describe('with inline text', () => {
@@ -29,6 +14,7 @@ describe('radio button', () => {
         });
 
         beforeEach(async () => {
+            await openBrowser(openBrowserArgs);
             await goto(filePath);
         });
 
@@ -36,7 +22,9 @@ describe('radio button', () => {
             removeFile(filePath);
         });
 
-        test('test exists()', async () => {
+        afterEach(async() => await closeBrowser());
+
+        test.only('test exists()', async () => {
             await expect(radioButton('Yellow').exists()).resolves.toBeTruthy();
             await expect(radioButton('Brown').exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
         });
@@ -67,7 +55,7 @@ describe('radio button', () => {
                 '<span>Red</span>' +
                 '</label>' +
                 '<label>' +
-                '<input name="color" type="radio" value="yello" />' +
+                '<input name="color" type="radio" value="yellow" />' +
                 '<span>Yellow</span>' +
                 '</label>' +
                 '<label>' +
@@ -79,12 +67,15 @@ describe('radio button', () => {
         });
 
         beforeEach(async () => {
+            await openBrowser(openBrowserArgs);
             await goto(filePath);
         });
 
         afterAll(() => {
             removeFile(filePath);
         });
+
+        afterEach(async() => await closeBrowser());
 
         test('test exists()', async () => {
             await expect(radioButton('Green').exists()).resolves.toBeTruthy();
@@ -112,12 +103,15 @@ describe('radio button', () => {
         });
 
         beforeEach(async () => {
+            await openBrowser(openBrowserArgs);
             await goto(filePath);
         });
 
         afterAll(() => {
             removeFile(filePath);
         });
+
+        afterEach(async() => await closeBrowser());
 
         test('test exists()', async () => {
             await expect(radioButton('Red').exists()).resolves.toBeTruthy();
