@@ -16,7 +16,7 @@ describe('radio button', () => {
         beforeEach(async () => {
             await openBrowser(openBrowserArgs);
             await goto(filePath);
-        });
+        }, 10000);
 
         afterAll(() => {
             removeFile(filePath);
@@ -24,7 +24,7 @@ describe('radio button', () => {
 
         afterEach(async() => await closeBrowser());
 
-        test.only('test exists()', async () => {
+        test('test exists()', async () => {
             await expect(radioButton('Yellow').exists()).resolves.toBeTruthy();
             await expect(radioButton('Brown').exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
         });
