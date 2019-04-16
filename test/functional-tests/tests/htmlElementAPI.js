@@ -27,7 +27,8 @@ const {
   into,
   dismiss,
   accept,
-  intercept
+  intercept,
+  toRightOf
 } = require('../../../lib/taiko');
 
 beforeScenario(
@@ -124,8 +125,8 @@ step(
   }
 );
 
-step('Focus on Text Box <textBoxName>', async textBoxName => {
-  await focus(textBoxName);
+step("Focus on Text Box to right of <textBoxName>", async (textBoxName) => {
+  await focus(textBox(toRightOf(textBoxName)));
 });
 
 step(

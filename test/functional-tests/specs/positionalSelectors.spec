@@ -1,6 +1,6 @@
 # Positional Selectors
 * Navigate to relative path "./specs/data/HTMLElements.html"
-* Focus on Text Box "Username"
+* Focus on Text Box to right of "Username"
 
 ## Into
 * Write "Gopher" into Text Box "Username"

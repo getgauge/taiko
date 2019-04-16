@@ -33,7 +33,7 @@ Attach file
 Text Box
 ----------
 
-* Focus on Text Box "Username"
+* Focus on Text Box to right of "Username"
 * Write "Gopher" into Text Box "Username"
 * An existing Text Box "Username" value should give exists true
 * Get value "Gopher" of Text Box "Username"
