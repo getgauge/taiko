@@ -69,7 +69,7 @@ describe('radio button', () => {
         beforeEach(async () => {
             await openBrowser(openBrowserArgs);
             await goto(filePath);
-        });
+        }, 10000);
 
         afterAll(() => {
             removeFile(filePath);
@@ -105,7 +105,7 @@ describe('radio button', () => {
         beforeEach(async () => {
             await openBrowser(openBrowserArgs);
             await goto(filePath);
-        });
+        }, 10000);
 
         afterAll(() => {
             removeFile(filePath);
