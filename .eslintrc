@@ -3,13 +3,15 @@
     "es6": true,
     "node": true,
     "browser": true,
-    "mocha": true
+    "mocha": true,
+    "jest/globals": true
   },
   "extends": "eslint:recommended",
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 8
   },
+  "plugins": ["jest"],
   "rules": {
     "indent": [
       "error",
