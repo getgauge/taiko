@@ -29,7 +29,7 @@ process.on('unhandledRejection', exitOnUnhandledFailures);
 process.on('uncaughtException', exitOnUnhandledFailures);
 
 function validate(file) {
-    if (!file.endsWith('.js')) {
+    if (!['.js', '.coffee'].some(extension => file.endsWith(extension))) {
         console.log('Invalid file extension. Only javascript files are accepted.');
         process.exit(1);
     }
