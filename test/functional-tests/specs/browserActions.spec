@@ -26,7 +26,7 @@
 * Intercept Google Analytics
 * Navigate to "google.com"
 * Open Tab "https://www.thoughtworks.com/contact-us" with timeout "20000"
-* Click link below 
+* Click link near 
 
    |Type|Selector                         |
    |----|---------------------------------|
