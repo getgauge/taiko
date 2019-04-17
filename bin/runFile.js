@@ -48,5 +48,5 @@ module.exports = async (file, observe, observeTime, continueRepl) => {
         ret.push(__dirname);
         return ret;
     };
-    require(path.resolve(file).slice(0, -3));
+    require(path.resolve(file));
 };
