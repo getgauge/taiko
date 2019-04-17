@@ -10,7 +10,8 @@
             "name": "Jest All",
             "program": "${workspaceFolder}/node_modules/.bin/jest",
             "args": [
-                "--runInBand"
+                "--runInBand",
+                "--expand"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
@@ -27,7 +28,9 @@
             "args": [
                 "${fileBasenameNoExtension}",
                 "--config",
-                "jest.config.js"
+                "jest.config.js",
+                "--runInBand",
+                "--expand"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",

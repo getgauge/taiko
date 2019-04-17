@@ -2,6 +2,14 @@ let { openBrowser, goto, radioButton, closeBrowser, evaluate, $, intervalSecs, t
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 
 describe('radio button', () => {
+    beforeAll(async () => {
+        await openBrowser(openBrowserArgs);
+    }, 10000);
+
+    afterAll(async () => {
+        await closeBrowser();
+    });
+
     describe('with inline text', () => {
         let filePath;
         beforeAll(async () => {
@@ -18,7 +26,7 @@ describe('radio button', () => {
         afterAll(async () => {
             await closeBrowser();
             removeFile(filePath);
-        }, 30000);
+        });
 
         test('test exists()', async () => {
             await expect(radioButton('Yellow').exists()).resolves.toBeTruthy();
