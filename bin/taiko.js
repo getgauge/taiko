@@ -28,6 +28,13 @@ async function exitOnUnhandledFailures(e) {
 process.on('unhandledRejection', exitOnUnhandledFailures);
 process.on('uncaughtException', exitOnUnhandledFailures);
 
+function validate(file) {
+    if (!fs.existsSync(file)) {
+        console.log('File does not exist.');
+        process.exit(1);
+    }
+}
+
 function setupEmulateDevice(device) {
     if (devices.hasOwnProperty(device))
         process.env['TAIKO_EMULATE_DEVICE'] = device;
@@ -100,6 +107,7 @@ if (isTaikoRunner(process.argv[1])) {
         .action(function () {
             if (program.args.length) {
                 const fileName = program.args[0];
+                validate(fileName);
                 const observe = Boolean(program.observe || program.slowMod);
                 if (program.load) {
                     runFile(fileName, true, program.waitTime, (fileName) => {
