@@ -29,6 +29,10 @@ process.on('unhandledRejection', exitOnUnhandledFailures);
 process.on('uncaughtException', exitOnUnhandledFailures);
 
 function validate(file) {
+    if (!file.endsWith('.js')) {
+        console.log('Invalid file extension. Only javascript files are accepted.');
+        process.exit(1);
+    }
     if (!fs.existsSync(file)) {
         console.log('File does not exist.');
         process.exit(1);
