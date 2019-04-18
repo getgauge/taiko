@@ -4,25 +4,21 @@ let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 describe('radio button', () => {
     describe('with inline text', () => {
         let filePath;
-        beforeAll(() => {
+        beforeAll(async () => {
             let innerHtml = '<form>' +
                 '<input type="radio" name="color" value="red" checked>Red</input>' +
                 '<input type="radio" name="color" value="yellow">Yellow</input>' +
                 '<input type="radio" name="color" value="green">Green</input>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
-        });
-
-        beforeEach(async () => {
+            filePath = createHtml(innerHtml, 'radioButton');
             await openBrowser(openBrowserArgs);
             await goto(filePath);
-        }, 10000);
+        }, 30000);
 
-        afterAll(() => {
+        afterAll(async () => {
+            await closeBrowser();
             removeFile(filePath);
-        });
-
-        afterEach(async() => await closeBrowser());
+        }, 30000);
 
         test('test exists()', async () => {
             await expect(radioButton('Yellow').exists()).resolves.toBeTruthy();
@@ -42,13 +38,14 @@ describe('radio button', () => {
         });
 
         test('test isSelected()', async () => {
+            await radioButton('Red').select();
             await expect(radioButton('Red').isSelected()).resolves.toBeTruthy();
         });
     });
 
     describe('wrapped in label', () => {
         let filePath;
-        beforeAll(() => {
+        beforeAll(async () => {
             let innerHtml = '<form>' +
                 '<label>' +
                 '<input name="color" type="radio" value="red" checked />' +
@@ -63,19 +60,15 @@ describe('radio button', () => {
                 '<span>Green</span>' +
                 '</label>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
-        });
-
-        beforeEach(async () => {
+            filePath = createHtml(innerHtml, 'radioButton');
             await openBrowser(openBrowserArgs);
             await goto(filePath);
-        }, 10000);
+        }, 30000);
 
-        afterAll(() => {
+        afterAll(async () => {
+            await closeBrowser();
             removeFile(filePath);
-        });
-
-        afterEach(async() => await closeBrowser());
+        }, 30000);
 
         test('test exists()', async () => {
             await expect(radioButton('Green').exists()).resolves.toBeTruthy();
@@ -85,7 +78,7 @@ describe('radio button', () => {
 
     describe('using label for', () => {
         let filePath;
-        beforeAll(() => {
+        beforeAll(async () => {
             let innerHtml = '<form>' +
                 '<p>' +
                 '<input id="c1" name="color" type="radio" value="red" checked />' +
@@ -99,19 +92,15 @@ describe('radio button', () => {
                 '<label for="c3"><input id="c3" name="color" type="radio" value="green" />Green</label>' +
                 '</p>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
-        });
-
-        beforeEach(async () => {
+            filePath = createHtml(innerHtml, 'radioButton');
             await openBrowser(openBrowserArgs);
             await goto(filePath);
-        }, 10000);
+        }, 30000);
 
-        afterAll(() => {
+        afterAll(async () => {
+            await closeBrowser();
             removeFile(filePath);
-        });
-
-        afterEach(async() => await closeBrowser());
+        }, 30000);
 
         test('test exists()', async () => {
             await expect(radioButton('Red').exists()).resolves.toBeTruthy();
