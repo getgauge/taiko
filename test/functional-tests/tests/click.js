@@ -11,7 +11,8 @@ const {
   toLeftOf,
   button,
   rightClick,
-  doubleClick
+  doubleClick,
+  near
 } = require('../../../lib/taiko');
 
 step('Click link <userlink> below <table>', async function(userlink, table) {
@@ -43,8 +44,8 @@ step('Click link to left of <table>', async function(table) {
   await click(link(toLeftOf(_selectors.getElement(table))));
 });
 
-step('Click link below <table>', async function(table) {
-  await click(link(below(_selectors.getElement(table))), { timeout: 60000 });
+step('Click link near <table>', async function(table) {
+  await click(link(near(_selectors.getElement(table))), { timeout: 60000 });
 });
 
 step('Click button <selector>', async function(selector) {
