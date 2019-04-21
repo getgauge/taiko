@@ -10,6 +10,6 @@ describe(' opens browser successfully',()=>{
         });
     });
 
-    afterEach(async() => await closeBrowser());
+    afterEach(async() => await closeBrowser(),10000);
 
 });
