@@ -3,6 +3,12 @@
 <div class="code-section">
         <pre class="hljs"><code>ldd chrome | grep</code></pre>
 </div>
+<section class="raspberry-pi">
+    <h2 id="raspberry-pi">Raspberry Pi with Raspbian</h2>
+    The download executable is not an arm build and thus won't work with taiko by default.
+    To make it work install the package `chromium-browser`.
+    Then set the env variable `TAIKO_BROWSER_PATH=$(which chromium-browser)`
+</section>
 <section class="debian-dependencies">
     <h2 id="debian-dependencies">Dependencies for Debian</h2>
     <pre>
