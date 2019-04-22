@@ -4,11 +4,11 @@ let { openBrowser, goto, checkBox, closeBrowser, evaluate, $, intervalSecs, time
 describe('checkbox button', () => {
     beforeAll(async () => {
         await openBrowser(openBrowserArgs);
-    }, 10000);
+    }, 30000);
 
     afterAll(async () => {
         await closeBrowser();
-    });
+    }, 30000);
 
     describe('with inline text', () => {
         let filePath;
@@ -23,7 +23,7 @@ describe('checkbox button', () => {
 
         beforeEach(async () => {
             await goto(filePath);
-        }, 10000);
+        });
 
         afterAll(() => {
             removeFile(filePath);
@@ -75,7 +75,7 @@ describe('checkbox button', () => {
 
         beforeEach(async () => {
             await goto(filePath);
-        }, 10000);
+        });
 
         afterAll(() => {
             removeFile(filePath);
@@ -108,7 +108,7 @@ describe('checkbox button', () => {
 
         beforeEach(async () => {
             await goto(filePath);
-        }, 10000);
+        });
 
         afterAll(() => {
             removeFile(filePath);

@@ -12,7 +12,7 @@
 		"doc-new": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js --new",
 		"doc": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
 		"test:api": "node test/unit-tests/taiko-test.js",
-		"test": "npm run test:api && npm run lint && jest --runInBand",
+		"test": "npm run test:api && npm run lint && jest",
 		"test-functional": "cd test/functional-tests && npm install && npm test",
 		"install": "node lib/install.js",
 		"update-json-doc": "node build/updateJsonDoc.js"
