@@ -26,8 +26,6 @@
             "program": "${workspaceFolder}/node_modules/.bin/jest",
             "args": [
                 "${fileBasenameNoExtension}",
-                "--config",
-                "jest.config.js",
                 "--runInBand",
                 "--expand"
             ],
