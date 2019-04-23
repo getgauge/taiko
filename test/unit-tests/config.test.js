@@ -1,4 +1,4 @@
-const { setConfig, config, determineWaitForNavigation } = require('../../lib/config');
+const { setConfig, config, determineWaitForNavigation, determineRetryTimeout, determineRetryInterval } = require('../../lib/config');
 const originalConfig = Object.assign({}, config);
 
 describe('Config tests', () => {
@@ -46,9 +46,10 @@ describe('Config tests', () => {
         });
     });
 
-    describe('Test deriveNavigationTimeout', () => {
+    describe('Test determineWaitForNavigation', () => {
 
         describe('For undefind or null value', () => {
+
             test('should return default value when provided value is undefind', () => {
                 let actualValue = determineWaitForNavigation();
                 expect(actualValue).toBeTruthy();
@@ -58,14 +59,71 @@ describe('Config tests', () => {
                 let actualValue = determineWaitForNavigation(null);
                 expect(actualValue).toBeTruthy();
             });
+
         });
 
         describe('For correct value', () => {
+
             test('should return rovided value', () => {
                 let actualValue = determineWaitForNavigation(false);
                 expect(actualValue).toBeFalsy();
             });
+
         });
+    });
+
+    describe('Test determineRetryTimeout', () => {
+
+        describe('For undefind or null value', () => {
+
+            test('should return default value when provided value is undefind', () => {
+                let actualValue = determineRetryTimeout();
+                expect(actualValue).toEqual(10000);
+            });
+
+            test('should return default value when provided value is null', () => {
+                let actualValue = determineRetryTimeout(null);
+                expect(actualValue).toEqual(10000);
+            });
+
+        });
+
+        describe('For correct value', () => {
+
+            test('should return rovided value', () => {
+                let actualValue = determineRetryTimeout(100);
+                expect(actualValue).toEqual(100);
+            });
+
+        });
+
+    });
+
+    describe('Test determineRetryInterval', () => {
+
+        describe('For undefind or null value', () => {
+
+            test('should return default value when provided value is undefind', () => {
+                let actualValue = determineRetryInterval();
+                expect(actualValue).toEqual(1000);
+            });
+
+            test('should return default value when provided value is null', () => {
+                let actualValue = determineRetryInterval(null);
+                expect(actualValue).toEqual(1000);
+            });
+
+        });
+
+        describe('For correct value', () => {
+
+            test('should return rovided value', () => {
+                let actualValue = determineRetryInterval(100);
+                expect(actualValue).toEqual(100);
+            });
+
+        });
+
     });
 
     afterEach(() => {
