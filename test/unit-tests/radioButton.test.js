@@ -1,7 +1,15 @@
-let { openBrowser, goto, radioButton, closeBrowser, evaluate, $, intervalSecs, timeoutSecs } = require('../../lib/taiko');
+let { openBrowser, radioButton, closeBrowser, evaluate, $, intervalSecs, timeoutSecs, goto } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 
 describe('radio button', () => {
+    beforeAll(async () => {
+        await openBrowser(openBrowserArgs);
+    }, 30000);
+
+    afterAll(async () => {
+        await closeBrowser();
+    }, 30000);
+
     describe('with inline text', () => {
         let filePath;
         beforeAll(async () => {
@@ -11,14 +19,15 @@ describe('radio button', () => {
                 '<input type="radio" name="color" value="green">Green</input>' +
                 '</form>';
             filePath = createHtml(innerHtml, 'radioButton');
-            await openBrowser(openBrowserArgs);
-            await goto(filePath);
-        }, 30000);
+        });
 
         afterAll(async () => {
-            await closeBrowser();
             removeFile(filePath);
-        }, 30000);
+        });
+
+        beforeEach(async () =>{
+            await goto(filePath);
+        });
 
         test('test exists()', async () => {
             await expect(radioButton('Yellow').exists()).resolves.toBeTruthy();
@@ -61,14 +70,15 @@ describe('radio button', () => {
                 '</label>' +
                 '</form>';
             filePath = createHtml(innerHtml, 'radioButton');
-            await openBrowser(openBrowserArgs);
-            await goto(filePath);
-        }, 30000);
+        });
 
         afterAll(async () => {
-            await closeBrowser();
             removeFile(filePath);
-        }, 30000);
+        });
+
+        beforeEach(async () =>{
+            await goto(filePath);
+        });
 
         test('test exists()', async () => {
             await expect(radioButton('Green').exists()).resolves.toBeTruthy();
@@ -93,14 +103,15 @@ describe('radio button', () => {
                 '</p>' +
                 '</form>';
             filePath = createHtml(innerHtml, 'radioButton');
-            await openBrowser(openBrowserArgs);
-            await goto(filePath);
-        }, 30000);
+        });
 
         afterAll(async () => {
-            await closeBrowser();
             removeFile(filePath);
-        }, 30000);
+        });
+
+        beforeEach(async () =>{
+            await goto(filePath);
+        });
 
         test('test exists()', async () => {
             await expect(radioButton('Red').exists()).resolves.toBeTruthy();
