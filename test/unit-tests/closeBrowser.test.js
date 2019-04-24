@@ -1,4 +1,4 @@
-let { openBrowser,closeBrowser,client } = require('../../lib/taiko');
+let { openBrowser,closeBrowser } = require('../../lib/taiko');
 
 describe('close browser successfully',()=>{
 
