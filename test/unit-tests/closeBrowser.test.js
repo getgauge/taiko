@@ -1,10 +1,11 @@
 let { openBrowser,closeBrowser } = require('../../lib/taiko');
+let { openBrowserArgs } = require('./test-util');
 
 describe('close browser successfully',()=>{
 
     beforeEach(async () => {
         expect(process.env.TAIKO_EMULATE_DEVICE).not.toBeDefined();
-        await openBrowser();
+        await openBrowser(openBrowserArgs);
     },10000);
     
 
@@ -14,12 +15,5 @@ describe('close browser successfully',()=>{
             expect(data).toEqual({ 'description': 'Browser closed' });
         });
     });
-
-    // test('closeBrowser should nullify CRI client object',  ()=>{
-
-    //     return closeBrowser().then(() => {
-    //         expect(client).toBeNull();
-    //     });
-    // });
 
 });
