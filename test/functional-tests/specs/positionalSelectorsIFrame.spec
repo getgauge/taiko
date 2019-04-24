@@ -1,6 +1,6 @@
 # Positional Selectors in IFrame
 * Navigate to relative path "./specs/data/IFrameElements.html"
-* Focus on Text Box "Username"
+* Focus on Text Box to right of "Username"
 
 ## Into
 * Write "Gopher" into Text Box "Username"

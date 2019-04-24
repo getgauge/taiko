@@ -1,11 +1,12 @@
 let { openBrowser,closeBrowser, client } = require('../../lib/taiko');
+let { openBrowserArgs } = require('./test-util');
 
 describe(' opens browser successfully',()=>{
     test('openBrowser should return \'Browser Opened\' message',  ()=>{
 
         expect(process.env.TAIKO_EMULATE_DEVICE).not.toBeDefined();
 
-        return openBrowser().then(data => {
+        return openBrowser(openBrowserArgs).then(data => {
 
             expect(data).toEqual({'description': 'Browser opened'});
         });

@@ -1,8 +1,8 @@
 let path = require('path');
 let { writeFileSync, unlinkSync } = require('fs');
 
-module.exports.createHtml = (innerHtml) => {
-    let htmlFilePath = path.join(process.cwd(), 'test', 'unit-tests', 'data', 'test.html');
+module.exports.createHtml = (innerHtml, testName) => {
+    let htmlFilePath = path.join(process.cwd(), 'test', 'unit-tests', 'data', testName+'.html');
     let content = `<!DOCTYPE html>
         <html>
         <body>

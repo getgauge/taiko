@@ -1,28 +1,33 @@
-let { openBrowser, goto, radioButton, closeBrowser, evaluate, $, intervalSecs, timeoutSecs } = require('../../lib/taiko');
+let { openBrowser, radioButton, closeBrowser, evaluate, $, intervalSecs, timeoutSecs, goto } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 
 describe('radio button', () => {
+    beforeAll(async () => {
+        await openBrowser(openBrowserArgs);
+    }, 30000);
+
+    afterAll(async () => {
+        await closeBrowser();
+    }, 30000);
+
     describe('with inline text', () => {
         let filePath;
-        beforeAll(() => {
+        beforeAll(async () => {
             let innerHtml = '<form>' +
                 '<input type="radio" name="color" value="red" checked>Red</input>' +
                 '<input type="radio" name="color" value="yellow">Yellow</input>' +
                 '<input type="radio" name="color" value="green">Green</input>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
+            filePath = createHtml(innerHtml, 'radioButton');
         });
 
-        beforeEach(async () => {
-            await openBrowser(openBrowserArgs);
-            await goto(filePath);
-        }, 10000);
-
-        afterAll(() => {
+        afterAll(async () => {
             removeFile(filePath);
         });
 
-        afterEach(async() => await closeBrowser());
+        beforeEach(async () =>{
+            await goto(filePath);
+        });
 
         test('test exists()', async () => {
             await expect(radioButton('Yellow').exists()).resolves.toBeTruthy();
@@ -42,13 +47,14 @@ describe('radio button', () => {
         });
 
         test('test isSelected()', async () => {
+            await radioButton('Red').select();
             await expect(radioButton('Red').isSelected()).resolves.toBeTruthy();
         });
     });
 
     describe('wrapped in label', () => {
         let filePath;
-        beforeAll(() => {
+        beforeAll(async () => {
             let innerHtml = '<form>' +
                 '<label>' +
                 '<input name="color" type="radio" value="red" checked />' +
@@ -63,19 +69,16 @@ describe('radio button', () => {
                 '<span>Green</span>' +
                 '</label>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
+            filePath = createHtml(innerHtml, 'radioButton');
         });
 
-        beforeEach(async () => {
-            await openBrowser(openBrowserArgs);
-            await goto(filePath);
-        }, 10000);
-
-        afterAll(() => {
+        afterAll(async () => {
             removeFile(filePath);
         });
 
-        afterEach(async() => await closeBrowser());
+        beforeEach(async () =>{
+            await goto(filePath);
+        });
 
         test('test exists()', async () => {
             await expect(radioButton('Green').exists()).resolves.toBeTruthy();
@@ -85,7 +88,7 @@ describe('radio button', () => {
 
     describe('using label for', () => {
         let filePath;
-        beforeAll(() => {
+        beforeAll(async () => {
             let innerHtml = '<form>' +
                 '<p>' +
                 '<input id="c1" name="color" type="radio" value="red" checked />' +
@@ -99,19 +102,16 @@ describe('radio button', () => {
                 '<label for="c3"><input id="c3" name="color" type="radio" value="green" />Green</label>' +
                 '</p>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
+            filePath = createHtml(innerHtml, 'radioButton');
         });
 
-        beforeEach(async () => {
-            await openBrowser(openBrowserArgs);
-            await goto(filePath);
-        }, 10000);
-
-        afterAll(() => {
+        afterAll(async () => {
             removeFile(filePath);
         });
 
-        afterEach(async() => await closeBrowser());
+        beforeEach(async () =>{
+            await goto(filePath);
+        });
 
         test('test exists()', async () => {
             await expect(radioButton('Red').exists()).resolves.toBeTruthy();
