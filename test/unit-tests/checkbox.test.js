@@ -1,7 +1,8 @@
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 let { openBrowser, goto, checkBox, closeBrowser, evaluate, $, intervalSecs, timeoutSecs } = require('../../lib/taiko');
+const test_name = 'Checkbox';
 
-describe('checkbox button', () => {
+describe(test_name, () => {
     beforeAll(async () => {
         await openBrowser(openBrowserArgs);
     }, 30000);
@@ -18,7 +19,7 @@ describe('checkbox button', () => {
                 '<input type="checkbox" name="color" value="yellow">Yellow</input>' +
                 '<input type="checkbox" name="color" value="green">Green</input>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
+            filePath = createHtml(innerHtml,test_name);
         });
 
         beforeEach(async () => {
@@ -70,7 +71,7 @@ describe('checkbox button', () => {
                 '<span>Green</span>' +
                 '</label>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
+            filePath = createHtml(innerHtml,test_name);
         });
 
         beforeEach(async () => {
@@ -103,7 +104,7 @@ describe('checkbox button', () => {
                 '<label for="c3"><input id="c3" name="color" type="checkbox" value="green" />Green</label>' +
                 '</p>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
+            filePath = createHtml(innerHtml,test_name);
         });
 
         beforeEach(async () => {
