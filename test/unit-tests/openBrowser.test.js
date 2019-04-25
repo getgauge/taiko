@@ -20,15 +20,6 @@ describe(' opens browser successfully',()=>{
         });
     });
 
-
-    test('openBrowser should initiate the CRI client object with Browser domain',  ()=>{
-
-        return openBrowser().then(() => {
-            expect(client.Browser).not.toBeNull();
-        });
-    });
-
-
     afterEach(async() => await closeBrowser(),10000);
 
 });
