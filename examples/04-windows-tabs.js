@@ -1,15 +1,12 @@
-const { openBrowser, goto, click, title, closeTab, currentURL, text, closeBrowser, loadPlugin } = require('taiko')
+const { goto, click, title, closeTab, currentURL, text } = require('taiko')
     , path = require('path')
-    , {ID, clientHandler, startScreencast, stopScreencast} = require('taiko-screencast')
+    , {openBrowserAndStartScreencast, closeBrowserAndStopScreencast} = require('./browserLauncher')
     , expect = require('chai').expect;
-
-loadPlugin(ID, clientHandler);
 
 (async () => {
     try {
         const url = 'http://localhost:3000/windows';
-        await openBrowser({args: ['--no-first-run']});
-        await startScreencast(path.join('captures', 'windows', 'windows.gif'))
+        await openBrowserAndStartScreencast(path.join('captures', 'windows', 'windows.gif'))
         await goto(url);
         await click('click here');
         expect(await title()).to.eq('New Window');
@@ -19,7 +16,6 @@ loadPlugin(ID, clientHandler);
     } catch (e) {
         console.error(e);
     } finally {
-        await stopScreencast();
-        await closeBrowser();
+        await closeBrowserAndStopScreencast();
     }
 })();

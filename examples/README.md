@@ -31,3 +31,24 @@ This folder contains samples inspired by some of selenium tips published by [ele
 7. [Dynamic Content](07-dynamic-loading.js)
 
 ![Upload a file](gifs/dynamic-pages.gif)
+
+
+## Running the examples
+
+`npm test` runs the examples under a headless chromium.
+
+> **Note:** The examples use `openBrowserAndStartScreencast` and `closeBrowserAndStopScreencast` from [`browserLauncher`](browserLauncher.js) instead of `openBrowser` and `closeBrowser` directly. This is to capture screen recordings. The `browserLauncher` methods can be substituted with `openBrowser` and `closeBrowser` if there is no need for screencast capture.
+
+### Run Options
+
+1. Observe
+
+`npm test -- --observe` runs the examples under `observe` mode, which brings up the browser so that you can see the action.
+
+2. Run a single example
+
+`npm test -- <id>` where `id` is the file prefix. Ex. `npm test -- 05` will run just `05-dropdown.js`.
+
+3. Screencast
+
+`npm test -- --screencast` will run all the examples and record the session using the [`taiko-screencast`](https://github.com/getgauge-contrib/taiko-screencast) plugin. The output is saved under the `captures` directory.
