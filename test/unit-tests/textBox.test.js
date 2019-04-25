@@ -1,5 +1,6 @@
 let { openBrowser, goto, textBox, closeBrowser, intervalSecs, timeoutSecs } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
+const test_name = 'textbox';
 
 describe('textBox', () => {
 
@@ -19,7 +20,7 @@ describe('textBox', () => {
                 '<input type="text" name="color" value="yellow">Yellow</input>' +
                 '<input type="text" name="color" value="greeen">Green</input>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
+            filePath = createHtml(innerHtml,test_name);
         });
 
         beforeEach(async () => {
@@ -53,7 +54,7 @@ describe('textBox', () => {
                 '<span>Green</span>' +
                 '</label>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
+            filePath = createHtml(innerHtml,test_name);
         });
 
         beforeEach(async () => {
@@ -86,7 +87,7 @@ describe('textBox', () => {
                 '<label for="c3"><input id="c3" name="color" type="text" value="green" />Green</label>' +
                 '</p>' +
                 '</form>';
-            filePath = createHtml(innerHtml);
+            filePath = createHtml(innerHtml,test_name);
         });
 
         beforeEach(async () => {
