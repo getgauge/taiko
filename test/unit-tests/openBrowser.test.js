@@ -15,7 +15,7 @@ describe(' opens browser successfully',()=>{
 
     test('openBrowser should initiate the CRI client object',  ()=>{
 
-        return openBrowser().then(() => {
+        return openBrowser(openBrowserArgs).then(() => {
             expect(client).not.toBeNull();
         });
     });
