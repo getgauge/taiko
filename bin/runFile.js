@@ -24,10 +24,12 @@ module.exports = async (file, observe, observeTime, continueRepl) => {
                 }
 
                 res = await realFuncs[func].apply(this, args);
-                if (res.description) {
-                    res.description = symbols.pass + res.description;
-                    console.log(removeQuotes(util.inspect(res.description, { colors: true }), res.description));
-                }
+                var eventEmitter = taiko.emitter;
+                eventEmitter.on('success', (desc) => {
+                    desc = symbols.pass + desc;
+                    desc = removeQuotes(util.inspect(desc, { colors: true }), desc);
+                    console.log(desc);
+                });
                 return res;
             };
         else
