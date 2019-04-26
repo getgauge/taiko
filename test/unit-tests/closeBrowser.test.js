@@ -1,4 +1,4 @@
-let { openBrowser,closeBrowser } = require('../../lib/taiko');
+let { openBrowser,closeBrowser, emitter } = require('../../lib/taiko');
 let { openBrowserArgs } = require('./test-util');
 
 describe('close browser successfully',()=>{
@@ -9,10 +9,12 @@ describe('close browser successfully',()=>{
     },10000);
     
 
-    test('closeBrowser should return \'Browser Opened\' message',  ()=>{
-
-        return closeBrowser().then(data => {
-            expect(data).toEqual({ 'description': 'Browser closed' });
+    test('closeBrowser should return \'Browser closed\' message', async ()=>{
+        emitter.on('success', (desc) => {
+            expect(desc).toEqual('Browser closed');
+        });
+        await closeBrowser().then(data => {
+            expect(data).toEqual(undefined);
         });
     });
 
