@@ -24,12 +24,6 @@ module.exports = async (file, observe, observeTime, continueRepl) => {
                 }
 
                 res = await realFuncs[func].apply(this, args);
-                var eventEmitter = taiko.emitter;
-                eventEmitter.on('success', (desc) => {
-                    desc = symbols.pass + desc;
-                    desc = removeQuotes(util.inspect(desc, { colors: true }), desc);
-                    console.log(desc);
-                });
                 return res;
             };
         else
@@ -44,6 +38,12 @@ module.exports = async (file, observe, observeTime, continueRepl) => {
         }
         require.cache[path.join(__dirname, 'taiko.js')].exports[func] = global[func];
     }
+    var eventEmitter = taiko.emitter;
+    eventEmitter.on('success', (desc) => {
+        desc = symbols.pass + desc;
+        desc = removeQuotes(util.inspect(desc, { colors: true }), desc);
+        console.log(desc);
+    });
     const oldNodeModulesPaths = module.constructor._nodeModulePaths;
     module.constructor._nodeModulePaths = function () {
         const ret = oldNodeModulesPaths.apply(this, arguments);

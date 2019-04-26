@@ -9,10 +9,9 @@ describe('close browser successfully',()=>{
     },10000);
     
 
-    test('closeBrowser should return \'Browser Opened\' message', async ()=>{
-
+    test('closeBrowser should return \'Browser closed\' message', async ()=>{
         emitter.on('success', (desc) => {
-            expect(desc).toEqual('Browser opened');
+            expect(desc).toEqual('Browser closed');
         });
         await closeBrowser().then(data => {
             expect(data).toEqual(undefined);
