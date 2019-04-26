@@ -57,7 +57,7 @@
 		"eslint-plugin-jest": "^22.4.1",
 		"jest": "^24.7.1",
 		"markdown-styles": "^3.1.10",
-		"marked": "^0.6.0",
+		"marked": "^0.6.2",
 		"pre-commit": "^1.2.2"
 	}
 }
