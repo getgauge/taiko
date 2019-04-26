@@ -1,5 +1,5 @@
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
-let { openBrowser, goto, checkBox, closeBrowser, evaluate, $, intervalSecs, timeoutSecs } = require('../../lib/taiko');
+let { openBrowser, goto, checkBox, closeBrowser, evaluate, $, intervalSecs, timeoutSecs, text } = require('../../lib/taiko');
 const test_name = 'Checkbox';
 
 describe(test_name, () => {
@@ -15,10 +15,17 @@ describe(test_name, () => {
         let filePath;
         beforeAll(() => {
             let innerHtml = '<form>' +
-                '<input type="checkbox" name="color" value="red">Red</input>' +
-                '<input type="checkbox" name="color" value="yellow">Yellow</input>' +
-                '<input type="checkbox" name="color" value="green">Green</input>' +
-                '</form>';
+                '<input type="checkbox" id="red" name="color" value="red" >Red</input>' +
+                '<input type="checkbox" id="yellow" name="color" value="yellow" >Yellow</input>' +
+                '<input type="checkbox" id="Green" name="color" value="green" >Green</input>' +
+                '</form>'+
+                '<div id="panel" style="display:none">show on check</div>' +
+                '<script>' +
+                'var elem = document.getElementById("red");'+
+                'elem.addEventListener("click", myFunction);'+
+                'function myFunction() {' +
+                'document.getElementById("panel").style.display = "block";' +
+                '}</script>';
             filePath = createHtml(innerHtml,test_name);
         });
 
@@ -39,6 +46,11 @@ describe(test_name, () => {
             await checkBox('Green').check();
             let value = await evaluate($('input[name=color]:checked'), (element) => element.value);
             expect(value.result).toBe('green');
+        });
+
+        test('test check() triggers events', async() =>{
+            await checkBox('Red').check();
+            await expect(text('show on check').exists()).resolves.toBeTruthy();
         });
 
         test('test uncheck()', async () => {
