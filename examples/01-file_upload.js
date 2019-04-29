@@ -1,17 +1,19 @@
-const { openBrowser, goto, fileField, button, above, attach, click, text, closeBrowser } = require('taiko')
+const {goto, fileField, button, above, attach, click, text} = require('taiko')
     , path = require('path')
+    , {openBrowserAndStartScreencast, closeBrowserAndStopScreencast} = require('./browserLauncher')
     , expect = require('chai').expect;
 
 (async () => {
     try {
-        await openBrowser();
+        await openBrowserAndStartScreencast(path.join('captures', 'file-upload', 'file-upload.gif'))
         await goto('http://localhost:3000/upload');
         await attach(path.join(__dirname, 'data', 'foo.txt'), fileField(above(button('Upload'))));
         await click('Upload');
-        expect(await text('file uploaded!').exists()).to.be.true;
-    } catch (e) {
+        var exists = await text('file uploaded!').exists();
+        expect(exists).to.be.true;
+} catch (e) {
         console.error(e);
     } finally {
-        await closeBrowser();
+        await closeBrowserAndStopScreencast();
     }
 })();

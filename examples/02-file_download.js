@@ -1,7 +1,9 @@
-const { openBrowser, goto, client, click, closeBrowser } = require('taiko')
+const {goto, client, click } = require('taiko')
     , path = require('path')
     , fs = require('fs')
+    , {openBrowserAndStartScreencast, closeBrowserAndStopScreencast} = require('./browserLauncher')
     , expect = require('chai').expect;
+
 (async () => {
     var downloadPath = path.resolve(__dirname, 'data','downloaded');
     var sleep = (ms) => {
@@ -10,7 +12,7 @@ const { openBrowser, goto, client, click, closeBrowser } = require('taiko')
         });
     };
     try {
-        await openBrowser();
+        await openBrowserAndStartScreencast(path.join('captures', 'file-download', 'file-download.gif'))
         await client().send('Page.setDownloadBehavior', {
             behavior: 'allow', downloadPath: downloadPath});
         await goto('http://localhost:3000/download');
@@ -22,7 +24,7 @@ const { openBrowser, goto, client, click, closeBrowser } = require('taiko')
     } catch (e) {
         console.error(e);
     } finally {
-        await closeBrowser();
+        await closeBrowserAndStopScreencast();
         fs.unlinkSync(path.join(downloadPath, 'foo.txt'));
     }
 })();

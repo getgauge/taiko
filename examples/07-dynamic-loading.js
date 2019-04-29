@@ -1,9 +1,12 @@
-const { openBrowser, goto, click, text, closeBrowser } = require('taiko')
+const { goto, click, text } = require('taiko')
+    , path = require('path')
+    , {openBrowserAndStartScreencast, closeBrowserAndStopScreencast} = require('./browserLauncher')
     ,expect = require('chai').expect;
+
 (async () => {
     try {
         // example 1
-        await openBrowser();
+        await openBrowserAndStartScreencast(path.join('captures', 'dynamic-pages', 'dynamic-pages.gif'))
         await goto('http://localhost:3000/dynamic_loading');
         await click('Example 1:');
         await click('Start');
@@ -18,6 +21,6 @@ const { openBrowser, goto, click, text, closeBrowser } = require('taiko')
     } catch (e) {
         console.error(e);
     } finally {
-        await closeBrowser();
+        await closeBrowserAndStopScreencast();
     }
 })();

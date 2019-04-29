@@ -1,9 +1,11 @@
-const { openBrowser, goto, comboBox, closeBrowser } = require('taiko')
+const { goto, comboBox } = require('taiko')
+    , path = require('path')
+    , {openBrowserAndStartScreencast, closeBrowserAndStopScreencast} = require('./browserLauncher')
     , expect = require('chai').expect;
 
 (async () => {
     try {
-        await openBrowser();
+        await openBrowserAndStartScreencast(path.join('captures', 'dropdown', 'dropdown.gif'))
         await goto('http://localhost:3000/dropdown');
         expect(await comboBox().exists()).to.be.true;
         await comboBox().select('Option 1');
@@ -11,6 +13,6 @@ const { openBrowser, goto, comboBox, closeBrowser } = require('taiko')
     } catch (e) {
         console.error(e);
     } finally {
-        await closeBrowser();
+        await closeBrowserAndStopScreencast();
     }
 })();

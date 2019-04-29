@@ -1,9 +1,11 @@
-const { openBrowser, goto, text, closeBrowser } = require('taiko')
+const { goto, text } = require('taiko')
+    , path = require('path')
+    , {openBrowserAndStartScreencast, closeBrowserAndStopScreencast} = require('./browserLauncher')
     , expect = require('chai').expect;
-
+    
 (async () => {
     try {
-        await openBrowser();
+        await openBrowserAndStartScreencast(path.join('captures', 'frames', 'frames.gif'))
         await goto('http://localhost:3000/nested_frames');
         expect(await text('MIDDLE').exists(), 'expected "MIDDLE" to exist on page').to.be.true;
         // taiko does not need to be told about frames, it automagically figures it out.
@@ -12,6 +14,6 @@ const { openBrowser, goto, text, closeBrowser } = require('taiko')
     } catch (e) {
         console.error(e);
     } finally {
-        await closeBrowser();
+        await closeBrowserAndStopScreencast();
     }
 })();

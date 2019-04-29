@@ -1,10 +1,12 @@
-const { openBrowser, goto, click, title, closeTab, currentURL, text, closeBrowser } = require('taiko')
+const { goto, click, title, closeTab, currentURL, text } = require('taiko')
+    , path = require('path')
+    , {openBrowserAndStartScreencast, closeBrowserAndStopScreencast} = require('./browserLauncher')
     , expect = require('chai').expect;
 
 (async () => {
     try {
         const url = 'http://localhost:3000/windows';
-        await openBrowser();
+        await openBrowserAndStartScreencast(path.join('captures', 'windows', 'windows.gif'))
         await goto(url);
         await click('click here');
         expect(await title()).to.eq('New Window');
@@ -14,6 +16,6 @@ const { openBrowser, goto, click, title, closeTab, currentURL, text, closeBrowse
     } catch (e) {
         console.error(e);
     } finally {
-        await closeBrowser();
+        await closeBrowserAndStopScreencast();
     }
 })();
