@@ -32,6 +32,9 @@ This folder contains samples inspired by some of selenium tips published by [ele
 
 ![Upload a file](gifs/dynamic-pages.gif)
 
+8. [Write into `contenteditable` elements](08-contenteditable.js)
+
+![`contenteditable` Fields](gifs/contenteditable.gif)
 
 ## Running the examples
 
