@@ -56,8 +56,8 @@
 		"documentation": "^9.3.1",
 		"eslint": "^5.15.1",
 		"eslint-plugin-jest": "^22.5.1",
+		"handlebars": "^4.1.2",
 		"jest": "^24.7.1",
-		"markdown-styles": "^3.1.10",
 		"marked": "^0.6.2",
 		"pre-commit": "^1.2.2"
 	}
