@@ -4,7 +4,7 @@ const handlebars = require('handlebars');
 const fs = require('fs-extra');
 const { metadata } = require('../lib/taiko');
 
-var createDir = (dir) => {
+const createDir = (dir) => {
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir);
     }
