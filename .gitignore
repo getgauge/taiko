@@ -61,6 +61,7 @@ typings/
 docs/site
 docs/api.md
 docs/index.md
+docs/layout/partials/content.html
 
 #local chromium
 .local-chromium

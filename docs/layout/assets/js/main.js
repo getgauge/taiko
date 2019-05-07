@@ -188,6 +188,9 @@ function onLoad(){
 }
 
 function init() {
+  document.querySelectorAll('div.content-section pre').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
   setGithubStar();
   setTimeout(function(){
     smoothScroll();

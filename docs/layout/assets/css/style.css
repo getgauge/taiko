@@ -40,6 +40,10 @@ section {
   margin: 0 0 50px;
 }
 
+pre {
+  padding: 0%;
+}
+
 .logo {
   height: 65px;
   font-family: "URWGeometric-ExtraBold";
@@ -205,7 +209,7 @@ section {
   padding: 15px;
 }
 
-.list  li {
+.content-section  li {
   line-height: 2;
   overflow-wrap: break-word;
   font-size: 16px;
