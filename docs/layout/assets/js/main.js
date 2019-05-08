@@ -165,7 +165,7 @@ function headButtresolve(element) {
 }
 
 function updateDollarLink() {
-    let link = document.getElementById('$');
+    let link = document.evaluate('//h2[string() = "$"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     link.id = 'dollar';
     link.children[1].setAttribute('href', '#dollar');
 
