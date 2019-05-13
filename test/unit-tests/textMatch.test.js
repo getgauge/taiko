@@ -60,4 +60,10 @@ describe('text match', () => {
             await expect(text('Text').exists()).resolves.toBeTruthy();
         });
     });
+
+    describe('text match with case insensitive', () => {
+        test('test match the text with case insensitive', async () => {
+            await expect(text('USER NAME:').exists()).resolves.toBeTruthy();
+        });
+    });
 });
