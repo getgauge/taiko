@@ -12,7 +12,7 @@ describe('inputField', () => {
         await closeBrowser();
     }, 30000);
 
-    describe('with inline text', () => {
+    describe('with attribute and value pair', () => {
         let filePath;
         beforeAll(() => {
             let innerHtml = '<form> \n' +
@@ -42,9 +42,9 @@ describe('inputField', () => {
         let filePath;
         beforeAll(() => {
             let innerHtml = '<form> \n' +
-                '<label><input type="text" name="user[login]" id="user[login]" /></label> \n' +
-                '<label><input type="text" name="user[email]" id="user[email]" /></label> \n' +
-                '<label><input type="password" name="user[password]" id="user[password]" /></label> \n' +
+                '<label><span>login</span><input type="text" name="user[login]" id="user[login]" value="login" /></label> \n' +
+                '<label><span>email</span><input type="text" name="user[email]" id="user[email]" /></label> \n' +
+                '<label><span>password</span><input type="password" name="user[password]" id="user[password]" /></label> \n' +
                 '</form>';
             filePath = createHtml(innerHtml, test_name);
         });
@@ -58,8 +58,8 @@ describe('inputField', () => {
         });
 
         test('test exists()', async () => {
-            await expect(inputField({ id: 'user[login]' }).exists()).resolves.toBeTruthy();
-            await expect(inputField({ id: 'user[re-password]' }).exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
+            await expect(inputField('login').exists()).resolves.toBeTruthy();
+            await expect(inputField('re-password').exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
 
         });
     });
