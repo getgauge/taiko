@@ -2,12 +2,13 @@ const { goto, below, inputField, write } = require('taiko')
     , {openBrowserAndStartScreencast, closeBrowserAndStopScreencast} = require('./browserLauncher')
     , path = require('path')
     , expect = require('chai').expect;
+const cwd = process.cwd();
 
 (async () => {
     try {
         await openBrowserAndStartScreencast(path.join('captures', 'contenteditable', 'contenteditable.gif'))
         // a local file with simple `contenteditable`
-        await goto('file:///home/steam/projects/taiko/examples/data/contenteditable.html');
+        await goto('file:///' + cwd + '/examples/data/contenteditable.html');
         var text = 'Taiko writes into a contenteditable field!';
         await write(text, into(inputField(below('Editable Demo'))));
         var content = await inputField(below('Editable Demo')).text();
