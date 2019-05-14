@@ -3,6 +3,8 @@
 
 [![Build Status](https://getgauge.visualstudio.com/Taiko/_apis/build/status/Taiko-CI?branchName=master)](https://getgauge.visualstudio.com/Taiko/_build/latest?definitionId=1&branchName=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![alpha software]( https://img.shields.io/badge/status-alpha-lightgrey.svg)](https://github.com/getgauge/taiko/issues) [![npm version](https://badge.fury.io/js/taiko.svg?style=flat-square)](https://badge.fury.io/js/taiko) [![dependencies Status](https://david-dm.org/getgauge/taiko/status.svg)](https://david-dm.org/getgauge/taiko) [![devDependencies Status](https://david-dm.org/getgauge/taiko/dev-status.svg)](https://david-dm.org/getgauge/taiko?type=dev) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/getgauge/taiko/issues)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+
 
 ![Taiko REPL](https://user-images.githubusercontent.com/54427/43075023-f4d18878-8e9c-11e8-91b2-227a3d02e0f6.gif)
 
