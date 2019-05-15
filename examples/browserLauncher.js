@@ -8,7 +8,7 @@ if (screenCastEnabled) {
 }
 
 module.exports.openBrowserAndStartScreencast = async (outFile) => {
-    await openBrowser({args: ['--no-first-run']});
+    await openBrowser({args: ['--no-first-run', '--no-sandbox']});
     if (screenCastEnabled) await startScreencast(outFile);
 };
 

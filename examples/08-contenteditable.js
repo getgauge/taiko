@@ -8,7 +8,7 @@ const cwd = process.cwd();
     try {
         await openBrowserAndStartScreencast(path.join('captures', 'contenteditable', 'contenteditable.gif'))
         // a local file with simple `contenteditable`
-        await goto('file:///' + cwd + '/examples/data/contenteditable.html');
+        await goto('file:///' + cwd + '/data/contenteditable.html');
         var text = 'Taiko writes into a contenteditable field!';
         await write(text, into(inputField(below('Editable Demo'))));
         var content = await inputField(below('Editable Demo')).text();
