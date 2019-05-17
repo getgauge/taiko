@@ -13,7 +13,7 @@ describe(test_name, () => {
     });
 
     it('setCookie should throw error if url or domain is not specified', async () => {
-        await expect(taiko.setCookie('someCookie', 'foo')).to.eventually.be.rejectedWith('Atleast URL or Domain needs to be specified for setting cookies');
+        await expect(taiko.setCookie('someCookie', 'foo')).to.eventually.be.rejectedWith('At least URL or domain needs to be specified for setting cookies');
     });
 
     it('setCookie should throw error if cookie is not set', async () => {
@@ -43,6 +43,6 @@ describe(test_name, () => {
         taiko.__set__('network', {
             deleteCookies: async () => { return Promise.resolve();}
         });
-        await expect(taiko.deleteCookies('MyCookie')).to.eventually.be.rejectedWith('Atleast URL or Domain needs to be specified for deleting cookies');
+        await expect(taiko.deleteCookies('MyCookie')).to.eventually.be.rejectedWith('At least URL or domain needs to be specified for deleting cookies');
     });
 });

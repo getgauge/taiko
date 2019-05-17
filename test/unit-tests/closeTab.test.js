@@ -47,19 +47,19 @@ describe('closeTab', () => {
         _targets.others.push({ id: '3', type: 'page', url: 'https://amazon.com' });
 
         descEmmitter.on('success', (message) => {
-            expect(message).to.be.eql('Closed current tab with url https://flipkart.com');
+            expect(message).to.be.eql('Closed current tab with URL https://flipkart.com');
         });
         await taiko.closeTab();
         expect(currentTarget.url).to.be.eql('https://flipkart.com');
     });
 
-    it('should close the all mathicng tabs  with given url switch to last active', async () => {
+    it('should close the all matching tabs with given url switch to last active', async () => {
         _targets.matching.push({ id: '1', type: 'page', url: 'https://flipkart.com' });
         _targets.others.push({ id: '2', type: 'page', url: 'https://amazon.com' });
         _targets.matching.push({ id: '3', type: 'page', url: 'https://flipkart.com' });
 
         descEmmitter.on('success', (message) => {
-            expect(message).to.be.eql('Closed all tabs with url https://flipkart.com');
+            expect(message).to.be.eql('Closed all tabs with URL https://flipkart.com');
         });
         await taiko.closeTab('https://flipkart.com');
         expect(currentTarget.url).to.be.eql('https://amazon.com');
