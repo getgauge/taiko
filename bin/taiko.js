@@ -14,7 +14,16 @@ let plugins = new Map();
 
 function printVersion() {
     const packageJson = require('../package.json');
-    return `Version: ${packageJson.version} (Chromium: ${packageJson.taiko.chromium_version})`;
+    let paths = [];
+    let o = spawnSync('npm', ['list', 'taiko', '--json']);
+    if (!o.error) paths.push(o.stdout.toString().trim());
+    let version = JSON.parse(paths).dependencies.taiko.resolved.split('#')[1];
+    if (version === undefined) {
+        version = 'RELEASE';
+    }
+    return `Version: ${packageJson.version} (Chromium: ${
+        packageJson.taiko.chromium_version
+    }) ${version}`;
 }
 
 async function exitOnUnhandledFailures(e) {
@@ -58,15 +67,18 @@ function getPossibleModulePaths() {
     return paths;
 }
 
-
 function loadPlugin(plugin) {
     try {
         let paths = getPossibleModulePaths();
-        let location =  paths.map(p => {
-            if(fs.existsSync(path.join(p, plugin))) {
-                return path.join(p, plugin);
-            }
-        }).filter(function(p){return p;})[0];
+        let location = paths
+            .map(p => {
+                if (fs.existsSync(path.join(p, plugin))) {
+                    return path.join(p, plugin);
+                }
+            })
+            .filter(function(p) {
+                return p;
+            })[0];
         if (!location) throw new Error(`The plugin ${plugin} is not installed.`);
         let p = require(location);
         taiko.loadPlugin(p.ID, p.clientHandler);
@@ -78,7 +90,7 @@ function loadPlugin(plugin) {
 }
 
 function loadPlugins(plugins) {
-    plugins.split(',').forEach((plugin) => {
+    plugins.split(',').forEach(plugin => {
         loadPlugin(plugin.trim());
     });
 }
@@ -86,8 +98,10 @@ function loadPlugins(plugins) {
 if (isTaikoRunner(process.argv[1])) {
     program
         .version(printVersion(), '-v, --version')
-        .usage(`[options]
-       taiko <file> [options]`)
+        .usage(
+            `[options]
+       taiko <file> [options]`
+        )
         .option(
             '-o, --observe',
             `enables headful mode and runs script with 3000ms delay by default.
@@ -97,7 +111,11 @@ if (isTaikoRunner(process.argv[1])) {
             '-l, --load',
             'run the given file and start the repl to record further steps.\n'
         )
-        .option('-w, --wait-time <time in ms>', 'runs script with provided delay\n', parseInt)
+        .option(
+            '-w, --wait-time <time in ms>',
+            'runs script with provided delay\n',
+            parseInt
+        )
         .option(
             '--emulate-device <device>',
             'Allows to simulate device viewport. Visit https://github.com/getgauge/taiko/blob/master/lib/devices.js for all the available devices\n',
@@ -108,20 +126,20 @@ if (isTaikoRunner(process.argv[1])) {
             'Load the taiko plugin.',
             loadPlugins
         )
-        .action(function () {
+        .action(function() {
             if (program.args.length) {
                 const fileName = program.args[0];
                 validate(fileName);
                 const observe = Boolean(program.observe || program.slowMod);
                 if (program.load) {
-                    runFile(fileName, true, program.waitTime, (fileName) => {
-                        return new Promise((resolve) => {
+                    runFile(fileName, true, program.waitTime, fileName => {
+                        return new Promise(resolve => {
                             repl_mode = true;
-                            repl.initialize(plugins, fileName).then((r) => {
+                            repl.initialize(plugins, fileName).then(r => {
                                 let listeners = r.listeners('exit');
                                 r.removeAllListeners('exit');
                                 r.on('exit', () => {
-                                    listeners.forEach((l) => r.addListener('exit', l));
+                                    listeners.forEach(l => r.addListener('exit', l));
                                     resolve();
                                 });
                             });
@@ -135,7 +153,7 @@ if (isTaikoRunner(process.argv[1])) {
                 repl.initialize(plugins);
             }
         });
-    program.unknownOption = (option) => {
+    program.unknownOption = option => {
         console.error('error: unknown option `%s', option);
         program.outputHelp();
         process.exit(1);
