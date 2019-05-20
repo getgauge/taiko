@@ -40,32 +40,4 @@ describe('Write and Clear', () => {
             await expect(inputField('Email').value()).resolves.toBe('');
         });
     });
-
-    describe('clear input field with wait for events', () => {
-        let filePath;
-        beforeAll(() => {
-
-            let innerHtml = '<form> \n' +
-                '<p><label for="login">Login<input type="text" name="user[login]" id="user[login]" /></label></p> \n' +
-                '<p><label for="email">Email<input type="text" name="user[email]" id="user[email]" /></label></p> \n' +
-                '<p><label for="password">Password<input type="text" name="user[password]" id="user[password]" /></label></p> \n' +
-                '</form>';
-            filePath = createHtml(innerHtml, test_name);
-        });
-
-        beforeEach(async () => {
-            await goto(filePath);
-        });
-
-        afterAll(() => {
-            removeFile(filePath);
-        });
-
-        test('test write and clear with wait for events()', async () => {
-            await expect(inputField('Email').exists()).resolves.toBeTruthy();
-            await write('abc@gmail.com', into(inputField('Email')));
-            // await clear(inputField('Email'), {waitForEvents:['firstMeaningfulPaint']});
-            await expect(inputField('Email').value()).resolves.toBe('');
-        }, 30000);
-    });
 });
