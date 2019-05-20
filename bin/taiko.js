@@ -15,9 +15,18 @@ let plugins = new Map();
 function printVersion() {
     const packageJson = require('../package.json');
     let paths = [];
-    let o = spawnSync('npm', ['list', 'taiko', '--json']);
-    if (!o.error) paths.push(o.stdout.toString().trim());
-    let version = JSON.parse(paths).dependencies.taiko.resolved.split('#')[1];
+    let taikoPath;
+    let version;
+    console.log(__dirname);
+    if((__dirname).includes('node_modules')) {
+        taikoPath = spawnSync('npm', ['list', 'taiko', '--json']);
+        if (!taikoPath.error) paths.push(taikoPath.stdout.toString().trim());
+        version = JSON.parse(paths).dependencies.taiko.resolved.split('#')[1];
+    } else {
+        taikoPath = spawnSync('npm', ['list', 'taiko', '--json', '-g']);
+        if (!taikoPath.error) paths.push(taikoPath.stdout.toString().trim());
+        version = JSON.parse(paths).dependencies.taiko.dependencies.taiko.resolved.split('#')[1];
+    }
     if (version === undefined) {
         version = 'RELEASE';
     }
