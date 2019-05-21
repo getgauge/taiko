@@ -17,19 +17,19 @@ function printVersion() {
     let paths = [];
     let taikoPath;
     let version;
-    console.log(__dirname);
-    if((__dirname).includes('node_modules')) {
-        taikoPath = spawnSync('npm', ['list', 'taiko', '--json']);
-        if (!taikoPath.error) paths.push(taikoPath.stdout.toString().trim());
-        version = JSON.parse(paths).dependencies.taiko.resolved.split('#')[1];
-    } else {
-        taikoPath = spawnSync('npm', ['list', 'taiko', '--json', '-g']);
-        if (!taikoPath.error) paths.push(taikoPath.stdout.toString().trim());
-        version = JSON.parse(paths).dependencies.taiko.dependencies.taiko.resolved.split('#')[1];
-    }
-    if (version === undefined) {
+    try{
+        if((__dirname).includes('node_modules')) {
+            taikoPath = spawnSync('npm', ['list', 'taiko', '--json']);
+            if (!taikoPath.error) paths.push(taikoPath.stdout.toString().trim());
+            version = JSON.parse(paths).dependencies.taiko.resolved.split('#')[1];
+        } else {
+            taikoPath = spawnSync('npm', ['list', 'taiko', '--json', '-g']);
+            if (!taikoPath.error) paths.push(taikoPath.stdout.toString().trim());
+            version = JSON.parse(paths).dependencies.taiko.resolved.split('#')[1];
+        }
+    }catch(e) {
         version = 'RELEASE';
-    }
+    }   
     return `Version: ${packageJson.version} (Chromium: ${
         packageJson.taiko.chromium_version
     }) ${version}`;
