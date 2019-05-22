@@ -156,7 +156,6 @@ function alogoliaSearch() {
     apiKey: 'b36d75c493b44a8f2605db66708a283b', 
     indexName: 'taiko', 
     inputSelector: '#search', 
-    algoliaOptions: { 'facetFilters': ['tags:preview'] },
     debug: false // Set debug to true if you want to inspect the dropdown 
     }); 
 }
