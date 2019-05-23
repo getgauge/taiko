@@ -14,25 +14,22 @@ let plugins = new Map();
 
 function printVersion() {
     const packageJson = require('../package.json');
-    let paths = [];
-    let taikoPath;
-    let version;
-    try{
-        taikoPath = spawnSync('npm', ['list', 'taiko', '--json']);
-        if (!taikoPath.error) paths.push(taikoPath.stdout.toString().trim());
-        let pathJson = JSON.parse(paths);
-        if(!pathJson.dependencies || !pathJson.dependencies.taiko ) {
-            paths = [];
-            taikoPath = spawnSync('npm', ['list', 'taiko', '--json','-g']);
-            if (!taikoPath.error) paths.push(taikoPath.stdout.toString().trim());
+    let hash = 'RELEASE';
+    if(packageJson._resolved) hash = packageJson._resolved;
+    else{
+        let root = spawnSync('npm', ['root']);
+        const packageLockJsonPath = path.join(path.resolve(root.stdout.toString(),'../'),'package-lock.json');
+        if(fs.existsSync(packageLockJsonPath)){
+            const packageJsonLock = require(packageLockJsonPath);
+            if(packageJsonLock.dependencies && packageJsonLock.dependencies.taiko){
+                const taikoVersion = packageJsonLock.dependencies.taiko.version.split('#');
+                if(taikoVersion.length > 1) hash = taikoVersion[1];
+            }
         }
-        version = JSON.parse(paths).dependencies.taiko.resolved.split('#')[1];
-    }catch(e) {
-        version = 'RELEASE';
-    }   
+    }
     return `Version: ${packageJson.version} (Chromium: ${
         packageJson.taiko.chromium_version
-    }) ${version}`;
+    }) ${hash}`;
 }
 
 async function exitOnUnhandledFailures(e) {
