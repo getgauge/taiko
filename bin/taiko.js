@@ -104,13 +104,17 @@ function loadPlugins(plugins) {
     });
 }
 
+function isVersion(arg) {
+    return arg === '-v' || arg === '--version';
+}
+
 if (isTaikoRunner(process.argv[1])) {
     program
-        .version(printVersion(), '-v, --version')
         .usage(
             `[options]
        taiko <file> [options]`
         )
+        .option('-v, --version', 'prints the version info', printVersion)
         .option(
             '-o, --observe',
             `enables headful mode and runs script with 3000ms delay by default.
@@ -136,6 +140,10 @@ if (isTaikoRunner(process.argv[1])) {
             loadPlugins
         )
         .action(function() {
+            if(program.rawArgs.some(isVersion)){ 
+                console.log(program.version); 
+                return; 
+            }
             if (program.args.length) {
                 const fileName = program.args[0];
                 validate(fileName);
