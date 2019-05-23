@@ -18,15 +18,15 @@ function printVersion() {
     let taikoPath;
     let version;
     try{
-        if((__dirname).includes('node_modules')) {
-            taikoPath = spawnSync('npm', ['list', 'taiko', '--json']);
+        taikoPath = spawnSync('npm', ['list', 'taiko', '--json']);
+        if (!taikoPath.error) paths.push(taikoPath.stdout.toString().trim());
+        let pathJson = JSON.parse(paths);
+        if(!pathJson.dependencies || !pathJson.dependencies.taiko ) {
+            paths = [];
+            taikoPath = spawnSync('npm', ['list', 'taiko', '--json','-g']);
             if (!taikoPath.error) paths.push(taikoPath.stdout.toString().trim());
-            version = JSON.parse(paths).dependencies.taiko.resolved.split('#')[1];
-        } else {
-            taikoPath = spawnSync('npm', ['list', 'taiko', '--json', '-g']);
-            if (!taikoPath.error) paths.push(taikoPath.stdout.toString().trim());
-            version = JSON.parse(paths).dependencies.taiko.resolved.split('#')[1];
         }
+        version = JSON.parse(paths).dependencies.taiko.resolved.split('#')[1];
     }catch(e) {
         version = 'RELEASE';
     }   
