@@ -15,18 +15,7 @@ let plugins = new Map();
 function printVersion() {
     const packageJson = require('../package.json');
     let hash = 'RELEASE';
-    if(packageJson._resolved) hash = packageJson._resolved;
-    else{
-        let root = spawnSync('npm', ['root']);
-        const packageLockJsonPath = path.join(path.resolve(root.stdout.toString(),'../'),'package-lock.json');
-        if(fs.existsSync(packageLockJsonPath)){
-            const packageJsonLock = require(packageLockJsonPath);
-            if(packageJsonLock.dependencies && packageJsonLock.dependencies.taiko){
-                const taikoVersion = packageJsonLock.dependencies.taiko.version.split('#');
-                if(taikoVersion.length > 1) hash = taikoVersion[1];
-            }
-        }
-    }
+    if(packageJson._resolved) hash = packageJson._resolved.split('#')[1];
     return `Version: ${packageJson.version} (Chromium: ${
         packageJson.taiko.chromium_version
     }) ${hash}`;
