@@ -48,7 +48,6 @@
 		"progress": "^2.0.3",
 		"proxy-from-env": "^1.0.0",
 		"recast": "^0.17.2",
-		"repl.history": "^0.1.4",
 		"rimraf": "^2.6.1"
 	},
 	"devDependencies": {
