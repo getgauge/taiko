@@ -199,4 +199,4 @@ For queries and contributions talk to the [Gauge](https://github.com/getgauge/ga
 
 ## Copyright
 
-Copyright 2018 [ThoughtWorks, Inc](https://www.thoughtworks.com/)
+Copyright 2019 [ThoughtWorks, Inc](https://www.thoughtworks.com/)
