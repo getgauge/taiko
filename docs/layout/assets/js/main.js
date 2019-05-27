@@ -1,5 +1,6 @@
 $(document).ready(function() {
   init();
+  algoliaSearch();
   setTimeout(function(){
     onLoad();
   },100);
@@ -151,17 +152,6 @@ function smoothScroll() {
   }); 
 }
 
-function alogoliaSearch() {
-  let tag = process.env.TAG;
-  docsearch({ 
-    apiKey: 'b36d75c493b44a8f2605db66708a283b', 
-    indexName: 'taiko', 
-    inputSelector: '#search', 
-    algoliaOptions: { 'facetFilters': [`tags:${tag}`] },
-    debug: false // Set debug to true if you want to inspect the dropdown 
-    }); 
-}
-
 function headButtresolve(element) {
   $(element).prepend('<span class="headbutt_blocker"></span>')
 }
@@ -197,7 +187,6 @@ function init() {
   setTimeout(function(){
     smoothScroll();
   }, 100);
-  alogoliaSearch();
   appendLink($('.main-content h2'));
   appendLink($('.main-content h3'));
   headButtresolve($('.banner-heading'));

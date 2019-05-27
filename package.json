@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"lint": "eslint bin/*.js lib/*.js test/*/*.js",
-		"doc": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
+		"doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
 		"test:api": "node test/unit-tests/taiko-test.js",
 		"examples": "npm install --prefix examples && npm test --prefix examples",
 		"test": "npm run test:api && npm run lint && jest && npm run examples",
