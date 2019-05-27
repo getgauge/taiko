@@ -1,4 +1,4 @@
-let { openBrowser, goto, closeBrowser, text, inputField, toRightOf } = require('../../lib/taiko');
+let { openBrowser, goto, closeBrowser, text, inputField, toRightOf, evaluate } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 
 describe('text match', () => {
@@ -15,7 +15,14 @@ describe('text match', () => {
                 '</div>' +
                 '<div name="text_across_element">' +
                 '<div>Text <span>Across</span> Element</div>' +
-                '</div>';
+                '</div>' +
+                '<div id="inTop" name="text_same_as_iframe" style="display: none">' +
+                'Text in iframe' +
+                '</div>' +
+                '<iframe></iframe>' +
+                '<script>' +
+                'document.querySelector("iframe").contentDocument.write("<div id=\\"inIframe\\">Text in iframe</div>")' +
+                '</script>';
         filePath = createHtml(innerHtml, 'textMatch');
         await openBrowser(openBrowserArgs);
         await goto(filePath);
@@ -58,6 +65,17 @@ describe('text match', () => {
 
         test('test partial match exists()', async () => {
             await expect(text('Text').exists()).resolves.toBeTruthy();
+        });
+    });
+
+    describe('text in iframe should be matched if match in top is invisible', () => {
+        test('test text exists()', async () => {
+            await expect(text('Text in iframe').exists()).resolves.toBeTruthy();
+        });
+
+        test('test text is from iframe', async () => {
+            const id = await evaluate(text('Text in iframe'), (elem) => {return elem.parentElement.id;}); 
+            expect(id.result).toBe('inIframe');
         });
     });
 });
