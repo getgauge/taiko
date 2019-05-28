@@ -1,7 +1,7 @@
 let { openBrowser, click, closeBrowser, goto, text } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 
-describe('radio button', () => {
+describe('Click API', () => {
     beforeAll(async () => {
         await openBrowser(openBrowserArgs);
     }, 30000);
