@@ -1,4 +1,4 @@
-let { openBrowser, goto, closeBrowser, text, inputField, toRightOf, evaluate } = require('../../lib/taiko');
+let { openBrowser, goto, closeBrowser, text, textBox, toRightOf, evaluate } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 
 describe('text match', () => {
@@ -44,7 +44,7 @@ describe('text match', () => {
         });
 
         test('test proximity selector', async () => {
-            await expect(inputField(toRightOf('User name:')).exists()).resolves.toBeTruthy();
+            await expect(textBox(toRightOf('User name:')).exists()).resolves.toBeTruthy();
         });
     });
 
