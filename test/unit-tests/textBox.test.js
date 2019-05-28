@@ -69,7 +69,7 @@ describe(test_name, () => {
     }, 30000);
 
     describe('input with type text', () => {
-        xdescribe('with inline text', () => {
+        describe('with inline text', () => {
             test('test exists()', async () => {
                 await expect(textBox('inputTypeTextWithInlineText').exists()).resolves.toBeTruthy();
             });
@@ -114,7 +114,7 @@ describe(test_name, () => {
     });
 
     describe('input with type password', () => {
-        xdescribe('with inline text',  () => {
+        describe('with inline text',  () => {
             test('test exists()', async () => {
                 await expect(textBox('inputTypePasswordWithInlineText').exists()).resolves.toBeTruthy();
             });
