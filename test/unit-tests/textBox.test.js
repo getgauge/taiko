@@ -1,108 +1,205 @@
-let { openBrowser, goto, textBox, closeBrowser, intervalSecs, timeoutSecs } = require('../../lib/taiko');
+let { openBrowser, goto, textBox, closeBrowser, write, into} = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
-const test_name = 'textbox';
+const test_name = 'textBox';
 
-describe('textBox', () => {
-
+describe(test_name, () => {
+    jest.setTimeout(20000); 
+    let filePath;
     beforeAll(async () => {
+        let innerHtml = '<div>' +
+        //Input with type text
+        '<form name="inputTypeText">' +
+            '<div name="inputTypeTextWithInlineText">' +
+                '<input type="text">inputTypeTextWithInlineText</input>' +
+            '</div>' +
+            '<div name="inputTypeTextWithWrappedLabel">' +
+                '<label>' +
+                    '<input type="text"/>' +
+                    '<span>inputTypeTextWithWrappedLabel</span>' +
+                '</label>' +
+            '</div>' +
+            '<div name="inputTypeTextWithLabelFor">' +
+                    '<input id="inputTypeTextWithLabelFor" type="text"/>' +
+                    '<label for="inputTypeTextWithLabelFor">inputTypeTextWithLabelFor</label>' +
+            '</div>' +
+        '</form>' +
+        //Input with type password
+        '<form name="inputTypePassword">' +
+            '<div name="inputTypePasswordWithInlineText">' +
+                '<input type="password">inputTypePasswordWithInlineText</input>' +         
+            '</div>' +
+            '<div name="inputTypePasswordWithWrappedLabel">' +
+                '<label>' +
+                    '<input type="password"/>' +
+                    '<span>inputTypePasswordWithWrappedLabel</span>' +
+                '</label>' +
+            '</div>' +
+            '<div name="inputTypePasswordWithLabelFor">' +
+                    '<input id="inputTypePasswordWithLabelFor" type="password"/>' +
+                    '<label for="inputTypePasswordWithLabelFor">inputTypePasswordWithLabelFor</label>' +
+            '</div>' +
+        '</form>' +
+        //Textarea
+        '<form name="textArea">' +
+            '<div name="textAreaWithWrappedLabel">' +
+                '<label>' +
+                    '<span>textAreaWithWrappedLabel</span>' +
+                    '<textarea></textarea>' +
+                '</label>' +
+            '</div>' +
+            '<div name="textAreaWithLabelFor">' +
+                '<label for="textAreaWithLabelFor">textAreaWithLabelFor</label>' +
+                '<textarea id="textAreaWithLabelFor"></textarea>' +
+            '</div>' +
+        '</form>' +
+        //contentEditable div
+        '<form name="contentEditable">' +
+            '<div id="contentEditableDiv" contenteditable=true>' +
+            '</div>' +
+        '</form>' +
+        '</div>';
+        filePath = createHtml(innerHtml, test_name);
         await openBrowser(openBrowserArgs);
+        await goto(filePath);
     }, 30000);
 
     afterAll(async () => {
         await closeBrowser();
+        removeFile(filePath);
     }, 30000);
 
-    describe('with inline text', () => {
-        let filePath;
-        beforeAll(() => {
-            let innerHtml = '<form>' +
-                '<input type="text" name="color" value="red">Red</input>' +
-                '<input type="text" name="color" value="yellow">Yellow</input>' +
-                '<input type="text" name="color" value="greeen">Green</input>' +
-                '</form>';
-            filePath = createHtml(innerHtml,test_name);
+    describe('input with type text', () => {
+        xdescribe('with inline text', () => {
+            test('test exists()', async () => {
+                await expect(textBox('inputTypeTextWithInlineText').exists()).resolves.toBeTruthy();
+            });
+
+            test('test value()', async () => {
+                await write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineText')));
+                await expect(textBox('inputTypeTextWithInlineText').value()).resolves.toBe('inputTypeTextWithInlineText');
+            });
         });
 
-        beforeEach(async () => {
-            await goto(filePath);
-        }, 10000);
+        describe('wrapped in label', () => {
+            test('test exists()', async () => {
+                await expect(textBox('inputTypeTextWithWrappedLabel').exists()).resolves.toBeTruthy();
+            });
 
-        afterAll(() => {
-            removeFile(filePath);
+            test('test value()', async () => {
+                await write('inputTypeTextWithWrappedLabel', into(textBox('inputTypeTextWithWrappedLabel')));
+                await expect(textBox('inputTypeTextWithWrappedLabel').value()).resolves.toBe('inputTypeTextWithWrappedLabel');
+            });
         });
 
-        test('test exists()', () => {
-            expect(textBox('Yellow').exists()).resolves.toBeTruthy();
-            expect(textBox('Brown').exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
-        });
-    });
+        describe('using label for', () => {
+            test('test exists()', async () => {
+                await expect(textBox('inputTypeTextWithLabelFor').exists()).resolves.toBeTruthy();
+            });
 
-    describe('wrapped in label', () => {
-        let filePath;
-        beforeAll(() => {
-            let innerHtml = '<form>' +
-                '<label>' +
-                '<input name="color" type="text" value="red" />' +
-                '<span>Red</span>' +
-                '</label>' +
-                '<label>' +
-                '<input name="color" type="text" value="yellow" />' +
-                '<span>Yellow</span>' +
-                '</label>' +
-                '<label>' +
-                '<input name="color" type="text" value="green" />' +
-                '<span>Green</span>' +
-                '</label>' +
-                '</form>';
-            filePath = createHtml(innerHtml,test_name);
+            test('test value()', async () => {
+                await write('inputTypeTextWithLabelFor', into(textBox('inputTypeTextWithLabelFor')));
+                await expect(textBox('inputTypeTextWithLabelFor').value()).resolves.toBe('inputTypeTextWithLabelFor');
+            });
         });
 
-        beforeEach(async () => {
-            await goto(filePath);
-        });
+        describe('attribute and value pair', () => {
+            test('test exists()', async () => {
+                await expect(textBox({id:'inputTypeTextWithLabelFor'}).exists()).resolves.toBeTruthy();
+            });
 
-        afterAll(() => {
-            removeFile(filePath);
-        });
-
-        test('test exists()', async () => {
-            await expect(textBox('Green').exists()).resolves.toBeTruthy();
-            await expect(textBox('Brown').exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
+            test('test value()', async () => {
+                await expect(textBox({id:'inputTypeTextWithLabelFor'}).value()).resolves.toBe('inputTypeTextWithLabelFor');
+            });
         });
     });
 
-    describe('using label for', () => {
-        let filePath;
-        beforeAll(() => {
-            let innerHtml = '<form>' +
-                '<p>' +
-                '<input id="c1" name="color" type="text" value="red" />' +
-                '<label for="c1">Red</label>' +
-                '</p>' +
-                '<p>' +
-                '<label for="c2">Yellow</label>' +
-                '<input id="c2" name="color" type="text" value="yellow" />' +
-                '</p>' +
-                '<p>' +
-                '<label for="c3"><input id="c3" name="color" type="text" value="green" />Green</label>' +
-                '</p>' +
-                '</form>';
-            filePath = createHtml(innerHtml,test_name);
+    describe('input with type password', () => {
+        xdescribe('with inline text',  () => {
+            test('test exists()', async () => {
+                await expect(textBox('inputTypePasswordWithInlineText').exists()).resolves.toBeTruthy();
+            });
+
+            test('test value()', async () => {
+                await write('inputTypePasswordWithInlineText', into(textBox('inputTypePasswordWithInlineText')));
+                await expect(textBox('inputTypePasswordWithInlineText').value()).resolves.toBe('inputTypePasswordWithInlineText');
+            });
         });
 
-        beforeEach(async () => {
-            await goto(filePath);
+        describe('wrapped in label', () => {
+            test('test exists()', async () => {
+                await expect(textBox('inputTypePasswordWithWrappedLabel').exists()).resolves.toBeTruthy();
+            });
+
+            test('test value()', async () => {
+                await write('inputTypePasswordWithWrappedLabel', into(textBox('inputTypePasswordWithWrappedLabel')));
+                await expect(textBox('inputTypePasswordWithWrappedLabel').value()).resolves.toBe('inputTypePasswordWithWrappedLabel');
+            });
         });
 
-        afterAll(() => {
-            removeFile(filePath);
+        describe('using label for', () => {
+            test('test exists()', async () => {
+                await expect(textBox('inputTypePasswordWithLabelFor').exists()).resolves.toBeTruthy();
+            });
+
+            test('test value()', async () => {
+                await write('inputTypePasswordWithLabelFor', into(textBox('inputTypePasswordWithLabelFor')));
+                await expect(textBox('inputTypePasswordWithLabelFor').value()).resolves.toBe('inputTypePasswordWithLabelFor');
+            });
         });
 
+        describe('attribute and value pair', () => {
+            test('test exists()', async () => {
+                await expect(textBox({id:'inputTypePasswordWithLabelFor'}).exists()).resolves.toBeTruthy();
+            });
+
+            test('test value()', async () => {
+                await expect(textBox({id:'inputTypePasswordWithLabelFor'}).value()).resolves.toBe('inputTypePasswordWithLabelFor');
+            });
+        });
+    });
+
+    describe('textarea', () => {
+        describe('wrapped in label', () => {
+            test('test exists()', async () => {
+                await expect(textBox('textAreaWithWrappedLabel').exists()).resolves.toBeTruthy();
+            });
+
+            test('test value()', async () => {
+                await write('textAreaWithWrappedLabel', into(textBox('textAreaWithWrappedLabel')));
+                await expect(textBox('textAreaWithWrappedLabel').value()).resolves.toBe('textAreaWithWrappedLabel');
+            });
+        });
+
+        describe('using label for', () => {
+            test('test exists()', async () => {
+                await expect(textBox('textAreaWithLabelFor').exists()).resolves.toBeTruthy();
+            });
+
+            test('test value()', async () => {
+                await write('textAreaWithLabelFor', into(textBox('textAreaWithLabelFor')));
+                await expect(textBox('textAreaWithLabelFor').value()).resolves.toBe('textAreaWithLabelFor');
+            });
+        });
+
+        describe('attribute and value pair', () => {
+            test('test exists()', async () => {
+                await expect(textBox({id:'textAreaWithLabelFor'}).exists()).resolves.toBeTruthy();
+            });
+
+            test('test value()', async () => {
+                await expect(textBox({id:'textAreaWithLabelFor'}).value()).resolves.toBe('textAreaWithLabelFor');
+            });
+        });
+    });   
+    
+    describe('contentEditable', () => {
         test('test exists()', async () => {
-            await expect(textBox('Red').exists()).resolves.toBeTruthy();
-            await expect(textBox('Yellow').exists()).resolves.toBeTruthy();
-            await expect(textBox('Green').exists()).resolves.toBeTruthy();
-            await expect(textBox('Brown').exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
+            await expect(textBox({id:'contentEditableDiv'}).exists()).resolves.toBeTruthy();
+        });
+
+        test('test value()', async () => {
+            await write('contentEditable', into(textBox({id:'contentEditableDiv'})));
+            await expect(textBox({id:'contentEditableDiv'}).value()).resolves.toBe('contentEditable');
         });
     });
 });
