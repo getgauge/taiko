@@ -54,7 +54,15 @@ describe(test_name, () => {
         '</form>' +
         //contentEditable div
         '<form name="contentEditable">' +
-            '<div id="contentEditableDiv" contenteditable=true>' +
+            '<div name="contentEditableWithWrappedLabel">' +
+                '<label>' +
+                    '<span>contentEditableWithWrappedLabel</span>' +
+                    '<div id="contentEditableWithWrappedLabel" contenteditable=true></div>' +
+                '</label>' +
+            '</div>' +
+            '<div name="contentEditableWithLabelFor">' +
+                '<label for="contentEditableWithLabelFor">contentEditableWithLabelFor</label>' +
+                '<div id="contentEditableWithLabelFor" contenteditable=true></div>' +
             '</div>' +
         '</form>' +
         '</div>';
@@ -193,13 +201,37 @@ describe(test_name, () => {
     });   
     
     describe('contentEditable', () => {
-        test('test exists()', async () => {
-            await expect(textBox({id:'contentEditableDiv'}).exists()).resolves.toBeTruthy();
+
+        describe('wrapped in label', () => {
+            test('test exists()', async () => {
+                await expect(textBox('contentEditableWithWrappedLabel').exists()).resolves.toBeTruthy();
+            });
+
+            test('test value()', async () => {
+                await write('contentEditableWithWrappedLabel', into(textBox('contentEditableWithWrappedLabel')));
+                await expect(textBox('contentEditableWithWrappedLabel').value()).resolves.toBe('contentEditableWithWrappedLabel');
+            });
         });
 
-        test('test value()', async () => {
-            await write('contentEditable', into(textBox({id:'contentEditableDiv'})));
-            await expect(textBox({id:'contentEditableDiv'}).value()).resolves.toBe('contentEditable');
+        describe('using label for', () => {
+            test('test exists()', async () => {
+                await expect(textBox('contentEditableWithLabelFor').exists()).resolves.toBeTruthy();
+            });
+
+            test('test value()', async () => {
+                await write('contentEditableWithLabelFor', into(textBox('contentEditableWithLabelFor')));
+                await expect(textBox('contentEditableWithLabelFor').value()).resolves.toBe('contentEditableWithLabelFor');
+            });
+        });
+
+        describe('attribute and value pair', () => {
+            test('test exists()', async () => {
+                await expect(textBox({id:'contentEditableWithWrappedLabel'}).exists()).resolves.toBeTruthy();
+            });
+
+            test('test value()', async () => {
+                await expect(textBox({id:'contentEditableWithWrappedLabel'}).value()).resolves.toBe('contentEditableWithWrappedLabel');
+            });
         });
     });
 });
