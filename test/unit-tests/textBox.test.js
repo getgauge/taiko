@@ -3,7 +3,6 @@ let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'textBox';
 
 describe(test_name, () => {
-    jest.setTimeout(20000); 
     let filePath;
     beforeAll(async () => {
         let innerHtml = '<div>' +
