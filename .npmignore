@@ -5,5 +5,5 @@ build/*
 .eslintrc
 .vscode
 .github
-azure-pipeline.yaml
+azure-pipelines.yml
 examples
