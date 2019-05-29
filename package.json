@@ -11,7 +11,7 @@
 		"doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
 		"test:api": "node test/unit-tests/taiko-test.js",
 		"examples": "npm install --prefix examples && npm test --prefix examples",
-		"test": "npm run test:api && npm run lint && jest && npm run examples",
+		"test": "npm run test:api && npm run lint && jest --verbose && npm run examples",
 		"test-functional": "cd test/functional-tests && npm install && npm test",
 		"install": "node lib/install.js",
 		"update-json-doc": "node build/updateJsonDoc.js"

@@ -6,9 +6,9 @@
 * Click link "Documentation"
 * Focus 
 
-   |Type      |Selector       |
-   |----------|---------------|
-   |inputField|{"id":"search"}|
+   |Type   |Selector       |
+   |-------|---------------|
+   |textBox|{"id":"search"}|
 * Write "Custom"
 * Click an element that contains "Taking"
 
@@ -19,7 +19,7 @@ tags: knownIssue
 * Click "About"
 * Select "हिन्दी" of Combo Box near 
 
-   |Type      |Selector             |
-   |----------|---------------------|
-   |inputField|{"id":"searchinput"}|
+   |Type   |Selector             |
+   |-------|---------------------|
+   |textBox|{"id":"searchinput"}|
 * Click "Doodles संग्रह"

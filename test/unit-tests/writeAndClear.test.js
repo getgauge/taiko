@@ -1,4 +1,4 @@
-let { openBrowser, goto, inputField, closeBrowser, write, clear, into } = require('../../lib/taiko');
+let { openBrowser, goto, textBox, closeBrowser, write, clear, into } = require('../../lib/taiko');
 let { createHtml, openBrowserArgs, removeFile } = require('./test-util');
 const test_name = 'WriteAndClear';
 
@@ -23,10 +23,10 @@ describe( test_name, () => {
 
     describe('clear input field', () => {
         test('test write and clear()', async () => {
-            await expect(inputField('Email').exists()).resolves.toBeTruthy();
-            await write('abc@gmail.com', into(inputField('Email')));
-            await clear(inputField('Email'));
-            await expect(inputField('Email').value()).resolves.toBe('');
+            await expect(textBox('Email').exists()).resolves.toBeTruthy();
+            await write('abc@gmail.com', into(textBox('Email')));
+            await clear(textBox('Email'));
+            await expect(textBox('Email').value()).resolves.toBe('');
         });
     });
 });
