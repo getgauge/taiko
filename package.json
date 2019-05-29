@@ -32,8 +32,8 @@
 		"headless-browser"
 	],
 	"taiko": {
-		"chromium_revision": "637110",
-		"chromium_version": "74.0.3723.0"
+		"chromium_revision": "662092",
+		"chromium_version": "76.0.3803.0"
 	},
 	"author": "getgauge",
 	"license": "MIT",
