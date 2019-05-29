@@ -159,6 +159,29 @@ describe('match', () => {
                 expect(await text('tex').exists()).to.be.true;
                 expect(await text('tex').get()).to.have.lengthOf(11);
             });
+            describe('match text for type and paragraph', () => {
+                beforeAll(async () => {
+                    let innerHtml = '<p>this is demo for text</p>'+
+                    '<input type="text" value="user name" />'+
+                    '<p>Enter user name in textbox</p>'+
+                    '<input type="text" value="Enter user name" />';
+                    filePath = createHtml(innerHtml, test_name);
+                    await goto(filePath);
+                });
+
+                afterAll(() => {
+                    removeFile(filePath);
+                });
+
+                test('test exact match for type', async () => {
+                    await expect(text('text').exists()).resolves.toBeTruthy();
+                    await expect(text('text').get().then(elements => elements.length)).resolves.toEqual(2);
+                });
+                test('test contains match for type and text', async () => {
+                    await expect(text('tex').exists()).resolves.toBeTruthy();
+                    await expect(text('tex').get().then(elements => elements.length)).resolves.toEqual(4);
+                });
+            });
         });
     });
 });
