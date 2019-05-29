@@ -1,6 +1,6 @@
 {
 	"name": "taiko",
-	"version": "0.8.0",
+	"version": "0.7.1",
 	"description": "An easy to use wrapper over Chrome Remote Interface.",
 	"main": "bin/taiko.js",
 	"bin": {
