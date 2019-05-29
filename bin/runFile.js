@@ -1,10 +1,9 @@
 const path = require('path');
 const util = require('util');
-const taiko = require('../lib/taiko');
 const recorder = require('../recorder');
 
 const { removeQuotes, symbols } = require('../lib/util');
-module.exports = async (file, observe, observeTime, continueRepl) => {
+module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
     const realFuncs = {};
     for (let func in taiko) {
         realFuncs[func] = taiko[func];

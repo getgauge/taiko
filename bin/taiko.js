@@ -5,17 +5,17 @@ const fs = require('fs');
 const path = require('path');
 const program = require('commander');
 const { spawnSync } = require('child_process');
-const taiko = require('../lib/taiko');
 const repl = require('../lib/repl');
 const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
 let repl_mode = false;
 let plugins = new Map();
+let taiko;
 
 function printVersion() {
     const packageJson = require('../package.json');
     let hash = 'RELEASE';
-    if(packageJson._resolved) hash = packageJson._resolved.split('#')[1];
+    if (packageJson._resolved) hash = packageJson._resolved.split('#')[1];
     return `Version: ${packageJson.version} (Chromium: ${
         packageJson.taiko.chromium_version
     }) ${hash}`;
@@ -24,7 +24,7 @@ function printVersion() {
 async function exitOnUnhandledFailures(e) {
     if (!repl_mode) {
         console.error(e);
-        if (await taiko.client()) await taiko.closeBrowser();
+        if (taiko && await taiko.client()) await taiko.closeBrowser();
         process.exit(1);
     }
 }
@@ -71,7 +71,7 @@ function loadPlugin(plugin) {
                     return path.join(p, plugin);
                 }
             })
-            .filter(function(p) {
+            .filter(function (p) {
                 return p;
             })[0];
         if (!location) throw new Error(`The plugin ${plugin} is not installed.`);
@@ -85,9 +85,15 @@ function loadPlugin(plugin) {
 }
 
 function loadPlugins(plugins) {
+    if (!plugins) return;
     plugins.split(',').forEach(plugin => {
         loadPlugin(plugin.trim());
     });
+}
+
+function setPluginNameInEnv(pluginName) {
+    process.env.TAIKO_PLUGIN = pluginName;
+    return pluginName;
 }
 
 if (isTaikoRunner(process.argv[1])) {
@@ -118,10 +124,10 @@ if (isTaikoRunner(process.argv[1])) {
         )
         .option(
             '--plugin <plugin1,plugin2...>',
-            'Load the taiko plugin.',
-            loadPlugins
+            'Load the taiko plugin.', setPluginNameInEnv
         )
-        .action(function() {
+        .action(function ( ) {
+            taiko = require('../lib/taiko');
             if (program.args.length) {
                 const fileName = program.args[0];
                 validate(fileName);
@@ -130,7 +136,7 @@ if (isTaikoRunner(process.argv[1])) {
                     runFile(fileName, true, program.waitTime, fileName => {
                         return new Promise(resolve => {
                             repl_mode = true;
-                            repl.initialize(plugins, fileName).then(r => {
+                            repl.initialize(taiko, plugins, fileName).then(r => {
                                 let listeners = r.listeners('exit');
                                 r.removeAllListeners('exit');
                                 r.on('exit', () => {
@@ -141,11 +147,12 @@ if (isTaikoRunner(process.argv[1])) {
                         });
                     });
                 } else {
-                    runFile(fileName, observe, program.waitTime);
+                    runFile(taiko, fileName, observe, program.waitTime);
                 }
             } else {
+                loadPlugins(program.plugin);
                 repl_mode = true;
-                repl.initialize(plugins);
+                repl.initialize(taiko, plugins);
             }
         });
     program.unknownOption = option => {
@@ -155,5 +162,5 @@ if (isTaikoRunner(process.argv[1])) {
     };
     program.parse(process.argv);
 } else {
-    module.exports = taiko;
+    module.exports = require('../lib/taiko');
 }
