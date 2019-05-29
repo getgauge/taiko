@@ -7,7 +7,7 @@ describe('Config tests', () => {
 
         describe('For invalid config name', () => {
 
-            test('shoud throw exception', () => {
+            test('should throw exception', () => {
                 let allowedConfig = 'navigationTimeout, observeTime, retryInterval, retryTimeout, waitForNavigation';
                 let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfig}`;
                 expect(() => setConfig({ invalidConfig: true })).toThrowError(new RegExp(`^${expectedMessage}$`));
@@ -48,9 +48,9 @@ describe('Config tests', () => {
 
     describe('Test determineWaitForNavigation', () => {
 
-        describe('For undefind or null value', () => {
+        describe('For undefined or null value', () => {
 
-            test('should return default value when provided value is undefind', () => {
+            test('should return default value when provided value is undefined', () => {
                 let actualValue = determineWaitForNavigation();
                 expect(actualValue).toBeTruthy();
             });
@@ -64,7 +64,7 @@ describe('Config tests', () => {
 
         describe('For correct value', () => {
 
-            test('should return rovided value', () => {
+            test('should return provided value', () => {
                 let actualValue = determineWaitForNavigation(false);
                 expect(actualValue).toBeFalsy();
             });
@@ -74,9 +74,9 @@ describe('Config tests', () => {
 
     describe('Test determineRetryTimeout', () => {
 
-        describe('For undefind or null value', () => {
+        describe('For undefined or null value', () => {
 
-            test('should return default value when provided value is undefind', () => {
+            test('should return default value when provided value is undefined', () => {
                 let actualValue = determineRetryTimeout();
                 expect(actualValue).toEqual(10000);
             });
@@ -90,7 +90,7 @@ describe('Config tests', () => {
 
         describe('For correct value', () => {
 
-            test('should return rovided value', () => {
+            test('should return provided value', () => {
                 let actualValue = determineRetryTimeout(100);
                 expect(actualValue).toEqual(100);
             });
@@ -101,9 +101,9 @@ describe('Config tests', () => {
 
     describe('Test determineRetryInterval', () => {
 
-        describe('For undefind or null value', () => {
+        describe('For undefined or null value', () => {
 
-            test('should return default value when provided value is undefind', () => {
+            test('should return default value when provided value is undefined', () => {
                 let actualValue = determineRetryInterval();
                 expect(actualValue).toEqual(1000);
             });
@@ -117,7 +117,7 @@ describe('Config tests', () => {
 
         describe('For correct value', () => {
 
-            test('should return rovided value', () => {
+            test('should return provided value', () => {
                 let actualValue = determineRetryInterval(100);
                 expect(actualValue).toEqual(100);
             });

@@ -11,7 +11,7 @@
 		"doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
 		"test:api": "node test/unit-tests/taiko-test.js",
 		"examples": "npm install --prefix examples && npm test --prefix examples",
-		"test": "npm run test:api && npm run lint && jest && npm run examples",
+		"test": "npm run test:api && npm run lint && jest --verbose && npm run examples",
 		"test-functional": "cd test/functional-tests && npm install && npm test",
 		"install": "node lib/install.js",
 		"update-json-doc": "node build/updateJsonDoc.js"
@@ -32,8 +32,8 @@
 		"headless-browser"
 	],
 	"taiko": {
-		"chromium_revision": "637110",
-		"chromium_version": "74.0.3723.0"
+		"chromium_revision": "662092",
+		"chromium_version": "76.0.3803.0"
 	},
 	"author": "getgauge",
 	"license": "MIT",
@@ -43,19 +43,19 @@
 		"commander": "^2.19.0",
 		"debug": "^4.1.1",
 		"extract-zip": "^1.6.6",
-		"fs-extra": "^7.0.1",
+		"fs-extra": "^8.0.1",
 		"https-proxy-agent": "^2.2.1",
 		"progress": "^2.0.3",
 		"proxy-from-env": "^1.0.0",
-		"recast": "^0.17.2",
+		"recast": "^0.18.1",
 		"rimraf": "^2.6.1"
 	},
 	"devDependencies": {
-		"documentation": "^9.3.1",
+		"documentation": "^11.0.0",
 		"eslint": "^5.15.1",
 		"eslint-plugin-jest": "^22.5.1",
 		"handlebars": "^4.1.2",
-		"jest": "^24.7.1",
+		"jest": "^24.8.0",
 		"marked": "^0.6.2",
 		"pre-commit": "^1.2.2"
 	}

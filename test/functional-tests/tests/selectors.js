@@ -1,5 +1,5 @@
 'use strict';
-const { link, inputField, text, $ } = require('../../../lib/taiko');
+const { link, textBox, text, $ } = require('../../../lib/taiko');
 
 function getElementWithSelector(element, selector) {
   var selectedElement = null;
@@ -13,8 +13,8 @@ function getElementWithSelector(element, selector) {
     case 'link':
       selectedElement = link(selectedItem);
       break;
-    case 'inputField':
-      selectedElement = inputField(selectedItem);
+    case 'textBox':
+      selectedElement = textBox(selectedItem);
       break;
     case 'text':
       selectedElement = text(selectedItem);

@@ -1,4 +1,4 @@
-const { goto, below, inputField, write } = require('taiko')
+const { goto, below, textBox, write, into } = require('taiko')
     , {openBrowserAndStartScreencast, closeBrowserAndStopScreencast} = require('./browserLauncher')
     , path = require('path')
     , expect = require('chai').expect;
@@ -10,15 +10,15 @@ const cwd = process.cwd();
         // a local file with simple `contenteditable`
         await goto('file:///' + cwd + '/data/contenteditable.html');
         var text = 'Taiko writes into a contenteditable field!';
-        await write(text, into(inputField(below('Editable Demo'))));
-        var content = await inputField(below('Editable Demo')).text();
+        await write(text, into(textBox(below('Editable Demo'))));
+        var content = await textBox(below('Editable Demo')).text();
         expect(content[0]).to.have.string(text);
 
         // a rich text editor
         await goto('http://localhost:3000/tinymce');
         text = 'Taiko writes into a tinyMCE editor';
-        await write(text, into(inputField(below('An iFrame'))));
-        content = await into(inputField(below('An iFrame'))).text();
+        await write(text, into(textBox(below('An iFrame'))));
+        content = await into(textBox(below('An iFrame'))).text();
         expect(content[0]).to.have.string(text);
     } catch (e) {
         console.error(e);
