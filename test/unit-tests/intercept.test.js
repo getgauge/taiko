@@ -1,11 +1,26 @@
-let { handleInterceptor, addInterceptor, setNetwork } = require('../../lib/networkHandler');
+let { handleInterceptor, addInterceptor, setNetwork, resetInterceptors } = require('../../lib/networkHandler');
 const test_name = 'Intercept';
 
 describe(test_name, () => {
+    let actualOption;
+    beforeAll(() => {
+        setNetwork({
+            continueInterceptedRequest: (options) => { actualOption = options; return Promise.resolve();},
+            requestWillBeSent: () => {},                 
+            loadingFinished: () => {},
+            loadingFailed: () => {},
+            responseReceived: () => {},
+            setCacheDisabled: () => {},
+            setRequestInterception: () => {},
+            requestIntercepted:() => {}
+        });
+    });
+
+    afterEach(() => {
+        resetInterceptors();
+    });
 
     test('Check redirection using interception', async () => {
-        let actualOption;
-        setNetwork({continueInterceptedRequest: (options) => { actualOption = options; return Promise.resolve();}});
         addInterceptor({ requestUrl: 'www.google.com', action: 'www.ibibo.com' });
         handleInterceptor({interceptionId : 'interceptionId',
             request :{
@@ -19,8 +34,6 @@ describe(test_name, () => {
     });
 
     test('Block url', async () => {
-        let actualOption;
-        setNetwork({continueInterceptedRequest: (options) => { actualOption = options; return Promise.resolve();}});
         addInterceptor({ requestUrl: 'www.google.com'});
         handleInterceptor({interceptionId : 'interceptionId',
             request :{
@@ -34,8 +47,6 @@ describe(test_name, () => {
     });
 
     test('Mock Response', async () => {
-        let actualOption;
-        setNetwork({continueInterceptedRequest: (options) => { actualOption = options; return Promise.resolve();}});
         addInterceptor({
             requestUrl: 'http://localhost:3000/api/customers/11',
             action: {
