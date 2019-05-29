@@ -143,7 +143,7 @@ describe('match', () => {
         describe('match text as value in input field', () => {
             beforeAll(async () => {
                 let innerHtml =
-                '<input type="text" value="user name" />'+
+                '<input type="text" value="user_name" />'+
                 '<input type="text" value="Enter user name" />';
                 filePath = createHtml(innerHtml, test_name);
                 await goto(filePath);
@@ -154,8 +154,8 @@ describe('match', () => {
             });
 
             test('test exact match for value in input', async () => {
-                await expect(text('user name').exists()).resolves.toBeTruthy();
-                await expect(text('user name').get().then(elements => elements.length)).resolves.toEqual(1);
+                await expect(text('user_name').exists()).resolves.toBeTruthy();
+                await expect(text('user_name').get().then(elements => elements.length)).resolves.toEqual(1);
             });
             test('test contains match for value in input', async () => {
                 await expect(text('user').exists()).resolves.toBeTruthy();
@@ -183,6 +183,29 @@ describe('match', () => {
             test('test contains match for value and text', async () => {
                 await expect(text('user').exists()).resolves.toBeTruthy();
                 await expect(text('user').get().then(elements => elements.length)).resolves.toEqual(4);
+            });
+            describe('match text for type and paragraph', () => {
+                beforeAll(async () => {
+                    let innerHtml = '<p>this is demo for text</p>'+
+                    '<input type="text" value="user name" />'+
+                    '<p>Enter user name in textbox</p>'+
+                    '<input type="text" value="Enter user name" />';
+                    filePath = createHtml(innerHtml, test_name);
+                    await goto(filePath);
+                });
+
+                afterAll(() => {
+                    removeFile(filePath);
+                });
+
+                test('test exact match for type', async () => {
+                    await expect(text('text').exists()).resolves.toBeTruthy();
+                    await expect(text('text').get().then(elements => elements.length)).resolves.toEqual(2);
+                });
+                test('test contains match for type and text', async () => {
+                    await expect(text('tex').exists()).resolves.toBeTruthy();
+                    await expect(text('tex').get().then(elements => elements.length)).resolves.toEqual(4);
+                });
             });
         });
     });
