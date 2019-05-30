@@ -1,20 +1,16 @@
-let { openBrowser, goto, closeBrowser, text, textBox, toRightOf, evaluate } = require('../../lib/taiko');
+const expect = require('chai').expect;
+let { openBrowser, goto, closeBrowser, text, inputField, toRightOf, evaluate } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 let test_name = 'textMatch';
 
 describe('match', () => {
     let filePath;
-    beforeAll(async () => {
-        await openBrowser(openBrowserArgs);
-    }, 30000);
-
-    afterAll(async () => {
-        await closeBrowser();
-    }, 30000);
 
     describe('text match', () => {
-        beforeAll(() => {
+        before(async () => {
             let innerHtml = '<div>' +
+                //text node exists
+                '<div>' +
                 '<div name="text_node">' +
                 'User name: <input type="text" name="uname">' +
                 '</div>' +
@@ -31,181 +27,136 @@ describe('match', () => {
                 '<iframe></iframe>' +
                 '<script>' +
                 'document.querySelector("iframe").contentDocument.write("<div id=\\"inIframe\\">Text in iframe</div>")' +
-                '</script>';
+                '</script>' +
+                // same text node in page
+                '<div><p>Sign up</p></div>' +
+                '<div><p>By clicking “Sign up for GitHub”</p></div>' +
+                '<span>Sign up for GitHub<span>' +
+                //text node in different tags
+                '<div>create account</div>' +
+                '<div>By clicking “create account in GitHub”</div>' +
+                '<a href="github.com">create account</a>' +
+                '<a href="github.com">create account now</a>' +
+                '<button class="button" type="submit">create account</button>' +
+                '<button class="button" type="submit">create account in GitHub</button>' +
+                //text node with input tag
+                '<input type="text" value="password" />' +
+                '<input type="text" value="Enter password" />' +
+                //text node with value
+                '<p>taiko demo</p>' +
+                '<input type="text" value="taiko demo" />' +
+                '<p>Enter name for taiko demo</p>' +
+                '<input type="text" value="Enter name for taiko demo" />' +
+                //text node with type
+                '<p>this is text</p>' +
+                '<input type="text" value="user name" />' +
+                '<p>Enter user name in textbox</p>' +
+                '<input type="text" value="Enter user name" />' +
+                '</div>';
             filePath = createHtml(innerHtml, test_name);
-        });
-
-        beforeEach(async () => {
+            await openBrowser(openBrowserArgs);
             await goto(filePath);
-        });
 
-        afterAll(() => {
+
+        });
+        after(async () => {
+            await closeBrowser();
             removeFile(filePath);
         });
 
         describe('text node', () => {
-            test('test exact match exists()', async () => {
-                await expect(text('User name:').exists()).resolves.toBeTruthy();
-                await expect(text('user name:').exists()).resolves.toBeTruthy();
+            it('test exact match exists()', async () => {
+                expect(await text('User name:').exists()).to.be.true;
+                expect(await text('user name:').exists()).to.be.true;
             });
 
-            test('test partial match exists()', async () => {
-                await expect(text('User').exists()).resolves.toBeTruthy();
+            it('test partial match exists()', async () => {
+                expect(await text('User').exists()).to.be.true;
             });
 
-            test('test proximity selector', async () => {
-                await expect(textBox(toRightOf('User name:')).exists()).resolves.toBeTruthy();
+            it('test proximity selector', async () => {
+                expect(await inputField(toRightOf('User name:')).exists()).to.be.true;
             });
         });
 
         describe('value or type of field as text', () => {
-            test('test value as text exists()', async () => {
-                await expect(text('click me').exists()).resolves.toBeTruthy();
+            it('test value as text exists()', async () => {
+                expect(await text('click me').exists()).to.be.true;
             });
 
-            test('test type as text exists()', async () => {
-                await expect(text('submit').exists()).resolves.toBeTruthy();
+            it('test type as text exists()', async () => {
+                expect(await text('submit').exists()).to.be.true;
             });
         });
 
         describe('text across element', () => {
-            test('test exact match exists()', async () => {
-                await expect(text('Text Across Element').exists()).resolves.toBeTruthy();
+            it('test exact match exists()', async () => {
+                expect(await text('Text Across Element').exists()).to.be.true;
             });
 
-            test('test partial match exists()', async () => {
-                await expect(text('Text').exists()).resolves.toBeTruthy();
+            it('test partial match exists()', async () => {
+                expect(await text('Text').exists()).to.be.true;
             });
         });
 
         describe('text in iframe should be matched if match in top is invisible', () => {
-            test('test text exists()', async () => {
-                await expect(text('Text in iframe').exists()).resolves.toBeTruthy();
+            it('test text exists()', async () => {
+                expect(await text('Text in iframe').exists()).to.be.true;
             });
 
-            test('test text is from iframe', async () => {
+            it('test text is from iframe', async () => {
                 const id = await evaluate(text('Text in iframe'), (elem) => { return elem.parentElement.id; });
-                expect(id.result).toBe('inIframe');
+                expect(id.result).to.equal('inIframe');
             });
         });
-    });
-
-    describe('match multiple text in page', () => {
         describe('match text in multiple paragraph', () => {
-            beforeAll(async () => {
-                let innerHtml = '<div><p>Sign up</p></div>' +
-                    '<div><p>By clicking “Sign up for GitHub”</p></div>' +
-                    '<span>Sign up for GitHub<span>';
-                filePath = createHtml(innerHtml, test_name);
-                await goto(filePath);
+            it('test exact match for text', async () => {
+                expect(await text('Sign up').exists()).to.be.true;
+                expect(await text('Sign up').get()).to.have.lengthOf(1);
             });
-
-            afterAll(() => {
-                removeFile(filePath);
-            });
-
-            test('test exact match for text', async () => {
-                await expect(text('Sign up').exists()).resolves.toBeTruthy();
-                await expect(text('Sign up').get().then(elements => elements.length)).resolves.toEqual(1);
-                await expect(text('Sign').get().then(elements => elements.length)).resolves.toEqual(3);
-            });
-            test('test contains match for text', async () => {
-                await expect(text('Sign').exists()).resolves.toBeTruthy();
-                await expect(text('Sign').get().then(elements => elements.length)).resolves.toEqual(3);
+            it('test contains match for text', async () => {
+                expect(await text('Sign').exists()).to.be.true;
+                expect(await text('Sign').get()).to.have.lengthOf(3);
             });
         });
-
         describe('match text in different tags', () => {
-            beforeAll(async () => {
-                let innerHtml = '<div>Sign up</div>' +
-                    '<div>By clicking “Sign up for GitHub”</div>' +
-                    '<a href="github.com">Sign up</a>' +
-                    '<a href="github.com">Sign up now</a>' +
-                    '<button class="button" type="submit">Sign up</button>' +
-                    '<button class="button" type="submit">Sign up for GitHub</button>';
-                filePath = createHtml(innerHtml, test_name);
-                await goto(filePath);
+            it('test exact match for text in multiple elememts', async () => {
+                expect(await text('create account').exists()).to.be.true;
+                expect(await text('create account').get()).to.have.lengthOf(3);
             });
-
-            afterAll(() => {
-                removeFile(filePath);
-            });
-
-            test('test exact match for text in multiple elememts', async () => {
-                await expect(text('Sign up').exists()).resolves.toBeTruthy();
-                await expect(text('Sign up').get().then(elements => elements.length)).resolves.toEqual(3);
-            });
-            test('test contains match for text in multiple elements', async () => {
-                await expect(text('Sign').exists()).resolves.toBeTruthy();
-                await expect(text('Sign').get().then(elements => elements.length)).resolves.toEqual(6);
+            it('test contains match for text in multiple elements', async () => {
+                expect(await text('account').exists()).to.be.true;
+                expect(await text('account').get()).to.have.lengthOf(6);
             });
         });
         describe('match text as value in input field', () => {
-            beforeAll(async () => {
-                let innerHtml =
-                '<input type="text" value="user_name" />'+
-                '<input type="text" value="Enter user name" />';
-                filePath = createHtml(innerHtml, test_name);
-                await goto(filePath);
+            it('test exact match for value in input', async () => {
+                expect(await text('password').exists()).to.be.true;
+                expect(await text('password').get()).to.have.lengthOf(1);
             });
-
-            afterAll(() => {
-                removeFile(filePath);
-            });
-
-            test('test exact match for value in input', async () => {
-                await expect(text('user_name').exists()).resolves.toBeTruthy();
-                await expect(text('user_name').get().then(elements => elements.length)).resolves.toEqual(1);
-            });
-            test('test contains match for value in input', async () => {
-                await expect(text('user').exists()).resolves.toBeTruthy();
-                await expect(text('user').get().then(elements => elements.length)).resolves.toEqual(2);
+            it('test contains match for value in input', async () => {
+                expect(await text('pass').exists()).to.be.true;
+                expect(await text('pass').get()).to.have.lengthOf(2);
             });
         });
         describe('match text for value and paragraph', () => {
-            beforeAll(async () => {
-                let innerHtml = '<p>user name</p>'+
-                '<input type="text" value="user name" />'+
-                '<p>Enter user name</p>'+
-                '<input type="text" value="Enter user name" />';
-                filePath = createHtml(innerHtml, test_name);
-                await goto(filePath);
+            it('test exact match for value and text', async () => {
+                expect(await text('taiko demo').exists()).to.be.true;
+                expect(await text('taiko demo').get()).to.have.lengthOf(2);
             });
-
-            afterAll(() => {
-                removeFile(filePath);
+            it('test contains match for value and text', async () => {
+                expect(await text('demo').exists()).to.be.true;
+                expect(await text('demo').get()).to.have.lengthOf(4);
             });
-
-            test('test exact match for value and text', async () => {
-                await expect(text('user name').exists()).resolves.toBeTruthy();
-                await expect(text('user name').get().then(elements => elements.length)).resolves.toEqual(2);
+        });
+        describe('match text for type and paragraph', () => {
+            it('test exact match for type', async () => {
+                expect(await text('text').exists()).to.be.true;
+                expect(await text('text').get()).to.have.lengthOf(8);
             });
-            test('test contains match for value and text', async () => {
-                await expect(text('user').exists()).resolves.toBeTruthy();
-                await expect(text('user').get().then(elements => elements.length)).resolves.toEqual(4);
-            });
-            describe('match text for type and paragraph', () => {
-                beforeAll(async () => {
-                    let innerHtml = '<p>this is demo for text</p>'+
-                    '<input type="text" value="user name" />'+
-                    '<p>Enter user name in textbox</p>'+
-                    '<input type="text" value="Enter user name" />';
-                    filePath = createHtml(innerHtml, test_name);
-                    await goto(filePath);
-                });
-
-                afterAll(() => {
-                    removeFile(filePath);
-                });
-
-                test('test exact match for type', async () => {
-                    await expect(text('text').exists()).resolves.toBeTruthy();
-                    await expect(text('text').get().then(elements => elements.length)).resolves.toEqual(2);
-                });
-                test('test contains match for type and text', async () => {
-                    await expect(text('tex').exists()).resolves.toBeTruthy();
-                    await expect(text('tex').get().then(elements => elements.length)).resolves.toEqual(4);
-                });
+            it('test contains match for type and text', async () => {
+                expect(await text('tex').exists()).to.be.true;
+                expect(await text('tex').get()).to.have.lengthOf(11);
             });
         });
     });

@@ -1,10 +1,11 @@
+const expect = require('chai').expect;
 let { openBrowser, click, closeBrowser, goto, text } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'Click';
 
 describe(test_name, () => {
     let filePath;
-    beforeAll(async () => {
+    before(async () => {
         let innerHtml = `
             <script type="text/javascript">
                 function displayText() {
@@ -18,17 +19,17 @@ describe(test_name, () => {
         filePath = createHtml(innerHtml, test_name);
         await openBrowser(openBrowserArgs);
         await goto(filePath);
-    }, 30000);
+    });
 
-    afterAll(async () => {
+    after(async () => {
         await closeBrowser();
         removeFile(filePath);
-    }, 30000);
+    });
 
     describe('scroll to click', () => {
-        test('test if auto scrolls to element before clicking', async () => {
+        it('test if auto scrolls to element before clicking', async () => {
             await click('Show Message');
-            await expect(text('Click works with auto scroll.').exists()).resolves.toBeTruthy();
+            expect(await text('Click works with auto scroll.').exists()).to.be.true;
         });
     });
 });

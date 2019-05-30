@@ -11,7 +11,7 @@
 		"doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
 		"test:api": "node test/unit-tests/taiko-test.js",
 		"examples": "npm install --prefix examples && npm test --prefix examples",
-		"test": "npm run test:api && npm run lint && jest --verbose && npm run examples",
+		"test": "npm run test:api && npm run lint && mocha test/unit-tests/ --timeout 30000 && npm run examples",
 		"test-functional": "cd test/functional-tests && npm install && npm test",
 		"install": "node lib/install.js",
 		"update-json-doc": "node build/updateJsonDoc.js"
@@ -55,7 +55,9 @@
 		"eslint": "^5.15.1",
 		"eslint-plugin-jest": "^22.5.1",
 		"handlebars": "^4.1.2",
-		"jest": "^24.8.0",
+		"mocha": "^6.1.4",
+		"rewire": "^4.0.1",
+		"chai": "^4.2.0",
 		"marked": "^0.6.2",
 		"pre-commit": "^1.2.2"
 	}
