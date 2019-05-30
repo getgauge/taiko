@@ -5,14 +5,14 @@ describe(test_name, () => {
     let actualOption;
     beforeAll(() => {
         setNetwork({
-            continueInterceptedRequest: (options) => { actualOption = options; return Promise.resolve();},
-            requestWillBeSent: () => {},                 
-            loadingFinished: () => {},
-            loadingFailed: () => {},
-            responseReceived: () => {},
-            setCacheDisabled: () => {},
-            setRequestInterception: () => {},
-            requestIntercepted:() => {}
+            continueInterceptedRequest: (options) => { actualOption = options; return Promise.resolve(); },
+            requestWillBeSent: () => { },
+            loadingFinished: () => { },
+            loadingFailed: () => { },
+            responseReceived: () => { },
+            setCacheDisabled: () => { },
+            setRequestInterception: () => { },
+            requestIntercepted: () => { }
         });
     });
 
@@ -22,9 +22,10 @@ describe(test_name, () => {
 
     test('Check redirection using interception', async () => {
         addInterceptor({ requestUrl: 'www.google.com', action: 'www.ibibo.com' });
-        handleInterceptor({interceptionId : 'interceptionId',
-            request :{
-                url : 'http://www.google.com',
+        handleInterceptor({
+            interceptionId: 'interceptionId',
+            request: {
+                url: 'http://www.google.com',
                 method: 'GET',
             },
             resourceType: 'Document',
@@ -34,10 +35,11 @@ describe(test_name, () => {
     });
 
     test('Block url', async () => {
-        addInterceptor({ requestUrl: 'www.google.com'});
-        handleInterceptor({interceptionId : 'interceptionId',
-            request :{
-                url : 'http://www.google.com',
+        addInterceptor({ requestUrl: 'www.google.com' });
+        handleInterceptor({
+            interceptionId: 'interceptionId',
+            request: {
+                url: 'http://www.google.com',
                 method: 'GET',
             },
             resourceType: 'Document',
@@ -51,14 +53,15 @@ describe(test_name, () => {
             requestUrl: 'http://localhost:3000/api/customers/11',
             action: {
                 body: {
-                    'id':11, 'firstName':'ward', 'lastName':'bell', 'gender':'male', 'address':'12345 Central St.','city':'Los Angeles',
-                    'state':{'abbreviation':'CA','name':'California'},'latitude':34.042552,'longitude':-118.266429
+                    'id': 11, 'firstName': 'ward', 'lastName': 'bell', 'gender': 'male', 'address': '12345 Central St.', 'city': 'Los Angeles',
+                    'state': { 'abbreviation': 'CA', 'name': 'California' }, 'latitude': 34.042552, 'longitude': -118.266429
                 }
             }
         });
-        handleInterceptor({interceptionId : 'interceptionId',
-            request :{
-                url : 'http://localhost:3000/api/customers/11',
+        handleInterceptor({
+            interceptionId: 'interceptionId',
+            request: {
+                url: 'http://localhost:3000/api/customers/11',
                 method: 'GET',
             },
             resourceType: 'Document',
@@ -69,12 +72,13 @@ describe(test_name, () => {
     });
 
     test('More than one intercept added for the same requestUrl', async () => {
-        const spyWarn = jest.spyOn( console, 'warn' );
+        const spyWarn = jest.spyOn(console, 'warn');
         addInterceptor({ requestUrl: 'www.google.com', action: 'www.ibibo.com' });
         addInterceptor({ requestUrl: 'www.google.com', action: 'www.gauge.org' });
-        handleInterceptor({interceptionId : 'interceptionId',
-            request :{
-                url : 'http://www.google.com',
+        handleInterceptor({
+            interceptionId: 'interceptionId',
+            request: {
+                url: 'http://www.google.com',
                 method: 'GET',
             },
             resourceType: 'Document',
