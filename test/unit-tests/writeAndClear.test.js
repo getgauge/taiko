@@ -1,10 +1,11 @@
+const expect = require('chai').expect;
 let { openBrowser, goto, textBox, closeBrowser, write, clear, into } = require('../../lib/taiko');
 let { createHtml, openBrowserArgs, removeFile } = require('./test-util');
 const test_name = 'WriteAndClear';
 
 describe( test_name, () => {
     let filePath;
-    beforeAll(async () => {
+    before(async () => {
         let innerHtml = '<form> \n' +
                 '<p><label for="login">Login<input type="text" name="user[login]" id="user[login]" /></label></p> \n' +
                 '<p><label for="email">Email<input type="text" name="user[email]" id="user[email]" /></label></p> \n' +
@@ -13,20 +14,20 @@ describe( test_name, () => {
         filePath = createHtml(innerHtml, test_name);
         await openBrowser(openBrowserArgs);
         await goto(filePath);
-    }, 30000);
+    });
 
-    afterAll(async () => {
+    after(async () => {
         await closeBrowser();
         removeFile(filePath);
-    }, 30000);
+    });
 
 
     describe('clear input field', () => {
-        test('test write and clear()', async () => {
-            await expect(textBox('Email').exists()).resolves.toBeTruthy();
+        it('test write and clear()', async () => {
+            expect(await textBox('Email').exists()).to.be.true;
             await write('abc@gmail.com', into(textBox('Email')));
             await clear(textBox('Email'));
-            await expect(textBox('Email').value()).resolves.toBe('');
+            expect(await textBox('Email').value()).to.equal('');
         });
     });
 });

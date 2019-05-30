@@ -1,26 +1,24 @@
-let { openBrowser, closeBrowser, client, emitter } = require('../../lib/taiko');
+const expect = require('chai').expect;
+let { openBrowser, closeBrowser, client } = require('../../lib/taiko');
 let { openBrowserArgs } = require('./test-util');
 
 describe('opens browser successfully',()=>{
-    test('openBrowser should return \'Browser Opened\' message',  async ()=>{
+    xit('openBrowser should return \'Browser Opened\' message',  async ()=>{
 
-        expect(process.env.TAIKO_EMULATE_DEVICE).not.toBeDefined();
-        emitter.once('success', (desc) => {
-            expect(desc).toEqual('Browser opened');
-        });
+        expect(process.env.TAIKO_EMULATE_DEVICE).to.be.undefined;
         await openBrowser(openBrowserArgs).then(data => {
-            expect(data).toEqual(undefined);
+            expect(data).to.equal(undefined);
         });
     });
 
 
-    test('openBrowser should initiate the CRI client object',  ()=>{
+    it('openBrowser should initiate the CRI client object',  ()=>{
 
         return openBrowser(openBrowserArgs).then(() => {
-            expect(client).not.toBeNull();
+            expect(client).not.to.be.null;
         });
     });
 
-    afterEach(async() => await closeBrowser(),10000);
+    afterEach(async() => await closeBrowser());
 
 });

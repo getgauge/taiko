@@ -1,10 +1,11 @@
+const expect = require('chai').expect;
 let { openBrowser, goto, closeBrowser, text, textBox, toRightOf, evaluate } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 
 describe('text match', () => {
 
     let filePath;
-    beforeAll(async () => {
+    before(async () => {
         let innerHtml = '<div>' +
                 '<div name="text_node">' +
                 'User name: <input type="text" name="uname">' +
@@ -26,56 +27,56 @@ describe('text match', () => {
         filePath = createHtml(innerHtml, 'textMatch');
         await openBrowser(openBrowserArgs);
         await goto(filePath);
-    }, 30000);
+    });
 
-    afterAll(async () => {
+    after(async () => {
         await closeBrowser();
         removeFile(filePath);
-    }, 30000);
+    });
         
     describe('text node', () => {
-        test('test exact match exists()', async () => {
-            await expect(text('User name:').exists()).resolves.toBeTruthy();
-            await expect(text('user name:').exists()).resolves.toBeTruthy();
+        it('test exact match exists()', async () => {
+            expect(await text('User name:').exists()).to.be.true;
+            expect(await text('user name:').exists()).to.be.true;
         });
 
-        test('test partial match exists()', async () => {
-            await expect(text('User').exists()).resolves.toBeTruthy();
+        it('test partial match exists()', async () => {
+            expect(await text('User').exists()).to.be.true;
         });
 
-        test('test proximity selector', async () => {
-            await expect(textBox(toRightOf('User name:')).exists()).resolves.toBeTruthy();
+        it('test proximity selector', async () => {
+            expect(await textBox(toRightOf('User name:')).exists()).to.be.true;
         });
     });
 
     describe('value or type of field as text', () => {
-        test('test value as text exists()', async () => {
-            await expect(text('click me').exists()).resolves.toBeTruthy();
+        it('test value as text exists()', async () => {
+            expect(await text('click me').exists()).to.be.true;
         });
 
-        test('test type as text exists()', async() =>{
-            await expect(text('submit').exists()).resolves.toBeTruthy();
+        it('test type as text exists()', async() =>{
+            expect(await text('submit').exists()).to.be.true;
         });
     });
 
     describe('text across element', () => {
-        test('test exact match exists()', async () => {
-            await expect(text('Text Across Element').exists()).resolves.toBeTruthy();
+        it('test exact match exists()', async () => {
+            expect(await text('Text Across Element').exists()).to.be.true;
         });
 
-        test('test partial match exists()', async () => {
-            await expect(text('Text').exists()).resolves.toBeTruthy();
+        it('test partial match exists()', async () => {
+            expect(await text('Text').exists()).to.be.true;
         });
     });
 
     describe('text in iframe should be matched if match in top is invisible', () => {
-        test('test text exists()', async () => {
-            await expect(text('Text in iframe').exists()).resolves.toBeTruthy();
+        it('test text exists()', async () => {
+            expect(await text('Text in iframe').exists()).to.be.true;
         });
 
-        test('test text is from iframe', async () => {
+        it('test text is from iframe', async () => {
             const id = await evaluate(text('Text in iframe'), (elem) => {return elem.parentElement.id;}); 
-            expect(id.result).toBe('inIframe');
+            expect(id.result).to.equal('inIframe');
         });
     });
 });

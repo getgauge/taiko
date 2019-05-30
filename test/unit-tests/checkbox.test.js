@@ -1,10 +1,11 @@
+const expect = require('chai').expect;
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 let { openBrowser, goto, checkBox, closeBrowser, evaluate, $, intervalSecs, timeoutSecs, text, click } = require('../../lib/taiko');
 const test_name = 'Checkbox';
 
 describe(test_name, () => {
     let filePath;
-    beforeAll(async () => {
+    before(async () => {
         let innerHtml = 
                 '<form>' +
                     '<input type="checkbox" id="checkboxWithInlineLabel" name="testCheckbox" value="checkboxWithInlineLabel">checkboxWithInlineLabel</input>' +
@@ -28,56 +29,56 @@ describe(test_name, () => {
         filePath = createHtml(innerHtml,test_name);
         await openBrowser(openBrowserArgs);
         await goto(filePath);
-    }, 30000);
+    });
 
-    afterAll(async () => {
+    after(async () => {
         await closeBrowser();
         removeFile(filePath);
-    }, 30000);
+    });
 
     describe('with inline text', () => {
         afterEach(async () => {
             await click('Reset');
         });
 
-        test('test exists()', async () => {
-            await expect(checkBox('checkboxWithInlineLabel').exists()).resolves.toBeTruthy();
-            await expect(checkBox('Something').exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
+        it('test exists()', async () => {
+            expect(await checkBox('checkboxWithInlineLabel').exists()).to.be.true;
+            expect(await checkBox('Something').exists(intervalSecs(0), timeoutSecs(0))).to.be.false;
         });
 
-        test('test check()', async () => {
+        it('test check()', async () => {
             await checkBox('checkboxWithInlineLabel').check();
             let value = await evaluate($('input[name=testCheckbox]:checked'), (element) => element.value);
-            expect(value.result).toBe('checkboxWithInlineLabel');
+            expect(value.result).to.equal('checkboxWithInlineLabel');
         });
 
-        test('test check() triggers events', async() =>{
+        it('test check() triggers events', async() =>{
             await checkBox('checkboxWithInlineLabel').check();
-            await expect(text('show on check').exists()).resolves.toBeTruthy();
+            expect(await text('show on check').exists()).to.be.true;
         });
 
-        test('test uncheck()', async () => {
+        it('test uncheck()', async () => {
             await checkBox('checkboxWithInlineLabel').check();
             await checkBox('checkboxWithInlineLabel').uncheck();
             let value = await evaluate($('input[value=checkboxWithInlineLabel]'), (element) => element.checked);
-            await expect(value.result).toBeFalsy();
+            expect(value.result).to.be.false;
         });
 
-        test('test isChecked()', async () => {
+        it('test isChecked()', async () => {
             await checkBox('checkboxWithInlineLabel').check();
-            await expect(checkBox('checkboxWithInlineLabel').isChecked()).resolves.toBeTruthy();
+            expect(await checkBox('checkboxWithInlineLabel').isChecked()).to.be.true;
         });
     });
 
     describe('wrapped in label', () => {    
-        test('test exists()', async () => {
-            await expect(checkBox('checkboxWithWrappedInLabel').exists()).resolves.toBeTruthy();
+        it('test exists()', async () => {
+            expect(await checkBox('checkboxWithWrappedInLabel').exists()).to.be.true;
         });
     });
 
     describe('using label for', () => {
-        test('test exists()', async () => {
-            await expect(checkBox('checkboxWithLabelFor').exists()).resolves.toBeTruthy();
+        it('test exists()', async () => {
+            expect(await checkBox('checkboxWithLabelFor').exists()).to.be.true;
         });
     });
 });
