@@ -71,13 +71,8 @@ describe(test_name, () => {
         expect(res).to.include('12345 Central St.');
     });
 
-<<<<<<< HEAD
-    test('More than one intercept added for the same requestUrl', async () => {
-        const spyWarn = jest.spyOn(console, 'warn');
-=======
     xit('More than one intercept added for the same requestUrl', async () => {
         const spyWarn = jest.spyOn( console, 'warn' );
->>>>>>> Update test to use mocha
         addInterceptor({ requestUrl: 'www.google.com', action: 'www.ibibo.com' });
         addInterceptor({ requestUrl: 'www.google.com', action: 'www.gauge.org' });
         handleInterceptor({
