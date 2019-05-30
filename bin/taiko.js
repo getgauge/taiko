@@ -76,7 +76,7 @@ function loadPlugin(plugin) {
             })[0];
         if (!location) throw new Error(`The plugin ${plugin} is not installed.`);
         let p = require(location);
-        taiko.loadPlugin(p.ID, p.clientHandler);
+        taiko.loadPlugin(p.ID, p.init);
         plugins.set(p.ID, p);
     } catch (error) {
         console.log(error);
