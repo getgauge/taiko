@@ -7,7 +7,7 @@ module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
     const realFuncs = {};
     for (let func in taiko) {
         realFuncs[func] = taiko[func];
-        if (realFuncs[func].constructor.name === 'AsyncFunction')
+        if (realFuncs[func].constructor.name === 'AsyncFunction') {
             global[func] = async function () {
                 let res, args = arguments;
                 if (func === 'openBrowser' && (observe || continueRepl)) {
@@ -25,10 +25,12 @@ module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
                 res = await realFuncs[func].apply(this, args);
                 return res;
             };
-        else
+        } else if ( realFuncs[func].constructor.name === 'Function' ) {
             global[func] = function () {
                 return realFuncs[func].apply(this, arguments);
             };
+        } else
+            global[func]  = taiko[func];
         if (continueRepl) {
             recorder.repl = async () => {
                 console.log(removeQuotes(util.inspect('Starting REPL..', { colors: true }), 'Starting REPL..'));
