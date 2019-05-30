@@ -68,4 +68,21 @@ describe(test_name, () => {
         expect(res).toContain('12345 Central St.');
     });
 
+    test('More than one intercept added for the same requestUrl', async () => {
+        const spyWarn = jest.spyOn( console, 'warn' );
+        addInterceptor({ requestUrl: 'www.google.com', action: 'www.ibibo.com' });
+        addInterceptor({ requestUrl: 'www.google.com', action: 'www.gauge.org' });
+        handleInterceptor({interceptionId : 'interceptionId',
+            request :{
+                url : 'http://www.google.com',
+                method: 'GET',
+            },
+            resourceType: 'Document',
+            isNavigationRequest: true
+        });
+        let warningMessage = '["WARNING: More than one intercept ["www.google.com","www.google.com"] found for request "http://www.google.com".\n Applying: intercept("www.google.com", "www.gauge.org")"]';
+        expect(spyWarn).not.toHaveBeenCalledWith(warningMessage);
+        expect(actualOption.url).toBe('http://www.gauge.org');
+    });
+
 });
