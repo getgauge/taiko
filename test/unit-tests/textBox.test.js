@@ -1,10 +1,11 @@
+const expect = require('chai').expect;
 let { openBrowser, goto, textBox, closeBrowser, write, into} = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'textBox';
 
 describe(test_name, () => {
     let filePath;
-    beforeAll(async () => {
+    before(async () => {
         let innerHtml = '<div>' +
         //Input with type text
         '<form name="inputTypeText">' +
@@ -68,133 +69,133 @@ describe(test_name, () => {
         filePath = createHtml(innerHtml, test_name);
         await openBrowser(openBrowserArgs);
         await goto(filePath);
-    }, 30000);
+    });
 
-    afterAll(async () => {
+    after(async () => {
         await closeBrowser();
         removeFile(filePath);
-    }, 30000);
+    });
 
     describe('input with type text', () => {
         describe('with inline text', () => {
-            test('test exists()', async () => {
-                await expect(textBox('inputTypeTextWithInlineText').exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox('inputTypeTextWithInlineText').exists()).to.be.true;
             });
 
-            test('test value()', async () => {
+            it('test value()', async () => {
                 await write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineText')));
-                await expect(textBox('inputTypeTextWithInlineText').value()).resolves.toBe('inputTypeTextWithInlineText');
+                expect(await textBox('inputTypeTextWithInlineText').value()).to.equal('inputTypeTextWithInlineText');
             });
         });
 
         describe('wrapped in label', () => {
-            test('test exists()', async () => {
-                await expect(textBox('inputTypeTextWithWrappedLabel').exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox('inputTypeTextWithWrappedLabel').exists()).to.be.true;
             });
 
-            test('test value()', async () => {
+            it('test value()', async () => {
                 await write('inputTypeTextWithWrappedLabel', into(textBox('inputTypeTextWithWrappedLabel')));
-                await expect(textBox('inputTypeTextWithWrappedLabel').value()).resolves.toBe('inputTypeTextWithWrappedLabel');
+                expect(await textBox('inputTypeTextWithWrappedLabel').value()).to.equal('inputTypeTextWithWrappedLabel');
             });
         });
 
         describe('using label for', () => {
-            test('test exists()', async () => {
-                await expect(textBox('inputTypeTextWithLabelFor').exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox('inputTypeTextWithLabelFor').exists()).to.be.true;
             });
 
-            test('test value()', async () => {
+            it('test value()', async () => {
                 await write('inputTypeTextWithLabelFor', into(textBox('inputTypeTextWithLabelFor')));
-                await expect(textBox('inputTypeTextWithLabelFor').value()).resolves.toBe('inputTypeTextWithLabelFor');
+                expect(await textBox('inputTypeTextWithLabelFor').value()).to.equal('inputTypeTextWithLabelFor');
             });
         });
 
         describe('attribute and value pair', () => {
-            test('test exists()', async () => {
-                await expect(textBox({id:'inputTypeTextWithLabelFor'}).exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox({id:'inputTypeTextWithLabelFor'}).exists()).to.be.true;
             });
 
-            test('test value()', async () => {
-                await expect(textBox({id:'inputTypeTextWithLabelFor'}).value()).resolves.toBe('inputTypeTextWithLabelFor');
+            it('test value()', async () => {
+                expect(await textBox({id:'inputTypeTextWithLabelFor'}).value()).to.equal('inputTypeTextWithLabelFor');
             });
         });
     });
 
     describe('input with type password', () => {
         describe('with inline text',  () => {
-            test('test exists()', async () => {
-                await expect(textBox('inputTypePasswordWithInlineText').exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox('inputTypePasswordWithInlineText').exists()).to.be.true;
             });
 
-            test('test value()', async () => {
+            it('test value()', async () => {
                 await write('inputTypePasswordWithInlineText', into(textBox('inputTypePasswordWithInlineText')));
-                await expect(textBox('inputTypePasswordWithInlineText').value()).resolves.toBe('inputTypePasswordWithInlineText');
+                expect(await textBox('inputTypePasswordWithInlineText').value()).to.equal('inputTypePasswordWithInlineText');
             });
         });
 
         describe('wrapped in label', () => {
-            test('test exists()', async () => {
-                await expect(textBox('inputTypePasswordWithWrappedLabel').exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox('inputTypePasswordWithWrappedLabel').exists()).to.be.true;
             });
 
-            test('test value()', async () => {
+            it('test value()', async () => {
                 await write('inputTypePasswordWithWrappedLabel', into(textBox('inputTypePasswordWithWrappedLabel')));
-                await expect(textBox('inputTypePasswordWithWrappedLabel').value()).resolves.toBe('inputTypePasswordWithWrappedLabel');
+                expect(await textBox('inputTypePasswordWithWrappedLabel').value()).to.equal('inputTypePasswordWithWrappedLabel');
             });
         });
 
         describe('using label for', () => {
-            test('test exists()', async () => {
-                await expect(textBox('inputTypePasswordWithLabelFor').exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox('inputTypePasswordWithLabelFor').exists()).to.be.true;
             });
 
-            test('test value()', async () => {
+            it('test value()', async () => {
                 await write('inputTypePasswordWithLabelFor', into(textBox('inputTypePasswordWithLabelFor')));
-                await expect(textBox('inputTypePasswordWithLabelFor').value()).resolves.toBe('inputTypePasswordWithLabelFor');
+                expect(await textBox('inputTypePasswordWithLabelFor').value()).to.equal('inputTypePasswordWithLabelFor');
             });
         });
 
         describe('attribute and value pair', () => {
-            test('test exists()', async () => {
-                await expect(textBox({id:'inputTypePasswordWithLabelFor'}).exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox({id:'inputTypePasswordWithLabelFor'}).exists()).to.be.true;
             });
 
-            test('test value()', async () => {
-                await expect(textBox({id:'inputTypePasswordWithLabelFor'}).value()).resolves.toBe('inputTypePasswordWithLabelFor');
+            it('test value()', async () => {
+                expect(await textBox({id:'inputTypePasswordWithLabelFor'}).value()).to.equal('inputTypePasswordWithLabelFor');
             });
         });
     });
 
     describe('textarea', () => {
         describe('wrapped in label', () => {
-            test('test exists()', async () => {
-                await expect(textBox('textAreaWithWrappedLabel').exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox('textAreaWithWrappedLabel').exists()).to.be.true;
             });
 
-            test('test value()', async () => {
+            it('test value()', async () => {
                 await write('textAreaWithWrappedLabel', into(textBox('textAreaWithWrappedLabel')));
-                await expect(textBox('textAreaWithWrappedLabel').value()).resolves.toBe('textAreaWithWrappedLabel');
+                expect(await textBox('textAreaWithWrappedLabel').value()).to.equal('textAreaWithWrappedLabel');
             });
         });
 
         describe('using label for', () => {
-            test('test exists()', async () => {
-                await expect(textBox('textAreaWithLabelFor').exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox('textAreaWithLabelFor').exists()).to.be.true;
             });
 
-            test('test value()', async () => {
+            it('test value()', async () => {
                 await write('textAreaWithLabelFor', into(textBox('textAreaWithLabelFor')));
-                await expect(textBox('textAreaWithLabelFor').value()).resolves.toBe('textAreaWithLabelFor');
+                expect(await textBox('textAreaWithLabelFor').value()).to.equal('textAreaWithLabelFor');
             });
         });
 
         describe('attribute and value pair', () => {
-            test('test exists()', async () => {
-                await expect(textBox({id:'textAreaWithLabelFor'}).exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox({id:'textAreaWithLabelFor'}).exists()).to.be.true;
             });
 
-            test('test value()', async () => {
-                await expect(textBox({id:'textAreaWithLabelFor'}).value()).resolves.toBe('textAreaWithLabelFor');
+            it('test value()', async () => {
+                expect(await textBox({id:'textAreaWithLabelFor'}).value()).to.equal('textAreaWithLabelFor');
             });
         });
     });   
@@ -202,34 +203,34 @@ describe(test_name, () => {
     describe('contentEditable', () => {
 
         describe('wrapped in label', () => {
-            test('test exists()', async () => {
-                await expect(textBox('contentEditableWithWrappedLabel').exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox('contentEditableWithWrappedLabel').exists()).to.be.true;
             });
 
-            test('test value()', async () => {
+            it('test value()', async () => {
                 await write('contentEditableWithWrappedLabel', into(textBox('contentEditableWithWrappedLabel')));
-                await expect(textBox('contentEditableWithWrappedLabel').value()).resolves.toBe('contentEditableWithWrappedLabel');
+                expect(await textBox('contentEditableWithWrappedLabel').value()).to.equal('contentEditableWithWrappedLabel');
             });
         });
 
         describe('using label for', () => {
-            test('test exists()', async () => {
-                await expect(textBox('contentEditableWithLabelFor').exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox('contentEditableWithLabelFor').exists()).to.be.true;
             });
 
-            test('test value()', async () => {
+            it('test value()', async () => {
                 await write('contentEditableWithLabelFor', into(textBox('contentEditableWithLabelFor')));
-                await expect(textBox('contentEditableWithLabelFor').value()).resolves.toBe('contentEditableWithLabelFor');
+                expect(await textBox('contentEditableWithLabelFor').value()).to.equal('contentEditableWithLabelFor');
             });
         });
 
         describe('attribute and value pair', () => {
-            test('test exists()', async () => {
-                await expect(textBox({id:'contentEditableWithWrappedLabel'}).exists()).resolves.toBeTruthy();
+            it('test exists()', async () => {
+                expect(await textBox({id:'contentEditableWithWrappedLabel'}).exists()).to.be.true;
             });
 
-            test('test value()', async () => {
-                await expect(textBox({id:'contentEditableWithWrappedLabel'}).value()).resolves.toBe('contentEditableWithWrappedLabel');
+            it('test value()', async () => {
+                expect(await textBox({id:'contentEditableWithWrappedLabel'}).value()).to.equal('contentEditableWithWrappedLabel');
             });
         });
     });
