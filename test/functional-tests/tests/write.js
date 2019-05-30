@@ -3,7 +3,7 @@ const {
   focus,
   clear,
   near,
-  inputField,
+  textBox,
   into
 } = require('../../../lib/taiko');
 var _selectors = require('./selectors');
@@ -26,6 +26,6 @@ step('Write <text> into Input Field near <element>', async function(
 ) {
   await write(
     text,
-    into(inputField(near(_selectors.getElement(element))))
+    into(textBox(near(_selectors.getElement(element))))
   );
 });

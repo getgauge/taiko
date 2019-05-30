@@ -1,137 +1,83 @@
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
-let { openBrowser, goto, checkBox, closeBrowser, evaluate, $, intervalSecs, timeoutSecs, text } = require('../../lib/taiko');
+let { openBrowser, goto, checkBox, closeBrowser, evaluate, $, intervalSecs, timeoutSecs, text, click } = require('../../lib/taiko');
 const test_name = 'Checkbox';
 
 describe(test_name, () => {
+    let filePath;
     beforeAll(async () => {
-        await openBrowser(openBrowserArgs);
-    }, 30000);
-
-    afterAll(async () => {
-        await closeBrowser();
-    }, 30000);
-
-    describe('with inline text', () => {
-        let filePath;
-        beforeAll(() => {
-            let innerHtml = '<form>' +
-                '<input type="checkbox" id="red" name="color" value="red" >Red</input>' +
-                '<input type="checkbox" id="yellow" name="color" value="yellow" >Yellow</input>' +
-                '<input type="checkbox" id="Green" name="color" value="green" >Green</input>' +
+        let innerHtml = 
+                '<form>' +
+                    '<input type="checkbox" id="checkboxWithInlineLabel" name="testCheckbox" value="checkboxWithInlineLabel">checkboxWithInlineLabel</input>' +
+                    '<label>' +
+                        '<input name="testCheckbox" type="checkbox" value="checkboxWithWrappedInLabel" />' +
+                        '<span>checkboxWithWrappedInLabel</span>' +
+                    '</label>' +
+                    '<p>' +
+                        '<input id="checkboxWithLabelFor" name="testCheckbox" type="checkbox" value="checkboxWithLabelFor" />' +
+                        '<label for="checkboxWithLabelFor">checkboxWithLabelFor</label>' +
+                    '</p>' +
+                    '<input type="reset" value="Reset">'+
                 '</form>'+
                 '<div id="panel" style="display:none">show on check</div>' +
                 '<script>' +
-                'var elem = document.getElementById("red");'+
+                'var elem = document.getElementById("checkboxWithInlineLabel");'+
                 'elem.addEventListener("click", myFunction);'+
                 'function myFunction() {' +
                 'document.getElementById("panel").style.display = "block";' +
                 '}</script>';
-            filePath = createHtml(innerHtml,test_name);
-        });
+        filePath = createHtml(innerHtml,test_name);
+        await openBrowser(openBrowserArgs);
+        await goto(filePath);
+    }, 30000);
 
-        beforeEach(async () => {
-            await goto(filePath);
-        });
+    afterAll(async () => {
+        await closeBrowser();
+        removeFile(filePath);
+    }, 30000);
 
-        afterAll(() => {
-            removeFile(filePath);
+    describe('with inline text', () => {
+        afterEach(async () => {
+            await click('Reset');
         });
 
         test('test exists()', async () => {
-            await expect(checkBox('Yellow').exists()).resolves.toBeTruthy();
-            await expect(checkBox('Brown').exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
+            await expect(checkBox('checkboxWithInlineLabel').exists()).resolves.toBeTruthy();
+            await expect(checkBox('Something').exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
         });
 
         test('test check()', async () => {
-            await checkBox('Green').check();
-            let value = await evaluate($('input[name=color]:checked'), (element) => element.value);
-            expect(value.result).toBe('green');
+            await checkBox('checkboxWithInlineLabel').check();
+            let value = await evaluate($('input[name=testCheckbox]:checked'), (element) => element.value);
+            expect(value.result).toBe('checkboxWithInlineLabel');
         });
 
         test('test check() triggers events', async() =>{
-            await checkBox('Red').check();
+            await checkBox('checkboxWithInlineLabel').check();
             await expect(text('show on check').exists()).resolves.toBeTruthy();
         });
 
         test('test uncheck()', async () => {
-            await checkBox('Red').check();
-            await checkBox('Red').uncheck();
-            let value = await evaluate($('input[value=red]'), (element) => element.checked);
+            await checkBox('checkboxWithInlineLabel').check();
+            await checkBox('checkboxWithInlineLabel').uncheck();
+            let value = await evaluate($('input[value=checkboxWithInlineLabel]'), (element) => element.checked);
             await expect(value.result).toBeFalsy();
         });
 
         test('test isChecked()', async () => {
-            await checkBox('Red').check();
-            await expect(checkBox('Red').isChecked()).resolves.toBeTruthy();
+            await checkBox('checkboxWithInlineLabel').check();
+            await expect(checkBox('checkboxWithInlineLabel').isChecked()).resolves.toBeTruthy();
         });
     });
 
-    describe('wrapped in label', () => {
-        let filePath;
-        beforeAll(() => {
-            let innerHtml = '<form>' +
-                '<label>' +
-                '<input name="color" type="checkbox" value="red" />' +
-                '<span>Red</span>' +
-                '</label>' +
-                '<label>' +
-                '<input name="color" type="checkbox" value="yellow" />' +
-                '<span>Yellow</span>' +
-                '</label>' +
-                '<label>' +
-                '<input name="color" type="checkbox" value="green" />' +
-                '<span>Green</span>' +
-                '</label>' +
-                '</form>';
-            filePath = createHtml(innerHtml,test_name);
-        });
-
-        beforeEach(async () => {
-            await goto(filePath);
-        });
-
-        afterAll(() => {
-            removeFile(filePath);
-        });
-
+    describe('wrapped in label', () => {    
         test('test exists()', async () => {
-            await expect(checkBox('Green').exists()).resolves.toBeTruthy();
-            await expect(checkBox('Brown').exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
+            await expect(checkBox('checkboxWithWrappedInLabel').exists()).resolves.toBeTruthy();
         });
     });
 
     describe('using label for', () => {
-        let filePath;
-        beforeAll(() => {
-            let innerHtml = '<form>' +
-                '<p>' +
-                '<input id="c1" name="color" type="checkbox" value="red" />' +
-                '<label for="c1">Red</label>' +
-                '</p>' +
-                '<p>' +
-                '<label for="c2">Yellow</label>' +
-                '<input id="c2" name="color" type="checkbox" value="yellow" />' +
-                '</p>' +
-                '<p>' +
-                '<label for="c3"><input id="c3" name="color" type="checkbox" value="green" />Green</label>' +
-                '</p>' +
-                '</form>';
-            filePath = createHtml(innerHtml,test_name);
-        });
-
-        beforeEach(async () => {
-            await goto(filePath);
-        });
-
-        afterAll(() => {
-            removeFile(filePath);
-        });
-
         test('test exists()', async () => {
-            await expect(checkBox('Red').exists()).resolves.toBeTruthy();
-            await expect(checkBox('Yellow').exists()).resolves.toBeTruthy();
-            await expect(checkBox('Green').exists()).resolves.toBeTruthy();
-            await expect(checkBox('Brown').exists(intervalSecs(0), timeoutSecs(0))).resolves.toBeFalsy();
+            await expect(checkBox('checkboxWithLabelFor').exists()).resolves.toBeTruthy();
         });
     });
 });
