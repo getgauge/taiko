@@ -1,22 +1,48 @@
-let { openBrowser, closeBrowser, setCookie } = require('../../lib/taiko');
-let {openBrowserArgs } = require('./test-util');
+let chai = require('chai');
+let chaiAsPromised = require('chai-as-promised');
+const rewire = require('rewire');
+const taiko = rewire('../../lib/taiko');
+
+chai.use(chaiAsPromised);
+let expect = chai.expect;
 let test_name = 'cookies';
 
 describe(test_name, () => {
-    beforeAll(async () => {
-        await openBrowser(openBrowserArgs);
-    }, 30000);
-
-    afterAll(async () => {
-        await closeBrowser();
-    }, 30000);
-
-    test('setCookie should throw error if url or domain is not specified', async () => {
-        await expect(setCookie('someCookie', 'foo')).rejects.toThrow('Atleast URL or Domain needs to be specified for setting cookies');
+    before(() => {
+        taiko.__set__('validate', () => {});
     });
 
-    test('setCookie should throw error if cookie is not set', async () => {
+    it('setCookie should throw error if url or domain is not specified', async () => {
+        await expect(taiko.setCookie('someCookie', 'foo')).to.eventually.be.rejectedWith('Atleast URL or Domain needs to be specified for setting cookies');
+    });
+
+    it('setCookie should throw error if cookie is not set', async () => {
+        taiko.__set__('network', {
+            setCookie: async () => { return Promise.resolve({success: false});}
+        });
         let cookieName = 'MySetCookie';
-        await expect(setCookie(cookieName, 'Foo', {url: 'file:///foo.html'})).rejects.toThrow('Unable to set ' + cookieName + ' cookie');
+        await expect(taiko.setCookie(cookieName, 'Foo', {url: 'file:///foo.html'})).to.eventually.be.rejectedWith('Unable to set ' + cookieName + ' cookie');
+    });
+
+    it('setCookie should set successfully', async () => {
+        taiko.__set__('network', {
+            setCookie: async () => { return Promise.resolve({success: true});}
+        });
+        let cookieName = 'MySetCookie';
+        await expect(taiko.setCookie(cookieName, 'Foo', {url: 'file:///foo.html'})).not.to.eventually.be.rejected;
+    });
+
+    it('deleteCookie should delete all cookies if no cookie name is given', async () => {
+        taiko.__set__('network', {
+            clearBrowserCookies: async () => { return Promise.resolve();}
+        });
+        await expect(taiko.deleteCookies(' ')).not.to.eventually.be.rejected;
+    });
+
+    it('deleteCookie should throw error if domian or url is not specified along with cookie name', async () => {
+        taiko.__set__('network', {
+            deleteCookies: async () => { return Promise.resolve();}
+        });
+        await expect(taiko.deleteCookies('MyCookie')).to.eventually.be.rejectedWith('Atleast URL or Domain needs to be specified for deleting cookies');
     });
 });
