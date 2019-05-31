@@ -111,7 +111,7 @@ if (isTaikoRunner(process.argv[1])) {
                 }
             } else {
                 repl_mode = true;
-                repl.initialize(taiko, plugins);
+                repl.initialize(taiko);
             }
         });
     program.unknownOption = option => {
