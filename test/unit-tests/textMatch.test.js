@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-let { openBrowser, goto, closeBrowser, text, inputField, toRightOf, evaluate } = require('../../lib/taiko');
+let { openBrowser, goto, closeBrowser, text, textBox, toRightOf, evaluate } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 let test_name = 'textMatch';
 
@@ -75,7 +75,7 @@ describe('match', () => {
             });
 
             it('test proximity selector', async () => {
-                expect(await inputField(toRightOf('User name:')).exists()).to.be.true;
+                expect(await textBox(toRightOf('User name:')).exists()).to.be.true;
             });
         });
 
