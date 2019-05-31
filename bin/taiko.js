@@ -7,7 +7,6 @@ const repl = require('../lib/repl');
 const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
 let repl_mode = false;
-let plugins = new Map();
 let taiko;
 
 function printVersion() {
@@ -96,7 +95,7 @@ if (isTaikoRunner(process.argv[1])) {
                     runFile(fileName, true, program.waitTime, fileName => {
                         return new Promise(resolve => {
                             repl_mode = true;
-                            repl.initialize(taiko, plugins, fileName).then(r => {
+                            repl.initialize(taiko, fileName).then(r => {
                                 let listeners = r.listeners('exit');
                                 r.removeAllListeners('exit');
                                 r.on('exit', () => {
