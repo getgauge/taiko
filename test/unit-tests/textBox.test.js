@@ -26,7 +26,7 @@ describe(test_name, () => {
         //Input with type password
         '<form name="inputTypePassword">' +
             '<div name="inputTypePasswordWithInlineText">' +
-                '<input type="password">inputTypePasswordWithInlineText</input>' +         
+                '<input type="password">inputTypePasswordWithInlineText</input>' +
             '</div>' +
             '<div name="inputTypePasswordWithWrappedLabel">' +
                 '<label>' +
