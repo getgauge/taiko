@@ -50,7 +50,7 @@ describe(test_name,()=>{
     });
 
     it('should call doActionAwaitingNavigation with default options if options not given', async () => {
-        let expectedOptions =  {'navigationTimeout': 30000, 'waitForNavigation': true,  'waitForStart': 100};
+        let expectedOptions =  {'navigationTimeout': 30000, 'waitForNavigation': true,  'waitForStart': 100, 'navigationAction': true};
         await taiko.goto('example.com');
         expect(actualOptions).to.deep.equal(expectedOptions);
     });
