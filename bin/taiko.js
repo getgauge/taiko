@@ -2,9 +2,7 @@
 
 const runFile = require('./runFile');
 const fs = require('fs');
-const path = require('path');
 const program = require('commander');
-const { spawnSync } = require('child_process');
 const repl = require('../lib/repl');
 const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
@@ -51,44 +49,6 @@ function setupEmulateDevice(device) {
         console.log(`Available devices: ${Object.keys(devices).join(', ')}`);
         process.exit(1);
     }
-}
-
-function getPossibleModulePaths() {
-    let paths = [];
-    let o = spawnSync('npm', ['root']);
-    if (!o.error) paths.push(o.stdout.toString().trim());
-    o = spawnSync('npm', ['root', '-g']);
-    if (!o.error) paths.push(o.stdout.toString().trim());
-    return paths;
-}
-
-function loadPlugin(plugin) {
-    try {
-        let paths = getPossibleModulePaths();
-        let location = paths
-            .map(p => {
-                if (fs.existsSync(path.join(p, plugin))) {
-                    return path.join(p, plugin);
-                }
-            })
-            .filter(function (p) {
-                return p;
-            })[0];
-        if (!location) throw new Error(`The plugin ${plugin} is not installed.`);
-        let p = require(location);
-        taiko.loadPlugin(p.ID, p.init);
-        plugins.set(p.ID, p);
-    } catch (error) {
-        console.log(error);
-        process.exit(1);
-    }
-}
-
-function loadPlugins(plugins) {
-    if (!plugins) return;
-    plugins.split(',').forEach(plugin => {
-        loadPlugin(plugin.trim());
-    });
 }
 
 function setPluginNameInEnv(pluginName) {
@@ -150,7 +110,6 @@ if (isTaikoRunner(process.argv[1])) {
                     runFile(taiko, fileName, observe, program.waitTime);
                 }
             } else {
-                loadPlugins(program.plugin);
                 repl_mode = true;
                 repl.initialize(taiko, plugins);
             }
