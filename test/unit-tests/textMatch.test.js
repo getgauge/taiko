@@ -26,7 +26,8 @@ describe('match', () => {
                 '</div>' +
                 '<iframe></iframe>' +
                 '<script>' +
-                'document.querySelector("iframe").contentDocument.write("<div id=\\"inIframe\\">Text in iframe</div>")' +
+                'document.querySelector("iframe").contentDocument.write("<div id=\\"inIframe\\">Text in iframe</div>");' +
+                'document.querySelector("iframe").contentDocument.close();'+
                 '</script>' +
                 // same text node in page
                 '<div><p>Sign up</p></div>' +
