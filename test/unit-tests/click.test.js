@@ -3,7 +3,7 @@ let { openBrowser, click, closeBrowser, goto, text, below } = require('../../lib
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'Click';
 
-describe.only(test_name, () => {
+describe(test_name, () => {
     let filePath;
     before(async () => {
         let innerHtml = `
@@ -12,10 +12,11 @@ describe.only(test_name, () => {
                 <span onclick="displayText('Click works with text nodes.')">Click on text node</span>
                 <span>Click with proximity</span>
             </div>
-            <span>Proximity marker</span><br/>
+            <div style="opacity:0.01">Click on visible text</div>
+            <span>Proximity marker</span>
+            <input onclick="displayText('Click works with text as value.')" value="Text as value"/><br/>
+            <input onclick="displayText('Click works with text as type.')" type="Text as type"/><br/>
             <span onclick="displayText('Click works with proximity selector.')">Click with proximity</span>
-            <input onclick="displayText('Click works with text as value.')" value="Text as value"/>
-            <input onclick="displayText('Click works with text as type.')" type="Text as type"/>
             <div onclick="displayText('Click works with text accross element.')">
                 Text <span>accross</span> elements
             </div>
@@ -25,6 +26,7 @@ describe.only(test_name, () => {
                 }
             </script>
             <div style="height:1500px"></div>
+            <div onclick="displayText('Click works with invisible text.')">Click on visible text</div>
             <div id="root" style="background:red;"></div>
             <span onclick="displayText('Click works with auto scroll.')">Show Message</span>
             `;
@@ -54,7 +56,7 @@ describe.only(test_name, () => {
     });
 
     describe('With proximity selector', () => {
-        xit('should click', async () => {
+        it('should click', async () => {
             await click('Click with proximity', below('Proximity marker'));
             expect(await text('Click works with proximity selector.').exists()).to.be.true;
         });
@@ -73,11 +75,18 @@ describe.only(test_name, () => {
             expect(await text('Click works with text as value.').exists()).to.be.true;
         });
     });
-
+    
     describe('Text as type', () => {
         it('should click', async () => {
             await click('Text as type');
             expect(await text('Click works with text as type.').exists()).to.be.true;
+        });
+    });
+    
+    xdescribe('With duplicate invisible text', () => {
+        it('should click the visible text', async () => {
+            await click('Click on visible text');
+            expect(await text('Click works with invisible text.').exists()).to.be.true;
         });
     });
 
