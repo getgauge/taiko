@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 let { openBrowser, closeBrowser, client } = require('../../lib/taiko');
 let { openBrowserArgs } = require('./test-util');
 
-describe(' opens browser successfully',()=>{
+describe('opens browser successfully',()=>{
     xit('openBrowser should return \'Browser Opened\' message',  async ()=>{
 
         expect(process.env.TAIKO_EMULATE_DEVICE).to.be.undefined;
