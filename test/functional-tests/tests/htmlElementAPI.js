@@ -9,7 +9,7 @@ const {
   fileField,
  textBox,
   button,
-  comboBox,
+  dropDown,
   checkBox,
   radioButton,
   alert,
@@ -55,15 +55,15 @@ step('Navigate to <url>', async url => {
   await goto(url);
 });
 
-step('Ensure Combo Box <comboBoxName> exists', async comboBoxName => {
-  const box = comboBox(comboBoxName);
+step('Ensure Drop down <dropDownName> exists', async dropDownName => {
+  const box = dropDown(dropDownName);
   assert.ok(await box.exists());
 });
 
 step(
-  'Select <value> of Combo Box <comboBoxName>. The value now should be <fieldValue>',
-  async (value, comboBoxName, fieldValue) => {
-    const box = comboBox(comboBoxName);
+  'Select <value> of Drop down <dropDownName>. The value now should be <fieldValue>',
+  async (value, dropDownName, fieldValue) => {
+    const box = dropDown(dropDownName);
     await box.select(value);
     assert.equal(await box.value(), fieldValue);
   }
