@@ -6,6 +6,9 @@ function mockReadFileSyncWith (content) {
     var fsMock = {
         readFileSync: function ( ) {
             return content;
+        },
+        existsSync: function ( ) {
+            return true;
         }
     };
     PLUGINS.__set__('fs', fsMock);
@@ -28,6 +31,17 @@ describe('GetPlugins', () => {
     });
 
     describe('Get plugins from package.json', () => {
+
+        it('should give empty array if there is no package.json', () => {
+            var fsMock = {
+                existsSync: function ( ) {
+                    return false;
+                }
+            };
+            PLUGINS.__set__('fs', fsMock);
+            expect(PLUGINS.getPlugins()).to.deep.equal([]);
+        });
+
         it('should give plugin name from dependencies', () => {
             mockReadFileSyncWith(`{
                 "dependencies": {
