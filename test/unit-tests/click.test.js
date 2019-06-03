@@ -1,4 +1,7 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let { openBrowser, click, closeBrowser, goto, text, below } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'Click';
@@ -41,7 +44,6 @@ describe(test_name, () => {
             <span onclick="displayText('Click works with auto scroll.')">Show Message</span>
             `;
         filePath = createHtml(innerHtml, test_name);
-        // await openBrowser({args:openBrowserArgs.args, headless:false/*, observe:true, observeTime:5000*/});
         await openBrowser(openBrowserArgs);
         await goto(filePath);
     });
@@ -97,6 +99,31 @@ describe(test_name, () => {
         it('should click the ghost element', async () => {
             await click('Click ghost element covering text');
             expect(await text('Click works with ghost element covering text.').exists()).to.be.true;
+        });
+    });
+
+    describe('With element covered by an overlay', () => {
+        before(async () => {
+            let innerHtml = `
+            <style>
+                .overlay {
+                    position: absolute;
+                    top:0px;
+                    display:block;
+                    width:100%;
+                    height:100%;
+                }
+            </style>
+            <div>
+                <div class='a' onclick="alert('foo')" >Click me</div>
+                <span class='overlay'></span>
+            </div>
+            `;
+            filePath = createHtml(innerHtml, `${test_name}-overlay`);
+            await goto(filePath);
+        });
+        it('should throw error', async () => {
+            await expect(click('Click me')).to.be.rejectedWith('Element matching text "Click me" is covered by other element');
         });
     });
 
