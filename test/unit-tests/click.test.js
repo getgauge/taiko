@@ -12,7 +12,18 @@ describe(test_name, () => {
                 <span onclick="displayText('Click works with text nodes.')">Click on text node</span>
                 <span>Click with proximity</span>
             </div>
-            <div style="opacity:0.01">Click on visible text</div>
+            <div>
+                <input type="checkbox" onclick="displayText('Click works with ghost element covering text.')"
+                   style="
+                        opacity:0.01;
+                        width:400px;
+                        height:20px;
+                        position: absolute
+                   "
+                   />
+                <span class='b'>Click ghost element covering text.</span>
+            </div>
+            </div>
             <span>Proximity marker</span>
             <input onclick="displayText('Click works with text as value.')" value="Text as value"/><br/>
             <input onclick="displayText('Click works with text as type.')" type="Text as type"/><br/>
@@ -26,7 +37,6 @@ describe(test_name, () => {
                 }
             </script>
             <div style="height:1500px"></div>
-            <div onclick="displayText('Click works with invisible text.')">Click on visible text</div>
             <div id="root" style="background:red;"></div>
             <span onclick="displayText('Click works with auto scroll.')">Show Message</span>
             `;
@@ -75,18 +85,18 @@ describe(test_name, () => {
             expect(await text('Click works with text as value.').exists()).to.be.true;
         });
     });
-    
+
     describe('Text as type', () => {
         it('should click', async () => {
             await click('Text as type');
             expect(await text('Click works with text as type.').exists()).to.be.true;
         });
     });
-    
-    xdescribe('With duplicate invisible text', () => {
-        it('should click the visible text', async () => {
-            await click('Click on visible text');
-            expect(await text('Click works with invisible text.').exists()).to.be.true;
+
+    describe('With ghost element', () => {
+        it('should click the ghost element', async () => {
+            await click('Click ghost element covering text');
+            expect(await text('Click works with ghost element covering text.').exists()).to.be.true;
         });
     });
 
