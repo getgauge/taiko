@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-let { openBrowser, goto, closeBrowser, waitFor, intervalSecs } = require('../../lib/taiko');
+let { openBrowser, goto, closeBrowser, waitFor, intervalSecs, text } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'waitFor';
 
@@ -20,34 +20,40 @@ describe(test_name, () => {
         await closeBrowser();
         removeFile(filePath);
     });
-
-    describe('waitFor test with element and time', () => {
-        it('should return empty array if element is not there', async () => {
-            const actual = await waitFor('something that is not there', intervalSecs(1));
-            expect(actual.length).to.be.eql(0);
-        });
-        it('should return the element if element is there', async () => {
-            const actual = await waitFor('beautiful', 1000);
-            expect(actual.length).to.be.greaterThan(0);
-        });
-    });
-
     describe('waitFor test with only time', () => {
-        it('should just wait for given time period do not return anything', async () => {
-            const actual = await waitFor(1000);
-            expect(actual).to.be.eql(undefined);
-        });
+        it('should wait just for given time', async () => {
+            await waitFor(3000);
+            expect(await text('beautiful').exists()).to.be.true;
+        }).timeout(4000);
     });
 
     describe('waitFor test with only element', () => {
-        it('should return empty array if the element is not there', async () => {
-            const actual = await waitFor('something that is not there');
-            expect(actual.length).to.be.eql(0);
-        }).timeout(11000);
+        it('should wait for element for default timeout', async () => {
+            await waitFor('beautiful');
+            expect(await text('beautiful').exists()).to.be.true;
+        });
 
-        it('should return element if the element is there', async () => {
-            const actual = await waitFor('beautiful');
-            expect(actual.length).to.be.greaterThan(0);
-        }).timeout(11000);
+        xit('should timeout if element is not there', async () => {
+            const expectedMessage = new RegExp('waiting failed: retryTimeout 10000ms exceeded');
+            expect(await waitFor('something that is not there')).to.throw(expectedMessage);
+        }).timeout(12000);
+
+    });
+
+    describe('waitFor test with element and time', () => {
+        it('should wait for element with given time ', async () => {
+            await waitFor('beautiful', 1000);
+            expect(await text('beautiful').exists()).to.be.true;
+        });
+
+        it('should return the element if element is there', async () => {
+            await waitFor('beautiful', 3000);
+            expect(await text('beautiful').exists()).to.be.true;
+        }).timeout(5000);
+
+        xit('should wait for element for the given time', async () => {
+            const expectedMessage = new RegExp('waiting failed: retryTimeout 5000ms exceeded');
+            expect(await waitFor('something that is not there', intervalSecs(5))).to.throw(expectedMessage);
+        });
     });
 });
