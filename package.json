@@ -10,7 +10,7 @@
 		"lint": "eslint bin/*.js lib/*.js test/*/*.js",
 		"doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
 		"test:api": "node test/unit-tests/taiko-test.js",
-		"examples": "npm install --prefix examples && npm test --prefix examples",
+		"examples": "npm install --prefix examples && cd examples && npm test ; cd --",
 		"test:unit": "npm run lint && mocha test/unit-tests/ --timeout 30000",
 		"test": "npm run test:api && npm run test:unit && npm run examples",
 		"test-functional": "cd test/functional-tests && npm install && npm test",

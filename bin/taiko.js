@@ -1,31 +1,15 @@
 #! /usr/bin/env node
-const childProcess = require('child_process');
+
 const runFile = require('./runFile');
 const fs = require('fs');
-const path = require('path');
 const program = require('commander');
 const repl = require('../lib/repl');
 const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
 const NETWORK_TYPES = Object.keys(require('../lib/data/networkConditions'));
+const { getExecutablePlugins } = require('../lib/plugins');
 let repl_mode = false;
 let taiko;
-let globalPath = childProcess.spawnSync('npm', ['root', '-g']).stdout.toString().trim();
-
-let outpot = fs.readdirSync(globalPath, { withFileTypes: true })
-    .filter(x => {
-        if (x.isSymbolicLink()) {
-            let fsStaat = fs.statSync(path.resolve(globalPath, fs.readlinkSync(path.resolve(globalPath, x.name))));
-            return fsStaat.isDirectory() && x.name.match(/^taiko-.*/);
-        }
-        return x.isDirectory() && x.name.match(/^taiko-.*/);
-    }).map(p => p.name);
-let taikoPlugins = outpot
-    .filter(npmModule => {
-        let packageJson = require(path.resolve(globalPath, npmModule, 'package.json'));
-        return packageJson.capability && packageJson.capability.includes('subcommands');
-    }).map(f => f.replace(/^taiko-/, ''));
-
 function printVersion() {
     const packageJson = require('../package.json');
     let hash = 'RELEASE';
@@ -82,9 +66,15 @@ function setEmulatedNetwork(networkType){
 }
 
 if (isTaikoRunner(process.argv[1])) {
-    taikoPlugins.forEach(plugin => {
+    let plugins = getExecutablePlugins();
+    Object.keys(plugins).forEach(pluginName => {
         program
-            .command(`${plugin} [options]`);
+            .command(`${pluginName} [options...]`)
+            .allowUnknownOption(true)
+            .action((options, cmd) => {
+                let plugin = require(plugins[cmd.name()]);
+                plugin.exec(options);
+            });
     });
     program
         .version(printVersion(), '-v, --version')
