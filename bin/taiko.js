@@ -6,6 +6,7 @@ const program = require('commander');
 const repl = require('../lib/repl');
 const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
+const NETWORK_TYPES = Object.keys(require('../lib/data/networkConditions'));
 let repl_mode = false;
 let taiko;
 
@@ -55,6 +56,15 @@ function setPluginNameInEnv(pluginName) {
     return pluginName;
 }
 
+function setEmulatedNetwork(networkType){
+    if(!NETWORK_TYPES.includes(networkType) ){
+        console.log(`Invalid value ${networkType} for --emulate-network`);
+        console.log(`Available options: ${NETWORK_TYPES.join(', ')}`);
+        process.exit(1);
+    }
+    process.env.TAIKO_EMULATE_NETWORK = networkType;
+}
+
 if (isTaikoRunner(process.argv[1])) {
     program
         .version(printVersion(), '-v, --version')
@@ -80,6 +90,11 @@ if (isTaikoRunner(process.argv[1])) {
             '--emulate-device <device>',
             'Allows to simulate device viewport. Visit https://github.com/getgauge/taiko/blob/master/lib/devices.js for all the available devices\n',
             setupEmulateDevice
+        )
+        .option(
+            '--emulate-network <networkType>',
+            `Allow to simulate network. Available options are ${NETWORK_TYPES.join(', ')}`,
+            setEmulatedNetwork
         )
         .option(
             '--plugin <plugin1,plugin2...>',
