@@ -9,7 +9,7 @@ describe('Config tests', () => {
         describe('For invalid config name', () => {
 
             it('should throw exception', () => {
-                let allowedConfig = 'navigationTimeout, observeTime, retryInterval, retryTimeout, waitForNavigation, networkType';
+                let allowedConfig = 'navigationTimeout, observeTime, retryInterval, retryTimeout, waitForNavigation';
                 let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfig}`;
                 expect(() => setConfig({ invalidConfig: true })).to.throw(new RegExp(`^${expectedMessage}$`));
             });
@@ -26,8 +26,7 @@ describe('Config tests', () => {
                         observeTime: 2,
                         retryInterval: 2,
                         retryTimeout: 2,
-                        waitForNavigation: false,
-                        networkType:'GPRS'
+                        waitForNavigation: false
                     };
                     expect(config).not.deep.equal(newConfig);
 

@@ -3,7 +3,6 @@ const expect = chai.expect;
 const chaiAsPromissed = require('chai-as-promised');
 chai.use(chaiAsPromissed);
 let { setNetworkEmulation, setNetwork } = require('../../lib/networkHandler');
-let { setConfig } = require('../../lib/config');
 const test_name = 'Network Handler';
 
 describe(test_name, () => {
@@ -16,6 +15,10 @@ describe(test_name, () => {
         setRequestInterception: () => { },
         requestIntercepted: () => { }
     };
+
+    beforeEach( () => {
+        delete process.env.TAIKO_EMULATE_NETWORK;
+    });
 
     it('should invoke emulateNetworkConditions with correct options', async () => {
         await setNetwork(Object.assign({}, network, {
@@ -40,7 +43,7 @@ describe(test_name, () => {
     });
 
     it('should use networkType from config when not provided', async () => {
-        setConfig({ networkType: 'GPRS' });
+        process.env.TAIKO_EMULATE_NETWORK = 'GPRS';
         await setNetwork(Object.assign({}, network, {
             emulateNetworkConditions: (d) => {
                 expect(d).to.deep.equal({

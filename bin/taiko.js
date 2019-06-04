@@ -7,7 +7,6 @@ const repl = require('../lib/repl');
 const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
 const NETWORK_TYPES = Object.keys(require('../lib/data/networkConditions'));
-let {setConfig} = require('../lib/config');
 let repl_mode = false;
 let taiko;
 
@@ -59,11 +58,11 @@ function setPluginNameInEnv(pluginName) {
 
 function setEmulatedNetwork(networkType){
     if(!NETWORK_TYPES.includes(networkType) ){
-        console.log(`Invalid value ${networkType} for --emulate-device`);
+        console.log(`Invalid value ${networkType} for --emulate-network`);
         console.log(`Available options: ${NETWORK_TYPES.join(', ')}`);
         process.exit(1);
     }
-    setConfig({networkType:networkType});
+    process.env.TAIKO_EMULATE_NETWORK = networkType;
 }
 
 if (isTaikoRunner(process.argv[1])) {
