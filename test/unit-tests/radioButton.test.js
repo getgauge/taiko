@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-let { openBrowser, radioButton, closeBrowser, evaluate, $, intervalSecs, timeoutSecs, goto, text, click } = require('../../lib/taiko');
+let { openBrowser, radioButton, closeBrowser, evaluate, $, toMilliSeconds, goto, text, click } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 
 describe('radio button', () => {
@@ -42,7 +42,7 @@ describe('radio button', () => {
 
         it('test exists()', async () => {
             expect(await radioButton('radioButtonWithInlineLabel').exists()).to.be.true;
-            expect(await radioButton('Something').exists(intervalSecs(0), timeoutSecs(0))).to.be.false;
+            expect(await radioButton('Something').exists(toMilliSeconds(0), toMilliSeconds(0))).to.be.false;
         });
 
         it('test select()', async () => {
