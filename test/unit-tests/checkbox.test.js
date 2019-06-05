@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
-let { openBrowser, goto, checkBox, closeBrowser, evaluate, $, intervalSecs, timeoutSecs, text, click } = require('../../lib/taiko');
+let { openBrowser, goto, checkBox, closeBrowser, evaluate, $, toMilliSeconds, text, click } = require('../../lib/taiko');
 const test_name = 'Checkbox';
 
 describe(test_name, () => {
@@ -43,7 +43,7 @@ describe(test_name, () => {
 
         it('test exists()', async () => {
             expect(await checkBox('checkboxWithInlineLabel').exists()).to.be.true;
-            expect(await checkBox('Something').exists(intervalSecs(0), timeoutSecs(0))).to.be.false;
+            expect(await checkBox('Something').exists(toMilliSeconds(0), toMilliSeconds(0))).to.be.false;
         });
 
         it('test check()', async () => {
