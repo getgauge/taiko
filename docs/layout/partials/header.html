@@ -289,6 +289,26 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
   <p>You can see how Mocha and Taiko work together from this <a href="https://github.com/getgauge-examples/mocha-taiko" target="_blank">sample project</a>.</p>
 </section>
 
+<section class="jest-integration">
+  <h2 id="integrating-jest">Integrating with Jest</h2>
+  <p>
+    Install <a href="https://jestjs.io/docs/en/getting-started.html">Jest </a>using <span class="highlight">npm</span>
+  </p>
+  <div class="code-section">
+    <pre class="hljs"><code>npm install jest -g</code></pre>
+  </div>
+  <p>You can then use Taiko's REPL to record a flow and create tests.</p>
+  <p>Add tests like below</p>
+  <div class="code-section">
+    <pre class="hljs"><code>test("Search Google", async () => {
+      await goto("google.com");
+      await write("Gauge test automation");
+      await press("Enter");
+  });</code></pre>
+  </div>
+  <p>You can see how jest and Taiko work together from this <a href="https://github.com/getgauge-examples/jest-taiko" target="_blank">sample project</a>.</p>
+</section>
+
 <section class="taiko-env-variables">
     <h2 id="taiko-env-variables">Environment Variables</h2>
     <p>Taiko lets you specify certain Environment varibles to customise its behaviour</p>
