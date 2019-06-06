@@ -8,6 +8,7 @@ const test_name = 'Click';
 
 describe(test_name, () => {
     let filePath;
+    let overlayFilePath;
     before(async () => {
         let innerHtml = `
             <span>Click with proximity</span>
@@ -119,9 +120,14 @@ describe(test_name, () => {
                 <span class='overlay'></span>
             </div>
             `;
-            filePath = createHtml(innerHtml, `${test_name}-overlay`);
-            await goto(filePath);
+            overlayFilePath = createHtml(innerHtml, `${test_name}-overlay`);
+            await goto(overlayFilePath);
         });
+
+        after(()=>{
+            removeFile(overlayFilePath);
+        });
+        
         it('should throw error', async () => {
             await expect(click('Click me')).to.be.rejectedWith('Element matching text "Click me" is covered by other element');
         });
