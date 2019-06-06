@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
-let { openBrowser, goto, closeBrowser, waitFor, toMilliSeconds } = require('../../lib/taiko');
+let { openBrowser, goto, closeBrowser, waitFor } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'waitFor';
 
@@ -33,7 +33,7 @@ describe(test_name, function() {
 
     describe('waitFor test with only time', () => {
         it('should wait just for given time', async () => {
-            expect(waitFor(toMilliSeconds(3))).not.to.eventually.be.rejected;
+            expect(waitFor(3000)).not.to.eventually.be.rejected;
         });
     });
 
@@ -51,12 +51,12 @@ describe(test_name, function() {
 
     describe('waitFor test with element and time', () => {
         it('should wait for element with given time ', async () => {
-            expect(waitFor('Patience', toMilliSeconds(4))).not.to.eventually.be.rejected;
+            expect(waitFor('Patience',4000)).not.to.eventually.be.rejected;
         });
 
         it('should wait for element for the given time', async () => {
             const expectedMessage = new RegExp('Waiting Failed: Element \'something that is not there\' not found within 3000 ms');
-            expect(waitFor('something that is not there', toMilliSeconds(3))).to.eventually.be.rejectedWith(expectedMessage);
+            expect(waitFor('something that is not there', 3000)).to.eventually.be.rejectedWith(expectedMessage);
         });
     });
 });
