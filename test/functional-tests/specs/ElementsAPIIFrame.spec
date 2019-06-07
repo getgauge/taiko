@@ -6,8 +6,8 @@ API accessing IFrame Elements
 Combo Box
 ---------
 
-* Ensure Combo Box "Cars" exists
-* Select "Saab" of Combo Box "Cars". The value now should be "saab"
+* Ensure Drop down "Cars" exists
+* Select "Saab" of Drop down "Cars". The value now should be "saab"
 
 Check Box
 ---------
