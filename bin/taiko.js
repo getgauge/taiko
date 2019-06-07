@@ -7,9 +7,9 @@ const repl = require('../lib/repl');
 const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
 const NETWORK_TYPES = Object.keys(require('../lib/data/networkConditions'));
+const { getExecutablePlugins } = require('../lib/plugins');
 let repl_mode = false;
 let taiko;
-
 function printVersion() {
     const packageJson = require('../package.json');
     let hash = 'RELEASE';
@@ -66,6 +66,16 @@ function setEmulatedNetwork(networkType){
 }
 
 if (isTaikoRunner(process.argv[1])) {
+    let plugins = getExecutablePlugins();
+    Object.keys(plugins).forEach(pluginName => {
+        program
+            .command(`${pluginName} [options...]`)
+            .allowUnknownOption(true)
+            .action((options, cmd) => {
+                let plugin = require(plugins[cmd.name()]);
+                plugin.exec(options);
+            });
+    });
     program
         .version(printVersion(), '-v, --version')
         .usage(
@@ -100,7 +110,7 @@ if (isTaikoRunner(process.argv[1])) {
             '--plugin <plugin1,plugin2...>',
             'Load the taiko plugin.', setPluginNameInEnv
         )
-        .action(function ( ) {
+        .action(function () {
             taiko = require('../lib/taiko');
             if (program.args.length) {
                 const fileName = program.args[0];
