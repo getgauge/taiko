@@ -93,6 +93,9 @@ describe('Plugins', () => {
         }
         it('should give all globally installed executable taiko-plugin and there path', () => {
             var fsMock = {
+                existsSync: function () {
+                    return true;
+                },
                 readdirSync: function (path) {
                     if (path === '/tmp/global/taiko-plugin-path')
                         return [
