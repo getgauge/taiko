@@ -130,10 +130,18 @@
     <div class="code-section">
         <pre class="hljs bash"><code>npm install taiko -g --allow-root --unsafe-perm=true</code></pre>
     </div>
-    <p>Taiko needs to launch the chromuim in headless mode when running in docker. To do so start taiko REPL and open
+    <p>To launch taiko in headless mode start taiko REPL with <span class="highlight">taiko</span> and open
         browser with below arguments:</p>
     <div class="code-section">
-        <pre class="hljs js"><code>await openBrowser({headless: true,args: ['--no-sandbox']});</code></pre>
+        <pre class="hljs js"><code>await openBrowser({headless: true, args: ['--no-sandbox']});</code></pre>
+    </div>
+    <p>To launch taiko in headful mode install Xvfb</p>
+    <div class="code-section">
+        <pre class="hljs bash"><code>apt-get install xvfb</code></pre>
+    </div>
+    <p>Start taiko REPL with <span class="highlight">xvfb-run taiko</span> and open browser with below arguments:</p>
+    <div class="code-section">
+        <pre class="hljs js"><code>await openBrowser({headless: false, args: ['--no-sandbox']});</code></pre>
     </div>
 </section>
 
