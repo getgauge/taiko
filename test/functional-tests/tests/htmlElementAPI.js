@@ -31,9 +31,11 @@ const {
   toRightOf
 } = require('../../../lib/taiko');
 
+const headless = process.env.headless.toLowerCase() === 'true';
+
 beforeScenario(
   async () =>
-    await openBrowser({
+    await openBrowser({ headless: headless,
       args: [
         '--disable-gpu',
         '--disable-dev-shm-usage',
