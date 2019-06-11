@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-let { openBrowser, goto, closeBrowser, text, textBox, toRightOf, evaluate } = require('../../lib/taiko');
+let { openBrowser, goto, closeBrowser, text, textBox, toRightOf, evaluate, setConfig } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 let test_name = 'textMatch';
 
@@ -57,10 +57,11 @@ describe('match', () => {
             filePath = createHtml(innerHtml, test_name);
             await openBrowser(openBrowserArgs);
             await goto(filePath);
-
-
+            await setConfig({waitForNavigation:false});
         });
+        
         after(async () => {
+            await setConfig({waitForNavigation:true});
             await closeBrowser();
             removeFile(filePath);
         });

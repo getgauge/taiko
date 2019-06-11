@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
-let { openBrowser, goto, dropDown, closeBrowser } = require('../../lib/taiko');
+let { openBrowser, goto, dropDown, closeBrowser, setConfig } = require('../../lib/taiko');
 const test_name = 'DropDown';
 
 describe(test_name, () => {
@@ -27,9 +27,11 @@ describe(test_name, () => {
         filePath = createHtml(innerHtml,test_name);
         await openBrowser(openBrowserArgs);
         await goto(filePath);
+        await setConfig({waitForNavigation:false});
     });
 
     after(async () => {
+        await setConfig({waitForNavigation:true});
         await closeBrowser();
         removeFile(filePath);
     });

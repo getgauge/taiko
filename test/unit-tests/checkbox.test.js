@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
-let { openBrowser, goto, checkBox, closeBrowser, evaluate, $, text, click } = require('../../lib/taiko');
+let { openBrowser, goto, checkBox, closeBrowser, evaluate, $, text, click, setConfig } = require('../../lib/taiko');
 const test_name = 'Checkbox';
 
 describe(test_name, () => {
@@ -29,9 +29,11 @@ describe(test_name, () => {
         filePath = createHtml(innerHtml,test_name);
         await openBrowser(openBrowserArgs);
         await goto(filePath);
+        await setConfig({waitForNavigation:false});
     });
 
     after(async () => {
+        await setConfig({waitForNavigation:true});
         await closeBrowser();
         removeFile(filePath);
     });
@@ -43,7 +45,7 @@ describe(test_name, () => {
 
         it('test exists()', async () => {
             expect(await checkBox('checkboxWithInlineLabel').exists()).to.be.true;
-            expect(await checkBox('Something').exists(0)).to.be.false;
+            expect(await checkBox('Something').exists(0,0)).to.be.false;
         });
 
         it('test check()', async () => {

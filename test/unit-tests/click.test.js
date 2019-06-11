@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let { openBrowser, click, closeBrowser, goto, text, below } = require('../../lib/taiko');
+let { openBrowser, click, closeBrowser, goto, text, below, setConfig } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'Click';
 
@@ -47,9 +47,11 @@ describe(test_name, () => {
         filePath = createHtml(innerHtml, test_name);
         await openBrowser(openBrowserArgs);
         await goto(filePath);
+        await setConfig({waitForNavigation:false});
     });
 
     after(async () => {
+        await setConfig({waitForNavigation:true});
         await closeBrowser();
         removeFile(filePath);
     });
