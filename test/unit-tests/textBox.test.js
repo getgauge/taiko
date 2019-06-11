@@ -2,7 +2,7 @@ const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 const expect = chai.expect;
-let { openBrowser, goto, textBox, closeBrowser, write, into, setConfig} = require('../../lib/taiko');
+let { openBrowser, goto, textBox, closeBrowser, write, into, setConfig, above} = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'textBox';
 
@@ -74,6 +74,16 @@ describe(test_name, () => {
                 expect(await textBox({id:'textAreaWithLabelFor'}).value()).to.equal('textAreaWithLabelFor');
             });
         });
+
+        describe('with relative selector', () => {
+            it('test exists()', async () => {
+                expect(await textBox(above('textAreaWithLabelFor')).exists()).to.be.true;
+            });
+
+            it('test value()', async () => {
+                expect(await textBox(above('textAreaWithLabelFor')).value()).to.equal('textAreaWithWrappedLabel');
+            });
+        });
     });   
     
     describe('contentEditable', () => {
@@ -131,6 +141,16 @@ describe(test_name, () => {
 
             it('test value()', async () => {
                 expect(await textBox({id:'contentEditableWithWrappedLabel'}).value()).to.equal('contentEditableWithWrappedLabel');
+            });
+        });
+
+        describe('with relative selector', () => {
+            it('test exists()', async () => {
+                expect(await textBox(above('contentEditableWithLabelFor')).exists()).to.be.true;
+            });
+
+            it('test value()', async () => {
+                expect(await textBox(above('contentEditableWithLabelFor')).value()).to.equal('contentEditableWithWrappedLabel');
             });
         });
     });
@@ -216,7 +236,6 @@ describe(test_name, () => {
             let filePath;
             before(async () => {
                 let innerHtml = '<div>' +
-                    //Input with type text
                     `<form name="${inputType.name}">` +
                         '<div name="withInlineText">' +
                             `<input type="${inputType.type}">With Inline Text</input>` +
@@ -228,8 +247,8 @@ describe(test_name, () => {
                             '</label>' +
                         '</div>' +
                         '<div name="withLabelFor">' +
-                                `<input id="${inputType.name}WithLabelFor" type="${inputType.type}"/>` +
                                 `<label for="${inputType.name}WithLabelFor">With Label For</label>` +
+                                `<input id="${inputType.name}WithLabelFor" type="${inputType.type}"/>` +
                         '</div>' +
                     '</form>' +
                 '</div>';
@@ -281,6 +300,16 @@ describe(test_name, () => {
 
                 it('test value()', async () => {
                     expect(await textBox({id:inputType.name + 'WithLabelFor'}).value()).to.equal(inputType.testValue);
+                });
+            });
+
+            describe('with relative selector', () => {
+                it('test exists()', async () => {
+                    expect(await textBox(above('With Label For')).exists()).to.be.true;
+                });
+
+                it('test value()', async () => {
+                    expect(await textBox(above('With Label For')).value()).to.equal(inputType.testValue);
                 });
             });
         });
