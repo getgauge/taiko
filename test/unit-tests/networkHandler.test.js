@@ -39,7 +39,7 @@ describe(test_name, () => {
         return expect(setNetworkEmulation('invalid network'))
             .to
             .eventually
-            .rejectedWith('Please set one of the given network types GPRS,Regular2G,Good2G,Regular3G,Good3G,Regular4G,DSL,WiFi,Offline');
+            .rejectedWith(`Please set one of the given network types \n${['GPRS','Regular2G','Good2G','Regular3G','Good3G','Regular4G','DSL','WiFi','Offline'].join('\n')}`);
     });
 
     it('should use networkType from config when not provided', async () => {

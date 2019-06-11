@@ -19,6 +19,7 @@ describe('closeTab', () => {
             constructCriTarget: (arg) => { return arg; }
         };
 
+        taiko.__set__('validate', () => {});
         targetHandler.__set__('cri', mockCri);
         taiko.__set__('targetHandler', mockHandler);
         taiko.__set__('descEvent', descEmmitter);

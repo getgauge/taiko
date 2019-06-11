@@ -18,6 +18,7 @@ describe('openTab', () => {
             }
         };
         const mockWrapper = async (options, cb) => { actualOptions = options; await cb(); };
+        taiko.__set__('validate', () => {});
         taiko.__set__('doActionAwaitingNavigation', mockWrapper);
         taiko.__set__('cri', mockCri);
         taiko.__set__('connect_to_cri', mockConnectToCri);
