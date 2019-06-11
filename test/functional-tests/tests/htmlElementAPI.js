@@ -42,7 +42,8 @@ beforeScenario(
         '--disable-setuid-sandbox',
         '--no-first-run',
         '--no-sandbox',
-        '--no-zygote'
+        '--no-zygote',
+        '--window-size=1440,900'
       ]
     })
 );
