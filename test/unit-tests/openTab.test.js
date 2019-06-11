@@ -49,7 +49,7 @@ describe('openTab', () => {
     });
 
     it('should call doActionAwaitingNavigation with default options if options not given', async () => {
-        let expectedOptions =  {'navigationTimeout': 30000, 'waitForEvents': ['firstMeaningfulPaint'], 'waitForNavigation': true, 'waitForStart': 100};
+        let expectedOptions =  {'navigationTimeout': 30000, 'waitForNavigation': true, 'waitForStart': 100};
         await taiko.openTab('example.com');
         expect(actualOptions).to.deep.equal(expectedOptions);
     });
