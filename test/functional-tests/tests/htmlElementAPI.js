@@ -7,7 +7,7 @@ const {
   goto,
   $,
   fileField,
- textBox,
+  textBox,
   button,
   dropDown,
   checkBox,
@@ -35,7 +35,8 @@ const headless = process.env.headless.toLowerCase() === 'true';
 
 beforeScenario(
   async () =>
-    await openBrowser({ headless: headless,
+    await openBrowser({
+      headless: headless,
       args: [
         '--disable-gpu',
         '--disable-dev-shm-usage',
@@ -48,7 +49,7 @@ beforeScenario(
     })
 );
 
-gauge.screenshotFn = async function() {
+gauge.screenshotFn = async function () {
   return await screenshot({ encoding: 'base64' });
 };
 
@@ -170,31 +171,31 @@ step(
   }
 );
 
-step('Intercept Google Analytics', async function() {
+step('Intercept Google Analytics', async function () {
   await intercept('https://www.googletagmanager.com/gtm.js?id=GTM-5C33ML2');
   await intercept('https://www.google-analytics.com/analytics.js');
 });
 
-step('Respond to <url> with <respomnseBody>', async function(
+step('Respond to <url> with <respomnseBody>', async function (
   url,
   respomnseBody
 ) {
   await intercept(url, { body: respomnseBody });
 });
 
-step('Respond to <url> with json <jsonString>', async function(
+step('Respond to <url> with json <jsonString>', async function (
   url,
   jsonString
 ) {
   await intercept(url, { body: JSON.parse(jsonString) });
 });
 
-step('Navigate to relative path <relativePath>', async function(relativePath) {
+step('Navigate to relative path <relativePath>', async function (relativePath) {
   var absolutePath = _path.resolve(relativePath);
   await goto('file:///' + absolutePath);
 });
 
-step('Scroll to element <arg0>', { continueOnFailure: true }, async function() {
+step('Scroll to element <arg0>', { continueOnFailure: true }, async function () {
   await scrollTo($('#myDIV'));
 });
 
@@ -209,7 +210,7 @@ step(
 step(
   'Scroll element <element> left by pixels <pixels>',
   { continueOnFailure: true },
-  async function(element, pixels) {
+  async function (element, pixels) {
     await scrollLeft($(element), parseInt(pixels, 10));
   }
 );
@@ -229,7 +230,7 @@ step(
 step(
   'Scroll element <element> up by pixels <pixels>',
   { continueOnFailure: true },
-  async function(element, pixels) {
+  async function (element, pixels) {
     await scrollUp($(element), parseInt(pixels, 10));
   }
 );
@@ -249,7 +250,7 @@ step(
 step(
   'Scroll element <element> down by pixels <pixels>',
   { continueOnFailure: true },
-  async function(element, pixels) {
+  async function (element, pixels) {
     await scrollDown($(element), parseInt(pixels, 10));
   }
 );
@@ -258,11 +259,11 @@ step('Scroll the page down', { continueOnFailure: true }, async () => {
   await scrollDown();
 });
 
-step("Navigate to relative path <path> with timeout <timeout> ms", async function(path, timeout) {
-	var absolutePath = _path.resolve(path);
-  await goto('file:///' + absolutePath,{timeout:timeout});
+step("Navigate to relative path <path> with timeout <timeout> ms", async function (path, timeout) {
+  var absolutePath = _path.resolve(path);
+  await goto('file:///' + absolutePath, { navigationTimeout: timeout });
 });
 
-step("Navigate to <url> with timeout <timeout> ms", async function(url, timeout) {
-  await goto(url,{timeout});
+step("Navigate to <url> with timeout <timeout> ms", async function (url, timeout) {
+  await goto(url, { navigationTimeout: timeout });
 });

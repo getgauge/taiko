@@ -62,7 +62,7 @@
 
 ## Cookie not should be present for invalid options urls
 * Navigate to "https://the-internet.herokuapp.com/"
-* Assert cookie with invalid options url "https://www.google.com/"
+* Assert cookie with invalid options url "https://gauge.org"
 
 ## Set mock location
 * Override browser permission with "geolocation" for site "https://the-internet.herokuapp.com/geolocation"
