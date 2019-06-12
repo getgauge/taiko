@@ -71,8 +71,8 @@ Taiko’s REPL keeps a history of all successful commands. Once you finish a flo
             await goto("google.com");
             await write("taiko test automation");
             await click("Google Search");
-        } catch (e) {
-                console.error(e);
+        } catch (error) {
+                console.error(error);
         } finally {
                 closeBrowser();
         }
