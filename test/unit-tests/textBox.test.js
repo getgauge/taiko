@@ -1,4 +1,7 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+const expect = chai.expect;
 let { openBrowser, goto, textBox, closeBrowser, write, into, setConfig} = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'textBox';
@@ -65,7 +68,23 @@ describe(test_name, () => {
                 '<div id="contentEditableWithLabelFor" contenteditable=true></div>' +
             '</div>' +
         '</form>' +
-        '</div>';
+        '</div>' +
+        //Read only input with type text
+        '<form name="inputTypeText">' +
+            '<div name="inputTypeTextWithInlineTextReadonly">' +
+                '<input type="text" readonly>inputTypeTextWithInlineTextReadonly</input>' +
+            '</div>' +
+            '<div name="inputTypeTextWithWrappedLabelReadonly">' +
+                '<label>' +
+                    '<input type="text" readonly/>' +
+                    '<span>inputTypeTextWithWrappedLabelReadonly</span>' +
+                '</label>' +
+            '</div>' +
+            '<div name="inputTypeTextWithLabelForReadonly">' +
+                    '<input id="inputTypeTextWithLabelForReadonly" type="text" readonly/>' +
+                    '<label for="inputTypeTextWithLabelForReadonly">inputTypeTextWithLabelForReadonly</label>' +
+            '</div>' +
+        '</form>';
         filePath = createHtml(innerHtml, test_name);
         await openBrowser(openBrowserArgs);
         await goto(filePath);
@@ -119,6 +138,48 @@ describe(test_name, () => {
 
             it('test value()', async () => {
                 expect(await textBox({id:'inputTypeTextWithLabelFor'}).value()).to.equal('inputTypeTextWithLabelFor');
+            });
+        });
+    });
+    
+    describe('input with type text readonly', () => {
+        describe('with inline text', () => {
+            it('test exists()', async () => {
+                expect(await textBox('inputTypeTextWithInlineTextReadonly').exists()).to.be.true;
+            });
+
+            it('test value()', async () => {
+                await expect(write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineTextReadonly')))).to.eventually.be.rejected;
+            });
+        });
+
+        describe('wrapped in label', () => {
+            it('test exists()', async () => {
+                expect(await textBox('inputTypeTextWithWrappedLabelReadonly').exists()).to.be.true;
+            });
+
+            it('test value()', async () => {
+                await expect(write('inputTypeTextWithWrappedLabel', into(textBox('inputTypeTextWithWrappedLabelReadonly')))).to.eventually.be.rejected;
+            });
+        });
+
+        describe('using label for', () => {
+            it('test exists()', async () => {
+                expect(await textBox('inputTypeTextWithLabelForReadonly').exists()).to.be.true;
+            });
+
+            it('test value()', async () => {
+                await expect(write('inputTypeTextWithLabelFor', into(textBox('inputTypeTextWithLabelForReadonly')))).to.be.eventually.rejected;
+            });
+        });
+
+        describe('attribute and value pair', () => {
+            it('test exists()', async () => {
+                expect(await textBox({id:'inputTypeTextWithLabelForReadonly'}).exists()).to.be.true;
+            });
+
+            it('test value()', async () => {
+                expect(await textBox({id:'inputTypeTextWithLabelForReadonly'}).value()).to.equal('');
             });
         });
     });
