@@ -14,7 +14,6 @@
 		"test:unit": "npm run lint && mocha test/unit-tests/ --timeout 30000",
 		"test": "npm run test:api && npm run test:unit && npm run examples",
 		"test-functional": "cd test/functional-tests && npm install && npm test",
-		"test-functional-headful": "cd test/functional-tests && npm install && npm run test-headful",
 		"install": "node lib/install.js",
 		"update-json-doc": "node build/updateJsonDoc.js"
 	},

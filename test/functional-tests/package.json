@@ -4,7 +4,6 @@
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
     "test": "gauge run specs -v --tags=\\!knownIssue",
-    "test-headful": "gauge run specs -v --tags=\\!knownIssue --max-retries-count=3",
     "format": "prettier --write --single-quote '**/*.{js,jsx,ts,tsx}'",
     "eslint": "eslint tests/* --ext .js --ext .jsx"
   },

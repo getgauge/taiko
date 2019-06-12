@@ -33,6 +33,8 @@ const {
 
 const headless = process.env.headless.toLowerCase() === 'true';
 
+let timeout = headless ? 30000 : 60000;
+
 beforeScenario(
   async () =>
     await openBrowser({
@@ -56,7 +58,7 @@ gauge.screenshotFn = async function () {
 afterScenario(async () => await closeBrowser());
 
 step('Navigate to <url>', async url => {
-  await goto(url);
+  await goto(url, {navigationTimeout:timeout});
 });
 
 step('Ensure Drop down <dropDownName> exists', async dropDownName => {
