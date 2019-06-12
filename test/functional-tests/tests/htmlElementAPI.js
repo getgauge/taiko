@@ -28,15 +28,15 @@ const {
   dismiss,
   accept,
   intercept,
-  toRightOf
+  toRightOf,
+  setConfig
 } = require('../../../lib/taiko');
 
 const headless = process.env.headless.toLowerCase() === 'true';
 
-let timeout = headless ? 30000 : 60000;
 
 beforeScenario(
-  async () =>
+  async () => {
     await openBrowser({
       headless: headless,
       args: [
@@ -49,7 +49,8 @@ beforeScenario(
         '--window-size=1440,900'
       ]
     })
-);
+    await setConfig({ navigationTimeout: 60000 });
+  });
 
 gauge.screenshotFn = async function () {
   return await screenshot({ encoding: 'base64' });
@@ -58,7 +59,7 @@ gauge.screenshotFn = async function () {
 afterScenario(async () => await closeBrowser());
 
 step('Navigate to <url>', async url => {
-  await goto(url, {navigationTimeout:timeout});
+  await goto(url);
 });
 
 step('Ensure Drop down <dropDownName> exists', async dropDownName => {
@@ -194,7 +195,7 @@ step('Respond to <url> with json <jsonString>', async function (
 
 step('Navigate to relative path <relativePath>', async function (relativePath) {
   var absolutePath = _path.resolve(relativePath);
-  await goto('file:///' + absolutePath, {navigationTimeout: timeout});
+  await goto('file://' + absolutePath);
 });
 
 step('Scroll to element <arg0>', { continueOnFailure: true }, async function () {
