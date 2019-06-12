@@ -45,7 +45,7 @@ step('Click link to left of <table>', async function(table) {
 });
 
 step('Click link near <table>', async function(table) {
-  await click(link(near(_selectors.getElement(table))), { timeout: 60000 });
+  await click(link(near(_selectors.getElement(table))));
 });
 
 step('Click button <selector>', async function(selector) {
