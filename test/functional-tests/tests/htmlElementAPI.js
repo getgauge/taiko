@@ -194,7 +194,7 @@ step('Respond to <url> with json <jsonString>', async function (
 
 step('Navigate to relative path <relativePath>', async function (relativePath) {
   var absolutePath = _path.resolve(relativePath);
-  await goto('file:///' + absolutePath);
+  await goto('file:///' + absolutePath, {navigationTimeout: timeout});
 });
 
 step('Scroll to element <arg0>', { continueOnFailure: true }, async function () {
