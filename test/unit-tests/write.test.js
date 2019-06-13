@@ -49,5 +49,45 @@ describe(test_name, () => {
     it('should fail for readonly feild', async () => {
         await expect(write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineTextReadonly')))).to.eventually.be.rejected;
     });
+});
 
+describe('write test on multiple similar elements',()=>{
+    let readonlyFilePath;
+    before(async () => {
+        let innerHtml = '<div>' +
+        '<form name="inputTypeText">' +
+            //Read only input with type text
+            '<div name="inputTypeTextWithInlineTextReadonly">' +
+                '<input type="text" readonly>inputTypeTextWithInlineTextReadonly</input>' +
+            '</div>' +
+            '<div name="inputTypeTextWithInlineTextReadonly">' +
+            '<input type="text">inputTypeTextWithInlineTextReadonly</input>' +
+            '</div>' +
+            '<div name="readonlyInputTypeText">' +
+                '<input type="text" readonly>readonlyInputTypeText</input>' +
+            '</div>' +
+            '<div name="readonlyInputTypeText">' +
+                '<input type="text" readonly>readonlyInputTypeText</input>' +
+            '</div>' +
+        '</form>';
+        '</div>';
+        readonlyFilePath = createHtml(innerHtml, test_name);
+        await openBrowser(openBrowserArgs);
+        await setConfig({waitForNavigation:false});
+        await goto(readonlyFilePath);
+    });
+
+    after(async () => {
+        removeFile(readonlyFilePath);
+        await setConfig({waitForNavigation:true});
+        await closeBrowser();
+    });
+
+    it('should write into first writable element', async () => {
+        await expect(write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineTextReadonly')))).not.to.eventually.be.rejected;
+    });
+
+    it('should reject if no element is writable', async () => {
+        await expect(write('inputTypeTextWithInlineText', into(textBox('readonlyInputTypeText')))).to.eventually.be.rejectedWith('Element focused is not writable');
+    });
 });
