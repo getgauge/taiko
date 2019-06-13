@@ -15,6 +15,9 @@ describe(test_name, () => {
             '<div name="inputTypeTextWithInlineTextReadonly">' +
                 '<input type="text" readonly>inputTypeTextWithInlineTextReadonly</input>' +
             '</div>' +
+            '<div name="focused input">' +
+                '<input type="text" autofocus>focused input</input>' +
+            '</div>' +
             '<div name="input-type-text">' +
                 '<input type="text">input-type-text</input>' +
             '</div>' +
@@ -30,6 +33,11 @@ describe(test_name, () => {
         removeFile(filePath);
         await setConfig({waitForNavigation:true});
         await closeBrowser();
+    });
+
+    it('into focused element', async () => {
+        await write('writing to focused input');
+        expect(await textBox('focused input').value()).to.equal('writing to focused input');
     });
 
     it('into input field text', async () => {
