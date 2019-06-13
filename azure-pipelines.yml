@@ -59,10 +59,10 @@ jobs:
       npm install
 
   - powershell:
-      npm test:api
+      npm run test:api
 
   - powershell:
-      npm test:unit
+      npm run test:unit
 
   - powershell:    
       npm run test-functional
