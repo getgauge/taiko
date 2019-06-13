@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
-let { openBrowser, goto, closeBrowser, waitFor, $, click } = require('../../lib/taiko');
+let { openBrowser, goto, closeBrowser, waitFor, $, click, text, button } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'waitFor';
 
@@ -58,6 +58,11 @@ describe(test_name, function () {
     describe('waitFor test with element and time', () => {
         it('should wait for element with given time ', async () => {
             await expect(waitFor('Patience', 4000)).not.to.eventually.be.rejected;
+        });
+
+        it('should wait for element', async () => {
+            await expect(waitFor(text('Patience'), 4000)).not.to.eventually.be.rejected;
+            await expect(waitFor(button('Click me'))).not.to.eventually.be.rejected;
         });
 
         it('should wait for element for the given time', async () => {
