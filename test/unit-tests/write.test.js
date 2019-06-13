@@ -10,10 +10,13 @@ describe(test_name, () => {
     let filePath;
     before(async () => {
         let innerHtml = '<div>' +
-        //Read only input with type text
         '<form name="inputTypeText">' +
+            //Read only input with type text
             '<div name="inputTypeTextWithInlineTextReadonly">' +
                 '<input type="text" readonly>inputTypeTextWithInlineTextReadonly</input>' +
+            '</div>' +
+            '<div name="input-type-text">' +
+                '<input type="text">input-type-text</input>' +
             '</div>' +
         '</form>';
         '</div>';
@@ -27,6 +30,12 @@ describe(test_name, () => {
         removeFile(filePath);
         await setConfig({waitForNavigation:true});
         await closeBrowser();
+    });
+
+    it('into input field text', async () => {
+        expect(await textBox('input-type-text').value()).to.equal('');
+        await write('hello', into(textBox('input-type-text')));
+        expect(await textBox('input-type-text').value()).to.equal('hello');
     });
 
     it('should fail for readonly feild', async () => {
