@@ -11,6 +11,8 @@ describe( test_name, () => {
     before(async () => {
         let innerHtml = 
         '<input type="text" name="unfocusable" disabled>unfocusable</input>' +
+        '<input type="text" name="inputTypeText" disabled>inputTypeText</input>' +
+        '<input type="text" name="inputTypeText" >inputTypeText</input>' +
         '<input type="text" name="focusableTypeText" >focusableTypeText</input>';
         filePath = createHtml(innerHtml, test_name);
         await openBrowser(openBrowserArgs);
@@ -31,6 +33,10 @@ describe( test_name, () => {
 
         it('should throw error if the given element is not focusable', async () => {
             await expect(focus(textBox('unfocusable'))).to.be.eventually.rejectedWith('Error: Element is not focusable\n');
+        });
+
+        it('should write into the first focusable element', async () => {
+            await expect(focus(textBox('inputTypeText'))).not.to.be.eventually.rejected;
         });
     });
 });
