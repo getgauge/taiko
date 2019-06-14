@@ -22,10 +22,13 @@ jobs:
   - script:
       npm install
   
-  - script:    
+  - script: 
       npm test
+
+  - script:
+      npm run examples
   
-  - script:    
+  - script:
       npm run test-functional
 
 - job: macOS
