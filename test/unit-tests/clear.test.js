@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 let { openBrowser, goto, textBox, closeBrowser, clear, setConfig } = require('../../lib/taiko');
 let { createHtml, openBrowserArgs, removeFile } = require('./test-util');
-const test_name = 'WriteAndClear';
+const test_name = 'Clear';
 
 describe( test_name, () => {
     let filePath;
