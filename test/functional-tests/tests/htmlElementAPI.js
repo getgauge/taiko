@@ -49,7 +49,8 @@ beforeScenario(
         '--window-size=1440,900'
       ]
     })
-    await setConfig({ navigationTimeout: 60000 });
+    const navigationTimeout = headless? 60000 : 120000;
+    await setConfig({ navigationTimeout: navigationTimeout });
   });
 
 gauge.screenshotFn = async function () {
