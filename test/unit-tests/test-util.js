@@ -11,11 +11,11 @@ module.exports.createHtml = (innerHtml, testName) => {
         </html>
     `;
     writeFileSync(htmlFilePath, content);
-    return 'file://' + htmlFilePath;
+    return 'file:///' + htmlFilePath;
 };
 
 module.exports.removeFile = (filePath) => {
-    filePath = filePath.replace('file://', '');
+    filePath = filePath.replace('file:///', '');
     unlinkSync(filePath);
 };
 
