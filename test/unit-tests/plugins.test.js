@@ -1,6 +1,8 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
 const PLUGINS = rewire('../../lib/plugins');
+const path = require('path');
+const os = require('os');
 
 describe('Plugins', () => {
     describe('GetPlugins', () => {
@@ -91,14 +93,17 @@ describe('Plugins', () => {
                 isDirectory: () => isDir
             };
         }
-
-        it('should give all globally installed executable taiko-plugin and their path', () => {
+        it('should give all globally installed executable taiko-plugin and there path', () => {
+            let tmpDir = os.tmpdir();
+            let simlinkedPath = path.join(tmpDir, 'taiko-plugin-simlinked-path');
+            let globalPluginPath = path.join(tmpDir, 'global', 'taiko-plugin-path');
+            let localPluginPath = path.join(tmpDir, 'local', 'taiko-plugin-path');
             var fsMock = {
                 existsSync: function () {
                     return true;
                 },
                 readdirSync: function (path) {
-                    if (path === '/tmp/global/taiko-plugin-path')
+                    if (path === globalPluginPath)
                         return [
                             createFakeFsDirentObj('taiko-global-plugin1', true, false),
                             createFakeFsDirentObj('taiko-plugin2', true, false),
@@ -120,14 +125,14 @@ describe('Plugins', () => {
                     return { isDirectory: () => true };
                 },
                 readlinkSync: () => {
-                    return '/tmp/taiko-plugin-simlinked-path';
+                    return simlinkedPath;
                 }
             };
             PLUGINS.__set__('childProcess', {
                 spawnSync: (...args) => {
                     if (args[1][1] === '-g')
-                        return { stdout: '/tmp/global/taiko-plugin-path' };
-                    return { stdout: '/tmp/local/taiko-plugin-path' };
+                        return { stdout: globalPluginPath };
+                    return { stdout: localPluginPath };
                 }
             });
             PLUGINS.__set__('fs', fsMock);
@@ -142,11 +147,11 @@ describe('Plugins', () => {
             });
 
             const expected = {
-                'global-plugin1': '/tmp/global/taiko-plugin-path/taiko-global-plugin1',
-                'global-plugin4': '/tmp/global/taiko-plugin-path/taiko-global-plugin4',
-                'plugin1': '/tmp/local/taiko-plugin-path/taiko-plugin1',
-                'plugin4': '/tmp/local/taiko-plugin-path/taiko-plugin4',
-                'dup-plugin1': '/tmp/local/taiko-plugin-path/taiko-dup-plugin1'
+                'global-plugin1': path.join(globalPluginPath, 'taiko-global-plugin1'),
+                'global-plugin4': path.join(globalPluginPath, 'taiko-global-plugin4'),
+                'plugin1': path.join(localPluginPath, 'taiko-plugin1'),
+                'plugin4': path.join(localPluginPath, 'taiko-plugin4'),
+                'dup-plugin1': path.join(localPluginPath, 'taiko-dup-plugin1')
             };
             expect(PLUGINS.getExecutablePlugins()).to.be.deep.equal(expected);
         });
