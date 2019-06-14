@@ -57,11 +57,11 @@ describe('write test on multiple similar elements',()=>{
         let innerHtml = '<div>' +
         '<form name="inputTypeText">' +
             //Read only input with type text
-            '<div name="inputTypeTextWithInlineTextReadonly">' +
-                '<input type="text" readonly>inputTypeTextWithInlineTextReadonly</input>' +
+            '<div name="inputTypeText">' +
+                '<input type="text" readonly>inputTypeText</input>' +
             '</div>' +
-            '<div name="inputTypeTextWithInlineTextReadonly">' +
-            '<input type="text">inputTypeTextWithInlineTextReadonly</input>' +
+            '<div name="inputTypeText">' +
+            '<input type="text">inputTypeText</input>' +
             '</div>' +
             '<div name="readonlyInputTypeText">' +
                 '<input type="text" readonly>readonlyInputTypeText</input>' +
@@ -84,7 +84,7 @@ describe('write test on multiple similar elements',()=>{
     });
 
     it('should write into first writable element', async () => {
-        await expect(write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineTextReadonly')))).not.to.eventually.be.rejected;
+        await expect(write('inputTypeTextWithInlineText', into(textBox('inputTypeText')))).not.to.eventually.be.rejected;
     });
 
     it('should reject if no element is writable', async () => {
