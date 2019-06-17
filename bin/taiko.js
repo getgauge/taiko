@@ -8,6 +8,7 @@ const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
 const NETWORK_TYPES = Object.keys(require('../lib/data/networkConditions'));
 const { getExecutablePlugins } = require('../lib/plugins');
+const processArgv = process.argv;
 let repl_mode = false;
 let taiko;
 function printVersion() {
@@ -56,8 +57,8 @@ function setPluginNameInEnv(pluginName) {
     return pluginName;
 }
 
-function setEmulatedNetwork(networkType){
-    if(!NETWORK_TYPES.includes(networkType) ){
+function setEmulatedNetwork(networkType) {
+    if (!NETWORK_TYPES.includes(networkType)) {
         console.log(`Invalid value ${networkType} for --emulate-network`);
         console.log(`Available options: ${NETWORK_TYPES.join(', ')}`);
         process.exit(1);
@@ -65,7 +66,12 @@ function setEmulatedNetwork(networkType){
     process.env.TAIKO_EMULATE_NETWORK = networkType;
 }
 
-if (isTaikoRunner(process.argv[1])) {
+function isReplCommand(args) {
+    return args.filter(arg => !(arg.match(/^-/) && !arg.match(/^(-h|--help)/))).length < 3;
+}
+
+function registerSubcommandForPlugins(args) {
+    if(isReplCommand(args)) return;
     let plugins = getExecutablePlugins();
     Object.keys(plugins).forEach(pluginName => {
         program
@@ -76,6 +82,10 @@ if (isTaikoRunner(process.argv[1])) {
                 plugin.exec(options);
             });
     });
+}
+
+if (isTaikoRunner(processArgv[1])) {
+    registerSubcommandForPlugins(processArgv);
     program
         .version(printVersion(), '-v, --version')
         .usage(
@@ -143,7 +153,7 @@ if (isTaikoRunner(process.argv[1])) {
         program.outputHelp();
         process.exit(1);
     };
-    program.parse(process.argv);
+    program.parse(processArgv);
 } else {
     module.exports = require('../lib/taiko');
 }
