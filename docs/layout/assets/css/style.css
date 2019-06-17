@@ -9,7 +9,6 @@ h1 {
 h2, h3 {
   font-family: "URWGeometric-SemiBold";
   color: rgb(51, 51, 51);
-  z-index: -1;
   /* border: 1px solid grey; */
 }
 
