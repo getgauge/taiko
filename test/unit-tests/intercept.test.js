@@ -1,11 +1,12 @@
 const expect = require('chai').expect;
-let { handleInterceptor, addInterceptor, setNetwork, resetInterceptors } = require('../../lib/networkHandler');
+const rewire = require('rewire');
+let networkHandler = rewire('../../lib/networkHandler');
 const test_name = 'Intercept';
 
 describe(test_name, () => {
     let actualOption;
     before(() => {
-        setNetwork({
+        networkHandler.setNetwork({
             continueInterceptedRequest: (options) => { actualOption = options; return Promise.resolve(); },
             requestWillBeSent: () => { },
             loadingFinished: () => { },
@@ -18,12 +19,12 @@ describe(test_name, () => {
     });
 
     afterEach(() => {
-        resetInterceptors();
+        networkHandler.resetInterceptors();
     });
 
     it('Check redirection using interception', async () => {
-        addInterceptor({ requestUrl: 'www.google.com', action: 'www.ibibo.com' });
-        handleInterceptor({
+        networkHandler.addInterceptor({ requestUrl: 'www.google.com', action: 'www.ibibo.com' });
+        networkHandler.handleInterceptor({
             interceptionId: 'interceptionId',
             request: {
                 url: 'http://www.google.com',
@@ -36,8 +37,8 @@ describe(test_name, () => {
     });
 
     it('Block url', async () => {
-        addInterceptor({ requestUrl: 'www.google.com'});
-        handleInterceptor({interceptionId : 'interceptionId',
+        networkHandler.addInterceptor({ requestUrl: 'www.google.com'});
+        networkHandler.handleInterceptor({interceptionId : 'interceptionId',
             request :{
                 url : 'http://www.google.com',
                 method: 'GET',
@@ -49,7 +50,7 @@ describe(test_name, () => {
     });
 
     it('Mock Response', async () => {
-        addInterceptor({
+        networkHandler.addInterceptor({
             requestUrl: 'http://localhost:3000/api/customers/11',
             action: {
                 body: {
@@ -58,7 +59,7 @@ describe(test_name, () => {
                 }
             }
         });
-        handleInterceptor({
+        networkHandler.handleInterceptor({
             interceptionId: 'interceptionId',
             request: {
                 url: 'http://localhost:3000/api/customers/11',
@@ -71,11 +72,14 @@ describe(test_name, () => {
         expect(res).to.include('12345 Central St.');
     });
 
-    xit('More than one intercept added for the same requestUrl', async () => {
-        const spyWarn = jest.spyOn( console, 'warn' );
-        addInterceptor({ requestUrl: 'www.google.com', action: 'www.ibibo.com' });
-        addInterceptor({ requestUrl: 'www.google.com', action: 'www.gauge.org' });
-        handleInterceptor({
+    it('More than one intercept added for the same requestUrl', async () => {
+        let actualConsoleWarn;
+        console.warn = (log) => {
+            actualConsoleWarn = log;
+        };
+        networkHandler.addInterceptor({ requestUrl: 'www.google.com', action: 'www.ibibo.com' });
+        networkHandler.addInterceptor({ requestUrl: 'www.google.com', action: 'www.gauge.org' });
+        networkHandler.handleInterceptor({
             interceptionId: 'interceptionId',
             request: {
                 url: 'http://www.google.com',
@@ -84,9 +88,9 @@ describe(test_name, () => {
             resourceType: 'Document',
             isNavigationRequest: true
         });
-        let warningMessage = '["WARNING: More than one intercept ["www.google.com","www.google.com"] found for request "http://www.google.com".\n Applying: intercept("www.google.com", "www.gauge.org")"]';
-        expect(spyWarn).not.toHaveBeenCalledWith(warningMessage);
-        expect(actualOption.url).toBe('http://www.gauge.org');
+        let warningMessage = 'WARNING: More than one intercept ["www.google.com","www.google.com"] found for request "http://www.google.com".\n Applying: intercept("www.google.com", "www.gauge.org")';
+        expect(actualConsoleWarn).to.equal(warningMessage);
+        expect(actualOption.url).to.equal('http://www.gauge.org');
     });
 
 });
