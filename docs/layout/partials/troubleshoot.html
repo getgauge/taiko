@@ -176,3 +176,20 @@
         <pre class="hljs"><code>env DEBUG="taiko:*" taiko code.js</code></pre>
     </div>
 </section>
+<section class='wait-for-right-events'>
+    <h2 id="wait-for-right-events">Wait for right events</h2>
+    <p>Taiko by default waits for any network requests that are triggered as part of the action, frame load, frame navigation 
+        and new target navigation events. All navigation actions like goto, goBack, goForward waits for loadEventFired in addition.
+        There can be scenarios where the action might take time to trigger events, hence could be missed by taiko. 
+        Below are few where waiting for appropriate events will improve performance and reduce flakyness in tests.
+    </p>
+    <ul>
+        <li><p>firstMeaningfulPaint - Wait for this event if an action can trigger a page load which has heavy image or fonts to loaded.</p></li>
+        <li><p>targetNavigated - Wait for this event if there is a new tab/window open or close that happens because of an action.</p></li>
+        <li><p>loadEventFired - Wait for this event if an action triggers a page load which is not instanteneous.</p></li>
+    </ul>
+    <p>Example:</p>
+    <div class="code-section">
+        <pre class="hljs"><code>await click(link('open new tab'),{waitForEvents:['targetNavigated']})</code></pre>
+    </div>
+</section>
