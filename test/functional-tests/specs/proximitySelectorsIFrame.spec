@@ -3,7 +3,7 @@
 
 * Intercept Google Analytics
 * Navigate to relative path "./specs/data/IFrameGaugeOrg.html"
-* Click link "Insights" below 
+* Click link "Privacy" below 
 
    |Type|Selector       |
    |----|---------------|
