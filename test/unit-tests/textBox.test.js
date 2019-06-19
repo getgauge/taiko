@@ -7,11 +7,9 @@ const test_name = 'textBox';
 describe(test_name, () => {
     before(async () => {
         await openBrowser(openBrowserArgs);
-        await setConfig({waitForNavigation:false});
     });
 
     after(async () => {
-        await setConfig({waitForNavigation:true});
         await closeBrowser();
     });
 
@@ -35,9 +33,11 @@ describe(test_name, () => {
             '</div>';
             filePath = createHtml(innerHtml, test_name);
             await goto(filePath);
+            setConfig({waitForNavigation:false});
         });
 
         after(() => {
+            setConfig({waitForNavigation:true});
             removeFile(filePath);
         });
 
@@ -104,9 +104,11 @@ describe(test_name, () => {
             '</div>';
             filePath = createHtml(innerHtml, test_name);
             await goto(filePath);
+            setConfig({waitForNavigation:false});
         });
 
         after(() => {
+            setConfig({waitForNavigation:true});
             removeFile(filePath);
         });
 
@@ -183,9 +185,11 @@ describe(test_name, () => {
                 '</div>';
                 filePath = createHtml(innerHtml, test_name + inputType.type);
                 await goto(filePath);
+                setConfig({waitForNavigation:false});
             });
 
             after(() => {
+                setConfig({waitForNavigation:true});
                 removeFile(filePath);
             });
 
