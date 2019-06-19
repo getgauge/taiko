@@ -25,7 +25,7 @@
 ## Close Tab with no parameters
 * Intercept Google Analytics
 * Navigate to "google.com"
-* Open Tab "https://www.thoughtworks.com/contact-us" with timeout "20000"
+* Open Tab "https://www.thoughtworks.com/contact-us" with timeout "60000"
 * Click link near 
 
    |Type|Selector                         |
