@@ -39,7 +39,7 @@ describe(test_name, function () {
 
     describe('waitFor test with only time', () => {
         it('should wait just for given time', async () => {
-            await expect(waitFor(3000)).not.to.eventually.be.rejected;
+            await expect(waitFor(2000)).not.to.eventually.be.rejected;
         });
     });
 
@@ -49,8 +49,8 @@ describe(test_name, function () {
         });
 
         it('should timeout if element is not there', async () => {
-            const expectedMessage = new RegExp('Waiting Failed: Element \'something that is not there\' not found within 10000 ms');
-            await expect(waitFor('something that is not there')).to.eventually.be.rejectedWith(expectedMessage);
+            const expectedMessage = new RegExp('Waiting Failed: Element \'something that is not there\' not found within 2000 ms');
+            await expect(waitFor('something that is not there',2000)).to.eventually.be.rejectedWith(expectedMessage);
         });
 
     });
@@ -66,16 +66,16 @@ describe(test_name, function () {
         });
 
         it('should wait for element for the given time', async () => {
-            const expectedMessage = new RegExp('Waiting Failed: Element \'something that is not there\' not found within 3000 ms');
-            await expect(waitFor('something that is not there', 3000)).to.eventually.be.rejectedWith(expectedMessage);
+            const expectedMessage = new RegExp('Waiting Failed: Element \'something that is not there\' not found within 2000 ms');
+            await expect(waitFor('something that is not there', 2000)).to.eventually.be.rejectedWith(expectedMessage);
         });
     });
 
     describe('waitFor to wait for a given condition', () => {
         it('should reject if element is not present', async () => {
             await click('Click me');
-            const expectedMessage = 'waiting failed: retryTimeout 10000ms exceeded';
-            await expect(waitFor(async () => (await $('//*[text()="Wait is eOver..!"]').exists()))).to.eventually.be.rejectedWith(expectedMessage);
+            const expectedMessage = 'waiting failed: retryTimeout 2000ms exceeded';
+            await expect(waitFor(async () => (await $('//*[text()="Wait is eOver..!"]').exists(0,0)),2000)).to.eventually.be.rejectedWith(expectedMessage);
         });
 
         it('should wait for given condition', async () => {
