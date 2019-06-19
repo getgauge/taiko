@@ -86,9 +86,8 @@ describe('Plugins', () => {
     });
 
     describe('GetExecutablePlugin', () => {
-        function createFakeFsDirentObj(name, isDir, isSymLink) {
+        function createFakeFsDirentObj(isDir, isSymLink) {
             return {
-                name: name,
                 isSymbolicLink: () => isSymLink,
                 isDirectory: () => isDir
             };
@@ -104,25 +103,27 @@ describe('Plugins', () => {
                 },
                 readdirSync: function (path) {
                     if (path === globalPluginPath)
-                        return [
-                            createFakeFsDirentObj('taiko-global-plugin1', true, false),
-                            createFakeFsDirentObj('taiko-plugin2', true, false),
-                            createFakeFsDirentObj('taiko-plugin3', false, false),
-                            createFakeFsDirentObj('tmpdir', true, false),
-                            createFakeFsDirentObj('taiko-global-plugin4', false, true),
-                            createFakeFsDirentObj('taiko-dup-plugin1', true, false)
-                        ];
-                    return [
-                        createFakeFsDirentObj('taiko-plugin1', true, false),
-                        createFakeFsDirentObj('taiko-plugin2', true, false),
-                        createFakeFsDirentObj('taiko-plugin3', false, false),
-                        createFakeFsDirentObj('tmpdir', true, false),
-                        createFakeFsDirentObj('taiko-plugin4', false, true),
-                        createFakeFsDirentObj('taiko-dup-plugin1', true, false)
-                    ];
+                        return ['taiko-global-plugin1','taiko-plugin2','taiko-plugin3','tmpdir','taiko-global-plugin4','taiko-dup-plugin1'];
+                    return ['taiko-plugin1','taiko-plugin2','taiko-plugin3','tmpdir','taiko-plugin4','taiko-dup-plugin1'];
                 },
-                statSync: function () {
-                    return { isDirectory: () => true };
+                statSync: function (nodeModulePath) {
+                    let foo = {
+                        [path.join(globalPluginPath, 'taiko-global-plugin1')]: createFakeFsDirentObj(true, false),
+                        [path.join(globalPluginPath, 'taiko-plugin2')]: createFakeFsDirentObj(true, false),
+                        [path.join(globalPluginPath, 'taiko-plugin3')]: createFakeFsDirentObj(false, false),
+                        [path.join(globalPluginPath, 'tmpdir')]: createFakeFsDirentObj(true, false),
+                        [path.join(globalPluginPath, 'taiko-global-plugin4')]: createFakeFsDirentObj(false, true),
+                        [path.join(globalPluginPath, 'taiko-dup-plugin1')]: createFakeFsDirentObj(true, false),
+                        [path.join(localPluginPath, 'taiko-plugin1')]: createFakeFsDirentObj(true, false),
+                        [path.join(localPluginPath, 'taiko-plugin2')]: createFakeFsDirentObj(true, false),
+                        [path.join(localPluginPath, 'taiko-plugin3')]: createFakeFsDirentObj(false, false),
+                        [path.join(localPluginPath, 'tmpdir')]: createFakeFsDirentObj(true, false),
+                        [path.join(localPluginPath, 'taiko-plugin4')]: createFakeFsDirentObj(false, true),
+                        [path.join(localPluginPath, 'taiko-dup-plugin1')]: createFakeFsDirentObj(true, false),
+                        [simlinkedPath]: createFakeFsDirentObj(true, false)
+
+                    };
+                    return foo[nodeModulePath];
                 },
                 readlinkSync: () => {
                     return simlinkedPath;
