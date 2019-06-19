@@ -13,11 +13,19 @@ jobs:
 - job: Linux
   pool:
     vmImage: 'Ubuntu-16.04'
+  strategy:
+    matrix:
+      node_8_x:
+        node_version: 8.x
+      node_10_x:
+        node_version: 10.x
+      node_12_x:
+        node_version: 12.x
 
   steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: '10.x'
+      versionSpec: $(node_version)
  
   - script:
       npm install
