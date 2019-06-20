@@ -25,8 +25,6 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "gifencoder": "^2.0.1",
-    "png-file-stream": "^1.2.1",
     "taiko-screencast": "git+https://github.com/getgauge-contrib/taiko-screencast.git",
     "the-internet-express": "git+https://github.com/getgauge-contrib/the-internet-express.git"
   }
