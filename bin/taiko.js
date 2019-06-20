@@ -14,7 +14,7 @@ let taiko;
 function printVersion() {
     const packageJson = require('../package.json');
     let hash = 'RELEASE';
-    if (packageJson._resolved) hash = packageJson._resolved.split('#')[1];
+    if (packageJson._resolved && packageJson._resolved.includes('#')) hash = packageJson._resolved.split('#')[1];
     return `Version: ${packageJson.version} (Chromium: ${
         packageJson.taiko.chromium_version
     }) ${hash}`;
