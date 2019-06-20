@@ -70,3 +70,5 @@ docs/layout/assets/js/docSearch.js
 #test report
 test/functional-tests/reports/
 test/functional-tests/.gauge/
+
+examples/package-lock.json
