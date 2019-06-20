@@ -4,76 +4,69 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 pr:
-- master
+  - master
 
 variables:
   GAUGE_TELEMETRY_ENABLED: false
 
 jobs:
-- job: Linux
-  pool:
-    vmImage: 'Ubuntu-16.04'
-  strategy:
-    matrix:
-      node_8_x:
-        node_version: 8.x
-      node_10_x:
-        node_version: 10.x
-      node_12_x:
-        node_version: 12.x
+  - job: Linux
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    strategy:
+      matrix:
+        node_8_x:
+          node_version: 8.x
+        node_10_x:
+          node_version: 10.x
+        node_12_x:
+          node_version: 12.x
 
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: $(node_version)
- 
-  - script:
-      npm install
-  
-  - script: 
-      npm test
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: $(node_version)
 
-  - script:
-      npm run examples
-  
-  - script:
-      npm run test-functional
+      - script: npm install
 
-- job: macOS
-  pool:
-    vmImage: 'macOS-10.13'
+      - script: npm test
 
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
+      - script: npm run examples
 
-  - script:
-      npm install
-      
-  - script:    
-      npm test
+      - script: npm run test-functional
 
-  - script:    
-      npm run test-functional
+  - job: macOS
+    pool:
+      vmImage: 'macOS-10.13'
 
-- job: Windows
-  pool:
-    vmImage: 'vs2017-win2016'
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '10.x'
 
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
+      - script: npm install
 
-  - powershell:
-      npm install
+      - script: npm test
 
-  - powershell:
-      npm run test:api
+      - script: npm run examples
 
-  - powershell:
-      npm run test:unit
+      - script: npm run test-functional
 
-  - powershell:    
-      npm run test-functional
+  - job: Windows
+    pool:
+      vmImage: 'vs2017-win2016'
+
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '10.x'
+
+      - powershell: npm install
+
+      - powershell: npm run test:api
+
+      - powershell: npm run test:unit
+
+      - powershell: npm run examples
+
+      - powershell: npm run test-functional
