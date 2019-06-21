@@ -106,12 +106,12 @@ describe('Config tests', () => {
 
             it('should return default value when provided value is undefined', () => {
                 let actualValue = determineRetryInterval();
-                expect(actualValue).to.equal(1000);
+                expect(actualValue).to.equal(100);
             });
 
             it('should return default value when provided value is null', () => {
                 let actualValue = determineRetryInterval(null);
-                expect(actualValue).to.equal(1000);
+                expect(actualValue).to.equal(100);
             });
 
         });
@@ -119,8 +119,8 @@ describe('Config tests', () => {
         describe('For correct value', () => {
 
             it('should return provided value', () => {
-                let actualValue = determineRetryInterval(100);
-                expect(actualValue).to.equal(100);
+                let actualValue = determineRetryInterval(1000);
+                expect(actualValue).to.equal(1000);
             });
 
         });
