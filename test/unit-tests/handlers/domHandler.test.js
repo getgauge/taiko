@@ -2,7 +2,7 @@ const rewire = require('rewire');
 const expect = require('chai').expect;
 const domHandler = rewire('../../../lib/domHandler');
 
-describe.only('domHandler', () => {
+describe('domHandler', () => {
     let calledWith = {};
 
     beforeEach(() => {
@@ -18,7 +18,7 @@ describe.only('domHandler', () => {
         });
     });
 
-    it('.setBrowser should set the browser as global var', () => {
+    it('.setDOM should set the browser as global var', () => {
         domHandler.setDOM(new Object('DOM Instance'));
         let br = domHandler.__get__('dom');
         expect(br).to.instanceof(Object);
