@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromissed = require('chai-as-promised');
 chai.use(chaiAsPromissed);
-let { setNetworkEmulation, setNetwork } = require('../../lib/networkHandler');
+let { setNetworkEmulation, setNetwork } = require('../../../lib/networkHandler');
 const test_name = 'Network Handler';
 
 describe(test_name, () => {

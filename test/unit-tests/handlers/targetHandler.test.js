@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 let rewire = require('rewire');
-const targetHandler = rewire('../../lib/targetHandler');
+const targetHandler = rewire('../../../lib/targetHandler');
 
 describe('TargetHandler', () => {
 
