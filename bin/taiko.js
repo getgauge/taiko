@@ -43,7 +43,7 @@ function validate(file) {
 }
 
 function setupEmulateDevice(device) {
-    if (devices.hasOwnProperty(device))
+    if (Object.prototype.hasOwnProperty.call(devices, device))
         process.env['TAIKO_EMULATE_DEVICE'] = device;
     else {
         console.log(`Invalid value ${device} for --emulate-device`);
@@ -84,7 +84,7 @@ function registerSubcommandForPlugins(program, plugins) {
 
 if (isTaikoRunner(processArgv[1])) {
     let plugins = getExecutablePlugins();
-    if(!(seekingForHelp(processArgv) || plugins.hasOwnProperty(processArgv[2]) )) {
+    if(!(seekingForHelp(processArgv) || Object.prototype.hasOwnProperty.call(plugins, processArgv[2]) )) {
         // append taiko sub-command as if the user has executed <taiko taiko script.js or just taiko taiko>
         processArgv.splice(2,0, 'taiko');
     }
