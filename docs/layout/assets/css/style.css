@@ -628,3 +628,13 @@ h2:hover .link-icon, h3:hover .link-icon{
 .pull-down {
   top: 85px;
 }
+
+@media print {
+  nav {
+    position: relative;
+    text-align: center;
+  }
+  .github, .sidebar, .search-bar {
+    display: none;
+  }
+}
