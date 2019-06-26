@@ -18,7 +18,7 @@ describe('emulationHandler', () => {
         });
     });
 
-    it('.setEmulation should set the browser as global var', () => {
+    it('.setEmulation should set the emulation as global var', () => {
         emulationHandler.setEmulation(new Object('Emulation Instance'));
         let em = emulationHandler.__get__('emulation');
         expect(em).to.instanceof(Object);

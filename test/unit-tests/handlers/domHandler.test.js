@@ -18,14 +18,14 @@ describe('domHandler', () => {
         });
     });
 
-    it('.setDOM should set the browser as global var', () => {
+    it('.setDOM should set the dom as global var', () => {
         domHandler.setDOM(new Object('DOM Instance'));
         let br = domHandler.__get__('dom');
         expect(br).to.instanceof(Object);
         expect(br.toString()).to.eq('DOM Instance');
     });
 
-    it('.boundBox should set the browser as global var', async () => {
+    it('.boundBox should give the bound  box of given node id', async () => {
         let box = await domHandler.boundBox(1);
         expect(calledWith).to.be.eql({ nodeId: 1 });
         expect(box).to.be.eql({ height: 6, width: 6, x: 0, y: 1 });
@@ -43,12 +43,12 @@ describe('domHandler', () => {
         expect(rect).to.be.eql({ bottom: 7, top: 1, left: 0, right: 6 });
     });
 
-    it('.getPositionalDifference should get the rectangle', async () => {
+    it('.getPositionalDifference should get positional difference', async () => {
         let diff = await domHandler.getPositionalDifference(1, 2);
         expect(diff).to.be.eql(32);
     });
 
-    it('.calculateNewCenter should get the rectangle', async () => {
+    it('.calculateNewCenter should calclulate new center', async () => {
         let center = await domHandler.calculateNewCenter(1, { up: 1, down: 2, left: 3, right: 4 });
         expect(center).to.be.eql({ newBoundary: {bottom:8, left:1, right:7, top:2}, x: 4, y: 5 });
     });

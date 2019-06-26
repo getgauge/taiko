@@ -2,7 +2,7 @@ const rewire = require('rewire');
 const expect = require('chai').expect;
 const inputHandler = rewire('../../../lib/inputHandler');
 
-describe.only('inputHandler', () => {
+describe('inputHandler', () => {
     let calledWith = [];
 
     beforeEach(() => {
@@ -20,7 +20,7 @@ describe.only('inputHandler', () => {
         });
     });
 
-    it('.setinput should set the browser as global var', () => {
+    it('.setinput should set the input as global var', () => {
         inputHandler.setInput(new Object('Input Instance'));
         let em = inputHandler.__get__('input');
         expect(em).to.instanceof(Object);
