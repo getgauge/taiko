@@ -1,6 +1,6 @@
 {
 	"name": "taiko",
-	"version": "0.8.0",
+	"version": "0.9.0",
 	"description": "An easy to use wrapper over Chrome Remote Interface.",
 	"main": "bin/taiko.js",
 	"bin": {
@@ -10,8 +10,8 @@
 		"lint": "eslint bin/*.js lib/*.js test/*/*.js",
 		"doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
 		"test:api": "node test/unit-tests/taiko-test.js",
-		"examples": "npm install --prefix examples && cd examples && npm test ; cd --",
-		"test:unit": "mocha test/unit-tests/ --timeout 30000",
+		"examples": "cd examples && npm install && npm test",
+		"test:unit": "mocha \"test/unit-tests/**/*.test.js\" --timeout 30000",
 		"test": "npm run lint && npm run test:api && npm run test:unit",
 		"test-functional": "cd test/functional-tests && npm install && npm test",
 		"install": "node lib/install.js",

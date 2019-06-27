@@ -2,18 +2,19 @@
 
 const runFile = require('./runFile');
 const fs = require('fs');
-const program = require('commander');
+const Command = require('commander').Command;
 const repl = require('../lib/repl');
 const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
 const NETWORK_TYPES = Object.keys(require('../lib/data/networkConditions'));
 const { getExecutablePlugins } = require('../lib/plugins');
+const processArgv = process.argv;
 let repl_mode = false;
 let taiko;
 function printVersion() {
     const packageJson = require('../package.json');
     let hash = 'RELEASE';
-    if (packageJson._resolved) hash = packageJson._resolved.split('#')[1];
+    if (packageJson._resolved && packageJson._resolved.includes('#')) hash = packageJson._resolved.split('#')[1];
     return `Version: ${packageJson.version} (Chromium: ${
         packageJson.taiko.chromium_version
     }) ${hash}`;
@@ -42,7 +43,7 @@ function validate(file) {
 }
 
 function setupEmulateDevice(device) {
-    if (devices.hasOwnProperty(device))
+    if (Object.prototype.hasOwnProperty.call(devices, device))
         process.env['TAIKO_EMULATE_DEVICE'] = device;
     else {
         console.log(`Invalid value ${device} for --emulate-device`);
@@ -56,8 +57,8 @@ function setPluginNameInEnv(pluginName) {
     return pluginName;
 }
 
-function setEmulatedNetwork(networkType){
-    if(!NETWORK_TYPES.includes(networkType) ){
+function setEmulatedNetwork(networkType) {
+    if (!NETWORK_TYPES.includes(networkType)) {
         console.log(`Invalid value ${networkType} for --emulate-network`);
         console.log(`Available options: ${NETWORK_TYPES.join(', ')}`);
         process.exit(1);
@@ -65,8 +66,11 @@ function setEmulatedNetwork(networkType){
     process.env.TAIKO_EMULATE_NETWORK = networkType;
 }
 
-if (isTaikoRunner(process.argv[1])) {
-    let plugins = getExecutablePlugins();
+function seekingForHelp(args) {
+    return args.includes('-h') || args.includes('--help');
+}
+
+function registerSubcommandForPlugins(program, plugins) {
     Object.keys(plugins).forEach(pluginName => {
         program
             .command(`${pluginName} [options...]`)
@@ -76,7 +80,17 @@ if (isTaikoRunner(process.argv[1])) {
                 plugin.exec(options);
             });
     });
+}
+
+if (isTaikoRunner(processArgv[1])) {
+    let plugins = getExecutablePlugins();
+    if(!(seekingForHelp(processArgv) || Object.prototype.hasOwnProperty.call(plugins, processArgv[2]) )) {
+        // append taiko sub-command as if the user has executed <taiko taiko script.js or just taiko taiko>
+        processArgv.splice(2,0, 'taiko');
+    }
+    let program = new Command('taiko');
     program
+        .arguments('<cmd> [fileName]')
         .version(printVersion(), '-v, --version')
         .usage(
             `[options]
@@ -110,14 +124,13 @@ if (isTaikoRunner(process.argv[1])) {
             '--plugin <plugin1,plugin2...>',
             'Load the taiko plugin.', setPluginNameInEnv
         )
-        .action(function () {
+        .action(function (_, fileName, cmd) {
             taiko = require('../lib/taiko');
-            if (program.args.length) {
-                const fileName = program.args[0];
+            if (fileName) {
                 validate(fileName);
-                const observe = Boolean(program.observe || program.slowMod);
-                if (program.load) {
-                    runFile(taiko, fileName, true, program.waitTime, fileName => {
+                const observe = Boolean(cmd.observe || cmd.slowMod);
+                if (cmd.load) {
+                    runFile(taiko, fileName, true, cmd.waitTime, fileName => {
                         return new Promise(resolve => {
                             repl_mode = true;
                             repl.initialize(taiko, fileName).then(r => {
@@ -131,19 +144,20 @@ if (isTaikoRunner(process.argv[1])) {
                         });
                     });
                 } else {
-                    runFile(taiko, fileName, observe, program.waitTime);
+                    runFile(taiko, fileName, observe, cmd.waitTime);
                 }
             } else {
                 repl_mode = true;
                 repl.initialize(taiko);
             }
         });
+    registerSubcommandForPlugins(program, plugins);
     program.unknownOption = option => {
         console.error('error: unknown option `%s', option);
         program.outputHelp();
         process.exit(1);
     };
-    program.parse(process.argv);
+    program.parse(processArgv);
 } else {
     module.exports = require('../lib/taiko');
 }

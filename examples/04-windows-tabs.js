@@ -6,7 +6,7 @@ const { goto, click, title, closeTab, currentURL, text } = require('taiko')
 (async () => {
     try {
         const url = 'http://localhost:3000/windows';
-        await openBrowserAndStartScreencast(path.join('captures', 'windows', 'windows.gif'))
+        await openBrowserAndStartScreencast(path.join('captures', 'windows', 'windows.gif'));
         await goto(url);
         await click('click here');
         expect(await title()).to.eq('New Window');

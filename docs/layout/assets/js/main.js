@@ -180,7 +180,7 @@ function onLoad(){
 }
 
 function init() {
-  document.querySelectorAll('div.content-section pre').forEach((block) => {
+  document.querySelectorAll('div.content-section pre code').forEach((block) => {
     hljs.highlightBlock(block);
   });
   setGithubStar();

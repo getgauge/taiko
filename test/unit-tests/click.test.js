@@ -124,9 +124,11 @@ describe(test_name, () => {
             `;
             overlayFilePath = createHtml(innerHtml, `${test_name}-overlay`);
             await goto(overlayFilePath);
+            setConfig({waitForNavigation:false});
         });
 
         after(()=>{
+            setConfig({waitForNavigation:true});
             removeFile(overlayFilePath);
         });
         

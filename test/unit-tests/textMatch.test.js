@@ -8,58 +8,90 @@ describe('match', () => {
 
     describe('text match', () => {
         before(async () => {
-            let innerHtml = '<div>' +
-                //text node exists
-                '<div>' +
-                '<div name="text_node">' +
-                'User name: <input type="text" name="uname">' +
-                '</div>' +
-                '<div name="value_or_type_of_field_as_text">' +
-                '<input type="button" value="click me">' +
-                '<input type="submit">' +
-                '</div>' +
-                '<div name="text_across_element">' +
-                '<div>Text <span>Across</span> Element</div>' +
-                '</div>' +
-                '<div id="inTop" name="text_same_as_iframe" style="display: none">' +
-                'Text in iframe' +
-                '</div>' +
-                '<iframe></iframe>' +
-                '<script>' +
-                'document.querySelector("iframe").contentDocument.write("<div id=\\"inIframe\\">Text in iframe</div>");' +
-                'document.querySelector("iframe").contentDocument.close();'+
-                '</script>' +
-                // same text node in page
-                '<div><p>Sign up</p></div>' +
-                '<div><p>By clicking “Sign up for GitHub”</p></div>' +
-                '<span>Sign up for GitHub<span>' +
-                //text node in different tags
-                '<div>create account</div>' +
-                '<div>By clicking “create account in GitHub”</div>' +
-                '<a href="github.com">create account</a>' +
-                '<a href="github.com">create account now</a>' +
-                '<button class="button" type="submit">create account</button>' +
-                '<button class="button" type="submit">create account in GitHub</button>' +
-                //text node with input tag
-                '<input type="text" value="password" />' +
-                '<input type="text" value="Enter password" />' +
-                //text node with value
-                '<p>taiko demo</p>' +
-                '<input type="text" value="taiko demo" />' +
-                '<p>Enter name for taiko demo</p>' +
-                '<input type="text" value="Enter name for taiko demo" />' +
-                //text node with type
-                '<p>this is text</p>' +
-                '<input type="text" value="user name" />' +
-                '<p>Enter user name in textbox</p>' +
-                '<input type="text" value="Enter user name" />' +
-                '</div>';
+            let innerHtml = `
+    <div>
+        <!-- //text node exists -->
+        <div>
+            <div name="text_node">
+                User name: <input type="text" name="uname">
+            </div>
+            <div name="value_or_type_of_field_as_text">
+                <input type="button" value="click me">
+                <input type="submit">
+            </div>
+            <div name="text_across_element">
+                <div>Text <span>Across</span> Element</div>
+            </div>
+            <div id="inTop" name="text_same_as_iframe" style="display: none">
+                Text in iframe
+            </div>
+            <iframe></iframe>
+            <script>
+                document.querySelector("iframe").contentDocument.write('<div id="inIframe">Text in iframe</div>');
+                document.querySelector("iframe").contentDocument.close();
+            </script>
+            <!-- // same text node in page -->
+            <div>
+                <p>Sign up</p>
+            </div>
+            <div>
+                <p>By clicking “Sign up for GitHub”</p>
+            </div>
+            <span>Sign up for GitHub<span>
+            <!-- //text node in different tags -->
+            <div>create account</div>
+            <div>By clicking “create account in GitHub”</div>
+            <a href="github.com">create account</a>
+            <a href="github.com">create account now</a>
+            <button class="button" type="submit">create account</button>
+            <button class="button" type="submit">create account in GitHub</button>
+            <!-- //text node with input tag -->
+            <input type="text" value="password" />
+            <input type="text" value="Enter password" />
+            <!-- //text node with value -->
+            <p>taiko demo</p>
+            <input type="text" value="taiko demo" />
+            <p>Enter name for taiko demo</p>
+            <input type="text" value="Enter name for taiko demo" />
+            <!-- //text node with type -->
+            <p>this is text</p>
+            <input type="text" value="user name" />
+            <p>Enter user name in textbox</p>
+            <input type="text" value="Enter user name" />
+        </div>
+        <div >
+            <h1>Elements visibility</h1>
+            <div>
+                <p>Visible content</p>
+            </div>
+
+            <div style="display:none">
+                <p>Parent element has display none</p>
+            </div>
+
+            <div>
+                <p style="display:none">Element it self has display none</p>
+            </div>
+
+            <div style="display:inline">
+                <p>
+                    With 'display: inline', the width, height,
+                    margin-top, margin-bottom, and float properties have no effect.
+                    Hence, element.offsetHeight and element.offsetWidt are zero(0).
+                </p>
+                Element with display inline should be invisible
+            </div>
+
+            <div>
+            </div>
+        </div>
+    </div>
+            `;
             filePath = createHtml(innerHtml, test_name);
             await openBrowser(openBrowserArgs);
             await goto(filePath);
             await setConfig({waitForNavigation:false});
         });
-        
         after(async () => {
             await setConfig({waitForNavigation:true});
             await closeBrowser();
@@ -199,6 +231,24 @@ describe('match', () => {
             it('test contains match for type and text', async () => {
                 expect(await text('tex').exists()).to.be.true;
                 expect(await text('tex').get()).to.have.lengthOf(11);
+            });
+        });
+
+        describe('Text visibility', () => {
+            it('txt should be visible', async () => {
+                expect(await text('Visible content').exists()).to.be.true;
+            });
+
+            it('txt should not be visible when display is set to none', async () => {
+                expect(await text('Element it self has display none').exists()).to.be.false;
+            });
+
+            it('txt should not be visible when paraent element display is set to none', async () => {
+                expect(await text('Parent element has display none').exists()).to.be.false;
+            });
+
+            it('txt should be visible when ', async () => {
+                expect(await text('Element with display inline should be invisible').exists()).to.be.true;
             });
         });
     });
