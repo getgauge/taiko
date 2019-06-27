@@ -27,7 +27,7 @@ fs.readdirSync('docs/layout/partials').forEach(file => {
 handlebars.registerHelper('lowerCase', require('./layout/helpers/lowerCase'));
 
 var template = handlebars.compile(fs.readFileSync('docs/layout/page.html', 'utf8'));
-var html    = template({toc:metadata});
+var html    = template({toc:metadata,title:'Taiko, free and open source browser automation'});
 
 
 console.log('Writing to index.html...');
