@@ -44,7 +44,7 @@ This installs Taiko and the latest version of Chromium browser. We are all set t
 Taiko comes with a Recorder that’s a REPL for writing test scripts. You can use Taiko’s JavaScript API to control the browser from the REPL. To launch the REPL type taiko in your favorite terminal application
 
     $ taiko
-    Version: 0.2.0 (Chromium:69.0.3476.0)
+    Version: 0.8.0 (Chromium:76.0.3803.0)
     Type .api for help and .exit to quit
     > 
 
@@ -103,7 +103,7 @@ By default Taiko runs the script in headless mode, that means it does not launch
 Taiko’s REPL also documents all the API’s. To view all available API’s use the special command `.api`
 
     $ taiko
-    Version: 0.2.0 (Chromium:69.0.3476.0)
+    Version: 0.8.0 (Chromium:76.0.3803.0)
     Type .api for help and .exit to quit
     > .api
     Browser actions
@@ -134,7 +134,7 @@ clicks on any element with the text `Google Search` (a button on the page at htt
 
 Or if you want to write into a specific text field 
 
-    > write("something", into(textField({placeholder: "Username"})))
+    > write("something", into(textBox({placeholder: "Username"})))
 
 With Taiko’s API we can avoid using ids/css/xpath selectors to create reliable tests that don’t break with changes in the web page’s structure.
 
