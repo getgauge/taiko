@@ -6,7 +6,7 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
 
-![Taiko REPL](https://user-images.githubusercontent.com/54427/43075023-f4d18878-8e9c-11e8-91b2-227a3d02e0f6.gif)
+![Taiko REPL](https://user-images.githubusercontent.com/44019225/60337143-da31a280-99bf-11e9-80a4-57917d81e0b6.gif)
 
 # What’s Taiko?
 
