@@ -179,7 +179,7 @@
 <section class='wait-for-right-events'>
     <h2 id="wait-for-right-events">Wait for right events</h2>
     <p>Taiko by default waits for any network requests that are triggered as part of the action, frame load, frame navigation 
-        and new target navigation events. All navigation actions like goto, goBack, goForward waits for loadEventFired in addition.
+        and new target navigation events. Navigation actions like goto, reload waits for loadEventFired in addition.
         There can be scenarios where the action might take time to trigger events, hence could be missed by taiko. 
         Below are few where waiting for appropriate events will improve performance and reduce flakyness in tests.
     </p>
