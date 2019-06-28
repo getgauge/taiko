@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
-let { openBrowser, goto, dropDown, closeBrowser, setConfig } = require('../../lib/taiko');
+let { openBrowser, goto, below, dropDown, closeBrowser, setConfig } = require('../../lib/taiko');
 const test_name = 'DropDown';
 
 describe(test_name, () => {
@@ -15,6 +15,12 @@ describe(test_name, () => {
                         '<option value="mercedes">Mercedes</option>' +
                         '<option value="audi">Audi</option>' +
                     '</select>' +
+                    '<div name="ReasonText"> Reason: </div>' +
+                        '<select class="select" name="reasonselection">'+
+                            '<option value="-99"> Select </option>' +
+                            '<option value="9092">Reason1</option>' +
+                            '<option value="9093">Reason2</option>' +
+                        '</select>' +
                     '<label>' +
                         '<span>dropDownWithWrappedInLabel</span>' +
                         '<select id="select" name="select" value="select"/>' +
@@ -45,6 +51,13 @@ describe(test_name, () => {
             await dropDown('Cars').select('Audi');
             await dropDown('Cars').select('mercedes');
             expect(await dropDown('Cars').value()).to.equal('mercedes');
+        });
+    });
+
+    describe('Select using value', () => {
+        it('test select() using value', async () => {
+            await dropDown(below('Reason')).select({value:'9092'});
+            expect(await dropDown(below('Reason')).value()).to.equal('9092');
         });
     });
 
