@@ -309,6 +309,22 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
   <p>You can see how jest and Taiko work together from this <a href="https://github.com/getgauge-examples/jest-taiko" target="_blank">sample project</a>.</p>
 </section>
 
+<section class="taiko-wait-mechanism">
+  <h2 id="taiko-wait-mechanism">Implicit wait mechanism</h2>
+  <p>All actions waits for below mentioned events implicitly, 
+      `waitForStart` is the time taiko waits to collect all said events and 
+      then wait for it to be completed within `navigationTimeout` </p>
+  <ul class="desc-list">
+    <li>Network requests</li>
+    <li>Frame Loads/Navigation</li>
+    <li>Frame Navigation</li>
+    <li>New tab/window open</li>
+    <li>New tab/window close</li>
+  </ul>
+  <p>Additionally navigation actions like goto and reload waits for `loadEventFired` which ensures page load. 
+    And also waits for the element to be available before the action.</p>
+</section>
+
 <section class="taiko-env-variables">
     <h2 id="taiko-env-variables">Environment Variables</h2>
     <p>Taiko lets you specify certain Environment varibles to customise its behaviour</p>
