@@ -61,6 +61,13 @@ describe(test_name, () => {
         });
     });
 
+    describe('Select using index', () => {
+        it('test select() using index', async () => {
+            await dropDown(below('Reason')).select({index:1});
+            expect(await dropDown(below('Reason')).value()).to.equal('9092');
+        });
+    });
+    
     describe('wrapped in label', () => {    
         it('test exists()', async () => {
             expect(await dropDown('dropDownWithWrappedInLabel').exists()).to.be.true;
