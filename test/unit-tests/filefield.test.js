@@ -8,34 +8,37 @@ const test_name = 'fileField';
 describe(test_name, () => {
     let filePath;
     before(async () => {
-        let innerHtml =
-            // upload a file with filefield
-            '<form name="upload file">' +
-            '<div>' +
-            '<input id="file-upload" type="file" name="file">' +
-            '</br>' +
-            '<input class="button" id="file-submit" type="submit" value="Upload" />' +
-            '</div>' +
-            '<div>' +
-            '<label>' +
-            '<input id="file-upload" type="file" name="file">' +
-            '<span>Select a file</span>' +
-            '<input class="button" id="file-submit" type="submit" value="Upload" />' +
-            '</label>' +
-            '</div>' +
-            '<div>' +
-            '<label for="file-upload">Choose a file</label>' +
-            '<input id="file-upload" type="file" name="file">' +
-            '<input class="button" id="file-submit" type="submit" value="Upload" />' +
-            '</div>' +
-            '</form>';
+        let innerHtml = `
+        <form name="upload file">
+            <div>
+                <input id="file-upload" type="file" name="file">
+                </br>
+                <input class="button" id="file-submit" type="submit" value="Upload" />
+            </div>
+            <div>
+                <label>
+                    <input id="file-upload" type="file" name="file">
+                    <span>Select a file</span>
+                    <input class="button" id="file-submit" type="submit" value="Upload" />
+                </label>
+            </div>
+            <div>
+                <label for="file-upload">Choose a file</label>
+                <input id="file-upload" type="file" name="file">
+                <input class="button" id="file-submit" type="submit" value="Upload" />
+            </div>
+            <div>
+                <label>Choose a file</label>
+                <input id='hidden-file-upload' type='file' style="display:none">
+            </div>
+        </form>`;
         filePath = createHtml(innerHtml, test_name);
         await openBrowser(openBrowserArgs);
         await goto(filePath);
-        await setConfig({waitForNavigation:false});
+        await setConfig({ waitForNavigation: false });
     });
     after(async () => {
-        await setConfig({waitForNavigation:true});
+        await setConfig({ waitForNavigation: true });
         await closeBrowser();
         removeFile(filePath);
     });
@@ -69,6 +72,16 @@ describe(test_name, () => {
                 attach(path.join(__dirname, 'data', 'foo.txt'), fileField('Select a file'));
                 expect(await fileField('Choose a file').value()).to.include('foo.txt');
             });
+        });
+
+    });
+    describe('hidden', () => {
+        it('exists when selectHiddenElement is provided', async () => {
+            expect(await fileField({ id: 'hidden-file-upload' }, {selectHiddenElement:true}).exists()).to.be.true;
+        });
+
+        it('does not exists when selectHiddenElement is not provided', async () => {
+            expect(await fileField({ id: 'hidden-file-upload' }).exists()).to.be.false;
         });
     });
 });
