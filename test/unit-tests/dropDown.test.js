@@ -54,13 +54,6 @@ describe(test_name, () => {
         });
     });
 
-    describe('Select using value', () => {
-        it('test select() using value', async () => {
-            await dropDown(below('Reason')).select({value:'9092'});
-            expect(await dropDown(below('Reason')).value()).to.equal('9092');
-        });
-    });
-
     describe('Select using index', () => {
         it('test select() using index', async () => {
             await dropDown(below('Reason')).select({index:1});
