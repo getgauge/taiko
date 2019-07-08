@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
-let networkHandler = rewire('../../lib/networkHandler');
+let networkHandler = rewire('../../lib/handlers/networkHandler');
 const test_name = 'Intercept';
 
 describe(test_name, () => {

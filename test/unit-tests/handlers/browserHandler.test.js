@@ -1,6 +1,6 @@
 const rewire = require('rewire');
 const expect = require('chai').expect;
-const browserHandler = rewire('../../../lib/browserHandler');
+const browserHandler = rewire('../../../lib/handlers/browserHandler');
 
 describe('browserHandler', () => {
     it('.setBrowser should set the browser as global var', () => {
