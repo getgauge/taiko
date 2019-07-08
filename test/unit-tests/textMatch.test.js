@@ -240,11 +240,11 @@ describe('match', () => {
             });
 
             it('txt should not be visible when display is set to none', async () => {
-                expect(await text('Element it self has display none').exists()).to.be.false;
+                expect(await text('Element it self has display none').exists(0,0)).to.be.false;
             });
 
             it('txt should not be visible when paraent element display is set to none', async () => {
-                expect(await text('Parent element has display none').exists()).to.be.false;
+                expect(await text('Parent element has display none').exists(0,0)).to.be.false;
             });
 
             it('txt should be visible when ', async () => {

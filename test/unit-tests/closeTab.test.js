@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 const { EventEmitter } = require('events');
 const rewire = require('rewire');
 const taiko = rewire('../../lib/taiko');
-const targetHandler = rewire('../../lib/targetHandler');
+const targetHandler = rewire('../../lib/handlers/targetHandler');
 
 describe('closeTab', () => {
     let _targets = { matching: [], others: [] };

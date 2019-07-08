@@ -1,6 +1,6 @@
 const rewire = require('rewire');
 const expect = require('chai').expect;
-const domHandler = rewire('../../../lib/domHandler');
+const domHandler = rewire('../../../lib/handlers/domHandler');
 
 describe('domHandler', () => {
     let calledWith = {};

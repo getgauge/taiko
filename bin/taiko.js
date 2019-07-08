@@ -3,7 +3,7 @@
 const runFile = require('./runFile');
 const fs = require('fs');
 const Command = require('commander').Command;
-const repl = require('../lib/repl');
+const repl = require('../lib/repl/repl');
 const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
 const NETWORK_TYPES = Object.keys(require('../lib/data/networkConditions'));

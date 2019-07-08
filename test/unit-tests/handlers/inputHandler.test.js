@@ -1,6 +1,6 @@
 const rewire = require('rewire');
 const expect = require('chai').expect;
-const inputHandler = rewire('../../../lib/inputHandler');
+const inputHandler = rewire('../../../lib/handlers/inputHandler');
 
 describe('inputHandler', () => {
     let calledWith = [];
