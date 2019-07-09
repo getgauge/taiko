@@ -10,7 +10,7 @@ describe('Config tests', () => {
         describe('For invalid config name', () => {
 
             it('should throw exception', () => {
-                let allowedConfig = 'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful';
+                let allowedConfig = 'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
                 let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfig}`;
                 expect(() => config.setConfig({ invalidConfig: true })).to.throw(new RegExp(`^${expectedMessage}$`));
             });
@@ -24,6 +24,7 @@ describe('Config tests', () => {
                 it('should update the config', () => {
                     const newConfig = {
                         headful: false,
+                        highlightOnAction: 'true',
                         ignoreSSLErrors: false,
                         navigationTimeout: 2,
                         observe: false,
@@ -207,6 +208,7 @@ describe('Config tests', () => {
             };
             const expectedConfig = {
                 'headful': true,
+                'highlightOnAction': 'true',
                 'ignoreSSLErrors': true,
                 'navigationTimeout': 30000,
                 'observe': true,
