@@ -6,7 +6,7 @@ const test_name = 'Intercept';
 describe(test_name, () => {
     let actualOption;
     before(() => {
-        networkHandler.setNetwork({
+        networkHandler.__set__('network',{
             continueInterceptedRequest: (options) => { actualOption = options; return Promise.resolve(); },
             requestWillBeSent: () => { },
             loadingFinished: () => { },

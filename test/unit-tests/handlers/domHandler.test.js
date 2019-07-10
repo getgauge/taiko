@@ -7,7 +7,7 @@ describe('domHandler', () => {
 
     beforeEach(() => {
         calledWith = {};
-        domHandler.setDOM({
+        domHandler.__set__('dom',{
             getBoxModel: async (param) => {
                 calledWith = param;
                 if (param.nodeId == 1) {
@@ -16,13 +16,6 @@ describe('domHandler', () => {
                 return { model: { border: [8, 9, 10, 11, 12, 13, 14, 15] } };
             }
         });
-    });
-
-    it('.setDOM should set the dom as global var', () => {
-        domHandler.setDOM(new Object('DOM Instance'));
-        let br = domHandler.__get__('dom');
-        expect(br).to.instanceof(Object);
-        expect(br.toString()).to.eq('DOM Instance');
     });
 
     it('.boundBox should give the bound  box of given node id', async () => {
