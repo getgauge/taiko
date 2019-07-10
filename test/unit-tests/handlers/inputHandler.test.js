@@ -7,7 +7,7 @@ describe('inputHandler', () => {
 
     beforeEach(() => {
         calledWith = [];
-        inputHandler.setInput({
+        inputHandler.__set__('input',{
             dispatchKeyEvent: async (param) => {
                 calledWith.push(param);
             },
@@ -18,13 +18,6 @@ describe('inputHandler', () => {
                 calledWith.push(param);
             }
         });
-    });
-
-    it('.setinput should set the input as global var', () => {
-        inputHandler.setInput(new Object('Input Instance'));
-        let em = inputHandler.__get__('input');
-        expect(em).to.instanceof(Object);
-        expect(em.toString()).to.eq('Input Instance');
     });
 
     it('.up should dispach keyUp event', async () => {
