@@ -31,7 +31,7 @@ describe('pageHandler', () => {
             }
         };
         pageHandler.__set__('page',page);
-        pageHandler.__set__('xhrEvent',event);
+        pageHandler.__set__('eventHandler',event);
     });
 
 
