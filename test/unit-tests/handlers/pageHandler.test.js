@@ -30,8 +30,8 @@ describe('pageHandler', () => {
                 return {};
             }
         };
-        pageHandler.setPage(page, event, () => { }, () => { });
-
+        pageHandler.__set__('page',page);
+        pageHandler.__set__('xhrEvent',event);
     });
 
 
