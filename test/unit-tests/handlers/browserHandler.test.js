@@ -3,14 +3,7 @@ const expect = require('chai').expect;
 const browserHandler = rewire('../../../lib/handlers/browserHandler');
 
 describe('browserHandler', () => {
-    it('.setBrowser should set the browser as global var', () => {
-        browserHandler.setBrowser(new Object('Browser Instance'));
-        let br = browserHandler.__get__('_browser');
-        expect(br).to.instanceof(Object);
-        expect(br.toString()).to.eq('Browser Instance');
-    });
-
-
+    
     it('.clearPermissionOverrides should clear all overriden permissions', () => {
         let isCalled = false;
         let mockBrInstance = {
