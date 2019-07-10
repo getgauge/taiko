@@ -8,7 +8,7 @@ describe('emulationHandler', () => {
 
     beforeEach(() => {
         calledWith = {};
-        emulationHandler.setEmulation({
+        emulationHandler.__set__('emulation', {
             setGeolocationOverride: async (param) => {
                 calledWith = param;
             },
@@ -16,13 +16,6 @@ describe('emulationHandler', () => {
                 calledWith = param;
             }
         });
-    });
-
-    it('.setEmulation should set the emulation as global var', () => {
-        emulationHandler.setEmulation(new Object('Emulation Instance'));
-        let em = emulationHandler.__get__('emulation');
-        expect(em).to.instanceof(Object);
-        expect(em.toString()).to.eq('Emulation Instance');
     });
 
     it('.setLocation should set the location', async () => {
