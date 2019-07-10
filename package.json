@@ -54,7 +54,7 @@
 	"devDependencies": {
 		"chai": "^4.2.0",
 		"chai-as-promised": "^7.1.1",
-		"documentation": "^11.0.0",
+		"documentation": "^12.0.0",
 		"eslint": "^5.15.1",
 		"eslint-plugin-jest": "^22.5.1",
 		"handlebars": "^4.1.2",
