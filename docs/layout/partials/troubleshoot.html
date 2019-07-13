@@ -108,7 +108,7 @@
 
 <h2>Running on Docker</h2>
 <section class="taiko-with-docker">
-    <h2 id="taiko-with-docker">Taiko with Dokcer</h2>
+    <h2 id="taiko-with-docker">Taiko with Docker</h2>
     <p>To run Taiko in a docker container follow these instructions:</p>
     <div class="code-section">
         <pre class="hljs bash"><code>docker pull node</code></pre>
@@ -181,7 +181,7 @@
     <p>Taiko by default waits for any network requests that are triggered as part of the action, frame load, frame navigation 
         and new target navigation events. Navigation actions like goto, reload waits for loadEventFired in addition.
         There can be scenarios where the action might take time to trigger events, hence could be missed by taiko. 
-        Below are few where waiting for appropriate events will improve performance and reduce flakyness in tests.
+        Below are few where waiting for appropriate events will improve performance and reduce flakiness in tests.
     </p>
     <ul>
         <li><p>firstMeaningfulPaint - Wait for this event if an action can trigger a page load which has heavy image or fonts to loaded.</p></li>
