@@ -5,15 +5,20 @@ const emulationHandler = rewire('../../../lib/handlers/emulationHandler');
 
 describe('emulationHandler', () => {
     let calledWith = {};
+    let calledWithTouch = {};
 
     beforeEach(() => {
         calledWith = {};
+
         emulationHandler.__set__('emulation', {
             setGeolocationOverride: async (param) => {
                 calledWith = param;
             },
             setDeviceMetricsOverride: async (param) => {
                 calledWith = param;
+            },
+            setTouchEmulationEnabled: async (param) => {
+                calledWithTouch = param;
             }
         });
     });
@@ -55,6 +60,7 @@ describe('emulationHandler', () => {
 
     it('.setViewport should set viewport and use default setting if not provided', async () => {
         await emulationHandler.setViewport({ height: 123, width: 543 });
+        expect(calledWithTouch).to.be.eql({ enabled: false });
         expect(calledWith).to.be.eql({ height: 123, width: 543, mobile: false, screenOrientation: { angle: 0, type: 'portraitPrimary' }, deviceScaleFactor: 1 });
     });
 
