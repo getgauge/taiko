@@ -38,7 +38,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-push": "npm run test:unit"
+			"pre-push": "npm test"
 		}
 	},
 	"author": "getgauge",
