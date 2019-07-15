@@ -1,4 +1,4 @@
-const rewire = require('rewire');
+gconst rewire = require('rewire');
 const EventEmitter = require('events').EventEmitter;
 const expect = require('chai').expect;
 let pageHandler = rewire('../../../lib/handlers/pageHandler');
