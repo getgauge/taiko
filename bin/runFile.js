@@ -1,6 +1,7 @@
 const path = require('path');
 const util = require('util');
 const recorder = require('../recorder');
+const { safeLog } = require('../lib/util');
 
 const { removeQuotes, symbols } = require('../lib/util');
 module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
@@ -33,7 +34,7 @@ module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
             global[func]  = taiko[func];
         if (continueRepl) {
             recorder.repl = async () => {
-                console.log(removeQuotes(util.inspect('Starting REPL..', { colors: true }), 'Starting REPL..'));
+                safeLog(removeQuotes(util.inspect('Starting REPL..', { colors: true }), 'Starting REPL..'));
                 await continueRepl(file);
             };
         }
@@ -43,7 +44,7 @@ module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
     eventEmitter.on('success', (desc) => {
         desc = symbols.pass + desc;
         desc = removeQuotes(util.inspect(desc, { colors: true }), desc);
-        console.log(desc);
+        safeLog(desc);
     });
     const oldNodeModulesPaths = module.constructor._nodeModulePaths;
     module.constructor._nodeModulePaths = function () {
