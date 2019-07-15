@@ -17,11 +17,6 @@
 		"install": "node lib/install.js",
 		"update-json-doc": "node build/updateJsonDoc.js"
 	},
-	"pre-commit": [
-		"test:api",
-		"lint",
-		"update-json-doc"
-	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/getgauge/taiko"
@@ -38,6 +33,7 @@
 	},
 	"husky": {
 		"hooks": {
+			"pre-commit": "npm run lint && npm run test:api && npm run update-json-doc",
 			"pre-push": "npm test"
 		}
 	},
@@ -66,7 +62,6 @@
 		"husky": "^3.0.0",
 		"marked": "^0.7.0",
 		"mocha": "^6.1.4",
-		"pre-commit": "^1.2.2",
 		"rewire": "^4.0.1"
 	}
 }
