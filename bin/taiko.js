@@ -86,9 +86,9 @@ function isCLICommand(){
     return require.main === module;
 }
 
-if (isCLICommand() && isTaikoRunner(processArgv[1])) {
+if (isTaikoRunner(processArgv[1])) {
     let plugins = getExecutablePlugins();
-    if(!(seekingForHelp(processArgv) || Object.prototype.hasOwnProperty.call(plugins, processArgv[2]) )) {
+    if(isCLICommand() && !(seekingForHelp(processArgv) || Object.prototype.hasOwnProperty.call(plugins, processArgv[2]) )) {
         // append taiko sub-command as if the user has executed <taiko taiko script.js or just taiko taiko>
         processArgv.splice(2,0, 'taiko');
     }
