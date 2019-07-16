@@ -4,7 +4,7 @@ const runFile = require('./runFile');
 const fs = require('fs');
 const Command = require('commander').Command;
 const repl = require('../lib/repl/repl');
-const { isTaikoRunner, safeLog } = require('../lib/util');
+const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
 const NETWORK_TYPES = Object.keys(require('../lib/data/networkConditions'));
 const { getExecutablePlugins } = require('../lib/plugins');
@@ -33,11 +33,11 @@ process.on('uncaughtException', exitOnUnhandledFailures);
 
 function validate(file) {
     if (!file.endsWith('.js')) {
-        safeLog('Invalid file extension. Only javascript files are accepted.');
+        console.log('Invalid file extension. Only javascript files are accepted.');
         process.exit(1);
     }
     if (!fs.existsSync(file)) {
-        safeLog('File does not exist.');
+        console.log('File does not exist.');
         process.exit(1);
     }
 }
@@ -46,8 +46,8 @@ function setupEmulateDevice(device) {
     if (Object.prototype.hasOwnProperty.call(devices, device))
         process.env['TAIKO_EMULATE_DEVICE'] = device;
     else {
-        safeLog(`Invalid value ${device} for --emulate-device`);
-        safeLog(`Available devices: ${Object.keys(devices).join(', ')}`);
+        console.log(`Invalid value ${device} for --emulate-device`);
+        console.log(`Available devices: ${Object.keys(devices).join(', ')}`);
         process.exit(1);
     }
 }
@@ -59,8 +59,8 @@ function setPluginNameInEnv(pluginName) {
 
 function setEmulatedNetwork(networkType) {
     if (!NETWORK_TYPES.includes(networkType)) {
-        safeLog(`Invalid value ${networkType} for --emulate-network`);
-        safeLog(`Available options: ${NETWORK_TYPES.join(', ')}`);
+        console.log(`Invalid value ${networkType} for --emulate-network`);
+        console.log(`Available options: ${NETWORK_TYPES.join(', ')}`);
         process.exit(1);
     }
     process.env.TAIKO_EMULATE_NETWORK = networkType;
