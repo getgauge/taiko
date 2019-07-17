@@ -54,7 +54,7 @@ This launches the Taiko prompt. You can now use Taiko’s API as commands in thi
 
 You can now automate this Chrome browser instance with commands, for example, make the browser search google for something.
 
-    > goto("google.com")
+    > goto("google.com/?hl=en")
     > write("taiko test automation")
     > click("Google Search")
 
