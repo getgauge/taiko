@@ -7,22 +7,17 @@ describe('openTab', () => {
     let actualTarget, target, actualOptions, actualUrl;
     before(async () => {
         let mockCri = {
-            New : async function () {
+            New : async function (options) {
+                actualUrl = options.url;
                 return target;
             }
         };
         let mockConnectToCri = (target) => { actualTarget = target;};
-        let mockCriTarget = {
-            createTarget : async function(url){
-                actualUrl = url.url;
-            }
-        };
         const mockWrapper = async (options, cb) => { actualOptions = options; await cb(); };
         taiko.__set__('validate', () => {});
         taiko.__set__('doActionAwaitingNavigation', mockWrapper);
         taiko.__set__('cri', mockCri);
         taiko.__set__('connect_to_cri', mockConnectToCri);
-        taiko.__set__('criTarget', mockCriTarget);
         taiko.__set__('_client', new EventEmitter());
     });
 
@@ -49,7 +44,7 @@ describe('openTab', () => {
     });
 
     it('should call doActionAwaitingNavigation with default options if options not given', async () => {
-        let expectedOptions =  {'navigationTimeout': 30000, 'waitForNavigation': true, 'waitForStart': 100};
+        let expectedOptions =  {'navigationTimeout': 30000, 'waitForNavigation': true, 'waitForStart': 100, 'isPageNavigationAction':true};
         await taiko.openTab('example.com');
         expect(actualOptions).to.deep.equal(expectedOptions);
     });

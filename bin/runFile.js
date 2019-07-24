@@ -41,6 +41,7 @@ module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
     }
     var eventEmitter = taiko.emitter;
     eventEmitter.on('success', (desc) => {
+        if (process.env.TAIKO_DISABLE_LOGOUT && process.env.TAIKO_DISABLE_LOGOUT.toLowerCase() !== 'false') return;
         desc = symbols.pass + desc;
         desc = removeQuotes(util.inspect(desc, { colors: true }), desc);
         console.log(desc);

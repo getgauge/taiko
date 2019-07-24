@@ -66,6 +66,10 @@ function setEmulatedNetwork(networkType) {
     process.env.TAIKO_EMULATE_NETWORK = networkType;
 }
 
+function setDisableLogout() {
+    process.env.TAIKO_DISABLE_LOGOUT = 'true';
+}
+
 function seekingForHelp(args) {
     return args.includes('-h') || args.includes('--help');
 }
@@ -127,6 +131,11 @@ if (isTaikoRunner(processArgv[1])) {
         .option(
             '--plugin <plugin1,plugin2...>',
             'Load the taiko plugin.', setPluginNameInEnv
+        )
+        .option(
+            '--no-log',
+            'Disable log output of taiko',
+            setDisableLogout
         )
         .action(function (_, fileName, cmd) {
             taiko = require('../lib/taiko');

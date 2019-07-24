@@ -17,11 +17,6 @@
 		"install": "node lib/install.js",
 		"update-json-doc": "node build/updateJsonDoc.js"
 	},
-	"pre-commit": [
-		"test:api",
-		"lint",
-		"update-json-doc"
-	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/getgauge/taiko"
@@ -35,6 +30,12 @@
 	"taiko": {
 		"chromium_revision": "662092",
 		"chromium_version": "76.0.3803.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run lint && npm run test:api && npm run update-json-doc",
+			"pre-push": "npm test"
+		}
 	},
 	"author": "getgauge",
 	"license": "MIT",
@@ -58,9 +59,9 @@
 		"eslint": "^5.15.1",
 		"eslint-plugin-jest": "^22.5.1",
 		"handlebars": "^4.1.2",
+		"husky": "^3.0.0",
 		"marked": "^0.7.0",
 		"mocha": "^6.1.4",
-		"pre-commit": "^1.2.2",
 		"rewire": "^4.0.1"
 	}
 }
