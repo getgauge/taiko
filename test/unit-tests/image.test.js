@@ -11,8 +11,10 @@ describe(test_name, () => {
             <h3>Images</h3>
             <img src="brokenImage.jpg" id="brokenImage">
             <img src="avatar-blank.jpg" alt="avatar">
-        </div>
-            `;
+            <h3>Div Image</h3>
+            <div id="divImage" style="background-image: url('image.png')"></div>
+            <p id="paraImage" style="background-image: url('something.png')">okay</p>
+        </div>`;
         filePath = createHtml(innerHtml, test_name);
         await openBrowser(openBrowserArgs);
         await goto(filePath);
@@ -35,6 +37,15 @@ describe(test_name, () => {
         });
         it('should find the image with proximity selector', async () => {
             expect(await image(below('Images')).exists()).to.be.true;
+        });
+        it('should find div image using selectors', async () => {
+            expect(await image({ id: 'divImage' }).exists()).to.be.true;
+        });
+        it('should find p tag image using selectors', async () => {
+            expect(await image({ id: 'paraImage' }).exists()).to.be.true;
+        });
+        it('should find the div image with proximity selector', async () => {
+            expect(await image(below('Div Image')).exists()).to.be.true;
         });
     });
 });
