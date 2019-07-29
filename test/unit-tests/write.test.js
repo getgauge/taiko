@@ -9,23 +9,31 @@ let test_name = 'write';
 describe(test_name, () => {
     let filePath;
     before(async () => {
-        let innerHtml = '<div>' +
-        '<form name="inputTypeText">' +
-            //Read only input with type text
-            '<div name="inputTypeTextWithInlineTextReadonly">' +
-                '<input type="text" readonly>inputTypeTextWithInlineTextReadonly</input>' +
-            '</div>' +
-            '<div name="focused input">' +
-                '<input type="text" autofocus>focused input</input>' +
-            '</div>' +
-            '<div name="input-type-text">' +
-                '<input type="text">input-type-text</input>' +
-            '</div>' +
-        '</form>';
-        '</div>';
+        let innerHtml = `
+        <div>
+            <form name="inputTypeText">
+            <!--  //Read only input with type text -->
+                <div name="inputTypeTextWithInlineTextReadonly">
+                    <input type="text" readonly>inputTypeTextWithInlineTextReadonly</input>
+                </div>
+                <div name="focused input" >
+                    <input type="text" autofocus >focused input</input>
+                </div>
+                <div name="input-type-text">
+                    <input type="text">input-type-text</input>
+                </div>
+                <div>
+                    <input type="text" disabled='true' id='disabled-input'>initially disabled input-type-text</input>
+                </div>
+            </form>
+            <script type="text/javascript">
+                setTimeout( () => {
+                    document.getElementById('disabled-input').disabled = false;
+                }, 100);
+            </script>
+        </div>`;
         filePath = createHtml(innerHtml, test_name);
         await openBrowser(openBrowserArgs);
-        await setConfig({waitForNavigation:false});
         await goto(filePath);
     });
 
@@ -48,6 +56,31 @@ describe(test_name, () => {
 
     it('should fail for readonly feild', async () => {
         await expect(write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineTextReadonly')))).to.eventually.be.rejected;
+    });
+
+    it('should wait for element to be writable when selector is provided', async () => {
+        await write('Taiko can wait for element to be writable.', into(textBox('initially disabled input-type-text')));
+        expect(await textBox('initially disabled input-type-text').value()).to.equal('Taiko can wait for element to be writable.');
+    });
+
+    it('should wait for element to be writable', async () => {
+        let innerHtml = `
+        <div>
+            <form name="inputTypeText">
+                <div>
+                    <input type="text" disabled='true' id='disabled-input' autofocus>initially disabled input-type-text</input>
+                </div>
+            </form>
+            <script type="text/javascript">
+                setTimeout( () => {
+                    document.getElementById('disabled-input').disabled = false;
+                }, 100);
+            </script>
+        </div>`;
+        filePath = createHtml(innerHtml, test_name);
+        await goto(filePath);
+        await write('Taiko can wait for element to be writable.', into(textBox('initially disabled input-type-text')));
+        expect(await textBox('initially disabled input-type-text').value()).to.equal('Taiko can wait for element to be writable.');
     });
 });
 
