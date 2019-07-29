@@ -35,7 +35,6 @@ jobs:
 
       - script: npm run test-functional
 
-    steps:
       - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
         artifact: Report
 
@@ -56,7 +55,6 @@ jobs:
 
       - script: npm run test-functional
 
-    steps:
       - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
         artifact: Report  
 
@@ -79,6 +77,5 @@ jobs:
 
       - powershell: npm run test-functional
 
-    steps:
       - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
         artifact: Report  
