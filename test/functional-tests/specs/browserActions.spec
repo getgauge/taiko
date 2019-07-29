@@ -25,12 +25,8 @@
 ## Close Tab with no parameters
 * Intercept Google Analytics
 * Navigate to "google.com"
-* Open Tab "https://www.thoughtworks.com/contact-us" with timeout "60000"
-* Click link near 
-
-   |Type|Selector                         |
-   |----|---------------------------------|
-   |text|"I agree to share my information"|
+* Open Tab "http://the-internet.herokuapp.com/windows" with timeout "60000"
+* Click link "Click here"
 * Close Tab
 * Close Tab
 * Switch to tab with title "Google"
