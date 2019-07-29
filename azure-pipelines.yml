@@ -36,7 +36,7 @@ jobs:
       - script: npm run test-functional
 
       - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
-        artifact: Report-linux
+        artifact: Report-linux-$(node_version)
         condition: always()
 
   - job: macOS
