@@ -30,8 +30,7 @@
 
    |Type|Selector                         |
    |----|---------------------------------|
-   |text|"I agree to share my information"|
-* Close Tab
+   |text|"Customers with enterprise support should use our"|
 * Close Tab
 * Switch to tab with title "Google"
 
