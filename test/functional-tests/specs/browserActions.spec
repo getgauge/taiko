@@ -23,7 +23,6 @@
 * Close Tab "https://gauge.org"
 
 ## Close Tab with no parameters
-* Intercept Google Analytics
 * Navigate to "google.com"
 * Open Tab "http://the-internet.herokuapp.com/windows"
 * Click link "Click here"

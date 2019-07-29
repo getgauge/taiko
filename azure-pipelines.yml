@@ -35,6 +35,10 @@ jobs:
 
       - script: npm run test-functional
 
+    steps:
+      - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
+        artifact: Report
+
   - job: macOS
     pool:
       vmImage: 'macOS-10.13'
@@ -51,6 +55,10 @@ jobs:
       - script: npm run examples
 
       - script: npm run test-functional
+
+    steps:
+      - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
+        artifact: Report  
 
   - job: Windows
     pool:
@@ -70,3 +78,7 @@ jobs:
       - powershell: npm run examples
 
       - powershell: npm run test-functional
+
+    steps:
+      - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
+        artifact: Report  
