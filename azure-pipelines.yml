@@ -36,7 +36,7 @@ jobs:
       - script: npm run test-functional
 
       - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
-        artifact: Report
+        artifact: Report-linux-$(node_version)
 
   - job: macOS
     pool:
@@ -56,7 +56,7 @@ jobs:
       - script: npm run test-functional
 
       - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
-        artifact: Report  
+        artifact: Report-mac  
 
   - job: Windows
     pool:
@@ -78,4 +78,4 @@ jobs:
       - powershell: npm run test-functional
 
       - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
-        artifact: Report  
+        artifact: Report-windows  
