@@ -25,7 +25,7 @@
 ## Close Tab with no parameters
 * Intercept Google Analytics
 * Navigate to "google.com"
-* Open Tab "http://the-internet.herokuapp.com/windows" with timeout "60000"
+* Open Tab "http://the-internet.herokuapp.com/windows"
 * Click link "Click here"
 * Close Tab
 * Close Tab
