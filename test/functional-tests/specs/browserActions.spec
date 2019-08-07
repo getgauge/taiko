@@ -24,11 +24,11 @@
 
 ## Close Tab with no parameters
 * Navigate to "google.com"
-* Open Tab "http://the-internet.herokuapp.com/windows"
-* Click link "Click here"
+* Open Tab "gauge.org"
+* Open Tab "https://www.thoughtworks.com/contact-us"
+* Click link "support portal"
 * Close Tab
 * Close Tab
-* Switch to tab with title "Google"
 
 ## Reload
 * Navigate to "https://ahfarmer.github.io/calculator/"
