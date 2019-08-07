@@ -56,10 +56,6 @@ jobs:
 
       - script: npm run test-functional
 
-      - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
-        artifact: Report-mac 
-        condition: always() 
-
   - job: Windows
     pool:
       vmImage: 'vs2017-win2016'
