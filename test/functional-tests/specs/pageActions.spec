@@ -2,13 +2,13 @@
 ## Scroll To, Up
 
 * Navigate to "https://reactjs.org/community/examples.html"
-* Scroll to 
+* Scroll to
 
    |Type|Selector    |
    |----|------------|
    |link|Installation|
 
-* Scroll up 
+* Scroll up
 
    |Type|Selector  |
    |----|----------|
@@ -20,7 +20,7 @@
 * Write "flow"
 * Press "Enter"
 * Click link "Active"
-* Click checkBox with attribute "{\"class\":\"toggle\"}" near 
+* Click checkBox with attribute "{\"class\":\"toggle\"}" near
 
    |Type|Selector|
    |----|--------|
@@ -31,7 +31,7 @@
 ## Double Click
 * Assert text "Hello World" does not exist
 * Navigate to file with relative Path "/specs/data/doubleClick.html"
-* Double click 
+* Double click
 
    |Type|Selector    |
    |----|------------|
@@ -41,7 +41,7 @@
 ## Right Click
 
 * Navigate to file with relative Path "/specs/data/rightClick.html"
-* Right click 
+* Right click
 
    |Type|Selector   |
    |----|-----------|
@@ -50,13 +50,13 @@
 
 ## Hover
 * Navigate to "http://react-compare-app.surge.sh/"
-* Hover on element 
+* Hover on element
 
    |Type|Selector        |
    |----|----------------|
    |$   |".image_overlay"|
 * Click "Compare"
-* Hover on element 
+* Hover on element
 
    |Type|Selector        |
    |----|----------------|
@@ -66,7 +66,7 @@
 ## Drag and drop
 * Navigate to "https://marcojakob.github.io/dart-dnd/basic/"
 * Drag ".document" and drop to ".trash"
-* Drag ".document" and drop at 
+* Drag ".document" and drop at
 
    |direction|pixel|
    |---------|-----|
@@ -81,3 +81,23 @@
 * Navigate to file with relative Path "/specs/data/touch.html"
 * Tap on "Click"
 * Assert tap on screen
+
+## clear api should work on textArea
+* Navigate to relative path "./specs/data/HTMLElements.html"
+* Write "hello" into textArea to left of
+   |Type   |Selector|
+   |-------|--------|
+   |textBox|Username|
+* Press "Enter"
+* Write "how"
+* Press "Enter"
+* Write "are you?"
+* Press "Enter"
+* clear "text" from textArea
+   |Type   |Selector|
+   |-------|--------|
+   |textBox|Username|
+* Assert text " " exists on the textArea.
+   |Type   |Selector|
+   |-------|--------|
+   |textBox|Username|

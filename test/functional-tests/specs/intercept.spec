@@ -4,7 +4,7 @@
 * Respond to "https://docs.gauge.org/latest/writing-specifications.html" with "mocked specifications page"
 * Navigate to "https://docs.gauge.org"
 * Click an element that contains "Write Specifications"
-* Assert text "mocked specifications page" exists on the page.
+* Assert text "mocked specifications page" exists on the page. 
 
 ## With array as a response body
 * Respond to "https://docs.gauge.org/latest/writing-specifications.html" with json "[\"mocked\",\"specifications\",\"page\"]"

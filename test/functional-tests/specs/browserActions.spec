@@ -1,13 +1,13 @@
-#Browser Action
+# Browser Action
 
 ## Switch To
 * Intercept Google Analytics
 * Navigate to "https://gauge.org"
 * Click link to left of
 
-   |Type|Selector    |
-   |----|------------|
-   |text|Plugins     |
+   |Type|Selector|
+   |----|--------|
+   |text|Plugins |
 
 * Switch to tab with title "Open Source Test Automation Framework | Gauge"
 * Assert Exists
@@ -34,7 +34,8 @@
 * Navigate to "https://ahfarmer.github.io/calculator/"
 * Click button "8"
 * Reload the page
-* assert text to be "0"
+* assert text to be "0" 
+
    |Type|Selector          |
    |----|------------------|
    |$   |.component-display|
@@ -45,7 +46,6 @@
 * Press "Enter"
 * Reload the page
 * Assert text "flow" exists on the page.
-
 
 ## Get all cookies
 * Navigate to "https://the-internet.herokuapp.com/"

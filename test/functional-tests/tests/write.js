@@ -5,7 +5,7 @@ const {
   near,
   textBox,
   into,
-  screenshot,
+  toLeftOf,
   $
 } = require('../../../lib/taiko');
 var _selectors = require('./selectors');
@@ -31,3 +31,11 @@ step('Write <text> into Input Field near <element>', async function(
     into(textBox(near(_selectors.getElement(element))))
   );
 });
+
+step("Write <text> into textArea to left of <element>", async function(text, element) {
+ await write(
+    text,
+    into(textBox(toLeftOf(_selectors.getElement(element))))
+  );
+});
+
