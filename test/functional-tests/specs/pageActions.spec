@@ -101,3 +101,7 @@
    |Type   |Selector|
    |-------|--------|
    |textBox|Username|
+
+## Navigate within Page
+* Navigate to "https://github.com/getgauge/taiko#whats-taiko"
+* Navigate to "https://github.com/getgauge/taiko#whats-taiko"
