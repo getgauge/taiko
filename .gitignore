@@ -63,6 +63,7 @@ docs/api.md
 docs/index.md
 docs/layout/partials/content.html
 docs/layout/assets/js/docSearch.js
+.idea/
 
 #local chromium
 .local-chromium
