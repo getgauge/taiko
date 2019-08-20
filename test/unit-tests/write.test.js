@@ -124,7 +124,7 @@ describe('write test on multiple similar elements',()=>{
         await expect(write('inputTypeTextWithInlineText', into(textBox('readonlyInputTypeText')))).to.eventually.be.rejectedWith('Element focused is not writable');
     });
 
-    it('should reject for non string value', async () => {
-        await expect(write(null, into(textBox('inputTypeText')))).to.eventually.be.rejectedWith('Invalid text value null');
+    it('should convert number to string value', async () => {
+        await expect(write(12345, into(textBox('inputTypeText')))).not.to.eventually.be.rejected;
     });
 });
