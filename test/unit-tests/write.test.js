@@ -5,7 +5,7 @@ const EventEmitter = require('events').EventEmitter;
 const taiko = rewire('../../lib/taiko.js');
 chai.use(chaiAsPromised);
 const expect = chai.expect;
-let { openBrowser, goto, textBox, closeBrowser, write, into, setConfig } = require('../../lib/taiko');
+let { openBrowser, goto, textBox, closeBrowser, write, into, toLeftOf, setConfig } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 let test_name = 'write';
 
@@ -149,16 +149,16 @@ describe('Write with hideText option', () => {
             <form name="inputTypeText">
             <!--  //Read only input with type text -->
                 <div name="inputTypeTextWithInlineTextReadonly">
-                    <input type="text" readonly>inputTypeTextWithInlineTextReadonly</input>
+                    <input type="text" readonly />inputTypeTextWithInlineTextReadonly
                 </div>
-                <div name="focused input" >
-                    <input type="text" autofocus >focused input</input>
+                <div name="focused input">
+                    <input type="text" autofocus />focused input
                 </div>
                 <div name="input-type-text">
-                    <input type="text">input-type-text</input>
+                    <input type="text" />input-type-text
                 </div>
                 <div>
-                    <input type="text" disabled='true' id='disabled-input'>initially disabled input-type-text</input>
+                    <input type="text" disabled="true" id="disabled-input" />initially disabled input-type-text
                 </div>
             </form>
             <script type="text/javascript">
@@ -184,9 +184,13 @@ describe('Write with hideText option', () => {
         emitter.removeAllListeners();
     });
 
-    it('should mask the text', async () => {
+    it('should mask the text when writing to focused element', async () => {
         emitter.on('success', validateOutput('Wrote ***** into the focused element.'));
         await taiko.write('writing to focused input', { hideText: true });
     });
 
+    it('should mask the text when writing into a selected element', async () => {
+        emitter.on('success', validateOutput('Wrote ***** into the text field To left of input-type-text'));
+        await taiko.write('something', into(textBox(toLeftOf('input-type-text'))), { hideText: true });
+    });
 });
