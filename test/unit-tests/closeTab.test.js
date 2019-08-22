@@ -9,6 +9,15 @@ describe('closeTab', () => {
     let currentTarget;
     let descEmmitter = new EventEmitter();
 
+    let validateEmitterEvent = function(event, expectedText) {
+        return new Promise((resolve) => {
+            descEmmitter.on(event, eventData => {
+                expect(eventData).to.be.equal(expectedText);
+                resolve();
+            });
+        });
+    };
+
     before(() => {
         let mockCri = {
             Close: async function () { }
@@ -36,10 +45,9 @@ describe('closeTab', () => {
 
     it('should close the browser if there are no tabs to reconnect', async () => {
         taiko.__set__('_closeBrowser', () => { });
-        descEmmitter.once('success', (message) => {
-            expect(message).to.be.eql('Closing last target and browser.');
-        });
+        let validatePromise = validateEmitterEvent('success', 'Closing last target and browser.');
         await taiko.closeTab();
+        await validatePromise;
     });
 
     it('should close the current tab and switch to last active target if no url given', async () => {
@@ -47,10 +55,9 @@ describe('closeTab', () => {
         _targets.others.push({ id: '2', type: 'page', url: 'https://flipkart.com' });
         _targets.others.push({ id: '3', type: 'page', url: 'https://amazon.com' });
 
-        descEmmitter.on('success', (message) => {
-            expect(message).to.be.eql('Closed current tab with URL https://flipkart.com');
-        });
+        let validatePromise = validateEmitterEvent('success', 'Closed current tab with URL https://flipkart.com');
         await taiko.closeTab();
+        await validatePromise;
         expect(currentTarget.url).to.be.eql('https://flipkart.com');
     });
 
@@ -59,12 +66,10 @@ describe('closeTab', () => {
         _targets.others.push({ id: '2', type: 'page', url: 'https://amazon.com' });
         _targets.matching.push({ id: '3', type: 'page', url: 'https://flipkart.com' });
 
-        descEmmitter.on('success', (message) => {
-            expect(message).to.be.eql('Closed all tabs with URL https://flipkart.com');
-        });
+        let validatePromise = validateEmitterEvent('success', 'Closed all tabs with URL https://flipkart.com');
         await taiko.closeTab('https://flipkart.com');
+        await validatePromise;
         expect(currentTarget.url).to.be.eql('https://amazon.com');
-
     });
 
 });
