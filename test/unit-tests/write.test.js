@@ -134,9 +134,15 @@ describe('Write with hideText option', () => {
     let actualEmmiter;
     let emitter = new EventEmitter();
 
-    let validateOutput = (expected) => {
-        return (res) => { expect(res).to.be.eql(expected); };
+    let validateEmitterEvent = function(event, expectedText) {
+        return new Promise((resolve) => {
+            emitter.on(event, res => {
+                expect(res).to.be.equal(expectedText);
+                resolve();
+            });
+        });
     };
+
 
     before(async () => {
 
@@ -185,12 +191,14 @@ describe('Write with hideText option', () => {
     });
 
     it('should mask the text when writing to focused element', async () => {
-        emitter.on('success', validateOutput('Wrote ***** into the focused element.'));
+        let validatePromise = validateEmitterEvent('success', 'Wrote ***** into the focused element.');
         await taiko.write('writing to focused input', { hideText: true });
+        await validatePromise;
     });
 
     it('should mask the text when writing into a selected element', async () => {
-        emitter.on('success', validateOutput('Wrote ***** into the text field To left of input-type-text'));
+        let validatePromise = validateEmitterEvent('success', 'Wrote ***** into the text field To left of input-type-text');
         await taiko.write('something', into(textBox(toLeftOf('input-type-text'))), { hideText: true });
+        await validatePromise;
     });
 });
