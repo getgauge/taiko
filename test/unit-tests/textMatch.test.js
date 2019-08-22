@@ -195,10 +195,8 @@ describe('match', () => {
       });
 
       it('test text is from iframe', async () => {
-        const id = await evaluate(text('Text in iframe'), elem => {
-          return elem.parentElement.id;
-        });
-        expect(id.result).to.equal('inIframe');
+        const id = await evaluate(text('Text in iframe'), (elem) => { return elem.parentElement.id; });
+        expect(id).to.equal('inIframe');
       });
     });
     describe('match text in multiple paragraph', () => {
@@ -214,9 +212,7 @@ describe('match', () => {
     describe('match text in different tags', () => {
       it('test exact match for text in multiple elememts', async () => {
         expect(await text('create account').exists()).to.be.true;
-        expect(await text('create account').get()).to.have.lengthOf(
-          3,
-        );
+        expect(await text('create account').get()).to.have.lengthOf(3);
       });
       it('test contains match for text in multiple elements', async () => {
         expect(await text('account').exists()).to.be.true;
@@ -253,31 +249,84 @@ describe('match', () => {
         expect(await text('tex').get()).to.have.lengthOf(11);
       });
     });
+    expect(id.result).to.equal('inIframe');
+  });
+});
+describe('match text in multiple paragraph', () => {
+  it('test exact match for text', async () => {
+    expect(await text('Sign up').exists()).to.be.true;
+    expect(await text('Sign up').get()).to.have.lengthOf(1);
+  });
+  it('test contains match for text', async () => {
+    expect(await text('Sign').exists()).to.be.true;
+    expect(await text('Sign').get()).to.have.lengthOf(3);
+  });
+});
+describe('match text in different tags', () => {
+  it('test exact match for text in multiple elememts', async () => {
+    expect(await text('create account').exists()).to.be.true;
+    expect(await text('create account').get()).to.have.lengthOf(
+      3,
+    );
+  });
+  it('test contains match for text in multiple elements', async () => {
+    expect(await text('account').exists()).to.be.true;
+    expect(await text('account').get()).to.have.lengthOf(6);
+  });
+});
+describe('match text as value in input field', () => {
+  it('test exact match for value in input', async () => {
+    expect(await text('password').exists()).to.be.true;
+    expect(await text('password').get()).to.have.lengthOf(1);
+  });
+  it('test contains match for value in input', async () => {
+    expect(await text('pass').exists()).to.be.true;
+    expect(await text('pass').get()).to.have.lengthOf(2);
+  });
+});
+describe('match text for value and paragraph', () => {
+  it('test exact match for value and text', async () => {
+    expect(await text('taiko demo').exists()).to.be.true;
+    expect(await text('taiko demo').get()).to.have.lengthOf(2);
+  });
+  it('test contains match for value and text', async () => {
+    expect(await text('demo').exists()).to.be.true;
+    expect(await text('demo').get()).to.have.lengthOf(4);
+  });
+});
+describe('match text for type and paragraph', () => {
+  it('test exact match for type', async () => {
+    expect(await text('text').exists()).to.be.true;
+    expect(await text('text').get()).to.have.lengthOf(8);
+  });
+  it('test contains match for type and text', async () => {
+    expect(await text('tex').exists()).to.be.true;
+    expect(await text('tex').get()).to.have.lengthOf(11);
+  });
+});
 
-    describe('Text visibility', () => {
-      it('txt should be visible', async () => {
-        expect(await text('Visible content').exists()).to.be.true;
-      });
+describe('Text visibility', () => {
+  it('txt should be visible', async () => {
+    expect(await text('Visible content').exists()).to.be.true;
+  });
 
-      it('txt should not be visible when display is set to none', async () => {
-        expect(
-          await text('Element it self has display none').exists(0, 0),
-        ).to.be.false;
-      });
+  it('txt should not be visible when display is set to none', async () => {
+    expect(
+      await text('Element it self has display none').exists(0, 0),
+    ).to.be.false;
+  });
 
-      it('txt should not be visible when paraent element display is set to none', async () => {
-        expect(
-          await text('Parent element has display none').exists(0, 0),
-        ).to.be.false;
-      });
+  it('txt should not be visible when paraent element display is set to none', async () => {
+    expect(
+      await text('Parent element has display none').exists(0, 0),
+    ).to.be.false;
+  });
 
-      it('txt should be visible when ', async () => {
-        expect(
-          await text(
-            'Element with display inline should be invisible',
-          ).exists(),
-        ).to.be.true;
-      });
-    });
+  it('txt should be visible when ', async () => {
+    expect(
+      await text(
+        'Element with display inline should be invisible',
+      ).exists(),
+    ).to.be.true;
   });
 });
