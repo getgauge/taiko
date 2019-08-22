@@ -39,9 +39,7 @@ describe(test_name, () => {
 
   it('should highlight text node', async () => {
     await highlight('Text node');
-    let res = await evaluate($('a'), elem => {
-      return elem.style.outline;
-    });
-    expect(res.result).to.equal('red solid 0.5em');
+    let res = await evaluate($('a'), (elem) => { return elem.style.outline; });
+    expect(res).to.equal('red solid 0.5em');
   });
 });

@@ -3,7 +3,7 @@ const { openBrowser, goto, evaluate, closeBrowser } = require('../../lib/taiko')
 const expect = require('chai').expect;
 const testName = 'Evaluate';
 
-describe.only(testName, () => {
+describe(testName, () => {
     let filePath;
     before(async () => {
         let innerHtml =
