@@ -91,9 +91,9 @@ step(
           }),
         ),
     );
-    assert.equal(geolocation.result.longitude, parseFloat(longitude));
-    assert.equal(geolocation.result.latitude, parseFloat(latitude));
-  },
+    assert.equal(geolocation.longitude, parseFloat(longitude));
+    assert.equal(geolocation.latitude, parseFloat(latitude));
+  }
 );
 
 step('Emulate device <deviceModel>', async function(deviceModel) {
@@ -104,9 +104,8 @@ step('Assert width is <width> and height is <height>', async function(
   width,
   height,
 ) {
-  const innerWidth = (await evaluate(() => window.innerWidth)).result;
-  const innerHeight = (await evaluate(() => window.innerHeight))
-    .result;
+  const innerWidth = await evaluate(() => window.innerWidth);
+  const innerHeight = await evaluate(() => window.innerHeight);
   assert.equal(innerWidth, width);
   assert.equal(innerHeight, height);
 });
