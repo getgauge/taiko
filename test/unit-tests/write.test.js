@@ -126,6 +126,18 @@ describe('write test on multiple similar elements', () => {
     it('should reject if no element is writable', async () => {
         await expect(write('inputTypeTextWithInlineText', into(textBox('readonlyInputTypeText')))).to.eventually.be.rejectedWith('Element focused is not writable');
     });
+
+    it('should convert number to string value', async () => {
+        await expect(write(12345, into(textBox('inputTypeText')))).not.to.eventually.be.rejected;
+    });
+
+    it('should convert null to empty string value', async () => {
+        await expect(write(null, into(textBox('inputTypeText')))).not.to.eventually.be.rejected;
+    });
+
+    it('should convert undefined to empty string value', async () => {
+        await expect(write(undefined, into(textBox('inputTypeText')))).not.to.eventually.be.rejected;
+    });
 });
 
 
