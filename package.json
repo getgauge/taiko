@@ -12,7 +12,7 @@
     "test:api": "node test/unit-tests/taiko-test.js",
     "examples": "cd examples && npm install && npm test",
     "test:unit": "mocha \"test/unit-tests/**/*.test.js\" --timeout 30000",
-    "test": "npm run lint && npm run test:api && npm run test:unit",
+    "test": "npm run test:api && npm run test:unit",
     "test-functional": "cd test/functional-tests && npm install && npm test",
     "install": "node lib/install.js",
     "update-json-doc": "node build/updateJsonDoc.js"
