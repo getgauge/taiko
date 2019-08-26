@@ -1,0 +1,26 @@
+{
+  "extends": ["airbnb","prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"]
+  },
+  "env": {
+      "node": true,
+      "es6": true
+      
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+  "sourceType": "module",
+  "allowImportExportEverywhere": true
+},
+  "globals": {
+    "step": true,
+    "beforeScenario": true,
+    "gauge": true,
+    "afterScenario": true,
+    "it": true
+  }
+}
+
+

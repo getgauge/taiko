@@ -5,7 +5,10 @@ step(
   'Click checkBox with attribute <jsonAttribute> near <table>',
   async function(jsonAttribute, table) {
     await click(
-      checkBox(JSON.parse(jsonAttribute), near(_selectors.getElement(table)))
+      checkBox(
+        JSON.parse(jsonAttribute),
+        near(_selectors.getElement(table)),
+      ),
     );
-  }
+  },
 );
