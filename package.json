@@ -1,67 +1,78 @@
 {
-	"name": "taiko",
-	"version": "1.0.1",
-	"description": "An easy to use wrapper over Chrome Remote Interface.",
-	"main": "bin/taiko.js",
-	"bin": {
-		"taiko": "bin/taiko.js"
-	},
-	"scripts": {
-		"lint": "eslint bin/*.js lib/*.js test/*/*.js",
-		"doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
-		"test:api": "node test/unit-tests/taiko-test.js",
-		"examples": "cd examples && npm install && npm test",
-		"test:unit": "mocha \"test/unit-tests/**/*.test.js\" --timeout 30000",
-		"test": "npm run lint && npm run test:api && npm run test:unit",
-		"test-functional": "cd test/functional-tests && npm install && npm test",
-		"install": "node lib/install.js",
-		"update-json-doc": "node build/updateJsonDoc.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/getgauge/taiko"
-	},
-	"keywords": [
-		"headless",
-		"headless-chrome",
-		"headless-testing",
-		"headless-browser"
-	],
-	"taiko": {
-		"chromium_revision": "662092",
-		"chromium_version": "76.0.3803.0"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "npm run lint && npm run test:api && npm run update-json-doc",
-			"pre-push": "npm test"
-		}
-	},
-	"author": "getgauge",
-	"license": "MIT",
-	"dependencies": {
-		"babylon": "^6.18.0",
-		"chrome-remote-interface": "^0.27.1",
-		"commander": "^3.0.0",
-		"debug": "^4.1.1",
-		"extract-zip": "^1.6.6",
-		"fs-extra": "^8.0.1",
-		"https-proxy-agent": "^2.2.1",
-		"progress": "^2.0.3",
-		"proxy-from-env": "^1.0.0",
-		"recast": "^0.18.1",
-		"rimraf": "^3.0.0"
-	},
-	"devDependencies": {
-		"chai": "^4.2.0",
-		"chai-as-promised": "^7.1.1",
-		"documentation": "^12.0.1",
-		"eslint": "^5.15.1",
-		"eslint-plugin-jest": "^22.5.1",
-		"handlebars": "^4.1.2",
-		"husky": "^3.0.0",
-		"marked": "^0.7.0",
-		"mocha": "^6.1.4",
-		"rewire": "^4.0.1"
-	}
+  "name": "taiko",
+  "version": "1.0.1",
+  "description": "An easy to use wrapper over Chrome Remote Interface.",
+  "main": "bin/taiko.js",
+  "bin": {
+    "taiko": "bin/taiko.js"
+  },
+  "scripts": {
+    "lint": "prettier --write '**/*.js'",
+    "doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
+    "test:api": "node test/unit-tests/taiko-test.js",
+    "examples": "cd examples && npm install && npm test",
+    "test:unit": "mocha \"test/unit-tests/**/*.test.js\" --timeout 30000",
+    "test": "npm run lint && npm run test:api && npm run test:unit",
+    "test-functional": "cd test/functional-tests && npm install && npm test",
+    "install": "node lib/install.js",
+    "update-json-doc": "node build/updateJsonDoc.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/getgauge/taiko"
+  },
+  "keywords": [
+    "headless",
+    "headless-chrome",
+    "headless-testing",
+    "headless-browser"
+  ],
+  "lint-staged": {
+    "/**/*.{js}": [
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "taiko": {
+    "chromium_revision": "662092",
+    "chromium_version": "76.0.3803.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run test:api && npm run update-json-doc",
+      "pre-push": "npm test"
+    }
+  },
+  "author": "getgauge",
+  "license": "MIT",
+  "dependencies": {
+    "babylon": "^6.18.0",
+    "chrome-remote-interface": "^0.27.1",
+    "commander": "^3.0.0",
+    "debug": "^4.1.1",
+    "extract-zip": "^1.6.6",
+    "fs-extra": "^8.0.1",
+    "https-proxy-agent": "^2.2.1",
+    "progress": "^2.0.3",
+    "proxy-from-env": "^1.0.0",
+    "recast": "^0.18.1",
+    "rimraf": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "documentation": "^12.0.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-jest": "^22.5.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "handlebars": "^4.1.2",
+    "husky": "^3.0.0",
+    "marked": "^0.7.0",
+    "mocha": "^6.1.4",
+    "rewire": "^4.0.1",
+    "prettier": "^1.15.3",
+    "eslint": "^5.16.0",
+    "lint-staged": "^9.2.1"
+  }
 }
