@@ -72,7 +72,7 @@
     "mocha": "^6.1.4",
     "rewire": "^4.0.1",
     "prettier": "^1.15.3",
-    "eslint": "^5.16.0",
+    "eslint": "^6.2.2",
     "lint-staged": "^9.2.1"
   }
 }
