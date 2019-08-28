@@ -103,5 +103,5 @@
    |textBox|Username|
 
 ## Navigate within Page
-* Navigate to "https://github.com/getgauge/taiko#whats-taiko"
-* Navigate to "https://github.com/getgauge/taiko#whats-taiko"
+* Navigate to relative path "./specs/data/samePageNavigation.html#gauge-navigation"
+* Navigate to relative path "./specs/data/samePageNavigation.html#gauge-navigation"
