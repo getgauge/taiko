@@ -7,22 +7,17 @@ describe('openTab', () => {
     let actualTarget, target, actualOptions, actualUrl;
     before(async () => {
         let mockCri = {
-            New : async function () {
+            New : async function (options) {
+                actualUrl = options.url;
                 return target;
             }
         };
         let mockConnectToCri = (target) => { actualTarget = target;};
-        let mockCriTarget = {
-            createTarget : async function(url){
-                actualUrl = url.url;
-            }
-        };
         const mockWrapper = async (options, cb) => { actualOptions = options; await cb(); };
         taiko.__set__('validate', () => {});
         taiko.__set__('doActionAwaitingNavigation', mockWrapper);
         taiko.__set__('cri', mockCri);
         taiko.__set__('connect_to_cri', mockConnectToCri);
-        taiko.__set__('criTarget', mockCriTarget);
         taiko.__set__('_client', new EventEmitter());
     });
 

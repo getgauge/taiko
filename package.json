@@ -42,7 +42,7 @@
 	"dependencies": {
 		"babylon": "^6.18.0",
 		"chrome-remote-interface": "^0.27.1",
-		"commander": "^2.19.0",
+		"commander": "^3.0.0",
 		"debug": "^4.1.1",
 		"extract-zip": "^1.6.6",
 		"fs-extra": "^8.0.1",
@@ -50,7 +50,7 @@
 		"progress": "^2.0.3",
 		"proxy-from-env": "^1.0.0",
 		"recast": "^0.18.1",
-		"rimraf": "^2.6.1"
+		"rimraf": "^3.0.0"
 	},
 	"devDependencies": {
 		"chai": "^4.2.0",

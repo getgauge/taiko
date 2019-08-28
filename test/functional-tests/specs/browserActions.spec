@@ -1,13 +1,13 @@
-#Browser Action
+# Browser Action
 
 ## Switch To
 * Intercept Google Analytics
 * Navigate to "https://gauge.org"
 * Click link to left of
 
-   |Type|Selector    |
-   |----|------------|
-   |text|Plugins     |
+   |Type|Selector|
+   |----|--------|
+   |text|Plugins |
 
 * Switch to tab with title "Open Source Test Automation Framework | Gauge"
 * Assert Exists
@@ -23,23 +23,19 @@
 * Close Tab "https://gauge.org"
 
 ## Close Tab with no parameters
-* Intercept Google Analytics
 * Navigate to "google.com"
-* Open Tab "https://www.thoughtworks.com/contact-us" with timeout "60000"
-* Click link near 
-
-   |Type|Selector                         |
-   |----|---------------------------------|
-   |text|"I agree to share my information"|
+* Open Tab "gauge.org"
+* Open Tab "https://www.thoughtworks.com/contact-us"
+* Click link "support portal"
 * Close Tab
 * Close Tab
-* Switch to tab with title "Google"
 
 ## Reload
 * Navigate to "https://ahfarmer.github.io/calculator/"
 * Click button "8"
 * Reload the page
-* assert text to be "0"
+* assert text to be "0" 
+
    |Type|Selector          |
    |----|------------------|
    |$   |.component-display|
@@ -50,7 +46,6 @@
 * Press "Enter"
 * Reload the page
 * Assert text "flow" exists on the page.
-
 
 ## Get all cookies
 * Navigate to "https://the-internet.herokuapp.com/"

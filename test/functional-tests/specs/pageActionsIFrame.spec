@@ -3,7 +3,7 @@
 ## Write, Press, Click
 
 * Navigate to "http://the-internet.herokuapp.com/iframe"
-* Clear element that is in focus
+* Clear element "#tinymce"
 * Write "Clear it"
 * Press "Enter"
 * Click "File"
@@ -13,7 +13,7 @@
 ## Write, Clear
 
 * Navigate to "http://the-internet.herokuapp.com/iframe"
-* Clear element that is in focus
+* Clear element "#tinymce"
 * Write "Clear it"
 * Assert text "Clear it" exists on the page.
 

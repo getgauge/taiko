@@ -8,8 +8,10 @@ const {
   dragAndDrop,
   $,
   currentURL,
+  clear,
   tap,
-  evaluate
+  toLeftOf,
+  evaluate,
 } = require('../../../lib/taiko');
 var URL = require('url').URL;
 
@@ -74,4 +76,8 @@ step("Assert tap on screen", async function() {
   // eslint-disable-next-line no-undef
   const touch = await evaluate(() => getResult());
 	assert.deepEqual(touch.result, ['Touchstart: 0', 'Touchend: 0']);
+});
+
+step("clear <arg0> from textArea <arg1>", async function(arg0, arg1) {
+  await clear(toLeftOf(_selectors.getElement(arg1)))
 });

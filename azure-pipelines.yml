@@ -35,6 +35,10 @@ jobs:
 
       - script: npm run test-functional
 
+      - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
+        artifact: Report-linux-$(node_version)
+        condition: always()
+
   - job: macOS
     pool:
       vmImage: 'macOS-10.13'
@@ -70,3 +74,7 @@ jobs:
       - powershell: npm run examples
 
       - powershell: npm run test-functional
+
+      - publish: $(System.DefaultWorkingDirectory)/test/functional-tests/reports/html-report
+        artifact: Report-windows  
+        condition: always()
