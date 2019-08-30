@@ -9,5 +9,8 @@
   },
   "dependencies": {
     "@getgauge/cli": "latest"
+  },
+  "devDependencies": {
+    "the-internet-express": "git+https://github.com/getgauge-contrib/the-internet-express.git"
   }
 }

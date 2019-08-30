@@ -16,8 +16,8 @@ step('Assert Exists <table>', async function(table) {
   assert.ok(await _selectors.getElement(table).exists());
 });
 
-step('assert text to be <text> <table>', async function(text, table) {
-  assert.equal((await _selectors.getElement(table).text())[0], text);
+step('assert text should be empty into <table>', async function(table) {
+  assert.equal((await _selectors.getElement(table).text())[0], '');
 });
 
 step('Assert text is not empty <table>', async function(table) {
