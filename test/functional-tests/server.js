@@ -14,7 +14,12 @@ let server = app.listen(3001, async () => {
       p.stderr.pipe(process.stderr);
     });
   var failed = false;
-  await run();
+  try {
+    await run();
+  } catch (e) {
+    console.error(e);
+    failed = true;
+  }
   console.log('Shutting down the Internet Express');
   server.close(e => {
     if (e) {
