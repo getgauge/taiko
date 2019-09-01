@@ -98,11 +98,11 @@ multiple lines.</textarea>
     it('should be trigged after clearing textbox', async () => {
       await reload();
       await write('No man land', into(textBox('Country')));
-      expect((await $('#info-borad').text())[0]).to.equal(
+      expect((await $('#info-borad').text())).to.equal(
         'No man land',
       );
       await clear(textBox('Country'));
-      expect((await $('#info-borad').text())[0]).to.equal('');
+      expect((await $('#info-borad').text())).to.equal('');
     });
   });
 });

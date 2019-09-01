@@ -23,6 +23,14 @@ describe(test_name, () => {
             <p id="foo">taiko</p>
             <p>demo</p>
         </div>
+        <div class="test">
+            <p id="multileId">taiko</p>
+             <p>demo</p>
+        </div>
+          <div class="test">
+           <p id="multileId">taiko</p>
+          <p>demo</p>
+        </div>
             `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -43,6 +51,16 @@ describe(test_name, () => {
     it('should find text with selectors', async () => {
       expect(await $('#foo').exists()).to.be.true;
       expect(await $('.test').exists()).to.be.true;
+    });
+    it('should return array of text with multiple elements', async () => {
+      expect(await $('#multileId').exists()).to.be.true;
+      expect(await $('#multileId').text()).to.be.an('array');
+      expect(await $('#multileId').text()).to.have.lengthOf(2);
+    });
+    it('should return text with single element', async () => {
+      expect(await $('#foo').exists()).to.be.true;
+      expect(await $('#foo').text()).to.be.a('string');
+      expect(await $('#foo').text()).to.not.be.an('array');
     });
     it('should find text with proximity selector', async () => {
       expect(
