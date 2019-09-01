@@ -162,4 +162,24 @@ describe(test_name, () => {
       );
     });
   });
+  describe('With element disabled', () => {
+    before(async () => {
+      let innerHtml = `<button disabled>Click Me!</button>`;
+
+      overlayFilePath = createHtml(innerHtml, `${test_name}-overlay`);
+      await goto(overlayFilePath);
+      setConfig({ waitForNavigation: false });
+    });
+
+    after(() => {
+      setConfig({ waitForNavigation: true });
+      removeFile(overlayFilePath);
+    });
+
+    it('should throw error', async () => {
+      await expect(click('Click Me!')).to.be.rejectedWith(
+        'Element matching text "Click Me!" is disabled',
+      );
+    });
+  });
 });

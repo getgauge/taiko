@@ -41,6 +41,9 @@ describe(test_name, () => {
                 <div>
                     <input type="text" disabled='true' id='disabled-input'>initially disabled input-type-text</input>
                 </div>
+                <div>
+                    <input type="text" disabled id='disabled-text-box'>disabled-text-box</input>
+                </div>
             </form>
             <script type="text/javascript">
                 setTimeout( () => {
@@ -71,6 +74,14 @@ describe(test_name, () => {
     await write('hello', into(textBox('input-type-text')));
     expect(await textBox('input-type-text').value()).to.equal(
       'hello',
+    );
+  });
+
+  it('into disabled field should throw error', async () => {
+    await expect(
+      write('hello', into(textBox('disabled-text-box'))),
+    ).to.be.eventually.rejectedWith(
+      'Element focused is not writable',
     );
   });
 

@@ -22,7 +22,6 @@ describe(test_name, () => {
   before(async () => {
     let innerHtml =
       '<input type="text" name="unfocusable" disabled>unfocusable</input>' +
-      '<input type="text" name="inputTypeText" disabled>inputTypeText</input>' +
       '<input type="text" name="inputTypeText" >inputTypeText</input>' +
       '<input type="text" name="focusableTypeText" >focusableTypeText</input>';
     filePath = createHtml(innerHtml, test_name);
@@ -47,7 +46,7 @@ describe(test_name, () => {
       await expect(
         focus(textBox('unfocusable')),
       ).to.be.eventually.rejectedWith(
-        'Error: Element is not focusable\n',
+        'Text field with label unfocusable  is disabled'
       );
     });
 

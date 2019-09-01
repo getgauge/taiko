@@ -1,4 +1,8 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+const expect = chai.expect;
+
 let {
   openBrowser,
   goto,
@@ -39,6 +43,7 @@ multiple lines.</textarea>
                 <label for="country">
                         Country<input type="text" name="user[country]" id="user[country]" value="" onkeyup="displayInfo(this)"/>
                 </label>
+                <input type="text" id="disabled" value="Example" disabled/>
             </p>
         </form>
         <div id='info-borad' ></div>
@@ -73,6 +78,12 @@ multiple lines.</textarea>
       );
       await clear(textBox('Email'));
       expect(await textBox('Email').value()).to.equal('');
+    });
+
+    it('should throw error for disabled', async () => {
+      await expect(
+        clear(textBox({ id: 'disabled' })),
+      ).to.eventually.be.rejectedWith('Element cannot be cleared');
     });
 
     it('should wait for input to be clearable', async () => {
