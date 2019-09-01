@@ -43,6 +43,16 @@ describe(test_name, () => {
         '<label for="textAreaWithLabelFor">textAreaWithLabelFor</label>' +
         '<textarea id="textAreaWithLabelFor"></textarea>' +
         '</div>' +
+        '<div name="textAreaWithWrappedLabelDisabled">' +
+        '<label>' +
+        '<span>textAreaWithWrappedLabelDisabled</span>' +
+        '<textarea disabled></textarea>' +
+        '</label>' +
+        '<div name="textAreaWithLabelForDisabled">' +
+        '<label for="textAreaWithLabelForDisabled">textAreaWithLabelForDisabled</label>' +
+        '<textarea id="textAreaWithLabelForDisabled" disabled></textarea>' +
+        '</div>' +
+        '</div>' +
         '</form>' +
         '</div>';
       filePath = createHtml(innerHtml, test_name);
@@ -58,6 +68,11 @@ describe(test_name, () => {
     describe('wrapped in label', () => {
       it('test exists()', async () => {
         expect(await textBox('textAreaWithWrappedLabel').exists()).to
+          .be.true;
+      });
+      
+      it('test isDisabled()', async () => {
+        expect(await textBox('textAreaWithWrappedLabelDisabled').isDisabled()).to
           .be.true;
       });
 
@@ -78,6 +93,11 @@ describe(test_name, () => {
           .true;
       });
 
+      it('test isDisabled()', async () => {
+      expect(await textBox('textAreaWithLabelForDisabled').isDisabled()).to.be
+          .true;
+      });
+
       it('test value()', async () => {
         await write(
           'textAreaWithLabelFor',
@@ -95,6 +115,11 @@ describe(test_name, () => {
           .to.be.true;
       });
 
+      it('test isDisabled()', async () => {
+        expect(await textBox({ id: 'textAreaWithLabelForDisabled' }).isDisabled())
+          .to.be.true;
+      });
+
       it('test value()', async () => {
         expect(
           await textBox({ id: 'textAreaWithLabelFor' }).value(),
@@ -105,6 +130,11 @@ describe(test_name, () => {
     describe('with relative selector', () => {
       it('test exists()', async () => {
         expect(await textBox(above('textAreaWithLabelFor')).exists())
+          .to.be.true;
+      });
+
+      it('test isDisabled()', async () => {
+        expect(await textBox(above('textAreaWithLabelForDisabled')).isDisabled())
           .to.be.true;
       });
 
@@ -268,6 +298,19 @@ describe(test_name, () => {
                             <label for="${inputType.name}WithLabelFor">With Label For</label>
                             <input id="${inputType.name}WithLabelFor" type="${inputType.type}"/>
                         </div>
+                        <div name="withInlineTextDisabled">
+                            <input type="${inputType.type}" disabled>With Inline Text Disabled</input>
+                        </div>
+                        <div name="withWrappedLabelDisabled">
+                            <label>
+                                <input type="${inputType.type}" disabled/>
+                                <span>With Wrapped Label Disabled</span>
+                            </label>
+                        </div>
+                        <div name="withLabelFor">
+                            <label for="${inputType.name}WithLabelForDisabled">With Label For Disabled</label>
+                            <input id="${inputType.name}WithLabelForDisabled" type="${inputType.type}" disabled/>
+                        </div>
                     </form>
                 </div>`;
         filePath = createHtml(innerHtml, test_name + inputType.type);
@@ -283,6 +326,11 @@ describe(test_name, () => {
       describe('with inline text', () => {
         it('test exists()', async () => {
           expect(await textBox('With Inline Text').exists()).to.be
+            .true;
+        });
+
+        it('test isDisabled()', async () => {
+          expect(await textBox('With Inline Text Disabled').isDisabled()).to.be
             .true;
         });
 
@@ -303,6 +351,11 @@ describe(test_name, () => {
             .true;
         });
 
+        it('test isDisabled()', async () => {
+          expect(await textBox('With Wrapped Label Disabled').isDisabled()).to.be
+            .true;
+        });
+
         it('test value()', async () => {
           await write(
             inputType.testValue,
@@ -317,6 +370,10 @@ describe(test_name, () => {
       describe('using label for', () => {
         it('test exists()', async () => {
           expect(await textBox('With Label For').exists()).to.be.true;
+        });
+
+        it('test isDisabled()', async () => {
+          expect(await textBox('With Label For Disabled').isDisabled()).to.be.true;
         });
 
         it('test value()', async () => {
@@ -384,6 +441,19 @@ describe(test_name, () => {
                         <label for="${inputTypeName}WithLabelFor">With Label For</label>
                         <input id="${inputTypeName}WithLabelFor"/>
                     </div>
+                    <div name="withInlineTextDisabled">
+                        <input disabled>With Inline Text Disabled</input>
+                    </div>
+                    <div name="withWrappedLabelDisabled">
+                        <label>
+                            <input disabled/>
+                            <span>With Wrapped Label Disabled</span>
+                        </label>
+                    </div>
+                    <div name="withLabelForDisabled">
+                        <label for="${inputTypeName}WithLabelForDisabled">With Label For Disabled</label>
+                        <input id="${inputTypeName}WithLabelForDisabled" disabled/>
+                    </div>
                 </form>
             </div>`;
       filePath = createHtml(innerHtml, test_name + inputTypeName);
@@ -401,6 +471,10 @@ describe(test_name, () => {
         expect(await textBox('With Inline Text').exists()).to.be.true;
       });
 
+      it('test isDisabled()', async () => {
+        expect(await textBox('With Inline Text Disabled').isDisabled()).to.be.true;
+      });
+
       it('test value()', async () => {
         await write(inputValue, into(textBox('With Inline Text')));
         expect(await textBox('With Inline Text').value()).to.equal(
@@ -415,6 +489,11 @@ describe(test_name, () => {
           .true;
       });
 
+      it('test isDisabled()', async () => {
+        expect(await textBox('With Wrapped Label Disabled').isDisabled()).to.be
+          .true;
+      });
+
       it('test value()', async () => {
         await write(inputValue, into(textBox('With Wrapped Label')));
         expect(await textBox('With Wrapped Label').value()).to.equal(
@@ -426,6 +505,10 @@ describe(test_name, () => {
     describe('using label for', () => {
       it('test exists()', async () => {
         expect(await textBox('With Label For').exists()).to.be.true;
+      });
+
+      it('test isDisabled()', async () => {
+        expect(await textBox('With Label For Disabled').isDisabled()).to.be.true;
       });
 
       it('test value()', async () => {
@@ -445,6 +528,14 @@ describe(test_name, () => {
         ).to.be.true;
       });
 
+      it('test isDisabled()', async () => {
+        expect(
+          await textBox({
+            id: inputTypeName + 'WithLabelForDisabled',
+          }).isDisabled(),
+        ).to.be.true;
+      });
+
       it('test value()', async () => {
         expect(
           await textBox({
@@ -457,6 +548,11 @@ describe(test_name, () => {
     describe('with relative selector', () => {
       it('test exists()', async () => {
         expect(await textBox(above('With Label For')).exists()).to.be
+          .true;
+      });
+
+      it('test isDisabled()', async () => {
+        expect(await textBox(above('With Label For Disabled')).isDisabled()).to.be
           .true;
       });
 

@@ -33,6 +33,15 @@ describe('radio button', () => {
       '<input type="reset" value="Reset">' +
       '</form>' +
       '<div id="panel" style="display:none">show on check</div>' +
+      '<input type="radio" id="radioButtonWithInlineLabelDisabled" name="testRadioButtonDisabled" value="radioButtonWithInlineLabelDisabled" disabled>radioButtonWithInlineLabelDisabled</input>' +
+      '<label>' +
+      '<input name="testRadioButtonDisabled" type="radio" value="radioButtonWithWrappedLabelDisabled" disabled/>' +
+      '<span>radioButtonWithWrappedLabelDisabled</span>' +
+      '</label>' +
+      '<p>' +
+      '<input id="radioButtonWithLabelForDisabled" name="testRadioButtonDisabled" type="radio" value="radioButtonWithLabelForDisabled" disabled/>' +
+      '<label for="radioButtonWithLabelForDisabled">radioButtonWithLabelForDisabled</label>' +
+      '</p>' +
       '<script>' +
       'var elem = document.getElementById("radioButtonWithInlineLabel");' +
       'elem.addEventListener("click", myFunction);' +
@@ -60,6 +69,11 @@ describe('radio button', () => {
       expect(await radioButton('radioButtonWithInlineLabel').exists())
         .to.be.true;
       expect(await radioButton('Something').exists(0, 0)).to.be.false;
+    });
+
+    it('test isDisabled()', async () => {
+      expect(await radioButton('radioButtonWithInlineLabelDisabled').isDisabled())
+        .to.be.true;
     });
 
     it('test select()', async () => {
@@ -94,11 +108,22 @@ describe('radio button', () => {
         await radioButton('radioButtonWithWrappedLabel').exists(),
       ).to.be.true;
     });
+
+    it('test isDisabled()', async () => {
+      expect(
+        await radioButton('radioButtonWithWrappedLabelDisabled').isDisabled(),
+      ).to.be.true;
+    });
   });
 
   describe('using label for', () => {
     it('test exists()', async () => {
       expect(await radioButton('radioButtonWithLabelFor').exists()).to
+        .be.true;
+    });
+
+    it('test isDisabled()', async () => {
+      expect(await radioButton('radioButtonWithLabelForDisabled').isDisabled()).to
         .be.true;
     });
   });

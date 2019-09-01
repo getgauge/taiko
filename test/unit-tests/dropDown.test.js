@@ -60,6 +60,22 @@ describe(test_name, () => {
       '<option value="audi1">Audi1</option>' +
       '</select>' +
       '</label>' +
+      '<label for="selectDisabled">CarsDisabled</label>' +
+      '<select id="selectDisabled" name="selectDisabled" value="selectDisabled" disabled>' +
+      '<option value="volvo">Volvo</option>' +
+      '<option value="saab">Saab</option>' +
+      '<option value="mercedes">Mercedes</option>' +
+      '<option value="audi">Audi</option>' +
+      '</select>' +
+      '<label>' +
+      '<span>dropDownWithWrappedInLabelDisabled</span>' +
+      '<select id="selectDisabled" name="selectDisabled" value="selectDisabled" disabled>' +
+      '<option value="volvo1">Volvo1</option>' +
+      '<option value="saab1">Saab1</option>' +
+      '<option value="mercedes1">Mercedes1</option>' +
+      '<option value="audi1">Audi1</option>' +
+      '</select>' +
+      '</label>' +
       '</form>';
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -81,6 +97,10 @@ describe(test_name, () => {
   describe('using label for', () => {
     it('test dropdown exists()', async () => {
       expect(await dropDown('Cars').exists()).to.be.true;
+    });
+
+    it('test dropdown isDisabled()', async () => {
+      expect(await dropDown('CarsDisabled').isDisabled()).to.be.true;
     });
 
     it('test select()', async () => {
@@ -106,6 +126,11 @@ describe(test_name, () => {
       expect(
         await dropDown('dropDownWithWrappedInLabel').value(),
       ).to.not.equal('mercedes');
+    });
+
+    it('test isDisabled()', async () => {
+      expect(await dropDown('dropDownWithWrappedInLabelDisabled').isDisabled()).to
+        .be.true;
     });
   });
 

@@ -5,6 +5,7 @@ let {
   fileField,
   closeBrowser,
   above,
+  below,
   button,
   attach,
   setConfig,
@@ -26,6 +27,8 @@ describe(test_name, () => {
                 <input id="file-upload" type="file" name="file">
                 </br>
                 <input class="button" id="file-submit" type="submit" value="Upload" />
+                </br>
+                <input id="file-upload-disabled" type="file" name="file" disabled>
             </div>
             <div>
                 <label>
@@ -33,15 +36,24 @@ describe(test_name, () => {
                     <span>Select a file</span>
                     <input class="button" id="file-submit" type="submit" value="Upload" />
                 </label>
+                <label>
+                    <input id="file-upload" type="file" name="file" disabled>
+                    <span>Select a file Disabled</span>
+                    <input class="button" id="file-submit" type="submit" value="Upload" />
+                </label>
             </div>
             <div>
                 <label for="file-upload">Choose a file</label>
                 <input id="file-upload" type="file" name="file">
                 <input class="button" id="file-submit" type="submit" value="Upload" />
+                <label for="file-upload-label">Choose a file Disabled</label>
+                <input id="file-upload-label" type="file" name="file" disabled>
+                <input class="button" id="file-submit" type="submit" value="Upload" />
             </div>
             <div>
                 <label>Choose a file</label>
                 <input id='hidden-file-upload' type='file' style="display:none">
+                <input id='hidden-file-upload-disabled' type='file' style="display:none" disabled>
             </div>
         </form>`;
     filePath = createHtml(innerHtml, test_name);
@@ -60,6 +72,11 @@ describe(test_name, () => {
         expect(await fileField(above(button('Upload'))).exists()).to
           .be.true;
       });
+      
+      it('test isDisabled()', async () => {
+        expect(await fileField({id:"file-upload-disabled"}).isDisabled()).to
+          .be.true;
+      });
 
       it('test value()', async () => {
         attach(
@@ -75,6 +92,10 @@ describe(test_name, () => {
       it('test exists()', async () => {
         expect(await fileField('Select a file').exists()).to.be.true;
       });
+      
+      it('test isDisabled()', async () => {
+        expect(await fileField('Select a file Disabled').isDisabled()).to.be.true;
+      });
 
       it('test value()', async () => {
         attach(
@@ -89,6 +110,10 @@ describe(test_name, () => {
     describe('using label for', () => {
       it('test exists()', async () => {
         expect(await fileField('Choose a file').exists()).to.be.true;
+      });
+
+      it('test isDisabled()', async () => {
+        expect(await fileField('Choose a file Disabled').isDisabled()).to.be.true;
       });
 
       it('test value()', async () => {
@@ -108,13 +133,30 @@ describe(test_name, () => {
         await fileField(
           { id: 'hidden-file-upload' },
           { selectHiddenElement: true },
-        ).exists(),
+        ).exists()
+      ).to.be.true;
+    });
+
+    it('isDisabled is true when selectHiddenElement is provided', async () => {
+      expect(
+        await fileField(
+          { id: 'hidden-file-upload-disabled' },
+          { selectHiddenElement: true },
+        ).isDisabled()
       ).to.be.true;
     });
 
     it('does not exists when selectHiddenElement is not provided', async () => {
       expect(
-        await fileField({ id: 'hidden-file-upload' }).exists(0, 0),
+        await fileField({ id: 'hidden-file-upload' }).exists(0, 0)
+      ).to.be.false;
+    });
+
+    it('isDisabled is false when selectHiddenElement is not provided', async () => {
+      expect(
+        await fileField(
+          { id: 'hidden-file-upload-disabled' }
+        ).isDisabled()
       ).to.be.false;
     });
   });
