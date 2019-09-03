@@ -40,11 +40,10 @@
    |-------|--------|
    |textBox|Username|
 
-TODO: For remove todomvc setup local HTML with local storage
 ## Reload should not clear local cache
-* Navigate to "http://todomvc.com/examples/react/#/"
-* Write "flow"
-* Press "Enter"
+* Navigate to relative path "./specs/data/localStorage.html"
+* Write "flow" into TextBox with name "username"
+* Click "Submit"
 * Reload the page
 * Assert text "flow" exists on the page.
 

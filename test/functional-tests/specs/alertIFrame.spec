@@ -2,8 +2,8 @@
 
 ## Should be able to accept a dialog box in IFrame
 
-* Navigate to relative path "./specs/data/IFrameShoppingCart.html"
-* Click "M"
-* Click "Add to cart"
-* Alert "Checkout - Subtotal: $ 29.45" and await accept
-* Click "Checkout"
+* Navigate to relative path "./specs/data/IFrameHTMLElements.html"
+* Alert "Hello world!" and await accept
+* Click "Click Me!"
+* Alert "Hello World!" and await accept
+* Click "Click Me Also!"
