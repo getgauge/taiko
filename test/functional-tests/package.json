@@ -3,11 +3,14 @@
   "version": "0.0.1",
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
-    "test": "gauge run specs -v --tags=\\!knownIssue -p",
+    "test": "node server.js",
     "format": "prettier --write --single-quote '**/*.{js,jsx,ts,tsx}'",
     "eslint": "eslint tests/* --ext .js --ext .jsx"
   },
   "dependencies": {
     "@getgauge/cli": "latest"
+  },
+  "devDependencies": {
+    "the-internet-express": "git+https://github.com/getgauge-contrib/the-internet-express.git"
   }
 }

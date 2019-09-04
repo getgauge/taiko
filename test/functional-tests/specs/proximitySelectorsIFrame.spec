@@ -1,19 +1,18 @@
 # Proximity Selectors in IFrame
 ## Below
 
-* Intercept Google Analytics
-* Navigate to relative path "./specs/data/IFrameGaugeOrg.html"
-* Click link "Privacy" below 
+* Navigate to relative path "./specs/data/IFrameProximitySelectors.html"
+* Click link "Frames" below
 
-   |Type|Selector       |
-   |----|---------------|
-   |link|Gauge Commands|
+   |Type|Selector           |
+   |----|-------------------|
+   |link|Form Authentication|
 
 ## Near by
 tags: knownIssue
 
 * Navigate to relative path "./specs/data/IFrameElements.html"
-* Write "Blah" into Input Field near 
+* Write "Blah" into Input Field near
 
    |Type|Selector  |
    |----|----------|
@@ -22,33 +21,34 @@ tags: knownIssue
 
 ## Above
 
-* Intercept Google Analytics
-* Navigate to relative path "./specs/data/IFrameGaugeOrg.html"
-* Click link "Blog"
-* Click image above 
+* Navigate to relative path "./specs/data/IFrameProximitySelectors.html"
+* Click link "Dynamic Loading"
+* Click link above
 
-   |Type|Selector                                                     |
-   |----|-------------------------------------------------------------|
-   |text|Introducing Taiko - the last mile to reliable test automation|
-* Assert Exists 
+   |Type|Selector                                  |
+   |----|------------------------------------------|
+   |text|Example 2: Element rendered after the fact|
+* Assert Exists
 
-   |Type    |Selector          |Method|
-   |--------|------------------|------|
-   |text    |Introducing Taiko |exists|
+   |Type|Selector                      |Method|
+   |----|------------------------------|------|
+   |text|Element on page that is hidden|exists|
+   |text|Start                         |exists|
 
 ## Right Of
 
 * Intercept Google Analytics
-* Navigate to relative path "./specs/data/IFrameGaugeOrg.html"
+* Navigate to relative path "./specs/data/IFrameProximitySelectors.html"
+* Click "Horizontal Slider"
 * Assert Exists
 
-   |Type|Selector    |Method|
-   |----|------------|------|
-   |$   |.github_star|exists|
+   |Type|Selector|Method|
+   |----|--------|------|
+   |text|See     |exists|
 * Click link to right of
 
-   |Type|Selector    |
-   |----|------------|
-   |$   |.github_star|
+   |Type|Selector|
+   |----|--------|
+   |text|See     |
 
-* Assert text "Language Runners" exists on the page.
+* Assert title to be "the-internet-express/README.md at master · getgauge-contrib/the-internet-express"

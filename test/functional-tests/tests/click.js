@@ -39,6 +39,11 @@ step('Click image above <table>', async function(table) {
   await click(image(above(element)));
 });
 
+step('Click link above <table>', async function(table) {
+  var element = _selectors.getElement(table);
+  await click(link(above(element)));
+});
+
 step('Click link to right of <table>', async function(table) {
   await click(link(toRightOf(_selectors.getElement(table))));
 });

@@ -1,79 +1,84 @@
 # Browser Action
 
 ## Switch To
-* Intercept Google Analytics
-* Navigate to "https://gauge.org"
-* Click link to left of
-
-   |Type|Selector|
-   |----|--------|
-   |text|Plugins |
-
-* Switch to tab with title "Open Source Test Automation Framework | Gauge"
+* Navigate to "http://localhost:3001/"
+* Click "The Internet"
+* Switch to tab with title "The Internet Express"
 * Assert Exists
 
-   |Type|Selector    |
-   |----|------------|
-   |$   |.github_star|
+   |Type|Selector                       |
+   |----|-------------------------------|
+   |text|Welcome to the-internet-express|
 
 ## Open/Close Tab
-* Intercept Google Analytics
-* Navigate to "google.com"
-* Open Tab "https://gauge.org"
-* Close Tab "https://gauge.org"
+* Navigate to relative path "./specs/data/sample.html"
+* Open Tab "http://localhost:3001/"
+* Assert title to be "The Internet"
+* Close Tab "http://localhost:3001/"
+* Assert title to be "Document"
+
 
 ## Close Tab with no parameters
-* Navigate to "google.com"
-* Open Tab "gauge.org"
-* Open Tab "https://www.thoughtworks.com/contact-us"
-* Click link "support portal"
+* Navigate to relative path "./specs/data/sample.html"
+* Open Tab "http://localhost:3001/dropdown"
+* Open Tab "http://localhost:3001/"
 * Close Tab
 * Close Tab
+* Assert title to be "Document"
 
 ## Reload
-* Navigate to "https://ahfarmer.github.io/calculator/"
-* Click button "8"
-* Reload the page
-* assert text to be "0" 
+* Navigate to relative path "./specs/data/HTMLElements.html"
+* Write "hello" into textArea to left of
 
-   |Type|Selector          |
-   |----|------------------|
-   |$   |.component-display|
+   |Type   |Selector|
+   |-------|--------|
+   |textBox|Username|
+* Reload the page
+* assert text should be empty into
+
+   |Type   |Selector|
+   |-------|--------|
+   |textBox|Username|
 
 ## Reload should not clear local cache
-* Navigate to "http://todomvc.com/examples/react/#/"
-* Write "flow"
-* Press "Enter"
+* Navigate to relative path "./specs/data/localStorage.html"
+* Write "flow" into TextBox with name "username"
+* Click "Submit"
 * Reload the page
 * Assert text "flow" exists on the page.
 
 ## Get all cookies
-* Navigate to "https://the-internet.herokuapp.com/"
+* Navigate to "http://localhost:3001/"
+* set cookie with "org" and "gauge"
 * Assert cookies to be present
+* delete cookie with "org"
+
 
 ## Cookie should be present for valid options urls
-* Navigate to "https://the-internet.herokuapp.com/"
-* Assert cookie with valid options url "https://the-internet.herokuapp.com/"
+* Navigate to "http://localhost:3001/"
+* set cookie with "org" and "gauge"
+* Assert cookie with valid options url "http://localhost:3001/"
+* delete cookie with "org"
 
 ## Cookie not should be present for invalid options urls
-* Navigate to "https://the-internet.herokuapp.com/"
-* Assert cookie with invalid options url "https://gauge.org"
+* Navigate to relative path "./specs/data/sample.html"
+* Assert cookie with invalid options url "http://localhost:3001/"
 
 ## Set mock location
-* Override browser permission with "geolocation" for site "https://the-internet.herokuapp.com/geolocation"
+* Override browser permission with "geolocation" for site "http://localhost:3001/"
 * Setlocation with longitude as "78.040009" and latitude as "27.1752868"
-* Navigate to "https://the-internet.herokuapp.com/geolocation"
+* Navigate to "http://localhost:3001/"
 * Assert location longitude as "78.040009" and latitude as "27.1752868"
 
 ## Emulate device
-* Navigate to "https://the-internet.herokuapp.com/"
+* Navigate to "http://localhost:3001/"
 * Emulate device "iPhone 6"
 * Assert width is "375" and height is "667"
 
 ## Browser forward and back
-* Navigate to "https://the-internet.herokuapp.com/"
+* Navigate to "http://localhost:3001/"
 * Click "Checkboxes"
 * Navigate back
-* Assert page navigated back
+* Assert page navigated back "localhost"
 * Navigate forward
 * Assert page navigated forward
