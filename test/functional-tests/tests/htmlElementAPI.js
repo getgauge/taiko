@@ -30,7 +30,7 @@ const {
   intercept,
   toRightOf,
   setConfig,
-} = require('../../../lib/taiko');
+} = require('taiko');
 
 const headless = process.env.headless.toLowerCase() === 'true';
 
