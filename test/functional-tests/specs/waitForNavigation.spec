@@ -1,15 +1,9 @@
 # Wait for navigation
 ## Should get the text of an element after page is loaded
-* Navigate to "https://ahfarmer.github.io/emoji-search/" with timeout "60000" ms
-* length of parse int should be "20" 
-
-   |Type|Selector          |
-   |----|------------------|
-   |$   |.copy-to-clipboard|
+* Navigate to "http://localhost:3001/slow" with timeout "60000" ms
+* Assert text "Slow Resources" exists on the page.
 
 ## Should get text after ajax calls
-* Navigate to "https://alik0211.github.io/pokedex/" with timeout "60000" ms
-* Assert text is not empty 
-   |Type|Selector      |
-   |----|--------------|
-   |$   |.pokemon__name|
+* Navigate to "http://localhost:3001/dynamic_loading/2" with timeout "60000" ms
+* Click "Start"
+* Assert text "Hello World!" exists on the page.

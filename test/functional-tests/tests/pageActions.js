@@ -73,7 +73,7 @@ step("Tap on <arg0>", async function (arg0) {
 step("Assert tap on screen", async function () {
   // eslint-disable-next-line no-undef
   const touch = await evaluate(() => getResult());
-  assert.deepEqual(touch.result, ['Touchstart: 0', 'Touchend: 0']);
+  assert.deepEqual(touch, ['Touchstart: 0', 'Touchend: 0']);
 });
 
 step("clear <arg0> from textArea <arg1>", async function (arg0, arg1) {
