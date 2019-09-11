@@ -47,8 +47,8 @@
   "license": "MIT",
   "dependencies": {
     "babylon": "^6.18.0",
-    "chrome-remote-interface": "^0.27.1",
-    "commander": "^3.0.0",
+    "chrome-remote-interface": "^0.28.0",
+    "commander": "^3.0.1",
     "debug": "^4.1.1",
     "extract-zip": "^1.6.6",
     "fs-extra": "^8.0.1",
@@ -61,18 +61,18 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "documentation": "^12.0.1",
+    "documentation": "^12.1.2",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-jest": "^22.5.1",
     "eslint-plugin-prettier": "^3.1.0",
-    "handlebars": "^4.1.2",
-    "husky": "^3.0.0",
+    "handlebars": "^4.2.0",
+    "husky": "^3.0.5",
     "marked": "^0.7.0",
     "mocha": "^6.1.4",
     "rewire": "^4.0.1",
     "prettier": "^1.15.3",
-    "eslint": "^5.16.0",
+    "eslint": "^6.3.0",
     "lint-staged": "^9.2.1"
   }
 }
