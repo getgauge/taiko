@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Local Storage</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" name="username" id="username">
+        <input type="submit" onclick="printUser()" value="submit">
+        <div class="details">
+        </div>
+    </div>
+    <script>
+        if (window.localStorage.getItem('name')) {
+            let name = window.localStorage.getItem('name');
+            document.querySelector('.details').innerHTML = `<p> ${name} </p>`;
+        }
+        function printUser() {
+            let name = document.querySelector('#username').value;
+            document.querySelector('.details').innerHTML += `<p> ${name} </p>`;
+            document.querySelector('#username').value = '';
+            window.localStorage.setItem('name', name);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,16 +1,15 @@
 # Selectors
 ## Contains
 
-* Intercept Google Analytics
-* Navigate to "https://gauge.org/index.html"
-* Click link "Documentation"
-* Focus 
+* Navigate to "http://localhost:3001/"
+* Click "Dynamic Loading"
+* Click an element that contains "Example 2:"
+* Assert Exists
 
-   |Type   |Selector       |
-   |-------|---------------|
-   |textBox|{"id":"search"}|
-* Write "Custom"
-* Click an element that contains "Taking"
+   |Type|Selector                      |Method|
+   |----|------------------------------|------|
+   |text|Element on page that is hidden|exists|
+   |text|Start                         |exists|
 
 ## Id
 tags: knownIssue

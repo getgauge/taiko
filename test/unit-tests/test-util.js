@@ -2,19 +2,17 @@ let path = require('path');
 let { writeFileSync, unlinkSync } = require('fs');
 
 module.exports.createHtml = (innerHtml, testName) => {
-  let htmlFilePath = path.join(
-    process.cwd(),
-    'test',
-    'unit-tests',
-    'data',
-    testName + '.html',
-  );
-  let content = `<!DOCTYPE html>
-        <html>
-        <body>
+    let htmlFilePath = path.join(process.cwd(), 'test', 'unit-tests', 'data', testName+'.html');
+    let content = `
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>${testName}</title>
+    </head>
+    <body>
         ${innerHtml}
-        </body>
-        </html>
+    </body>
+</html>
     `;
   writeFileSync(htmlFilePath, content);
   return 'file:///' + htmlFilePath;

@@ -77,15 +77,12 @@ describe('match', () => {
             <div>
                 <p>Visible content</p>
             </div>
-
             <div style="display:none">
                 <p>Parent element has display none</p>
             </div>
-
             <div>
                 <p style="display:none">Element it self has display none</p>
             </div>
-
             <div style="display:inline">
                 <p>
                     With 'display: inline', the width, height,
@@ -94,7 +91,6 @@ describe('match', () => {
                 </p>
                 Element with display inline should be invisible
             </div>
-
             <div>
             </div>
         </div>
@@ -198,7 +194,7 @@ describe('match', () => {
         const id = await evaluate(text('Text in iframe'), elem => {
           return elem.parentElement.id;
         });
-        expect(id.result).to.equal('inIframe');
+        expect(id).to.equal('inIframe');
       });
     });
     describe('match text in multiple paragraph', () => {

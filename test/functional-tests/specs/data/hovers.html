@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hovers</title>
+</head>
+
+<body>
+    <style>
+        .figure {
+            float: left;
+            padding-right: 20px;
+        }
+
+        .figcaption {
+            display: none;
+        }
+
+        .figure:hover .figcaption {
+            display: block;
+        }
+    </style>
+    <div class="example">
+        <h3>Hovers</h3>
+        <p>Hover over the image for additional information</p>
+        <div class="figure">
+            <img src="./img/avatar-blank.jpg" alt="User Avatar">
+            <div class="figcaption">
+                <h5>name: user1</h5>
+                <a href="/users/1">View profile</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

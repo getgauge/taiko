@@ -3,11 +3,19 @@
   "version": "0.0.1",
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
-    "test": "gauge run specs -v --tags=\\!knownIssue",
+    "test": "node server.js",
     "format": "prettier --write --single-quote '**/*.{js,jsx,ts,tsx}'",
     "eslint": "eslint tests/* --ext .js --ext .jsx"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getgauge/taiko.git"
+  },
   "dependencies": {
-    "@getgauge/cli": "latest"
+    "@getgauge/cli": "latest",
+    "taiko": "file:../.."
+  },
+  "devDependencies": {
+    "the-internet-express": "git+https://github.com/getgauge-contrib/the-internet-express.git"
   }
 }

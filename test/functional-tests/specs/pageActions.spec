@@ -1,32 +1,29 @@
 # Page Actions
 ## Scroll To, Up
 
-* Navigate to "https://reactjs.org/community/examples.html"
+* Navigate to "http://localhost:3001/"
 * Scroll to
 
    |Type|Selector    |
    |----|------------|
-   |link|Installation|
+   |link|The Internet|
 
 * Scroll up
 
-   |Type|Selector  |
-   |----|----------|
-   |link|Calculator|
-
-## Write, Press, Click
-
-* Navigate to "http://todomvc.com/examples/react/#/"
-* Write "flow"
-* Press "Enter"
-* Click link "Active"
-* Click checkBox with attribute "{\"class\":\"toggle\"}" near
-
    |Type|Selector|
    |----|--------|
-   |text|flow    |
-* Click link "Completed"
-* Click button "Clear completed"
+   |text|Welcome |
+
+## Write, Press, Click
+* Navigate to relative path "./specs/data/HTMLElements.html"
+* Write "John" into Input Field near
+
+   |Type|Selector  |
+   |----|----------|
+   |text|First Name|
+* Press "Tab"
+* Write "Wick"
+* Click link "Smith"
 
 ## Double Click
 * Assert text "Hello World" does not exist
@@ -49,33 +46,26 @@
 * Click "Share On Facebook"
 
 ## Hover
-* Navigate to "http://react-compare-app.surge.sh/"
+* Navigate to relative path "./specs/data/hovers.html"
 * Hover on element
 
    |Type|Selector        |
    |----|----------------|
-   |$   |".image_overlay"|
-* Click "Compare"
-* Hover on element
-
-   |Type|Selector        |
-   |----|----------------|
-   |$   |".image_overlay"|
-* Click "Remove"
+   |$   |".figure"|
+* Assert text "View profile" exists on the page.
 
 ## Drag and drop
-* Navigate to "https://marcojakob.github.io/dart-dnd/basic/"
-* Drag ".document" and drop to ".trash"
-* Drag ".document" and drop at
+* Navigate to "http://localhost:3001/drag_and_drop"
+* Drag "#column-a" and drop to "#column-b"
+* Drag "#column-b" and drop at
 
    |direction|pixel|
    |---------|-----|
    |right    |300  |
-   |down     |100  |
 
 ## Validate Current Url
-* Navigate to "https://the-internet.herokuapp.com/"
-* Assert url host is "the-internet.herokuapp.com"
+* Navigate to "http://localhost:3001/"
+* Assert url host is "localhost"
 
 ## Tap
 * Navigate to file with relative Path "/specs/data/touch.html"
@@ -85,6 +75,7 @@
 ## clear api should work on textArea
 * Navigate to relative path "./specs/data/HTMLElements.html"
 * Write "hello" into textArea to left of
+
    |Type   |Selector|
    |-------|--------|
    |textBox|Username|
@@ -94,10 +85,12 @@
 * Write "are you?"
 * Press "Enter"
 * clear "text" from textArea
+
    |Type   |Selector|
    |-------|--------|
    |textBox|Username|
 * Assert text " " exists on the textArea.
+
    |Type   |Selector|
    |-------|--------|
    |textBox|Username|

@@ -64,11 +64,8 @@ describe('radio button', () => {
 
     it('test select()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
-      let value = await evaluate(
-        $('input[name=testRadioButton]:checked'),
-        element => element.value,
-      );
-      expect(value.result).to.equal('radioButtonWithInlineLabel');
+      let value = await evaluate($('input[name=testRadioButton]:checked'), (element) => element.value);
+      expect(value).to.equal('radioButtonWithInlineLabel');
     });
 
     it('test select() triggers events', async () => {
@@ -79,11 +76,8 @@ describe('radio button', () => {
     it('test deselect()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
       await radioButton('radioButtonWithInlineLabel').deselect();
-      let value = await evaluate(
-        $('input[value=radioButtonWithInlineLabel]'),
-        element => element.checked,
-      );
-      expect(value.result).to.be.false;
+      let value = await evaluate($('input[value=radioButtonWithInlineLabel]'), (element) => element.checked);
+      expect(value).to.be.false;
     });
 
     it('test isSelected()', async () => {
