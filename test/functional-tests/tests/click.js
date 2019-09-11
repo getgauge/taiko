@@ -12,10 +12,13 @@ const {
   button,
   rightClick,
   doubleClick,
-  near
+  near,
 } = require('../../../lib/taiko');
 
-step('Click link <userlink> below <table>', async function(userlink, table) {
+step('Click link <userlink> below <table>', async function(
+  userlink,
+  table,
+) {
   await click(link(userlink, below(_selectors.getElement(table))));
 });
 

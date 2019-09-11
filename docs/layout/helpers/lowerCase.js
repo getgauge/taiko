@@ -1,3 +1,3 @@
-module.exports = function(text){
-    return text.toLowerCase();
+module.exports = function(text) {
+  return text.toLowerCase();
 };
