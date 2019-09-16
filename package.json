@@ -62,17 +62,17 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "documentation": "^12.1.2",
+    "eslint": "^6.4.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-jest": "^22.5.1",
+    "eslint-plugin-jest": "^22.17.0",
     "eslint-plugin-prettier": "^3.1.0",
     "handlebars": "^4.2.0",
     "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
     "marked": "^0.7.0",
     "mocha": "^6.1.4",
-    "rewire": "^4.0.1",
     "prettier": "^1.15.3",
-    "eslint": "^6.3.0",
-    "lint-staged": "^9.2.1"
+    "rewire": "^4.0.1"
   }
 }
