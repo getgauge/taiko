@@ -142,22 +142,22 @@ describe.only(test_name, () => {
       expect(await elements[0].exists()).to.be.true;
       expect(await elements[1].exists()).to.be.true;
       expect(await elements[2].exists()).to.be.true;
-      elements = await image('someButton').elements();
+      elements = await image('someImage').elements();
       expect(await elements[0].exists()).to.be.false;
     });
 
     it('test description of elements', async () => {
       let elements = await image('similarImage').elements();
-      expect(await elements[0].description).to.be.eql('image with alt similarImage ');
-      expect(await elements[1].description).to.be.eql('image with alt similarImage ');
-      expect(await elements[2].description).to.be.eql('image with alt similarImage ');
+      expect(elements[0].description).to.be.eql('image with alt similarImage ');
+      expect(elements[1].description).to.be.eql('image with alt similarImage ');
+      expect(elements[2].description).to.be.eql('image with alt similarImage ');
     });
 
     xit('test text of elements', async () => {
       let elements = await image('similarImage').elements();
-      expect(await elements[0].description).to.be.eql('image with alt similarImage ');
-      expect(await elements[1].description).to.be.eql('image with alt similarImage ');
-      expect(await elements[2].description).to.be.eql('image with alt similarImage ');
+      expect(await elements[0].text()).to.be.eql('image with alt similarImage ');
+      expect(await elements[1].text()).to.be.eql('image with alt similarImage ');
+      expect(await elements[2].text()).to.be.eql('image with alt similarImage ');
     }); //Todo: Need to discuss on should we expose this api or not
   });
 });
