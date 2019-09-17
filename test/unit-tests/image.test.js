@@ -14,7 +14,7 @@ let {
 } = require('./test-util');
 const test_name = 'image';
 
-describe(test_name, () => {
+describe.only(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml = `
@@ -25,6 +25,9 @@ describe(test_name, () => {
             <h3>Div Image</h3>
             <div id="divImage" style="background-image: url('image.png')"></div>
             <p id="paraImage" style="background-image: url('something.png')">okay</p>
+            <img src="avatar-blank.jpg" alt="similarImage1">
+            <img src="avatar-blank.jpg" alt="similarImage2">
+            <img src="avatar-blank.jpg" alt="similarImage3">
         </div>`;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -44,8 +47,7 @@ describe(test_name, () => {
     });
     it('should find the image with selectors', async () => {
       expect(await image({ id: 'brokenImage' }).exists()).to.be.true;
-      expect(await image({ src: 'brokenImage.jpg' }).exists()).to.be
-        .true;
+      expect(await image({ src: 'brokenImage.jpg' }).exists()).to.be.true;
     });
     it('should find the image with proximity selector', async () => {
       expect(await image(below('Images')).exists()).to.be.true;
@@ -59,5 +61,103 @@ describe(test_name, () => {
     it('should find the div image with proximity selector', async () => {
       expect(await image(below('Div Image')).exists()).to.be.true;
     });
+  });
+
+  describe('get image in page', () => {
+    it('should find the image with text', async () => {
+      expect(await (await image('avatar').get())[0].get()).to.be.a("number");
+    });
+    it('should find the image with selectors', async () => {
+      expect(await (await image({ id: 'brokenImage' }).get())[0].get()).to.be.a("number");
+      expect(await (await image({ src: 'brokenImage.jpg' }).get())[0].get()).to.be.a("number");
+    });
+    it('should find the image with proximity selector', async () => {
+      expect(await (await image(below('Images')).get())[0].get()).to.be.a("number");
+    });
+    it('should find div image using selectors', async () => {
+      expect(await (await image({ id: 'divImage' }).get())[0].get()).to.be.a("number");
+    });
+    it('should find p tag image using selectors', async () => {
+      expect(await (await image({ id: 'paraImage' }).get())[0].get()).to.be.a("number");
+    });
+    it('should find the div image with proximity selector', async () => {
+      expect(await (await image(below('Div Image')).get())[0].get()).to.be.a("number");
+    });
+  });
+
+  describe('image description in page', () => {
+    it('should find the image with text', async () => {
+      expect(image('avatar').description).to.be.eql("image with alt avatar ");
+    });
+    it('should find the image with selectors', async () => {
+      expect(image({ id: 'brokenImage' }).description).to.be.eql('image[@id = concat(\'brokenImage\', "")]');
+      expect(image({ src: 'brokenImage.jpg' }).description).to.be.eql('image[@src = concat(\'brokenImage.jpg\', "")]');
+    });
+    it('should find the image with proximity selector', async () => {
+      expect(image(below('Images')).description).to.be.eql("image Below Images");
+    });
+    it('should find div image using selectors', async () => {
+      expect(image({ id: 'divImage' }).description).to.be.eql('image[@id = concat(\'divImage\', "")]');
+    });
+    it('should find p tag image using selectors', async () => {
+      expect(image({ id: 'paraImage' }).description).to.be.eql('image[@id = concat(\'paraImage\', "")]');
+    });
+    it('should find the div image with proximity selector', async () => {
+      expect(image(below('Div Image')).description).to.be.eql("image Below Div Image");
+    });
+  });
+
+  xdescribe('image text in page', () => { //Todo: Need to discuss on should we expose this api or not
+    it('should find the image with text', async () => {
+      expect(await image('avatar').text()).to.be.eql("image with alt avatar ");
+    });
+    it('should find the image with selectors', async () => {
+      expect(await image({ id: 'brokenImage' }).text()).to.be.eql('image[@id = concat(\'brokenImage\', "")]');
+      expect(await image({ src: 'brokenImage.jpg' }).text()).to.be.eql('image[@src = concat(\'brokenImage.jpg\', "")]');
+    });
+    it('should find the image with proximity selector', async () => {
+      expect(await image(below('Images')).text()).to.be.eql("image Below Images");
+    });
+    it('should find div image using selectors', async () => {
+      expect(await image({ id: 'divImage' }).text()).to.be.eql('image[@id = concat(\'divImage\', "")]');
+    });
+    it('should find p tag image using selectors', async () => {
+      expect(await image({ id: 'paraImage' }).text()).to.be.eql('image[@id = concat(\'paraImage\', "")]');
+    });
+    it('should find the div image with proximity selector', async () => {
+      expect(await image(below('Div Image')).text()).to.be.eql("image Below Div Image");
+    });
+  });
+
+  describe('elements()', () => {
+    it('test get of elements', async () => {
+      const elements = await image('similarImage').elements();
+      expect(await elements[0].get()).to.be.a('number');
+      expect(await elements[1].get()).to.be.a('number');
+      expect(await elements[2].get()).to.be.a('number');
+    });
+
+    it('test exists of elements', async () => {
+      let elements = await image('similarImage').elements();
+      expect(await elements[0].exists()).to.be.true;
+      expect(await elements[1].exists()).to.be.true;
+      expect(await elements[2].exists()).to.be.true;
+      elements = await image('someButton').elements();
+      expect(await elements[0].exists()).to.be.false;
+    });
+
+    it('test description of elements', async () => {
+      let elements = await image('similarImage').elements();
+      expect(await elements[0].description).to.be.eql('image with alt similarImage ');
+      expect(await elements[1].description).to.be.eql('image with alt similarImage ');
+      expect(await elements[2].description).to.be.eql('image with alt similarImage ');
+    });
+
+    xit('test text of elements', async () => {
+      let elements = await image('similarImage').elements();
+      expect(await elements[0].description).to.be.eql('image with alt similarImage ');
+      expect(await elements[1].description).to.be.eql('image with alt similarImage ');
+      expect(await elements[2].description).to.be.eql('image with alt similarImage ');
+    }); //Todo: Need to discuss on should we expose this api or not
   });
 });
