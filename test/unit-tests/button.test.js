@@ -141,7 +141,7 @@ describe.only(test_name, () => {
         expect(await elements[0].exists()).to.be.true;
         expect(await elements[1].exists()).to.be.true;
         expect(await elements[2].exists()).to.be.true;
-        elements = await button('someButton').elements();
+        elements = await button('someButton').elements(null, 100, 1000);
         expect(await elements[0].exists()).to.be.false;
       });
 

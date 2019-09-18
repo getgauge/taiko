@@ -166,7 +166,7 @@ describe.only(test_name, () => {
     it('test exists of elements', async () => {
       let elements = await fileField({id:'similarFileField'}).elements();
       expect(await elements[0].exists()).to.be.true;
-      elements = await fileField('someFileField').elements();
+      elements = await fileField('someFileField').elements(null, 100, 1000);
       expect(await elements[0].exists()).to.be.false;
     });
 
