@@ -78,6 +78,7 @@ module.exports = async (
   module.constructor._nodeModulePaths = function() {
     const ret = oldNodeModulesPaths.apply(this, arguments);
     ret.push(__dirname);
+    ret.push(path.dirname(path.dirname(__dirname)));
     return ret;
   };
   require(path.resolve(file).slice(0, -3));
