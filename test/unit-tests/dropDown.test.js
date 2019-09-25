@@ -17,7 +17,7 @@ let {
 } = require('./test-util');
 const test_name = 'DropDown';
 
-describe(test_name, () => {
+describe.only(test_name, () => {
   let filePath;
   let actualEmmiter;
   let emitter = new EventEmitter();
@@ -60,6 +60,9 @@ describe(test_name, () => {
       '<option value="audi1">Audi1</option>' +
       '</select>' +
       '</label>' +
+      '<select id="sampleDropDown" name="select" value="select">' +
+      '<option value="someValue">someValue</option>' +
+      '</select>' +
       '</form>';
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -81,6 +84,24 @@ describe(test_name, () => {
   describe('using label for', () => {
     it('test dropdown exists()', async () => {
       expect(await dropDown('Cars').exists()).to.be.true;
+    });
+
+    it('test dropdown get()', async () => {
+      expect(await (await dropDown('Cars').get())[0].get()).to.be.a(
+        'number',
+      );
+    });
+
+    it('test dropdown description', async () => {
+      expect(dropDown('Cars').description).to.be.eql(
+        'DropDown with label Cars ',
+      );
+    });
+
+    it('test dropdown text()', async () => {
+      expect(await dropDown('Cars').text()).to.be.eql(
+        'Volvo\nSaab\nMercedes\nAudi',
+      );
     });
 
     it('test select()', async () => {
@@ -107,6 +128,26 @@ describe(test_name, () => {
         await dropDown('dropDownWithWrappedInLabel').value(),
       ).to.not.equal('mercedes');
     });
+
+    it('test get()', async () => {
+      expect(
+        await (await dropDown(
+          'dropDownWithWrappedInLabel',
+        ).get())[0].get(),
+      ).to.be.a('number');
+    });
+
+    it('test description', async () => {
+      expect(
+        dropDown('dropDownWithWrappedInLabel').description,
+      ).to.be.eql('DropDown with label dropDownWithWrappedInLabel ');
+    });
+
+    it('test text()', async () => {
+      expect(
+        await dropDown('dropDownWithWrappedInLabel').text(),
+      ).to.be.eql('Volvo1\nSaab1\nMercedes1\nAudi1');
+    });
   });
 
   describe('test logs for dropdown', () => {
@@ -132,6 +173,44 @@ describe(test_name, () => {
       );
       await dropDown('Cars').select('mercedes');
       await validatePromise;
+    });
+  });
+
+  describe('elements()', () => {
+    it('test get of elements', async () => {
+      const elements = await dropDown({
+        id:"sampleDropDown"
+      }).elements();
+      expect(await elements[0].get()).to.be.a('number');
+    });
+
+    it('test exists of elements', async () => {
+      let elements = await dropDown({
+        id:"sampleDropDown"
+      }).elements();
+      expect(await elements[0].exists()).to.be.true;
+      elements = await dropDown('someFileField').elements(
+        null,
+        100,
+        1000,
+      );
+      expect(await elements[0].exists()).to.be.false;
+    });
+
+    it('test description of elements', async () => {
+      let elements = await dropDown({
+        id:"sampleDropDown"
+      }).elements();
+      expect(elements[0].description).to.be.eql(
+        'DropDown[@id = concat(\'sampleDropDown\', "")]',
+      );
+    });
+
+    it('test text of elements', async () => {
+      let elements = await dropDown({
+        id:"sampleDropDown"
+      }).elements();
+      expect(await elements[0].text()).to.be.eql('someValue');
     });
   });
 });
