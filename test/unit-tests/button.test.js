@@ -32,7 +32,16 @@ describe(test_name, () => {
       '<label for="inputButton" >LabelForButton</label> <input type="button" id="inputButton" />' +
       '<label for="inputReset" >LabelForReset</label> <input type="button" id="inputReset" />' +
       '<label for="inputSubmit" >LabelForSubmit</label> <input type="button" id="inputSubmit" />' +
-      '</div>';
+      '</div>' +
+      //button tag with wrapped elements
+      '<button><span> spanButton </span></button>' +
+      '<button><strong>strongButton</strong></button>' +
+      '<button><i>italicButton</i></button>' +
+      '<button><b>boldButton</b>></button>' +
+      '<button>' +
+      '<div>childElementButton</div>' +
+      '</button>';
+
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
@@ -104,7 +113,7 @@ describe(test_name, () => {
         expect(await button('LabelForReset').exists()).to.be.true;
         expect(await button('LabelForSubmit').exists()).to.be.true;
       });
-      
+
       xit('test get with label for()', async () => {
         expect(await (await button('LabelForButton').get())[0].text()).to.be.eql('LabelForButton');
         expect(await (await button('LabelForReset').get())[0].text()).to.be.eql('LabelForButton');
@@ -129,6 +138,16 @@ describe(test_name, () => {
         expect(await button('ForButton').exists()).to.be.true;
         expect(await button('ForReset').exists()).to.be.true;
         expect(await button('ForSubmit').exists()).to.be.true;
+      });
+    });
+
+    describe('button with wrapped element text', () => {
+      it('should match button with child element text', async () => {
+        expect(await button('spanButton').exists()).to.be.true;
+        expect(await button('boldButton').exists()).to.be.true;
+        expect(await button('italicButton').exists()).to.be.true;
+        expect(await button('strongButton').exists()).to.be.true;
+        expect(await button('childElementButton').exists()).to.be.true;
       });
     });
   });
