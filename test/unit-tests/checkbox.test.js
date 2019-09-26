@@ -9,15 +9,13 @@ let {
   goto,
   checkBox,
   closeBrowser,
-  evaluate,
-  $,
-  text,
+  button,
   click,
   setConfig,
 } = require('../../lib/taiko');
 const test_name = 'Checkbox';
 
-describe(test_name, () => {
+describe.only(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml =
@@ -33,7 +31,8 @@ describe(test_name, () => {
       '</p>' +
       '<input type="reset" value="Reset">' +
       '</form>' +
-      '<div id="panel" style="display:none">show on check</div>' +
+      '<button id="panel" style="display:none">show on check</button>' +
+      '<input type="checkbox" id="someCheckBox" name="testCheckbox" value="someCheckBox">someCheckBox</input>' +
       '<script>' +
       'var elem = document.getElementById("checkboxWithInlineLabel");' +
       'elem.addEventListener("click", myFunction);' +
@@ -63,22 +62,32 @@ describe(test_name, () => {
       expect(await checkBox('Something').exists(0, 0)).to.be.false;
     });
 
+    it('test get()', async () => {
+      const elem = (await checkBox('checkboxWithInlineLabel').get())[0];
+      expect(await elem.get()).to.be.a("number");
+    });
+
+    it('test description', async () => {
+      const description = checkBox('checkboxWithInlineLabel').description;
+      expect(description).to.be.eql("Checkbox with label checkboxWithInlineLabel ");
+    });
+
     it('test check()', async () => {
       await checkBox('checkboxWithInlineLabel').check();
-      let value = await evaluate($('input[name=testCheckbox]:checked'), (element) => element.value);
-      expect(value).to.equal('checkboxWithInlineLabel');
+      const isChecked = await checkBox('checkboxWithInlineLabel').isChecked();
+      expect(isChecked).to.be.true;
     });
 
     it('test check() triggers events', async () => {
       await checkBox('checkboxWithInlineLabel').check();
-      expect(await text('show on check').exists()).to.be.true;
+      expect(await button('show on check').exists()).to.be.true;
     });
 
     it('test uncheck()', async () => {
       await checkBox('checkboxWithInlineLabel').check();
       await checkBox('checkboxWithInlineLabel').uncheck();
-      let value = await evaluate($('input[value=checkboxWithInlineLabel]'), (element) => element.checked);
-      expect(value).to.be.false;
+      const isChecked = await checkBox('checkboxWithInlineLabel').isChecked();
+      expect(isChecked).to.be.false;
     });
 
     it('test isChecked()', async () => {
@@ -93,12 +102,62 @@ describe(test_name, () => {
       expect(await checkBox('checkboxWithWrappedInLabel').exists()).to
         .be.true;
     });
+
+    it('test get()', async () => {
+      const elems = (await checkBox('checkboxWithWrappedInLabel').get());
+      expect(await elems[0].get()).to.be.a("number");
+    });
+
+    it('test description', async () => {
+      const description = checkBox('checkboxWithWrappedInLabel').description;
+      expect(description).to.be.eql("Checkbox with label checkboxWithWrappedInLabel ");
+    });
   });
 
   describe('using label for', () => {
     it('test exists()', async () => {
       expect(await checkBox('checkboxWithLabelFor').exists()).to.be
         .true;
+    });
+
+    it('test get()', async () => {
+      const elems = await checkBox('checkboxWithLabelFor').get();
+      expect(await elems[0].get()).to.be.a("number");
+    });
+
+    it('test description', async () => {
+      const description = checkBox('checkboxWithLabelFor').description;
+      expect(description).to.be.eql("Checkbox with label checkboxWithLabelFor ");
+    });
+  });
+
+  describe('elements()', () => {
+    it('test get of elements', async () => {
+      const elements = await checkBox({
+        id: 'someCheckBox',
+      }).elements();
+      expect(await elements[0].get()).to.be.a('number');
+    });
+
+    it('test exists of elements', async () => {
+      let elements = await checkBox({
+        id: 'someCheckBox',
+      }).elements();
+      expect(await elements[0].exists()).to.be.true;
+      elements = await checkBox('someFileField').elements(
+        100,
+        1000,
+      );
+      expect(await elements[0].exists()).to.be.false;
+    });
+
+    it('test description of elements', async () => {
+      let elements = await checkBox({
+        id: 'someCheckBox',
+      }).elements();
+      expect(elements[0].description).to.be.eql(
+        'Checkbox[@id = concat(\'someCheckBox\', "")]',
+      );
     });
   });
 });
