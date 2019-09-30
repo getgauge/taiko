@@ -10,5 +10,9 @@ describe(test_name, () => {
       const expected = 'foo';
       expect(actual).to.be.equal(expected);
     });
+    it('should return empty string for null or undefined', async () => {
+      expect(trimCharLeft(null, '|')).to.be.equal('');
+      expect(trimCharLeft(undefined, '|')).to.be.equal('');
+    });
   });
 });
