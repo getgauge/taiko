@@ -55,8 +55,7 @@
     "https-proxy-agent": "^2.2.1",
     "progress": "^2.0.3",
     "proxy-from-env": "^1.0.0",
-    "recast": "^0.18.1",
-    "rimraf": "^3.0.0"
+    "recast": "^0.18.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
