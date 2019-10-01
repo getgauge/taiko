@@ -6,6 +6,8 @@ const targetHandler = rewire('../../lib/handlers/targetHandler');
 
 describe('closeTab', () => {
   let _targets = { matching: [], others: [] };
+  let currentURL = '';
+  let _isMatchUrl = false;
   let currentTarget;
   let descEmmitter = new EventEmitter();
 
@@ -30,9 +32,13 @@ describe('closeTab', () => {
       constructCriTarget: arg => {
         return arg;
       },
+      isMatchingUrl: () => {
+        return _isMatchUrl;
+      }
     };
 
     taiko.__set__('validate', () => {});
+    taiko.__set__('currentURL', () => currentURL);
     targetHandler.__set__('cri', mockCri);
     taiko.__set__('targetHandler', mockHandler);
     taiko.__set__('descEvent', descEmmitter);
@@ -75,6 +81,8 @@ describe('closeTab', () => {
       type: 'page',
       url: 'https://amazon.com',
     });
+    currentURL = 'https://amazon.com';
+    _isMatchUrl = false;
 
     let validatePromise = validateEmitterEvent(
       'success',
@@ -101,6 +109,35 @@ describe('closeTab', () => {
       type: 'page',
       url: 'https://flipkart.com',
     });
+    currentURL = 'https://flipkart.com';
+    _isMatchUrl = false;
+
+    let validatePromise = validateEmitterEvent(
+      'success',
+      'Closed all tabs with URL https://flipkart.com',
+    );
+    await taiko.closeTab('https://flipkart.com');
+    await validatePromise;
+    expect(currentTarget.url).to.be.eql('https://amazon.com');
+  });
+  it('should close all matching tabs if target is non active tab', async () => {
+    _targets.matching.push({
+      id: '1',
+      type: 'page',
+      url: 'https://flipkart.com',
+    });
+    _targets.others.push({
+      id: '2',
+      type: 'page',
+      url: 'https://flipkart.com',
+    });
+    _targets.others.push({
+      id: '3',
+      type: 'page',
+      url: 'https://amazon.com',
+    });
+    currentURL = 'https://amazon.com';
+    _isMatchUrl = true;
 
     let validatePromise = validateEmitterEvent(
       'success',
