@@ -65,7 +65,10 @@ describe(test_name, () => {
 
     it('test check()', async () => {
       await checkBox('checkboxWithInlineLabel').check();
-      let value = await evaluate($('input[name=testCheckbox]:checked'), (element) => element.value);
+      let value = await evaluate(
+        $('input[name=testCheckbox]:checked'),
+        element => element.value,
+      );
       expect(value).to.equal('checkboxWithInlineLabel');
     });
 
@@ -77,7 +80,10 @@ describe(test_name, () => {
     it('test uncheck()', async () => {
       await checkBox('checkboxWithInlineLabel').check();
       await checkBox('checkboxWithInlineLabel').uncheck();
-      let value = await evaluate($('input[value=checkboxWithInlineLabel]'), (element) => element.checked);
+      let value = await evaluate(
+        $('input[value=checkboxWithInlineLabel]'),
+        element => element.checked,
+      );
       expect(value).to.be.false;
     });
 

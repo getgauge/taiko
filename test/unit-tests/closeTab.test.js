@@ -34,7 +34,7 @@ describe('closeTab', () => {
       },
       isMatchingUrl: () => {
         return _isMatchUrl;
-      }
+      },
     };
 
     taiko.__set__('validate', () => {});

@@ -17,17 +17,16 @@ describe(test_name, () => {
   });
 });
 
-
 describe(test_name, () => {
   describe('.escapeHtml', () => {
     it('should escape special char for html', async () => {
-      const actual = escapeHtml("&");
+      const actual = escapeHtml('&');
       const expected = '&amp;';
       expect(actual).to.be.equal(expected);
     });
 
     it('should escape multiple special char for html', async () => {
-      const actual = escapeHtml("& foo ' \" ;");
+      const actual = escapeHtml('& foo \' " ;');
       const expected = '&amp; foo &#039; &quot; ;';
       expect(actual).to.be.equal(expected);
     });

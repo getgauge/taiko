@@ -93,7 +93,7 @@ step(
     );
     assert.equal(geolocation.longitude, parseFloat(longitude));
     assert.equal(geolocation.latitude, parseFloat(latitude));
-  }
+  },
 );
 
 step('Emulate device <deviceModel>', async function(deviceModel) {
