@@ -3,10 +3,8 @@ let {
   openBrowser,
   radioButton,
   closeBrowser,
-  evaluate,
-  $,
   goto,
-  text,
+  button,
   click,
   setConfig,
 } = require('../../lib/taiko');
@@ -16,7 +14,9 @@ let {
   openBrowserArgs,
 } = require('./test-util');
 
-describe('radio button', () => {
+const test_name = 'radio button';
+
+describe.only(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml =
@@ -32,7 +32,8 @@ describe('radio button', () => {
       '</p>' +
       '<input type="reset" value="Reset">' +
       '</form>' +
-      '<div id="panel" style="display:none">show on check</div>' +
+      '<input type="radio" id="someRadioButton" name="testRadioButton" value="someRadioButton">someRadioButton</input>' +
+      '<button id="panel" style="display:none">show on check</button>' +
       '<script>' +
       'var elem = document.getElementById("radioButtonWithInlineLabel");' +
       'elem.addEventListener("click", myFunction);' +
@@ -62,22 +63,27 @@ describe('radio button', () => {
       expect(await radioButton('Something').exists(0, 0)).to.be.false;
     });
 
+    it('test get()', async () => {
+      const elem = (await radioButton('radioButtonWithInlineLabel').get())[0];
+      expect(await elem.get()).to.be.a('number');
+    });
+
     it('test select()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
-      let value = await evaluate($('input[name=testRadioButton]:checked'), (element) => element.value);
-      expect(value).to.equal('radioButtonWithInlineLabel');
+      let isSelected = await radioButton('radioButtonWithInlineLabel').isSelected();
+      expect(isSelected).to.be.true;
     });
 
     it('test select() triggers events', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
-      expect(await text('show on check').exists()).to.be.true;
+      expect(await button('show on check').exists()).to.be.true;
     });
 
     it('test deselect()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
       await radioButton('radioButtonWithInlineLabel').deselect();
-      let value = await evaluate($('input[value=radioButtonWithInlineLabel]'), (element) => element.checked);
-      expect(value).to.be.false;
+      let isSelected = await radioButton('radioButtonWithInlineLabel').isSelected();
+      expect(isSelected).to.be.false;
     });
 
     it('test isSelected()', async () => {
@@ -94,12 +100,61 @@ describe('radio button', () => {
         await radioButton('radioButtonWithWrappedLabel').exists(),
       ).to.be.true;
     });
+
+    it('test get()', async () => {
+      const elem = (await radioButton('radioButtonWithWrappedLabel').get())[0];
+      expect(
+        await elem.get(),
+      ).to.be.a('number');
+    });
+
+    it('test description', async () => {
+      const description = radioButton('radioButtonWithWrappedLabel').description;
+      expect(description).to.be.eql('Radio button with label radioButtonWithWrappedLabel ');
+    });
   });
 
   describe('using label for', () => {
     it('test exists()', async () => {
       expect(await radioButton('radioButtonWithLabelFor').exists()).to
         .be.true;
+    });
+    
+    it('test get()', async () => {
+      const elem = (await radioButton('radioButtonWithLabelFor').get())[0];
+      expect(await elem.get()).to.be.a('number');
+    });
+
+    it('test description', async () => {
+      const description = radioButton('radioButtonWithLabelFor').description;
+      expect(description).to.be.eql('Radio button with label radioButtonWithLabelFor ');
+    });
+  });
+
+  describe('elements()', () => {
+    it('test get of elements', async () => {
+      const elements = await radioButton({
+        id: 'someRadioButton',
+      }).elements();
+      expect(await elements[0].get()).to.be.a('number');
+    });
+
+    it('test exists of elements', async () => {
+      let elements = await radioButton({
+        id: 'someRadioButton',
+      }).elements();
+      expect(await elements[0].exists()).to.be.true;
+      elements = await radioButton('someFileField').elements(100, 1000);
+      expect(await elements[0].exists()).to.be.false;
+    });
+
+    it('test description of elements', async () => {
+      let elements = await radioButton({
+        id: 'someRadioButton',
+      }).elements();
+      expect(elements[0].description).to.be.eql(
+        'Radio button[@id = concat(\'someRadioButton\', "")]',
+      );
     });
   });
 });
