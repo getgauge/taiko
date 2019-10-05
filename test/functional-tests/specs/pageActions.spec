@@ -94,3 +94,8 @@
    |Type   |Selector|
    |-------|--------|
    |textBox|Username|
+
+## Navigate within Page
+* Navigate to relative path "./specs/data/samePageNavigation.html#gauge-navigation"
+* Navigate to relative path "./specs/data/samePageNavigation.html#gauge-navigation"
+

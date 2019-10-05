@@ -1,3 +1,15 @@
+<section class="global-installation">
+    <h2 id="global-installation">Installing as <code>root</code> User</h2>
+    <p>When installing taiko globally as a <code>root</code> user, <code>npm</code> explicitly changes the UID and
+        GID,
+        which can cause the installtion to fail with <code>Permission Denied</code> error.</p>
+    <p>The solution to fix this is to pass <code>--unsafe-perm --allow-root</code> to <code>npm</code></p>
+    Example:
+    <div class="code-section">
+        <pre class="hljs"><code>npm install -g taiko --unsafe-perm --allow-root</code></pre>
+    </div>
+</section>
+
 <h2>Running on Linux</h2>
 <p>To check missing dependencies on linux machine run below command</p>
 <div class="code-section">
@@ -178,15 +190,24 @@
 </section>
 <section class='wait-for-right-events'>
     <h2 id="wait-for-right-events">Wait for right events</h2>
-    <p>Taiko by default waits for any network requests that are triggered as part of the action, frame load, frame navigation 
+    <p>Taiko by default waits for any network requests that are triggered as part of the action, frame load, frame
+        navigation
         and new target navigation events. Navigation actions like goto, reload waits for loadEventFired in addition.
-        There can be scenarios where the action might take time to trigger events, hence could be missed by taiko. 
+        There can be scenarios where the action might take time to trigger events, hence could be missed by taiko.
         Below are few where waiting for appropriate events will improve performance and reduce flakiness in tests.
     </p>
     <ul>
-        <li><p>firstMeaningfulPaint - Wait for this event if an action can trigger a page load which has heavy image or fonts to loaded.</p></li>
-        <li><p>targetNavigated - Wait for this event if there is a new tab/window open or close that happens because of an action.</p></li>
-        <li><p>loadEventFired - Wait for this event if an action triggers a page load which is not instanteneous.</p></li>
+        <li>
+            <p>firstMeaningfulPaint - Wait for this event if an action can trigger a page load which has heavy image or
+                fonts to loaded.</p>
+        </li>
+        <li>
+            <p>targetNavigated - Wait for this event if there is a new tab/window open or close that happens because of
+                an action.</p>
+        </li>
+        <li>
+            <p>loadEventFired - Wait for this event if an action triggers a page load which is not instanteneous.</p>
+        </li>
     </ul>
     <p>Example:</p>
     <div class="code-section">

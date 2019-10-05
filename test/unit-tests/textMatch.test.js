@@ -58,6 +58,9 @@ describe('match', () => {
             <a href="github.com">create account now</a>
             <button class="button" type="submit">create account</button>
             <button class="button" type="submit">create account in GitHub</button>
+            <button class="button" type="submit">
+            <span> spanButton for login</span>
+            </button>
             <!-- //text node with input tag -->
             <input type="text" value="password" />
             <input type="text" value="Enter password" />
@@ -207,48 +210,6 @@ describe('match', () => {
         expect(await text('Sign').get()).to.have.lengthOf(3);
       });
     });
-    describe('match text in different tags', () => {
-      it('test exact match for text in multiple elememts', async () => {
-        expect(await text('create account').exists()).to.be.true;
-        expect(await text('create account').get()).to.have.lengthOf(
-          3,
-        );
-      });
-      it('test contains match for text in multiple elements', async () => {
-        expect(await text('account').exists()).to.be.true;
-        expect(await text('account').get()).to.have.lengthOf(6);
-      });
-    });
-    describe('match text as value in input field', () => {
-      it('test exact match for value in input', async () => {
-        expect(await text('password').exists()).to.be.true;
-        expect(await text('password').get()).to.have.lengthOf(1);
-      });
-      it('test contains match for value in input', async () => {
-        expect(await text('pass').exists()).to.be.true;
-        expect(await text('pass').get()).to.have.lengthOf(2);
-      });
-    });
-    describe('match text for value and paragraph', () => {
-      it('test exact match for value and text', async () => {
-        expect(await text('taiko demo').exists()).to.be.true;
-        expect(await text('taiko demo').get()).to.have.lengthOf(2);
-      });
-      it('test contains match for value and text', async () => {
-        expect(await text('demo').exists()).to.be.true;
-        expect(await text('demo').get()).to.have.lengthOf(4);
-      });
-    });
-    describe('match text for type and paragraph', () => {
-      it('test exact match for type', async () => {
-        expect(await text('text').exists()).to.be.true;
-        expect(await text('text').get()).to.have.lengthOf(8);
-      });
-      it('test contains match for type and text', async () => {
-        expect(await text('tex').exists()).to.be.true;
-        expect(await text('tex').get()).to.have.lengthOf(11);
-      });
-    });
 
     describe('Text visibility', () => {
       it('txt should be visible', async () => {
@@ -275,5 +236,10 @@ describe('match', () => {
         ).to.be.true;
       });
     });
+    describe('text match in child element', () => {
+      it('should match the text in child element', async () => {
+        expect(await text('spanButton for login').exists()).to.be.true;
+      })
+    })
   });
 });
