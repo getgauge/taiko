@@ -8,6 +8,7 @@ let {
   closeBrowser,
   goto,
   text,
+  button,
   below,
   setConfig,
 } = require('../../lib/taiko');
@@ -159,6 +160,31 @@ describe(test_name, () => {
     it('should throw error', async () => {
       await expect(click('Click me')).to.be.rejectedWith(
         'Element matching text "Click me" is covered by other element',
+      );
+    });
+  });
+  describe('With element disabled', () => {
+    before(async () => {
+      let innerHtml = `
+        <body>
+            <button type="button" disabled>Click Me!</button>
+        </body>`;
+      overlayFilePath = createHtml(
+        innerHtml,
+        `${test_name}-disabled`,
+      );
+      await goto(overlayFilePath);
+      setConfig({ waitForNavigation: false });
+    });
+
+    after(() => {
+      setConfig({ waitForNavigation: true });
+      removeFile(overlayFilePath);
+    });
+
+    it('should throw error if element is disabled', async () => {
+      await expect(click(button('Click me'))).to.be.rejectedWith(
+        'Button with label Click me is disabled',
       );
     });
   });
