@@ -1,6 +1,6 @@
 name: taiko
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   test:
