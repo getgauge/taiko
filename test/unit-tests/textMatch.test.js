@@ -238,8 +238,9 @@ describe('match', () => {
     });
     describe('text match in child element', () => {
       it('should match the text in child element', async () => {
-        expect(await text('spanButton for login').exists()).to.be.true;
-      })
-    })
+        expect(await text('spanButton for login').exists()).to.be
+          .true;
+      });
+    });
   });
 });

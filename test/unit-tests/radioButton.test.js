@@ -64,7 +64,10 @@ describe('radio button', () => {
 
     it('test select()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
-      let value = await evaluate($('input[name=testRadioButton]:checked'), (element) => element.value);
+      let value = await evaluate(
+        $('input[name=testRadioButton]:checked'),
+        element => element.value,
+      );
       expect(value).to.equal('radioButtonWithInlineLabel');
     });
 
@@ -76,7 +79,10 @@ describe('radio button', () => {
     it('test deselect()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
       await radioButton('radioButtonWithInlineLabel').deselect();
-      let value = await evaluate($('input[value=radioButtonWithInlineLabel]'), (element) => element.checked);
+      let value = await evaluate(
+        $('input[value=radioButtonWithInlineLabel]'),
+        element => element.checked,
+      );
       expect(value).to.be.false;
     });
 

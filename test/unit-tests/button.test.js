@@ -62,49 +62,90 @@ describe(test_name, () => {
       });
 
       xit('button get()', async () => {
-        expect((await (await button('Click').get())[0].text())).to.be.eql("Click");
-        expect((await (await button('Input Button').get())[0].text())).to.be.eql("Input Button");
-        expect((await (await button('Input Reset').get())[0].text())).to.be.eql("Input Reset");
-        expect((await (await button('Input Submit').get())[0].text())).to.be.eql("Input Submit");
+        expect(
+          await (await button('Click').get())[0].text(),
+        ).to.be.eql('Click');
+        expect(
+          await (await button('Input Button').get())[0].text(),
+        ).to.be.eql('Input Button');
+        expect(
+          await (await button('Input Reset').get())[0].text(),
+        ).to.be.eql('Input Reset');
+        expect(
+          await (await button('Input Submit').get())[0].text(),
+        ).to.be.eql('Input Submit');
       }); // Todo: should be fixed with #815
 
       it('button description', async () => {
-        expect(button('Click').description).to.be.eql("Button with label Click ");
-        expect(button('Input Button').description).to.be.eql("Button with label Input Button ");
-        expect(button('Input Reset').description).to.be.eql("Button with label Input Reset ");
-        expect(button('Input Submit').description).to.be.eql("Button with label Input Submit ");
+        expect(button('Click').description).to.be.eql(
+          'Button with label Click ',
+        );
+        expect(button('Input Button').description).to.be.eql(
+          'Button with label Input Button ',
+        );
+        expect(button('Input Reset').description).to.be.eql(
+          'Button with label Input Reset ',
+        );
+        expect(button('Input Submit').description).to.be.eql(
+          'Button with label Input Submit ',
+        );
       });
 
       xit('button text()', async () => {
-        expect(await button('Click').text()).to.be.eql("Click");
-        expect(await button('Input Button').text()).to.be.eql("Input Button");
-        expect(await button('Input Reset').text()).to.be.eql("Input Reset");
-        expect(await button('Input Submit').text()).to.be.eql("Input Submit");
+        expect(await button('Click').text()).to.be.eql('Click');
+        expect(await button('Input Button').text()).to.be.eql(
+          'Input Button',
+        );
+        expect(await button('Input Reset').text()).to.be.eql(
+          'Input Reset',
+        );
+        expect(await button('Input Submit').text()).to.be.eql(
+          'Input Submit',
+        );
       }); // Todo: should be fixed with #815
     });
     describe('button with label', () => {
       it('exists with label()', async () => {
-        expect(await button('InputButtonInLabel').exists()).to.be.true;
+        expect(await button('InputButtonInLabel').exists()).to.be
+          .true;
         expect(await button('ResetInLabel').exists()).to.be.true;
         expect(await button('SubmitInLabel').exists()).to.be.true;
       });
 
       xit('get with label()', async () => {
-        expect(await (await button('InputButtonInLabel').get())[0].text()).to.be.eql("inputButtonInLabel");
-        expect(await (await button('ResetInLabel').get())[0].text()).to.be.eql("resetInLabel");
-        expect(await (await button('SubmitInLabel').get())[0].text()).to.be.eql("submitInLabel");
+        expect(
+          await (await button('InputButtonInLabel').get())[0].text(),
+        ).to.be.eql('inputButtonInLabel');
+        expect(
+          await (await button('ResetInLabel').get())[0].text(),
+        ).to.be.eql('resetInLabel');
+        expect(
+          await (await button('SubmitInLabel').get())[0].text(),
+        ).to.be.eql('submitInLabel');
       }); // Todo: should be fixed with #815
 
       it('button description', async () => {
-        expect(button('InputButtonInLabel').description).to.be.eql("Button with label InputButtonInLabel ");
-        expect(button('ResetInLabel').description).to.be.eql("Button with label ResetInLabel ");
-        expect(button('SubmitInLabel').description).to.be.eql("Button with label SubmitInLabel ");
+        expect(button('InputButtonInLabel').description).to.be.eql(
+          'Button with label InputButtonInLabel ',
+        );
+        expect(button('ResetInLabel').description).to.be.eql(
+          'Button with label ResetInLabel ',
+        );
+        expect(button('SubmitInLabel').description).to.be.eql(
+          'Button with label SubmitInLabel ',
+        );
       });
 
       xit('text with label()', async () => {
-        expect(await button('InputButtonInLabel').text()).to.be.eql("inputButtonInLabel");
-        expect(await button('ResetInLabel').text()).to.be.eql("resetInLabel");
-        expect(await button('SubmitInLabel').text()).to.be.eql("submitInLabel");
+        expect(await button('InputButtonInLabel').text()).to.be.eql(
+          'inputButtonInLabel',
+        );
+        expect(await button('ResetInLabel').text()).to.be.eql(
+          'resetInLabel',
+        );
+        expect(await button('SubmitInLabel').text()).to.be.eql(
+          'submitInLabel',
+        );
       }); // Todo: should be fixed with #815
     });
     describe('button with label for', () => {
@@ -115,21 +156,39 @@ describe(test_name, () => {
       });
 
       xit('test get with label for()', async () => {
-        expect(await (await button('LabelForButton').get())[0].text()).to.be.eql('LabelForButton');
-        expect(await (await button('LabelForReset').get())[0].text()).to.be.eql('LabelForButton');
-        expect(await (await button('LabelForSubmit').get())[0].text()).to.be.eql('LabelForButton');
+        expect(
+          await (await button('LabelForButton').get())[0].text(),
+        ).to.be.eql('LabelForButton');
+        expect(
+          await (await button('LabelForReset').get())[0].text(),
+        ).to.be.eql('LabelForButton');
+        expect(
+          await (await button('LabelForSubmit').get())[0].text(),
+        ).to.be.eql('LabelForButton');
       }); // Todo: should be fixed with #815
 
       it('button description', async () => {
-        expect(button('LabelForButton').description).to.be.eql("Button with label LabelForButton ");
-        expect(button('LabelForReset').description).to.be.eql("Button with label LabelForReset ");
-        expect(button('LabelForSubmit').description).to.be.eql("Button with label LabelForSubmit ");
+        expect(button('LabelForButton').description).to.be.eql(
+          'Button with label LabelForButton ',
+        );
+        expect(button('LabelForReset').description).to.be.eql(
+          'Button with label LabelForReset ',
+        );
+        expect(button('LabelForSubmit').description).to.be.eql(
+          'Button with label LabelForSubmit ',
+        );
       });
 
       xit('test text with label for()', async () => {
-        expect(await button('LabelForButton').text()).to.be.eql('LabelForButton');
-        expect(await button('LabelForReset').text()).to.be.eql('LabelForButton');
-        expect(await button('LabelForSubmit').text()).to.be.eql('LabelForButton');
+        expect(await button('LabelForButton').text()).to.be.eql(
+          'LabelForButton',
+        );
+        expect(await button('LabelForReset').text()).to.be.eql(
+          'LabelForButton',
+        );
+        expect(await button('LabelForSubmit').text()).to.be.eql(
+          'LabelForButton',
+        );
       }); // Todo: should be fixed with #815
     });
 
@@ -147,7 +206,8 @@ describe(test_name, () => {
         expect(await button('boldButton').exists()).to.be.true;
         expect(await button('italicButton').exists()).to.be.true;
         expect(await button('strongButton').exists()).to.be.true;
-        expect(await button('childElementButton').exists()).to.be.true;
+        expect(await button('childElementButton').exists()).to.be
+          .true;
       });
     });
   });

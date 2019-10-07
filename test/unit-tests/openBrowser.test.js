@@ -24,10 +24,12 @@ describe('opens browser successfully', () => {
 });
 
 describe('open browser throws an error', () => {
-    it('openBrowser should throw an error when options parameter is string', () =>
-        openBrowser('someString')
-            .catch(error => expect(error).to.be.an.instanceOf(Error)));
-    it('openBrowser should throw an error when options parameter is array', () =>
-        openBrowser([])
-            .catch(error => expect(error).to.be.an.instanceOf(Error)));
-})
+  it('openBrowser should throw an error when options parameter is string', () =>
+    openBrowser('someString').catch(error =>
+      expect(error).to.be.an.instanceOf(Error),
+    ));
+  it('openBrowser should throw an error when options parameter is array', () =>
+    openBrowser([]).catch(error =>
+      expect(error).to.be.an.instanceOf(Error),
+    ));
+});
