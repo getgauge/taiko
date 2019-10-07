@@ -15,7 +15,7 @@ let {
 } = require('./test-util');
 const test_name = '$';
 
-describe(test_name, () => {
+describe.only(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml = `
@@ -40,14 +40,61 @@ describe(test_name, () => {
     it('should find text with xpath', async () => {
       expect(await $("//*[text()='taiko']").exists()).to.be.true;
     });
+
+    it('test get with xpath', async () => {
+      expect(await (await $("//*[text()='taiko']").get())[0].get()).to.be.a('number');
+    });
+
+    it('test description with xpath', async () => {
+      expect($("//*[text()='taiko']").description).to.be.eql("Custom selector $(//*[text()=\'taiko\'])");
+    });
+
+    it('test text() with xpath', async () => {
+      expect(await $("//*[text()='taiko']").text()).to.be.eql("taiko");
+    });
+
     it('should find text with selectors', async () => {
       expect(await $('#foo').exists()).to.be.true;
       expect(await $('.test').exists()).to.be.true;
     });
-    it('should find text with proximity selector', async () => {
-      expect(
-        await text('taiko', above($("//*[text()='demo']"))).exists(),
-      ).to.be.true;
+
+    it('test get with selectors', async () => {
+      expect(await (await $('#foo').get())[0].get()).to.be.a("number");
+      expect(await (await $('.test').get())[0].get()).to.be.a("number");
+    });
+
+    it('test description with selectors', async () => {
+      expect($('#foo').description).to.be.eql("Custom selector $(#foo)");
+      expect($('.test').description).to.be.eql("Custom selector $(.test)");
+    });
+
+    it('test description with selectors', async () => {
+      expect(await $('#foo').text()).to.be.eql("taiko");
+      expect(await $('.test').text()).to.be.eql('taiko\n\ndemo');
     });
   });
+
+  describe("test elements()",()=>{
+    it('test get()', async () => {
+      const elems = await $('#foo').elements();
+      expect(await elems[0].get()).to.be.a('number');
+    });
+
+    it('test exists()', async () => {
+      let elems = await $('#foo').elements();
+      expect(await elems[0].exists()).to.be.true;
+      elems = await $('#bar').elements();
+      expect(await elems[0].exists()).to.be.false;
+    });
+
+    it('test description', async () => {
+      const elems = await $('#foo').elements();
+      expect(elems[0].description).to.be.eql('Custom selector $(#foo)');
+    });
+
+    it('test text()', async () => {
+      const elems = await $('#foo').elements();
+      expect(await elems[0].text()).to.be.eql('taiko');
+    });
+  })
 });
