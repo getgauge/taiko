@@ -15,7 +15,7 @@ let {
 
 const test_name = 'list Item';
 
-describe.only(test_name, () => {
+describe(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml = `
@@ -61,7 +61,7 @@ describe.only(test_name, () => {
       let elems = await listItem({ id: 'coffee' }).elements();
       expect(await elems[0].exists()).to.be.true;
       elems = await listItem({ id: 'foo' }).elements();
-      expect(await elems[0].exists()).to.be.false;
+      expect(elems).to.have.lengthOf(0);
     });
 
     it('test get()', async () => {

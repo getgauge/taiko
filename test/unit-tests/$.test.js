@@ -15,7 +15,7 @@ let {
 } = require('./test-util');
 const test_name = '$';
 
-describe.only(test_name, () => {
+describe(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml = `
@@ -84,7 +84,7 @@ describe.only(test_name, () => {
       let elems = await $('#foo').elements();
       expect(await elems[0].exists()).to.be.true;
       elems = await $('#bar').elements();
-      expect(await elems[0].exists()).to.be.false;
+      expect(elems).to.have.lengthOf(0);
     });
 
     it('test description', async () => {

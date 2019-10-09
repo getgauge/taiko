@@ -78,8 +78,8 @@ describe(testName, () => {
             },
             { args: [newText] }
             );
-            let actual = await text('Item 2').exists();
-            expect(actual).to.be.false;
+            let elems = await text('Item 2').elements();
+            expect(elems).to.have.lengthOf(0);
         });
 
     });

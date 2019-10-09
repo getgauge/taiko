@@ -15,7 +15,7 @@ let {
 } = require('../../lib/taiko');
 const test_name = 'Checkbox';
 
-describe.only(test_name, () => {
+describe(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml =
@@ -59,7 +59,7 @@ describe.only(test_name, () => {
     it('test exists()', async () => {
       expect(await checkBox('checkboxWithInlineLabel').exists()).to.be
         .true;
-      expect(await checkBox('Something').exists(0, 0)).to.be.false;
+      expect(await checkBox('Something').elements()).to.have.lengthOf(0);
     });
 
     it('test get()', async () => {
@@ -148,7 +148,7 @@ describe.only(test_name, () => {
         100,
         1000,
       );
-      expect(await elements[0].exists()).to.be.false;
+      expect(elements).to.have.lengthOf(0);
     });
 
     it('test description of elements', async () => {

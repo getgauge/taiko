@@ -17,7 +17,7 @@ let {
 const path = require('path');
 const test_name = 'fileField';
 
-describe.only(test_name, () => {
+describe(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml = `
@@ -152,8 +152,8 @@ describe.only(test_name, () => {
 
     it('does not exists when selectHiddenElement is not provided', async () => {
       expect(
-        await fileField({ id: 'hidden-file-upload' }).exists(0, 0),
-      ).to.be.false;
+        await fileField({ id: 'hidden-file-upload' }).elements(),
+      ).to.have.lengthOf(0);
     });
   });
 
@@ -167,7 +167,7 @@ describe.only(test_name, () => {
       let elements = await fileField({id:'similarFileField'}).elements();
       expect(await elements[0].exists()).to.be.true;
       elements = await fileField('someFileField').elements(100, 1000);
-      expect(await elements[0].exists()).to.be.false;
+      expect(elements).to.have.lengthOf(0);
     });
 
     it('test description of elements', async () => {

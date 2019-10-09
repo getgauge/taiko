@@ -16,7 +16,7 @@ let {
 
 const test_name = 'radio button';
 
-describe.only(test_name, () => {
+describe(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml =
@@ -60,7 +60,7 @@ describe.only(test_name, () => {
     it('test exists()', async () => {
       expect(await radioButton('radioButtonWithInlineLabel').exists())
         .to.be.true;
-      expect(await radioButton('Something').exists(0, 0)).to.be.false;
+      expect(await radioButton('Something').elements()).to.have.lengthOf(0);
     });
 
     it('test get()', async () => {
@@ -145,7 +145,7 @@ describe.only(test_name, () => {
       }).elements();
       expect(await elements[0].exists()).to.be.true;
       elements = await radioButton('someFileField').elements(100, 1000);
-      expect(await elements[0].exists()).to.be.false;
+      expect(elements).to.have.lengthOf(0);
     });
 
     it('test description of elements', async () => {

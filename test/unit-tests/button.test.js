@@ -13,7 +13,7 @@ let {
 } = require('./test-util');
 const test_name = 'button';
 
-describe.only(test_name, () => {
+describe(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml =
@@ -142,7 +142,7 @@ describe.only(test_name, () => {
         expect(await elements[1].exists()).to.be.true;
         expect(await elements[2].exists()).to.be.true;
         elements = await button('someButton').elements(null, 100, 1000);
-        expect(await elements[0].exists()).to.be.false;
+        expect(elements).to.have.lengthOf(0);
       });
 
       it('test description of elements', async () => {

@@ -17,7 +17,7 @@ let {
 } = require('./test-util');
 const test_name = 'textBox';
 
-describe.only(test_name, () => {
+describe(test_name, () => {
   before(async () => {
     await openBrowser(openBrowserArgs);
   });
@@ -169,7 +169,7 @@ describe.only(test_name, () => {
         let elements = await textBox({id:'sampleTextArea'}).elements();
         expect(await elements[0].exists()).to.be.true;
         elements = await textBox('someTextBox').elements(null, 100, 1000);
-        expect(await elements[0].exists()).to.be.false;
+        expect(elements).to.have.lengthOf(0);
       });
 
       it('test description of elements', async () => {
@@ -340,7 +340,7 @@ describe.only(test_name, () => {
         let elements = await textBox({id:'sampleContentEditable'}).elements();
         expect(await elements[0].exists()).to.be.true;
         elements = await textBox('someTextBox').elements(null, 100, 1000);
-        expect(await elements[0].exists()).to.be.false;
+        expect(elements).to.have.lengthOf(0);
       });
 
       it('test description of elements', async () => {
@@ -563,7 +563,7 @@ describe.only(test_name, () => {
           let elements = await textBox({id:`sample${inputType.type}`}).elements();
           expect(await elements[0].exists()).to.be.true;
           elements = await textBox('someTextBox').elements(null, 100, 1000);
-          expect(await elements[0].exists()).to.be.false;
+          expect(elements).to.have.lengthOf(0);
         });
 
         it('test description of elements', async () => {
@@ -743,7 +743,7 @@ describe.only(test_name, () => {
         let elements = await textBox('sampleInputWithoutType').elements();
         expect(await elements[0].exists()).to.be.true;
         elements = await textBox('someTextBox').elements(null, 100, 1000);
-        expect(await elements[0].exists()).to.be.false;
+        expect(elements).to.have.lengthOf(0);
       });
 
       it('test description of elements', async () => {

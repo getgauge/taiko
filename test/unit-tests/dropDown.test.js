@@ -17,7 +17,7 @@ let {
 } = require('./test-util');
 const test_name = 'DropDown';
 
-describe.only(test_name, () => {
+describe(test_name, () => {
   let filePath;
   let actualEmmiter;
   let emitter = new EventEmitter();
@@ -194,7 +194,7 @@ describe.only(test_name, () => {
         100,
         1000,
       );
-      expect(await elements[0].exists()).to.be.false;
+      expect(elements).to.have.lengthOf(0);
     });
 
     it('test description of elements', async () => {

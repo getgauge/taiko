@@ -16,7 +16,7 @@ let {
 } = require('./test-util');
 let test_name = 'textMatch';
 
-describe.only('match', () => {
+describe('match', () => {
   let filePath;
 
   describe('text match', () => {
@@ -328,14 +328,14 @@ describe.only('match', () => {
 
       it('txt should not be visible when display is set to none', async () => {
         expect(
-          await text('Element it self has display none').exists(0, 0),
-        ).to.be.false;
+          await text('Element it self has display none').elements(),
+        ).to.have.lengthOf(0);
       });
 
       it('txt should not be visible when paraent element display is set to none', async () => {
         expect(
-          await text('Parent element has display none').exists(0, 0),
-        ).to.be.false;
+          await text('Parent element has display none').elements(),
+        ).to.have.lengthOf(0);
       });
 
       it('txt should be visible when ', async () => {
@@ -357,7 +357,7 @@ describe.only('match', () => {
         let elements = await text('someNode').elements();
         expect(await elements[0].exists()).to.be.true;
         elements = await text('someTextBox').elements(null, 100, 1000);
-        expect(await elements[0].exists()).to.be.false;
+        expect(elements).to.have.lengthOf(0);
       });
 
       it('test description of elements', async () => {
