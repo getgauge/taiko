@@ -42,7 +42,7 @@ describe(test_name, () => {
     });
 
     it('test get with xpath', async () => {
-      expect(await (await $("//*[text()='taiko']").get())[0].get()).to.be.a('number');
+      expect(await $("//*[text()='taiko']").get()).to.have.lengthOf(1);
     });
 
     it('test description with xpath', async () => {
@@ -59,8 +59,8 @@ describe(test_name, () => {
     });
 
     it('test get with selectors', async () => {
-      expect(await (await $('#foo').get())[0].get()).to.be.a("number");
-      expect(await (await $('.test').get())[0].get()).to.be.a("number");
+      expect(await $('#foo').get()).to.have.lengthOf(1);
+      expect(await $('.test').get()).to.have.lengthOf(1);
     });
 
     it('test description with selectors', async () => {

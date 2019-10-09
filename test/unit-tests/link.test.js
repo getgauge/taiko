@@ -51,13 +51,13 @@ describe(test_name, () => {
 
   describe('link get in page', () => {
     it('should find the link with text', async () => {
-      expect(await (await link('here').get())[0].get()).to.be.a('number');
+      expect(await link('here').get()).to.have.lengthOf(1);
     });
     it('should find the link with id', async () => {
-      expect(await (await link({ id: 'redirect' }).get())[0].get()).to.be.a('number');
+      expect(await link({ id: 'redirect' }).get()).to.have.lengthOf(1);
     });
     it('should find the link with proximity selector', async () => {
-      expect(await (await link(toRightOf('Click')).get())[0].get()).to.be.a('number');
+      expect(await link(toRightOf('Click')).get()).to.have.lengthOf(4);
     });
   });
 

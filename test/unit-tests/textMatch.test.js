@@ -115,7 +115,7 @@ describe('match', () => {
       });
 
       it('test exact match get()', async () => {
-        expect(await (await text('User name:').get())[0].get()).to.be.a('number');
+        expect(await text('User name:').get()).to.have.lengthOf(1);
       });
 
       it('test exact match description', async () => {
@@ -127,7 +127,7 @@ describe('match', () => {
       });
 
       it('test partial match get()', async () => {
-        expect(await (await text('User').get())[0].get()).to.be.a('number');
+        expect(await text('User').get()).to.have.lengthOf(4);
       });
 
       it('test partial match description', async () => {
@@ -146,7 +146,7 @@ describe('match', () => {
       });
 
       it('test value as text get()', async () => {
-        expect(await (await text('click me').get())[0].get()).to.be.a('number');
+        expect(await text('click me').get()).to.have.lengthOf(1);
       });
 
       it('test value as text description', async () => {
@@ -158,7 +158,7 @@ describe('match', () => {
       });
 
       it('test type as text get()', async () => {
-        expect(await (await text('submit').get())[0].get()).to.be.a('number');
+        expect(await text('submit').get()).to.have.lengthOf(3);
       });
 
       it('test type as text description', async () => {
@@ -172,7 +172,7 @@ describe('match', () => {
       });
 
       it('test exact match get()', async () => {
-        expect(await (await text('Text Across Element').get())[0].get()).to.be.a('number');
+        expect(await text('Text Across Element').get()).to.have.lengthOf(1);
       });
 
       it('test exact match description', async () => {
@@ -184,7 +184,7 @@ describe('match', () => {
       });
 
       it('test partial match get()', async () => {
-        expect(await (await text('Text').get())[0].get()).to.be.a('number');
+        expect(await text('Text').get()).to.have.lengthOf(8);
       });
 
       it('test partial match description', async () => {
@@ -246,7 +246,7 @@ describe('match', () => {
       });
 
       it('test text get()', async () => {
-        expect(await (await text('Text in iframe').get())[0].get()).to.be.a('number');
+        expect(await text('Text in iframe').get()).to.have.lengthOf(1);
       });
 
       it('test text description', async () => {

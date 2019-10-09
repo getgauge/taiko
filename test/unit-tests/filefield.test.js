@@ -73,8 +73,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await fileField(above(button('Upload'))).get())[0].get()).to
-          .be.a("number");
+        expect(await fileField(above(button('Upload'))).get()).to.have.lengthOf(2);
       });
 
       it('test description', async() => {
@@ -101,7 +100,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await fileField('Select a file').get())[0].get()).to.be.a('number');
+        expect(await fileField('Select a file').get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -128,7 +127,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await fileField('Choose a file').get())[0].get()).to.be.a('number');
+        expect(await fileField('Choose a file').get()).to.have.lengthOf(3);
       });
 
       it('test description', async () => {

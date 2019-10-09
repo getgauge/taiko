@@ -57,10 +57,10 @@ describe(test_name, () => {
       });
 
       it('button get()', async () => {
-        expect((await (await button('Click').get())[0].get())).to.be.a('number');
-        expect((await (await button('Input Button').get())[0].get())).to.be.a("number");
-        expect((await (await button('Input Reset').get())[0].get())).to.be.a("number");
-        expect((await (await button('Input Submit').get())[0].get())).to.be.a("number");
+        expect(await button('Click').get()).to.have.lengthOf(1);
+        expect(await button('Input Button').get()).to.have.lengthOf(1);
+        expect(await button('Input Reset').get()).to.have.lengthOf(1);
+        expect(await button('Input Submit').get()).to.have.lengthOf(1);
       });
 
       it('button description', async () => {
@@ -85,9 +85,9 @@ describe(test_name, () => {
       });
 
       it('get with label()', async () => {
-        expect(await (await button('InputButtonInLabel').get())[0].get()).to.be.a("number");
-        expect(await (await button('ResetInLabel').get())[0].get()).to.be.a("number");
-        expect(await (await button('SubmitInLabel').get())[0].get()).to.be.a("number");
+        expect(await button('InputButtonInLabel').get()).to.have.lengthOf(1);
+        expect(await button('ResetInLabel').get()).to.have.lengthOf(1);
+        expect(await button('SubmitInLabel').get()).to.have.lengthOf(1);
       });
 
       it('button description', async () => {
@@ -110,9 +110,9 @@ describe(test_name, () => {
       });
 
       it('test get with label for()', async () => {
-        expect(await (await button('LabelForButton').get())[0].get()).to.be.a("number");
-        expect(await (await button('LabelForReset').get())[0].get()).to.be.a("number");
-        expect(await (await button('LabelForSubmit').get())[0].get()).to.be.a("number");
+        expect(await button('LabelForButton').get()).to.have.lengthOf(1);
+        expect(await button('LabelForReset').get()).to.have.lengthOf(1);
+        expect(await button('LabelForSubmit').get()).to.have.lengthOf(1);
       });
 
       it('button description', async () => {

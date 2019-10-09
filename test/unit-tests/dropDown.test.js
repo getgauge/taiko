@@ -87,9 +87,7 @@ describe(test_name, () => {
     });
 
     it('test dropdown get()', async () => {
-      expect(await (await dropDown('Cars').get())[0].get()).to.be.a(
-        'number',
-      );
+      expect(await dropDown('Cars').get()).to.have.lengthOf(2);
     });
 
     it('test dropdown description', async () => {
@@ -130,11 +128,7 @@ describe(test_name, () => {
     });
 
     it('test get()', async () => {
-      expect(
-        await (await dropDown(
-          'dropDownWithWrappedInLabel',
-        ).get())[0].get(),
-      ).to.be.a('number');
+      expect(await dropDown('dropDownWithWrappedInLabel').get()).to.have.lengthOf(1);
     });
 
     it('test description', async () => {

@@ -76,8 +76,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await textBox('textAreaWithWrappedLabel').get())[0].get()).to
-          .be.a("number");
+        expect(await textBox('textAreaWithWrappedLabel').get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -103,8 +102,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await textBox('textAreaWithLabelFor').get())[0].get()).to.be
-          .a("number");
+        expect(await textBox('textAreaWithLabelFor').get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -126,8 +124,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await textBox({ id: 'textAreaWithLabelFor' }).get())[0].get())
-          .to.be.a("number");
+        expect(await textBox({ id: 'textAreaWithLabelFor' }).get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -149,8 +146,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await textBox(above('textAreaWithLabelFor')).get())[0].get())
-          .to.be.a("number");
+        expect(await textBox(above('textAreaWithLabelFor')).get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -227,9 +223,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(
-          await (await textBox('contentEditableWithWrappedLabel').get())[0].get(),
-        ).to.be.a("number");
+        expect(await textBox('contentEditableWithWrappedLabel').get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -256,8 +250,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await textBox('contentEditableWithLabelFor').get())[0].get())
-          .to.be.a("number");
+        expect(await textBox('contentEditableWithLabelFor').get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -284,11 +277,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(
-          await (await textBox({
-            id: 'contentEditableWithWrappedLabel',
-          }).get())[0].get()
-        ).to.be.a("number");
+        expect(await textBox({id: 'contentEditableWithWrappedLabel',}).get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -316,11 +305,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(
-          await (await textBox(
-            above('contentEditableWithLabelFor'),
-          ).get())[0].get(),
-        ).to.be.a("number");
+        expect(await textBox(above('contentEditableWithLabelFor')).get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -435,8 +420,7 @@ describe(test_name, () => {
         });
 
         it('test get()', async () => {
-          expect(await (await textBox('With Inline Text').get())[0].get()).to.be
-            .a("number");
+          expect(await textBox('With Inline Text').get()).to.have.lengthOf(2);
         });
 
         it('test description', async () => {
@@ -462,8 +446,7 @@ describe(test_name, () => {
         });
 
         it('test get()', async () => {
-          expect(await (await textBox('With Wrapped Label').get())[0].get()).to.be
-            .a("number");
+          expect(await textBox('With Wrapped Label').get()).to.have.lengthOf(1);
         });
 
         it('test description', async () => {
@@ -488,7 +471,7 @@ describe(test_name, () => {
         });
 
         it('test get()', async () => {
-          expect(await (await textBox('With Label For').get())[0].get()).to.be.a("number");
+          expect(await textBox('With Label For').get()).to.have.lengthOf(1);
         });
 
         it('test description', async () => {
@@ -515,10 +498,7 @@ describe(test_name, () => {
 
         it('test get()', async () => {
           expect(
-            await (await textBox({
-              id: inputType.name + 'WithLabelFor',
-            }).get())[0].get(),
-          ).to.be.a("number");
+            await textBox({id: inputType.name + 'WithLabelFor'}).get()).to.have.lengthOf(1);
         });
 
         it('test description', async () => {
@@ -543,8 +523,7 @@ describe(test_name, () => {
         });
 
         it('test get()', async () => {
-          expect(await (await textBox(above('With Label For')).get())[0].get()).to
-            .be.a("number");
+          expect(await textBox(above('With Label For')).get()).to.have.lengthOf(1);
         });
 
         it('test description', async () => {
@@ -623,7 +602,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await textBox('With Inline Text').get())[0].get()).to.be.a("number");
+        expect(await textBox('With Inline Text').get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -645,8 +624,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await textBox('With Wrapped Label').get())[0].get()).to.be
-          .a("number");
+        expect(await textBox('With Wrapped Label').get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -668,7 +646,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await textBox('With Label For').get())[0].get()).to.be.a("number");
+        expect(await textBox('With Label For').get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -694,11 +672,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(
-          await (await textBox({
-            id: inputTypeName + 'WithLabelFor',
-          }).get())[0].get(),
-        ).to.be.a("number");
+        expect(await textBox({id: inputTypeName + 'WithLabelFor',}).get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -723,8 +697,7 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await (await textBox(above('With Label For')).get())[0].get()).to.be
-          .a("number");
+        expect(await textBox(above('With Label For')).get()).to.have.lengthOf(1);
       });
 
       it('test description', async () => {

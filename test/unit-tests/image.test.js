@@ -65,23 +65,23 @@ describe(test_name, () => {
 
   describe('get image in page', () => {
     it('should find the image with text', async () => {
-      expect(await (await image('avatar').get())[0].get()).to.be.a("number");
+      expect(await image('avatar').get()).to.have.lengthOf(1);
     });
     it('should find the image with selectors', async () => {
-      expect(await (await image({ id: 'brokenImage' }).get())[0].get()).to.be.a("number");
-      expect(await (await image({ src: 'brokenImage.jpg' }).get())[0].get()).to.be.a("number");
+      expect(await image({ id: 'brokenImage' }).get()).to.have.lengthOf(1);
+      expect(await image({ src: 'brokenImage.jpg' }).get()).to.have.lengthOf(1);
     });
     it('should find the image with proximity selector', async () => {
-      expect(await (await image(below('Images')).get())[0].get()).to.be.a("number");
+      expect(await image(below('Images')).get()).to.have.lengthOf(7);
     });
     it('should find div image using selectors', async () => {
-      expect(await (await image({ id: 'divImage' }).get())[0].get()).to.be.a("number");
+      expect(await image({ id: 'divImage' }).get()).to.have.lengthOf(1);
     });
     it('should find p tag image using selectors', async () => {
-      expect(await (await image({ id: 'paraImage' }).get())[0].get()).to.be.a("number");
+      expect(await image({ id: 'paraImage' }).get()).to.have.lengthOf(1);
     });
     it('should find the div image with proximity selector', async () => {
-      expect(await (await image(below('Div Image')).get())[0].get()).to.be.a("number");
+      expect(await image(below('Div Image')).get()).to.have.lengthOf(5);
     });
   });
 
