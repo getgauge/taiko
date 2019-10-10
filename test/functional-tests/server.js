@@ -6,7 +6,7 @@ let server = app.listen(3001, async () => {
   let run = () =>
     new Promise((resolve, reject) => {
       let p = cp.exec(
-        `gauge run ${specs} -v --tags=\\!knownIssue -p`,
+        `gauge run ${specs} -v --tags=\\!knownIssue`,
         error => {
           if (error) {
             reject(error);
