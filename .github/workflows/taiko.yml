@@ -4,17 +4,17 @@ on: [push, pull_request]
 
 jobs:
   unit-tests:
-    name: ${{ matrix.os }}
+    name: Unit tests - ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js 12
+      - name: Use NodeJS 12
         uses: actions/setup-node@v1
         with:
-          version: 12
+          node-version: '12'
       - name: install
         run: |
           npm install
@@ -24,21 +24,18 @@ jobs:
 
   functional-tests:
     needs: unit-tests
-    name: NodeJS ${{ matrix.node_version }} and ${{ matrix.os }}
+    name: FTs & examples - NodeJS ${{ matrix.node_version }} & ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: [10, 12]
+        node_version: ['10', '12']
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node_version }}
+      - name: Use NodeJS ${{ matrix.node_version }}
         uses: actions/setup-node@v1
         with:
-          version: ${{ matrix.node_version }}
-      - name: install
-        run: |
-          npm install
+          node-version: ${{ matrix.node_version }}
       - name: functional-tests
         env:
           GAUGE_TELEMETRY_ENABLED: false
