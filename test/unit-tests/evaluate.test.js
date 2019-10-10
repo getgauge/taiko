@@ -79,7 +79,7 @@ describe(testName, () => {
             { args: [newText] }
             );
             let elems = await text('Item 2').elements();
-            expect(elems).to.have.lengthOf(0);
+            expect(await elems[0].exists()).to.be.false;
         });
 
     });

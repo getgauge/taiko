@@ -98,8 +98,8 @@ describe(test_name, () => {
       expect(await elements[0].exists()).to.be.true;
       expect(await elements[1].exists()).to.be.true;
       expect(await elements[2].exists()).to.be.true;
-      elements = await link('someLink').elements(null, 100, 1000);
-      expect(elements).to.have.lengthOf(0);
+      elements = await link('someLink').elements();
+      expect(await elements[0].exists()).to.be.false;
     });
 
     it('test description of elements', async () => {

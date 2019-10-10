@@ -164,8 +164,8 @@ describe(test_name, () => {
       it('test exists of elements', async () => {
         let elements = await textBox({id:'sampleTextArea'}).elements();
         expect(await elements[0].exists()).to.be.true;
-        elements = await textBox('someTextBox').elements(null, 100, 1000);
-        expect(elements).to.have.lengthOf(0);
+        elements = await textBox('someTextBox').elements();
+        expect(await elements[0].exists()).to.be.false;
       });
 
       it('test description of elements', async () => {
@@ -324,8 +324,8 @@ describe(test_name, () => {
       it('test exists of elements', async () => {
         let elements = await textBox({id:'sampleContentEditable'}).elements();
         expect(await elements[0].exists()).to.be.true;
-        elements = await textBox('someTextBox').elements(null, 100, 1000);
-        expect(elements).to.have.lengthOf(0);
+        elements = await textBox('someTextBox').elements();
+        expect(await elements[0].exists()).to.be.false;
       });
 
       it('test description of elements', async () => {
@@ -541,8 +541,8 @@ describe(test_name, () => {
         it('test exists of elements', async () => {
           let elements = await textBox({id:`sample${inputType.type}`}).elements();
           expect(await elements[0].exists()).to.be.true;
-          elements = await textBox('someTextBox').elements(null, 100, 1000);
-          expect(elements).to.have.lengthOf(0);
+          elements = await textBox('someTextBox').elements();
+          expect(await elements[0].exists()).to.be.false;
         });
 
         it('test description of elements', async () => {
@@ -715,8 +715,8 @@ describe(test_name, () => {
       it('test exists of elements', async () => {
         let elements = await textBox('sampleInputWithoutType').elements();
         expect(await elements[0].exists()).to.be.true;
-        elements = await textBox('someTextBox').elements(null, 100, 1000);
-        expect(elements).to.have.lengthOf(0);
+        elements = await textBox('someTextBox').elements();
+        expect(await elements[0].exists()).to.be.false;
       });
 
       it('test description of elements', async () => {

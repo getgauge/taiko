@@ -183,12 +183,8 @@ describe(test_name, () => {
         id:"sampleDropDown"
       }).elements();
       expect(await elements[0].exists()).to.be.true;
-      elements = await dropDown('someFileField').elements(
-        null,
-        100,
-        1000,
-      );
-      expect(elements).to.have.lengthOf(0);
+      elements = await dropDown('someFileField').elements();
+      expect(await elements[0].exists()).to.be.false;
     });
 
     it('test description of elements', async () => {
