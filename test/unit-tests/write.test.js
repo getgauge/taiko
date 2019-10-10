@@ -55,7 +55,7 @@ describe(test_name, () => {
 
   after(async () => {
     removeFile(filePath);
-    await setConfig({ waitForNavigation: true });
+    setConfig({ waitForNavigation: true });
     await closeBrowser();
   });
 
@@ -142,13 +142,13 @@ describe('write test on multiple similar elements', () => {
     ('</div>');
     readonlyFilePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
-    await setConfig({ waitForNavigation: false });
+    setConfig({ waitForNavigation: false });
     await goto(readonlyFilePath);
   });
 
   after(async () => {
     removeFile(readonlyFilePath);
-    await setConfig({ waitForNavigation: true });
+    setConfig({ waitForNavigation: true });
     await closeBrowser();
   });
 

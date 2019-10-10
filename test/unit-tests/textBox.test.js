@@ -46,8 +46,8 @@ describe(test_name, () => {
         '</form>' +
         '</div>';
       filePath = createHtml(innerHtml, test_name);
-      setConfig({ waitForNavigation: false });
       await goto(filePath);
+      setConfig({ waitForNavigation: false });
     });
 
     after(() => {
@@ -136,8 +136,8 @@ describe(test_name, () => {
         '</form>' +
         '</div>';
       filePath = createHtml(innerHtml, test_name);
-      setConfig({ waitForNavigation: false });
       await goto(filePath);
+      setConfig({ waitForNavigation: false });
     });
 
     after(() => {
@@ -271,8 +271,8 @@ describe(test_name, () => {
                     </form>
                 </div>`;
         filePath = createHtml(innerHtml, test_name + inputType.type);
-        setConfig({ waitForNavigation: false });
         await goto(filePath);
+        setConfig({ waitForNavigation: false });
       });
 
       after(() => {
@@ -387,8 +387,8 @@ describe(test_name, () => {
                 </form>
             </div>`;
       filePath = createHtml(innerHtml, test_name + inputTypeName);
-      setConfig({ waitForNavigation: false });
       await goto(filePath);
+      setConfig({ waitForNavigation: false });
     });
 
     after(() => {
