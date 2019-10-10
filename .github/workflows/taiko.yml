@@ -1,4 +1,4 @@
-name: taiko-tests
+name: taiko
 
 on: [push, pull_request]
 
