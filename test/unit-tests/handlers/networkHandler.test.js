@@ -28,6 +28,7 @@ describe(test_name, () => {
   });
   afterEach(() => {
     actualNetworkCondition = {};
+    process.env.TAIKO_EMULATE_NETWORK = '';
   });
 
   it('should invoke emulateNetworkConditions with correct options', async () => {
