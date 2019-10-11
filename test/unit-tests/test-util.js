@@ -1,6 +1,7 @@
 let path = require('path');
 let { writeFileSync, unlinkSync } = require('fs');
 let { emitter } = require('../../lib/taiko');
+let { pathToFileURL, fileURLToPath } = require('url');
 
 emitter.on('success', desc => console.log(desc));
 module.exports.createHtml = (innerHtml, testName) => {
@@ -23,12 +24,16 @@ module.exports.createHtml = (innerHtml, testName) => {
 </html>
     `;
   writeFileSync(htmlFilePath, content);
-  return 'file:///' + htmlFilePath;
+  return pathToFileURL(htmlFilePath).toString();
 };
 
 module.exports.removeFile = filePath => {
-  filePath = filePath.replace('file:///', '');
-  unlinkSync(filePath);
+  try {
+    filePath = fileURLToPath(filePath);
+  } catch (e) {
+  } finally {
+    unlinkSync(filePath);
+  }
 };
 
 module.exports.openBrowserArgs = {
