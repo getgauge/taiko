@@ -589,7 +589,7 @@ describe(test_name, () => {
         it('test get()', async () => {
           expect(
             await textBox(above('With Label For')).get(),
-          ).to.have.lengthOf(1);
+          ).to.have.lengthOf.greaterThan(0);
         });
 
         it('test description', async () => {
@@ -789,7 +789,7 @@ describe(test_name, () => {
       it('test get()', async () => {
         expect(
           await textBox(above('With Label For')).get(),
-        ).to.have.lengthOf(1);
+        ).to.have.lengthOf.greaterThan(0);
       });
 
       it('test description', async () => {
