@@ -19,6 +19,8 @@ jobs:
         run: |
           npm install
       - name: unit-tests
+        env:
+          DEBUG: taiko:*
         run: |
           npm test
 
