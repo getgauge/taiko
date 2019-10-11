@@ -42,6 +42,7 @@ section {
 
 pre {
   padding: 0%;
+  word-break: normal;
 }
 
 .logo {
@@ -199,7 +200,7 @@ pre {
   text-decoration: none;
 }
 
- .hljs {
+.hljs {
   position: relative;
   font-family: monospace;
   background: #222222;
@@ -213,6 +214,11 @@ pre {
   line-height: 2;
   overflow-wrap: break-word;
   font-size: 16px;
+}
+
+.content-section pre {
+  position: relative;
+  display: grid;
 }
 
 .menu-title{
@@ -580,6 +586,10 @@ h2:hover .link-icon, h3:hover .link-icon{
 }
 
 .codeBox {
+  position: absolute;
+  right: 60px;
+  top: 14px;
+  width: 10px;
   opacity: 0;
 }
 

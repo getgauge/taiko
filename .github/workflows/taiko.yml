@@ -1,0 +1,35 @@
+name: taiko
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: NodeJs ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: [10, 12]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
+        with:
+          version: ${{ matrix.node_version }}
+
+      - name: install
+        run: |
+          npm install
+      - name: unit-tests
+        run: |
+          npm test
+      - name: functional-tests
+        env:
+          GAUGE_TELEMETRY_ENABLED: false
+        run: |
+          npm run test-functional
+      - name: examples
+        run: |
+          npm run examples

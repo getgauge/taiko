@@ -160,7 +160,7 @@ if (isTaikoRunner(processArgv[1])) {
           runFile(taiko, fileName, true, cmd.waitTime, fileName => {
             return new Promise(resolve => {
               repl_mode = true;
-              repl.initialize(taiko, fileName).then(r => {
+              repl.initialize(taiko, fileName, true).then(r => {
                 let listeners = r.listeners('exit');
                 r.removeAllListeners('exit');
                 r.on('exit', () => {
