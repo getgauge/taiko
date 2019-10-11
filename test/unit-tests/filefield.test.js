@@ -73,15 +73,21 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await fileField(above(button('Upload'))).get()).to.have.lengthOf(2);
+        expect(
+          await fileField(above(button('Upload'))).get(),
+        ).to.have.lengthOf(2);
       });
 
-      it('test description', async() => {
-        expect(fileField(above(button('Upload'))).description).to.be.eql("File field Above Button with label Upload ");
+      it('test description', async () => {
+        expect(
+          fileField(above(button('Upload'))).description,
+        ).to.be.eql('File field Above Button with label Upload ');
       });
 
-      xit('test text()', async() => {
-        expect(await fileField(above(button('Upload'))).text()).to.be.eql("File field Above Button with label Upload ");
+      xit('test text()', async () => {
+        expect(
+          await fileField(above(button('Upload'))).text(),
+        ).to.be.eql('File field Above Button with label Upload ');
       });
     });
     describe('with wrapped text in label', () => {
@@ -100,15 +106,21 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await fileField('Select a file').get()).to.have.lengthOf(1);
+        expect(
+          await fileField('Select a file').get(),
+        ).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
-        expect(fileField('Select a file').description).to.be.eql("File field with label Select a file ");
+        expect(fileField('Select a file').description).to.be.eql(
+          'File field with label Select a file ',
+        );
       });
 
       xit('test text()', async () => {
-        expect(await fileField('Select a file').text()).to.be.eql("File field with label Select a file ");
+        expect(await fileField('Select a file').text()).to.be.eql(
+          'File field with label Select a file ',
+        );
       });
     });
     describe('using label for', () => {
@@ -127,15 +139,21 @@ describe(test_name, () => {
       });
 
       it('test get()', async () => {
-        expect(await fileField('Choose a file').get()).to.have.lengthOf(3);
+        expect(
+          await fileField('Choose a file').get(),
+        ).to.have.lengthOf(3);
       });
 
       it('test description', async () => {
-        expect(fileField('Choose a file').description).to.be.eql("File field with label Choose a file ");
+        expect(fileField('Choose a file').description).to.be.eql(
+          'File field with label Choose a file ',
+        );
       });
 
       xit('test text()', async () => {
-        expect(await fileField('Choose a file').text()).to.be.eql("File field with label Choose a file ");
+        expect(await fileField('Choose a file').text()).to.be.eql(
+          'File field with label Choose a file ',
+        );
       });
     });
   });
@@ -150,31 +168,43 @@ describe(test_name, () => {
     });
 
     it('does not exists when selectHiddenElement is not provided', async () => {
-      const elems = await fileField({ id: 'hidden-file-upload' }).elements();
+      const elems = await fileField({
+        id: 'hidden-file-upload',
+      }).elements();
       expect(await elems[0].exists()).to.be.false;
     });
   });
 
   describe('elements()', () => {
     it('test get of elements', async () => {
-      const elements = await fileField({id:"similarFileField"}).elements();
+      const elements = await fileField({
+        id: 'similarFileField',
+      }).elements();
       expect(await elements[0].get()).to.be.a('number');
     });
 
     it('test exists of elements', async () => {
-      let elements = await fileField({id:'similarFileField'}).elements();
+      let elements = await fileField({
+        id: 'similarFileField',
+      }).elements();
       expect(await elements[0].exists()).to.be.true;
       elements = await fileField('someFileField').elements();
       expect(await elements[0].exists()).to.be.false;
     });
 
     it('test description of elements', async () => {
-      let elements = await fileField({id:'similarFileField'}).elements();
-      expect(elements[0].description).to.be.eql('File field[@id = concat(\'similarFileField\', "")]');
+      let elements = await fileField({
+        id: 'similarFileField',
+      }).elements();
+      expect(elements[0].description).to.be.eql(
+        'File field[@id = concat(\'similarFileField\', "")]',
+      );
     });
 
     xit('test text of elements', async () => {
-      let elements = await fileField({id:'similarFileField'}).elements();
+      let elements = await fileField({
+        id: 'similarFileField',
+      }).elements();
       expect(await elements[0].text()).to.be.eql('similarFileField');
     });
   });

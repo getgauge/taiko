@@ -54,22 +54,32 @@ describe(test_name, () => {
       expect(await link('here').get()).to.have.lengthOf(1);
     });
     it('should find the link with id', async () => {
-      expect(await link({ id: 'redirect' }).get()).to.have.lengthOf(1);
+      expect(await link({ id: 'redirect' }).get()).to.have.lengthOf(
+        1,
+      );
     });
     it('should find the link with proximity selector', async () => {
-      expect(await link(toRightOf('Click')).get()).to.have.lengthOf(4);
+      expect(await link(toRightOf('Click')).get()).to.have.lengthOf(
+        4,
+      );
     });
   });
 
   describe('link description in page', () => {
     it('should find the link with text', async () => {
-      expect(link('here').description).to.be.eql('link with text here ');
+      expect(link('here').description).to.be.eql(
+        'link with text here ',
+      );
     });
     it('should find the link with id', async () => {
-      expect(link({ id: 'redirect' }).description).to.be.eql('link[@id = concat(\'redirect\', "")]');
+      expect(link({ id: 'redirect' }).description).to.be.eql(
+        'link[@id = concat(\'redirect\', "")]',
+      );
     });
     it('should find the link with proximity selector', async () => {
-      expect(link(toRightOf('Click')).description).to.be.eql('link To right of Click');
+      expect(link(toRightOf('Click')).description).to.be.eql(
+        'link To right of Click',
+      );
     });
   });
 
@@ -104,9 +114,15 @@ describe(test_name, () => {
 
     it('test description of elements', async () => {
       let elements = await link('similarLink').elements();
-      expect(elements[0].description).to.be.eql('link with text similarLink ');
-      expect(elements[1].description).to.be.eql('link with text similarLink ');
-      expect(elements[2].description).to.be.eql('link with text similarLink ');
+      expect(elements[0].description).to.be.eql(
+        'link with text similarLink ',
+      );
+      expect(elements[1].description).to.be.eql(
+        'link with text similarLink ',
+      );
+      expect(elements[2].description).to.be.eql(
+        'link with text similarLink ',
+      );
     });
 
     it('test text of elements', async () => {

@@ -65,13 +65,17 @@ describe(test_name, () => {
     });
 
     it('test get()', async () => {
-      const elem = (await radioButton('radioButtonWithInlineLabel').get())[0];
+      const elem = (await radioButton(
+        'radioButtonWithInlineLabel',
+      ).get())[0];
       expect(await elem.get()).to.be.a('number');
     });
 
     it('test select()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
-      let isSelected = await radioButton('radioButtonWithInlineLabel').isSelected();
+      let isSelected = await radioButton(
+        'radioButtonWithInlineLabel',
+      ).isSelected();
       expect(isSelected).to.be.true;
     });
 
@@ -83,7 +87,9 @@ describe(test_name, () => {
     it('test deselect()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
       await radioButton('radioButtonWithInlineLabel').deselect();
-      let isSelected = await radioButton('radioButtonWithInlineLabel').isSelected();
+      let isSelected = await radioButton(
+        'radioButtonWithInlineLabel',
+      ).isSelected();
       expect(isSelected).to.be.false;
     });
 
@@ -103,15 +109,18 @@ describe(test_name, () => {
     });
 
     it('test get()', async () => {
-      const elem = (await radioButton('radioButtonWithWrappedLabel').get())[0];
-      expect(
-        await elem.get(),
-      ).to.be.a('number');
+      const elem = (await radioButton(
+        'radioButtonWithWrappedLabel',
+      ).get())[0];
+      expect(await elem.get()).to.be.a('number');
     });
 
     it('test description', async () => {
-      const description = radioButton('radioButtonWithWrappedLabel').description;
-      expect(description).to.be.eql('Radio button with label radioButtonWithWrappedLabel ');
+      const description = radioButton('radioButtonWithWrappedLabel')
+        .description;
+      expect(description).to.be.eql(
+        'Radio button with label radioButtonWithWrappedLabel ',
+      );
     });
   });
 
@@ -120,15 +129,20 @@ describe(test_name, () => {
       expect(await radioButton('radioButtonWithLabelFor').exists()).to
         .be.true;
     });
-    
+
     it('test get()', async () => {
-      const elem = (await radioButton('radioButtonWithLabelFor').get())[0];
+      const elem = (await radioButton(
+        'radioButtonWithLabelFor',
+      ).get())[0];
       expect(await elem.get()).to.be.a('number');
     });
 
     it('test description', async () => {
-      const description = radioButton('radioButtonWithLabelFor').description;
-      expect(description).to.be.eql('Radio button with label radioButtonWithLabelFor ');
+      const description = radioButton('radioButtonWithLabelFor')
+        .description;
+      expect(description).to.be.eql(
+        'Radio button with label radioButtonWithLabelFor ',
+      );
     });
   });
 

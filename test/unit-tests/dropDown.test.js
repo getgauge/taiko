@@ -128,7 +128,9 @@ describe(test_name, () => {
     });
 
     it('test get()', async () => {
-      expect(await dropDown('dropDownWithWrappedInLabel').get()).to.have.lengthOf(1);
+      expect(
+        await dropDown('dropDownWithWrappedInLabel').get(),
+      ).to.have.lengthOf(1);
     });
 
     it('test description', async () => {
@@ -173,14 +175,14 @@ describe(test_name, () => {
   describe('elements()', () => {
     it('test get of elements', async () => {
       const elements = await dropDown({
-        id:"sampleDropDown"
+        id: 'sampleDropDown',
       }).elements();
       expect(await elements[0].get()).to.be.a('number');
     });
 
     it('test exists of elements', async () => {
       let elements = await dropDown({
-        id:"sampleDropDown"
+        id: 'sampleDropDown',
       }).elements();
       expect(await elements[0].exists()).to.be.true;
       elements = await dropDown('someFileField').elements();
@@ -189,7 +191,7 @@ describe(test_name, () => {
 
     it('test description of elements', async () => {
       let elements = await dropDown({
-        id:"sampleDropDown"
+        id: 'sampleDropDown',
       }).elements();
       expect(elements[0].description).to.be.eql(
         'DropDown[@id = concat(\'sampleDropDown\', "")]',
@@ -198,7 +200,7 @@ describe(test_name, () => {
 
     it('test text of elements', async () => {
       let elements = await dropDown({
-        id:"sampleDropDown"
+        id: 'sampleDropDown',
       }).elements();
       expect(await elements[0].text()).to.be.eql('someValue');
     });

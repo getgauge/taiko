@@ -47,7 +47,8 @@ describe(test_name, () => {
     });
     it('should find the image with selectors', async () => {
       expect(await image({ id: 'brokenImage' }).exists()).to.be.true;
-      expect(await image({ src: 'brokenImage.jpg' }).exists()).to.be.true;
+      expect(await image({ src: 'brokenImage.jpg' }).exists()).to.be
+        .true;
     });
     it('should find the image with proximity selector', async () => {
       expect(await image(below('Images')).exists()).to.be.true;
@@ -68,64 +69,103 @@ describe(test_name, () => {
       expect(await image('avatar').get()).to.have.lengthOf(1);
     });
     it('should find the image with selectors', async () => {
-      expect(await image({ id: 'brokenImage' }).get()).to.have.lengthOf(1);
-      expect(await image({ src: 'brokenImage.jpg' }).get()).to.have.lengthOf(1);
+      expect(
+        await image({ id: 'brokenImage' }).get(),
+      ).to.have.lengthOf(1);
+      expect(
+        await image({ src: 'brokenImage.jpg' }).get(),
+      ).to.have.lengthOf(1);
     });
     it('should find the image with proximity selector', async () => {
       expect(await image(below('Images')).get()).to.have.lengthOf(7);
     });
     it('should find div image using selectors', async () => {
-      expect(await image({ id: 'divImage' }).get()).to.have.lengthOf(1);
+      expect(await image({ id: 'divImage' }).get()).to.have.lengthOf(
+        1,
+      );
     });
     it('should find p tag image using selectors', async () => {
-      expect(await image({ id: 'paraImage' }).get()).to.have.lengthOf(1);
+      expect(await image({ id: 'paraImage' }).get()).to.have.lengthOf(
+        1,
+      );
     });
     it('should find the div image with proximity selector', async () => {
-      expect(await image(below('Div Image')).get()).to.have.lengthOf(5);
+      expect(await image(below('Div Image')).get()).to.have.lengthOf(
+        5,
+      );
     });
   });
 
   describe('image description in page', () => {
     it('should find the image with text', async () => {
-      expect(image('avatar').description).to.be.eql("image with alt avatar ");
+      expect(image('avatar').description).to.be.eql(
+        'image with alt avatar ',
+      );
     });
     it('should find the image with selectors', async () => {
-      expect(image({ id: 'brokenImage' }).description).to.be.eql('image[@id = concat(\'brokenImage\', "")]');
-      expect(image({ src: 'brokenImage.jpg' }).description).to.be.eql('image[@src = concat(\'brokenImage.jpg\', "")]');
+      expect(image({ id: 'brokenImage' }).description).to.be.eql(
+        'image[@id = concat(\'brokenImage\', "")]',
+      );
+      expect(image({ src: 'brokenImage.jpg' }).description).to.be.eql(
+        'image[@src = concat(\'brokenImage.jpg\', "")]',
+      );
     });
     it('should find the image with proximity selector', async () => {
-      expect(image(below('Images')).description).to.be.eql("image Below Images");
+      expect(image(below('Images')).description).to.be.eql(
+        'image Below Images',
+      );
     });
     it('should find div image using selectors', async () => {
-      expect(image({ id: 'divImage' }).description).to.be.eql('image[@id = concat(\'divImage\', "")]');
+      expect(image({ id: 'divImage' }).description).to.be.eql(
+        'image[@id = concat(\'divImage\', "")]',
+      );
     });
     it('should find p tag image using selectors', async () => {
-      expect(image({ id: 'paraImage' }).description).to.be.eql('image[@id = concat(\'paraImage\', "")]');
+      expect(image({ id: 'paraImage' }).description).to.be.eql(
+        'image[@id = concat(\'paraImage\', "")]',
+      );
     });
     it('should find the div image with proximity selector', async () => {
-      expect(image(below('Div Image')).description).to.be.eql("image Below Div Image");
+      expect(image(below('Div Image')).description).to.be.eql(
+        'image Below Div Image',
+      );
     });
   });
 
-  xdescribe('image text in page', () => { //Todo: Need to discuss on should we expose this api or not
+  xdescribe('image text in page', () => {
+    //Todo: Need to discuss on should we expose this api or not
     it('should find the image with text', async () => {
-      expect(await image('avatar').text()).to.be.eql("image with alt avatar ");
+      expect(await image('avatar').text()).to.be.eql(
+        'image with alt avatar ',
+      );
     });
     it('should find the image with selectors', async () => {
-      expect(await image({ id: 'brokenImage' }).text()).to.be.eql('image[@id = concat(\'brokenImage\', "")]');
-      expect(await image({ src: 'brokenImage.jpg' }).text()).to.be.eql('image[@src = concat(\'brokenImage.jpg\', "")]');
+      expect(await image({ id: 'brokenImage' }).text()).to.be.eql(
+        'image[@id = concat(\'brokenImage\', "")]',
+      );
+      expect(
+        await image({ src: 'brokenImage.jpg' }).text(),
+      ).to.be.eql('image[@src = concat(\'brokenImage.jpg\', "")]');
     });
     it('should find the image with proximity selector', async () => {
-      expect(await image(below('Images')).text()).to.be.eql("image Below Images");
+      expect(await image(below('Images')).text()).to.be.eql(
+        'image Below Images',
+      );
     });
     it('should find div image using selectors', async () => {
-      expect(await image({ id: 'divImage' }).text()).to.be.eql('image[@id = concat(\'divImage\', "")]');
+      expect(await image({ id: 'divImage' }).text()).to.be.eql(
+        'image[@id = concat(\'divImage\', "")]',
+      );
     });
     it('should find p tag image using selectors', async () => {
-      expect(await image({ id: 'paraImage' }).text()).to.be.eql('image[@id = concat(\'paraImage\', "")]');
+      expect(await image({ id: 'paraImage' }).text()).to.be.eql(
+        'image[@id = concat(\'paraImage\', "")]',
+      );
     });
     it('should find the div image with proximity selector', async () => {
-      expect(await image(below('Div Image')).text()).to.be.eql("image Below Div Image");
+      expect(await image(below('Div Image')).text()).to.be.eql(
+        'image Below Div Image',
+      );
     });
   });
 
@@ -148,16 +188,28 @@ describe(test_name, () => {
 
     it('test description of elements', async () => {
       let elements = await image('similarImage').elements();
-      expect(elements[0].description).to.be.eql('image with alt similarImage ');
-      expect(elements[1].description).to.be.eql('image with alt similarImage ');
-      expect(elements[2].description).to.be.eql('image with alt similarImage ');
+      expect(elements[0].description).to.be.eql(
+        'image with alt similarImage ',
+      );
+      expect(elements[1].description).to.be.eql(
+        'image with alt similarImage ',
+      );
+      expect(elements[2].description).to.be.eql(
+        'image with alt similarImage ',
+      );
     });
 
     xit('test text of elements', async () => {
       let elements = await image('similarImage').elements();
-      expect(await elements[0].text()).to.be.eql('image with alt similarImage ');
-      expect(await elements[1].text()).to.be.eql('image with alt similarImage ');
-      expect(await elements[2].text()).to.be.eql('image with alt similarImage ');
+      expect(await elements[0].text()).to.be.eql(
+        'image with alt similarImage ',
+      );
+      expect(await elements[1].text()).to.be.eql(
+        'image with alt similarImage ',
+      );
+      expect(await elements[2].text()).to.be.eql(
+        'image with alt similarImage ',
+      );
     }); //Todo: Need to discuss on should we expose this api or not
   });
 });

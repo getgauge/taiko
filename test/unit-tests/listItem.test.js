@@ -39,7 +39,7 @@ describe(test_name, () => {
 
   describe('test node', () => {
     it('test exists()', async () => {
-      expect(await listItem({id:"coffee"}).exists()).to.be.true;
+      expect(await listItem({ id: 'coffee' }).exists()).to.be.true;
     });
 
     it('test get()', async () => {
@@ -48,11 +48,15 @@ describe(test_name, () => {
     });
 
     it('test description', async () => {
-      expect(listItem({id:"coffee"}).description).to.be.eql(`list Item[@id = concat(\'coffee\', "")]`);
+      expect(listItem({ id: 'coffee' }).description).to.be.eql(
+        `list Item[@id = concat(\'coffee\', "")]`,
+      );
     });
 
     it('test text()', async () => {
-      expect(await listItem({id:"coffee"}).text()).to.be.eql('Coffee');
+      expect(await listItem({ id: 'coffee' }).text()).to.be.eql(
+        'Coffee',
+      );
     });
   });
 
@@ -71,7 +75,9 @@ describe(test_name, () => {
 
     it('test description', async () => {
       const elems = await listItem({ id: 'coffee' }).elements();
-      expect(elems[0].description).to.be.eql(`list Item[@id = concat(\'coffee\', "")]`);
+      expect(elems[0].description).to.be.eql(
+        `list Item[@id = concat(\'coffee\', "")]`,
+      );
     });
 
     it('test text()', async () => {

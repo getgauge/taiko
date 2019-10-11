@@ -57,24 +57,32 @@ describe(test_name, () => {
     });
 
     it('test exists()', async () => {
-      expect(await checkBox('checkboxWithInlineLabel').exists()).to.be.true;
+      expect(await checkBox('checkboxWithInlineLabel').exists()).to.be
+        .true;
       const elems = await checkBox('Something').elements();
       expect(await elems[0].exists()).to.be.false;
     });
 
     it('test get()', async () => {
-      const elem = (await checkBox('checkboxWithInlineLabel').get())[0];
-      expect(await elem.get()).to.be.a("number");
+      const elem = (await checkBox(
+        'checkboxWithInlineLabel',
+      ).get())[0];
+      expect(await elem.get()).to.be.a('number');
     });
 
     it('test description', async () => {
-      const description = checkBox('checkboxWithInlineLabel').description;
-      expect(description).to.be.eql("Checkbox with label checkboxWithInlineLabel ");
+      const description = checkBox('checkboxWithInlineLabel')
+        .description;
+      expect(description).to.be.eql(
+        'Checkbox with label checkboxWithInlineLabel ',
+      );
     });
 
     it('test check()', async () => {
       await checkBox('checkboxWithInlineLabel').check();
-      const isChecked = await checkBox('checkboxWithInlineLabel').isChecked();
+      const isChecked = await checkBox(
+        'checkboxWithInlineLabel',
+      ).isChecked();
       expect(isChecked).to.be.true;
     });
 
@@ -86,7 +94,9 @@ describe(test_name, () => {
     it('test uncheck()', async () => {
       await checkBox('checkboxWithInlineLabel').check();
       await checkBox('checkboxWithInlineLabel').uncheck();
-      const isChecked = await checkBox('checkboxWithInlineLabel').isChecked();
+      const isChecked = await checkBox(
+        'checkboxWithInlineLabel',
+      ).isChecked();
       expect(isChecked).to.be.false;
     });
 
@@ -104,13 +114,18 @@ describe(test_name, () => {
     });
 
     it('test get()', async () => {
-      const elems = (await checkBox('checkboxWithWrappedInLabel').get());
-      expect(await elems[0].get()).to.be.a("number");
+      const elems = await checkBox(
+        'checkboxWithWrappedInLabel',
+      ).get();
+      expect(await elems[0].get()).to.be.a('number');
     });
 
     it('test description', async () => {
-      const description = checkBox('checkboxWithWrappedInLabel').description;
-      expect(description).to.be.eql("Checkbox with label checkboxWithWrappedInLabel ");
+      const description = checkBox('checkboxWithWrappedInLabel')
+        .description;
+      expect(description).to.be.eql(
+        'Checkbox with label checkboxWithWrappedInLabel ',
+      );
     });
   });
 
@@ -122,12 +137,15 @@ describe(test_name, () => {
 
     it('test get()', async () => {
       const elems = await checkBox('checkboxWithLabelFor').get();
-      expect(await elems[0].get()).to.be.a("number");
+      expect(await elems[0].get()).to.be.a('number');
     });
 
     it('test description', async () => {
-      const description = checkBox('checkboxWithLabelFor').description;
-      expect(description).to.be.eql("Checkbox with label checkboxWithLabelFor ");
+      const description = checkBox('checkboxWithLabelFor')
+        .description;
+      expect(description).to.be.eql(
+        'Checkbox with label checkboxWithLabelFor ',
+      );
     });
   });
 
