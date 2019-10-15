@@ -58,7 +58,7 @@ describe(test_name, () => {
             `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
-    await goto(filePath, { waitForStart: 10 });
+    await goto(filePath);
     setConfig({ waitForNavigation: false });
   });
 
@@ -147,7 +147,7 @@ describe(test_name, () => {
             </div>
             `;
       overlayFilePath = createHtml(innerHtml, `${test_name}-overlay`);
-      await goto(overlayFilePath, { waitForStart: 10 });
+      await goto(overlayFilePath);
       setConfig({ waitForNavigation: false });
     });
 

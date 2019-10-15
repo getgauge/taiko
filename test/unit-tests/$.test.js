@@ -26,7 +26,7 @@ describe(test_name, () => {
             `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
-    await goto(filePath, { waitForStart: 10 });
+    await goto(filePath);
     setConfig({ waitForNavigation: false });
   });
 

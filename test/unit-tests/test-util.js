@@ -1,9 +1,7 @@
 let path = require('path');
 let { writeFileSync, unlinkSync } = require('fs');
-let { emitter } = require('../../lib/taiko');
 let { pathToFileURL, fileURLToPath } = require('url');
 
-emitter.on('success', desc => console.log(desc));
 module.exports.createHtml = (innerHtml, testName) => {
   let htmlFilePath = path.join(
     process.cwd(),
