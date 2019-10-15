@@ -2,7 +2,7 @@
 <p align="center">A node.js library to automate chrome/chromium browser</p>
 
 [![Actions Status](https://github.com/getgauge/taiko/workflows/taiko/badge.svg)](https://github.com/getgauge/taiko/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://github.com/getgauge/taiko/blob/master/LICENSE)
 [![npm version](https://badge.fury.io/js/taiko.svg?style=flat-square)](https://badge.fury.io/js/taiko)
 [![dependencies Status](https://david-dm.org/getgauge/taiko/status.svg)](https://david-dm.org/getgauge/taiko)
 [![devDependencies Status](https://david-dm.org/getgauge/taiko/dev-status.svg)](https://david-dm.org/getgauge/taiko?type=dev)
@@ -199,7 +199,8 @@ Learn more about [Gauge](https://docs.gauge.org)!
 
 ## Talk to us
 
-For queries and contributions talk to the [Gauge](https://github.com/getgauge/gauge/#talk-to-us) team.
+* [Spectrum](https://spectrum.chat/taiko) for questions and help
+* [Github Issues](https://github.com/getgauge/taiko/issues) to report issues
 
 ## Copyright
 
