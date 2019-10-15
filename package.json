@@ -11,7 +11,7 @@
     "doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
     "test:api": "node test/unit-tests/taiko-test.js",
     "examples": "cd examples && npm install && npm test",
-    "test:unit": "mocha \"test/unit-tests/**/*.test.js\" --timeout 60000",
+    "test:unit": "mocha \"test/unit-tests/**/*.test.js\" --timeout 30000",
     "test": "npm run test:api && npm run test:unit",
     "test-functional": "cd test/functional-tests && npm install && npm test",
     "install": "node lib/install.js",

@@ -42,11 +42,11 @@ describe('radio button', () => {
     filePath = createHtml(innerHtml, 'radioButton');
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    await setConfig({ waitForNavigation: false });
+    setConfig({ waitForNavigation: false });
   });
 
   after(async () => {
-    await setConfig({ waitForNavigation: true });
+    setConfig({ waitForNavigation: true });
     await closeBrowser();
     removeFile(filePath);
   });
