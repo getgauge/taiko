@@ -76,7 +76,7 @@ function setDisableLogout() {
 }
 
 function seekingForHelp(args) {
-  return args.includes('-h') || args.includes('--help');
+  return ['-h', '--help'].some(arg => args.includes(arg));
 }
 
 function registerSubcommandForPlugins(program, plugins) {

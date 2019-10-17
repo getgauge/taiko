@@ -47,7 +47,7 @@ beforeScenario(async () => {
       '--window-size=1440,900',
     ],
   });
-  await setConfig({ navigationTimeout: 60000 });
+  setConfig({ navigationTimeout: 60000 });
 });
 
 gauge.screenshotFn = async function() {
@@ -192,6 +192,8 @@ step(
 step('Intercept Google Analytics', async function() {
   await intercept(
     'https://www.googletagmanager.com/gtm.js?id=GTM-5C33ML2',
+    undefined,
+    1,
   );
   await intercept('https://www.google-analytics.com/analytics.js');
 });

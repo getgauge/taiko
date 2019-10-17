@@ -55,7 +55,7 @@ describe(test_name, () => {
 
   after(async () => {
     removeFile(filePath);
-    await setConfig({ waitForNavigation: true });
+    setConfig({ waitForNavigation: true });
     await closeBrowser();
   });
 

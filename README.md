@@ -199,7 +199,8 @@ Learn more about [Gauge](https://docs.gauge.org)!
 
 ## Talk to us
 
-For queries and contributions talk to the [Gauge](https://github.com/getgauge/gauge/#talk-to-us) team.
+* [Spectrum](https://spectrum.chat/taiko) for questions and help
+* [Github Issues](https://github.com/getgauge/taiko/issues) to report issues
 
 ## Copyright
 

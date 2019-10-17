@@ -24,15 +24,19 @@ describe(test_name, () => {
             <a href="link2">similarLink2</a>
             <a href="link3">similarLink3</a>
         </p>
+        <p>
+            Test <a id="hiddenLinkID" href="redirect1" style="display:none">HiddenLink</a> to trigger a redirect.
+        </p>
+        
             `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    await setConfig({ waitForNavigation: false });
+    setConfig({ waitForNavigation: false });
   });
 
   after(async () => {
-    await setConfig({ waitForNavigation: true });
+    setConfig({ waitForNavigation: true });
     await closeBrowser();
     removeFile(filePath);
   });
@@ -46,6 +50,21 @@ describe(test_name, () => {
     });
     it('should find the link with proximity selector', async () => {
       expect(await link(toRightOf('Click')).exists()).to.be.true;
+    });
+    it('should find the link for Hidden Elements with ID', async () => {
+      expect(
+        await link(
+          { id: 'hiddenLinkID' },
+          { selectHiddenElement: true },
+        ).exists(),
+      ).to.be.true;
+    });
+    it('should find the link for Hidden Elements with Text', async () => {
+      expect(
+        await link('HiddenLink', {
+          selectHiddenElement: true,
+        }).exists(),
+      ).to.be.true;
     });
   });
 
