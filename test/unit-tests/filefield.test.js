@@ -168,10 +168,10 @@ describe(test_name, () => {
     });
 
     it('does not exists when selectHiddenElement is not provided', async () => {
-      const elems = await fileField({
+      const exists = await fileField({
         id: 'hidden-file-upload',
-      }).elements();
-      expect(await elems[0].exists()).to.be.false;
+      }).exists();
+      expect(exists).to.be.false;
     });
   });
 
@@ -188,8 +188,7 @@ describe(test_name, () => {
         id: 'similarFileField',
       }).elements();
       expect(await elements[0].exists()).to.be.true;
-      elements = await fileField('someFileField').elements();
-      expect(await elements[0].exists()).to.be.false;
+      expect(await fileField('someFileField').exists()).to.be.false;
     });
 
     it('test description of elements', async () => {

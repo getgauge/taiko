@@ -388,17 +388,17 @@ describe('match', () => {
       });
 
       it('txt should not be visible when display is set to none', async () => {
-        const elems = await text(
+        const exists = await text(
           'Element it self has display none',
-        ).elements();
-        expect(await elems[0].exists()).to.be.false;
+        ).exists();
+        expect(exists).to.be.false;
       });
 
       it('txt should not be visible when paraent element display is set to none', async () => {
-        const elems = await text(
+        const exists = await text(
           'Parent element has display none',
-        ).elements();
-        expect(await elems[0].exists()).to.be.false;
+        ).exists();
+        expect(exists).to.be.false;
       });
 
       it('txt should be visible when ', async () => {
@@ -419,8 +419,7 @@ describe('match', () => {
       it('test exists of elements', async () => {
         let elements = await text('someNode').elements();
         expect(await elements[0].exists()).to.be.true;
-        elements = await text('someTextBox').elements();
-        expect(await elements[0].exists()).to.be.false;
+        expect(await text('someTextBox').exists()).to.be.false;
       });
 
       it('test description of elements', async () => {

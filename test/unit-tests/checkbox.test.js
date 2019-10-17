@@ -59,8 +59,7 @@ describe(test_name, () => {
     it('test exists()', async () => {
       expect(await checkBox('checkboxWithInlineLabel').exists()).to.be
         .true;
-      const elems = await checkBox('Something').elements();
-      expect(await elems[0].exists()).to.be.false;
+      expect(await checkBox('Something').exists()).to.be.false;
     });
 
     it('test get()', async () => {
@@ -162,8 +161,7 @@ describe(test_name, () => {
         id: 'someCheckBox',
       }).elements();
       expect(await elements[0].exists()).to.be.true;
-      elements = await checkBox('someFileField').elements();
-      expect(await elements[0].exists()).to.be.false;
+      expect(await checkBox('someFileField').exists()).to.be.false;
     });
 
     it('test description of elements', async () => {

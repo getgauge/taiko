@@ -78,8 +78,7 @@ describe(testName, () => {
         },
         { args: [newText] },
       );
-      let elems = await text('Item 2').elements();
-      expect(await elems[0].exists()).to.be.false;
+      expect(await text('Item 2').exists()).to.be.false;
     });
 
     it('should return the result of the evaluation', async () => {

@@ -64,8 +64,7 @@ describe(test_name, () => {
     it('test exists()', async () => {
       let elems = await listItem({ id: 'coffee' }).elements();
       expect(await elems[0].exists()).to.be.true;
-      elems = await listItem({ id: 'foo' }).elements();
-      expect(await elems[0].exists()).to.be.false;
+      expect(await listItem({ id: 'foo' }).exists()).to.be.false;
     });
 
     it('test get()', async () => {

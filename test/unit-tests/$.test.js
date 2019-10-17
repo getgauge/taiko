@@ -93,8 +93,7 @@ describe(test_name, () => {
     it('test exists()', async () => {
       let elems = await $('#foo').elements();
       expect(await elems[0].exists()).to.be.true;
-      elems = await $('#bar').elements();
-      expect(await elems[0].exists()).to.be.false;
+      expect(await $('#bar').exists()).to.be.false;
     });
 
     it('test description', async () => {

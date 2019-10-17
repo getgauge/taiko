@@ -182,8 +182,7 @@ describe(test_name, () => {
       expect(await elements[0].exists()).to.be.true;
       expect(await elements[1].exists()).to.be.true;
       expect(await elements[2].exists()).to.be.true;
-      elements = await image('someImage').elements();
-      expect(await elements[0].exists()).to.be.false;
+      expect(await image('someImage').exists()).to.be.false;
     });
 
     it('test description of elements', async () => {

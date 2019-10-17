@@ -184,8 +184,7 @@ describe(test_name, () => {
           id: 'sampleTextArea',
         }).elements();
         expect(await elements[0].exists()).to.be.true;
-        elements = await textBox('someTextBox').elements();
-        expect(await elements[0].exists()).to.be.false;
+        expect(await textBox('someTextBox').exists()).to.be.false;
       });
 
       it('test description of elements', async () => {
@@ -369,8 +368,7 @@ describe(test_name, () => {
           id: 'sampleContentEditable',
         }).elements();
         expect(await elements[0].exists()).to.be.true;
-        elements = await textBox('someTextBox').elements();
-        expect(await elements[0].exists()).to.be.false;
+        expect(await textBox('someTextBox').exists()).to.be.false;
       });
 
       it('test description of elements', async () => {
@@ -612,8 +610,7 @@ describe(test_name, () => {
             id: `sample${inputType.type}`,
           }).elements();
           expect(await elements[0].exists()).to.be.true;
-          elements = await textBox('someTextBox').elements();
-          expect(await elements[0].exists()).to.be.false;
+          expect(await textBox('someTextBox').exists()).to.be.false;
         });
 
         it('test description of elements', async () => {
@@ -812,8 +809,7 @@ describe(test_name, () => {
           'sampleInputWithoutType',
         ).elements();
         expect(await elements[0].exists()).to.be.true;
-        elements = await textBox('someTextBox').elements();
-        expect(await elements[0].exists()).to.be.false;
+        expect(await textBox('someTextBox').exists()).to.be.false;
       });
 
       it('test description of elements', async () => {

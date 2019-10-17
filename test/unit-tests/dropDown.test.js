@@ -1,6 +1,5 @@
-const EventEmitter = require('events').EventEmitter;
-const rewire = require('rewire');
-const taiko = rewire('../../lib/taiko.js');
+const { descEvent } = require('../../lib/helper');
+
 let {
   openBrowser,
   goto,
@@ -8,7 +7,8 @@ let {
   dropDown,
   closeBrowser,
   setConfig,
-} = taiko;
+} = require('../../lib/taiko');
+
 const expect = require('chai').expect;
 let {
   createHtml,
@@ -19,12 +19,10 @@ const test_name = 'DropDown';
 
 describe(test_name, () => {
   let filePath;
-  let actualEmmiter;
-  let emitter = new EventEmitter();
 
   let validateEmitterEvent = function(event, expectedText) {
     return new Promise(resolve => {
-      emitter.on(event, eventData => {
+      descEvent.once(event, eventData => {
         expect(eventData).to.be.equal(expectedText);
         resolve();
       });
@@ -32,10 +30,6 @@ describe(test_name, () => {
   };
 
   before(async () => {
-    actualEmmiter = taiko.__get__('descEvent');
-
-    taiko.__set__('descEvent', emitter);
-
     let innerHtml =
       '<form>' +
       '<label for="select">Cars</label>' +
@@ -74,11 +68,6 @@ describe(test_name, () => {
     setConfig({ waitForNavigation: true });
     await closeBrowser();
     removeFile(filePath);
-    taiko.__set__('descEvent', actualEmmiter);
-  });
-
-  afterEach(() => {
-    emitter.removeAllListeners();
   });
 
   describe('using label for', () => {
@@ -185,8 +174,7 @@ describe(test_name, () => {
         id: 'sampleDropDown',
       }).elements();
       expect(await elements[0].exists()).to.be.true;
-      elements = await dropDown('someFileField').elements();
-      expect(await elements[0].exists()).to.be.false;
+      expect(await dropDown('someFileField').exists()).to.be.false;
     });
 
     it('test description of elements', async () => {

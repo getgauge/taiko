@@ -204,8 +204,7 @@ describe(test_name, () => {
         expect(await elements[0].exists()).to.be.true;
         expect(await elements[1].exists()).to.be.true;
         expect(await elements[2].exists()).to.be.true;
-        elements = await button('someButton').elements();
-        expect(await elements[0].exists()).to.be.false;
+        expect(await button('someButton').exists()).to.be.false;
       });
 
       it('test description of elements', async () => {

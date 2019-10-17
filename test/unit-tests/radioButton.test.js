@@ -60,8 +60,7 @@ describe(test_name, () => {
     it('test exists()', async () => {
       expect(await radioButton('radioButtonWithInlineLabel').exists())
         .to.be.true;
-      const elems = await radioButton('Something').elements();
-      expect(await elems[0].exists()).to.be.false;
+      expect(await radioButton('Something').exists()).to.be.false;
     });
 
     it('test get()', async () => {
@@ -159,8 +158,7 @@ describe(test_name, () => {
         id: 'someRadioButton',
       }).elements();
       expect(await elements[0].exists()).to.be.true;
-      elements = await radioButton('someFileField').elements();
-      expect(await elements[0].exists()).to.be.false;
+      expect(await radioButton('someFileField').exists()).to.be.false;
     });
 
     it('test description of elements', async () => {
