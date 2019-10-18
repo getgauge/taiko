@@ -17,14 +17,14 @@ const cwd = process.cwd();
     var text = 'Taiko writes into a contenteditable field!';
     await write(text, into(textBox(below('Editable Demo'))));
     var content = await textBox(below('Editable Demo')).text();
-    expect(content[0]).to.have.string(text);
+    expect(content).to.have.string(text);
 
     // a rich text editor
     await goto('http://localhost:3000/tinymce');
     text = 'Taiko writes into a tinyMCE editor';
     await write(text, into(textBox(below('An iFrame'))));
     content = await into(textBox(below('An iFrame'))).text();
-    expect(content[0]).to.have.string(text);
+    expect(content).to.have.string(text);
   } catch (e) {
     console.error(e);
   } finally {
