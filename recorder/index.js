@@ -4,12 +4,12 @@
  * gets overwritten to start REPL server.
  *
  * @example
- * import { openREPL } from 'taiko/recorder';
- * await openREPL();
+ * import { repl } from 'taiko/recorder';
+ * await repl();
  */
 
 module.exports.repl = async () => {
   console.warn(
-    '[WARNING]: The "openREPL" api works only when the script is executed via taiko runner.',
+    '[WARNING]: The "repl" api works only when the script is executed via taiko runner.',
   );
 };
