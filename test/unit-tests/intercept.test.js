@@ -139,4 +139,24 @@ describe(test_name, () => {
       expect(actualOption.url).to.equal(result);
     }
   });
+  it('reset intercept for the requestUrl', async () => {
+    networkHandler.addInterceptor({
+      requestUrl: 'www.google.com',
+      action: 'www.gauge.org',
+    });
+
+    for (var i = 0; i < 2; i++) {
+      networkHandler.handleInterceptor({
+        interceptionId: 'interceptionId',
+        request: {
+          url: 'http://www.google.com',
+          method: 'GET',
+        },
+        resourceType: 'Document',
+        isNavigationRequest: true,
+      });
+      var result = i === 2 ? undefined : 'http://www.gauge.org';
+      expect(actualOption.url).to.equal(result);
+    }
+  });
 });
