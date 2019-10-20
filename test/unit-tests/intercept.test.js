@@ -118,7 +118,7 @@ describe(test_name, () => {
   });
 
   it('intercept with count added for the requestUrl', async () => {
-    let count = 0;
+    let count = 3;
     networkHandler.addInterceptor({
       requestUrl: 'www.google.com',
       action: 'www.gauge.org',
