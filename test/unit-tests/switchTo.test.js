@@ -6,11 +6,13 @@ const taiko = rewire('../../lib/taiko');
 chai.use(chaiAsPromised);
 
 describe('switchTo', () => {
-    before(async () => {
-        taiko.__set__('validate', () => { });
-    });
+  before(async () => {
+    taiko.__set__('validate', () => {});
+  });
 
-    it('should throw error if no url specified', async () => {
-        await expect(taiko.switchTo()).to.eventually.rejectedWith(TypeError);
-    });
+  it('should throw error if no url specified', async () => {
+    await expect(taiko.switchTo()).to.eventually.rejectedWith(
+      TypeError,
+    );
+  });
 });
