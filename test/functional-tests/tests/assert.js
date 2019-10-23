@@ -1,12 +1,7 @@
 const assert = require('assert');
 var _selectors = require('./selectors');
 
-const {
-  title,
-  text,
-  textBox,
-  toLeftOf,
-} = require('../../../lib/taiko');
+const { title, text, textBox, toLeftOf } = require('taiko');
 
 step('Assert title to be <userTitle>', async function(userTitle) {
   assert.ok((await title()).includes(userTitle));

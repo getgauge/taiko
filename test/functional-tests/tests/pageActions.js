@@ -14,7 +14,7 @@ const {
   tap,
   toLeftOf,
   evaluate,
-} = require('../../../lib/taiko');
+} = require('taiko');
 var URL = require('url').URL;
 
 step('Scroll to <table>', async function(table) {

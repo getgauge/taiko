@@ -2,7 +2,7 @@
 const assert = require('assert');
 var _selectors = require('./selectors');
 
-const { dropDown, near } = require('../../../lib/taiko');
+const { dropDown, near } = require('taiko');
 
 step('Select <value> of Combo Box near <table>', async function(
   value,

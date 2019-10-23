@@ -11,7 +11,7 @@ const {
   goBack,
   goForward,
   getCookies,
-} = require('../../../lib/taiko');
+} = require('taiko');
 const assert = require('assert');
 const cwd = process.cwd();
 
