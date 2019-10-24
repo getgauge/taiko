@@ -10,6 +10,8 @@
     "step": true,
     "beforeScenario": true,
     "gauge": true,
-    "afterScenario": true
+    "afterScenario": true,
+    "beforeSuite": true,
+    "afterSuite": true
   }
 }

@@ -1,5 +1,5 @@
 'use strict';
-const { link, textBox, text, $ } = require('../../../lib/taiko');
+const { link, textBox, text, $ } = require('taiko');
 
 function getElementWithSelector(element, selector) {
   var selectedElement = null;
@@ -29,7 +29,10 @@ function getElementWithSelector(element, selector) {
 function getElement(table) {
   var referenceElement = null;
   table.rows.forEach(function(row) {
-    referenceElement = getElementWithSelector(row.cells[0], row.cells[1]);
+    referenceElement = getElementWithSelector(
+      row.cells[0],
+      row.cells[1],
+    );
     if (row.cells[2]) {
       return referenceElement[row.cells[2]]();
     }
@@ -38,5 +41,5 @@ function getElement(table) {
 }
 
 module.exports = {
-  getElement: getElement
+  getElement: getElement,
 };

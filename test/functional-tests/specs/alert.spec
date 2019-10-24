@@ -2,8 +2,9 @@
 
 ## Should be able to accept a dialog box
 
-* Navigate to "https://react-shopping-cart-67954.firebaseapp.com/"
-* Click "M"
-* Click "Add to cart"
-* Alert "Checkout - Subtotal: $ 29.45" and await accept
-* Click "Checkout"
+* Navigate to relative path "./specs/data/HTMLElements.html"
+* Alert "Hello world!" and await accept
+* Click "Click Me!"
+* Alert "Hello World!" and await accept
+* Click "Click Me Also!"
+

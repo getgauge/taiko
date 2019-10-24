@@ -10,8 +10,8 @@ const {
   emulateDevice,
   goBack,
   goForward,
-  getCookies
-} = require('../../../lib/taiko');
+  getCookies,
+} = require('taiko');
 const assert = require('assert');
 const cwd = process.cwd();
 
@@ -35,24 +35,27 @@ step('Reload the page', async function() {
   await reload();
 });
 
-step("Assert cookies to be present", async function() {
-	const cookies = await getCookies();
-	assert.ok(cookies.length > 0);
-
+step('Assert cookies to be present', async function() {
+  const cookies = await getCookies();
+  assert.ok(cookies.length > 0);
 });
 
-step("Assert cookie with valid options url <arg>", async function(arg) {
-	const cookies = await getCookies({urls: [arg]});
-	assert.ok(cookies.length > 0);
+step('Assert cookie with valid options url <arg>', async function(
+  arg,
+) {
+  const cookies = await getCookies({ urls: [arg] });
+  assert.ok(cookies.length > 0);
 });
 
-step("Assert cookie with invalid options url <arg>", async function(arg) {
-	const cookies = await getCookies({urls: [arg]});
-	assert.ok(cookies.length === 0);
+step('Assert cookie with invalid options url <arg>', async function(
+  arg,
+) {
+  const cookies = await getCookies({ urls: [arg] });
+  assert.ok(cookies.length === 0);
 });
 
 step('Navigate to file with relative Path <filePath>', async function(
-  filePath
+  filePath,
 ) {
   await goto('file:///' + cwd + filePath);
 });
@@ -61,7 +64,7 @@ step(
   'Override browser permission with <geolocation> for site <url>',
   async function(geolocation, url) {
     await overridePermissions(url, [geolocation]);
-  }
+  },
 );
 
 step(
@@ -69,9 +72,9 @@ step(
   async function(longitude, latitude) {
     await setLocation({
       longitude: parseFloat(longitude),
-      latitude: parseFloat(latitude)
+      latitude: parseFloat(latitude),
     });
-  }
+  },
 );
 
 step(
@@ -83,14 +86,14 @@ step(
           navigator.geolocation.getCurrentPosition(position => {
             resolve({
               latitude: position.coords.latitude,
-              longitude: position.coords.longitude
+              longitude: position.coords.longitude,
             });
-          })
-        )
+          }),
+        ),
     );
-    assert.equal(geolocation.result.longitude, parseFloat(longitude));
-    assert.equal(geolocation.result.latitude, parseFloat(latitude));
-  }
+    assert.equal(geolocation.longitude, parseFloat(longitude));
+    assert.equal(geolocation.latitude, parseFloat(latitude));
+  },
 );
 
 step('Emulate device <deviceModel>', async function(deviceModel) {
@@ -99,10 +102,10 @@ step('Emulate device <deviceModel>', async function(deviceModel) {
 
 step('Assert width is <width> and height is <height>', async function(
   width,
-  height
+  height,
 ) {
-  const innerWidth = (await evaluate(() => window.innerWidth)).result;
-  const innerHeight = (await evaluate(() => window.innerHeight)).result;
+  const innerWidth = await evaluate(() => window.innerWidth);
+  const innerHeight = await evaluate(() => window.innerHeight);
   assert.equal(innerWidth, width);
   assert.equal(innerHeight, height);
 });

@@ -4,273 +4,253 @@ const config = rewire('../../lib/config');
 const originalConfig = Object.assign({}, config.defaultConfig);
 
 describe('Config tests', () => {
-
-    describe('Test setConfig', () => {
-
-        describe('For invalid config name', () => {
-
-            it('should throw exception', () => {
-                let allowedConfig = 'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
-                let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfig}`;
-                expect(() => config.setConfig({ invalidConfig: true })).to.throw(new RegExp(`^${expectedMessage}$`));
-            });
-
-        });
-
-        describe('For valid config name', () => {
-
-            describe('When valid config value is provided', () => {
-
-                it('should update the config', () => {
-                    const newConfig = {
-                        headful: false,
-                        highlightOnAction: 'true',
-                        ignoreSSLErrors: false,
-                        navigationTimeout: 2,
-                        observe: false,
-                        observeTime: 2,
-                        retryInterval: 2,
-                        retryTimeout: 2,
-                        waitForNavigation: false
-                    };
-                    expect(config.defaultConfig).not.deep.equal(newConfig);
-
-                    config.setConfig(newConfig);
-                    expect(config.defaultConfig).to.deep.equal(newConfig);
-                });
-
-            });
-
-            describe('When invalid config value is provided', () => {
-
-                it('should throw error', () => {
-                    const expectedMessage = new RegExp('Invalid value for navigationTimeout. Expected number received string');
-                    expect(() => config.setConfig({ navigationTimeout: 'invalid config value' })).to.throw(expectedMessage);
-                });
-
-            });
-        });
+  describe('Test setConfig', () => {
+    describe('For invalid config name', () => {
+      it('should throw exception', () => {
+        let allowedConfig =
+          'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
+        let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfig}`;
+        expect(() =>
+          config.setConfig({ invalidConfig: true }),
+        ).to.throw(new RegExp(`^${expectedMessage}$`));
+      });
     });
 
-    describe('Test determineWaitForNavigation', () => {
+    describe('For valid config name', () => {
+      describe('When valid config value is provided', () => {
+        it('should update the config', () => {
+          const newConfig = {
+            headful: false,
+            highlightOnAction: 'true',
+            ignoreSSLErrors: false,
+            navigationTimeout: 2,
+            observe: false,
+            observeTime: 2,
+            retryInterval: 2,
+            retryTimeout: 2,
+            waitForNavigation: false,
+          };
+          expect(config.defaultConfig).not.deep.equal(newConfig);
 
-        describe('For undefined or null value', () => {
-
-            it('should return default value when provided value is undefined', () => {
-                let actualValue = config.determineWaitForNavigation();
-                expect(actualValue).to.be.true;
-            });
-
-            it('should return default value when provided value is null', () => {
-                let actualValue = config.determineWaitForNavigation(null);
-                expect(actualValue).to.be.true;
-            });
-
+          config.setConfig(newConfig);
+          expect(config.defaultConfig).to.deep.equal(newConfig);
         });
+      });
 
-        describe('For correct value', () => {
-
-            it('should return provided value', () => {
-                let actualValue = config.determineWaitForNavigation(false);
-                expect(actualValue).to.be.false;
-            });
-
+      describe('When invalid config value is provided', () => {
+        it('should throw error', () => {
+          const expectedMessage = new RegExp(
+            'Invalid value for navigationTimeout. Expected number received string',
+          );
+          expect(() =>
+            config.setConfig({
+              navigationTimeout: 'invalid config value',
+            }),
+          ).to.throw(expectedMessage);
         });
+      });
+    });
+  });
+
+  describe('Test determineWaitForNavigation', () => {
+    describe('For undefined or null value', () => {
+      it('should return default value when provided value is undefined', () => {
+        let actualValue = config.determineWaitForNavigation();
+        expect(actualValue).to.be.true;
+      });
+
+      it('should return default value when provided value is null', () => {
+        let actualValue = config.determineWaitForNavigation(null);
+        expect(actualValue).to.be.true;
+      });
     });
 
-    describe('Test determineRetryTimeout', () => {
+    describe('For correct value', () => {
+      it('should return provided value', () => {
+        let actualValue = config.determineWaitForNavigation(false);
+        expect(actualValue).to.be.false;
+      });
+    });
+  });
 
-        describe('For undefined or null value', () => {
+  describe('Test determineRetryTimeout', () => {
+    describe('For undefined or null value', () => {
+      it('should return default value when provided value is undefined', () => {
+        let actualValue = config.determineRetryTimeout();
+        expect(actualValue).to.equal(10000);
+      });
 
-            it('should return default value when provided value is undefined', () => {
-                let actualValue = config.determineRetryTimeout();
-                expect(actualValue).to.equal(10000);
-            });
-
-            it('should return default value when provided value is null', () => {
-                let actualValue = config.determineRetryTimeout(null);
-                expect(actualValue).to.equal(10000);
-            });
-
-        });
-
-        describe('For correct value', () => {
-
-            it('should return provided value', () => {
-                let actualValue = config.determineRetryTimeout(100);
-                expect(actualValue).to.equal(100);
-            });
-
-        });
-
+      it('should return default value when provided value is null', () => {
+        let actualValue = config.determineRetryTimeout(null);
+        expect(actualValue).to.equal(10000);
+      });
     });
 
-    describe('Test determineRetryInterval', () => {
+    describe('For correct value', () => {
+      it('should return provided value', () => {
+        let actualValue = config.determineRetryTimeout(100);
+        expect(actualValue).to.equal(100);
+      });
+    });
+  });
 
-        describe('For undefined or null value', () => {
+  describe('Test determineRetryInterval', () => {
+    describe('For undefined or null value', () => {
+      it('should return default value when provided value is undefined', () => {
+        let actualValue = config.determineRetryInterval();
+        expect(actualValue).to.equal(100);
+      });
 
-            it('should return default value when provided value is undefined', () => {
-                let actualValue = config.determineRetryInterval();
-                expect(actualValue).to.equal(100);
-            });
-
-            it('should return default value when provided value is null', () => {
-                let actualValue = config.determineRetryInterval(null);
-                expect(actualValue).to.equal(100);
-            });
-
-        });
-
-        describe('For correct value', () => {
-
-            it('should return provided value', () => {
-                let actualValue = config.determineRetryInterval(1000);
-                expect(actualValue).to.equal(1000);
-            });
-
-        });
-
+      it('should return default value when provided value is null', () => {
+        let actualValue = config.determineRetryInterval(null);
+        expect(actualValue).to.equal(100);
+      });
     });
 
-    describe('Test determineObserveDelay', () => {
-        const determineObserveDelay = config.__get__('determineObserveDelay');
+    describe('For correct value', () => {
+      it('should return provided value', () => {
+        let actualValue = config.determineRetryInterval(1000);
+        expect(actualValue).to.equal(1000);
+      });
+    });
+  });
 
-        describe('with observe true', () => {
+  describe('Test determineObserveDelay', () => {
+    const determineObserveDelay = config.__get__(
+      'determineObserveDelay',
+    );
 
-            it('should return provided value', () => {
-                let actualValue = determineObserveDelay(true,5000);
-                expect(actualValue).to.equal(5000);
-            });
+    describe('with observe true', () => {
+      it('should return provided value', () => {
+        let actualValue = determineObserveDelay(true, 5000);
+        expect(actualValue).to.equal(5000);
+      });
 
-            it('should return default value when provided value is null or undefined', () => {
-                let actualValue = determineObserveDelay(true,undefined);
-                expect(actualValue).to.equal(3000);
-            });
-
-        });
-
-        describe('with observe false', () => {
-
-            it('should return provided value', () => {
-                let actualValue = determineObserveDelay(false,5000);
-                expect(actualValue).to.equal(5000);
-            });
-            
-            it('should return default value when provided value is null or undefined', () => {
-                let actualValue = determineObserveDelay(false,undefined);
-                expect(actualValue).to.equal(0);
-            });
-
-        });
-
+      it('should return default value when provided value is null or undefined', () => {
+        let actualValue = determineObserveDelay(true, undefined);
+        expect(actualValue).to.equal(3000);
+      });
     });
 
-    describe('Test setNavigationOptions', () => {
-        it('should return default options', () => {
-            const exceptedOptions = {
-                'navigationTimeout': 30000,
-                'waitForNavigation': true,
-                'waitForStart': 100
-            };
-            const actualOptions = config.setNavigationOptions({});
-            expect(actualOptions).to.deep.equal(exceptedOptions);
-        });
+    describe('with observe false', () => {
+      it('should return provided value', () => {
+        let actualValue = determineObserveDelay(false, 5000);
+        expect(actualValue).to.equal(5000);
+      });
 
-        it('should return given options', () => {
-            const exceptedOptions = {
-                'navigationTimeout': 60000,
-                'waitForNavigation': false,
-                'waitForStart': 500
-            };
-            const actualOptions = config.setNavigationOptions(exceptedOptions);
-            expect(actualOptions).to.deep.equal(exceptedOptions);
-        });
+      it('should return default value when provided value is null or undefined', () => {
+        let actualValue = determineObserveDelay(false, undefined);
+        expect(actualValue).to.equal(0);
+      });
+    });
+  });
+
+  describe('Test setNavigationOptions', () => {
+    it('should return default options', () => {
+      const exceptedOptions = {
+        navigationTimeout: 30000,
+        waitForNavigation: true,
+        waitForStart: 100,
+      };
+      const actualOptions = config.setNavigationOptions({});
+      expect(actualOptions).to.deep.equal(exceptedOptions);
     });
 
-    describe('Test setBrowserOptions', () => {
+    it('should return given options', () => {
+      const exceptedOptions = {
+        navigationTimeout: 60000,
+        waitForNavigation: false,
+        waitForStart: 500,
+      };
+      const actualOptions = config.setNavigationOptions(
+        exceptedOptions,
+      );
+      expect(actualOptions).to.deep.equal(exceptedOptions);
+    });
+  });
 
-        it('should return default options', () => {
-            const exceptedOptions = {
-                'headless': true,
-                'host': '127.0.0.1',
-                'port': 0
-            };
-            const actualOptions = config.setBrowserOptions({});
-            expect(actualOptions).to.deep.equal(exceptedOptions);
-        });
-
-        it('should set defaultConfig with given value', () => {
-            const options = {
-                observe: true,
-                observeTime: 5000,
-                ignoreCertificateErrors: true,
-                headless: false
-            };
-            const expectedConfig = {
-                'headful': true,
-                'highlightOnAction': 'true',
-                'ignoreSSLErrors': true,
-                'navigationTimeout': 30000,
-                'observe': true,
-                'observeTime': 5000,
-                'retryInterval': 100,
-                'retryTimeout': 10000,
-                'waitForNavigation': true,
-            };
-            config.setBrowserOptions(options);
-            expect(config.defaultConfig).to.deep.equal(expectedConfig);
-        });
-
-        it('should return given options', () => {
-            const exceptedOptions = {
-                'headless': false,
-                'host': '127.0.2.1',
-                'port': '9222'
-            };
-            const actualOptions = config.setBrowserOptions(exceptedOptions);
-            expect(actualOptions).to.deep.equal(exceptedOptions);
-        });
+  describe('Test setBrowserOptions', () => {
+    it('should return default options', () => {
+      const exceptedOptions = {
+        headless: true,
+        host: '127.0.0.1',
+        port: 0,
+      };
+      const actualOptions = config.setBrowserOptions({});
+      expect(actualOptions).to.deep.equal(exceptedOptions);
     });
 
-    describe('Test setClickOptions', () => {
-        it('should return default options', () => {
-            const exceptedOptions = {
-                'button': 'left',
-                'clickCount': 1,
-                'elementsToMatch': 10,
-                'navigationTimeout': 30000,
-                'waitForNavigation': true,
-                'waitForStart': 100,
-                'x': undefined,
-                'y': undefined,
-            };
-            const actualOptions = config.setClickOptions({});
-            expect(actualOptions).to.deep.equal(exceptedOptions);
-        });
-
-        it('should return given options', () => {
-            const options = {
-                'button': 'right',
-                'clickCount': 3,
-                'elementsToMatch': 10,
-            };
-            const exceptedOptions = {
-                'button': 'right',
-                'clickCount': 3,
-                'elementsToMatch': 10,
-                'navigationTimeout': 30000,
-                'waitForNavigation': true,
-                'waitForStart': 100,
-                'x': 32,
-                'y': 45,
-            };
-            const actualOptions = config.setClickOptions(options,32,45);
-            expect(actualOptions).to.deep.equal(exceptedOptions);
-        });
+    it('should set defaultConfig with given value', () => {
+      const options = {
+        observe: true,
+        observeTime: 5000,
+        ignoreCertificateErrors: true,
+        headless: false,
+      };
+      const expectedConfig = {
+        headful: true,
+        highlightOnAction: 'true',
+        ignoreSSLErrors: true,
+        navigationTimeout: 30000,
+        observe: true,
+        observeTime: 5000,
+        retryInterval: 100,
+        retryTimeout: 10000,
+        waitForNavigation: true,
+      };
+      config.setBrowserOptions(options);
+      expect(config.defaultConfig).to.deep.equal(expectedConfig);
     });
 
-
-    afterEach(() => {
-        config.setConfig(originalConfig);
+    it('should return given options', () => {
+      const exceptedOptions = {
+        headless: false,
+        host: '127.0.2.1',
+        port: '9222',
+      };
+      const actualOptions = config.setBrowserOptions(exceptedOptions);
+      expect(actualOptions).to.deep.equal(exceptedOptions);
     });
+  });
+
+  describe('Test setClickOptions', () => {
+    it('should return default options', () => {
+      const exceptedOptions = {
+        button: 'left',
+        clickCount: 1,
+        elementsToMatch: 10,
+        navigationTimeout: 30000,
+        waitForNavigation: true,
+        waitForStart: 100,
+        x: undefined,
+        y: undefined,
+      };
+      const actualOptions = config.setClickOptions({});
+      expect(actualOptions).to.deep.equal(exceptedOptions);
+    });
+
+    it('should return given options', () => {
+      const options = {
+        button: 'right',
+        clickCount: 3,
+        elementsToMatch: 10,
+      };
+      const exceptedOptions = {
+        button: 'right',
+        clickCount: 3,
+        elementsToMatch: 10,
+        navigationTimeout: 30000,
+        waitForNavigation: true,
+        waitForStart: 100,
+        x: 32,
+        y: 45,
+      };
+      const actualOptions = config.setClickOptions(options, 32, 45);
+      expect(actualOptions).to.deep.equal(exceptedOptions);
+    });
+  });
+
+  afterEach(() => {
+    config.setConfig(originalConfig);
+  });
 });

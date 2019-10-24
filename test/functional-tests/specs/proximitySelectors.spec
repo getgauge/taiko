@@ -1,18 +1,19 @@
 # Proximity Selectors
 ## Below
 
-* Intercept Google Analytics
-* Navigate to "https://gauge.org"
-* Click link "Privacy" below 
+* Navigate to "http://localhost:3001/"
+* Click link "Frames" below
 
-   |Type|Selector      |
-   |----|--------------|
-   |link|Gauge Commands|
+   |Type|Selector           |
+   |----|-------------------|
+   |link|Form Authentication|
 
 ## Near by
+
 tags: knownIssue
+
 * Navigate to relative path "./specs/data/HTMLElements.html"
-* Write "Blah" into Input Field near 
+* Write "Blah" into Input Field near
 
    |Type|Selector  |
    |----|----------|
@@ -21,33 +22,33 @@ tags: knownIssue
 
 ## Above
 
-* Intercept Google Analytics
-* Navigate to "https://gauge.org"
-* Click link "Blog"
-* Click image above 
+* Navigate to "http://localhost:3001/"
+* Click link "Dynamic Loading"
+* Click link above
 
-   |Type|Selector                                                     |
-   |----|-------------------------------------------------------------|
-   |text|Introducing Taiko - the last mile to reliable test automation|
-* Assert Exists 
+   |Type|Selector                                  |
+   |----|------------------------------------------|
+   |text|Example 2: Element rendered after the fact|
+* Assert Exists
 
-   |Type|Selector         |Method|
-   |----|-----------------|------|
-   |text|Introducing Taiko|exists|
+   |Type|Selector                      |Method|
+   |----|------------------------------|------|
+   |text|Element on page that is hidden|exists|
+   |text|Start                         |exists|
 
 ## Right Of
 
-* Intercept Google Analytics
-* Navigate to "https://gauge.org/index.html"
-* Assert Exists 
+* Navigate to "http://localhost:3001/"
+* Click "Horizontal Slider"
+* Assert Exists
 
-   |Type|Selector    |Method|
-   |----|------------|------|
-   |$   |.github_star|exists|
-* Click link to right of 
+   |Type|Selector|Method|
+   |----|--------|------|
+   |text|See     |exists|
+* Click link to right of
 
-   |Type|Selector    |
-   |----|------------|
-   |$   |.github_star|
+   |Type|Selector|
+   |----|--------|
+   |text|See     |
 
-* Assert title to be "Supported Plugins | Gauge"
+* Assert title to be "the-internet-express/README.md at master · getgauge-contrib/the-internet-express"

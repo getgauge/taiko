@@ -12,10 +12,13 @@ const {
   button,
   rightClick,
   doubleClick,
-  near
-} = require('../../../lib/taiko');
+  near,
+} = require('taiko');
 
-step('Click link <userlink> below <table>', async function(userlink, table) {
+step('Click link <userlink> below <table>', async function(
+  userlink,
+  table,
+) {
   await click(link(userlink, below(_selectors.getElement(table))));
 });
 
@@ -34,6 +37,11 @@ step('Click <selector>', async function(selector) {
 step('Click image above <table>', async function(table) {
   var element = _selectors.getElement(table);
   await click(image(above(element)));
+});
+
+step('Click link above <table>', async function(table) {
+  var element = _selectors.getElement(table);
+  await click(link(above(element)));
 });
 
 step('Click link to right of <table>', async function(table) {

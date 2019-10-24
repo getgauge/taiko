@@ -1,0 +1,46 @@
+name: taiko
+
+on: [push, pull_request]
+
+jobs:
+  unit-tests:
+    name: Unit tests - ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: install
+        run: |
+          npm install
+      - name: unit-tests
+        run: |
+          npm test
+
+  functional-tests:
+    needs: unit-tests
+    name: FTs & examples - NodeJS ${{ matrix.node_version }} & ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: ['10', '12']
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use NodeJS ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node_version }}
+      - name: functional-tests
+        env:
+          GAUGE_TELEMETRY_ENABLED: false
+        run: |
+          npm run test-functional
+      - name: examples
+        run: |
+          npm run examples
