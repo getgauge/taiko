@@ -22,16 +22,19 @@ describe(test_name, () => {
       '<input type="button" value="Input Button" />' +
       '<input type="reset" value="Input Reset" />' +
       '<input type="submit" value="Input Submit" />' +
+      '<input type="image" value="Input Image" />' +
       '</div>' +
       '<div name="button in label">' +
       '<label><input type="button" value="inputButtonInLabel" /><span>InputButtonInLabel</span></label>' +
       '<label><input type="reset" /><span>ResetInLabel</span></label>' +
       '<label><input type="submit" /><span>SubmitInLabel</span></label>' +
+      '<label><input type="image" /><span>ImageInLabel</span></label>' +
       '</div>' +
       '<div name="button in label for">' +
       '<label for="inputButton" >LabelForButton</label> <input type="button" id="inputButton" />' +
       '<label for="inputReset" >LabelForReset</label> <input type="button" id="inputReset" />' +
       '<label for="inputSubmit" >LabelForSubmit</label> <input type="button" id="inputSubmit" />' +
+      '<label for="inputImage" >LabelForImage</label> <input type="image" id="inputImage" />' +
       '</div>' +
       //button tag with wrapped elements
       '<button><span> spanButton </span></button>' +
@@ -59,6 +62,7 @@ describe(test_name, () => {
         expect(await button('Input Button').exists()).to.be.true;
         expect(await button('Input Reset').exists()).to.be.true;
         expect(await button('Input Submit').exists()).to.be.true;
+        expect(await button('Input Image').exists()).to.be.true;
       });
 
       xit('button get()', async () => {
@@ -74,6 +78,9 @@ describe(test_name, () => {
         expect(
           await (await button('Input Submit').get())[0].text(),
         ).to.be.eql('Input Submit');
+        expect(
+          await (await button('Input Image').get())[0].text(),
+        ).to.be.eql('Input Image');
       }); // Todo: should be fixed with #815
 
       it('button description', async () => {
@@ -89,6 +96,9 @@ describe(test_name, () => {
         expect(button('Input Submit').description).to.be.eql(
           'Button with label Input Submit ',
         );
+        expect(button('Input Image').description).to.be.eql(
+          'Button with label Input Image ',
+        );
       });
 
       xit('button text()', async () => {
@@ -102,6 +112,9 @@ describe(test_name, () => {
         expect(await button('Input Submit').text()).to.be.eql(
           'Input Submit',
         );
+        expect(await button('Input Image').text()).to.be.eql(
+          'Input Image',
+        );
       }); // Todo: should be fixed with #815
     });
     describe('button with label', () => {
@@ -110,6 +123,7 @@ describe(test_name, () => {
           .true;
         expect(await button('ResetInLabel').exists()).to.be.true;
         expect(await button('SubmitInLabel').exists()).to.be.true;
+        expect(await button('ImageInLabel').exists()).to.be.true;
       });
 
       xit('get with label()', async () => {
@@ -122,6 +136,9 @@ describe(test_name, () => {
         expect(
           await (await button('SubmitInLabel').get())[0].text(),
         ).to.be.eql('submitInLabel');
+        expect(
+          await (await button('ImageInLabel').get())[0].text(),
+        ).to.be.eql('imageInLabel');
       }); // Todo: should be fixed with #815
 
       it('button description', async () => {
@@ -133,6 +150,9 @@ describe(test_name, () => {
         );
         expect(button('SubmitInLabel').description).to.be.eql(
           'Button with label SubmitInLabel ',
+        );
+        expect(button('ImageInLabel').description).to.be.eql(
+          'Button with label ImageInLabel ',
         );
       });
 
@@ -146,6 +166,9 @@ describe(test_name, () => {
         expect(await button('SubmitInLabel').text()).to.be.eql(
           'submitInLabel',
         );
+        expect(await button('ImageInLabel').text()).to.be.eql(
+          'imageInLabel',
+        );
       }); // Todo: should be fixed with #815
     });
     describe('button with label for', () => {
@@ -153,6 +176,7 @@ describe(test_name, () => {
         expect(await button('LabelForButton').exists()).to.be.true;
         expect(await button('LabelForReset').exists()).to.be.true;
         expect(await button('LabelForSubmit').exists()).to.be.true;
+        expect(await button('LabelForImage').exists()).to.be.true;
       });
 
       xit('test get with label for()', async () => {
@@ -164,6 +188,9 @@ describe(test_name, () => {
         ).to.be.eql('LabelForButton');
         expect(
           await (await button('LabelForSubmit').get())[0].text(),
+        ).to.be.eql('LabelForButton');
+        expect(
+          await (await button('LabelForImage').get())[0].text(),
         ).to.be.eql('LabelForButton');
       }); // Todo: should be fixed with #815
 
@@ -177,6 +204,9 @@ describe(test_name, () => {
         expect(button('LabelForSubmit').description).to.be.eql(
           'Button with label LabelForSubmit ',
         );
+        expect(button('LabelForImage').description).to.be.eql(
+          'Button with label LabelForImage ',
+        );
       });
 
       xit('test text with label for()', async () => {
@@ -189,6 +219,9 @@ describe(test_name, () => {
         expect(await button('LabelForSubmit').text()).to.be.eql(
           'LabelForButton',
         );
+        expect(await button('LabelForImage').text()).to.be.eql(
+          'LabelForImage',
+        );
       }); // Todo: should be fixed with #815
     });
 
@@ -197,6 +230,7 @@ describe(test_name, () => {
         expect(await button('ForButton').exists()).to.be.true;
         expect(await button('ForReset').exists()).to.be.true;
         expect(await button('ForSubmit').exists()).to.be.true;
+        expect(await button('ForImage').exists()).to.be.true;
       });
     });
 
