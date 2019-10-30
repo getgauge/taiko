@@ -83,3 +83,8 @@ Assert title to be "Document"
 * Assert page navigated back "localhost"
 * Navigate forward
 * Assert page navigated forward
+
+## Set Timezone
+* Navigate to relative path "./specs/data/localStorage.html"
+* Set timezone "America/Jamaica"
+* Assert page has set timezome
