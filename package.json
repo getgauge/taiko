@@ -34,8 +34,8 @@
     ]
   },
   "taiko": {
-    "chromium_revision": "662092",
-    "chromium_version": "76.0.3803.0"
+    "chromium_revision": "706915",
+    "chromium_version": "79.0.3945.16"
   },
   "husky": {
     "hooks": {
@@ -65,7 +65,7 @@
     "eslint": "^6.4.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-jest": "^23.0.2",
     "eslint-plugin-prettier": "^3.1.1",
     "handlebars": "^4.3.0",
     "husky": "^3.0.9",

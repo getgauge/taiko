@@ -11,6 +11,7 @@ const {
   goBack,
   goForward,
   getCookies,
+  emulateTimezone,
 } = require('taiko');
 const assert = require('assert');
 const cwd = process.cwd();
@@ -116,4 +117,11 @@ step('Navigate back', async function() {
 
 step('Navigate forward', async function() {
   await goForward();
+});
+
+step('Set timezone <arg0>', async function(arg0) {
+  await evaluate(() => {
+    return (globalThis.date = new Date(1479579154987));
+  });
+  await emulateTimezone(arg0);
 });

@@ -23,6 +23,7 @@ describe(test_name, () => {
     let innerHtml =
       '<form>' +
       '<input type="checkbox" id="checkboxWithInlineLabel" name="testCheckbox" value="checkboxWithInlineLabel">checkboxWithInlineLabel</input>' +
+      '<input type="checkbox" style="display: none" id="hiddenCheckbox" name="testCheckbox" value="hiddenCheckbox">hiddenCheckbox</input>' +
       '<label>' +
       '<input name="testCheckbox" type="checkbox" value="checkboxWithWrappedInLabel" />' +
       '<span>checkboxWithWrappedInLabel</span>' +
@@ -105,6 +106,16 @@ describe(test_name, () => {
     it('test exists()', async () => {
       expect(await checkBox('checkboxWithLabelFor').exists()).to.be
         .true;
+    });
+  });
+
+  describe('with hidden style', () => {
+    it('test finding hidden checkbox elements', async () => {
+      expect(
+        await checkBox('hiddenCheckbox', {
+          selectHiddenElement: true,
+        }).exists(),
+      ).to.be.true;
     });
   });
 });
