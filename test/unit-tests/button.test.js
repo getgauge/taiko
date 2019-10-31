@@ -36,6 +36,11 @@ describe(test_name, () => {
       '<label for="inputSubmit" >LabelForSubmit</label> <input type="submit" id="inputSubmit" />' +
       '<label for="inputImage" >LabelForImage</label> <input type="image" id="inputImage" />' +
       '</div>' +
+      '<div name="button with Hidden Attribute">' +
+      '<button type="button" style="display:none">HiddenButton</button>' +
+      '<input type="reset" style="display:none" value="Input Hidden Reset" />' +
+      '<input type="submit" style="display:none" value="Input Hidden Submit" />' +
+      '</div>' +
       //button tag with wrapped elements
       '<button><span> spanButton </span></button>' +
       '<button><strong>strongButton</strong></button>' +
@@ -242,6 +247,26 @@ describe(test_name, () => {
         expect(await button('strongButton').exists()).to.be.true;
         expect(await button('childElementButton').exists()).to.be
           .true;
+      });
+    });
+
+    describe('button with Hidden attribute', () => {
+      it('Should match hidden buttons', async () => {
+        expect(
+          await button('HiddenButton', {
+            selectHiddenElement: true,
+          }).exists(),
+        ).to.be.true;
+        expect(
+          await button('Input Hidden Reset', {
+            selectHiddenElement: true,
+          }).exists(),
+        ).to.be.true;
+        expect(
+          await button('Input Hidden Submit', {
+            selectHiddenElement: true,
+          }).exists(),
+        ).to.be.true;
       });
     });
   });
