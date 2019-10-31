@@ -30,6 +30,7 @@ describe('radio button', () => {
       '<input id="radioButtonWithLabelFor" name="testRadioButton" type="radio" value="radioButtonWithLabelFor"/>' +
       '<label for="radioButtonWithLabelFor">radioButtonWithLabelFor</label>' +
       '</p>' +
+      '<input name="hiddenRadioButton" type="radio" style="display: none" id="hiddenRadioButton" value="hiddenRadioButton"> hiddenRadioButton </input>' +
       '<input type="reset" value="Reset">' +
       '</form>' +
       '<div id="panel" style="display:none">show on check</div>' +
@@ -98,6 +99,14 @@ describe('radio button', () => {
     it('test exists()', async () => {
       expect(
         await radioButton('radioButtonWithWrappedLabel').exists(),
+      ).to.be.true;
+    });
+  });
+
+  describe('with hidden style', () => {
+    it('should find hidden radio buttons', async () => {
+      expect(
+        await radioButton('hiddenRadioButton', { selectHiddenElement: true }).exists(),
       ).to.be.true;
     });
   });
