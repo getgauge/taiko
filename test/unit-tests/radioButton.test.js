@@ -30,11 +30,12 @@ describe('radio button', () => {
       '<input id="radioButtonWithLabelFor" name="testRadioButton" type="radio" value="radioButtonWithLabelFor"/>' +
       '<label for="radioButtonWithLabelFor">radioButtonWithLabelFor</label>' +
       '</p>' +
-      '<input name="hiddenRadioButton" type="radio" style="display: none" id="hiddenRadioButton" value="hiddenRadioButton"> hiddenRadioButton </input>' +
+      '<input name="hiddenRadioButton" type="radio" id="hiddenRadioButton" value="hiddenRadioButton">hiddenRadioButton</input>' +
       '<input type="reset" value="Reset">' +
       '</form>' +
       '<div id="panel" style="display:none">show on check</div>' +
       '<script>' +
+      'document.getElementById("hiddenRadioButton").style.display = "none";' +
       'var elem = document.getElementById("radioButtonWithInlineLabel");' +
       'elem.addEventListener("click", myFunction);' +
       'function myFunction() {' +
