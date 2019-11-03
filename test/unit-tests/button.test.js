@@ -32,8 +32,8 @@ describe(test_name, () => {
       '</div>' +
       '<div name="button in label for">' +
       '<label for="inputButton" >LabelForButton</label> <input type="button" id="inputButton" />' +
-      '<label for="inputReset" >LabelForReset</label> <input type="button" id="inputReset" />' +
-      '<label for="inputSubmit" >LabelForSubmit</label> <input type="button" id="inputSubmit" />' +
+      '<label for="inputReset" >LabelForReset</label> <input type="reset" id="inputReset" />' +
+      '<label for="inputSubmit" >LabelForSubmit</label> <input type="submit" id="inputSubmit" />' +
       '<label for="inputImage" >LabelForImage</label> <input type="image" id="inputImage" />' +
       '</div>' +
       //button tag with wrapped elements
