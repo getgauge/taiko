@@ -3,7 +3,7 @@ const { EventEmitter } = require('events');
 const rewire = require('rewire');
 const taiko = rewire('../../lib/taiko');
 
-describe('resetIntercept', () => {
+describe('clearIntercept', () => {
   let validateEmitterEvent;
   beforeEach(() => {
     validateEmitterEvent = function(event, expectedText) {
@@ -27,7 +27,7 @@ describe('resetIntercept', () => {
       resetInterceptor: url => true,
     };
     taiko.__set__('networkHandler', networkHandler);
-    await taiko.resetIntercept('google.com');
+    await taiko.clearIntercept('google.com');
     await validatePromise;
   });
 
@@ -40,7 +40,7 @@ describe('resetIntercept', () => {
       resetInterceptors: url => {},
     };
     taiko.__set__('networkHandler', networkHandler);
-    await taiko.resetIntercept();
+    await taiko.clearIntercept();
     await validatePromise;
   });
   it('should display failure message if there are no intercepts for the url', async () => {
@@ -52,7 +52,7 @@ describe('resetIntercept', () => {
       resetInterceptor: url => false,
     };
     taiko.__set__('networkHandler', networkHandler);
-    await taiko.resetIntercept('google.com');
+    await taiko.clearIntercept('google.com');
     await validatePromise;
   });
 });
