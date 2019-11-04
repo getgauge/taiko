@@ -43,4 +43,16 @@ describe('resetIntercept', () => {
     await taiko.resetIntercept();
     await validatePromise;
   });
+  it('should display failure message if there are no intercepts for the url', async () => {
+    let validatePromise = validateEmitterEvent(
+      'success',
+      'Intercepts not found for url google.com',
+    );
+    let networkHandler = {
+      resetInterceptor: url => false,
+    };
+    taiko.__set__('networkHandler', networkHandler);
+    await taiko.resetIntercept('google.com');
+    await validatePromise;
+  });
 });
