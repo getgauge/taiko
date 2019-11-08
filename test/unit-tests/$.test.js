@@ -106,6 +106,7 @@ describe(test_name, () => {
     it('test text()', async () => {
       const elems = await $('#foo').elements();
       expect(await elems[0].text()).to.be.eql('taiko');
+      expect(await $('.foo').text()).to.be.eql('');
     });
   });
 });
