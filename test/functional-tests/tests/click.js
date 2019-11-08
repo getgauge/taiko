@@ -13,7 +13,7 @@ const {
   rightClick,
   doubleClick,
   near,
-} = require('../../../lib/taiko');
+} = require('taiko');
 
 step('Click link <userlink> below <table>', async function(
   userlink,

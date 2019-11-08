@@ -118,7 +118,7 @@ describe(test_name, () => {
   });
 
   it('intercept with count added for the requestUrl', async () => {
-    let count = 0;
+    let count = 3;
     networkHandler.addInterceptor({
       requestUrl: 'www.google.com',
       action: 'www.gauge.org',
@@ -138,5 +138,27 @@ describe(test_name, () => {
       var result = count === i ? undefined : 'http://www.gauge.org';
       expect(actualOption.url).to.equal(result);
     }
+  });
+  it('reset intercept for the requestUrl if interceptor is present for the url', async () => {
+    networkHandler.addInterceptor({
+      requestUrl: 'www.google.com',
+      action: 'www.gauge.org',
+    });
+    var result = networkHandler.resetInterceptor('www.google.com');
+    networkHandler.handleInterceptor({
+      interceptionId: 'interceptionId',
+      request: {
+        url: 'http://www.google.com',
+        method: 'GET',
+      },
+      resourceType: 'Document',
+      isNavigationRequest: true,
+    });
+    expect(actualOption.url).to.equal(undefined);
+    expect(result).to.equal(true);
+  });
+  it('reset intercept returns false if intercept does not exist for the requestUrl', async () => {
+    var result = networkHandler.resetInterceptor('www.google.com');
+    expect(result).to.equal(false);
   });
 });

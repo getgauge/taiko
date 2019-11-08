@@ -30,6 +30,7 @@ const {
   intercept,
   toRightOf,
   setConfig,
+  clearIntercept,
 } = require('taiko');
 
 const headless = process.env.headless.toLowerCase() === 'true';
@@ -310,4 +311,12 @@ step('Navigate to <url> with timeout <timeout> ms', async function(
   timeout,
 ) {
   await goto(url, { navigationTimeout: timeout });
+});
+
+step('Reset intercept for <url>', function(url) {
+  clearIntercept(url);
+});
+
+step('Reset all intercept', function() {
+  clearIntercept();
 });

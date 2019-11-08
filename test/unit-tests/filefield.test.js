@@ -207,4 +207,20 @@ describe(test_name, () => {
       expect(await elements[0].text()).to.be.eql('similarFileField');
     });
   });
+  describe('using a file that does not exists', () => {
+    it('throws a error when the file does not exist', async () => {
+      await expect(
+        attach(
+          path.join(__dirname, 'data', 'foowrong.txt'),
+          fileField('Select a file'),
+        ),
+      ).to.be.rejectedWith(
+        `File ${path.join(
+          __dirname,
+          'data',
+          'foowrong.txt',
+        )} does not exist.`,
+      );
+    });
+  });
 });

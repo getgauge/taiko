@@ -30,11 +30,13 @@ describe(test_name, () => {
       '<input id="radioButtonWithLabelFor" name="testRadioButton" type="radio" value="radioButtonWithLabelFor"/>' +
       '<label for="radioButtonWithLabelFor">radioButtonWithLabelFor</label>' +
       '</p>' +
+      '<input name="hiddenRadioButton" type="radio" id="hiddenRadioButton" value="hiddenRadioButton">hiddenRadioButton</input>' +
       '<input type="reset" value="Reset">' +
       '</form>' +
       '<input type="radio" id="someRadioButton" name="testRadioButton" value="someRadioButton">someRadioButton</input>' +
       '<button id="panel" style="display:none">show on check</button>' +
       '<script>' +
+      'document.getElementById("hiddenRadioButton").style.display = "none";' +
       'var elem = document.getElementById("radioButtonWithInlineLabel");' +
       'elem.addEventListener("click", myFunction);' +
       'function myFunction() {' +
@@ -120,6 +122,16 @@ describe(test_name, () => {
       expect(description).to.be.eql(
         'Radio button with label radioButtonWithWrappedLabel ',
       );
+    });
+  });
+
+  describe('with hidden style', () => {
+    it('should find hidden radio buttons', async () => {
+      expect(
+        await radioButton('hiddenRadioButton', {
+          selectHiddenElement: true,
+        }).exists(),
+      ).to.be.true;
     });
   });
 

@@ -1,5 +1,5 @@
 'use strict';
-const { link, textBox, text, $ } = require('../../../lib/taiko');
+const { link, textBox, text, $ } = require('taiko');
 
 function getElementWithSelector(element, selector) {
   var selectedElement = null;

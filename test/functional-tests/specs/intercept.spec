@@ -37,3 +37,18 @@
 
 * Navigate to "https://localhost/employees/2/address"
 * Assert text "{\"city\":\"City1\",\"State\":\"State1\"}" exists on the page.
+
+## Reset a response for a URL
+* Respond to "http://localhost:3001/dropdown" with "actual dropdown page"
+* Reset intercept for "http://localhost:3001/dropdown"
+* Respond to "http://localhost:3001/dropdown" with "mocked dropdown page" 
+* Navigate to "http://localhost:3001/"
+* Click "Dropdown"
+* Assert text "mocked dropdown page" exists on the page.
+
+## Reset all intercepts
+* Respond to "http://localhost:3001/dropdown" with "mocked dropdown page"
+* Reset all intercept
+* Navigate to "http://localhost:3001/"
+* Click "Dropdown"
+* Assert text "mocked dropdown page" does not exist
