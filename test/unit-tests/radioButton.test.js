@@ -107,7 +107,9 @@ describe('radio button', () => {
   describe('with hidden style', () => {
     it('should find hidden radio buttons', async () => {
       expect(
-        await radioButton('hiddenRadioButton', { selectHiddenElement: true }).exists(),
+        await radioButton('hiddenRadioButton', {
+          selectHiddenElement: true,
+        }).exists(),
       ).to.be.true;
     });
   });
