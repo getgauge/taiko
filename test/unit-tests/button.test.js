@@ -41,6 +41,11 @@ describe(test_name, () => {
       '<input type="reset" style="display:none" value="Input Hidden Reset" />' +
       '<input type="submit" style="display:none" value="Input Hidden Submit" />' +
       '</div>' +
+      '<div name="button with Hidden Attribute">' +
+      '<button type="button" style="display:none">HiddenButton</button>' +
+      '<input type="reset" style="display:none" value="Input Hidden Reset" />' +
+      '<input type="submit" style="display:none" value="Input Hidden Submit" />' +
+      '</div>' +
       //button tag with wrapped elements
       '<button><span> spanButton </span></button>' +
       '<button><strong>strongButton</strong></button>' +
