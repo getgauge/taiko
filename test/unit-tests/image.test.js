@@ -25,6 +25,8 @@ describe(test_name, () => {
             <h3>Div Image</h3>
             <div id="divImage" style="background-image: url('image.png')"></div>
             <p id="paraImage" style="background-image: url('something.png')">okay</p>
+            <div id="hiddenDivImage" style="display: none; background-image: url('image.png')">
+            <img id="hiddenImage" style="display: none" src="avatar-blank.jpg" alt="avatar">
         </div>`;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -58,6 +60,23 @@ describe(test_name, () => {
     });
     it('should find the div image with proximity selector', async () => {
       expect(await image(below('Div Image')).exists()).to.be.true;
+    });
+  });
+
+  describe('image with hidden style', () => {
+    it('should be able to find hidden image', async () => {
+      expect(
+        await image(
+          { id: 'hiddenDivImage' },
+          { selectHiddenElement: true },
+        ).exists(),
+      ).to.be.true;
+      expect(
+        await image(
+          { id: 'hiddenImage' },
+          { selectHiddenElement: true },
+        ).exists(),
+      ).to.be.true;
     });
   });
 });
