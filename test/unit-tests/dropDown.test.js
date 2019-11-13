@@ -9,7 +9,10 @@ let {
   closeBrowser,
   setConfig,
 } = taiko;
-const expect = require('chai').expect;
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+const expect = chai.expect;
 let {
   createHtml,
   removeFile,
@@ -133,5 +136,50 @@ describe(test_name, () => {
       await dropDown('Cars').select('mercedes');
       await validatePromise;
     });
+  });
+});
+
+describe('nested drop down', () => {
+  let filePath;
+
+  before(async () => {
+    let innerHtml = `<div id="one">
+    <label for="select-one">One</label>
+    <select id="select-one" name="select" value="select">
+       <option>Select One</option> 
+       <option>Hot Beverages</option>
+      </select>
+  </div>
+  <div id="two">
+    <label for="select-two">Two</label>
+    <select id="select-two" name="select" value="select">
+       <option>Please select from above</option>
+      </select>
+  </div>
+  <script>
+    var textTwo = document.getElementById("select-two");
+  var divOne = document.getElementById("one");
+
+  divOne.addEventListener("change", function() {
+    console.log("Hello");
+    textTwo.innerHTML = "<option>Tea</option><option>Cofee</option>";
+  });
+  </script>`;
+    filePath = createHtml(innerHtml, test_name);
+    await openBrowser(openBrowserArgs);
+    await goto(filePath);
+    setConfig({ waitForNavigation: false });
+  });
+
+  after(async () => {
+    setConfig({ waitForNavigation: true });
+    await closeBrowser();
+    removeFile(filePath);
+  });
+
+  it('should bubble change event', async () => {
+    await dropDown('One').select('Hot Beverages');
+    await expect(dropDown('Two').select('Tea')).not.to.be.eventually
+      .rejected;
   });
 });
