@@ -37,7 +37,6 @@ tags: knownIssue
 
 ## Right Of
 
-* Intercept Google Analytics
 * Navigate to relative path "./specs/data/IFrameProximitySelectors.html"
 * Click "Horizontal Slider"
 * Assert Exists
