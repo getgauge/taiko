@@ -66,9 +66,9 @@ describe(test_name, () => {
     });
 
     it('test get()', async () => {
-      const elem = (await radioButton(
-        'radioButtonWithInlineLabel',
-      ).get())[0];
+      const elem = (
+        await radioButton('radioButtonWithInlineLabel').get()
+      )[0];
       expect(await elem.get()).to.be.a('number');
     });
 
@@ -110,9 +110,9 @@ describe(test_name, () => {
     });
 
     it('test get()', async () => {
-      const elem = (await radioButton(
-        'radioButtonWithWrappedLabel',
-      ).get())[0];
+      const elem = (
+        await radioButton('radioButtonWithWrappedLabel').get()
+      )[0];
       expect(await elem.get()).to.be.a('number');
     });
 
@@ -142,9 +142,9 @@ describe(test_name, () => {
     });
 
     it('test get()', async () => {
-      const elem = (await radioButton(
-        'radioButtonWithLabelFor',
-      ).get())[0];
+      const elem = (
+        await radioButton('radioButtonWithLabelFor').get()
+      )[0];
       expect(await elem.get()).to.be.a('number');
     });
 

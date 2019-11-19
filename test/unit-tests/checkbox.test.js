@@ -64,9 +64,9 @@ describe(test_name, () => {
     });
 
     it('test get()', async () => {
-      const elem = (await checkBox(
-        'checkboxWithInlineLabel',
-      ).get())[0];
+      const elem = (
+        await checkBox('checkboxWithInlineLabel').get()
+      )[0];
       expect(await elem.get()).to.be.a('number');
     });
 

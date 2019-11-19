@@ -28,6 +28,8 @@ describe(test_name, () => {
             <img src="avatar-blank.jpg" alt="similarImage1">
             <img src="avatar-blank.jpg" alt="similarImage2">
             <img src="avatar-blank.jpg" alt="similarImage3">
+            <div id="hiddenDivImage" style="display: none; background-image: url('image.png')">
+            <img id="hiddenImage" style="display: none" src="avatar-blank.jpg" alt="avatar">
         </div>`;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -210,5 +212,22 @@ describe(test_name, () => {
         'image with alt similarImage ',
       );
     }); //Todo: Need to discuss on should we expose this api or not
+  });
+
+  describe('image with hidden style', () => {
+    it('should be able to find hidden image', async () => {
+      expect(
+        await image(
+          { id: 'hiddenDivImage' },
+          { selectHiddenElement: true },
+        ).exists(),
+      ).to.be.true;
+      expect(
+        await image(
+          { id: 'hiddenImage' },
+          { selectHiddenElement: true },
+        ).exists(),
+      ).to.be.true;
+    });
   });
 });

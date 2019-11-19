@@ -190,20 +190,11 @@ step(
   },
 );
 
-step('Intercept Google Analytics', async function() {
-  await intercept(
-    'https://www.googletagmanager.com/gtm.js?id=GTM-5C33ML2',
-    undefined,
-    1,
-  );
-  await intercept('https://www.google-analytics.com/analytics.js');
-});
-
-step('Respond to <url> with <respomnseBody>', async function(
+step('Respond to <url> with <responseBody>', async function(
   url,
-  respomnseBody,
+  responseBody,
 ) {
-  await intercept(url, { body: respomnseBody });
+  await intercept(url, { body: responseBody });
 });
 
 step('Respond to <url> with json <jsonString>', async function(
