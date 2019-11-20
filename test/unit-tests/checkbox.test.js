@@ -1,4 +1,7 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let {
   createHtml,
   removeFile,
@@ -79,6 +82,10 @@ describe(test_name, () => {
       expect(isChecked).to.be.true;
     });
 
+    it('test check() to throw if the element is not found', async () => {
+      expect(checkBox('foo').check()).to.be.eventually.rejected;
+    });
+
     it('test check() triggers events', async () => {
       await checkBox('checkboxWithInlineLabel').check();
       expect(await button('show on check').exists()).to.be.true;
@@ -93,10 +100,18 @@ describe(test_name, () => {
       expect(isChecked).to.be.false;
     });
 
+    it('test uncheck() to throw if the element is not found', async () => {
+      expect(checkBox('foo').uncheck()).to.be.eventually.rejected;
+    });
+
     it('test isChecked()', async () => {
       await checkBox('checkboxWithInlineLabel').check();
       expect(await checkBox('checkboxWithInlineLabel').isChecked()).to
         .be.true;
+    });
+
+    it('test isChecked() to throw if no element is found', async () => {
+      expect(checkBox('foo').isChecked()).to.be.eventually.rejected;
     });
   });
 
@@ -145,6 +160,29 @@ describe(test_name, () => {
       expect(elements[0].description).to.be.eql(
         'Checkbox[@id = concat(\'someCheckBox\', "")]',
       );
+    });
+
+    it('test isChecked of elements', async () => {
+      let elements = await checkBox({
+        id: 'someCheckBox',
+      }).elements();
+      expect(await elements[0].isChecked()).to.be.false;
+    });
+
+    it('test check of elements', async () => {
+      let elements = await checkBox({
+        id: 'someCheckBox',
+      }).elements();
+      await elements[0].check();
+      expect(await elements[0].isChecked()).to.be.true;
+    });
+
+    it('test uncheck of elements', async () => {
+      let elements = await checkBox({
+        id: 'someCheckBox',
+      }).elements();
+      await elements[0].uncheck();
+      expect(await elements[0].isChecked()).to.be.false;
     });
   });
 
