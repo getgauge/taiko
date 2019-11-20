@@ -77,10 +77,6 @@ describe(test_name, () => {
       expect(await dropDown('Cars').exists()).to.be.true;
     });
 
-    it('test dropdown get()', async () => {
-      expect(await dropDown('Cars').get()).to.have.lengthOf(2);
-    });
-
     it('test dropdown description', async () => {
       expect(dropDown('Cars').description).to.be.eql(
         'DropDown with label Cars ',
@@ -116,12 +112,6 @@ describe(test_name, () => {
       expect(
         await dropDown('dropDownWithWrappedInLabel').value(),
       ).to.not.equal('mercedes');
-    });
-
-    it('test get()', async () => {
-      expect(
-        await dropDown('dropDownWithWrappedInLabel').get(),
-      ).to.have.lengthOf(1);
     });
 
     it('test description', async () => {
@@ -163,20 +153,12 @@ describe(test_name, () => {
     });
   });
 
-  describe('elements()', () => {
+  describe('test elementList properties', () => {
     it('test get of elements', async () => {
       const elements = await dropDown({
         id: 'sampleDropDown',
       }).elements();
       expect(await elements[0].get()).to.be.a('number');
-    });
-
-    it('test exists of elements', async () => {
-      let elements = await dropDown({
-        id: 'sampleDropDown',
-      }).elements();
-      expect(await elements[0].exists()).to.be.true;
-      expect(await dropDown('someFileField').exists()).to.be.false;
     });
 
     it('test description of elements', async () => {

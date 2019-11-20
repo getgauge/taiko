@@ -66,38 +66,6 @@ describe(test_name, () => {
     });
   });
 
-  describe('get image in page', () => {
-    it('should find the image with text', async () => {
-      expect(await image('avatar').get()).to.have.lengthOf(1);
-    });
-    it('should find the image with selectors', async () => {
-      expect(
-        await image({ id: 'brokenImage' }).get(),
-      ).to.have.lengthOf(1);
-      expect(
-        await image({ src: 'brokenImage.jpg' }).get(),
-      ).to.have.lengthOf(1);
-    });
-    it('should find the image with proximity selector', async () => {
-      expect(await image(below('Images')).get()).to.have.lengthOf(7);
-    });
-    it('should find div image using selectors', async () => {
-      expect(await image({ id: 'divImage' }).get()).to.have.lengthOf(
-        1,
-      );
-    });
-    it('should find p tag image using selectors', async () => {
-      expect(await image({ id: 'paraImage' }).get()).to.have.lengthOf(
-        1,
-      );
-    });
-    it('should find the div image with proximity selector', async () => {
-      expect(await image(below('Div Image')).get()).to.have.lengthOf(
-        5,
-      );
-    });
-  });
-
   describe('image description in page', () => {
     it('should find the image with text', async () => {
       expect(image('avatar').description).to.be.eql(
@@ -171,20 +139,10 @@ describe(test_name, () => {
     });
   });
 
-  describe('elements()', () => {
+  describe('test elementsList properties', () => {
     it('test get of elements', async () => {
       const elements = await image('similarImage').elements();
       expect(await elements[0].get()).to.be.a('number');
-      expect(await elements[1].get()).to.be.a('number');
-      expect(await elements[2].get()).to.be.a('number');
-    });
-
-    it('test exists of elements', async () => {
-      let elements = await image('similarImage').elements();
-      expect(await elements[0].exists()).to.be.true;
-      expect(await elements[1].exists()).to.be.true;
-      expect(await elements[2].exists()).to.be.true;
-      expect(await image('someImage').exists()).to.be.false;
     });
 
     it('test description of elements', async () => {
@@ -192,23 +150,11 @@ describe(test_name, () => {
       expect(elements[0].description).to.be.eql(
         'image with alt similarImage ',
       );
-      expect(elements[1].description).to.be.eql(
-        'image with alt similarImage ',
-      );
-      expect(elements[2].description).to.be.eql(
-        'image with alt similarImage ',
-      );
     });
 
     xit('test text of elements', async () => {
       let elements = await image('similarImage').elements();
       expect(await elements[0].text()).to.be.eql(
-        'image with alt similarImage ',
-      );
-      expect(await elements[1].text()).to.be.eql(
-        'image with alt similarImage ',
-      );
-      expect(await elements[2].text()).to.be.eql(
         'image with alt similarImage ',
       );
     }); //Todo: Need to discuss on should we expose this api or not

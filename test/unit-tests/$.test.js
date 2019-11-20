@@ -41,12 +41,6 @@ describe(test_name, () => {
       expect(await $("//*[text()='taiko']").exists()).to.be.true;
     });
 
-    it('test get with xpath', async () => {
-      expect(await $("//*[text()='taiko']").get()).to.have.lengthOf(
-        1,
-      );
-    });
-
     it('test description with xpath', async () => {
       expect($("//*[text()='taiko']").description).to.be.eql(
         "Custom selector $(//*[text()='taiko'])",
@@ -58,15 +52,12 @@ describe(test_name, () => {
         'taiko',
       );
     });
+  });
 
+  describe('test with selectors', () => {
     it('should find text with selectors', async () => {
       expect(await $('#foo').exists()).to.be.true;
       expect(await $('.test').exists()).to.be.true;
-    });
-
-    it('test get with selectors', async () => {
-      expect(await $('#foo').get()).to.have.lengthOf(1);
-      expect(await $('.test').get()).to.have.lengthOf(1);
     });
 
     it('test description with selectors', async () => {
@@ -78,22 +69,16 @@ describe(test_name, () => {
       );
     });
 
-    it('test description with selectors', async () => {
+    it('test text with selectors', async () => {
       expect(await $('#foo').text()).to.be.eql('taiko');
       expect(await $('.test').text()).to.be.eql('taiko\n\ndemo');
     });
   });
 
-  describe('test elements()', () => {
+  describe('test elementList properties', () => {
     it('test get()', async () => {
       const elems = await $('#foo').elements();
       expect(await elems[0].get()).to.be.a('number');
-    });
-
-    it('test exists()', async () => {
-      let elems = await $('#foo').elements();
-      expect(await elems[0].exists()).to.be.true;
-      expect(await $('#bar').exists()).to.be.false;
     });
 
     it('test description', async () => {

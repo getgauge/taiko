@@ -65,13 +65,6 @@ describe(test_name, () => {
       expect(await radioButton('Something').exists()).to.be.false;
     });
 
-    it('test get()', async () => {
-      const elem = (
-        await radioButton('radioButtonWithInlineLabel').get()
-      )[0];
-      expect(await elem.get()).to.be.a('number');
-    });
-
     it('test select()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
       let isSelected = await radioButton(
@@ -109,13 +102,6 @@ describe(test_name, () => {
       ).to.be.true;
     });
 
-    it('test get()', async () => {
-      const elem = (
-        await radioButton('radioButtonWithWrappedLabel').get()
-      )[0];
-      expect(await elem.get()).to.be.a('number');
-    });
-
     it('test description', async () => {
       const description = radioButton('radioButtonWithWrappedLabel')
         .description;
@@ -141,13 +127,6 @@ describe(test_name, () => {
         .be.true;
     });
 
-    it('test get()', async () => {
-      const elem = (
-        await radioButton('radioButtonWithLabelFor').get()
-      )[0];
-      expect(await elem.get()).to.be.a('number');
-    });
-
     it('test description', async () => {
       const description = radioButton('radioButtonWithLabelFor')
         .description;
@@ -157,20 +136,12 @@ describe(test_name, () => {
     });
   });
 
-  describe('elements()', () => {
+  describe('test elementList properties', () => {
     it('test get of elements', async () => {
       const elements = await radioButton({
         id: 'someRadioButton',
       }).elements();
       expect(await elements[0].get()).to.be.a('number');
-    });
-
-    it('test exists of elements', async () => {
-      let elements = await radioButton({
-        id: 'someRadioButton',
-      }).elements();
-      expect(await elements[0].exists()).to.be.true;
-      expect(await radioButton('someFileField').exists()).to.be.false;
     });
 
     it('test description of elements', async () => {

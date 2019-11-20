@@ -42,11 +42,6 @@ describe(test_name, () => {
       expect(await listItem({ id: 'coffee' }).exists()).to.be.true;
     });
 
-    it('test get()', async () => {
-      const elem = (await listItem({ id: 'coffee' }).get())[0];
-      expect(await elem.get()).to.be.a('number');
-    });
-
     it('test description', async () => {
       expect(listItem({ id: 'coffee' }).description).to.be.eql(
         `list Item[@id = concat(\'coffee\', "")]`,
@@ -60,13 +55,7 @@ describe(test_name, () => {
     });
   });
 
-  describe('test elements()', () => {
-    it('test exists()', async () => {
-      let elems = await listItem({ id: 'coffee' }).elements();
-      expect(await elems[0].exists()).to.be.true;
-      expect(await listItem({ id: 'foo' }).exists()).to.be.false;
-    });
-
+  describe('test elementsList properties', () => {
     it('test get()', async () => {
       const elems = await listItem({ id: 'coffee' }).elements();
       expect(await elems[0].get()).to.be.a('number');

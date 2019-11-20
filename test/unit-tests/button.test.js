@@ -78,18 +78,7 @@ describe(test_name, () => {
         expect(await button('Input Image').exists()).to.be.true;
       });
 
-      it('button get()', async () => {
-        expect(await button('Click').get()).to.have.lengthOf(1);
-        expect(await button('Input Button').get()).to.have.lengthOf(
-          1,
-        );
-        expect(await button('Input Reset').get()).to.have.lengthOf(1);
-        expect(await button('Input Submit').get()).to.have.lengthOf(
-          1,
-        );
-      });
-
-      it('button description', async () => {
+      it('button description for different button types', async () => {
         expect(button('Click').description).to.be.eql(
           'Button with label Click ',
         );
@@ -123,6 +112,7 @@ describe(test_name, () => {
         );
       }); // Todo: should be fixed with #815
     });
+
     describe('button with label', () => {
       it('exists with label()', async () => {
         expect(await button('InputButtonInLabel').exists()).to.be
@@ -130,18 +120,6 @@ describe(test_name, () => {
         expect(await button('ResetInLabel').exists()).to.be.true;
         expect(await button('SubmitInLabel').exists()).to.be.true;
         expect(await button('ImageInLabel').exists()).to.be.true;
-      });
-
-      it('get with label()', async () => {
-        expect(
-          await button('InputButtonInLabel').get(),
-        ).to.have.lengthOf(1);
-        expect(await button('ResetInLabel').get()).to.have.lengthOf(
-          1,
-        );
-        expect(await button('SubmitInLabel').get()).to.have.lengthOf(
-          1,
-        );
       });
 
       it('button description', async () => {
@@ -159,7 +137,7 @@ describe(test_name, () => {
         );
       });
 
-      xit('text with label()', async () => {
+      xit('input type button with label()', async () => {
         expect(await button('InputButtonInLabel').text()).to.be.eql(
           'inputButtonInLabel',
         );
@@ -172,26 +150,15 @@ describe(test_name, () => {
         expect(await button('ImageInLabel').text()).to.be.eql(
           'imageInLabel',
         );
-      }); // Todo: should be fixed with #815
+      });
     });
+
     describe('button with label for', () => {
       it('test exists with label for()', async () => {
         expect(await button('LabelForButton').exists()).to.be.true;
         expect(await button('LabelForReset').exists()).to.be.true;
         expect(await button('LabelForSubmit').exists()).to.be.true;
         expect(await button('LabelForImage').exists()).to.be.true;
-      });
-
-      it('test get with label for()', async () => {
-        expect(await button('LabelForButton').get()).to.have.lengthOf(
-          1,
-        );
-        expect(await button('LabelForReset').get()).to.have.lengthOf(
-          1,
-        );
-        expect(await button('LabelForSubmit').get()).to.have.lengthOf(
-          1,
-        );
       });
 
       it('button description', async () => {
@@ -225,47 +192,37 @@ describe(test_name, () => {
       }); // Todo: should be fixed with #815
     });
 
-    describe('elements()', () => {
-      it('test get of elements', async () => {
-        const elements = await button('similarButton').elements();
-        expect(await elements[0].get()).to.be.a('number');
-        expect(await elements[1].get()).to.be.a('number');
-        expect(await elements[2].get()).to.be.a('number');
+    describe('test element list', () => {
+      describe('elements()', () => {
+        it('test get of elements', async () => {
+          const elements = await button('similarButton').elements();
+          expect(await elements[0].get())
+            .to.be.a('number')
+            .above(0);
+        });
+
+        it('test description of elements', async () => {
+          let elements = await button('similarButton').elements();
+          expect(await elements[0].description).to.be.eql(
+            'Button with label similarButton ',
+          );
+        });
+
+        it('test text of elements', async () => {
+          let elements = await button('similarButton').elements();
+          expect(await elements[0].text()).to.be.eql(
+            'similarButton1',
+          );
+        });
       });
 
-      it('test exists of elements', async () => {
-        let elements = await button('similarButton').elements();
-        expect(await elements[0].exists()).to.be.true;
-        expect(await elements[1].exists()).to.be.true;
-        expect(await elements[2].exists()).to.be.true;
-        expect(await button('someButton').exists()).to.be.false;
-      });
-
-      it('test description of elements', async () => {
-        let elements = await button('similarButton').elements();
-        expect(await elements[0].description).to.be.eql(
-          'Button with label similarButton ',
-        );
-        expect(await elements[1].description).to.be.eql(
-          'Button with label similarButton ',
-        );
-        expect(await elements[2].description).to.be.eql(
-          'Button with label similarButton ',
+      it('test text() to be first element text', async () => {
+        let buttonElementList = await button('similarButton');
+        const elements = await buttonElementList.elements();
+        expect(await buttonElementList.text()).to.be.eql(
+          await elements[0].text(),
         );
       });
-
-      xit('test text of elements', async () => {
-        let elements = await button('similarButton').elements();
-        expect(await elements[0].description).to.be.eql(
-          'Button with label similarButton ',
-        );
-        expect(await elements[1].description).to.be.eql(
-          'Button with label similarButton ',
-        );
-        expect(await elements[2].description).to.be.eql(
-          'Button with label similarButton ',
-        );
-      }); // Todo: should be fixed with #815
     });
 
     describe('button with contains match', () => {

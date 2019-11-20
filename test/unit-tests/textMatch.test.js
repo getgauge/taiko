@@ -383,25 +383,25 @@ describe('match', () => {
     });
 
     describe('Text visibility', () => {
-      it('txt should be visible', async () => {
+      it('text should be visible', async () => {
         expect(await text('Visible content').exists()).to.be.true;
       });
 
-      it('txt should not be visible when display is set to none', async () => {
+      it('text should not be visible when display is set to none', async () => {
         const exists = await text(
           'Element it self has display none',
         ).exists();
         expect(exists).to.be.false;
       });
 
-      it('txt should not be visible when paraent element display is set to none', async () => {
+      it('text should not be visible when parent element display is set to none', async () => {
         const exists = await text(
           'Parent element has display none',
         ).exists();
         expect(exists).to.be.false;
       });
 
-      it('txt should be visible when ', async () => {
+      it('text should be visible when ', async () => {
         expect(
           await text(
             'Element with display inline should be invisible',
@@ -410,16 +410,10 @@ describe('match', () => {
       });
     });
 
-    describe('elements()', () => {
+    describe('test elementsList properties', () => {
       it('test get of elements', async () => {
         const elements = await text('someNode').elements();
         expect(await elements[0].get()).to.be.a('number');
-      });
-
-      it('test exists of elements', async () => {
-        let elements = await text('someNode').elements();
-        expect(await elements[0].exists()).to.be.true;
-        expect(await text('someTextBox').exists()).to.be.false;
       });
 
       it('test description of elements', async () => {

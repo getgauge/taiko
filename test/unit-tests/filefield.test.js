@@ -1,4 +1,7 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let {
   openBrowser,
   goto,
@@ -72,12 +75,6 @@ describe(test_name, () => {
         ).to.include('foo.txt');
       });
 
-      it('test get()', async () => {
-        expect(
-          await fileField(above(button('Upload'))).get(),
-        ).to.have.lengthOf(2);
-      });
-
       it('test description', async () => {
         expect(
           fileField(above(button('Upload'))).description,
@@ -105,12 +102,6 @@ describe(test_name, () => {
         );
       });
 
-      it('test get()', async () => {
-        expect(
-          await fileField('Select a file').get(),
-        ).to.have.lengthOf(1);
-      });
-
       it('test description', async () => {
         expect(fileField('Select a file').description).to.be.eql(
           'File field with label Select a file ',
@@ -136,12 +127,6 @@ describe(test_name, () => {
         expect(await fileField('Choose a file').value()).to.include(
           'foo.txt',
         );
-      });
-
-      it('test get()', async () => {
-        expect(
-          await fileField('Choose a file').get(),
-        ).to.have.lengthOf(3);
       });
 
       it('test description', async () => {
@@ -175,20 +160,12 @@ describe(test_name, () => {
     });
   });
 
-  describe('elements()', () => {
+  describe('test elementList properties', () => {
     it('test get of elements', async () => {
       const elements = await fileField({
         id: 'similarFileField',
       }).elements();
       expect(await elements[0].get()).to.be.a('number');
-    });
-
-    it('test exists of elements', async () => {
-      let elements = await fileField({
-        id: 'similarFileField',
-      }).elements();
-      expect(await elements[0].exists()).to.be.true;
-      expect(await fileField('someFileField').exists()).to.be.false;
     });
 
     it('test description of elements', async () => {
@@ -207,6 +184,7 @@ describe(test_name, () => {
       expect(await elements[0].text()).to.be.eql('similarFileField');
     });
   });
+
   describe('using a file that does not exists', () => {
     it('throws a error when the file does not exist', async () => {
       await expect(

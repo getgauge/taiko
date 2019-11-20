@@ -30,7 +30,7 @@ describe(test_name, () => {
       '<input id="checkboxWithLabelFor" name="testCheckbox" type="checkbox" value="checkboxWithLabelFor" />' +
       '<label for="checkboxWithLabelFor">checkboxWithLabelFor</label>' +
       '</p>' +
-      '<input type="reset" value="Reset">' +
+      '<input type="reset" value="Reset" />' +
       '</form>' +
       '<button id="panel" style="display:none">show on check</button>' +
       '<input type="checkbox" id="someCheckBox" name="testCheckbox" value="someCheckBox">someCheckBox</input>' +
@@ -61,13 +61,6 @@ describe(test_name, () => {
       expect(await checkBox('checkboxWithInlineLabel').exists()).to.be
         .true;
       expect(await checkBox('Something').exists()).to.be.false;
-    });
-
-    it('test get()', async () => {
-      const elem = (
-        await checkBox('checkboxWithInlineLabel').get()
-      )[0];
-      expect(await elem.get()).to.be.a('number');
     });
 
     it('test description', async () => {
@@ -113,13 +106,6 @@ describe(test_name, () => {
         .be.true;
     });
 
-    it('test get()', async () => {
-      const elems = await checkBox(
-        'checkboxWithWrappedInLabel',
-      ).get();
-      expect(await elems[0].get()).to.be.a('number');
-    });
-
     it('test description', async () => {
       const description = checkBox('checkboxWithWrappedInLabel')
         .description;
@@ -135,11 +121,6 @@ describe(test_name, () => {
         .true;
     });
 
-    it('test get()', async () => {
-      const elems = await checkBox('checkboxWithLabelFor').get();
-      expect(await elems[0].get()).to.be.a('number');
-    });
-
     it('test description', async () => {
       const description = checkBox('checkboxWithLabelFor')
         .description;
@@ -149,20 +130,12 @@ describe(test_name, () => {
     });
   });
 
-  describe('elements()', () => {
+  describe('test elementList properties', () => {
     it('test get of elements', async () => {
       const elements = await checkBox({
         id: 'someCheckBox',
       }).elements();
       expect(await elements[0].get()).to.be.a('number');
-    });
-
-    it('test exists of elements', async () => {
-      let elements = await checkBox({
-        id: 'someCheckBox',
-      }).elements();
-      expect(await elements[0].exists()).to.be.true;
-      expect(await checkBox('someFileField').exists()).to.be.false;
     });
 
     it('test description of elements', async () => {

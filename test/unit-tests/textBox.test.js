@@ -75,12 +75,6 @@ describe(test_name, () => {
         ).to.equal('textAreaWithWrappedLabel');
       });
 
-      it('test get()', async () => {
-        expect(
-          await textBox('textAreaWithWrappedLabel').get(),
-        ).to.have.lengthOf(1);
-      });
-
       it('test description', async () => {
         expect(
           textBox('textAreaWithWrappedLabel').description,
@@ -106,12 +100,6 @@ describe(test_name, () => {
         ).to.equal('textAreaWithLabelFor');
       });
 
-      it('test get()', async () => {
-        expect(
-          await textBox('textAreaWithLabelFor').get(),
-        ).to.have.lengthOf(1);
-      });
-
       it('test description', async () => {
         expect(textBox('textAreaWithLabelFor').description).to.be.eql(
           'Text field with label textAreaWithLabelFor ',
@@ -129,12 +117,6 @@ describe(test_name, () => {
         expect(
           await textBox({ id: 'textAreaWithLabelFor' }).value(),
         ).to.equal('textAreaWithLabelFor');
-      });
-
-      it('test get()', async () => {
-        expect(
-          await textBox({ id: 'textAreaWithLabelFor' }).get(),
-        ).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -158,12 +140,6 @@ describe(test_name, () => {
         ).to.equal('textAreaWithWrappedLabel');
       });
 
-      it('test get()', async () => {
-        expect(
-          await textBox(above('textAreaWithLabelFor')).get(),
-        ).to.have.lengthOf(1);
-      });
-
       it('test description', async () => {
         expect(
           textBox(above('textAreaWithLabelFor')).description,
@@ -171,20 +147,12 @@ describe(test_name, () => {
       });
     });
 
-    describe('elements()', () => {
+    describe('test elementsList properties', () => {
       it('test get of elements', async () => {
         const elements = await textBox({
           id: 'sampleTextArea',
         }).elements();
         expect(await elements[0].get()).to.be.a('number');
-      });
-
-      it('test exists of elements', async () => {
-        let elements = await textBox({
-          id: 'sampleTextArea',
-        }).elements();
-        expect(await elements[0].exists()).to.be.true;
-        expect(await textBox('someTextBox').exists()).to.be.false;
       });
 
       it('test description of elements', async () => {
@@ -245,12 +213,6 @@ describe(test_name, () => {
         ).to.equal('contentEditableWithWrappedLabel');
       });
 
-      it('test get()', async () => {
-        expect(
-          await textBox('contentEditableWithWrappedLabel').get(),
-        ).to.have.lengthOf(1);
-      });
-
       it('test description', async () => {
         expect(
           textBox('contentEditableWithWrappedLabel').description,
@@ -274,12 +236,6 @@ describe(test_name, () => {
         expect(
           await textBox('contentEditableWithLabelFor').value(),
         ).to.equal('contentEditableWithLabelFor');
-      });
-
-      it('test get()', async () => {
-        expect(
-          await textBox('contentEditableWithLabelFor').get(),
-        ).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -308,14 +264,6 @@ describe(test_name, () => {
         ).to.equal('contentEditableWithWrappedLabel');
       });
 
-      it('test get()', async () => {
-        expect(
-          await textBox({
-            id: 'contentEditableWithWrappedLabel',
-          }).get(),
-        ).to.have.lengthOf(1);
-      });
-
       it('test description', async () => {
         expect(
           textBox({
@@ -342,12 +290,6 @@ describe(test_name, () => {
         ).to.equal('contentEditableWithWrappedLabel');
       });
 
-      it('test get()', async () => {
-        expect(
-          await textBox(above('contentEditableWithLabelFor')).get(),
-        ).to.have.lengthOf(1);
-      });
-
       it('test description', async () => {
         expect(
           textBox(above('contentEditableWithLabelFor')).description,
@@ -355,20 +297,12 @@ describe(test_name, () => {
       });
     });
 
-    describe('elements()', () => {
+    describe('test elementsList properties', () => {
       it('test get of elements', async () => {
         const elements = await textBox({
           id: 'sampleContentEditable',
         }).elements();
         expect(await elements[0].get()).to.be.a('number');
-      });
-
-      it('test exists of elements', async () => {
-        let elements = await textBox({
-          id: 'sampleContentEditable',
-        }).elements();
-        expect(await elements[0].exists()).to.be.true;
-        expect(await textBox('someTextBox').exists()).to.be.false;
       });
 
       it('test description of elements', async () => {
@@ -466,12 +400,6 @@ describe(test_name, () => {
           );
         });
 
-        it('test get()', async () => {
-          expect(
-            await textBox('With Inline Text').get(),
-          ).to.have.lengthOf(2);
-        });
-
         it('test description', async () => {
           expect(textBox('With Inline Text').description).to.be.eql(
             'Text field with label With Inline Text ',
@@ -495,12 +423,6 @@ describe(test_name, () => {
           ).to.equal(inputType.testValue);
         });
 
-        it('test get()', async () => {
-          expect(
-            await textBox('With Wrapped Label').get(),
-          ).to.have.lengthOf(1);
-        });
-
         it('test description', async () => {
           expect(textBox('With Wrapped Label').description).to.be.eql(
             'Text field with label With Wrapped Label ',
@@ -521,12 +443,6 @@ describe(test_name, () => {
           expect(await textBox('With Label For').value()).to.equal(
             inputType.testValue,
           );
-        });
-
-        it('test get()', async () => {
-          expect(
-            await textBox('With Label For').get(),
-          ).to.have.lengthOf(1);
         });
 
         it('test description', async () => {
@@ -553,14 +469,6 @@ describe(test_name, () => {
           ).to.equal(inputType.testValue);
         });
 
-        it('test get()', async () => {
-          expect(
-            await textBox({
-              id: inputType.name + 'WithLabelFor',
-            }).get(),
-          ).to.have.lengthOf(1);
-        });
-
         it('test description', async () => {
           expect(
             textBox({
@@ -584,12 +492,6 @@ describe(test_name, () => {
           ).to.equal(inputType.testValue);
         });
 
-        it('test get()', async () => {
-          expect(
-            await textBox(above('With Label For')).get(),
-          ).to.have.lengthOf.greaterThan(0);
-        });
-
         it('test description', async () => {
           expect(
             textBox(above('With Label For')).description,
@@ -597,20 +499,12 @@ describe(test_name, () => {
         });
       });
 
-      describe('elements()', () => {
+      describe('test elementsList properties', () => {
         it('test get of elements', async () => {
           const elements = await textBox({
             id: `sample${inputType.type}`,
           }).elements();
           expect(await elements[0].get()).to.be.a('number');
-        });
-
-        it('test exists of elements', async () => {
-          let elements = await textBox({
-            id: `sample${inputType.type}`,
-          }).elements();
-          expect(await elements[0].exists()).to.be.true;
-          expect(await textBox('someTextBox').exists()).to.be.false;
         });
 
         it('test description of elements', async () => {
@@ -673,12 +567,6 @@ describe(test_name, () => {
         );
       });
 
-      it('test get()', async () => {
-        expect(
-          await textBox('With Inline Text').get(),
-        ).to.have.lengthOf(1);
-      });
-
       it('test description', async () => {
         expect(textBox('With Inline Text').description).to.be.eql(
           'Text field with label With Inline Text ',
@@ -699,12 +587,6 @@ describe(test_name, () => {
         );
       });
 
-      it('test get()', async () => {
-        expect(
-          await textBox('With Wrapped Label').get(),
-        ).to.have.lengthOf(1);
-      });
-
       it('test description', async () => {
         expect(textBox('With Wrapped Label').description).to.be.eql(
           'Text field with label With Wrapped Label ',
@@ -722,12 +604,6 @@ describe(test_name, () => {
         expect(await textBox('With Label For').value()).to.equal(
           inputValue,
         );
-      });
-
-      it('test get()', async () => {
-        expect(
-          await textBox('With Label For').get(),
-        ).to.have.lengthOf(1);
       });
 
       it('test description', async () => {
@@ -754,12 +630,6 @@ describe(test_name, () => {
         ).to.equal(inputValue);
       });
 
-      it('test get()', async () => {
-        expect(
-          await textBox({ id: inputTypeName + 'WithLabelFor' }).get(),
-        ).to.have.lengthOf(1);
-      });
-
       it('test description', async () => {
         expect(
           textBox({
@@ -783,12 +653,6 @@ describe(test_name, () => {
         ).to.equal(inputValue);
       });
 
-      it('test get()', async () => {
-        expect(
-          await textBox(above('With Label For')).get(),
-        ).to.have.lengthOf.greaterThan(0);
-      });
-
       it('test description', async () => {
         expect(
           textBox(above('With Label For')).description,
@@ -796,20 +660,12 @@ describe(test_name, () => {
       });
     });
 
-    describe('elements()', () => {
+    describe('test elementList properties', () => {
       it('test get of elements', async () => {
         const elements = await textBox(
           'sampleInputWithoutType',
         ).elements();
         expect(await elements[0].get()).to.be.a('number');
-      });
-
-      it('test exists of elements', async () => {
-        let elements = await textBox(
-          'sampleInputWithoutType',
-        ).elements();
-        expect(await elements[0].exists()).to.be.true;
-        expect(await textBox('someTextBox').exists()).to.be.false;
       });
 
       it('test description of elements', async () => {

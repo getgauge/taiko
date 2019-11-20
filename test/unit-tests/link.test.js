@@ -68,22 +68,6 @@ describe(test_name, () => {
     });
   });
 
-  describe('link get in page', () => {
-    it('should find the link with text', async () => {
-      expect(await link('here').get()).to.have.lengthOf(1);
-    });
-    it('should find the link with id', async () => {
-      expect(await link({ id: 'redirect' }).get()).to.have.lengthOf(
-        1,
-      );
-    });
-    it('should find the link with proximity selector', async () => {
-      expect(await link(toRightOf('Click')).get()).to.have.lengthOf(
-        4,
-      );
-    });
-  });
-
   describe('link description in page', () => {
     it('should find the link with text', async () => {
       expect(link('here').description).to.be.eql(
@@ -114,31 +98,15 @@ describe(test_name, () => {
     });
   });
 
-  describe('elements()', () => {
+  describe('test elementsList properties', () => {
     it('test get of elements', async () => {
       const elements = await link('similarLink').elements();
       expect(await elements[0].get()).to.be.a('number');
-      expect(await elements[1].get()).to.be.a('number');
-      expect(await elements[2].get()).to.be.a('number');
-    });
-
-    it('test exists of elements', async () => {
-      let elements = await link('similarLink').elements();
-      expect(await elements[0].exists()).to.be.true;
-      expect(await elements[1].exists()).to.be.true;
-      expect(await elements[2].exists()).to.be.true;
-      expect(await link('someLink').exists()).to.be.false;
     });
 
     it('test description of elements', async () => {
       let elements = await link('similarLink').elements();
       expect(elements[0].description).to.be.eql(
-        'link with text similarLink ',
-      );
-      expect(elements[1].description).to.be.eql(
-        'link with text similarLink ',
-      );
-      expect(elements[2].description).to.be.eql(
         'link with text similarLink ',
       );
     });
