@@ -1,5 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let {
   openBrowser,
   goto,
@@ -45,7 +47,7 @@ describe(test_name, () => {
         '</div>' +
         '<div name="sampleTextArea">' +
         '<label for="sampleTextArea">sampleTextArea</label>' +
-        '<textarea id="sampleTextArea"></textarea>' +
+        '<textarea id="sampleTextArea">someValue</textarea>' +
         '</div>' +
         '</form>' +
         '</div>';
@@ -140,6 +142,10 @@ describe(test_name, () => {
         ).to.equal('textAreaWithWrappedLabel');
       });
 
+      it('test value() should throw if the element is not found', async () => {
+        expect(textBox('foo').value()).to.be.eventually.rejected;
+      });
+
       it('test description', async () => {
         expect(
           textBox(above('textAreaWithLabelFor')).description,
@@ -163,6 +169,13 @@ describe(test_name, () => {
           'Text field[@id = concat(\'sampleTextArea\', "")]',
         );
       });
+
+      it('test value of elements', async () => {
+        let elements = await textBox({
+          id: 'sampleTextArea',
+        }).elements();
+        expect(await elements[0].value()).to.be.eql('someValue');
+      });
     });
   });
 
@@ -182,7 +195,7 @@ describe(test_name, () => {
         '<div name="contentEditableWithLabelFor">' +
         '<label for="contentEditableWithLabelFor">contentEditableWithLabelFor</label>' +
         '<div id="contentEditableWithLabelFor" contenteditable=true></div>' +
-        '<div id="sampleContentEditable" contenteditable=true></div>' +
+        '<div id="sampleContentEditable" contenteditable=true>contentEditableValue</div>' +
         '</div>' +
         '</form>' +
         '</div>';
@@ -313,6 +326,15 @@ describe(test_name, () => {
           'Text field[@id = concat(\'sampleContentEditable\', "")]',
         );
       });
+
+      it('test value of elements', async () => {
+        let elements = await textBox({
+          id: 'sampleContentEditable',
+        }).elements();
+        expect(await elements[0].value()).to.be.eql(
+          'contentEditableValue',
+        );
+      });
     });
   });
 
@@ -370,7 +392,7 @@ describe(test_name, () => {
                             <input id="${inputType.name}WithLabelFor" type="${inputType.type}"/>
                         </div>
                         <div>
-                            <input type="${inputType.type}" id="sample${inputType.type}">With Inline Text</input>
+                            <input type="${inputType.type}" id="sample${inputType.type}" value="${inputType.testValue}">With Inline Text</input>
                         </div>
                     </form>
                 </div>`;
@@ -515,6 +537,15 @@ describe(test_name, () => {
             `Text field[@id = concat(\'sample${inputType.type}\', "")]`,
           );
         });
+
+        it('test value of elements', async () => {
+          let elements = await textBox({
+            id: `sample${inputType.type}`,
+          }).elements();
+          expect(await elements[0].value()).to.be.eql(
+            `${inputType.testValue}`,
+          );
+        });
       });
     });
   });
@@ -523,6 +554,7 @@ describe(test_name, () => {
     let filePath;
     const inputTypeName = 'input-without-type';
     const inputValue = 'text input type entered';
+    const value = 'inputWithoutTypeValue';
     before(async () => {
       let innerHtml = `
             <div>
@@ -541,7 +573,7 @@ describe(test_name, () => {
                         <input id="${inputTypeName}WithLabelFor"/>
                     </div>
                     <div >
-                        <input>sampleInputWithoutType</input>
+                        <input value="${value}">sampleInputWithoutType</input>
                     </div>
                 </form>
             </div>`;
@@ -674,6 +706,15 @@ describe(test_name, () => {
         ).elements();
         expect(elements[0].description).to.be.eql(
           'Text field with label sampleInputWithoutType ',
+        );
+      });
+
+      it('test value of elements', async () => {
+        let elements = await textBox(
+          'sampleInputWithoutType',
+        ).elements();
+        expect(await elements[0].value()).to.be.eql(
+          'inputWithoutTypeValue',
         );
       });
     });
