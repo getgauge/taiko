@@ -1,4 +1,7 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let {
   openBrowser,
   radioButton,
@@ -73,6 +76,10 @@ describe(test_name, () => {
       expect(isSelected).to.be.true;
     });
 
+    it('test select() should throw if the element is not found', async () => {
+      expect(radioButton('foo').select()).to.be.eventually.rejected;
+    });
+
     it('test select() triggers events', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
       expect(await button('show on check').exists()).to.be.true;
@@ -87,11 +94,20 @@ describe(test_name, () => {
       expect(isSelected).to.be.false;
     });
 
+    it('test deselect() should throw error if the element is not found', async () => {
+      expect(radioButton('foo').deselect()).to.be.eventually.rejected;
+    });
+
     it('test isSelected()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
       expect(
         await radioButton('radioButtonWithInlineLabel').isSelected(),
       ).to.be.true;
+    });
+
+    it('test isSelected() to throw error if the element is not found', async () => {
+      expect(radioButton('foo').isSelected()).to.be.eventually
+        .rejected;
     });
   });
 
@@ -151,6 +167,29 @@ describe(test_name, () => {
       expect(elements[0].description).to.be.eql(
         'Radio button[@id = concat(\'someRadioButton\', "")]',
       );
+    });
+
+    it('test isSelected of elements', async () => {
+      let elements = await radioButton({
+        id: 'someRadioButton',
+      }).elements();
+      expect(await elements[0].isSelected()).to.be.false;
+    });
+
+    it('test select of elements', async () => {
+      let elements = await radioButton({
+        id: 'someRadioButton',
+      }).elements();
+      await elements[0].select();
+      expect(await elements[0].isSelected()).to.be.true;
+    });
+
+    it('test deselect of elements', async () => {
+      let elements = await radioButton({
+        id: 'someRadioButton',
+      }).elements();
+      await elements[0].deselect();
+      expect(await elements[0].isSelected()).to.be.false;
     });
   });
 });
