@@ -75,6 +75,10 @@ describe(test_name, () => {
         ).to.include('foo.txt');
       });
 
+      it('test value() should throw error if the element is not found', async () => {
+        expect(fileField('foo').value()).to.be.eventually.rejected;
+      });
+
       it('test description', async () => {
         expect(
           fileField(above(button('Upload'))).description,
@@ -175,6 +179,14 @@ describe(test_name, () => {
       expect(elements[0].description).to.be.eql(
         'File field[@id = concat(\'similarFileField\', "")]',
       );
+    });
+
+    it('test value of elements', async () => {
+      let elements = await fileField({
+        id: 'similarFileField',
+      }).elements();
+      attach(path.join(__dirname, 'data', 'foo.txt'), elements[0]);
+      expect(await elements[0].value()).to.include('foo.txt');
     });
 
     xit('test text of elements', async () => {
