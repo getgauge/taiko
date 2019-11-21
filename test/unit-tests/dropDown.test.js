@@ -180,6 +180,26 @@ describe(test_name, () => {
       }).elements();
       expect(await elements[0].text()).to.be.eql('someValue');
     });
+
+    it('test select of elements', async () => {
+      let validatePromise = validateEmitterEvent(
+        'success',
+        'Selected someValue',
+      );
+      let elements = await dropDown({
+        id: 'sampleDropDown',
+      }).elements();
+      await elements[0].select('someValue');
+      await validatePromise;
+    });
+
+    it('test get value of elements', async () => {
+      let elements = await dropDown({
+        id: 'sampleDropDown',
+      }).elements();
+      await elements[0].select('someValue');
+      expect(await elements[0].value()).to.equal('someValue');
+    });
   });
 });
 
