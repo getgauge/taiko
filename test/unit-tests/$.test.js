@@ -1,11 +1,12 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let {
   openBrowser,
   closeBrowser,
   goto,
   $,
-  text,
-  above,
   setConfig,
 } = require('../../lib/taiko');
 let {
@@ -73,6 +74,10 @@ describe(test_name, () => {
       expect(await $('#foo').text()).to.be.eql('taiko');
       expect(await $('.test').text()).to.be.eql('taiko\n\ndemo');
     });
+
+    it('test text should throw if the element is not found', async () => {
+      expect($('.foo').text()).to.be.eventually.rejected;
+    });
   });
 
   describe('test elementList properties', () => {
@@ -91,7 +96,6 @@ describe(test_name, () => {
     it('test text()', async () => {
       const elems = await $('#foo').elements();
       expect(await elems[0].text()).to.be.eql('taiko');
-      expect(await $('.foo').text()).to.be.eql('');
     });
   });
 });

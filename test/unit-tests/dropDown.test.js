@@ -89,6 +89,10 @@ describe(test_name, () => {
       );
     });
 
+    it('test text should throw if the element is not found', async () => {
+      expect(dropDown('.foo').text()).to.be.eventually.rejected;
+    });
+
     it('test select()', async () => {
       await dropDown('Cars').select('Audi');
       await dropDown('Cars').select('mercedes');

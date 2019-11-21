@@ -12,7 +12,7 @@ let {
   goto,
   checkBox,
   closeBrowser,
-  button,
+  text,
   click,
   setConfig,
 } = require('../../lib/taiko');
@@ -88,7 +88,7 @@ describe(test_name, () => {
 
     it('test check() triggers events', async () => {
       await checkBox('checkboxWithInlineLabel').check();
-      expect(await button('show on check').exists()).to.be.true;
+      expect(await text('show on check').exists()).to.be.true;
     });
 
     it('test uncheck()', async () => {
@@ -112,6 +112,10 @@ describe(test_name, () => {
 
     it('test isChecked() to throw if no element is found', async () => {
       expect(checkBox('foo').isChecked()).to.be.eventually.rejected;
+    });
+
+    it('test text should throw if the element is not found', async () => {
+      expect(checkBox('.foo').text()).to.be.eventually.rejected;
     });
   });
 

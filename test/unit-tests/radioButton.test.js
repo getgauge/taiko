@@ -109,6 +109,10 @@ describe(test_name, () => {
       expect(radioButton('foo').isSelected()).to.be.eventually
         .rejected;
     });
+
+    it('test text should throw if the element is not found', async () => {
+      expect(radioButton('.foo').text()).to.be.eventually.rejected;
+    });
   });
 
   describe('wrapped in label', () => {

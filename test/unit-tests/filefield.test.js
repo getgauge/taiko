@@ -90,6 +90,10 @@ describe(test_name, () => {
           await fileField(above(button('Upload'))).text(),
         ).to.be.eql('File field Above Button with label Upload ');
       });
+
+      it('test text should throw if the element is not found', async () => {
+        expect(fileField('.foo').text()).to.be.eventually.rejected;
+      });
     });
     describe('with wrapped text in label', () => {
       it('test exists()', async () => {

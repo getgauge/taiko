@@ -1,4 +1,7 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let {
   openBrowser,
   closeBrowser,
@@ -52,6 +55,10 @@ describe(test_name, () => {
       expect(await listItem({ id: 'coffee' }).text()).to.be.eql(
         'Coffee',
       );
+    });
+
+    it('test text should throw if the element is not found', async () => {
+      expect(listItem('.foo').text()).to.be.eventually.rejected;
     });
   });
 

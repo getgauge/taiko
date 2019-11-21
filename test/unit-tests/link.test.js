@@ -1,4 +1,7 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let {
   openBrowser,
   closeBrowser,
@@ -95,6 +98,10 @@ describe(test_name, () => {
     });
     it('should find the link with proximity selector', async () => {
       expect(await link(toRightOf('Click')).text()).to.be.eql('here');
+    });
+
+    it('test text should throw if the element is not found', async () => {
+      expect(link('.foo').text()).to.be.eventually.rejected;
     });
   });
 

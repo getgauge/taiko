@@ -1,4 +1,7 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let {
   openBrowser,
   closeBrowser,
@@ -158,6 +161,10 @@ describe(test_name, () => {
         'image with alt similarImage ',
       );
     }); //Todo: Need to discuss on should we expose this api or not
+
+    it('test text should throw if the element is not found', async () => {
+      expect(image('.foo').text()).to.be.eventually.rejected;
+    });
   });
 
   describe('image with hidden style', () => {

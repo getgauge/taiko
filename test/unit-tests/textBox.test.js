@@ -690,6 +690,10 @@ describe(test_name, () => {
           textBox(above('With Label For')).description,
         ).to.be.eql('Text field Above With Label For');
       });
+
+      it('test text should throw if the element is not found', async () => {
+        expect(textBox('.foo').text()).to.be.eventually.rejected;
+      });
     });
 
     describe('test elementList properties', () => {

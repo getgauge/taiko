@@ -1,4 +1,7 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let {
   openBrowser,
   goto,
@@ -111,6 +114,10 @@ describe(test_name, () => {
           'Input Image',
         );
       }); // Todo: should be fixed with #815
+
+      it('test text should throw if the element is not found', async () => {
+        expect(button('.foo').text()).to.be.eventually.rejected;
+      });
     });
 
     describe('button with label', () => {
