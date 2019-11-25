@@ -16,11 +16,9 @@ jobs:
         with:
           node-version: '12'
       - name: install
-        run: |
-          npm install
+        run: npm install
       - name: unit-tests
-        run: |
-          npm test
+        run: npm test
 
   functional-tests:
     needs: unit-tests
@@ -37,10 +35,24 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: functional-tests
-        env:
-          GAUGE_TELEMETRY_ENABLED: false
-        run: |
-          npm run test-functional
+        run: npm run test-functional
       - name: examples
-        run: |
-          npm run examples
+        run: npm run examples
+
+  functional-tests-headful:
+    needs: unit-tests
+    name: FT in linux-headful
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: install xvfb
+        run: sudo apt install xvfb
+      - name: functional-tests-headful
+        env:
+          headless: false
+        run: xvfb-run npm run test-functional
+
