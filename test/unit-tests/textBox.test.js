@@ -158,7 +158,9 @@ describe(test_name, () => {
         const elements = await textBox({
           id: 'sampleTextArea',
         }).elements();
-        expect(await elements[0].get()).to.be.a('number');
+        expect(elements[0].get())
+          .to.be.a('number')
+          .above(0);
       });
 
       it('test description of elements', async () => {
@@ -315,7 +317,9 @@ describe(test_name, () => {
         const elements = await textBox({
           id: 'sampleContentEditable',
         }).elements();
-        expect(await elements[0].get()).to.be.a('number');
+        expect(elements[0].get())
+          .to.be.a('number')
+          .above(0);
       });
 
       it('test description of elements', async () => {
@@ -526,7 +530,9 @@ describe(test_name, () => {
           const elements = await textBox({
             id: `sample${inputType.type}`,
           }).elements();
-          expect(await elements[0].get()).to.be.a('number');
+          expect(elements[0].get())
+            .to.be.a('number')
+            .above(0);
         });
 
         it('test description of elements', async () => {
@@ -701,7 +707,9 @@ describe(test_name, () => {
         const elements = await textBox(
           'sampleInputWithoutType',
         ).elements();
-        expect(await elements[0].get()).to.be.a('number');
+        expect(elements[0].get())
+          .to.be.a('number')
+          .above(0);
       });
 
       it('test description of elements', async () => {

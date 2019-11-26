@@ -145,7 +145,9 @@ describe(test_name, () => {
   describe('test elementsList properties', () => {
     it('test get of elements', async () => {
       const elements = await image('similarImage').elements();
-      expect(await elements[0].get()).to.be.a('number');
+      expect(elements[0].get())
+        .to.be.a('number')
+        .above(0);
     });
 
     it('test description of elements', async () => {

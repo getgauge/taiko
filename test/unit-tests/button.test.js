@@ -203,7 +203,7 @@ describe(test_name, () => {
       describe('elements()', () => {
         it('test get of elements', async () => {
           const elements = await button('similarButton').elements();
-          expect(await elements[0].get())
+          expect(elements[0].get())
             .to.be.a('number')
             .above(0);
         });

@@ -419,7 +419,9 @@ describe('match', () => {
     describe('test elementsList properties', () => {
       it('test get of elements', async () => {
         const elements = await text('someNode').elements();
-        expect(await elements[0].get()).to.be.a('number');
+        expect(elements[0].get())
+          .to.be.a('number')
+          .above(0);
       });
 
       it('test description of elements', async () => {

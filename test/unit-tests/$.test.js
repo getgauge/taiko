@@ -83,7 +83,9 @@ describe(test_name, () => {
   describe('test elementList properties', () => {
     it('test get()', async () => {
       const elems = await $('#foo').elements();
-      expect(await elems[0].get()).to.be.a('number');
+      expect(elems[0].get())
+        .to.be.a('number')
+        .above(0);
     });
 
     it('test description', async () => {

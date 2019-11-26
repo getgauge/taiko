@@ -161,7 +161,9 @@ describe(test_name, () => {
       const elements = await radioButton({
         id: 'someRadioButton',
       }).elements();
-      expect(await elements[0].get()).to.be.a('number');
+      expect(elements[0].get())
+        .to.be.a('number')
+        .above(0);
     });
 
     it('test description of elements', async () => {
