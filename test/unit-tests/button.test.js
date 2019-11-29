@@ -1,4 +1,7 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let {
   openBrowser,
   goto,
@@ -36,6 +39,9 @@ describe(test_name, () => {
       '<label for="inputSubmit" >LabelForSubmit</label> <input type="submit" id="inputSubmit" />' +
       '<label for="inputImage" >LabelForImage</label> <input type="image" id="inputImage" />' +
       '</div>' +
+      '<button type="button">similarButton1</button>' +
+      '<button type="button">similarButton2</button>' +
+      '<button type="button">similarButton3</button>' +
       '<div name="button with Hidden Attribute">' +
       '<button type="button" style="display:none">HiddenButton</button>' +
       '<input type="reset" style="display:none" value="Input Hidden Reset" />' +
@@ -75,25 +81,7 @@ describe(test_name, () => {
         expect(await button('Input Image').exists()).to.be.true;
       });
 
-      xit('button get()', async () => {
-        expect(
-          await (await button('Click').get())[0].text(),
-        ).to.be.eql('Click');
-        expect(
-          await (await button('Input Button').get())[0].text(),
-        ).to.be.eql('Input Button');
-        expect(
-          await (await button('Input Reset').get())[0].text(),
-        ).to.be.eql('Input Reset');
-        expect(
-          await (await button('Input Submit').get())[0].text(),
-        ).to.be.eql('Input Submit');
-        expect(
-          await (await button('Input Image').get())[0].text(),
-        ).to.be.eql('Input Image');
-      }); // Todo: should be fixed with #815
-
-      it('button description', async () => {
+      it('button description for different button types', async () => {
         expect(button('Click').description).to.be.eql(
           'Button with label Click ',
         );
@@ -126,7 +114,12 @@ describe(test_name, () => {
           'Input Image',
         );
       }); // Todo: should be fixed with #815
+
+      it('test text should throw if the element is not found', async () => {
+        expect(button('.foo').text()).to.be.eventually.rejected;
+      });
     });
+
     describe('button with label', () => {
       it('exists with label()', async () => {
         expect(await button('InputButtonInLabel').exists()).to.be
@@ -135,21 +128,6 @@ describe(test_name, () => {
         expect(await button('SubmitInLabel').exists()).to.be.true;
         expect(await button('ImageInLabel').exists()).to.be.true;
       });
-
-      xit('get with label()', async () => {
-        expect(
-          await (await button('InputButtonInLabel').get())[0].text(),
-        ).to.be.eql('inputButtonInLabel');
-        expect(
-          await (await button('ResetInLabel').get())[0].text(),
-        ).to.be.eql('resetInLabel');
-        expect(
-          await (await button('SubmitInLabel').get())[0].text(),
-        ).to.be.eql('submitInLabel');
-        expect(
-          await (await button('ImageInLabel').get())[0].text(),
-        ).to.be.eql('imageInLabel');
-      }); // Todo: should be fixed with #815
 
       it('button description', async () => {
         expect(button('InputButtonInLabel').description).to.be.eql(
@@ -166,7 +144,7 @@ describe(test_name, () => {
         );
       });
 
-      xit('text with label()', async () => {
+      xit('input type button with label()', async () => {
         expect(await button('InputButtonInLabel').text()).to.be.eql(
           'inputButtonInLabel',
         );
@@ -179,8 +157,9 @@ describe(test_name, () => {
         expect(await button('ImageInLabel').text()).to.be.eql(
           'imageInLabel',
         );
-      }); // Todo: should be fixed with #815
+      });
     });
+
     describe('button with label for', () => {
       it('test exists with label for()', async () => {
         expect(await button('LabelForButton').exists()).to.be.true;
@@ -188,21 +167,6 @@ describe(test_name, () => {
         expect(await button('LabelForSubmit').exists()).to.be.true;
         expect(await button('LabelForImage').exists()).to.be.true;
       });
-
-      xit('test get with label for()', async () => {
-        expect(
-          await (await button('LabelForButton').get())[0].text(),
-        ).to.be.eql('LabelForButton');
-        expect(
-          await (await button('LabelForReset').get())[0].text(),
-        ).to.be.eql('LabelForButton');
-        expect(
-          await (await button('LabelForSubmit').get())[0].text(),
-        ).to.be.eql('LabelForButton');
-        expect(
-          await (await button('LabelForImage').get())[0].text(),
-        ).to.be.eql('LabelForButton');
-      }); // Todo: should be fixed with #815
 
       it('button description', async () => {
         expect(button('LabelForButton').description).to.be.eql(
@@ -233,6 +197,39 @@ describe(test_name, () => {
           'LabelForImage',
         );
       }); // Todo: should be fixed with #815
+    });
+
+    describe('test element list', () => {
+      describe('elements()', () => {
+        it('test get of elements', async () => {
+          const elements = await button('similarButton').elements();
+          expect(elements[0].get())
+            .to.be.a('number')
+            .above(0);
+        });
+
+        it('test description of elements', async () => {
+          let elements = await button('similarButton').elements();
+          expect(await elements[0].description).to.be.eql(
+            'Button with label similarButton ',
+          );
+        });
+
+        it('test text of elements', async () => {
+          let elements = await button('similarButton').elements();
+          expect(await elements[0].text()).to.be.eql(
+            'similarButton1',
+          );
+        });
+      });
+
+      it('test text() to be first element text', async () => {
+        let buttonElementList = await button('similarButton');
+        const elements = await buttonElementList.elements();
+        expect(await buttonElementList.text()).to.be.eql(
+          await elements[0].text(),
+        );
+      });
     });
 
     describe('button with contains match', () => {

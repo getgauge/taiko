@@ -97,6 +97,7 @@ describe('match', () => {
             <div>
             </div>
         </div>
+        <div>someNode</div>
     </div>
             `;
       filePath = createHtml(innerHtml, test_name);
@@ -116,8 +117,30 @@ describe('match', () => {
         expect(await text('user name:').exists()).to.be.true;
       });
 
+      it('test exact match get()', async () => {
+        expect(await text('User name:').elements()).to.have.lengthOf(
+          1,
+        );
+      });
+
+      it('test exact match description', async () => {
+        expect(text('User name:').description).to.be.eql(
+          'Element with text "User name:"',
+        );
+      });
+
       it('test partial match exists()', async () => {
         expect(await text('User').exists()).to.be.true;
+      });
+
+      it('test partial match get()', async () => {
+        expect(await text('User').elements()).to.have.lengthOf(4);
+      });
+
+      it('test partial match description', async () => {
+        expect(text('User').description).to.be.eql(
+          'Element with text "User"',
+        );
       });
 
       it('test proximity selector', async () => {
@@ -131,8 +154,28 @@ describe('match', () => {
         expect(await text('click me').exists()).to.be.true;
       });
 
+      it('test value as text get()', async () => {
+        expect(await text('click me').elements()).to.have.lengthOf(1);
+      });
+
+      it('test value as text description', async () => {
+        expect(text('click me').description).to.be.eql(
+          'Element with text "click me"',
+        );
+      });
+
       it('test type as text exists()', async () => {
         expect(await text('submit').exists()).to.be.true;
+      });
+
+      it('test type as text get()', async () => {
+        expect(await text('submit').elements()).to.have.lengthOf(4);
+      });
+
+      it('test type as text description', async () => {
+        expect(text('submit').description).to.be.eql(
+          'Element with text "submit"',
+        );
       });
     });
 
@@ -141,56 +184,116 @@ describe('match', () => {
         expect(await text('Text Across Element').exists()).to.be.true;
       });
 
+      it('test exact match get()', async () => {
+        expect(
+          await text('Text Across Element').elements(),
+        ).to.have.lengthOf(1);
+      });
+
+      it('test exact match description', async () => {
+        expect(text('Text Across Element').description).to.be.eql(
+          'Element with text "Text Across Element"',
+        );
+      });
+
       it('test partial match exists()', async () => {
         expect(await text('Text').exists()).to.be.true;
+      });
+
+      it('test partial match get()', async () => {
+        expect(await text('Text').elements()).to.have.lengthOf(8);
+      });
+
+      it('test partial match description', async () => {
+        expect(text('Text').description).to.be.eql(
+          'Element with text "Text"',
+        );
       });
     });
     describe('match text in different tags', () => {
       it('test exact match for text in multiple elememts', async () => {
         expect(await text('create account').exists()).to.be.true;
-        expect(await text('create account').get()).to.have.lengthOf(
-          3,
+        expect(
+          await text('create account').elements(),
+        ).to.have.lengthOf(3);
+        expect(text('create account').description).to.be.eql(
+          'Element with text "create account"',
         );
       });
       it('test contains match for text in multiple elements', async () => {
         expect(await text('account').exists()).to.be.true;
-        expect(await text('account').get()).to.have.lengthOf(6);
+        expect(await text('account').elements()).to.have.lengthOf(6);
+        expect(text('account').description).to.be.eql(
+          'Element with text "account"',
+        );
       });
     });
     describe('match text as value in input field', () => {
       it('test exact match for value in input', async () => {
         expect(await text('password').exists()).to.be.true;
-        expect(await text('password').get()).to.have.lengthOf(1);
+        expect(await text('password').elements()).to.have.lengthOf(1);
+        expect(text('password').description).to.be.eql(
+          'Element with text "password"',
+        );
       });
       it('test contains match for value in input', async () => {
         expect(await text('pass').exists()).to.be.true;
-        expect(await text('pass').get()).to.have.lengthOf(2);
+        expect(await text('pass').elements()).to.have.lengthOf(2);
+        expect(text('pass').description).to.be.eql(
+          'Element with text "pass"',
+        );
       });
     });
     describe('match text for value and paragraph', () => {
       it('test exact match for value and text', async () => {
         expect(await text('taiko demo').exists()).to.be.true;
-        expect(await text('taiko demo').get()).to.have.lengthOf(2);
+        expect(await text('taiko demo').elements()).to.have.lengthOf(
+          2,
+        );
+        expect(text('taiko demo').description).to.be.eql(
+          'Element with text "taiko demo"',
+        );
       });
       it('test contains match for value and text', async () => {
         expect(await text('demo').exists()).to.be.true;
-        expect(await text('demo').get()).to.have.lengthOf(4);
+        expect(await text('demo').elements()).to.have.lengthOf(4);
+        expect(text('demo').description).to.be.eql(
+          'Element with text "demo"',
+        );
       });
     });
     describe('match text for type and paragraph', () => {
       it('test exact match for type', async () => {
         expect(await text('text').exists()).to.be.true;
-        expect(await text('text').get()).to.have.lengthOf(8);
+        expect(await text('text').elements()).to.have.lengthOf(8);
+        expect(text('text').description).to.be.eql(
+          'Element with text "text"',
+        );
       });
       it('test contains match for type and text', async () => {
         expect(await text('tex').exists()).to.be.true;
-        expect(await text('tex').get()).to.have.lengthOf(11);
+        expect(await text('tex').elements()).to.have.lengthOf(11);
+        expect(text('tex').description).to.be.eql(
+          'Element with text "tex"',
+        );
       });
     });
 
     describe('text in iframe should be matched if match in top is invisible', () => {
       it('test text exists()', async () => {
         expect(await text('Text in iframe').exists()).to.be.true;
+      });
+
+      it('test text get()', async () => {
+        expect(
+          await text('Text in iframe').elements(),
+        ).to.have.lengthOf(1);
+      });
+
+      it('test text description', async () => {
+        expect(text('Text in iframe').description).to.be.eql(
+          'Element with text "Text in iframe"',
+        );
       });
 
       it('test text is from iframe', async () => {
@@ -203,32 +306,108 @@ describe('match', () => {
     describe('match text in multiple paragraph', () => {
       it('test exact match for text', async () => {
         expect(await text('Sign up').exists()).to.be.true;
-        expect(await text('Sign up').get()).to.have.lengthOf(1);
+        expect(await text('Sign up').elements()).to.have.lengthOf(1);
+        expect(text('Sign up').description).to.be.eql(
+          'Element with text "Sign up"',
+        );
       });
       it('test contains match for text', async () => {
         expect(await text('Sign').exists()).to.be.true;
-        expect(await text('Sign').get()).to.have.lengthOf(3);
+        expect(await text('Sign').elements()).to.have.lengthOf(3);
+        expect(text('Sign').description).to.be.eql(
+          'Element with text "Sign"',
+        );
+      });
+    });
+    describe('match text in different tags', () => {
+      it('test exact match for text in multiple elememts', async () => {
+        expect(await text('create account').exists()).to.be.true;
+        expect(
+          await text('create account').elements(),
+        ).to.have.lengthOf(3);
+        expect(text('create account').description).to.be.eql(
+          'Element with text "create account"',
+        );
+      });
+      it('test contains match for text in multiple elements', async () => {
+        expect(await text('account').exists()).to.be.true;
+        expect(await text('account').elements()).to.have.lengthOf(6);
+        expect(text('account').description).to.be.eql(
+          'Element with text "account"',
+        );
+      });
+    });
+    describe('match text as value in input field', () => {
+      it('test exact match for value in input', async () => {
+        expect(await text('password').exists()).to.be.true;
+        expect(await text('password').elements()).to.have.lengthOf(1);
+        expect(text('password').description).to.be.eql(
+          'Element with text "password"',
+        );
+      });
+      it('test contains match for value in input', async () => {
+        expect(await text('pass').exists()).to.be.true;
+        expect(await text('pass').elements()).to.have.lengthOf(2);
+        expect(text('pass').description).to.be.eql(
+          'Element with text "pass"',
+        );
+      });
+    });
+    describe('match text for value and paragraph', () => {
+      it('test exact match for value and text', async () => {
+        expect(await text('taiko demo').exists()).to.be.true;
+        expect(await text('taiko demo').elements()).to.have.lengthOf(
+          2,
+        );
+        expect(text('taiko demo').description).to.be.eql(
+          'Element with text "taiko demo"',
+        );
+      });
+      it('test contains match for value and text', async () => {
+        expect(await text('demo').exists()).to.be.true;
+        expect(await text('demo').elements()).to.have.lengthOf(4);
+        expect(text('demo').description).to.be.eql(
+          'Element with text "demo"',
+        );
+      });
+    });
+    describe('match text for type and paragraph', () => {
+      it('test exact match for type', async () => {
+        expect(await text('text').exists()).to.be.true;
+        expect(await text('text').elements()).to.have.lengthOf(8);
+        expect(text('text').description).to.be.eql(
+          'Element with text "text"',
+        );
+      });
+      it('test contains match for type and text', async () => {
+        expect(await text('tex').exists()).to.be.true;
+        expect(await text('tex').elements()).to.have.lengthOf(11);
+        expect(text('tex').description).to.be.eql(
+          'Element with text "tex"',
+        );
       });
     });
 
     describe('Text visibility', () => {
-      it('txt should be visible', async () => {
+      it('text should be visible', async () => {
         expect(await text('Visible content').exists()).to.be.true;
       });
 
-      it('txt should not be visible when display is set to none', async () => {
-        expect(
-          await text('Element it self has display none').exists(0, 0),
-        ).to.be.false;
+      it('text should not be visible when display is set to none', async () => {
+        const exists = await text(
+          'Element it self has display none',
+        ).exists();
+        expect(exists).to.be.false;
       });
 
-      it('txt should not be visible when paraent element display is set to none', async () => {
-        expect(
-          await text('Parent element has display none').exists(0, 0),
-        ).to.be.false;
+      it('text should not be visible when parent element display is set to none', async () => {
+        const exists = await text(
+          'Parent element has display none',
+        ).exists();
+        expect(exists).to.be.false;
       });
 
-      it('txt should be visible when ', async () => {
+      it('text should be visible when ', async () => {
         expect(
           await text(
             'Element with display inline should be invisible',
@@ -236,6 +415,23 @@ describe('match', () => {
         ).to.be.true;
       });
     });
+
+    describe('test elementsList properties', () => {
+      it('test get of elements', async () => {
+        const elements = await text('someNode').elements();
+        expect(elements[0].get())
+          .to.be.a('number')
+          .above(0);
+      });
+
+      it('test description of elements', async () => {
+        let elements = await text('someNode').elements();
+        expect(elements[0].description).to.be.eql(
+          'Element with text "someNode"',
+        );
+      });
+    });
+
     describe('text match in child element', () => {
       it('should match the text in child element', async () => {
         expect(await text('spanButton for login').exists()).to.be

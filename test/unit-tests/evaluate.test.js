@@ -70,6 +70,17 @@ describe(testName, () => {
       expect(actual).to.match(/<\/html>$/);
     });
 
+    it('should pass args to the callback', async () => {
+      let newText = 'Updated Item 1 with new item';
+      await evaluate(
+        (element, args) => {
+          document.body.innerHTML = args[0];
+        },
+        { args: [newText] },
+      );
+      expect(await text('Item 2').exists()).to.be.false;
+    });
+
     it('should return the result of the evaluation', async () => {
       const actual = await evaluate(() => {
         return document.title;
