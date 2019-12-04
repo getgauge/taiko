@@ -88,3 +88,14 @@ Assert title to be "Document"
 * Navigate to relative path "./specs/data/localStorage.html"
 * Set timezone "America/Jamaica"
 * Assert page has set timezome
+
+## Click & Release To Element 
+* Navigate to relative path "./specs/data/MouseMoveTest.html"
+* Press & Release To Element with element1 and "0","100" co-ordinates
+* Assert text "button2" exists on the page.
+* Press & Release To Element with element1 and "100","0" co-ordinates
+* Assert text "button3" exists on the page.
+* Press & Release To Element with element1 and "100","100" co-ordinates
+* Assert text "button4" exists on the page.
+* Press & Release To Element with element2 and "-100","-100" co-ordinates
+* Assert text "button1" exists on the page.
