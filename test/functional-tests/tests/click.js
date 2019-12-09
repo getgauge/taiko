@@ -97,3 +97,17 @@ step(
     });
   },
 );
+
+step(
+  'Press & Release To Element with <X>,<Y> co-ordinates',
+  async function(X, Y) {
+    await mouseAction('press', {
+      x: parseInt(X),
+      y: parseInt(Y),
+    });
+    await mouseAction('release', {
+      x: parseInt(X),
+      y: parseInt(Y),
+    });
+  },
+);
