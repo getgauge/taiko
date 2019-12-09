@@ -1,6 +1,6 @@
 {
   "name": "taiko",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An easy to use wrapper over Chrome Remote Interface.",
   "main": "bin/taiko.js",
   "bin": {
@@ -28,14 +28,14 @@
     "headless-browser"
   ],
   "lint-staged": {
-    "/**/*.{js}": [
+    "**/*.{js}": [
       "npm run lint",
       "git add"
     ]
   },
   "taiko": {
-    "chromium_revision": "662092",
-    "chromium_version": "76.0.3803.0"
+    "chromium_revision": "706915",
+    "chromium_version": "79.0.3945.16"
   },
   "husky": {
     "hooks": {
@@ -48,30 +48,30 @@
   "dependencies": {
     "babylon": "^6.18.0",
     "chrome-remote-interface": "^0.28.0",
-    "commander": "^3.0.1",
+    "commander": "^4.0.0",
     "debug": "^4.1.1",
     "extract-zip": "^1.6.6",
     "fs-extra": "^8.0.1",
-    "https-proxy-agent": "^2.2.1",
+    "https-proxy-agent": "^3.0.1",
     "progress": "^2.0.3",
     "proxy-from-env": "^1.0.0",
-    "recast": "^0.18.1",
-    "rimraf": "^3.0.0"
+    "recast": "^0.18.5"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "documentation": "^12.1.2",
-    "eslint": "^6.4.0",
+    "documentation": "^12.1.3",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-jest": "^22.17.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "handlebars": "^4.2.0",
-    "husky": "^3.0.5",
-    "lint-staged": "^9.2.5",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-jest": "^23.0.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "handlebars": "^4.5.1",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
     "marked": "^0.7.0",
-    "mocha": "^6.1.4",
+    "mocha": "^6.2.2",
     "prettier": "^1.15.3",
     "rewire": "^4.0.1"
   }

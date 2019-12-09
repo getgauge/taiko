@@ -1,5 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 let {
   openBrowser,
   goto,
@@ -43,6 +45,10 @@ describe(test_name, () => {
         '<label for="textAreaWithLabelFor">textAreaWithLabelFor</label>' +
         '<textarea id="textAreaWithLabelFor"></textarea>' +
         '</div>' +
+        '<div name="sampleTextArea">' +
+        '<label for="sampleTextArea">sampleTextArea</label>' +
+        '<textarea id="sampleTextArea">someValue</textarea>' +
+        '</div>' +
         '</form>' +
         '</div>';
       filePath = createHtml(innerHtml, test_name);
@@ -70,6 +76,14 @@ describe(test_name, () => {
           await textBox('textAreaWithWrappedLabel').value(),
         ).to.equal('textAreaWithWrappedLabel');
       });
+
+      it('test description', async () => {
+        expect(
+          textBox('textAreaWithWrappedLabel').description,
+        ).to.be.eql(
+          'Text field with label textAreaWithWrappedLabel ',
+        );
+      });
     });
 
     describe('using label for', () => {
@@ -87,6 +101,12 @@ describe(test_name, () => {
           await textBox('textAreaWithLabelFor').value(),
         ).to.equal('textAreaWithLabelFor');
       });
+
+      it('test description', async () => {
+        expect(textBox('textAreaWithLabelFor').description).to.be.eql(
+          'Text field with label textAreaWithLabelFor ',
+        );
+      });
     });
 
     describe('attribute and value pair', () => {
@@ -100,6 +120,14 @@ describe(test_name, () => {
           await textBox({ id: 'textAreaWithLabelFor' }).value(),
         ).to.equal('textAreaWithLabelFor');
       });
+
+      it('test description', async () => {
+        expect(
+          textBox({ id: 'textAreaWithLabelFor' }).description,
+        ).to.be.eql(
+          'Text field[@id = concat(\'textAreaWithLabelFor\', "")]',
+        );
+      });
     });
 
     describe('with relative selector', () => {
@@ -112,6 +140,43 @@ describe(test_name, () => {
         expect(
           await textBox(above('textAreaWithLabelFor')).value(),
         ).to.equal('textAreaWithWrappedLabel');
+      });
+
+      it('test value() should throw if the element is not found', async () => {
+        expect(textBox('foo').value()).to.be.eventually.rejected;
+      });
+
+      it('test description', async () => {
+        expect(
+          textBox(above('textAreaWithLabelFor')).description,
+        ).to.be.eql('Text field Above textAreaWithLabelFor');
+      });
+    });
+
+    describe('test elementsList properties', () => {
+      it('test get of elements', async () => {
+        const elements = await textBox({
+          id: 'sampleTextArea',
+        }).elements();
+        expect(elements[0].get())
+          .to.be.a('number')
+          .above(0);
+      });
+
+      it('test description of elements', async () => {
+        let elements = await textBox({
+          id: 'sampleTextArea',
+        }).elements();
+        expect(elements[0].description).to.be.eql(
+          'Text field[@id = concat(\'sampleTextArea\', "")]',
+        );
+      });
+
+      it('test value of elements', async () => {
+        let elements = await textBox({
+          id: 'sampleTextArea',
+        }).elements();
+        expect(await elements[0].value()).to.be.eql('someValue');
       });
     });
   });
@@ -132,6 +197,7 @@ describe(test_name, () => {
         '<div name="contentEditableWithLabelFor">' +
         '<label for="contentEditableWithLabelFor">contentEditableWithLabelFor</label>' +
         '<div id="contentEditableWithLabelFor" contenteditable=true></div>' +
+        '<div id="sampleContentEditable" contenteditable=true>contentEditableValue</div>' +
         '</div>' +
         '</form>' +
         '</div>';
@@ -161,6 +227,14 @@ describe(test_name, () => {
           await textBox('contentEditableWithWrappedLabel').value(),
         ).to.equal('contentEditableWithWrappedLabel');
       });
+
+      it('test description', async () => {
+        expect(
+          textBox('contentEditableWithWrappedLabel').description,
+        ).to.be.eql(
+          'Text field with label contentEditableWithWrappedLabel ',
+        );
+      });
     });
 
     describe('using label for', () => {
@@ -177,6 +251,14 @@ describe(test_name, () => {
         expect(
           await textBox('contentEditableWithLabelFor').value(),
         ).to.equal('contentEditableWithLabelFor');
+      });
+
+      it('test description', async () => {
+        expect(
+          textBox('contentEditableWithLabelFor').description,
+        ).to.be.eql(
+          'Text field with label contentEditableWithLabelFor ',
+        );
       });
     });
 
@@ -196,6 +278,16 @@ describe(test_name, () => {
           }).value(),
         ).to.equal('contentEditableWithWrappedLabel');
       });
+
+      it('test description', async () => {
+        expect(
+          textBox({
+            id: 'contentEditableWithWrappedLabel',
+          }).description,
+        ).to.be.eql(
+          'Text field[@id = concat(\'contentEditableWithWrappedLabel\', "")]',
+        );
+      });
     });
 
     describe('with relative selector', () => {
@@ -211,6 +303,41 @@ describe(test_name, () => {
         expect(
           await textBox(above('contentEditableWithLabelFor')).value(),
         ).to.equal('contentEditableWithWrappedLabel');
+      });
+
+      it('test description', async () => {
+        expect(
+          textBox(above('contentEditableWithLabelFor')).description,
+        ).to.be.eql('Text field Above contentEditableWithLabelFor');
+      });
+    });
+
+    describe('test elementsList properties', () => {
+      it('test get of elements', async () => {
+        const elements = await textBox({
+          id: 'sampleContentEditable',
+        }).elements();
+        expect(elements[0].get())
+          .to.be.a('number')
+          .above(0);
+      });
+
+      it('test description of elements', async () => {
+        let elements = await textBox({
+          id: 'sampleContentEditable',
+        }).elements();
+        expect(elements[0].description).to.be.eql(
+          'Text field[@id = concat(\'sampleContentEditable\', "")]',
+        );
+      });
+
+      it('test value of elements', async () => {
+        let elements = await textBox({
+          id: 'sampleContentEditable',
+        }).elements();
+        expect(await elements[0].value()).to.be.eql(
+          'contentEditableValue',
+        );
       });
     });
   });
@@ -268,6 +395,9 @@ describe(test_name, () => {
                             <label for="${inputType.name}WithLabelFor">With Label For</label>
                             <input id="${inputType.name}WithLabelFor" type="${inputType.type}"/>
                         </div>
+                        <div>
+                            <input type="${inputType.type}" id="sample${inputType.type}" value="${inputType.testValue}">With Inline Text</input>
+                        </div>
                     </form>
                 </div>`;
         filePath = createHtml(innerHtml, test_name + inputType.type);
@@ -295,6 +425,12 @@ describe(test_name, () => {
             inputType.testValue,
           );
         });
+
+        it('test description', async () => {
+          expect(textBox('With Inline Text').description).to.be.eql(
+            'Text field with label With Inline Text ',
+          );
+        });
       });
 
       describe('wrapped in label', () => {
@@ -312,6 +448,12 @@ describe(test_name, () => {
             await textBox('With Wrapped Label').value(),
           ).to.equal(inputType.testValue);
         });
+
+        it('test description', async () => {
+          expect(textBox('With Wrapped Label').description).to.be.eql(
+            'Text field with label With Wrapped Label ',
+          );
+        });
       });
 
       describe('using label for', () => {
@@ -326,6 +468,12 @@ describe(test_name, () => {
           );
           expect(await textBox('With Label For').value()).to.equal(
             inputType.testValue,
+          );
+        });
+
+        it('test description', async () => {
+          expect(textBox('With Label For').description).to.be.eql(
+            'Text field with label With Label For ',
           );
         });
       });
@@ -346,6 +494,16 @@ describe(test_name, () => {
             }).value(),
           ).to.equal(inputType.testValue);
         });
+
+        it('test description', async () => {
+          expect(
+            textBox({
+              id: inputType.name + 'WithLabelFor',
+            }).description,
+          ).to.be.eql(
+            `Text field[@id = concat(\'inputType-${inputType.type}WithLabelFor\', "")]`,
+          );
+        });
       });
 
       describe('with relative selector', () => {
@@ -359,6 +517,41 @@ describe(test_name, () => {
             await textBox(above('With Label For')).value(),
           ).to.equal(inputType.testValue);
         });
+
+        it('test description', async () => {
+          expect(
+            textBox(above('With Label For')).description,
+          ).to.be.eql('Text field Above With Label For');
+        });
+      });
+
+      describe('test elementsList properties', () => {
+        it('test get of elements', async () => {
+          const elements = await textBox({
+            id: `sample${inputType.type}`,
+          }).elements();
+          expect(elements[0].get())
+            .to.be.a('number')
+            .above(0);
+        });
+
+        it('test description of elements', async () => {
+          let elements = await textBox({
+            id: `sample${inputType.type}`,
+          }).elements();
+          expect(elements[0].description).to.be.eql(
+            `Text field[@id = concat(\'sample${inputType.type}\', "")]`,
+          );
+        });
+
+        it('test value of elements', async () => {
+          let elements = await textBox({
+            id: `sample${inputType.type}`,
+          }).elements();
+          expect(await elements[0].value()).to.be.eql(
+            `${inputType.testValue}`,
+          );
+        });
       });
     });
   });
@@ -367,6 +560,7 @@ describe(test_name, () => {
     let filePath;
     const inputTypeName = 'input-without-type';
     const inputValue = 'text input type entered';
+    const value = 'inputWithoutTypeValue';
     before(async () => {
       let innerHtml = `
             <div>
@@ -383,6 +577,9 @@ describe(test_name, () => {
                     <div name="withLabelFor">
                         <label for="${inputTypeName}WithLabelFor">With Label For</label>
                         <input id="${inputTypeName}WithLabelFor"/>
+                    </div>
+                    <div >
+                        <input value="${value}">sampleInputWithoutType</input>
                     </div>
                 </form>
             </div>`;
@@ -407,6 +604,12 @@ describe(test_name, () => {
           inputValue,
         );
       });
+
+      it('test description', async () => {
+        expect(textBox('With Inline Text').description).to.be.eql(
+          'Text field with label With Inline Text ',
+        );
+      });
     });
 
     describe('wrapped in label', () => {
@@ -421,6 +624,12 @@ describe(test_name, () => {
           inputValue,
         );
       });
+
+      it('test description', async () => {
+        expect(textBox('With Wrapped Label').description).to.be.eql(
+          'Text field with label With Wrapped Label ',
+        );
+      });
     });
 
     describe('using label for', () => {
@@ -432,6 +641,12 @@ describe(test_name, () => {
         await write(inputValue, into(textBox('With Label For')));
         expect(await textBox('With Label For').value()).to.equal(
           inputValue,
+        );
+      });
+
+      it('test description', async () => {
+        expect(textBox('With Label For').description).to.be.eql(
+          'Text field with label With Label For ',
         );
       });
     });
@@ -452,6 +667,16 @@ describe(test_name, () => {
           }).value(),
         ).to.equal(inputValue);
       });
+
+      it('test description', async () => {
+        expect(
+          textBox({
+            id: inputTypeName + 'WithLabelFor',
+          }).description,
+        ).to.be.eql(
+          'Text field[@id = concat(\'input-without-typeWithLabelFor\', "")]',
+        );
+      });
     });
 
     describe('with relative selector', () => {
@@ -464,6 +689,45 @@ describe(test_name, () => {
         expect(
           await textBox(above('With Label For')).value(),
         ).to.equal(inputValue);
+      });
+
+      it('test description', async () => {
+        expect(
+          textBox(above('With Label For')).description,
+        ).to.be.eql('Text field Above With Label For');
+      });
+
+      it('test text should throw if the element is not found', async () => {
+        expect(textBox('.foo').text()).to.be.eventually.rejected;
+      });
+    });
+
+    describe('test elementList properties', () => {
+      it('test get of elements', async () => {
+        const elements = await textBox(
+          'sampleInputWithoutType',
+        ).elements();
+        expect(elements[0].get())
+          .to.be.a('number')
+          .above(0);
+      });
+
+      it('test description of elements', async () => {
+        let elements = await textBox(
+          'sampleInputWithoutType',
+        ).elements();
+        expect(elements[0].description).to.be.eql(
+          'Text field with label sampleInputWithoutType ',
+        );
+      });
+
+      it('test value of elements', async () => {
+        let elements = await textBox(
+          'sampleInputWithoutType',
+        ).elements();
+        expect(await elements[0].value()).to.be.eql(
+          'inputWithoutTypeValue',
+        );
       });
     });
   });

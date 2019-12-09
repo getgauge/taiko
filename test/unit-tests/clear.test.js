@@ -57,11 +57,11 @@ multiple lines.</textarea>
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    await setConfig({ waitForNavigation: false });
+    setConfig({ waitForNavigation: false });
   });
 
   after(async () => {
-    await setConfig({ waitForNavigation: true });
+    setConfig({ waitForNavigation: true });
     await closeBrowser();
     removeFile(filePath);
   });
@@ -98,11 +98,9 @@ multiple lines.</textarea>
     it('should be trigged after clearing textbox', async () => {
       await reload();
       await write('No man land', into(textBox('Country')));
-      expect((await $('#info-borad').text())[0]).to.equal(
-        'No man land',
-      );
+      expect(await $('#info-borad').text()).to.equal('No man land');
       await clear(textBox('Country'));
-      expect((await $('#info-borad').text())[0]).to.equal('');
+      expect(await $('#info-borad').text()).to.equal('');
     });
   });
 });

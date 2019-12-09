@@ -7,7 +7,7 @@ const {
   into,
   toLeftOf,
   $,
-} = require('../../../lib/taiko');
+} = require('taiko');
 var _selectors = require('./selectors');
 
 step('Write <text>', async function(text) {

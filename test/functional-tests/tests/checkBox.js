@@ -1,6 +1,6 @@
 'use strict';
 var _selectors = require('./selectors');
-const { click, checkBox, near } = require('../../../lib/taiko');
+const { click, checkBox, near } = require('taiko');
 step(
   'Click checkBox with attribute <jsonAttribute> near <table>',
   async function(jsonAttribute, table) {

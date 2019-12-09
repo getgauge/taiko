@@ -93,7 +93,7 @@ function scrollHightlight(element) {
       if (divPosition - 1 < currentScroll) {
         $currentSection = $(this);
       }
-      if ($currentSection.attr('id')) {
+      if ($currentSection && $currentSection.attr('id')) {
         var id = $currentSection.attr('id');
       }
 
@@ -217,7 +217,7 @@ function init() {
   headButtresolve($('section h2'));
   headButtresolve($('.sub-section h3'));
   headButtresolve($('.content-section h2'));
-  copyCode($('.content-section .hljs'));
+  copyCode($('.content-section pre'));
   copyCode($('.code-section .hljs'));
   scrollHightlight('section h2');
   scrollHightlight('.sub-section h3');

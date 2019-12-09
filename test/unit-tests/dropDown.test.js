@@ -1,6 +1,5 @@
-const EventEmitter = require('events').EventEmitter;
-const rewire = require('rewire');
-const taiko = rewire('../../lib/taiko.js');
+const { descEvent } = require('../../lib/helper');
+
 let {
   openBrowser,
   goto,
@@ -8,8 +7,11 @@ let {
   dropDown,
   closeBrowser,
   setConfig,
-} = taiko;
-const expect = require('chai').expect;
+} = require('../../lib/taiko');
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+const expect = chai.expect;
 let {
   createHtml,
   removeFile,
@@ -19,12 +21,10 @@ const test_name = 'DropDown';
 
 describe(test_name, () => {
   let filePath;
-  let actualEmmiter;
-  let emitter = new EventEmitter();
 
   let validateEmitterEvent = function(event, expectedText) {
     return new Promise(resolve => {
-      emitter.on(event, eventData => {
+      descEvent.once(event, eventData => {
         expect(eventData).to.be.equal(expectedText);
         resolve();
       });
@@ -32,10 +32,6 @@ describe(test_name, () => {
   };
 
   before(async () => {
-    actualEmmiter = taiko.__get__('descEvent');
-
-    taiko.__set__('descEvent', emitter);
-
     let innerHtml =
       '<form>' +
       '<label for="select">Cars</label>' +
@@ -60,27 +56,41 @@ describe(test_name, () => {
       '<option value="audi1">Audi1</option>' +
       '</select>' +
       '</label>' +
+      '<select id="sampleDropDown" name="select" value="select">' +
+      '<option value="someValue">someValue</option>' +
+      '</select>' +
       '</form>';
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    await setConfig({ waitForNavigation: false });
+    setConfig({ waitForNavigation: false });
   });
 
   after(async () => {
-    await setConfig({ waitForNavigation: true });
+    setConfig({ waitForNavigation: true });
     await closeBrowser();
     removeFile(filePath);
-    taiko.__set__('descEvent', actualEmmiter);
-  });
-
-  afterEach(() => {
-    emitter.removeAllListeners();
   });
 
   describe('using label for', () => {
     it('test dropdown exists()', async () => {
       expect(await dropDown('Cars').exists()).to.be.true;
+    });
+
+    it('test dropdown description', async () => {
+      expect(dropDown('Cars').description).to.be.eql(
+        'DropDown with label Cars ',
+      );
+    });
+
+    it('test dropdown text()', async () => {
+      expect(await dropDown('Cars').text()).to.be.eql(
+        'Volvo\nSaab\nMercedes\nAudi',
+      );
+    });
+
+    it('test text should throw if the element is not found', async () => {
+      expect(dropDown('.foo').text()).to.be.eventually.rejected;
     });
 
     it('test select()', async () => {
@@ -106,6 +116,18 @@ describe(test_name, () => {
       expect(
         await dropDown('dropDownWithWrappedInLabel').value(),
       ).to.not.equal('mercedes');
+    });
+
+    it('test description', async () => {
+      expect(
+        dropDown('dropDownWithWrappedInLabel').description,
+      ).to.be.eql('DropDown with label dropDownWithWrappedInLabel ');
+    });
+
+    it('test text()', async () => {
+      expect(
+        await dropDown('dropDownWithWrappedInLabel').text(),
+      ).to.be.eql('Volvo1\nSaab1\nMercedes1\nAudi1');
     });
   });
 
@@ -133,5 +155,97 @@ describe(test_name, () => {
       await dropDown('Cars').select('mercedes');
       await validatePromise;
     });
+  });
+
+  describe('test elementList properties', () => {
+    it('test get of elements', async () => {
+      const elements = await dropDown({
+        id: 'sampleDropDown',
+      }).elements();
+      expect(elements[0].get())
+        .to.be.a('number')
+        .above(0);
+    });
+
+    it('test description of elements', async () => {
+      let elements = await dropDown({
+        id: 'sampleDropDown',
+      }).elements();
+      expect(elements[0].description).to.be.eql(
+        'DropDown[@id = concat(\'sampleDropDown\', "")]',
+      );
+    });
+
+    it('test text of elements', async () => {
+      let elements = await dropDown({
+        id: 'sampleDropDown',
+      }).elements();
+      expect(await elements[0].text()).to.be.eql('someValue');
+    });
+
+    it('test select of elements', async () => {
+      let validatePromise = validateEmitterEvent(
+        'success',
+        'Selected someValue',
+      );
+      let elements = await dropDown({
+        id: 'sampleDropDown',
+      }).elements();
+      await elements[0].select('someValue');
+      await validatePromise;
+    });
+
+    it('test get value of elements', async () => {
+      let elements = await dropDown({
+        id: 'sampleDropDown',
+      }).elements();
+      await elements[0].select('someValue');
+      expect(await elements[0].value()).to.equal('someValue');
+    });
+  });
+});
+
+describe('nested drop down', () => {
+  let filePath;
+
+  before(async () => {
+    let innerHtml = `<div id="one">
+    <label for="select-one">One</label>
+    <select id="select-one" name="select" value="select">
+       <option>Select One</option> 
+       <option>Hot Beverages</option>
+      </select>
+  </div>
+  <div id="two">
+    <label for="select-two">Two</label>
+    <select id="select-two" name="select" value="select">
+       <option>Please select from above</option>
+      </select>
+  </div>
+  <script>
+    var textTwo = document.getElementById("select-two");
+  var divOne = document.getElementById("one");
+
+  divOne.addEventListener("change", function() {
+    console.log("Hello");
+    textTwo.innerHTML = "<option>Tea</option><option>Cofee</option>";
+  });
+  </script>`;
+    filePath = createHtml(innerHtml, test_name);
+    await openBrowser(openBrowserArgs);
+    await goto(filePath);
+    setConfig({ waitForNavigation: false });
+  });
+
+  after(async () => {
+    setConfig({ waitForNavigation: true });
+    await closeBrowser();
+    removeFile(filePath);
+  });
+
+  it('should bubble change event', async () => {
+    await dropDown('One').select('Hot Beverages');
+    await expect(dropDown('Two').select('Tea')).not.to.be.eventually
+      .rejected;
   });
 });

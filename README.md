@@ -1,8 +1,12 @@
 <h1 align="center">Taiko</h1>
 <p align="center">A node.js library to automate chrome/chromium browser</p>
 
-[![Build Status](https://getgauge.visualstudio.com/Taiko/_apis/build/status/Taiko-CI?branchName=master)](https://getgauge.visualstudio.com/Taiko/_build/latest?definitionId=1&branchName=master)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![alpha software]( https://img.shields.io/badge/status-alpha-lightgrey.svg)](https://github.com/getgauge/taiko/issues) [![npm version](https://badge.fury.io/js/taiko.svg?style=flat-square)](https://badge.fury.io/js/taiko) [![dependencies Status](https://david-dm.org/getgauge/taiko/status.svg)](https://david-dm.org/getgauge/taiko) [![devDependencies Status](https://david-dm.org/getgauge/taiko/dev-status.svg)](https://david-dm.org/getgauge/taiko?type=dev) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/getgauge/taiko/issues)
+[![Actions Status](https://github.com/getgauge/taiko/workflows/taiko/badge.svg)](https://github.com/getgauge/taiko/actions)
+[![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/getgauge/taiko/blob/master/LICENSE)
+[![npm version](https://badge.fury.io/js/taiko.svg?style=flat-square)](https://badge.fury.io/js/taiko)
+[![dependencies Status](https://david-dm.org/getgauge/taiko/status.svg)](https://david-dm.org/getgauge/taiko)
+[![devDependencies Status](https://david-dm.org/getgauge/taiko/dev-status.svg)](https://david-dm.org/getgauge/taiko?type=dev)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/getgauge/taiko/issues)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
 
@@ -195,7 +199,8 @@ Learn more about [Gauge](https://docs.gauge.org)!
 
 ## Talk to us
 
-For queries and contributions talk to the [Gauge](https://github.com/getgauge/gauge/#talk-to-us) team.
+* [Spectrum](https://spectrum.chat/taiko) for questions and help
+* [Github Issues](https://github.com/getgauge/taiko/issues) to report issues
 
 ## Copyright
 

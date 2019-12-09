@@ -30,6 +30,7 @@ const {
   intercept,
   toRightOf,
   setConfig,
+  clearIntercept,
 } = require('taiko');
 
 const headless = process.env.headless.toLowerCase() === 'true';
@@ -47,10 +48,10 @@ beforeScenario(async () => {
       '--window-size=1440,900',
     ],
   });
-  await setConfig({ navigationTimeout: 60000 });
+  setConfig({ navigationTimeout: 60000 });
 });
 
-gauge.screenshotFn = async function () {
+gauge.screenshotFn = async function() {
   return await screenshot({ encoding: 'base64' });
 };
 
@@ -126,11 +127,11 @@ step(
   },
 );
 
-step("Write <text> into TextBox with name <textboxName>",
-  async function (text, textBoxName) {
-    await write(text, into(textBox({name:textBoxName})));
-    
-  }
+step(
+  'Write <text> into TextBox with name <textboxName>',
+  async function(text, textBoxName) {
+    await write(text, into(textBox({ name: textBoxName })));
+  },
 );
 
 step(
@@ -189,28 +190,21 @@ step(
   },
 );
 
-step('Intercept Google Analytics', async function () {
-  await intercept(
-    'https://www.googletagmanager.com/gtm.js?id=GTM-5C33ML2',
-  );
-  await intercept('https://www.google-analytics.com/analytics.js');
-});
-
-step('Respond to <url> with <respomnseBody>', async function (
+step('Respond to <url> with <responseBody>', async function(
   url,
-  respomnseBody,
+  responseBody,
 ) {
-  await intercept(url, { body: respomnseBody });
+  await intercept(url, { body: responseBody });
 });
 
-step('Respond to <url> with json <jsonString>', async function (
+step('Respond to <url> with json <jsonString>', async function(
   url,
   jsonString,
 ) {
   await intercept(url, { body: JSON.parse(jsonString) });
 });
 
-step('Navigate to relative path <relativePath>', async function (
+step('Navigate to relative path <relativePath>', async function(
   relativePath,
 ) {
   var absolutePath = _path.resolve(relativePath);
@@ -220,7 +214,7 @@ step('Navigate to relative path <relativePath>', async function (
 step(
   'Scroll to element <arg0>',
   { continueOnFailure: true },
-  async function () {
+  async function() {
     await scrollTo($('#myDIV'));
   },
 );
@@ -236,7 +230,7 @@ step(
 step(
   'Scroll element <element> left by pixels <pixels>',
   { continueOnFailure: true },
-  async function (element, pixels) {
+  async function(element, pixels) {
     await scrollLeft($(element), parseInt(pixels, 10));
   },
 );
@@ -260,7 +254,7 @@ step(
 step(
   'Scroll element <element> up by pixels <pixels>',
   { continueOnFailure: true },
-  async function (element, pixels) {
+  async function(element, pixels) {
     await scrollUp($(element), parseInt(pixels, 10));
   },
 );
@@ -280,7 +274,7 @@ step(
 step(
   'Scroll element <element> down by pixels <pixels>',
   { continueOnFailure: true },
-  async function (element, pixels) {
+  async function(element, pixels) {
     await scrollDown($(element), parseInt(pixels, 10));
   },
 );
@@ -295,7 +289,7 @@ step(
 
 step(
   'Navigate to relative path <path> with timeout <timeout> ms',
-  async function (path, timeout) {
+  async function(path, timeout) {
     var absolutePath = _path.resolve(path);
     await goto('file:///' + absolutePath, {
       navigationTimeout: timeout,
@@ -303,9 +297,17 @@ step(
   },
 );
 
-step('Navigate to <url> with timeout <timeout> ms', async function (
+step('Navigate to <url> with timeout <timeout> ms', async function(
   url,
   timeout,
 ) {
   await goto(url, { navigationTimeout: timeout });
+});
+
+step('Reset intercept for <url>', function(url) {
+  clearIntercept(url);
+});
+
+step('Reset all intercept', function() {
+  clearIntercept();
 });

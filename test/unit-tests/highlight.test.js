@@ -28,18 +28,20 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    await setConfig({ waitForNavigation: false });
+    setConfig({ waitForNavigation: false });
   });
 
   after(async () => {
-    await setConfig({ waitForNavigation: true });
+    setConfig({ waitForNavigation: true });
     await closeBrowser();
     removeFile(filePath);
   });
 
   it('should highlight text node', async () => {
     await highlight('Text node');
-    let res = await evaluate($('a'), (elem) => { return elem.style.outline; });
+    let res = await evaluate($('a'), elem => {
+      return elem.style.outline;
+    });
     expect(res).to.equal('red solid 0.5em');
   });
 });
