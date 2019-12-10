@@ -21,6 +21,7 @@ const { goto, text } = require('taiko'),
     //TODO: tinyMCE example
   } catch (e) {
     console.error(e);
+    process.exit(1);
   } finally {
     await closeBrowserAndStopScreencast();
   }

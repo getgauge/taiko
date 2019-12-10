@@ -21,12 +21,13 @@ const {
     );
     await goto(url);
     await click('click here');
-    expect(await title()).to.eq('New Window');
+    expect(await title()).to.eq('The Internet Express');
     await closeTab();
     expect(await currentURL()).to.eq(url);
     expect(await text('Opening a new Window').exists()).to.be.true;
   } catch (e) {
     console.error(e);
+    process.exit(1);
   } finally {
     await closeBrowserAndStopScreencast();
   }

@@ -29,6 +29,7 @@ const {
     expect(exists).to.be.true;
   } catch (e) {
     console.error(e);
+    process.exit(1);
   } finally {
     await closeBrowserAndStopScreencast();
   }

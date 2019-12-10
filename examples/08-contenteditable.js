@@ -27,6 +27,7 @@ const cwd = process.cwd();
     expect(content).to.have.string(text);
   } catch (e) {
     console.error(e);
+    process.exit(1);
   } finally {
     await closeBrowserAndStopScreencast();
   }
