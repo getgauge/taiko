@@ -143,7 +143,8 @@ describe(test_name, () => {
       });
 
       it('test value() should throw if the element is not found', async () => {
-        expect(textBox('foo').value()).to.be.eventually.rejected;
+        await expect(textBox('foo').value()).to.be.eventually
+          .rejected;
       });
 
       it('test description', async () => {
@@ -698,7 +699,8 @@ describe(test_name, () => {
       });
 
       it('test text should throw if the element is not found', async () => {
-        expect(textBox('.foo').text()).to.be.eventually.rejected;
+        await expect(textBox('.foo').text()).to.be.eventually
+          .rejected;
       });
     });
 

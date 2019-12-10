@@ -52,8 +52,11 @@ describe(test_name, () => {
     });
 
     it('should write into the first focusable element', async () => {
-      await expect(focus(textBox('inputTypeText'))).not.to.be
-        .eventually.rejected;
+      await expect(
+        focus(textBox('inputTypeText')),
+      ).not.to.be.eventually.rejectedWith(
+        "Custom selector '$(.foo)' not found",
+      );
     });
   });
 });

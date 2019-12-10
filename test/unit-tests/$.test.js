@@ -76,27 +76,29 @@ describe(test_name, () => {
     });
 
     it('test text should throw if the element is not found', async () => {
-      expect($('.foo').text()).to.be.eventually.rejected;
+      await expect($('.foo').text()).to.be.eventually.rejectedWith(
+        'Custom selector $(.foo) not found',
+      );
     });
   });
 
   // ignoring the elementList tests as they timeout.
   describe('test elementList properties', () => {
-    xit('test get()', async () => {
+    it('test get()', async () => {
       const elems = await $('#foo').elements();
       expect(elems[0].get())
         .to.be.a('number')
         .above(0);
     });
 
-    xit('test description', async () => {
+    it('test description', async () => {
       const elems = await $('#foo').elements();
       expect(elems[0].description).to.be.eql(
         'Custom selector $(#foo)',
       );
     });
 
-    xit('test text()', async () => {
+    it('test text()', async () => {
       const elems = await $('#foo').elements();
       expect(await elems[0].text()).to.be.eql('taiko');
     });

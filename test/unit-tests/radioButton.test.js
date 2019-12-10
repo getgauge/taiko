@@ -77,7 +77,8 @@ describe(test_name, () => {
     });
 
     it('test select() should throw if the element is not found', async () => {
-      expect(radioButton('foo').select()).to.be.eventually.rejected;
+      await expect(radioButton('foo').select()).to.be.eventually
+        .rejected;
     });
 
     it('test select() triggers events', async () => {
@@ -95,7 +96,8 @@ describe(test_name, () => {
     });
 
     it('test deselect() should throw error if the element is not found', async () => {
-      expect(radioButton('foo').deselect()).to.be.eventually.rejected;
+      await expect(radioButton('foo').deselect()).to.be.eventually
+        .rejected;
     });
 
     it('test isSelected()', async () => {
@@ -106,12 +108,15 @@ describe(test_name, () => {
     });
 
     it('test isSelected() to throw error if the element is not found', async () => {
-      expect(radioButton('foo').isSelected()).to.be.eventually
-        .rejected;
+      await expect(
+        radioButton('foo').isSelected(),
+      ).to.be.eventually.rejectedWith('');
     });
 
     it('test text should throw if the element is not found', async () => {
-      expect(radioButton('.foo').text()).to.be.eventually.rejected;
+      await expect(
+        radioButton('.foo').text(),
+      ).to.be.eventually.rejectedWith('');
     });
   });
 
