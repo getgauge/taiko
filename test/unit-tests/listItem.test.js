@@ -58,7 +58,7 @@ describe(test_name, () => {
     });
 
     it('test text should throw if the element is not found', async () => {
-      expect(listItem('.foo').text()).to.be.eventually.rejected;
+      await expect(listItem('.foo').text()).to.be.eventually.rejected;
     });
   });
 
