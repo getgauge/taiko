@@ -82,7 +82,6 @@ describe(test_name, () => {
     });
   });
 
-  // ignoring the elementList tests as they timeout.
   describe('test elementList properties', () => {
     it('test get()', async () => {
       const elems = await $('#foo').elements();
