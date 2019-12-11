@@ -23,3 +23,16 @@ There are issues of varying levels across all Taiko repositories. All issues tha
 If you need help in getting started with contribution, feel free to reach out on the [Google Groups](https://groups.google.com/forum/#!forum/getgauge) or [Gitter](https://gitter.im/getgauge/chat).
 
 If your contribution is a code contribution and you do send us a pull request, you will first need to read and sign the [Contributor License Agreement](https://gauge-bot.herokuapp.com/cla/).
+
+## Setting the project and debugging a functionality in Visual Studio Code.
+
+1. Download the project locally. (Ofcourse.)
+2. Set the debug points in the taiko.js (or any required file)
+3. Open the debug Tab in VS Code (Left most Vertical Menu)
+4. From the configurations to run, choose 'Program'.
+5. Click on Run. 
+- The debugger has now been started. But where to fire the commands?-
+1. Open the debug console.
+2. Import taiko there `const taiko = require('/Users/*/taiko/lib/taiko')`
+3. Start firing the commands. eg `taiko.openBrowser()`
+- If you have put the debug point in the underlying code, it should break there'
