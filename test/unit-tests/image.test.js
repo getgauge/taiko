@@ -165,7 +165,11 @@ describe(test_name, () => {
     }); //Todo: Need to discuss on should we expose this api or not
 
     it('test text should throw if the element is not found', async () => {
-      expect(image('.foo').text()).to.be.eventually.rejected;
+      await expect(
+        image('.foo').text(),
+      ).to.be.eventually.rejectedWith(
+        'image with alt .foo  not found',
+      );
     });
   });
 
