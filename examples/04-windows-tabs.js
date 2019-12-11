@@ -27,7 +27,7 @@ const {
     expect(await text('Opening a new Window').exists()).to.be.true;
   } catch (e) {
     console.error(e);
-    process.exit(1);
+    process.exitCode = 1;
   } finally {
     await closeBrowserAndStopScreencast();
   }

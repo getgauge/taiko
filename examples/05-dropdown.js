@@ -17,7 +17,7 @@ const { goto, dropDown } = require('taiko'),
     expect(await dropDown().value()).to.eq('1');
   } catch (e) {
     console.error(e);
-    process.exit(1);
+    process.exitCode = 1;
   } finally {
     await closeBrowserAndStopScreencast();
   }
