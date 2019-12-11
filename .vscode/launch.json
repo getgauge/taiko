@@ -37,6 +37,7 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}/bin/taiko.js",
+            "console": "integratedTerminal",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
