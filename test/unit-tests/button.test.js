@@ -116,7 +116,7 @@ describe(test_name, () => {
       }); // Todo: should be fixed with #815
 
       it('test text should throw if the element is not found', async () => {
-        expect(button('.foo').text()).to.be.eventually.rejected;
+        await expect(button('.foo').text()).to.be.eventually.rejected;
       });
     });
 

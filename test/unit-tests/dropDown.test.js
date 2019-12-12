@@ -90,7 +90,11 @@ describe(test_name, () => {
     });
 
     it('test text should throw if the element is not found', async () => {
-      expect(dropDown('.foo').text()).to.be.eventually.rejected;
+      await expect(
+        dropDown('.foo').text(),
+      ).to.be.eventually.rejectedWith(
+        'DropDown with label .foo  not found',
+      );
     });
 
     it('test select()', async () => {
