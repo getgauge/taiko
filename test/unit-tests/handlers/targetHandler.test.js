@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 let rewire = require('rewire');
 const targetHandler = rewire('../../../lib/handlers/targetHandler');
-
+const { regex } = require('../../../lib/taiko');
 describe('TargetHandler', () => {
   describe('.getCriTargets', () => {
     let _targets = [];
@@ -26,6 +26,38 @@ describe('TargetHandler', () => {
       expect(targets.matching[0].id).to.be.equal('2');
       expect(targets.others.length).to.be.equal(1);
       expect(targets.others[0].id).to.be.equal('1');
+    });
+
+    it('should give all the matching tabs if regex is given', async () => {
+      _targets.push({
+        id: '1',
+        type: 'page',
+        url: 'https://www.google.com',
+        title: 'Google',
+      });
+      _targets.push({
+        id: '1',
+        type: 'page',
+        url: 'https://www.google.co.uk',
+        title: 'Google',
+      });
+      _targets.push({
+        id: '1',
+        type: 'page',
+        url: 'https://www.github.com',
+        title:
+          'The world’s leading software development platform · GitHub',
+      });
+
+      let targets = await targetHandler.getCriTargets(
+        await regex(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/),
+      );
+      expect(targets.matching.length).to.be.equal(2);
+
+      let someOtherTarget = await targetHandler.getCriTargets(
+        await regex(/Go*gle/),
+      );
+      expect(someOtherTarget.matching.length).to.be.equal(2);
     });
 
     it('should give all matching tabs if url is given', async () => {
