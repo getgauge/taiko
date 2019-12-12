@@ -76,7 +76,9 @@ describe(test_name, () => {
     });
 
     it('test text should throw if the element is not found', async () => {
-      expect($('.foo').text()).to.be.eventually.rejected;
+      await expect($('.foo').text()).to.be.eventually.rejectedWith(
+        'Custom selector $(.foo) not found',
+      );
     });
   });
 
