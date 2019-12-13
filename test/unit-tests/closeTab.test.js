@@ -8,6 +8,7 @@ describe('closeTab', () => {
   let _targets = { matching: [], others: [] };
   let currentURL = '';
   let _isMatchUrl = false;
+  let _isMatchRegex = false;
   let currentTarget;
   let descEmmitter = new EventEmitter();
 
@@ -34,6 +35,9 @@ describe('closeTab', () => {
       },
       isMatchingUrl: () => {
         return _isMatchUrl;
+      },
+      isMatchingRegex: () => {
+        return _isMatchRegex;
       },
     };
 
@@ -83,7 +87,7 @@ describe('closeTab', () => {
     });
     currentURL = 'https://amazon.com';
     _isMatchUrl = false;
-
+    _isMatchRegex = false;
     let validatePromise = validateEmitterEvent(
       'success',
       'Closed current tab with URL https://flipkart.com',
@@ -111,6 +115,7 @@ describe('closeTab', () => {
     });
     currentURL = 'https://flipkart.com';
     _isMatchUrl = false;
+    _isMatchRegex = false;
 
     let validatePromise = validateEmitterEvent(
       'success',
@@ -138,12 +143,43 @@ describe('closeTab', () => {
     });
     currentURL = 'https://amazon.com';
     _isMatchUrl = true;
+    _isMatchRegex = false;
 
     let validatePromise = validateEmitterEvent(
       'success',
       'Closed all tabs with URL https://flipkart.com',
     );
     await taiko.closeTab('https://flipkart.com');
+    await validatePromise;
+    expect(currentTarget.url).to.be.eql('https://amazon.com');
+  });
+  it('should close all matching tabs for given regex', async () => {
+    _targets.matching.push({
+      id: '1',
+      type: 'page',
+      url: 'https://www.google.com',
+    });
+    _targets.matching.push({
+      id: '2',
+      type: 'page',
+      url: 'https://www.google.co.uk',
+    });
+    _targets.others.push({
+      id: '3',
+      type: 'page',
+      url: 'https://amazon.com',
+    });
+    currentURL = 'https://amazon.com';
+    _isMatchUrl = false;
+    _isMatchRegex = true;
+
+    let validatePromise = validateEmitterEvent(
+      'success',
+      `Closed all tabs with Regex URL /http(s?):\\/\\/(www?).google.(com|co.in|co.uk)/`,
+    );
+    await taiko.closeTab(
+      /http(s?):\/\/(www?).google.(com|co.in|co.uk)/,
+    );
     await validatePromise;
     expect(currentTarget.url).to.be.eql('https://amazon.com');
   });

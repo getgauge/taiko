@@ -1,7 +1,6 @@
 const expect = require('chai').expect;
 let rewire = require('rewire');
 const targetHandler = rewire('../../../lib/handlers/targetHandler');
-const { regex } = require('../../../lib/taiko');
 describe('TargetHandler', () => {
   describe('.getCriTargets', () => {
     let _targets = [];
@@ -50,13 +49,15 @@ describe('TargetHandler', () => {
       });
 
       let targets = await targetHandler.getCriTargets(
-        await regex(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/),
+        /http(s?):\/\/(www?).google.(com|co.in|co.uk)/,
       );
+
       expect(targets.matching.length).to.be.equal(2);
 
       let someOtherTarget = await targetHandler.getCriTargets(
-        await regex(/Go*gle/),
+        /Go*gle/,
       );
+
       expect(someOtherTarget.matching.length).to.be.equal(2);
     });
 
