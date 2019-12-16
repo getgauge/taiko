@@ -16,6 +16,7 @@ let {
   createHtml,
   removeFile,
   openBrowserArgs,
+  resetConfig,
 } = require('./test-util');
 const test_name = 'Click';
 
@@ -60,11 +61,15 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false });
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
 
   after(async () => {
-    setConfig({ waitForNavigation: true });
+    resetConfig();
     await closeBrowser();
     removeFile(filePath);
   });
@@ -149,11 +154,15 @@ describe(test_name, () => {
             `;
       overlayFilePath = createHtml(innerHtml, `${test_name}-overlay`);
       await goto(overlayFilePath);
-      setConfig({ waitForNavigation: false });
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
     });
 
     after(() => {
-      setConfig({ waitForNavigation: true });
+      resetConfig();
       removeFile(overlayFilePath);
     });
 
@@ -174,11 +183,15 @@ describe(test_name, () => {
         `${test_name}-disabled`,
       );
       await goto(overlayFilePath);
-      setConfig({ waitForNavigation: false });
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
     });
 
     after(() => {
-      setConfig({ waitForNavigation: true });
+      resetConfig();
       removeFile(overlayFilePath);
     });
 
