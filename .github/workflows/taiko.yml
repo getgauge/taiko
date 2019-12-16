@@ -36,6 +36,13 @@ jobs:
           node-version: ${{ matrix.node_version }}
       - name: functional-tests
         run: npm run test-functional
+
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: ft-reports-${{ matrix.os }}-${{ matrix.node_version }}
+          path: test/functional-tests/reports/html-report
+
       - name: examples
         run: npm run examples
 
@@ -55,4 +62,9 @@ jobs:
         env:
           headless: false
         run: xvfb-run npm run test-functional
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: ft-reports-linux-headful
+          path: test/functional-tests/reports/html-report        
 
