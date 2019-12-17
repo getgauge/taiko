@@ -14,7 +14,7 @@ let {
   into,
   toLeftOf,
   setConfig,
-} = require('../../lib/taiko');
+} = taiko;
 let {
   createHtml,
   removeFile,
@@ -51,11 +51,20 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
 
   after(async () => {
     removeFile(filePath);
-    setConfig({ waitForNavigation: true });
+    setConfig({
+      waitForNavigation: true,
+      retryTimeout: 10000,
+      retryInterval: 100,
+    });
     await closeBrowser();
   });
 
@@ -142,7 +151,11 @@ describe('write test on multiple similar elements', () => {
     ('</div>');
     readonlyFilePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
-    setConfig({ waitForNavigation: false });
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
     await goto(readonlyFilePath);
   });
 
@@ -234,11 +247,20 @@ describe('Write with hideText option', () => {
     filePath = createHtml(innerHtml, test_name);
     await taiko.openBrowser(openBrowserArgs);
     await taiko.goto(filePath);
+    taiko.setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
 
   after(async () => {
     removeFile(filePath);
-    await taiko.setConfig({ waitForNavigation: true });
+    taiko.setConfig({
+      waitForNavigation: true,
+      retryTimeout: 10000,
+      retryInterval: 100,
+    });
     await taiko.closeBrowser();
     taiko.__set__('descEvent', actualEmmiter);
   });

@@ -2,6 +2,7 @@ const {
   createHtml,
   openBrowserArgs,
   removeFile,
+  resetConfig,
 } = require('./test-util');
 const {
   openBrowser,
@@ -9,6 +10,7 @@ const {
   evaluate,
   text,
   closeBrowser,
+  setConfig,
 } = require('../../lib/taiko');
 const expect = require('chai').expect;
 const testName = 'Evaluate';
@@ -31,9 +33,15 @@ describe(testName, () => {
     filePath = createHtml(innerHtml, testName);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
 
   after(async () => {
+    resetConfig();
     await closeBrowser();
     removeFile(filePath);
   });

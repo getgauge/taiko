@@ -14,6 +14,7 @@ let {
   createHtml,
   removeFile,
   openBrowserArgs,
+  resetConfig,
 } = require('./test-util');
 
 const test_name = 'list Item';
@@ -31,11 +32,15 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    await setConfig({ waitForNavigation: false });
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
 
   after(async () => {
-    await setConfig({ waitForNavigation: true });
+    resetConfig();
     await closeBrowser();
     removeFile(filePath);
   });
