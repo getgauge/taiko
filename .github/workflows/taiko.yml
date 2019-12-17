@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v1
         if: failure()
         with:
-          name: ft-logs-linux-headful
+          name: ft-logs-${{ matrix.os }}-${{ matrix.node_version }}
           path: test/functional-tests/logs
 
       - name: examples
