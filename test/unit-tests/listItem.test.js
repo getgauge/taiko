@@ -28,6 +28,10 @@ describe(test_name, () => {
         <li>Tea</li>
         <li>Milk</li>
       </ul>
+      <div class="hiddenTest">
+           <p id="hidden" style="display:none>taiko-hidden</p>
+           <p>demo</p>
+      </div>
     `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -64,6 +68,15 @@ describe(test_name, () => {
 
     it('test text should throw if the element is not found', async () => {
       await expect(listItem('.foo').text()).to.be.eventually.rejected;
+    });
+
+    it('should return false for hidden element when isVisible fn is called on listItem', async () => {
+      expect(await listItem({ id: 'hidden' }).isVisible()).to.be
+        .false;
+    });
+
+    it('should return true for non hidden element when isVisible fn is called on listItem', async () => {
+      expect(await listItem({ id: 'coffee' }).isVisible()).to.be.true;
     });
   });
 
