@@ -74,6 +74,10 @@ describe(test_name, () => {
         }).exists(),
       ).to.be.true;
     });
+
+    it('should return false when isVisible fn is observed on hidden element', async () => {
+      expect(await link('HiddenLink').isVisible()).to.be.false;
+    });
   });
 
   describe('link description in page', () => {
@@ -91,6 +95,9 @@ describe(test_name, () => {
       expect(link(toRightOf('Click')).description).to.be.eql(
         'link To right of Click',
       );
+    });
+    it('should return true when isVisible fn is observed on non hidden element', async () => {
+      expect(await link('here').isVisible()).to.be.true;
     });
   });
 
