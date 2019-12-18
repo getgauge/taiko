@@ -25,6 +25,10 @@ describe(test_name, () => {
             <p id="foo">taiko</p>
             <p>demo</p>
         </div>
+        <div class="hiddenTest">
+            <p id="hidden" style="display:none>taiko-hidden</p>
+            <p>demo</p>
+    </div>
             `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -58,12 +62,29 @@ describe(test_name, () => {
         'taiko',
       );
     });
+
+    it('should return true for non hidden element when isVisible fn is called', async () => {
+      expect(await $("//*[text()='taiko']").isVisible()).to.be.true;
+    });
+
+    it('should return false for hidden element when isVisible fn is called on text', async () => {
+      expect(await $("//*[text()='taiko-hidden']").isVisible()).to.be
+        .false;
+    });
   });
 
   describe('test with selectors', () => {
     it('should find text with selectors', async () => {
       expect(await $('#foo').exists()).to.be.true;
       expect(await $('.test').exists()).to.be.true;
+    });
+
+    it('should return true for non hidden element when isVisible fn is called on text', async () => {
+      expect(await $('#foo').isVisible()).to.be.true;
+    });
+
+    it('should return false for hidden element when isVisible fn is called on text', async () => {
+      expect(await $('#hidden').isVisible()).to.be.false;
     });
 
     it('test description with selectors', async () => {
