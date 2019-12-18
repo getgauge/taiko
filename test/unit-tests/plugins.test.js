@@ -131,7 +131,7 @@ describe('Plugins', () => {
           return true;
         },
         readdirSync: function(path) {
-          if (path === globalPluginPath)
+          if (path === globalPluginPath) {
             return [
               'taiko-global-plugin1',
               'taiko-plugin2',
@@ -140,6 +140,7 @@ describe('Plugins', () => {
               'taiko-global-plugin4',
               'taiko-dup-plugin1',
             ];
+          }
           return [
             'taiko-plugin1',
             'taiko-plugin2',
@@ -209,8 +210,9 @@ describe('Plugins', () => {
       };
       PLUGINS.__set__('childProcess', {
         spawnSync: (...args) => {
-          if (args[1][1] === '-g')
+          if (args[1][1] === '-g') {
             return { stdout: globalPluginPath };
+          }
           return { stdout: localPluginPath };
         },
       });

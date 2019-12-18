@@ -1,3 +1,7 @@
+/* eslint-env jquery */
+/* global algoliaSearch*/
+/* global hljs*/
+
 $(document).ready(function() {
   init();
   algoliaSearch();
@@ -28,7 +32,7 @@ $(document).ready(function() {
     }
   });
 
-  $sidebar = $('.sidebar');
+  const $sidebar = $('.sidebar');
   $window
     .resize(function resize() {
       if ($window.width() < 991) {
@@ -116,7 +120,7 @@ function copyCode(element) {
       .prev()
       .text();
     var $copied_text = $(this).nextAll('.copied-text');
-    codeBox = $(this).next();
+    const codeBox = $(this).next();
     codeBox.val(value);
     codeBox.select();
     document.execCommand('copy');

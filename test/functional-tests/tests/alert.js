@@ -8,6 +8,6 @@ step('Alert <text> and await accept', async function(text) {
   });
 });
 
-step('Check if alert <text> was accepted', function(text) {
+step('Check if alert <text> was accepted', function() {
   assert.ok(gauge.dataStore.scenarioStore.get('alert-text'));
 });
