@@ -6,21 +6,22 @@
     "mocha": true,
     "jest/globals": true
   },
-  "extends": "eslint:recommended",
+  "ignorePatterns": [".local-chromium", "node_modules/", "test/functional-tests/reports/"],
+  "extends": ["eslint:recommended", "prettier"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 8
   },
-  "plugins": ["jest"],
+  "plugins": ["jest", "prettier"],
   "rules": {
-    "no-control-regex" : 0,
-    "indent": [
-      "error",
-      4
+    "prettier/prettier": [
+      "error"
     ],
+    "no-control-regex" : 0,
     "quotes": [
       "error",
-      "single"
+      "single",
+      "avoid-escape"
     ],
     "no-constant-condition": [
       "error",
@@ -38,6 +39,8 @@
       "error",
       "always"
     ],
-    "no-console": 0
+    "no-console": 0,
+    "curly": 2,
+    "require-atomic-updates": 0
   }
 }

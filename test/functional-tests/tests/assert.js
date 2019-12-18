@@ -1,3 +1,5 @@
+/* global date */
+
 const assert = require('assert');
 var _selectors = require('./selectors');
 

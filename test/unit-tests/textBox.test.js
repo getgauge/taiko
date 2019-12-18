@@ -515,7 +515,7 @@ describe(test_name, () => {
               id: inputType.name + 'WithLabelFor',
             }).description,
           ).to.be.eql(
-            `Text field[@id = concat(\'inputType-${inputType.type}WithLabelFor\', "")]`,
+            `Text field[@id = concat('inputType-${inputType.type}WithLabelFor', "")]`,
           );
         });
       });
@@ -554,7 +554,7 @@ describe(test_name, () => {
             id: `sample${inputType.type}`,
           }).elements();
           expect(elements[0].description).to.be.eql(
-            `Text field[@id = concat(\'sample${inputType.type}\', "")]`,
+            `Text field[@id = concat('sample${inputType.type}', "")]`,
           );
         });
 

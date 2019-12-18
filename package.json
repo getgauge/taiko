@@ -7,7 +7,7 @@
     "taiko": "bin/taiko.js"
   },
   "scripts": {
-    "lint": "prettier --write '**/*.js'",
+    "lint": "eslint --fix .",
     "doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
     "test:api": "node test/unit-tests/taiko-test.js",
     "examples": "cd examples && npm install && npm test",
@@ -66,6 +66,7 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-mocha": "^6.2.2",
     "eslint-plugin-prettier": "^3.1.2",
     "handlebars": "^4.5.1",
     "husky": "^3.1.0",
