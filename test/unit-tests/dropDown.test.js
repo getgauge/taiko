@@ -16,6 +16,7 @@ let {
   createHtml,
   removeFile,
   openBrowserArgs,
+  resetConfig,
 } = require('./test-util');
 const test_name = 'DropDown';
 
@@ -63,11 +64,15 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false });
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
 
   after(async () => {
-    setConfig({ waitForNavigation: true });
+    resetConfig();
     await closeBrowser();
     removeFile(filePath);
   });
@@ -90,7 +95,11 @@ describe(test_name, () => {
     });
 
     it('test text should throw if the element is not found', async () => {
-      expect(dropDown('.foo').text()).to.be.eventually.rejected;
+      await expect(
+        dropDown('.foo').text(),
+      ).to.be.eventually.rejectedWith(
+        'DropDown with label .foo  not found',
+      );
     });
 
     it('test select()', async () => {
@@ -234,11 +243,15 @@ describe('nested drop down', () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false });
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
 
   after(async () => {
-    setConfig({ waitForNavigation: true });
+    resetConfig();
     await closeBrowser();
     removeFile(filePath);
   });

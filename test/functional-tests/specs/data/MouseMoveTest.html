@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function testFunc(paramValue){
+          document.getElementById("ButtonName").innerHTML = paramValue;
+        }
+    </script>
+    <title>Document</title>
+</head>
+<body>
+  <div id="ButtonName" class="testClass"></div>
+  <br>
+  <br>
+  <div>
+      <button id = "button1" type="button" onClick=testFunc('Button1')>Button 1</button>
+      <button id = "button2" type="button" onClick=testFunc('Button2')>Button 2</button>
+      <button id = "button3" type="button" onclick=testFunc('Button3')>Button 3</button>
+      <input id = "button4" type="button" onclick=testFunc('Button4') value="Button 4"/>    
+  </div>
+  
+    <style>
+      #button1{
+        position: absolute;
+        left: 100px;
+        top: 150px;
+      }
+
+      #button2{
+        position: absolute;
+        left: 100px;
+        top: 250px;
+      }
+
+      #button3{
+        position: absolute;
+        left: 200px;
+        top: 150px;
+      }
+
+      #button4{
+        position: absolute;
+        left: 200px;
+        top: 250px;
+      }
+      #div1 {
+        width: 350px;
+        height: 70px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+      }
+
+        
+    </style>
+</body>
+</html>

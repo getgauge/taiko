@@ -30,6 +30,7 @@ const { goto, client, click } = require('taiko'),
     expect(path.join(downloadPath, 'foo.txt')).to.exist;
   } catch (e) {
     console.error(e);
+    process.exitCode = 1;
   } finally {
     await closeBrowserAndStopScreencast();
     fs.unlinkSync(path.join(downloadPath, 'foo.txt'));
