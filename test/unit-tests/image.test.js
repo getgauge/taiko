@@ -72,6 +72,9 @@ describe(test_name, () => {
     it('should find the div image with proximity selector', async () => {
       expect(await image(below('Div Image')).exists()).to.be.true;
     });
+    it('should return true when isVisible fn is observed on non hidden element', async () => {
+      expect(await image(below('Div Image')).isVisible()).to.be.true;
+    });
   });
 
   describe('image description in page', () => {
@@ -192,6 +195,13 @@ describe(test_name, () => {
           { selectHiddenElement: true },
         ).exists(),
       ).to.be.true;
+    });
+
+    it('should return false when isVisible fn is observed on hidden element', async () => {
+      expect(await image({ id: 'hiddenDivImage' }).isVisible()).to.be
+        .false;
+      expect(await image({ id: 'hiddenImage' }).isVisible()).to.be
+        .false;
     });
   });
 });
