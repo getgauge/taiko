@@ -226,6 +226,11 @@ describe(test_name, () => {
             'similarButton1',
           );
         });
+
+        it('should return true for non hidden element when isVisible fn is called on button', async () => {
+          expect(await button('similarButton').isVisible()).to.be
+            .true;
+        });
       });
 
       it('test text() to be first element text', async () => {
@@ -274,6 +279,10 @@ describe(test_name, () => {
             selectHiddenElement: true,
           }).exists(),
         ).to.be.true;
+      });
+
+      it('should return false for hidden element when isVisible fn is called on button', async () => {
+        expect(await button('HiddenButton').isVisible()).to.be.false;
       });
     });
   });

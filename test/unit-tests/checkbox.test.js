@@ -207,5 +207,14 @@ describe(test_name, () => {
         }).exists(),
       ).to.be.true;
     });
+
+    it('should return true for non hidden element when isVisible fn is called on button', async () => {
+      expect(await checkBox('someCheckBox').isVisible()).to.be.true;
+    });
+
+    it('should return false for hidden element when isVisible fn is called on textBox', async () => {
+      expect(await checkBox({ id: 'hiddenCheckbox' }).isVisible()).to
+        .be.false;
+    });
   });
 });
