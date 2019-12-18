@@ -90,7 +90,7 @@ describe('closeTab', () => {
     _isMatchRegex = false;
     let validatePromise = validateEmitterEvent(
       'success',
-      'Closed current tab with URL https://flipkart.com',
+      'Closed current tab matching https://flipkart.com',
     );
     await taiko.closeTab();
     await validatePromise;
@@ -119,7 +119,7 @@ describe('closeTab', () => {
 
     let validatePromise = validateEmitterEvent(
       'success',
-      'Closed all tabs with URL https://flipkart.com',
+      'Closed tab(s) matching https://flipkart.com',
     );
     await taiko.closeTab('https://flipkart.com');
     await validatePromise;
@@ -147,7 +147,7 @@ describe('closeTab', () => {
 
     let validatePromise = validateEmitterEvent(
       'success',
-      'Closed all tabs with URL https://flipkart.com',
+      'Closed tab(s) matching https://flipkart.com',
     );
     await taiko.closeTab('https://flipkart.com');
     await validatePromise;
@@ -171,11 +171,11 @@ describe('closeTab', () => {
     });
     currentURL = 'https://amazon.com';
     _isMatchUrl = false;
-    _isMatchRegex = true;
+    _isMatchRegex = false;
 
     let validatePromise = validateEmitterEvent(
       'success',
-      `Closed all tabs with Regex URL /http(s?):\\/\\/(www?).google.(com|co.in|co.uk)/`,
+      `Closed tab(s) matching /http(s?):\\/\\/(www?).google.(com|co.in|co.uk)/`,
     );
     await taiko.closeTab(
       /http(s?):\/\/(www?).google.(com|co.in|co.uk)/,

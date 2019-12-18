@@ -111,5 +111,23 @@ describe('TargetHandler', () => {
       expect(targets.matching.length).to.be.equal(0);
       expect(targets.others.length).to.be.equal(3);
     });
+    it('should give the matching tab for regex Title', async () => {
+      _targets.push({
+        id: '1',
+        type: 'page',
+        url: 'https://google.com',
+        title: 'Google',
+      });
+      _targets.push({
+        id: '2',
+        type: 'page',
+        url: 'https://github.com',
+        title:
+          'The world’s leading software development platform · GitHub',
+      });
+      let targets = await targetHandler.getCriTargets(/Go*gle/);
+      expect(targets.matching.length).to.be.equal(1);
+      expect(targets.others.length).to.be.equal(1);
+    });
   });
 });
