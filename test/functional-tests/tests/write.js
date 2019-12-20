@@ -7,7 +7,7 @@ const {
   toLeftOf,
   $,
 } = require('taiko');
-var _selectors = require('./selectors');
+var { getElements } = require('./selectors');
 
 step('Write <text>', async function(text) {
   await write(text);
@@ -17,22 +17,20 @@ step('Clear element <cssSelector>', async function(cssSelector) {
   await clear($(cssSelector));
 });
 
-step('Write <text> into Input Field near <element>', async function(
+step('Write <text> into Input Field near <table>', async function(
   text,
-  element,
+  table,
 ) {
-  await write(
-    text,
-    into(textBox(near(_selectors.getElement(element)))),
-  );
+  for (const element of getElements(table)) {
+    await write(text, into(textBox(near(element))));
+  }
 });
 
-step(
-  'Write <text> into textArea to left of <element>',
-  async function(text, element) {
-    await write(
-      text,
-      into(textBox(toLeftOf(_selectors.getElement(element)))),
-    );
-  },
-);
+step('Write <text> into textArea to left of <table>', async function(
+  text,
+  table,
+) {
+  for (const element of getElements(table)) {
+    await write(text, into(textBox(toLeftOf(element))));
+  }
+});

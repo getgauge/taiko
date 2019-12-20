@@ -1,4 +1,4 @@
-var _selectors = require('./selectors');
+var { getElements } = require('./selectors');
 const assert = require('assert');
 const {
   scrollTo,
@@ -18,11 +18,15 @@ const {
 var URL = require('url').URL;
 
 step('Scroll to <table>', async function(table) {
-  await scrollTo(_selectors.getElement(table));
+  for (const element of getElements(table)) {
+    await scrollTo(element);
+  }
 });
 
 step('Scroll up <table>', async function(table) {
-  await scrollUp(_selectors.getElement(table));
+  for (const element of getElements(table)) {
+    await scrollUp(element);
+  }
 });
 
 step('Press <key>', async function(key) {
@@ -30,7 +34,9 @@ step('Press <key>', async function(key) {
 });
 
 step('Hover on element <table>', async function(table) {
-  await hover(_selectors.getElement(table));
+  for (const element of getElements(table)) {
+    await hover(element);
+  }
 });
 
 step('Drag <source> and drop to <destination>', async function(
@@ -78,8 +84,10 @@ step('Assert tap on screen', async function() {
   assert.deepEqual(touch, ['Touchstart: 0', 'Touchend: 0']);
 });
 
-step('clear <arg0> from textArea <arg1>', async function(arg0, arg1) {
-  await clear(toLeftOf(_selectors.getElement(arg1)));
+step('clear textArea <table>', async function(table) {
+  for (const element of getElements(table)) {
+    await clear(toLeftOf(element));
+  }
 });
 
 step('set cookie with <key> and <value>', async function(key, value) {

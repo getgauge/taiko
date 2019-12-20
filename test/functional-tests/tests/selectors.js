@@ -26,20 +26,16 @@ function getElementWithSelector(element, selector) {
   return selectedElement;
 }
 
-function getElement(table) {
-  var referenceElement = null;
+function getElements(table) {
+  var referenceElements = [];
   table.rows.forEach(function(row) {
-    referenceElement = getElementWithSelector(
-      row.cells[0],
-      row.cells[1],
+    referenceElements.push(
+      getElementWithSelector(row.cells[0], row.cells[1]),
     );
-    if (row.cells[2]) {
-      return referenceElement[row.cells[2]]();
-    }
   });
-  return referenceElement;
+  return referenceElements;
 }
 
 module.exports = {
-  getElement,
+  getElements,
 };
