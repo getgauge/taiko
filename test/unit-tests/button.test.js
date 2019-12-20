@@ -282,7 +282,16 @@ describe(test_name, () => {
       });
 
       it('should return false for hidden element when isVisible fn is called on button', async () => {
-        expect(await button('HiddenButton').isVisible()).to.be.false;
+        expect(
+          await button('HiddenButton', {
+            selectHiddenElement: true,
+          }).isVisible(),
+        ).to.be.false;
+      });
+
+      it('test isVisible() should throw if the element is not found', async () => {
+        await expect(button('HiddenButton').isVisible()).to.be
+          .eventually.rejected;
       });
     });
   });

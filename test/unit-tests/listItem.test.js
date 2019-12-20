@@ -70,13 +70,23 @@ describe(test_name, () => {
       await expect(listItem('.foo').text()).to.be.eventually.rejected;
     });
 
-    it('should return false for hidden element when isVisible fn is called on listItem', async () => {
-      expect(await listItem({ id: 'hidden' }).isVisible()).to.be
-        .false;
+    // Should run after fix #811
+    it.skip('should return false for hidden element when isVisible fn is called on listItem', async () => {
+      expect(
+        await listItem(
+          { id: 'hidden' },
+          { selectHiddenElement: true },
+        ).isVisible(),
+      ).to.be.false;
     });
 
     it('should return true for non hidden element when isVisible fn is called on listItem', async () => {
       expect(await listItem({ id: 'coffee' }).isVisible()).to.be.true;
+    });
+
+    it('test isVisible() should throw if the element is not found', async () => {
+      await expect(listItem('foo').isVisible()).to.be.eventually
+        .rejected;
     });
   });
 

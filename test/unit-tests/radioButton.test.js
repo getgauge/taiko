@@ -158,7 +158,10 @@ describe(test_name, () => {
 
     it('should return false for hidden element when isVisible fn is called on textBox', async () => {
       expect(
-        await radioButton({ id: 'hiddenRadioButton' }).isVisible(),
+        await radioButton(
+          { id: 'hiddenRadioButton' },
+          { selectHiddenElement: true },
+        ).isVisible(),
       ).to.be.false;
     });
   });

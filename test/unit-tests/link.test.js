@@ -76,7 +76,19 @@ describe(test_name, () => {
     });
 
     it('should return false when isVisible fn is observed on hidden element', async () => {
-      expect(await link('HiddenLink').isVisible()).to.be.false;
+      expect(
+        await link('HiddenLink', {
+          selectHiddenElement: true,
+        }).isVisible(),
+      ).to.be.false;
+    });
+
+    it('test isVisible() should throw err when element not found', async () => {
+      expect(
+        link('foo', {
+          selectHiddenElement: true,
+        }).isVisible(),
+      ).to.be.rejected;
     });
   });
 
