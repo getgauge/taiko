@@ -31,10 +31,9 @@ tags: knownIssue
    |text|Example 2: Element rendered after the fact|
 * Assert Exists
 
-   |Type|Selector                      |Method|
-   |----|------------------------------|------|
-   |text|Element on page that is hidden|exists|
-   |text|Start                         |exists|
+   |Type|Selector                      |
+   |----|------------------------------|
+   |text|Start                         |
 
 ## Right Of
 
@@ -42,9 +41,9 @@ tags: knownIssue
 * Click "Horizontal Slider"
 * Assert Exists
 
-   |Type|Selector|Method|
-   |----|--------|------|
-   |text|See     |exists|
+   |Type|Selector|
+   |----|--------|
+   |text|See     |
 * Click link to right of
 
    |Type|Selector|

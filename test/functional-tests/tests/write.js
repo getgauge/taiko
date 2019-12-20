@@ -14,10 +14,6 @@ step('Write <text>', async function(text) {
   await write(text);
 });
 
-step('Focus <table>', async function(table) {
-  await focus(_selectors.getElement(table));
-});
-
 step('Clear element <cssSelector>', async function(cssSelector) {
   await clear($(cssSelector));
 });
