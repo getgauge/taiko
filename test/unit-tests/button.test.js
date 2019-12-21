@@ -213,6 +213,11 @@ describe(test_name, () => {
             .above(0);
         });
 
+        it('test isVisible of elements', async () => {
+          const elements = await button('similarButton').elements();
+          expect(await elements[0].isVisible()).to.be.true;
+        });
+
         it('test description of elements', async () => {
           let elements = await button('similarButton').elements();
           expect(await elements[0].description).to.be.eql(

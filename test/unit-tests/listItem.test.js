@@ -98,6 +98,11 @@ describe(test_name, () => {
         .above(0);
     });
 
+    it('test isVisible of elements', async () => {
+      const elements = await listItem({ id: 'coffee' }).elements();
+      expect(await elements[0].isVisible()).to.be.true;
+    });
+
     it('test description', async () => {
       const elems = await listItem({ id: 'coffee' }).elements();
       expect(elems[0].description).to.be.eql(
