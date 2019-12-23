@@ -11,6 +11,9 @@ let {
   into,
   setConfig,
   above,
+  focus,
+  press,
+  evaluate,
 } = require('../../lib/taiko');
 let {
   createHtml,
@@ -337,6 +340,223 @@ describe(test_name, () => {
         }).elements();
         expect(await elements[0].value()).to.be.eql(
           'contentEditableValue',
+        );
+      });
+    });
+  });
+
+  describe('range', () => {
+    let filePath;
+    var inputType = {
+      type: 'range',
+      name: 'inputType-range',
+      testValue: '10',
+      min: '0',
+      max: '1000',
+    };
+    beforeEach(async () => {
+      let innerHtml = `
+      <div>
+          <form name="${inputType.name}">
+              <div name="withInlineText">
+                  <input type="${inputType.type}" value="${inputType.testValue}">With Inline Text</input>
+              </div>
+              <div name="withWrappedLabel">
+                  <label>
+                      <input type="${inputType.type}" value="${inputType.testValue}"/>
+                      <span>With Wrapped Label</span>
+                  </label>
+              </div>
+              <div name="withLabelFor">
+                  <label for="${inputType.name}WithLabelFor">With Label For</label>
+                  <input id="${inputType.name}WithLabelFor" type="${inputType.type}" value="${inputType.testValue}" min="${inputType.min}" max="${inputType.max}"/>
+              </div>
+              <div>
+                  <input type="${inputType.type}" id="sample${inputType.type}" value="${inputType.testValue}">With Inline Text</input>
+              </div>
+          </form>
+      </div>`;
+      filePath = createHtml(innerHtml, test_name);
+      await goto(filePath);
+      setConfig({ waitForNavigation: false });
+    });
+
+    after(() => {
+      setConfig({ waitForNavigation: true });
+      removeFile(filePath);
+    });
+
+    describe('with inline text', () => {
+      it('test exists()', async () => {
+        expect(await textBox('With Inline Text').exists()).to.be.true;
+      });
+
+      it('test value()', async () => {
+        expect(await textBox('With Inline Text').value()).to.equal(
+          inputType.testValue,
+        );
+        console.log(await textBox('With Inline Text').value());
+        await focus(textBox('With Inline Text'));
+        await press('ArrowRight');
+        console.log(await textBox('With Inline Text').value());
+        expect(await textBox('With Inline Text').value()).to.equal(
+          (parseInt(inputType.testValue) + 1).toString(),
+        );
+        await evaluate(textBox('With Inline Text'), element => {
+          element.value = '100';
+        });
+        expect(await textBox('With Inline Text').value()).to.equal(
+          '100',
+        );
+      });
+
+      it('test description', async () => {
+        expect(textBox('With Inline Text').description).to.be.eql(
+          'Text field with label With Inline Text ',
+        );
+      });
+    });
+    describe('wrapped in label', () => {
+      it('test exists()', async () => {
+        expect(await textBox('With Wrapped Label').exists()).to.be
+          .true;
+      });
+
+      it('test value()', async () => {
+        expect(await textBox('With Wrapped Label').value()).to.equal(
+          inputType.testValue,
+        );
+        console.log(await textBox('With Wrapped Label').value());
+        await focus(textBox('With Wrapped Label'));
+        await press('ArrowRight');
+        console.log(await textBox('With Wrapped Label').value());
+        expect(await textBox('With Wrapped Label').value()).to.equal(
+          (parseInt(inputType.testValue) + 1).toString(),
+        );
+        await evaluate(textBox('With Wrapped Label'), element => {
+          element.value = '100';
+        });
+        expect(await textBox('With Wrapped Label').value()).to.equal(
+          '100',
+        );
+      });
+
+      it('test description', async () => {
+        expect(textBox('With Wrapped Label').description).to.be.eql(
+          'Text field with label With Wrapped Label ',
+        );
+      });
+    });
+
+    describe('using label for', () => {
+      it('test exists()', async () => {
+        expect(await textBox('With Label For').exists()).to.be.true;
+      });
+
+      it('test value()', async () => {
+        expect(await textBox('With Label For').value()).to.equal(
+          inputType.testValue,
+        );
+        console.log(await textBox('With Label For').value());
+        await focus(textBox('With Label For'));
+        await press('ArrowRight');
+        console.log(await textBox('With Label For').value());
+        expect(await textBox('With Label For').value()).to.equal(
+          (parseInt(inputType.testValue) + 1).toString(),
+        );
+        await evaluate(textBox('With Label For'), element => {
+          element.value = '100';
+        });
+        expect(await textBox('With Label For').value()).to.equal(
+          '100',
+        );
+      });
+
+      it('test description', async () => {
+        expect(textBox('With Label For').description).to.be.eql(
+          'Text field with label With Label For ',
+        );
+      });
+    });
+
+    describe('attribute and value pair', () => {
+      it('test exists()', async () => {
+        expect(
+          await textBox({
+            id: inputType.name + 'WithLabelFor',
+          }).exists(),
+        ).to.be.true;
+        expect(
+          await textBox({
+            min: `${inputType.min}`,
+            max: `${inputType.max}`,
+          }).exists(),
+        ).to.be.true;
+      });
+
+      it('test value()', async () => {
+        expect(
+          await textBox({
+            id: inputType.name + 'WithLabelFor',
+          }).value(),
+        ).to.equal(inputType.testValue);
+      });
+
+      it('test description', async () => {
+        expect(
+          textBox({
+            id: inputType.name + 'WithLabelFor',
+          }).description,
+        ).to.be.eql(
+          `Text field[@id = concat(\'inputType-${inputType.type}WithLabelFor\', "")]`,
+        );
+      });
+    });
+
+    describe('with relative selector', () => {
+      it('test exists()', async () => {
+        expect(await textBox(above('With Label For')).exists()).to.be
+          .true;
+      });
+
+      it('test value()', async () => {
+        expect(
+          await textBox(above('With Label For')).value(),
+        ).to.equal(inputType.testValue);
+      });
+
+      it('test description', async () => {
+        expect(
+          textBox(above('With Label For')).description,
+        ).to.be.eql('Text field Above With Label For');
+      });
+    });
+
+    describe('test elementsList properties', () => {
+      it('test get of elements', async () => {
+        const elements = await textBox({
+          id: `sample${inputType.type}`,
+        }).elements();
+        expect(elements[0].get())
+          .to.be.a('number')
+          .above(0);
+      });
+
+      it('test description of elements', async () => {
+        let elements = await textBox({
+          id: `sample${inputType.type}`,
+        }).elements();
+        expect(elements[0].description).to.be.eql(
+          `Text field[@id = concat(\'sample${inputType.type}\', "")]`,
+        );
+      });
+
+      it('test value of elements', async () => {
+        let elements = await textBox({
+          id: `sample${inputType.type}`,
+        }).elements();
+        expect(await elements[0].value()).to.be.eql(
+          `${inputType.testValue}`,
         );
       });
     });
