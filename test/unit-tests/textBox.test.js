@@ -11,6 +11,9 @@ let {
   into,
   setConfig,
   above,
+  focus,
+  press,
+  evaluate,
 } = require('../../lib/taiko');
 let {
   createHtml,
@@ -342,6 +345,237 @@ describe(test_name, () => {
     });
   });
 
+  var html5InputType = [
+    {
+      type: 'range',
+      name: 'inputType-range',
+      testValue: '10',
+      min: '0',
+      max: '1000',
+    },
+    {
+      type: 'time',
+      name: 'inputType-time',
+      testValue: '11:00',
+      min: '09:00',
+      max: '18:00',
+    },
+    {
+      type: 'date',
+      name: 'inputType-date',
+      testValue: '2018-07-22',
+      min: '2018-01-01',
+      max: '2018-12-31',
+    },
+    {
+      type: 'datetime-local',
+      name: 'inputType-datetime-local',
+      testValue: '2018-06-12T19:30',
+      min: '2018-06-07T00:00',
+      max: '2018-06-14T00:00',
+    },
+    {
+      type: 'month',
+      name: 'inputType-month',
+      testValue: '2018-04',
+      min: '2018-03',
+      max: '2018-05',
+    },
+    {
+      type: 'week',
+      name: 'inputType-week',
+      testValue: '2018-W26',
+      min: '2018-W18',
+      max: '2018-W26',
+    },
+    {
+      type: 'color',
+      name: 'inputType-color',
+      testValue: '#ff0000',
+      min: '',
+      max: '',
+    },
+  ];
+  html5InputType.forEach(inputType => {
+    describe(`html5-element with type ${inputType.type}`, () => {
+      let filePath;
+      beforeEach(async () => {
+        let innerHtml = `
+        <div>
+            <form name="${inputType.name}">
+                <div name="withInlineText">
+                    <input type="${inputType.type}" value="${inputType.testValue}">With Inline Text</input>
+                </div>
+                <div name="withWrappedLabel">
+                    <label>
+                        <input type="${inputType.type}" value="${inputType.testValue}"/>
+                        <span>With Wrapped Label</span>
+                    </label>
+                </div>
+                <div name="withLabelFor">
+                    <label for="${inputType.name}WithLabelFor">With Label For</label>
+                    <input id="${inputType.name}WithLabelFor" type="${inputType.type}" value="${inputType.testValue}" min="${inputType.min}" max="${inputType.max}"/>
+                </div>
+                <div>
+                    <input type="${inputType.type}" id="sample${inputType.type}" value="${inputType.testValue}">With Inline Text</input>
+                </div>
+            </form>
+        </div>`;
+        filePath = createHtml(innerHtml, test_name);
+        await goto(filePath);
+        setConfig({
+          waitForNavigation: false,
+        });
+      });
+
+      after(() => {
+        setConfig({
+          waitForNavigation: true,
+        });
+        removeFile(filePath);
+      });
+
+      describe('with inline text', () => {
+        it('test exists()', async () => {
+          expect(await textBox('With Inline Text').exists()).to.be
+            .true;
+        });
+
+        it('test value()', async () => {
+          expect(await textBox('With Inline Text').value()).to.equal(
+            inputType.testValue,
+          );
+        });
+
+        it('test description', async () => {
+          expect(textBox('With Inline Text').description).to.be.eql(
+            'Text field with label With Inline Text ',
+          );
+        });
+      });
+      describe('wrapped in label', () => {
+        it('test exists()', async () => {
+          expect(await textBox('With Wrapped Label').exists()).to.be
+            .true;
+        });
+
+        it('test value()', async () => {
+          expect(
+            await textBox('With Wrapped Label').value(),
+          ).to.equal(inputType.testValue);
+        });
+
+        it('test description', async () => {
+          expect(textBox('With Wrapped Label').description).to.be.eql(
+            'Text field with label With Wrapped Label ',
+          );
+        });
+      });
+
+      describe('using label for', () => {
+        it('test exists()', async () => {
+          expect(await textBox('With Label For').exists()).to.be.true;
+        });
+
+        it('test value()', async () => {
+          expect(await textBox('With Label For').value()).to.equal(
+            inputType.testValue,
+          );
+        });
+
+        it('test description', async () => {
+          expect(textBox('With Label For').description).to.be.eql(
+            'Text field with label With Label For ',
+          );
+        });
+      });
+
+      describe('attribute and value pair', () => {
+        if (inputType.type !== 'color') {
+          it('test exists()', async () => {
+            expect(
+              await textBox({
+                id: inputType.name + 'WithLabelFor',
+              }).exists(),
+            ).to.be.true;
+            expect(
+              await textBox({
+                min: `${inputType.min}`,
+                max: `${inputType.max}`,
+              }).exists(),
+            ).to.be.true;
+          });
+        }
+
+        it('test value()', async () => {
+          expect(
+            await textBox({
+              id: inputType.name + 'WithLabelFor',
+            }).value(),
+          ).to.equal(inputType.testValue);
+        });
+
+        it('test description', async () => {
+          expect(
+            textBox({
+              id: inputType.name + 'WithLabelFor',
+            }).description,
+          ).to.be.eql(
+            `Text field[@id = concat(\'inputType-${inputType.type}WithLabelFor\', "")]`,
+          );
+        });
+      });
+
+      describe('with relative selector', () => {
+        it('test exists()', async () => {
+          expect(await textBox(above('With Label For')).exists()).to
+            .be.true;
+        });
+
+        it('test value()', async () => {
+          expect(
+            await textBox(above('With Label For')).value(),
+          ).to.equal(inputType.testValue);
+        });
+
+        it('test description', async () => {
+          expect(
+            textBox(above('With Label For')).description,
+          ).to.be.eql('Text field Above With Label For');
+        });
+      });
+
+      describe('test elementsList properties', () => {
+        it('test get of elements', async () => {
+          const elements = await textBox({
+            id: `sample${inputType.type}`,
+          }).elements();
+          expect(elements[0].get())
+            .to.be.a('number')
+            .above(0);
+        });
+
+        it('test description of elements', async () => {
+          let elements = await textBox({
+            id: `sample${inputType.type}`,
+          }).elements();
+          expect(elements[0].description).to.be.eql(
+            `Text field[@id = concat(\'sample${inputType.type}\', "")]`,
+          );
+        });
+
+        it('test value of elements', async () => {
+          let elements = await textBox({
+            id: `sample${inputType.type}`,
+          }).elements();
+          expect(await elements[0].value()).to.be.eql(
+            `${inputType.testValue}`,
+          );
+        });
+      });
+    });
+  });
+
   var inputTypes = [
     {
       type: 'text',
@@ -358,7 +592,11 @@ describe(test_name, () => {
       name: 'inputType-search',
       testValue: 'search input type entered',
     },
-    { type: 'number', name: 'inputType-number', testValue: '10' },
+    {
+      type: 'number',
+      name: 'inputType-number',
+      testValue: '10',
+    },
     {
       type: 'email',
       name: 'inputType-email',
