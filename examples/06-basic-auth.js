@@ -19,6 +19,7 @@ const { goto, text } = require('taiko'),
     ).to.be.true;
   } catch (e) {
     console.error(e);
+    process.exitCode = 1;
   } finally {
     await closeBrowserAndStopScreencast();
   }

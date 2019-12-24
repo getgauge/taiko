@@ -19,6 +19,7 @@ let {
   createHtml,
   removeFile,
   openBrowserArgs,
+  resetConfig,
 } = require('./test-util');
 const test_name = 'textBox';
 
@@ -56,11 +57,15 @@ describe(test_name, () => {
         '</div>';
       filePath = createHtml(innerHtml, test_name);
       await goto(filePath);
-      setConfig({ waitForNavigation: false });
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
     });
 
     after(() => {
-      setConfig({ waitForNavigation: true });
+      resetConfig();
       removeFile(filePath);
     });
 
@@ -146,7 +151,8 @@ describe(test_name, () => {
       });
 
       it('test value() should throw if the element is not found', async () => {
-        expect(textBox('foo').value()).to.be.eventually.rejected;
+        await expect(textBox('foo').value()).to.be.eventually
+          .rejected;
       });
 
       it('test description', async () => {
@@ -206,11 +212,15 @@ describe(test_name, () => {
         '</div>';
       filePath = createHtml(innerHtml, test_name);
       await goto(filePath);
-      setConfig({ waitForNavigation: false });
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
     });
 
     after(() => {
-      setConfig({ waitForNavigation: true });
+      resetConfig();
       removeFile(filePath);
     });
 
@@ -640,11 +650,15 @@ describe(test_name, () => {
                 </div>`;
         filePath = createHtml(innerHtml, test_name + inputType.type);
         await goto(filePath);
-        setConfig({ waitForNavigation: false });
+        setConfig({
+          waitForNavigation: false,
+          retryTimeout: 100,
+          retryInterval: 10,
+        });
       });
 
       after(() => {
-        setConfig({ waitForNavigation: true });
+        resetConfig();
         removeFile(filePath);
       });
 
@@ -739,7 +753,7 @@ describe(test_name, () => {
               id: inputType.name + 'WithLabelFor',
             }).description,
           ).to.be.eql(
-            `Text field[@id = concat(\'inputType-${inputType.type}WithLabelFor\', "")]`,
+            `Text field[@id = concat('inputType-${inputType.type}WithLabelFor', "")]`,
           );
         });
       });
@@ -778,7 +792,7 @@ describe(test_name, () => {
             id: `sample${inputType.type}`,
           }).elements();
           expect(elements[0].description).to.be.eql(
-            `Text field[@id = concat(\'sample${inputType.type}\', "")]`,
+            `Text field[@id = concat('sample${inputType.type}', "")]`,
           );
         });
 
@@ -823,11 +837,15 @@ describe(test_name, () => {
             </div>`;
       filePath = createHtml(innerHtml, test_name + inputTypeName);
       await goto(filePath);
-      setConfig({ waitForNavigation: false });
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
     });
 
     after(() => {
-      setConfig({ waitForNavigation: true });
+      resetConfig();
       removeFile(filePath);
     });
 
@@ -936,7 +954,8 @@ describe(test_name, () => {
       });
 
       it('test text should throw if the element is not found', async () => {
-        expect(textBox('.foo').text()).to.be.eventually.rejected;
+        await expect(textBox('.foo').text()).to.be.eventually
+          .rejected;
       });
     });
 

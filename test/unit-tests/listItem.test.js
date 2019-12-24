@@ -14,6 +14,7 @@ let {
   createHtml,
   removeFile,
   openBrowserArgs,
+  resetConfig,
 } = require('./test-util');
 
 const test_name = 'list Item';
@@ -31,11 +32,15 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    await setConfig({ waitForNavigation: false });
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
 
   after(async () => {
-    await setConfig({ waitForNavigation: true });
+    resetConfig();
     await closeBrowser();
     removeFile(filePath);
   });
@@ -47,7 +52,7 @@ describe(test_name, () => {
 
     it('test description', async () => {
       expect(listItem({ id: 'coffee' }).description).to.be.eql(
-        `list Item[@id = concat(\'coffee\', "")]`,
+        'list Item[@id = concat(\'coffee\', "")]',
       );
     });
 
@@ -58,7 +63,7 @@ describe(test_name, () => {
     });
 
     it('test text should throw if the element is not found', async () => {
-      expect(listItem('.foo').text()).to.be.eventually.rejected;
+      await expect(listItem('.foo').text()).to.be.eventually.rejected;
     });
   });
 
@@ -73,7 +78,7 @@ describe(test_name, () => {
     it('test description', async () => {
       const elems = await listItem({ id: 'coffee' }).elements();
       expect(elems[0].description).to.be.eql(
-        `list Item[@id = concat(\'coffee\', "")]`,
+        'list Item[@id = concat(\'coffee\', "")]',
       );
     });
 

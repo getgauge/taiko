@@ -1,6 +1,7 @@
 let path = require('path');
 let { writeFileSync, unlinkSync } = require('fs');
 let { pathToFileURL, fileURLToPath } = require('url');
+let { setConfig } = require('../../lib/taiko');
 
 module.exports.createHtml = (innerHtml, testName) => {
   let htmlFilePath = path.join(
@@ -43,4 +44,18 @@ module.exports.openBrowserArgs = {
     '--no-sandbox',
     '--no-zygote',
   ],
+};
+
+module.exports.resetConfig = () => {
+  setConfig({
+    navigationTimeout: 30000,
+    observeTime: 3000,
+    retryInterval: 100,
+    retryTimeout: 10000,
+    observe: false,
+    waitForNavigation: true,
+    ignoreSSLErrors: false,
+    headful: false,
+    highlightOnAction: 'true',
+  });
 };

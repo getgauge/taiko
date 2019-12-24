@@ -1,3 +1,5 @@
+/* global date */
+
 const assert = require('assert');
 var _selectors = require('./selectors');
 
@@ -15,10 +17,6 @@ step('assert text should be empty into <table>', async function(
   table,
 ) {
   assert.equal(await _selectors.getElement(table).text(), '');
-});
-
-step('Assert text is not empty <table>', async function(table) {
-  assert.ok((await _selectors.getElement(table).text()) != '');
 });
 
 step('Assert text <content> exists on the page.', async function(

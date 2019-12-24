@@ -10,6 +10,7 @@ let {
   createHtml,
   removeFile,
   openBrowserArgs,
+  resetConfig,
 } = require('./test-util');
 let path = require('path');
 let fs = require('fs');
@@ -27,11 +28,15 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false });
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
 
   after(async () => {
-    setConfig({ waitForNavigation: true });
+    resetConfig();
     await closeBrowser();
     removeFile(filePath);
     removeFile(screenshotPath);

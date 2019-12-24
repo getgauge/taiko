@@ -6,6 +6,7 @@ let {
   createHtml,
   removeFile,
   openBrowserArgs,
+  resetConfig,
 } = require('./test-util');
 let {
   openBrowser,
@@ -46,11 +47,15 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false });
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
 
   after(async () => {
-    setConfig({ waitForNavigation: true });
+    resetConfig();
     await closeBrowser();
     removeFile(filePath);
   });
@@ -83,7 +88,7 @@ describe(test_name, () => {
     });
 
     it('test check() to throw if the element is not found', async () => {
-      expect(checkBox('foo').check()).to.be.eventually.rejected;
+      await expect(checkBox('foo').check()).to.be.eventually.rejected;
     });
 
     it('test check() triggers events', async () => {
@@ -101,7 +106,8 @@ describe(test_name, () => {
     });
 
     it('test uncheck() to throw if the element is not found', async () => {
-      expect(checkBox('foo').uncheck()).to.be.eventually.rejected;
+      await expect(checkBox('foo').uncheck()).to.be.eventually
+        .rejected;
     });
 
     it('test isChecked()', async () => {
@@ -111,11 +117,12 @@ describe(test_name, () => {
     });
 
     it('test isChecked() to throw if no element is found', async () => {
-      expect(checkBox('foo').isChecked()).to.be.eventually.rejected;
+      await expect(checkBox('foo').isChecked()).to.be.eventually
+        .rejected;
     });
 
     it('test text should throw if the element is not found', async () => {
-      expect(checkBox('.foo').text()).to.be.eventually.rejected;
+      await expect(checkBox('.foo').text()).to.be.eventually.rejected;
     });
   });
 

@@ -16,6 +16,7 @@ let {
   createHtml,
   removeFile,
   openBrowserArgs,
+  resetConfig,
 } = require('./test-util');
 const path = require('path');
 const test_name = 'fileField';
@@ -51,10 +52,14 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false });
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
   after(async () => {
-    setConfig({ waitForNavigation: true });
+    resetConfig();
     await closeBrowser();
     removeFile(filePath);
   });
@@ -66,7 +71,7 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        attach(
+        await attach(
           path.join(__dirname, 'data', 'foo.txt'),
           fileField(above(button('Upload'))),
         );
@@ -101,7 +106,7 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        attach(
+        await attach(
           path.join(__dirname, 'data', 'foo.txt'),
           fileField('Select a file'),
         );
@@ -128,7 +133,7 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        attach(
+        await attach(
           path.join(__dirname, 'data', 'foo.txt'),
           fileField('Select a file'),
         );
@@ -191,7 +196,10 @@ describe(test_name, () => {
       let elements = await fileField({
         id: 'similarFileField',
       }).elements();
-      attach(path.join(__dirname, 'data', 'foo.txt'), elements[0]);
+      await attach(
+        path.join(__dirname, 'data', 'foo.txt'),
+        elements[0],
+      );
       expect(await elements[0].value()).to.include('foo.txt');
     });
 

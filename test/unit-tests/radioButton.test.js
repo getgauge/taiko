@@ -15,6 +15,7 @@ let {
   createHtml,
   removeFile,
   openBrowserArgs,
+  resetConfig,
 } = require('./test-util');
 
 const test_name = 'radio button';
@@ -48,11 +49,15 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, 'radioButton');
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false });
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
 
   after(async () => {
-    setConfig({ waitForNavigation: true });
+    resetConfig();
     await closeBrowser();
     removeFile(filePath);
   });
@@ -77,7 +82,8 @@ describe(test_name, () => {
     });
 
     it('test select() should throw if the element is not found', async () => {
-      expect(radioButton('foo').select()).to.be.eventually.rejected;
+      await expect(radioButton('foo').select()).to.be.eventually
+        .rejected;
     });
 
     it('test select() triggers events', async () => {
@@ -95,7 +101,8 @@ describe(test_name, () => {
     });
 
     it('test deselect() should throw error if the element is not found', async () => {
-      expect(radioButton('foo').deselect()).to.be.eventually.rejected;
+      await expect(radioButton('foo').deselect()).to.be.eventually
+        .rejected;
     });
 
     it('test isSelected()', async () => {
@@ -106,12 +113,15 @@ describe(test_name, () => {
     });
 
     it('test isSelected() to throw error if the element is not found', async () => {
-      expect(radioButton('foo').isSelected()).to.be.eventually
-        .rejected;
+      await expect(
+        radioButton('foo').isSelected(),
+      ).to.be.eventually.rejectedWith('');
     });
 
     it('test text should throw if the element is not found', async () => {
-      expect(radioButton('.foo').text()).to.be.eventually.rejected;
+      await expect(
+        radioButton('.foo').text(),
+      ).to.be.eventually.rejectedWith('');
     });
   });
 

@@ -13,6 +13,7 @@ let {
   createHtml,
   removeFile,
   openBrowserArgs,
+  resetConfig,
 } = require('./test-util');
 const test_name = 'button';
 
@@ -64,10 +65,14 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false });
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
   });
   after(async () => {
-    setConfig({ waitForNavigation: true });
+    resetConfig();
     await closeBrowser();
     removeFile(filePath);
   });
@@ -116,7 +121,7 @@ describe(test_name, () => {
       }); // Todo: should be fixed with #815
 
       it('test text should throw if the element is not found', async () => {
-        expect(button('.foo').text()).to.be.eventually.rejected;
+        await expect(button('.foo').text()).to.be.eventually.rejected;
       });
     });
 

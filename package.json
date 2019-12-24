@@ -7,11 +7,12 @@
     "taiko": "bin/taiko.js"
   },
   "scripts": {
-    "lint": "prettier --write '**/*.js'",
+    "lint": "eslint --fix .",
     "doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
     "test:api": "node test/unit-tests/taiko-test.js",
     "examples": "cd examples && npm install && npm test",
-    "test:unit": "mocha \"test/unit-tests/**/*.test.js\" --timeout 30000",
+    "test:unit:silent": "mocha 'test/unit-tests/**/*.test.js' --timeout 3000 -R min",
+    "test:unit": "mocha 'test/unit-tests/**/*.test.js' --timeout 3000",
     "test": "npm run test:api && npm run test:unit",
     "test-functional": "cd test/functional-tests && npm install && npm test",
     "install": "node lib/install.js",
@@ -34,8 +35,8 @@
     ]
   },
   "taiko": {
-    "chromium_revision": "706915",
-    "chromium_version": "79.0.3945.16"
+    "chromium_revision": "724157",
+    "chromium_version": "81.0.3994.0"
   },
   "husky": {
     "hooks": {
@@ -47,12 +48,12 @@
   "license": "MIT",
   "dependencies": {
     "babylon": "^6.18.0",
-    "chrome-remote-interface": "^0.28.0",
+    "chrome-remote-interface": "^0.28.1",
     "commander": "^4.0.0",
     "debug": "^4.1.1",
     "extract-zip": "^1.6.6",
     "fs-extra": "^8.0.1",
-    "https-proxy-agent": "^3.0.1",
+    "https-proxy-agent": "^4.0.0",
     "progress": "^2.0.3",
     "proxy-from-env": "^1.0.0",
     "recast": "^0.18.5"
@@ -62,15 +63,16 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "documentation": "^12.1.3",
-    "eslint": "^6.6.0",
+    "eslint": "^6.7.2",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.5.0",
-    "eslint-plugin-jest": "^23.0.2",
-    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-mocha": "^6.2.2",
+    "eslint-plugin-prettier": "^3.1.2",
     "handlebars": "^4.5.1",
-    "husky": "^3.0.9",
-    "lint-staged": "^9.4.2",
-    "marked": "^0.7.0",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "marked": "^0.8.0",
     "mocha": "^6.2.2",
     "prettier": "^1.15.3",
     "rewire": "^4.0.1"

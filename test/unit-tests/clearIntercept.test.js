@@ -24,7 +24,7 @@ describe('clearIntercept', () => {
       'Intercepts reset for url google.com',
     );
     let networkHandler = {
-      resetInterceptor: url => true,
+      resetInterceptor: () => true,
     };
     taiko.__set__('networkHandler', networkHandler);
     await taiko.clearIntercept('google.com');
@@ -37,7 +37,7 @@ describe('clearIntercept', () => {
       'Intercepts reset for all url',
     );
     let networkHandler = {
-      resetInterceptors: url => {},
+      resetInterceptors: () => {},
     };
     taiko.__set__('networkHandler', networkHandler);
     await taiko.clearIntercept();
@@ -49,7 +49,7 @@ describe('clearIntercept', () => {
       'Intercepts not found for url google.com',
     );
     let networkHandler = {
-      resetInterceptor: url => false,
+      resetInterceptor: () => false,
     };
     taiko.__set__('networkHandler', networkHandler);
     await taiko.clearIntercept('google.com');
