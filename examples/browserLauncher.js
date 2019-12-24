@@ -6,10 +6,14 @@ const screenCastEnabled =
 
 module.exports.openBrowserAndStartScreencast = async outFile => {
   await openBrowser({ args: ['--no-first-run', '--no-sandbox'] });
-  if (screenCastEnabled) await startScreencast(outFile);
+  if (screenCastEnabled) {
+    await startScreencast(outFile);
+  }
 };
 
 module.exports.closeBrowserAndStopScreencast = async () => {
-  if (screenCastEnabled) await stopScreencast();
+  if (screenCastEnabled) {
+    await stopScreencast();
+  }
   await closeBrowser();
 };

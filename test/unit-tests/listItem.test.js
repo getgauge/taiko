@@ -52,7 +52,7 @@ describe(test_name, () => {
 
     it('test description', async () => {
       expect(listItem({ id: 'coffee' }).description).to.be.eql(
-        `list Item[@id = concat(\'coffee\', "")]`,
+        'list Item[@id = concat(\'coffee\', "")]',
       );
     });
 
@@ -78,7 +78,7 @@ describe(test_name, () => {
     it('test description', async () => {
       const elems = await listItem({ id: 'coffee' }).elements();
       expect(elems[0].description).to.be.eql(
-        `list Item[@id = concat(\'coffee\', "")]`,
+        'list Item[@id = concat(\'coffee\', "")]',
       );
     });
 
