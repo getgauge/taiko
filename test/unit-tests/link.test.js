@@ -84,7 +84,7 @@ describe(test_name, () => {
     });
 
     it('test isVisible() should throw err when element not found', async () => {
-      expect(
+      await expect(
         link('foo', {
           selectHiddenElement: true,
         }).isVisible(),
