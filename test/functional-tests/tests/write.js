@@ -1,6 +1,5 @@
 const {
   write,
-  focus,
   clear,
   near,
   textBox,

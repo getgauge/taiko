@@ -12,9 +12,7 @@ describe(test_name, () => {
       await cb();
     };
     taiko.__set__('doActionAwaitingNavigation', mockWrapper);
-    taiko.__set__('validate', () => {
-      validateCalled = true;
-    });
+    taiko.__set__('validate', () => {});
   });
 
   after(async () => {
