@@ -49,6 +49,7 @@ describe(test_name, () => {
         '<div name="sampleTextArea">' +
         '<label for="sampleTextArea">sampleTextArea</label>' +
         '<textarea id="sampleTextArea">someValue</textarea>' +
+        '<textarea id="hiddenTextAreaStyle" style="display:none;">someValue</textarea>' +
         '</div>' +
         '</form>' +
         '</div>';
@@ -183,6 +184,21 @@ describe(test_name, () => {
           id: 'sampleTextArea',
         }).elements();
         expect(await elements[0].value()).to.be.eql('someValue');
+      });
+
+      it('should return true for non hidden element when isVisible fn is called on button', async () => {
+        expect(await textBox('sampleTextArea').isVisible()).to.be
+          .true;
+      });
+
+      // Should run after fix811
+      it.skip('should return false for hidden element when isVisible fn is called on textBox', async () => {
+        expect(
+          await textBox(
+            { id: 'hiddenTextAreaStyle' },
+            { selectHiddenElement: true },
+          ).isVisible(),
+        ).to.be.false;
       });
     });
   });
@@ -330,6 +346,13 @@ describe(test_name, () => {
         expect(elements[0].get())
           .to.be.a('number')
           .above(0);
+      });
+
+      it('test isVisible of elements', async () => {
+        const elements = await textBox({
+          id: 'sampleContentEditable',
+        }).elements();
+        expect(await elements[0].isVisible()).to.be.true;
       });
 
       it('test description of elements', async () => {

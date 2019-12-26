@@ -124,6 +124,11 @@ describe(test_name, () => {
     it('test text should throw if the element is not found', async () => {
       await expect(checkBox('.foo').text()).to.be.eventually.rejected;
     });
+
+    it('test isVisible() to throw if no element is found', async () => {
+      await expect(checkBox('foo').isVisible()).to.be.eventually
+        .rejected;
+    });
   });
 
   describe('wrapped in label', () => {
@@ -166,6 +171,13 @@ describe(test_name, () => {
         .above(0);
     });
 
+    it('test isVisible of elements', async () => {
+      const elements = await checkBox({
+        id: 'someCheckBox',
+      }).elements();
+      expect(await elements[0].isVisible()).to.be.true;
+    });
+
     it('test description of elements', async () => {
       let elements = await checkBox({
         id: 'someCheckBox',
@@ -206,6 +218,18 @@ describe(test_name, () => {
           selectHiddenElement: true,
         }).exists(),
       ).to.be.true;
+    });
+
+    it('should return true for non hidden element when isVisible fn is called on button', async () => {
+      expect(await checkBox('someCheckBox').isVisible()).to.be.true;
+    });
+
+    it('should return false for hidden element when isVisible fn is called on textBox', async () => {
+      expect(
+        await checkBox('hiddenCheckbox', {
+          selectHiddenElement: true,
+        }).isVisible(),
+      ).to.be.false;
     });
   });
 });

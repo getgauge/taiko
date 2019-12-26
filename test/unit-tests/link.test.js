@@ -74,6 +74,22 @@ describe(test_name, () => {
         }).exists(),
       ).to.be.true;
     });
+
+    it('should return false when isVisible fn is observed on hidden element', async () => {
+      expect(
+        await link('HiddenLink', {
+          selectHiddenElement: true,
+        }).isVisible(),
+      ).to.be.false;
+    });
+
+    it('test isVisible() should throw err when element not found', async () => {
+      expect(
+        link('foo', {
+          selectHiddenElement: true,
+        }).isVisible(),
+      ).to.be.rejected;
+    });
   });
 
   describe('link description in page', () => {
@@ -91,6 +107,9 @@ describe(test_name, () => {
       expect(link(toRightOf('Click')).description).to.be.eql(
         'link To right of Click',
       );
+    });
+    it('should return true when isVisible fn is observed on non hidden element', async () => {
+      expect(await link('here').isVisible()).to.be.true;
     });
   });
 
@@ -118,6 +137,11 @@ describe(test_name, () => {
       expect(elements[0].get())
         .to.be.a('number')
         .above(0);
+    });
+
+    it('test isVisible of elements', async () => {
+      const elements = await link('similarLink').elements();
+      expect(await elements[0].isVisible()).to.be.true;
     });
 
     it('test description of elements', async () => {

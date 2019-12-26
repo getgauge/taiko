@@ -28,6 +28,10 @@ describe(test_name, () => {
         <li>Tea</li>
         <li>Milk</li>
       </ul>
+      <div class="hiddenTest">
+           <p id="hidden" style="display:none>taiko-hidden</p>
+           <p>demo</p>
+      </div>
     `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -65,6 +69,25 @@ describe(test_name, () => {
     it('test text should throw if the element is not found', async () => {
       await expect(listItem('.foo').text()).to.be.eventually.rejected;
     });
+
+    // Should run after fix #811
+    it.skip('should return false for hidden element when isVisible fn is called on listItem', async () => {
+      expect(
+        await listItem(
+          { id: 'hidden' },
+          { selectHiddenElement: true },
+        ).isVisible(),
+      ).to.be.false;
+    });
+
+    it('should return true for non hidden element when isVisible fn is called on listItem', async () => {
+      expect(await listItem({ id: 'coffee' }).isVisible()).to.be.true;
+    });
+
+    it('test isVisible() should throw if the element is not found', async () => {
+      await expect(listItem('foo').isVisible()).to.be.eventually
+        .rejected;
+    });
   });
 
   describe('test elementsList properties', () => {
@@ -73,6 +96,11 @@ describe(test_name, () => {
       expect(elems[0].get())
         .to.be.a('number')
         .above(0);
+    });
+
+    it('test isVisible of elements', async () => {
+      const elements = await listItem({ id: 'coffee' }).elements();
+      expect(await elements[0].isVisible()).to.be.true;
     });
 
     it('test description', async () => {
