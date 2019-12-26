@@ -1,7 +1,6 @@
 const expect = require('chai').expect;
 let rewire = require('rewire');
 const targetHandler = rewire('../../../lib/handlers/targetHandler');
-
 describe('TargetHandler', () => {
   describe('.getCriTargets', () => {
     let _targets = [];
@@ -26,6 +25,40 @@ describe('TargetHandler', () => {
       expect(targets.matching[0].id).to.be.equal('2');
       expect(targets.others.length).to.be.equal(1);
       expect(targets.others[0].id).to.be.equal('1');
+    });
+
+    it('should give all the matching tabs if regex is given', async () => {
+      _targets.push({
+        id: '1',
+        type: 'page',
+        url: 'https://www.google.com',
+        title: 'Google',
+      });
+      _targets.push({
+        id: '1',
+        type: 'page',
+        url: 'https://www.google.co.uk',
+        title: 'Google',
+      });
+      _targets.push({
+        id: '1',
+        type: 'page',
+        url: 'https://www.github.com',
+        title:
+          'The world’s leading software development platform · GitHub',
+      });
+
+      let targets = await targetHandler.getCriTargets(
+        /http(s?):\/\/(www?).google.(com|co.in|co.uk)/,
+      );
+
+      expect(targets.matching.length).to.be.equal(2);
+
+      let someOtherTarget = await targetHandler.getCriTargets(
+        /Go*gle/,
+      );
+
+      expect(someOtherTarget.matching.length).to.be.equal(2);
     });
 
     it('should give all matching tabs if url is given', async () => {
@@ -77,6 +110,24 @@ describe('TargetHandler', () => {
 
       expect(targets.matching.length).to.be.equal(0);
       expect(targets.others.length).to.be.equal(3);
+    });
+    it('should give the matching tab for regex Title', async () => {
+      _targets.push({
+        id: '1',
+        type: 'page',
+        url: 'https://google.com',
+        title: 'Google',
+      });
+      _targets.push({
+        id: '2',
+        type: 'page',
+        url: 'https://github.com',
+        title:
+          'The world’s leading software development platform · GitHub',
+      });
+      let targets = await targetHandler.getCriTargets(/Go*gle/);
+      expect(targets.matching.length).to.be.equal(1);
+      expect(targets.others.length).to.be.equal(1);
     });
   });
 });
