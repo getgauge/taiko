@@ -6,10 +6,9 @@
 * Click an element that contains "Example 2:"
 * Assert Exists
 
-   |Type|Selector                      |Method|
-   |----|------------------------------|------|
-   |text|Element on page that is hidden|exists|
-   |text|Start                         |exists|
+   |Type|Selector                      |
+   |----|------------------------------|
+   |text|Start                         |
 
 ## Id
 tags: knownIssue

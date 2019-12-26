@@ -1,3 +1,5 @@
+/* global globalThis */
+
 const {
   switchTo,
   openTab,

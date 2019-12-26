@@ -16,15 +16,18 @@ let taiko;
 function printVersion() {
   const packageJson = require('../package.json');
   let hash = 'RELEASE';
-  if (packageJson._resolved && packageJson._resolved.includes('#'))
+  if (packageJson._resolved && packageJson._resolved.includes('#')) {
     hash = packageJson._resolved.split('#')[1];
+  }
   return `Version: ${packageJson.version} (Chromium: ${packageJson.taiko.chromium_version}) ${hash}`;
 }
 
 async function exitOnUnhandledFailures(e) {
   if (!repl_mode) {
     console.error(e);
-    if (taiko && (await taiko.client())) await taiko.closeBrowser();
+    if (taiko && (await taiko.client())) {
+      await taiko.closeBrowser();
+    }
     process.exit(1);
   }
 }
@@ -46,9 +49,9 @@ function validate(file) {
 }
 
 function setupEmulateDevice(device) {
-  if (Object.prototype.hasOwnProperty.call(devices, device))
+  if (Object.prototype.hasOwnProperty.call(devices, device)) {
     process.env['TAIKO_EMULATE_DEVICE'] = device;
-  else {
+  } else {
     console.log(`Invalid value ${device} for --emulate-device`);
     console.log(
       `Available devices: ${Object.keys(devices).join(', ')}`,

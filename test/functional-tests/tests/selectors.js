@@ -41,5 +41,5 @@ function getElement(table) {
 }
 
 module.exports = {
-  getElement: getElement,
+  getElement,
 };

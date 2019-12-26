@@ -213,6 +213,11 @@ describe(test_name, () => {
             .above(0);
         });
 
+        it('test isVisible of elements', async () => {
+          const elements = await button('similarButton').elements();
+          expect(await elements[0].isVisible()).to.be.true;
+        });
+
         it('test description of elements', async () => {
           let elements = await button('similarButton').elements();
           expect(await elements[0].description).to.be.eql(
@@ -225,6 +230,11 @@ describe(test_name, () => {
           expect(await elements[0].text()).to.be.eql(
             'similarButton1',
           );
+        });
+
+        it('should return true for non hidden element when isVisible fn is called on button', async () => {
+          expect(await button('similarButton').isVisible()).to.be
+            .true;
         });
       });
 
@@ -274,6 +284,19 @@ describe(test_name, () => {
             selectHiddenElement: true,
           }).exists(),
         ).to.be.true;
+      });
+
+      it('should return false for hidden element when isVisible fn is called on button', async () => {
+        expect(
+          await button('HiddenButton', {
+            selectHiddenElement: true,
+          }).isVisible(),
+        ).to.be.false;
+      });
+
+      it('test isVisible() should throw if the element is not found', async () => {
+        await expect(button('HiddenButton').isVisible()).to.be
+          .eventually.rejected;
       });
     });
   });

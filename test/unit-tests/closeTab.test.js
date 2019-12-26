@@ -175,7 +175,7 @@ describe('closeTab', () => {
 
     let validatePromise = validateEmitterEvent(
       'success',
-      `Closed tab(s) matching /http(s?):\\/\\/(www?).google.(com|co.in|co.uk)/`,
+      'Closed tab(s) matching /http(s?):\\/\\/(www?).google.(com|co.in|co.uk)/',
     );
     await taiko.closeTab(
       /http(s?):\/\/(www?).google.(com|co.in|co.uk)/,

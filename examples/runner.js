@@ -51,5 +51,7 @@ var server = app.listen(3000, async () => {
       failed = true;
     }
   });
-  if (failed) process.exit(1);
+  if (failed) {
+    process.exit(1);
+  }
 });

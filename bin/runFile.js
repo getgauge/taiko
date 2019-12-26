@@ -48,7 +48,9 @@ module.exports = async (
       global[func] = function() {
         return realFuncs[func].apply(this, arguments);
       };
-    } else global[func] = taiko[func];
+    } else {
+      global[func] = taiko[func];
+    }
     if (continueRepl) {
       recorder.repl = async () => {
         console.log(
@@ -68,8 +70,9 @@ module.exports = async (
     if (
       process.env.TAIKO_DISABLE_LOGOUT &&
       process.env.TAIKO_DISABLE_LOGOUT.toLowerCase() !== 'false'
-    )
+    ) {
       return;
+    }
     desc = symbols.pass + desc;
     desc = removeQuotes(util.inspect(desc, { colors: true }), desc);
     console.log(desc);
