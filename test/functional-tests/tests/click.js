@@ -5,6 +5,7 @@ const {
   link,
   click,
   below,
+  button,
   above,
   toRightOf,
   rightClick,
@@ -40,9 +41,9 @@ step('Click link above <table>', async function(table) {
   }
 });
 
-step('Click link to right of <table>', async function(table) {
+step('Click button to right of <table>', async function(table) {
   for (const element of getElements(table)) {
-    await click(link(toRightOf(element)));
+    await click(button(toRightOf(element)));
   }
 });
 

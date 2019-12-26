@@ -84,7 +84,7 @@ step('Assert tap on screen', async function() {
   assert.deepEqual(touch, ['Touchstart: 0', 'Touchend: 0']);
 });
 
-step('clear textArea <table>', async function(table) {
+step('clear textArea to left of <table>', async function(table) {
   for (const element of getElements(table)) {
     await clear(toLeftOf(element));
   }

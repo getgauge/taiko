@@ -2,13 +2,14 @@
 
 ## Switch To
 * Navigate to "http://localhost:3001/"
-* Click "The Internet"
-* Switch to tab with title "The Internet Express"
+* Click "Multiple Windows"
+* Click "Click Here"
+* Switch to tab with url "http://localhost:3001/windows"
 * Assert Exists
 
-   |Type|Selector                       |
-   |----|-------------------------------|
-   |text|Welcome to the-internet-express|
+   |Type|Selector            |
+   |----|--------------------|
+   |text|Opening a new window|
 
 ## Open/Close Tab
 * Navigate to relative path "./specs/data/sample.html"

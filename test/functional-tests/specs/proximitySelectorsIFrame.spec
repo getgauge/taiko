@@ -36,17 +36,11 @@ tags: knownIssue
 
 ## Right Of
 
-* Navigate to relative path "./specs/data/IFrameProximitySelectors.html"
-* Click "Horizontal Slider"
-* Assert Exists
+* Navigate to relative path "./specs/data/IFrameMouseMoveTest.html"
+* Click button to right of 
 
-   |Type|Selector|
-   |----|--------|
-   |text|See     |
-* Click link to right of
+   |Type  |Selector|
+   |------|--------|
+   |button|button 2 |
 
-   |Type|Selector|
-   |----|--------|
-   |text|See     |
-
-* Assert title to be "the-internet-express/README.md at master · getgauge-contrib/the-internet-express"
+* Assert text "Button4" exists on the page.

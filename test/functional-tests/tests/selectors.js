@@ -1,5 +1,5 @@
 'use strict';
-const { link, textBox, text, $ } = require('taiko');
+const { button, link, textBox, text, $ } = require('taiko');
 
 function getElementWithSelector(element, selector) {
   var selectedElement = null;
@@ -18,6 +18,9 @@ function getElementWithSelector(element, selector) {
       break;
     case 'text':
       selectedElement = text(selectedItem);
+      break;
+    case 'button':
+      selectedElement = button(selectedItem);
       break;
     case '$':
       selectedElement = $(selectedItem);

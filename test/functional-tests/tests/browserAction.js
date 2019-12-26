@@ -18,7 +18,7 @@ const {
 const assert = require('assert');
 const cwd = process.cwd();
 
-step('Switch to tab with title <title>', async function(title) {
+step('Switch to tab with url <title>', async function(title) {
   await switchTo(title);
 });
 
