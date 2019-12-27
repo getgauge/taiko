@@ -23,7 +23,7 @@ let {
 } = require('./test-util');
 const test_name = 'tableCell';
 
-describe.only(test_name, () => {
+describe(test_name, () => {
   let filePath;
 
   let validateEmitterEvent = function(event, expectedText) {
@@ -71,7 +71,7 @@ describe.only(test_name, () => {
                   <td>Table Cell 1</td>
                   <td>Table Cell 2</td>
                   <td>Table Cell 3</td>
-                  <td id="lucky">Table Cell 4</td>
+                  <td id='lucky'>Table Cell 4</td>
                   <td>Table Cell 5</td>
                 </tr>
                 <tr>
@@ -129,7 +129,7 @@ describe.only(test_name, () => {
       ).to.be.true;
     });
 
-    it.skip('test tableCell description', async () => {
+    it('test tableCell description', async () => {
       expect(
         await tableCell(
           {
@@ -231,7 +231,7 @@ describe.only(test_name, () => {
   });
 
   describe('using proximity selectors to locate table', () => {
-    it('test tableCell exists()', async () => {
+    it('1 - test tableCell exists()', async () => {
       expect(
         await tableCell(
           {
@@ -241,6 +241,9 @@ describe.only(test_name, () => {
           below('Tabular data'),
         ).exists(),
       ).to.be.true;
+    });
+
+    it('2 - test tableCell exists()', async () => {
       expect(
         await tableCell(
           {
@@ -259,7 +262,7 @@ describe.only(test_name, () => {
       ).to.be.eql('Table Cell Below Tabular data');
     });
 
-    it('test tableCell text()', async () => {
+    it('1 - test tableCell text()', async () => {
       expect(
         await tableCell(
           {
@@ -269,6 +272,9 @@ describe.only(test_name, () => {
           below('Tabular Data'),
         ).text(),
       ).to.be.eql('Table Cell 1');
+    });
+
+    it('2 - test TableCell text()',async() => {
       expect(
         await tableCell(
           {
@@ -278,18 +284,13 @@ describe.only(test_name, () => {
           above('Table Footer 1'),
         ).text(),
       ).to.be.eql('Table Cell 1');
-    });
+    })
+
     it('test text should throw if the element is not found', async () => {
-      expect(
-        tableCell(
-          {
-            row: '1',
-            col: '1',
-          },
-          'Table Heading 11',
-        ).text(),
+      await expect(
+        tableCell({ row: '1', col: '1' }, 'Table Heading 11').text(),
       ).to.be.eventually.rejected;
-    });
+    }).timeout(15000);
   });
 
   describe('Compatibility with other APIs', () => {
@@ -309,6 +310,7 @@ describe.only(test_name, () => {
         ).text(),
       ).to.be.eql('[Top]');
     });
+
 
     it('Getting value using argValue', async () => {
       expect(await tableCell({}, { id: 'lucky' }).value()).to.be.eql(
