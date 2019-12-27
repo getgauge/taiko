@@ -313,7 +313,7 @@ describe(test_name, () => {
 
 
     it('Getting value using argValue', async () => {
-      expect(await tableCell({}, { id: 'lucky' }).value()).to.be.eql(
+      expect(await tableCell({}, { id: 'lucky' }).text()).to.be.eql(
         'Table Cell 4',
       );
     });
