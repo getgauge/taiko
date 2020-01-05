@@ -6,9 +6,10 @@ let {
   closeIncognitoBrowser,
   openIncognitoBrowser,
   switchToIncognitoBrowser,
-  evaluate,
   goto,
   text,
+  setConfig,
+  reload,
 } = require('../../lib/taiko');
 let { openBrowserArgs, createHtml } = require('./test-util');
 
@@ -29,7 +30,7 @@ describe('opens browser successfully', () => {
   afterEach(async () => await closeBrowser());
 });
 
-describe.only('open browser and create browser context', () => {
+describe('open browser and create browser context', () => {
   it('Should have incognito window', async () => {
     let innerHtml = `<section class="header">
       <h1>Incognito tests</h1>
@@ -58,33 +59,31 @@ describe.only('open browser and create browser context', () => {
 `;
     let filePath;
     filePath = createHtml(innerHtml, 'Incognito');
-    await openBrowser({ profiles: true, headless: true });
+    await openBrowser({ profiles: true });
     await openIncognitoBrowser('user-1');
+    setConfig({
+      waitForNavigation: true,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
     await goto(filePath);
 
-    let expected = 'Item 1';
-    let actual = await evaluate(text('Item 1'), element => {
-      return element.textContent.trim();
-    });
-    console.log(await text('Browser1').exists());
-    expect(actual).to.be.equal(expected);
+    let actual = await text('Browser1').exists();
+    expect(actual).to.be.true;
 
     await openIncognitoBrowser('user-2');
     filePath = createHtml(innerHtml1, 'Incognito1');
     await goto(filePath);
-    let expectedBrowser2 = 'Item 2';
-    let actualBrowser2 = await evaluate(text('Item 2'), element => {
-      return element.textContent.trim();
-    });
-    expect(actualBrowser2).to.be.equal(expectedBrowser2);
+    let actualBrowser2 = await text('Browser2').exists();
+    expect(actualBrowser2).to.be.true;
 
     await switchToIncognitoBrowser('user-1');
-    let expectedBrowser1 = 'Browser1';
-    console.log(await text('Browser1').exists());
-    let actualBrowser1 = await evaluate(text('Browser1'), element => {
-      return element.textContent.trim();
-    });
-    expect(actualBrowser1).to.be.equal(expectedBrowser1);
+    await reload();
+    let backToUser1 = await text('Browser1').exists();
+    expect(backToUser1).to.be.true;
+
+    let inactiveUser2 = await text('Browser2').exists();
+    expect(inactiveUser2).to.be.false;
 
     await closeIncognitoBrowser('user-1');
     await closeIncognitoBrowser('user-2');
