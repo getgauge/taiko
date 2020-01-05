@@ -9,7 +9,7 @@ let {
   goto,
   text,
   setConfig,
-  reload,
+  evaluate,
 } = require('../../lib/taiko');
 let { openBrowserArgs, createHtml } = require('./test-util');
 
@@ -78,13 +78,19 @@ describe('open browser and create browser context', () => {
     expect(actualBrowser2).to.be.true;
 
     await switchToIncognitoBrowser('user-1');
-    await reload();
     let backToUser1 = await text('Browser1').exists();
     expect(backToUser1).to.be.true;
 
+    let browser1 = await evaluate(text('Item 1'), element => {
+      return element.textContent.trim();
+    });
+    expect(browser1).to.be.equal('Item 1');
+
     let inactiveUser2 = await text('Browser2').exists();
     expect(inactiveUser2).to.be.false;
+  });
 
+  after(async () => {
     await closeIncognitoBrowser('user-1');
     await closeIncognitoBrowser('user-2');
     await closeBrowser();
