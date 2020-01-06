@@ -1,7 +1,6 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
-const element = rewire('../../lib/elements/element');
-const Element = element.Element;
+const Element = rewire('../../lib/elements/element');
 const elementSearch = rewire('../../lib/elementSearch');
 class DomRects {}
 const TEXT_NODE = 3;
@@ -10,7 +9,7 @@ describe('Element Search', () => {
     let nodeIds, runtimeHandler;
     const filterVisibleNodes = elementSearch.__get__('filterVisibleNodes');
     beforeEach(() => {
-      element.__set__('Node', { TEXT_NODE });
+      Element.__set__('Node', { TEXT_NODE });
       nodeIds = {
         23: {
           offsetHeight: 1,
