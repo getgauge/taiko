@@ -115,7 +115,7 @@ describe('open browser throws an error', () => {
     await closeBrowser();
   });
 
-  it('openBrowser should throw error, when it is called set headfull with profiles', async () => {
+  it.skip('openBrowser should throw error, when it is called set headfull with profiles', async () => {
     await openBrowser({
       headless: false,
     });
