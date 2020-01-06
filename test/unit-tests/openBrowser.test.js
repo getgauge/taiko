@@ -59,7 +59,7 @@ describe('open browser and create browser context', () => {
 `;
     let filePath;
     filePath = createHtml(innerHtml, 'Incognito');
-    await openBrowser({ profiles: true });
+    await openBrowser();
     await openIncognitoBrowser('user-1');
     setConfig({
       waitForNavigation: true,
