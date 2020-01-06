@@ -118,7 +118,9 @@ describe('open browser throws an error', () => {
   it('openBrowser should throw error, when it is called set headfull with profiles', async () => {
     await openBrowser({
       headless: false,
-      profiles: true,
-    }).catch(error => expect(error).to.be.an.instanceOf(Error));
+    });
+    await openIncognitoBrowser('user-2').catch(error =>
+      expect(error).to.be.an.instanceOf(Error),
+    );
   });
 });
