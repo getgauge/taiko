@@ -121,8 +121,8 @@ describe(test_name, () => {
       expect(
         await tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           'Table Caption',
         ).exists(),
@@ -133,8 +133,8 @@ describe(test_name, () => {
       expect(
         await tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           'Table Caption',
         ).description,
@@ -145,8 +145,8 @@ describe(test_name, () => {
       expect(
         await tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           'Table Caption',
         ).text(),
@@ -157,8 +157,8 @@ describe(test_name, () => {
       expect(
         tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           'Below Caption',
         ).text(),
@@ -176,8 +176,8 @@ describe(test_name, () => {
       expect(
         await tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           'Table Heading 1',
         ).exists(),
@@ -185,8 +185,8 @@ describe(test_name, () => {
       expect(
         await tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           'Table Heading 3',
         ).exists(),
@@ -197,8 +197,8 @@ describe(test_name, () => {
       expect(
         await tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           'Table Heading 1',
         ).description,
@@ -209,8 +209,8 @@ describe(test_name, () => {
       expect(
         await tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           'Table Heading 1',
         ).text(),
@@ -221,8 +221,8 @@ describe(test_name, () => {
       expect(
         tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           'Table Heading 11',
         ).text(),
@@ -235,8 +235,8 @@ describe(test_name, () => {
       expect(
         await tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           below('Tabular data'),
         ).exists(),
@@ -247,8 +247,8 @@ describe(test_name, () => {
       expect(
         await tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           above('Table Footer 1'),
         ).exists(),
@@ -266,29 +266,29 @@ describe(test_name, () => {
       expect(
         await tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           below('Tabular Data'),
         ).text(),
       ).to.be.eql('Table Cell 1');
     });
 
-    it('2 - test TableCell text()',async() => {
+    it('2 - test TableCell text()', async () => {
       expect(
         await tableCell(
           {
-            row: '1',
-            col: '1',
+            row: 1,
+            col: 1,
           },
           above('Table Footer 1'),
         ).text(),
       ).to.be.eql('Table Cell 1');
-    })
+    });
 
     it('test text should throw if the element is not found', async () => {
       await expect(
-        tableCell({ row: '1', col: '1' }, 'Table Heading 11').text(),
+        tableCell({ row: 1, col: 1 }, 'Table Heading 11').text(),
       ).to.be.eventually.rejected;
     }).timeout(15000);
   });
@@ -298,7 +298,7 @@ describe(test_name, () => {
       expect(
         await text(
           'Table Cell 2',
-          above(tableCell({ row: '2', col: '2' }, 'Table Caption')),
+          above(tableCell({ row: 2, col: 2 }, 'Table Caption')),
         ).exists(),
       ).to.be.true;
     });
@@ -306,14 +306,13 @@ describe(test_name, () => {
     it('Finding link using tableCell in proximity selector', async () => {
       expect(
         await link(
-          above(tableCell({ row: '4', col: '1' }, 'Table Caption')),
+          above(tableCell({ row: 4, col: 1 }, 'Table Caption')),
         ).text(),
       ).to.be.eql('[Top]');
     });
 
-
     it('Getting value using argValue', async () => {
-      expect(await tableCell({}, { id: 'lucky' }).text()).to.be.eql(
+      expect(await tableCell({ id: 'lucky' }).text()).to.be.eql(
         'Table Cell 4',
       );
     });
@@ -322,7 +321,7 @@ describe(test_name, () => {
       expect(
         await text(
           'Table Cell 1',
-          near(tableCell({ row: '1', col: '1' }, 'Table Caption')),
+          near(tableCell({ row: 1, col: 1 }, 'Table Caption')),
         ).exists(),
       ).to.be.true;
     });
