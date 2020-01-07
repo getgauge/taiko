@@ -57,7 +57,7 @@ describe('open browser and create browser context', () => {
 `;
     let filePath;
     filePath = createHtml(innerHtml, 'Incognito');
-    await openBrowser({ profile: 'user-1' });
+    await openBrowser({ profile: 'user' });
     setConfig({
       waitForNavigation: true,
       retryTimeout: 100,
@@ -68,13 +68,13 @@ describe('open browser and create browser context', () => {
     let actual = await text('Browser1').exists();
     expect(actual).to.be.true;
 
-    await openBrowser({ profile: 'user-2' });
+    await openBrowser({ profile: 'admin' });
     filePath = createHtml(innerHtml1, 'Incognito1');
     await goto(filePath);
     let actualBrowser2 = await text('Browser2').exists();
     expect(actualBrowser2).to.be.true;
 
-    await switchTo({ profile: 'user-1' });
+    await switchTo({ profile: 'user' });
     let backToUser1 = await text('Browser1').exists();
     expect(backToUser1).to.be.true;
 
@@ -88,9 +88,77 @@ describe('open browser and create browser context', () => {
   });
 
   after(async () => {
-    await closeBrowser({ profile: 'user-1' });
-    await closeBrowser({ profile: 'user-2' });
-    await closeBrowser();
+    await closeBrowser({ profile: 'user' });
+    await closeBrowser({ profile: 'admin' });
+  });
+});
+
+describe('Isolation session storage test', () => {
+  it('should isolate localStorage and cookies', async () => {
+    let innerHtml = `<section class="header">
+      <h1>Incognito tests</h1>
+        </section>
+          <section class='main-content'>
+            <div class='item'>
+               Item 1
+            </div>
+            <div class='item'>
+               Browser1
+         </div>
+      </section>
+`;
+
+    let innerHtml1 = `<section class="header">
+<h1>Incognitotests</h1>
+  </section>
+    <section class='main-content'>
+      <div class='item'>
+         Item 2
+      </div>
+      <div class='item'>
+      Browser2
+</div>
+</section>
+`;
+    let filePath;
+    filePath = createHtml(innerHtml, 'Incognito');
+    await openBrowser({ profile: 'user' });
+    setConfig({
+      waitForNavigation: true,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
+    await goto(filePath);
+
+    await evaluate(() => {
+      localStorage.setItem('name', 'page1');
+    });
+
+    await openBrowser({ profile: 'admin' });
+    filePath = createHtml(innerHtml1, 'Incognito1');
+    await goto(filePath);
+
+    await evaluate(() => {
+      localStorage.setItem('name', 'page2');
+    });
+
+    const adminSessionLocalStorage = await evaluate(() => {
+      return localStorage.getItem('name');
+    });
+
+    expect(adminSessionLocalStorage).to.equal('page2');
+
+    await switchTo({ profile: 'user' });
+
+    const userSessionLocalStorage = await evaluate(() => {
+      return localStorage.getItem('name');
+    });
+
+    expect(userSessionLocalStorage).to.equal('page1');
+  });
+  after(async () => {
+    await closeBrowser({ profile: 'user' });
+    await closeBrowser({ profile: 'admin' });
   });
 });
 
