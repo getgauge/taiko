@@ -3,9 +3,7 @@ let {
   openBrowser,
   closeBrowser,
   client,
-  closeIncognitoBrowser,
-  openIncognitoBrowser,
-  switchToIncognitoBrowser,
+  switchTo,
   goto,
   text,
   setConfig,
@@ -59,8 +57,7 @@ describe('open browser and create browser context', () => {
 `;
     let filePath;
     filePath = createHtml(innerHtml, 'Incognito');
-    await openBrowser();
-    await openIncognitoBrowser('user-1');
+    await openBrowser({ profile: 'user-1' });
     setConfig({
       waitForNavigation: true,
       retryTimeout: 100,
@@ -71,13 +68,13 @@ describe('open browser and create browser context', () => {
     let actual = await text('Browser1').exists();
     expect(actual).to.be.true;
 
-    await openIncognitoBrowser('user-2');
+    await openBrowser({ profile: 'user-2' });
     filePath = createHtml(innerHtml1, 'Incognito1');
     await goto(filePath);
     let actualBrowser2 = await text('Browser2').exists();
     expect(actualBrowser2).to.be.true;
 
-    await switchToIncognitoBrowser('user-1');
+    await switchTo({ profile: 'user-1' });
     let backToUser1 = await text('Browser1').exists();
     expect(backToUser1).to.be.true;
 
@@ -91,8 +88,8 @@ describe('open browser and create browser context', () => {
   });
 
   after(async () => {
-    await closeIncognitoBrowser('user-1');
-    await closeIncognitoBrowser('user-2');
+    await closeBrowser({ profile: 'user-1' });
+    await closeBrowser({ profile: 'user-2' });
     await closeBrowser();
   });
 });
@@ -113,14 +110,5 @@ describe('open browser throws an error', () => {
       expect(error).to.be.an.instanceOf(Error),
     );
     await closeBrowser();
-  });
-
-  it.skip('openBrowser should throw error, when it is called set headfull with profiles', async () => {
-    await openBrowser({
-      headless: false,
-    });
-    await openIncognitoBrowser('user-2').catch(error =>
-      expect(error).to.be.an.instanceOf(Error),
-    );
   });
 });
