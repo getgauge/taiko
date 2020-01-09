@@ -4,10 +4,11 @@ let {
   closeBrowser,
   client,
   switchTo,
-  goto,
   text,
   setConfig,
   evaluate,
+  openIncognitoWindow,
+  closeIncognitoWindow,
 } = require('../../lib/taiko');
 let { openBrowserArgs, createHtml } = require('./test-util');
 
@@ -29,6 +30,8 @@ describe('opens browser successfully', () => {
 });
 
 describe('open browser and create browser context', () => {
+  let url1;
+  let url2;
   it('Should have incognito window', async () => {
     let innerHtml = `<section class="header">
       <h1>Incognito tests</h1>
@@ -55,26 +58,24 @@ describe('open browser and create browser context', () => {
 </div>
 </section>
 `;
-    let filePath;
-    filePath = createHtml(innerHtml, 'Incognito');
-    await openBrowser({ profile: 'user' });
+    url1 = createHtml(innerHtml, 'Incognito');
+    await openBrowser();
     setConfig({
       waitForNavigation: true,
       retryTimeout: 100,
       retryInterval: 10,
     });
-    await goto(filePath);
-
+    await openIncognitoWindow(url1);
     let actual = await text('Browser1').exists();
     expect(actual).to.be.true;
 
-    await openBrowser({ profile: 'admin' });
-    filePath = createHtml(innerHtml1, 'Incognito1');
-    await goto(filePath);
+    url2 = createHtml(innerHtml1, 'Incognito1');
+    await openIncognitoWindow(url2);
+
     let actualBrowser2 = await text('Browser2').exists();
     expect(actualBrowser2).to.be.true;
 
-    await switchTo({ profile: 'user' });
+    await switchTo(url1);
     let backToUser1 = await text('Browser1').exists();
     expect(backToUser1).to.be.true;
 
@@ -88,12 +89,15 @@ describe('open browser and create browser context', () => {
   });
 
   after(async () => {
-    await closeBrowser({ profile: 'user' });
-    await closeBrowser({ profile: 'admin' });
+    await closeIncognitoWindow(url1);
+    await closeIncognitoWindow(url2);
+    await closeBrowser();
   });
 });
 
 describe('Isolation session storage test', () => {
+  let url1;
+  let url2;
   it('should isolate localStorage and cookies', async () => {
     let innerHtml = `<section class="header">
       <h1>Incognito tests</h1>
@@ -120,23 +124,21 @@ describe('Isolation session storage test', () => {
 </div>
 </section>
 `;
-    let filePath;
-    filePath = createHtml(innerHtml, 'Incognito');
-    await openBrowser({ profile: 'user' });
+    url1 = createHtml(innerHtml, 'Incognito');
+    await openBrowser();
     setConfig({
       waitForNavigation: true,
       retryTimeout: 100,
       retryInterval: 10,
     });
-    await goto(filePath);
 
+    await openIncognitoWindow(url1);
     await evaluate(() => {
       localStorage.setItem('name', 'page1');
     });
 
-    await openBrowser({ profile: 'admin' });
-    filePath = createHtml(innerHtml1, 'Incognito1');
-    await goto(filePath);
+    url2 = createHtml(innerHtml1, 'Incognito1');
+    await openIncognitoWindow(url2);
 
     await evaluate(() => {
       localStorage.setItem('name', 'page2');
@@ -148,7 +150,7 @@ describe('Isolation session storage test', () => {
 
     expect(adminSessionLocalStorage).to.equal('page2');
 
-    await switchTo({ profile: 'user' });
+    await switchTo(url1);
 
     const userSessionLocalStorage = await evaluate(() => {
       return localStorage.getItem('name');
@@ -157,8 +159,9 @@ describe('Isolation session storage test', () => {
     expect(userSessionLocalStorage).to.equal('page1');
   });
   after(async () => {
-    await closeBrowser({ profile: 'user' });
-    await closeBrowser({ profile: 'admin' });
+    await closeIncognitoWindow(url1);
+    await closeIncognitoWindow(url2);
+    await closeBrowser();
   });
 });
 
