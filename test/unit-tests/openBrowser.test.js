@@ -93,8 +93,8 @@ describe('open browser and create browser context', () => {
   });
 
   after(async () => {
-    await closeWindow({ name: 'admin' });
-    await closeWindow({ name: 'user' });
+    await closeWindow('admin');
+    await closeWindow('user');
     await closeBrowser();
   });
 });
@@ -126,7 +126,7 @@ describe('Open window', () => {
     expect(isIncognito()).to.be.false;
   });
   after(async () => {
-    await closeWindow({ name: 'admin' });
+    await closeWindow('admin');
     await closeBrowser();
   });
 });
@@ -195,8 +195,8 @@ describe('Isolation session storage test', () => {
     expect(userSessionLocalStorage).to.equal('page1');
   });
   after(async () => {
-    await closeWindow({ name: 'admin' });
-    await closeWindow({ name: 'user' });
+    await closeWindow('admin');
+    await closeWindow('user');
     await closeBrowser();
   });
 });
