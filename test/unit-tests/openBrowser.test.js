@@ -7,9 +7,13 @@ let {
   text,
   setConfig,
   evaluate,
-  openIncognitoWindow,
-  closeIncognitoWindow,
+  openWindow,
+  closeWindow,
+  goto,
 } = require('../../lib/taiko');
+
+let { isIncognito } = require('../../lib/browserContext');
+
 let { openBrowserArgs, createHtml } = require('./test-util');
 
 describe('opens browser successfully', () => {
@@ -65,17 +69,17 @@ describe('open browser and create browser context', () => {
       retryTimeout: 100,
       retryInterval: 10,
     });
-    await openIncognitoWindow(url1);
+    await openWindow(url1, { name: 'admin', incognito: true });
     let actual = await text('Browser1').exists();
     expect(actual).to.be.true;
 
     url2 = createHtml(innerHtml1, 'Incognito1');
-    await openIncognitoWindow(url2);
+    await openWindow(url2, { name: 'user', incognito: true });
 
     let actualBrowser2 = await text('Browser2').exists();
     expect(actualBrowser2).to.be.true;
 
-    await switchTo(url1);
+    await switchTo({ name: 'admin' });
     let backToUser1 = await text('Browser1').exists();
     expect(backToUser1).to.be.true;
 
@@ -89,8 +93,40 @@ describe('open browser and create browser context', () => {
   });
 
   after(async () => {
-    await closeIncognitoWindow(url1);
-    await closeIncognitoWindow(url2);
+    await closeWindow({ name: 'admin' });
+    await closeWindow({ name: 'user' });
+    await closeBrowser();
+  });
+});
+
+describe('Open window', () => {
+  it('Open window without incognito', async () => {
+    let innerHtml = `<section class="header">
+    <h1>Incognitotests</h1>
+      </section>
+        <section class='main-content'>
+          <div class='item'>
+             Item 2
+          </div>
+          <div class='item'>
+          Browser2
+    </div>
+    </section>
+    `;
+    let url = createHtml(innerHtml, 'Incognito');
+    await openBrowser();
+    setConfig({
+      waitForNavigation: true,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
+
+    await openWindow(url, { name: 'admin' });
+    await goto('github.com');
+    expect(isIncognito()).to.be.false;
+  });
+  after(async () => {
+    await closeWindow({ name: 'admin' });
     await closeBrowser();
   });
 });
@@ -132,13 +168,13 @@ describe('Isolation session storage test', () => {
       retryInterval: 10,
     });
 
-    await openIncognitoWindow(url1);
+    await openWindow(url1, { name: 'admin', incognito: true });
     await evaluate(() => {
       localStorage.setItem('name', 'page1');
     });
 
     url2 = createHtml(innerHtml1, 'Incognito1');
-    await openIncognitoWindow(url2);
+    await openWindow(url2, { name: 'user', incognito: true });
 
     await evaluate(() => {
       localStorage.setItem('name', 'page2');
@@ -150,7 +186,7 @@ describe('Isolation session storage test', () => {
 
     expect(adminSessionLocalStorage).to.equal('page2');
 
-    await switchTo(url1);
+    await switchTo({ name: 'admin' });
 
     const userSessionLocalStorage = await evaluate(() => {
       return localStorage.getItem('name');
@@ -159,8 +195,8 @@ describe('Isolation session storage test', () => {
     expect(userSessionLocalStorage).to.equal('page1');
   });
   after(async () => {
-    await closeIncognitoWindow(url1);
-    await closeIncognitoWindow(url2);
+    await closeWindow({ name: 'admin' });
+    await closeWindow({ name: 'user' });
     await closeBrowser();
   });
 });
