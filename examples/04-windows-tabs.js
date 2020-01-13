@@ -19,7 +19,12 @@ const {
     await openBrowserAndStartScreencast(
       path.join('captures', 'windows', 'windows.gif'),
     );
-    await goto(url);
+    let options = {
+      navigationTimeout: 40000,
+      waitForNavigation: true,
+      waitForEvents: ['firstMeaningfulPaint', 'DOMContentLoaded'],
+    };
+    await goto(url, options);
     await click('click here');
     expect(await title()).to.eq('The Internet Express');
     await closeTab();
