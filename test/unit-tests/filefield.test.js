@@ -12,12 +12,7 @@ let {
   attach,
   setConfig,
 } = require('../../lib/taiko');
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-  resetConfig,
-} = require('./test-util');
+let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const path = require('path');
 const test_name = 'fileField';
 
@@ -66,18 +61,12 @@ describe(test_name, () => {
   describe('file field with type text', () => {
     describe('with inline text', () => {
       it('test exists()', async () => {
-        expect(await fileField(above(button('Upload'))).exists()).to
-          .be.true;
+        expect(await fileField(above(button('Upload'))).exists()).to.be.true;
       });
 
       it('test value()', async () => {
-        await attach(
-          path.join(__dirname, 'data', 'foo.txt'),
-          fileField(above(button('Upload'))),
-        );
-        expect(
-          await fileField(above(button('Upload'))).value(),
-        ).to.include('foo.txt');
+        await attach(path.join(__dirname, 'data', 'foo.txt'), fileField(above(button('Upload'))));
+        expect(await fileField(above(button('Upload'))).value()).to.include('foo.txt');
       });
 
       it('test value() should throw error if the element is not found', async () => {
@@ -85,15 +74,15 @@ describe(test_name, () => {
       });
 
       it('test description', async () => {
-        expect(
-          fileField(above(button('Upload'))).description,
-        ).to.be.eql('File field Above Button with label Upload ');
+        expect(fileField(above(button('Upload'))).description).to.be.eql(
+          'File field Above Button with label Upload ',
+        );
       });
 
       xit('test text()', async () => {
-        expect(
-          await fileField(above(button('Upload'))).text(),
-        ).to.be.eql('File field Above Button with label Upload ');
+        expect(await fileField(above(button('Upload'))).text()).to.be.eql(
+          'File field Above Button with label Upload ',
+        );
       });
 
       it('test text should throw if the element is not found', async () => {
@@ -106,13 +95,8 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        await attach(
-          path.join(__dirname, 'data', 'foo.txt'),
-          fileField('Select a file'),
-        );
-        expect(await fileField('Select a file').value()).to.include(
-          'foo.txt',
-        );
+        await attach(path.join(__dirname, 'data', 'foo.txt'), fileField('Select a file'));
+        expect(await fileField('Select a file').value()).to.include('foo.txt');
       });
 
       it('test description', async () => {
@@ -133,13 +117,8 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        await attach(
-          path.join(__dirname, 'data', 'foo.txt'),
-          fileField('Select a file'),
-        );
-        expect(await fileField('Choose a file').value()).to.include(
-          'foo.txt',
-        );
+        await attach(path.join(__dirname, 'data', 'foo.txt'), fileField('Select a file'));
+        expect(await fileField('Choose a file').value()).to.include('foo.txt');
       });
 
       it('test description', async () => {
@@ -157,12 +136,8 @@ describe(test_name, () => {
   });
   describe('hidden', () => {
     it('exists when selectHiddenElement is provided', async () => {
-      expect(
-        await fileField(
-          { id: 'hidden-file-upload' },
-          { selectHiddenElement: true },
-        ).exists(),
-      ).to.be.true;
+      expect(await fileField({ id: 'hidden-file-upload' }, { selectHiddenElement: true }).exists())
+        .to.be.true;
     });
 
     it('does not exists when selectHiddenElement is not provided', async () => {
@@ -196,10 +171,7 @@ describe(test_name, () => {
       let elements = await fileField({
         id: 'similarFileField',
       }).elements();
-      await attach(
-        path.join(__dirname, 'data', 'foo.txt'),
-        elements[0],
-      );
+      await attach(path.join(__dirname, 'data', 'foo.txt'), elements[0]);
       expect(await elements[0].value()).to.include('foo.txt');
     });
 
@@ -214,17 +186,8 @@ describe(test_name, () => {
   describe('using a file that does not exists', () => {
     it('throws a error when the file does not exist', async () => {
       await expect(
-        attach(
-          path.join(__dirname, 'data', 'foowrong.txt'),
-          fileField('Select a file'),
-        ),
-      ).to.be.rejectedWith(
-        `File ${path.join(
-          __dirname,
-          'data',
-          'foowrong.txt',
-        )} does not exist.`,
-      );
+        attach(path.join(__dirname, 'data', 'foowrong.txt'), fileField('Select a file')),
+      ).to.be.rejectedWith(`File ${path.join(__dirname, 'data', 'foowrong.txt')} does not exist.`);
     });
   });
 });

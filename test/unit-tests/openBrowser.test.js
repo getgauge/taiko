@@ -1,9 +1,5 @@
 const expect = require('chai').expect;
-let {
-  openBrowser,
-  closeBrowser,
-  client,
-} = require('../../lib/taiko');
+let { openBrowser, closeBrowser, client } = require('../../lib/taiko');
 let { openBrowserArgs } = require('./test-util');
 
 describe('opens browser successfully', () => {
@@ -25,19 +21,13 @@ describe('opens browser successfully', () => {
 
 describe('open browser throws an error', () => {
   it('openBrowser should throw an error when options parameter is string', async () =>
-    await openBrowser('someString').catch(error =>
-      expect(error).to.be.an.instanceOf(Error),
-    ));
+    await openBrowser('someString').catch(error => expect(error).to.be.an.instanceOf(Error)));
   it('openBrowser should throw an error when options parameter is array', async () =>
-    await openBrowser([]).catch(error =>
-      expect(error).to.be.an.instanceOf(Error),
-    ));
+    await openBrowser([]).catch(error => expect(error).to.be.an.instanceOf(Error)));
 
   it('openBrowser should throw error, when it is called before closeBrowser is called', async () => {
     await openBrowser();
-    await openBrowser().catch(error =>
-      expect(error).to.be.an.instanceOf(Error),
-    );
+    await openBrowser().catch(error => expect(error).to.be.an.instanceOf(Error));
     await closeBrowser();
   });
 });

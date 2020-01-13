@@ -13,9 +13,7 @@ describe(test_name, () => {
   });
 
   it('setCookie should throw error if url or domain is not specified', async () => {
-    await expect(
-      taiko.setCookie('someCookie', 'foo'),
-    ).to.eventually.be.rejectedWith(
+    await expect(taiko.setCookie('someCookie', 'foo')).to.eventually.be.rejectedWith(
       'At least URL or domain needs to be specified for setting cookies',
     );
   });
@@ -29,9 +27,7 @@ describe(test_name, () => {
     let cookieName = 'MySetCookie';
     await expect(
       taiko.setCookie(cookieName, 'Foo', { url: 'file:///foo.html' }),
-    ).to.eventually.be.rejectedWith(
-      'Unable to set ' + cookieName + ' cookie',
-    );
+    ).to.eventually.be.rejectedWith('Unable to set ' + cookieName + ' cookie');
   });
 
   it('setCookie should set successfully', async () => {
@@ -41,9 +37,8 @@ describe(test_name, () => {
       },
     });
     let cookieName = 'MySetCookie';
-    await expect(
-      taiko.setCookie(cookieName, 'Foo', { url: 'file:///foo.html' }),
-    ).not.to.eventually.be.rejected;
+    await expect(taiko.setCookie(cookieName, 'Foo', { url: 'file:///foo.html' })).not.to.eventually
+      .be.rejected;
   });
 
   it('deleteCookie should delete all cookies if no cookie name is given', async () => {
@@ -52,8 +47,7 @@ describe(test_name, () => {
         return Promise.resolve();
       },
     });
-    await expect(taiko.deleteCookies(' ')).not.to.eventually.be
-      .rejected;
+    await expect(taiko.deleteCookies(' ')).not.to.eventually.be.rejected;
   });
 
   it('deleteCookie should throw error if domian or url is not specified along with cookie name', async () => {
@@ -62,9 +56,7 @@ describe(test_name, () => {
         return Promise.resolve();
       },
     });
-    await expect(
-      taiko.deleteCookies('MyCookie'),
-    ).to.eventually.be.rejectedWith(
+    await expect(taiko.deleteCookies('MyCookie')).to.eventually.be.rejectedWith(
       'At least URL or domain needs to be specified for deleting cookies',
     );
   });

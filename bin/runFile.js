@@ -3,13 +3,7 @@ const util = require('util');
 const recorder = require('../recorder');
 
 const { removeQuotes, symbols } = require('../lib/util');
-module.exports = async (
-  taiko,
-  file,
-  observe,
-  observeTime,
-  continueRepl,
-) => {
+module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
   const realFuncs = {};
   for (let func in taiko) {
     realFuncs[func] = taiko[func];
@@ -54,16 +48,12 @@ module.exports = async (
     if (continueRepl) {
       recorder.repl = async () => {
         console.log(
-          removeQuotes(
-            util.inspect('Starting REPL..', { colors: true }),
-            'Starting REPL..',
-          ),
+          removeQuotes(util.inspect('Starting REPL..', { colors: true }), 'Starting REPL..'),
         );
         await continueRepl(file);
       };
     }
-    require.cache[path.join(__dirname, 'taiko.js')].exports[func] =
-      global[func];
+    require.cache[path.join(__dirname, 'taiko.js')].exports[func] = global[func];
   }
   var eventEmitter = taiko.emitter;
   eventEmitter.on('success', desc => {

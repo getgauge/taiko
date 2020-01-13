@@ -1,8 +1,5 @@
 const { goto, below, textBox, write, into } = require('taiko'),
-  {
-    openBrowserAndStartScreencast,
-    closeBrowserAndStopScreencast,
-  } = require('./browserLauncher'),
+  { openBrowserAndStartScreencast, closeBrowserAndStopScreencast } = require('./browserLauncher'),
   path = require('path'),
   expect = require('chai').expect;
 const cwd = process.cwd();

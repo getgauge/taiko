@@ -28,19 +28,11 @@ fs.writeFileSync(
 console.log('Compiling partials to site...');
 fs.readdirSync('docs/layout/partials').forEach(file => {
   var partialName = path.basename(file, path.extname(file));
-  handlebars.registerPartial(
-    partialName,
-    fs.readFileSync('docs/layout/partials/' + file, 'utf8'),
-  );
+  handlebars.registerPartial(partialName, fs.readFileSync('docs/layout/partials/' + file, 'utf8'));
 });
-handlebars.registerHelper(
-  'lowerCase',
-  require('./layout/helpers/lowerCase'),
-);
+handlebars.registerHelper('lowerCase', require('./layout/helpers/lowerCase'));
 
-var template = handlebars.compile(
-  fs.readFileSync('docs/layout/page.html', 'utf8'),
-);
+var template = handlebars.compile(fs.readFileSync('docs/layout/page.html', 'utf8'));
 var html = template({
   toc: metadata,
   title: 'Taiko, free and open source browser automation',

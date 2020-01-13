@@ -11,8 +11,6 @@ describe('switchTo', () => {
   });
 
   it('should throw error if no url specified', async () => {
-    await expect(taiko.switchTo()).to.eventually.rejectedWith(
-      TypeError,
-    );
+    await expect(taiko.switchTo()).to.eventually.rejectedWith(TypeError);
   });
 });

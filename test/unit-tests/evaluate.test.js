@@ -1,17 +1,5 @@
-const {
-  createHtml,
-  openBrowserArgs,
-  removeFile,
-  resetConfig,
-} = require('./test-util');
-const {
-  openBrowser,
-  goto,
-  evaluate,
-  text,
-  closeBrowser,
-  setConfig,
-} = require('../../lib/taiko');
+const { createHtml, openBrowserArgs, removeFile, resetConfig } = require('./test-util');
+const { openBrowser, goto, evaluate, text, closeBrowser, setConfig } = require('../../lib/taiko');
 const expect = require('chai').expect;
 const testName = 'Evaluate';
 
