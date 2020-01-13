@@ -9,7 +9,6 @@ let {
   evaluate,
   openWindow,
   closeWindow,
-  goto,
 } = require('../../lib/taiko');
 
 let { isIncognito } = require('../../lib/browserContext');
@@ -122,7 +121,6 @@ describe('Open window', () => {
     });
 
     await openWindow(url, { name: 'admin' });
-    await goto('github.com');
     expect(isIncognito()).to.be.false;
   });
   after(async () => {
