@@ -12,12 +12,7 @@ let {
   below,
   setConfig,
 } = require('../../lib/taiko');
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-  resetConfig,
-} = require('./test-util');
+let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'Click';
 
 describe(test_name, () => {
@@ -77,61 +72,49 @@ describe(test_name, () => {
   describe('scroll to click', () => {
     it('test if auto scrolls to element before clicking', async () => {
       await click('Show Message');
-      expect(await text('Click works with auto scroll.').exists()).to
-        .be.true;
+      expect(await text('Click works with auto scroll.').exists()).to.be.true;
     });
   });
 
   describe('With text nodes', () => {
     it('should click', async () => {
       await click('on text');
-      expect(await text('Click works with text nodes.').exists()).to
-        .be.true;
+      expect(await text('Click works with text nodes.').exists()).to.be.true;
     });
   });
 
   describe('With proximity selector', () => {
     it('should click', async () => {
       await click('Click with proximity', below('Proximity marker'));
-      expect(
-        await text('Click works with proximity selector.').exists(),
-      ).to.be.true;
+      expect(await text('Click works with proximity selector.').exists()).to.be.true;
     });
   });
 
   describe('Text accross element', () => {
     it('should click', async () => {
       await click('Text accross elements');
-      expect(
-        await text('Click works with text accross element.').exists(),
-      ).to.be.true;
+      expect(await text('Click works with text accross element.').exists()).to.be.true;
     });
   });
 
   describe('Text as value', () => {
     it('should click', async () => {
       await click('Text as value');
-      expect(await text('Click works with text as value.').exists())
-        .to.be.true;
+      expect(await text('Click works with text as value.').exists()).to.be.true;
     });
   });
 
   describe('Text as type', () => {
     it('should click', async () => {
       await click('Text as type');
-      expect(await text('Click works with text as type.').exists()).to
-        .be.true;
+      expect(await text('Click works with text as type.').exists()).to.be.true;
     });
   });
 
   describe('With ghost element', () => {
     it('should click the ghost element', async () => {
       await click('Click ghost element covering text');
-      expect(
-        await text(
-          'Click works with ghost element covering text.',
-        ).exists(),
-      ).to.be.true;
+      expect(await text('Click works with ghost element covering text.').exists()).to.be.true;
     });
   });
 
@@ -178,10 +161,7 @@ describe(test_name, () => {
         <body>
             <button type="button" disabled>Click Me!</button>
         </body>`;
-      overlayFilePath = createHtml(
-        innerHtml,
-        `${test_name}-disabled`,
-      );
+      overlayFilePath = createHtml(innerHtml, `${test_name}-disabled`);
       await goto(overlayFilePath);
       setConfig({
         waitForNavigation: false,

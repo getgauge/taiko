@@ -6,9 +6,7 @@ const Command = require('commander').Command;
 const repl = require('../lib/repl/repl');
 const { isTaikoRunner } = require('../lib/util');
 const devices = require('../lib/data/devices').default;
-const NETWORK_TYPES = Object.keys(
-  require('../lib/data/networkConditions'),
-);
+const NETWORK_TYPES = Object.keys(require('../lib/data/networkConditions'));
 const { getExecutablePlugins } = require('../lib/plugins');
 const processArgv = process.argv;
 let repl_mode = false;
@@ -37,9 +35,7 @@ process.on('uncaughtException', exitOnUnhandledFailures);
 
 function validate(file) {
   if (!file.endsWith('.js')) {
-    console.log(
-      'Invalid file extension. Only javascript files are accepted.',
-    );
+    console.log('Invalid file extension. Only javascript files are accepted.');
     process.exit(1);
   }
   if (!fs.existsSync(file)) {
@@ -53,9 +49,7 @@ function setupEmulateDevice(device) {
     process.env['TAIKO_EMULATE_DEVICE'] = device;
   } else {
     console.log(`Invalid value ${device} for --emulate-device`);
-    console.log(
-      `Available devices: ${Object.keys(devices).join(', ')}`,
-    );
+    console.log(`Available devices: ${Object.keys(devices).join(', ')}`);
     process.exit(1);
   }
 }
@@ -102,10 +96,7 @@ if (isTaikoRunner(processArgv[1])) {
   let plugins = getExecutablePlugins();
   if (
     isCLICommand() &&
-    !(
-      seekingForHelp(processArgv) ||
-      Object.prototype.hasOwnProperty.call(plugins, processArgv[2])
-    )
+    !(seekingForHelp(processArgv) || Object.prototype.hasOwnProperty.call(plugins, processArgv[2]))
   ) {
     // append taiko sub-command as if the user has executed <taiko taiko script.js or just taiko taiko>
     processArgv.splice(2, 0, 'taiko');
@@ -123,15 +114,8 @@ if (isTaikoRunner(processArgv[1])) {
       `enables headful mode and runs script with 3000ms delay by default.
         \t\t\tpass --wait-time option to override the default 3000ms\n`,
     )
-    .option(
-      '-l, --load',
-      'run the given file and start the repl to record further steps.\n',
-    )
-    .option(
-      '-w, --wait-time <time in ms>',
-      'runs script with provided delay\n',
-      parseInt,
-    )
+    .option('-l, --load', 'run the given file and start the repl to record further steps.\n')
+    .option('-w, --wait-time <time in ms>', 'runs script with provided delay\n', parseInt)
     .option(
       '--emulate-device <device>',
       'Allows to simulate device viewport. Visit https://github.com/getgauge/taiko/blob/master/lib/devices.js for all the available devices\n',
@@ -139,21 +123,11 @@ if (isTaikoRunner(processArgv[1])) {
     )
     .option(
       '--emulate-network <networkType>',
-      `Allow to simulate network. Available options are ${NETWORK_TYPES.join(
-        ', ',
-      )}`,
+      `Allow to simulate network. Available options are ${NETWORK_TYPES.join(', ')}`,
       setEmulatedNetwork,
     )
-    .option(
-      '--plugin <plugin1,plugin2...>',
-      'Load the taiko plugin.',
-      setPluginNameInEnv,
-    )
-    .option(
-      '--no-log',
-      'Disable log output of taiko',
-      setDisableLogout,
-    )
+    .option('--plugin <plugin1,plugin2...>', 'Load the taiko plugin.', setPluginNameInEnv)
+    .option('--no-log', 'Disable log output of taiko', setDisableLogout)
     .action(function(_, fileName, cmd) {
       taiko = require('../lib/taiko');
       if (fileName) {

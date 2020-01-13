@@ -25,9 +25,7 @@ describe('browserHandler', () => {
       },
     };
     browserHandler.__set__('_browser', mockBrInstance);
-    browserHandler.overridePermissions('https://url.com', [
-      'geolocation',
-    ]);
+    browserHandler.overridePermissions('https://url.com', ['geolocation']);
     expect(isCalled).to.be.true;
     expect(calledWith).to.be.eql({
       origin: 'https://url.com',
@@ -44,9 +42,7 @@ describe('browserHandler', () => {
     };
     browserHandler.__set__('_browser', mockBrInstance);
     try {
-      await browserHandler.overridePermissions('https://url.com', [
-        'foo-bar',
-      ]);
+      await browserHandler.overridePermissions('https://url.com', ['foo-bar']);
     } catch (error) {
       expect(isCalled).to.be.false;
       expect(error.message).to.be.eql('Unknown permission: foo-bar');

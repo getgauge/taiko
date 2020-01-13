@@ -41,10 +41,7 @@ describe('pageHandler', () => {
 
   it('.handleNavigation should add listeners for xhrRequests', () => {
     pageHandler.handleNavigation('http://gauge.org');
-    expect(event.eventNames()).to.be.eql([
-      'requestStarted',
-      'responseReceived',
-    ]);
+    expect(event.eventNames()).to.be.eql(['requestStarted', 'responseReceived']);
   });
 
   it('.handleNavigation should fail if navigation fails', async () => {

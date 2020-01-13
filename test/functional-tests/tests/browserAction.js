@@ -43,70 +43,61 @@ step('Assert cookies to be present', async function() {
   assert.ok(cookies.length > 0);
 });
 
-step('Assert cookie with valid options url <arg>', async function(
-  arg,
-) {
+step('Assert cookie with valid options url <arg>', async function(arg) {
   const cookies = await getCookies({ urls: [arg] });
   assert.ok(cookies.length > 0);
 });
 
-step('Assert cookie with invalid options url <arg>', async function(
-  arg,
-) {
+step('Assert cookie with invalid options url <arg>', async function(arg) {
   const cookies = await getCookies({ urls: [arg] });
   assert.ok(cookies.length === 0);
 });
 
-step('Navigate to file with relative Path <filePath>', async function(
-  filePath,
-) {
+step('Navigate to file with relative Path <filePath>', async function(filePath) {
   await goto('file:///' + cwd + filePath);
 });
 
-step(
-  'Override browser permission with <geolocation> for site <url>',
-  async function(geolocation, url) {
-    await overridePermissions(url, [geolocation]);
-  },
-);
+step('Override browser permission with <geolocation> for site <url>', async function(
+  geolocation,
+  url,
+) {
+  await overridePermissions(url, [geolocation]);
+});
 
-step(
-  'Setlocation with longitude as <longitude> and latitude as <latitude>',
-  async function(longitude, latitude) {
-    await setLocation({
-      longitude: parseFloat(longitude),
-      latitude: parseFloat(latitude),
-    });
-  },
-);
+step('Setlocation with longitude as <longitude> and latitude as <latitude>', async function(
+  longitude,
+  latitude,
+) {
+  await setLocation({
+    longitude: parseFloat(longitude),
+    latitude: parseFloat(latitude),
+  });
+});
 
-step(
-  'Assert location longitude as <longitude> and latitude as <latitude>',
-  async function(longitude, latitude) {
-    const geolocation = await evaluate(
-      () =>
-        new Promise(resolve =>
-          navigator.geolocation.getCurrentPosition(position => {
-            resolve({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-            });
-          }),
-        ),
-    );
-    assert.equal(geolocation.longitude, parseFloat(longitude));
-    assert.equal(geolocation.latitude, parseFloat(latitude));
-  },
-);
+step('Assert location longitude as <longitude> and latitude as <latitude>', async function(
+  longitude,
+  latitude,
+) {
+  const geolocation = await evaluate(
+    () =>
+      new Promise(resolve =>
+        navigator.geolocation.getCurrentPosition(position => {
+          resolve({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        }),
+      ),
+  );
+  assert.equal(geolocation.longitude, parseFloat(longitude));
+  assert.equal(geolocation.latitude, parseFloat(latitude));
+});
 
 step('Emulate device <deviceModel>', async function(deviceModel) {
   await emulateDevice(deviceModel);
 });
 
-step('Assert width is <width> and height is <height>', async function(
-  width,
-  height,
-) {
+step('Assert width is <width> and height is <height>', async function(width, height) {
   const innerWidth = await evaluate(() => window.innerWidth);
   const innerHeight = await evaluate(() => window.innerHeight);
   assert.equal(innerWidth, width);

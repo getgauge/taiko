@@ -10,9 +10,9 @@ describe('Config tests', () => {
         let allowedConfig =
           'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
         let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfig}`;
-        expect(() =>
-          config.setConfig({ invalidConfig: true }),
-        ).to.throw(new RegExp(`^${expectedMessage}$`));
+        expect(() => config.setConfig({ invalidConfig: true })).to.throw(
+          new RegExp(`^${expectedMessage}$`),
+        );
       });
     });
 
@@ -116,9 +116,7 @@ describe('Config tests', () => {
   });
 
   describe('Test determineObserveDelay', () => {
-    const determineObserveDelay = config.__get__(
-      'determineObserveDelay',
-    );
+    const determineObserveDelay = config.__get__('determineObserveDelay');
 
     describe('with observe true', () => {
       it('should return provided value', () => {
@@ -162,9 +160,7 @@ describe('Config tests', () => {
         waitForNavigation: false,
         waitForStart: 500,
       };
-      const actualOptions = config.setNavigationOptions(
-        exceptedOptions,
-      );
+      const actualOptions = config.setNavigationOptions(exceptedOptions);
       expect(actualOptions).to.deep.equal(exceptedOptions);
     });
   });

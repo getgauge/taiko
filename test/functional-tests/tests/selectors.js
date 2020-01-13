@@ -32,9 +32,7 @@ function getElementWithSelector(element, selector) {
 function getElements(table) {
   var referenceElements = [];
   table.rows.forEach(function(row) {
-    referenceElements.push(
-      getElementWithSelector(row.cells[0], row.cells[1]),
-    );
+    referenceElements.push(getElementWithSelector(row.cells[0], row.cells[1]));
   });
   return referenceElements;
 }

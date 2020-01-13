@@ -6,9 +6,7 @@ const TEXT_NODE = 3;
 describe('Element Search', () => {
   describe('Filter visible nodes', () => {
     let nodeIds;
-    const filterVisibleNodes = elementSearch.__get__(
-      'filterVisibleNodes',
-    );
+    const filterVisibleNodes = elementSearch.__get__('filterVisibleNodes');
     beforeEach(() => {
       elementSearch.__set__('Node', { TEXT_NODE });
       nodeIds = {
@@ -50,16 +48,12 @@ describe('Element Search', () => {
     });
     it('should return visible nodes', async () => {
       const visibleNodeIds = [23, 45, 67];
-      expect(await filterVisibleNodes([23, 45, 67, 68])).to.eql(
-        visibleNodeIds,
-      );
+      expect(await filterVisibleNodes([23, 45, 67, 68])).to.eql(visibleNodeIds);
     });
 
     it('should use parentElement to determine visibility for text nodes', async () => {
       const visibleNodeIds = [23, 89];
-      expect(await filterVisibleNodes([23, 68, 89])).to.eql(
-        visibleNodeIds,
-      );
+      expect(await filterVisibleNodes([23, 68, 89])).to.eql(visibleNodeIds);
     });
   });
 });
