@@ -1,24 +1,12 @@
-const {
-    goto,
-    click,
-    title,
-    closeTab,
-    currentURL,
-    text,
-  } = require('taiko'),
+const { goto, click, title, closeTab, currentURL, text } = require('taiko'),
   path = require('path'),
-  {
-    openBrowserAndStartScreencast,
-    closeBrowserAndStopScreencast,
-  } = require('./browserLauncher'),
+  { openBrowserAndStartScreencast, closeBrowserAndStopScreencast } = require('./browserLauncher'),
   expect = require('chai').expect;
 
 (async () => {
   try {
     const url = 'http://localhost:3000/windows';
-    await openBrowserAndStartScreencast(
-      path.join('captures', 'windows', 'windows.gif'),
-    );
+    await openBrowserAndStartScreencast(path.join('captures', 'windows', 'windows.gif'));
     let options = {
       navigationTimeout: 40000,
       waitForNavigation: true,

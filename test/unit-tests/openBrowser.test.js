@@ -201,19 +201,13 @@ describe('Isolation session storage test', () => {
 
 describe('open browser throws an error', () => {
   it('openBrowser should throw an error when options parameter is string', async () =>
-    await openBrowser('someString').catch(error =>
-      expect(error).to.be.an.instanceOf(Error),
-    ));
+    await openBrowser('someString').catch(error => expect(error).to.be.an.instanceOf(Error)));
   it('openBrowser should throw an error when options parameter is array', async () =>
-    await openBrowser([]).catch(error =>
-      expect(error).to.be.an.instanceOf(Error),
-    ));
+    await openBrowser([]).catch(error => expect(error).to.be.an.instanceOf(Error)));
 
   it('openBrowser should throw error, when it is called before closeBrowser is called', async () => {
     await openBrowser();
-    await openBrowser().catch(error =>
-      expect(error).to.be.an.instanceOf(Error),
-    );
+    await openBrowser().catch(error => expect(error).to.be.an.instanceOf(Error));
     await closeBrowser();
   });
 });

@@ -2,12 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-  resetConfig,
-} = require('./test-util');
+let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 let {
   openBrowser,
   goto,
@@ -66,24 +61,18 @@ describe(test_name, () => {
     });
 
     it('test exists()', async () => {
-      expect(await checkBox('checkboxWithInlineLabel').exists()).to.be
-        .true;
+      expect(await checkBox('checkboxWithInlineLabel').exists()).to.be.true;
       expect(await checkBox('Something').exists()).to.be.false;
     });
 
     it('test description', async () => {
-      const description = checkBox('checkboxWithInlineLabel')
-        .description;
-      expect(description).to.be.eql(
-        'Checkbox with label checkboxWithInlineLabel ',
-      );
+      const description = checkBox('checkboxWithInlineLabel').description;
+      expect(description).to.be.eql('Checkbox with label checkboxWithInlineLabel ');
     });
 
     it('test check()', async () => {
       await checkBox('checkboxWithInlineLabel').check();
-      const isChecked = await checkBox(
-        'checkboxWithInlineLabel',
-      ).isChecked();
+      const isChecked = await checkBox('checkboxWithInlineLabel').isChecked();
       expect(isChecked).to.be.true;
     });
 
@@ -99,26 +88,21 @@ describe(test_name, () => {
     it('test uncheck()', async () => {
       await checkBox('checkboxWithInlineLabel').check();
       await checkBox('checkboxWithInlineLabel').uncheck();
-      const isChecked = await checkBox(
-        'checkboxWithInlineLabel',
-      ).isChecked();
+      const isChecked = await checkBox('checkboxWithInlineLabel').isChecked();
       expect(isChecked).to.be.false;
     });
 
     it('test uncheck() to throw if the element is not found', async () => {
-      await expect(checkBox('foo').uncheck()).to.be.eventually
-        .rejected;
+      await expect(checkBox('foo').uncheck()).to.be.eventually.rejected;
     });
 
     it('test isChecked()', async () => {
       await checkBox('checkboxWithInlineLabel').check();
-      expect(await checkBox('checkboxWithInlineLabel').isChecked()).to
-        .be.true;
+      expect(await checkBox('checkboxWithInlineLabel').isChecked()).to.be.true;
     });
 
     it('test isChecked() to throw if no element is found', async () => {
-      await expect(checkBox('foo').isChecked()).to.be.eventually
-        .rejected;
+      await expect(checkBox('foo').isChecked()).to.be.eventually.rejected;
     });
 
     it('test text should throw if the element is not found', async () => {
@@ -126,38 +110,29 @@ describe(test_name, () => {
     });
 
     it('test isVisible() to throw if no element is found', async () => {
-      await expect(checkBox('foo').isVisible()).to.be.eventually
-        .rejected;
+      await expect(checkBox('foo').isVisible()).to.be.eventually.rejected;
     });
   });
 
   describe('wrapped in label', () => {
     it('test exists()', async () => {
-      expect(await checkBox('checkboxWithWrappedInLabel').exists()).to
-        .be.true;
+      expect(await checkBox('checkboxWithWrappedInLabel').exists()).to.be.true;
     });
 
     it('test description', async () => {
-      const description = checkBox('checkboxWithWrappedInLabel')
-        .description;
-      expect(description).to.be.eql(
-        'Checkbox with label checkboxWithWrappedInLabel ',
-      );
+      const description = checkBox('checkboxWithWrappedInLabel').description;
+      expect(description).to.be.eql('Checkbox with label checkboxWithWrappedInLabel ');
     });
   });
 
   describe('using label for', () => {
     it('test exists()', async () => {
-      expect(await checkBox('checkboxWithLabelFor').exists()).to.be
-        .true;
+      expect(await checkBox('checkboxWithLabelFor').exists()).to.be.true;
     });
 
     it('test description', async () => {
-      const description = checkBox('checkboxWithLabelFor')
-        .description;
-      expect(description).to.be.eql(
-        'Checkbox with label checkboxWithLabelFor ',
-      );
+      const description = checkBox('checkboxWithLabelFor').description;
+      expect(description).to.be.eql('Checkbox with label checkboxWithLabelFor ');
     });
   });
 
@@ -182,9 +157,7 @@ describe(test_name, () => {
       let elements = await checkBox({
         id: 'someCheckBox',
       }).elements();
-      expect(elements[0].description).to.be.eql(
-        'Checkbox[@id = concat(\'someCheckBox\', "")]',
-      );
+      expect(elements[0].description).to.be.eql('Checkbox[@id = concat(\'someCheckBox\', "")]');
     });
 
     it('test isChecked of elements', async () => {

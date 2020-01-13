@@ -19,10 +19,7 @@ describe('clearIntercept', () => {
   });
 
   it('should display success message if there are intercepts for the url', async () => {
-    let validatePromise = validateEmitterEvent(
-      'success',
-      'Intercepts reset for url google.com',
-    );
+    let validatePromise = validateEmitterEvent('success', 'Intercepts reset for url google.com');
     let networkHandler = {
       resetInterceptor: () => true,
     };
@@ -32,10 +29,7 @@ describe('clearIntercept', () => {
   });
 
   it('should display message if all intercepts are reset', async () => {
-    let validatePromise = validateEmitterEvent(
-      'success',
-      'Intercepts reset for all url',
-    );
+    let validatePromise = validateEmitterEvent('success', 'Intercepts reset for all url');
     let networkHandler = {
       resetInterceptors: () => {},
     };

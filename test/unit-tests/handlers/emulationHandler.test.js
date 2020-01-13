@@ -1,9 +1,7 @@
 const rewire = require('rewire');
 const expect = require('chai').expect;
 const assert = require('chai').assert;
-const emulationHandler = rewire(
-  '../../../lib/handlers/emulationHandler',
-);
+const emulationHandler = rewire('../../../lib/handlers/emulationHandler');
 
 describe('emulationHandler', () => {
   let calledWith = {};

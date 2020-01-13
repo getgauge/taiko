@@ -39,15 +39,11 @@ describe(test_name, () => {
       latency: 500,
     };
     await networkHandler.setNetworkEmulation('GPRS');
-    expect(actualNetworkCondition).to.deep.equal(
-      expectedNetworkCondition,
-    );
+    expect(actualNetworkCondition).to.deep.equal(expectedNetworkCondition);
   });
 
   it('should throw error for invalid network type', async () => {
-    return expect(
-      networkHandler.setNetworkEmulation('invalid network'),
-    ).to.eventually.rejectedWith(
+    return expect(networkHandler.setNetworkEmulation('invalid network')).to.eventually.rejectedWith(
       `Please set one of the given network types \n${[
         'GPRS',
         'Regular2G',
@@ -71,8 +67,6 @@ describe(test_name, () => {
       latency: 500,
     };
     await networkHandler.setNetworkEmulation();
-    expect(actualNetworkCondition).to.deep.equal(
-      expectedNetworkCondition,
-    );
+    expect(actualNetworkCondition).to.deep.equal(expectedNetworkCondition);
   });
 });

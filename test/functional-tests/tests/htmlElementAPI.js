@@ -51,14 +51,11 @@ step('Ensure Check Box <checkBoxName> exists', async checkBoxName => {
   const box = checkBox(checkBoxName);
   assert.ok(await box.exists());
 });
-step(
-  'Check the value of Check Box <checkBoxName>',
-  async checkBoxName => {
-    const box = checkBox(checkBoxName);
-    await box.check();
-    assert.ok(await box.isChecked());
-  },
-);
+step('Check the value of Check Box <checkBoxName>', async checkBoxName => {
+  const box = checkBox(checkBoxName);
+  await box.check();
+  assert.ok(await box.isChecked());
+});
 
 step('Radio Button <label>', async label => {
   const button = radioButton(label);
@@ -67,66 +64,41 @@ step('Radio Button <label>', async label => {
   assert.ok(await button.isSelected());
 });
 
-step(
-  'Attach file <fileName> to file field <FileFieldName>',
-  async (fileName, FileFieldName) => {
-    const field = fileField(FileFieldName);
-    await attach(fileName, to(field));
-    assert.ok((await field.value()).endsWith(fileName));
-  },
-);
+step('Attach file <fileName> to file field <FileFieldName>', async (fileName, FileFieldName) => {
+  const field = fileField(FileFieldName);
+  await attach(fileName, to(field));
+  assert.ok((await field.value()).endsWith(fileName));
+});
 
-step(
-  'Get value <text> of Text Box <textBoxName>',
-  async (text, textBoxName) => {
-    const field = textBox(textBoxName);
-    assert.equal(await field.value(), text);
-  },
-);
+step('Get value <text> of Text Box <textBoxName>', async (text, textBoxName) => {
+  const field = textBox(textBoxName);
+  assert.equal(await field.value(), text);
+});
 
-step(
-  'An existing Text Box <textBoxName> value should give exists true',
-  async textBoxName => {
-    const field = textBox(textBoxName);
-    assert.ok(await field.exists());
-  },
-);
+step('An existing Text Box <textBoxName> value should give exists true', async textBoxName => {
+  const field = textBox(textBoxName);
+  assert.ok(await field.exists());
+});
 
-step(
-  'Write <text> into Text Box <textBoxName>',
-  async (text, textBoxName) => {
-    await write(text, into(textBoxName));
-  },
-);
+step('Write <text> into Text Box <textBoxName>', async (text, textBoxName) => {
+  await write(text, into(textBoxName));
+});
 
-step(
-  'Write <text> into TextBox with name <textboxName>',
-  async function(text, textBoxName) {
-    await write(text, into(textBox({ name: textBoxName })));
-  },
-);
+step('Write <text> into TextBox with name <textboxName>', async function(text, textBoxName) {
+  await write(text, into(textBox({ name: textBoxName })));
+});
 
-step(
-  'Write <text> to Text Box <textBoxName>',
-  async (text, textBoxName) => {
-    await write(text, to(textBoxName));
-  },
-);
+step('Write <text> to Text Box <textBoxName>', async (text, textBoxName) => {
+  await write(text, to(textBoxName));
+});
 
-step(
-  'Focus on Text Box to right of <textBoxName>',
-  async textBoxName => {
-    await focus(textBox(toRightOf(textBoxName)));
-  },
-);
+step('Focus on Text Box to right of <textBoxName>', async textBoxName => {
+  await focus(textBox(toRightOf(textBoxName)));
+});
 
-step(
-  'Scroll the page right by pixels <pixels>',
-  { continueOnFailure: true },
-  async pixels => {
-    await scrollRight(parseInt(pixels, 10));
-  },
-);
+step('Scroll the page right by pixels <pixels>', { continueOnFailure: true }, async pixels => {
+  await scrollRight(parseInt(pixels, 10));
+});
 
 step(
   'Scroll element <element> right by pixels <pixels>',
@@ -136,13 +108,9 @@ step(
   },
 );
 
-step(
-  'Scroll the page left',
-  { continueOnFailure: true },
-  async () => {
-    await scrollLeft();
-  },
-);
+step('Scroll the page left', { continueOnFailure: true }, async () => {
+  await scrollLeft();
+});
 
 step(
   'Wait for Accept message <message> on click of button <buttonName>',
@@ -162,42 +130,26 @@ step(
   },
 );
 
-step('Respond to <url> with <responseBody>', async function(
-  url,
-  responseBody,
-) {
+step('Respond to <url> with <responseBody>', async function(url, responseBody) {
   await intercept(url, { body: responseBody });
 });
 
-step('Respond to <url> with json <jsonString>', async function(
-  url,
-  jsonString,
-) {
+step('Respond to <url> with json <jsonString>', async function(url, jsonString) {
   await intercept(url, { body: JSON.parse(jsonString) });
 });
 
-step('Navigate to relative path <relativePath>', async function(
-  relativePath,
-) {
+step('Navigate to relative path <relativePath>', async function(relativePath) {
   var absolutePath = _path.resolve(relativePath);
   await goto('file:///' + absolutePath);
 });
 
-step(
-  'Scroll to element <arg0>',
-  { continueOnFailure: true },
-  async function() {
-    await scrollTo($('#myDIV'));
-  },
-);
+step('Scroll to element <arg0>', { continueOnFailure: true }, async function() {
+  await scrollTo($('#myDIV'));
+});
 
-step(
-  'Scroll the page left by pixels <pixels>',
-  { continueOnFailure: true },
-  async pixels => {
-    await scrollLeft(parseInt(pixels, 10));
-  },
-);
+step('Scroll the page left by pixels <pixels>', { continueOnFailure: true }, async pixels => {
+  await scrollLeft(parseInt(pixels, 10));
+});
 
 step(
   'Scroll element <element> left by pixels <pixels>',
@@ -207,41 +159,28 @@ step(
   },
 );
 
-step(
-  'Scroll the page right',
-  { continueOnFailure: true },
-  async () => {
-    await scrollRight();
-  },
-);
+step('Scroll the page right', { continueOnFailure: true }, async () => {
+  await scrollRight();
+});
 
-step(
-  'Scroll the page up by pixels <pixels>',
-  { continueOnFailure: true },
-  async pixels => {
-    await scrollUp(parseInt(pixels, 10));
-  },
-);
+step('Scroll the page up by pixels <pixels>', { continueOnFailure: true }, async pixels => {
+  await scrollUp(parseInt(pixels, 10));
+});
 
-step(
-  'Scroll element <element> up by pixels <pixels>',
-  { continueOnFailure: true },
-  async function(element, pixels) {
-    await scrollUp($(element), parseInt(pixels, 10));
-  },
-);
+step('Scroll element <element> up by pixels <pixels>', { continueOnFailure: true }, async function(
+  element,
+  pixels,
+) {
+  await scrollUp($(element), parseInt(pixels, 10));
+});
 
 step('Scroll the page up', { continueOnFailure: true }, async () => {
   await scrollUp();
 });
 
-step(
-  'Scroll the page down by pixels <pixels>',
-  { continueOnFailure: true },
-  async pixels => {
-    await scrollDown(parseInt(pixels, 10));
-  },
-);
+step('Scroll the page down by pixels <pixels>', { continueOnFailure: true }, async pixels => {
+  await scrollDown(parseInt(pixels, 10));
+});
 
 step(
   'Scroll element <element> down by pixels <pixels>',
@@ -251,28 +190,18 @@ step(
   },
 );
 
-step(
-  'Scroll the page down',
-  { continueOnFailure: true },
-  async () => {
-    await scrollDown();
-  },
-);
+step('Scroll the page down', { continueOnFailure: true }, async () => {
+  await scrollDown();
+});
 
-step(
-  'Navigate to relative path <path> with timeout <timeout> ms',
-  async function(path, timeout) {
-    var absolutePath = _path.resolve(path);
-    await goto('file:///' + absolutePath, {
-      navigationTimeout: timeout,
-    });
-  },
-);
+step('Navigate to relative path <path> with timeout <timeout> ms', async function(path, timeout) {
+  var absolutePath = _path.resolve(path);
+  await goto('file:///' + absolutePath, {
+    navigationTimeout: timeout,
+  });
+});
 
-step('Navigate to <url> with timeout <timeout> ms', async function(
-  url,
-  timeout,
-) {
+step('Navigate to <url> with timeout <timeout> ms', async function(url, timeout) {
   await goto(url, { navigationTimeout: timeout });
 });
 

@@ -8,12 +8,7 @@ let {
   $,
   setConfig,
 } = require('../../lib/taiko');
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-  resetConfig,
-} = require('./test-util');
+let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'Highlight';
 
 describe(test_name, () => {

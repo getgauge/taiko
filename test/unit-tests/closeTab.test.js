@@ -61,10 +61,7 @@ describe('closeTab', () => {
 
   it('should close the browser if there are no tabs to reconnect', async () => {
     taiko.__set__('_closeBrowser', () => {});
-    let validatePromise = validateEmitterEvent(
-      'success',
-      'Closing last target and browser.',
-    );
+    let validatePromise = validateEmitterEvent('success', 'Closing last target and browser.');
     await taiko.closeTab();
     await validatePromise;
   });
@@ -177,9 +174,7 @@ describe('closeTab', () => {
       'success',
       'Closed tab(s) matching /http(s?):\\/\\/(www?).google.(com|co.in|co.uk)/',
     );
-    await taiko.closeTab(
-      /http(s?):\/\/(www?).google.(com|co.in|co.uk)/,
-    );
+    await taiko.closeTab(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/);
     await validatePromise;
     expect(currentTarget.url).to.be.eql('https://amazon.com');
   });

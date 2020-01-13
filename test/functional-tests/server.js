@@ -5,15 +5,12 @@ let server = app.listen(3001, async () => {
   let specs = process.env.npm_config_spec || 'specs';
   let run = () =>
     new Promise((resolve, reject) => {
-      let p = cp.exec(
-        `gauge run ${specs} -v --tags=\\!knownIssue -p`,
-        error => {
-          if (error) {
-            reject(error);
-          }
-          resolve();
-        },
-      );
+      let p = cp.exec(`gauge run ${specs} -v --tags=\\!knownIssue -p`, error => {
+        if (error) {
+          reject(error);
+        }
+        resolve();
+      });
       p.stdout.pipe(process.stdout);
       p.stderr.pipe(process.stderr);
     });

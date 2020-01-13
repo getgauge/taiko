@@ -179,9 +179,7 @@ function updateDollarLink() {
   link.id = 'dollar';
   link.children[1].setAttribute('href', '#dollar');
 
-  let reference = document.querySelector(
-    '#Selectors > li:nth-child(1) > a',
-  );
+  let reference = document.querySelector('#Selectors > li:nth-child(1) > a');
   reference.setAttribute('href', '#dollar');
 }
 
@@ -206,11 +204,9 @@ function onLoad() {
 }
 
 function init() {
-  document
-    .querySelectorAll('div.content-section pre code')
-    .forEach(block => {
-      hljs.highlightBlock(block);
-    });
+  document.querySelectorAll('div.content-section pre code').forEach(block => {
+    hljs.highlightBlock(block);
+  });
   setGithubStar();
   setTimeout(function() {
     smoothScroll();
