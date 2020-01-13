@@ -1,5 +1,3 @@
-const { descEvent } = require('../../lib/helper');
-
 let {
   openBrowser,
   goto,
@@ -16,24 +14,11 @@ const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 const expect = chai.expect;
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-} = require('./test-util');
+let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'tableCell';
 
 describe(test_name, () => {
   let filePath;
-
-  let validateEmitterEvent = function(event, expectedText) {
-    return new Promise(resolve => {
-      descEvent.once(event, eventData => {
-        expect(eventData).to.be.equal(expectedText);
-        resolve();
-      });
-    });
-  };
 
   before(async () => {
     let innerHtml = `
@@ -165,9 +150,7 @@ describe(test_name, () => {
       ).to.be.eventually.rejected;
     });
     it('test tableCell throw error if row and col not provided', async () => {
-      expect(() => tableCell('Above Caption')).to.throw(
-        'Table Row or Column Value required',
-      );
+      expect(() => tableCell('Above Caption')).to.throw('Table Row or Column Value required');
     });
   });
 
@@ -256,10 +239,9 @@ describe(test_name, () => {
     });
 
     it('test tableCell description', async () => {
-      expect(
-        await tableCell({ row: '1', col: '1' }, below('Tabular data'))
-          .description,
-      ).to.be.eql('Table Cell Below Tabular data');
+      expect(await tableCell({ row: '1', col: '1' }, below('Tabular data')).description).to.be.eql(
+        'Table Cell Below Tabular data',
+      );
     });
 
     it('1 - test tableCell text()', async () => {
@@ -287,42 +269,31 @@ describe(test_name, () => {
     });
 
     it('test text should throw if the element is not found', async () => {
-      await expect(
-        tableCell({ row: 1, col: 1 }, 'Table Heading 11').text(),
-      ).to.be.eventually.rejected;
+      await expect(tableCell({ row: 1, col: 1 }, 'Table Heading 11').text()).to.be.eventually
+        .rejected;
     }).timeout(15000);
   });
 
   describe('Compatibility with other APIs', () => {
     it('Using tableCell in proximity selector', async () => {
       expect(
-        await text(
-          'Table Cell 2',
-          above(tableCell({ row: 2, col: 2 }, 'Table Caption')),
-        ).exists(),
+        await text('Table Cell 2', above(tableCell({ row: 2, col: 2 }, 'Table Caption'))).exists(),
       ).to.be.true;
     });
 
     it('Finding link using tableCell in proximity selector', async () => {
-      expect(
-        await link(
-          above(tableCell({ row: 4, col: 1 }, 'Table Caption')),
-        ).text(),
-      ).to.be.eql('[Top]');
+      expect(await link(above(tableCell({ row: 4, col: 1 }, 'Table Caption'))).text()).to.be.eql(
+        '[Top]',
+      );
     });
 
     it('Getting value using argValue', async () => {
-      expect(await tableCell({ id: 'lucky' }).text()).to.be.eql(
-        'Table Cell 4',
-      );
+      expect(await tableCell({ id: 'lucky' }).text()).to.be.eql('Table Cell 4');
     });
 
     it('Getting text using proximity selectors', async () => {
       expect(
-        await text(
-          'Table Cell 1',
-          near(tableCell({ row: 1, col: 1 }, 'Table Caption')),
-        ).exists(),
+        await text('Table Cell 1', near(tableCell({ row: 1, col: 1 }, 'Table Caption'))).exists(),
       ).to.be.true;
     });
   });

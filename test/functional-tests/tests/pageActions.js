@@ -39,17 +39,11 @@ step('Hover on element <table>', async function(table) {
   }
 });
 
-step('Drag <source> and drop to <destination>', async function(
-  source,
-  destination,
-) {
+step('Drag <source> and drop to <destination>', async function(source, destination) {
   await dragAndDrop($(source), $(destination));
 });
 
-step('Drag <source> and drop at <directionTable>', async function(
-  source,
-  directionTable,
-) {
+step('Drag <source> and drop at <directionTable>', async function(source, directionTable) {
   const direction = {};
   directionTable.rows.forEach(row => {
     direction[row.cells[0]] = parseInt(row.cells[1]);
@@ -62,9 +56,7 @@ step('Assert url host is <hostName>', async function(hostName) {
   assert.equal(new URL(url).hostname, hostName);
 });
 
-step('Assert page navigated back <hostname>', async function(
-  hostName,
-) {
+step('Assert page navigated back <hostname>', async function(hostName) {
   const url = await currentURL();
   assert.equal(new URL(url).hostname, hostName);
 });

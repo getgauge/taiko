@@ -21,16 +21,11 @@ var server = app.listen(3000, async () => {
       p.stderr.pipe(process.stderr);
     });
 
-  var prefix =
-    args.filter(a => !['--observe', '--screencast'].includes(a))[2] ||
-    '';
+  var prefix = args.filter(a => !['--observe', '--screencast'].includes(a))[2] || '';
   var examples = glob
     .sync('*.js')
     .filter(
-      f =>
-        __filename !== path.resolve(f) &&
-        'browserLauncher.js' !== f &&
-        f.startsWith(prefix),
+      f => __filename !== path.resolve(f) && 'browserLauncher.js' !== f && f.startsWith(prefix),
     )
     .map(f => {
       return { file: f, task: () => run(f) };

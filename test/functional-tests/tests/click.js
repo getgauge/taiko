@@ -14,10 +14,7 @@ const {
   $,
 } = require('taiko');
 
-step('Click link <userlink> below <table>', async function(
-  userlink,
-  table,
-) {
+step('Click link <userlink> below <table>', async function(userlink, table) {
   for (const element of getElements(table)) {
     await click(link(userlink, below(element)));
   }
@@ -59,44 +56,35 @@ step('Double click <table>', async function(table) {
   }
 });
 
-step(
-  'Press & Release To Element with element1 and <X>,<Y> co-ordinates',
-  async function(X, Y) {
-    await mouseAction($('#button1'), 'press', {
-      x: parseInt(X),
-      y: parseInt(Y),
-    });
-    await mouseAction($('#button1'), 'release', {
-      x: parseInt(X),
-      y: parseInt(Y),
-    });
-  },
-);
+step('Press & Release To Element with element1 and <X>,<Y> co-ordinates', async function(X, Y) {
+  await mouseAction($('#button1'), 'press', {
+    x: parseInt(X),
+    y: parseInt(Y),
+  });
+  await mouseAction($('#button1'), 'release', {
+    x: parseInt(X),
+    y: parseInt(Y),
+  });
+});
 
-step(
-  'Press & Release To Element with element2 and <X>,<Y> co-ordinates',
-  async function(X, Y) {
-    await mouseAction($('#button4'), 'press', {
-      x: parseInt(X),
-      y: parseInt(Y),
-    });
-    await mouseAction($('#button4'), 'release', {
-      x: parseInt(X),
-      y: parseInt(Y),
-    });
-  },
-);
+step('Press & Release To Element with element2 and <X>,<Y> co-ordinates', async function(X, Y) {
+  await mouseAction($('#button4'), 'press', {
+    x: parseInt(X),
+    y: parseInt(Y),
+  });
+  await mouseAction($('#button4'), 'release', {
+    x: parseInt(X),
+    y: parseInt(Y),
+  });
+});
 
-step(
-  'Press & Release To Element with <X>,<Y> co-ordinates',
-  async function(X, Y) {
-    await mouseAction('press', {
-      x: parseInt(X),
-      y: parseInt(Y),
-    });
-    await mouseAction('release', {
-      x: parseInt(X),
-      y: parseInt(Y),
-    });
-  },
-);
+step('Press & Release To Element with <X>,<Y> co-ordinates', async function(X, Y) {
+  await mouseAction('press', {
+    x: parseInt(X),
+    y: parseInt(Y),
+  });
+  await mouseAction('release', {
+    x: parseInt(X),
+    y: parseInt(Y),
+  });
+});

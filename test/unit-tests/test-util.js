@@ -4,13 +4,7 @@ let { pathToFileURL, fileURLToPath } = require('url');
 let { setConfig } = require('../../lib/taiko');
 
 module.exports.createHtml = (innerHtml, testName) => {
-  let htmlFilePath = path.join(
-    process.cwd(),
-    'test',
-    'unit-tests',
-    'data',
-    testName + '.html',
-  );
+  let htmlFilePath = path.join(process.cwd(), 'test', 'unit-tests', 'data', testName + '.html');
   let content = `
 <!DOCTYPE html>
 <html>

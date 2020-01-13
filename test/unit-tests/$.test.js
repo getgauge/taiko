@@ -2,19 +2,8 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let {
-  openBrowser,
-  closeBrowser,
-  goto,
-  $,
-  setConfig,
-} = require('../../lib/taiko');
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-  resetConfig,
-} = require('./test-util');
+let { openBrowser, closeBrowser, goto, $, setConfig } = require('../../lib/taiko');
+let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = '$';
 
 describe(test_name, () => {
@@ -58,9 +47,7 @@ describe(test_name, () => {
     });
 
     it('test text() with xpath', async () => {
-      expect(await $("//*[text()='taiko']").text()).to.be.eql(
-        'taiko',
-      );
+      expect(await $("//*[text()='taiko']").text()).to.be.eql('taiko');
     });
 
     it('should return true for non hidden element when isVisible fn is called', async () => {
@@ -68,8 +55,7 @@ describe(test_name, () => {
     });
 
     it('test isVisible() to throw if no element is found', async () => {
-      await expect($("//*[text()='foo']").isVisible()).to.be
-        .eventually.rejected;
+      await expect($("//*[text()='foo']").isVisible()).to.be.eventually.rejected;
     });
 
     //TODO $ API does not accept selectHiddenElement as options should be fixed #811
@@ -93,12 +79,8 @@ describe(test_name, () => {
     });
 
     it('test description with selectors', async () => {
-      expect($('#foo').description).to.be.eql(
-        'Custom selector $(#foo)',
-      );
-      expect($('.test').description).to.be.eql(
-        'Custom selector $(.test)',
-      );
+      expect($('#foo').description).to.be.eql('Custom selector $(#foo)');
+      expect($('.test').description).to.be.eql('Custom selector $(.test)');
     });
 
     it('test text with selectors', async () => {
@@ -128,9 +110,7 @@ describe(test_name, () => {
 
     it('test description', async () => {
       const elems = await $('#foo').elements();
-      expect(elems[0].description).to.be.eql(
-        'Custom selector $(#foo)',
-      );
+      expect(elems[0].description).to.be.eql('Custom selector $(#foo)');
     });
 
     it('test text()', async () => {

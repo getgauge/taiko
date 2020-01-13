@@ -5,21 +5,8 @@ const EventEmitter = require('events').EventEmitter;
 const taiko = rewire('../../lib/taiko.js');
 chai.use(chaiAsPromised);
 const expect = chai.expect;
-let {
-  openBrowser,
-  goto,
-  textBox,
-  closeBrowser,
-  write,
-  into,
-  toLeftOf,
-  setConfig,
-} = taiko;
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-} = require('./test-util');
+let { openBrowser, goto, textBox, closeBrowser, write, into, toLeftOf, setConfig } = taiko;
+let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 let test_name = 'write';
 
 describe(test_name, () => {
@@ -70,25 +57,18 @@ describe(test_name, () => {
 
   it('into focused element', async () => {
     await write('writing to focused input');
-    expect(await textBox('focused input').value()).to.equal(
-      'writing to focused input',
-    );
+    expect(await textBox('focused input').value()).to.equal('writing to focused input');
   });
 
   it('into input field text', async () => {
     expect(await textBox('input-type-text').value()).to.equal('');
     await write('hello', into(textBox('input-type-text')));
-    expect(await textBox('input-type-text').value()).to.equal(
-      'hello',
-    );
+    expect(await textBox('input-type-text').value()).to.equal('hello');
   });
 
   it('should fail for readonly feild', async () => {
     await expect(
-      write(
-        'inputTypeTextWithInlineText',
-        into(textBox('inputTypeTextWithInlineTextReadonly')),
-      ),
+      write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineTextReadonly'))),
     ).to.eventually.be.rejected;
   });
 
@@ -97,9 +77,9 @@ describe(test_name, () => {
       'Taiko can wait for element to be writable.',
       into(textBox('initially disabled input-type-text')),
     );
-    expect(
-      await textBox('initially disabled input-type-text').value(),
-    ).to.equal('Taiko can wait for element to be writable.');
+    expect(await textBox('initially disabled input-type-text').value()).to.equal(
+      'Taiko can wait for element to be writable.',
+    );
   });
 
   it('should wait for element to be writable', async () => {
@@ -122,9 +102,9 @@ describe(test_name, () => {
       'Taiko can wait for element to be writable.',
       into(textBox('initially disabled input-type-text')),
     );
-    expect(
-      await textBox('initially disabled input-type-text').value(),
-    ).to.equal('Taiko can wait for element to be writable.');
+    expect(await textBox('initially disabled input-type-text').value()).to.equal(
+      'Taiko can wait for element to be writable.',
+    );
   });
 });
 
@@ -166,38 +146,26 @@ describe('write test on multiple similar elements', () => {
   });
 
   it('should write into first writable element', async () => {
-    await expect(
-      write(
-        'inputTypeTextWithInlineText',
-        into(textBox('inputTypeText')),
-      ),
-    ).not.to.eventually.be.rejected;
+    await expect(write('inputTypeTextWithInlineText', into(textBox('inputTypeText')))).not.to
+      .eventually.be.rejected;
   });
 
   it('should reject if no element is writable', async () => {
     await expect(
-      write(
-        'inputTypeTextWithInlineText',
-        into(textBox('readonlyInputTypeText')),
-      ),
-    ).to.eventually.be.rejectedWith(
-      'Element focused is not writable',
-    );
+      write('inputTypeTextWithInlineText', into(textBox('readonlyInputTypeText'))),
+    ).to.eventually.be.rejectedWith('Element focused is not writable');
   });
 
   it('should convert number to string value', async () => {
-    await expect(write(12345, into(textBox('inputTypeText')))).not.to
-      .eventually.be.rejected;
+    await expect(write(12345, into(textBox('inputTypeText')))).not.to.eventually.be.rejected;
   });
 
   it('should convert null to empty string value', async () => {
-    await expect(write(null, into(textBox('inputTypeText')))).not.to
-      .eventually.be.rejected;
+    await expect(write(null, into(textBox('inputTypeText')))).not.to.eventually.be.rejected;
   });
 
   it('should convert undefined to empty string value', async () => {
-    await expect(write(undefined, into(textBox('inputTypeText')))).not
-      .to.eventually.be.rejected;
+    await expect(write(undefined, into(textBox('inputTypeText')))).not.to.eventually.be.rejected;
   });
 });
 
@@ -270,10 +238,7 @@ describe('Write with hideText option', () => {
   });
 
   it('should mask the text when writing to focused element', async () => {
-    let validatePromise = validateEmitterEvent(
-      'success',
-      'Wrote ***** into the focused element.',
-    );
+    let validatePromise = validateEmitterEvent('success', 'Wrote ***** into the focused element.');
     await taiko.write('writing to focused input', { hideText: true });
     await validatePromise;
   });
@@ -283,11 +248,7 @@ describe('Write with hideText option', () => {
       'success',
       'Wrote ***** into the text field To left of input-type-text',
     );
-    await taiko.write(
-      'something',
-      into(textBox(toLeftOf('input-type-text'))),
-      { hideText: true },
-    );
+    await taiko.write('something', into(textBox(toLeftOf('input-type-text'))), { hideText: true });
     await validatePromise;
   });
 });

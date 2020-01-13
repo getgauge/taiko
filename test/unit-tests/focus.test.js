@@ -2,20 +2,8 @@ const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 const expect = chai.expect;
-let {
-  openBrowser,
-  goto,
-  textBox,
-  closeBrowser,
-  focus,
-  setConfig,
-} = require('../../lib/taiko');
-let {
-  createHtml,
-  openBrowserArgs,
-  removeFile,
-  resetConfig,
-} = require('./test-util');
+let { openBrowser, goto, textBox, closeBrowser, focus, setConfig } = require('../../lib/taiko');
+let { createHtml, openBrowserArgs, removeFile, resetConfig } = require('./test-util');
 const test_name = 'Focus';
 
 describe(test_name, () => {
@@ -44,22 +32,17 @@ describe(test_name, () => {
 
   describe('focus Element', () => {
     it('should focus on the given element if it is focusable', async () => {
-      await expect(focus(textBox('focusableTypeText'))).not.to.be
-        .eventually.rejected;
+      await expect(focus(textBox('focusableTypeText'))).not.to.be.eventually.rejected;
     });
 
     it('should throw error if the given element is not focusable', async () => {
-      await expect(
-        focus(textBox('unfocusable')),
-      ).to.be.eventually.rejectedWith(
+      await expect(focus(textBox('unfocusable'))).to.be.eventually.rejectedWith(
         'Error: Element is not focusable\n',
       );
     });
 
     it('should write into the first focusable element', async () => {
-      await expect(
-        focus(textBox('inputTypeText')),
-      ).not.to.be.eventually.rejectedWith(
+      await expect(focus(textBox('inputTypeText'))).not.to.be.eventually.rejectedWith(
         "Custom selector '$(.foo)' not found",
       );
     });

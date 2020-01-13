@@ -1,23 +1,11 @@
 const { descEvent } = require('../../lib/helper');
 
-let {
-  openBrowser,
-  goto,
-  below,
-  dropDown,
-  closeBrowser,
-  setConfig,
-} = require('../../lib/taiko');
+let { openBrowser, goto, below, dropDown, closeBrowser, setConfig } = require('../../lib/taiko');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 const expect = chai.expect;
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-  resetConfig,
-} = require('./test-util');
+let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'DropDown';
 
 describe(test_name, () => {
@@ -83,21 +71,15 @@ describe(test_name, () => {
     });
 
     it('test dropdown description', async () => {
-      expect(dropDown('Cars').description).to.be.eql(
-        'DropDown with label Cars ',
-      );
+      expect(dropDown('Cars').description).to.be.eql('DropDown with label Cars ');
     });
 
     it('test dropdown text()', async () => {
-      expect(await dropDown('Cars').text()).to.be.eql(
-        'Volvo\nSaab\nMercedes\nAudi',
-      );
+      expect(await dropDown('Cars').text()).to.be.eql('Volvo\nSaab\nMercedes\nAudi');
     });
 
     it('test text should throw if the element is not found', async () => {
-      await expect(
-        dropDown('.foo').text(),
-      ).to.be.eventually.rejectedWith(
+      await expect(dropDown('.foo').text()).to.be.eventually.rejectedWith(
         'DropDown with label .foo  not found',
       );
     });
@@ -112,31 +94,26 @@ describe(test_name, () => {
   describe('Select using index', () => {
     it('test select() using index', async () => {
       await dropDown(below('Reason')).select({ index: 1 });
-      expect(await dropDown(below('Reason')).value()).to.equal(
-        '9092',
-      );
+      expect(await dropDown(below('Reason')).value()).to.equal('9092');
     });
   });
 
   describe('wrapped in label', () => {
     it('test exists()', async () => {
-      expect(await dropDown('dropDownWithWrappedInLabel').exists()).to
-        .be.true;
-      expect(
-        await dropDown('dropDownWithWrappedInLabel').value(),
-      ).to.not.equal('mercedes');
+      expect(await dropDown('dropDownWithWrappedInLabel').exists()).to.be.true;
+      expect(await dropDown('dropDownWithWrappedInLabel').value()).to.not.equal('mercedes');
     });
 
     it('test description', async () => {
-      expect(
-        dropDown('dropDownWithWrappedInLabel').description,
-      ).to.be.eql('DropDown with label dropDownWithWrappedInLabel ');
+      expect(dropDown('dropDownWithWrappedInLabel').description).to.be.eql(
+        'DropDown with label dropDownWithWrappedInLabel ',
+      );
     });
 
     it('test text()', async () => {
-      expect(
-        await dropDown('dropDownWithWrappedInLabel').text(),
-      ).to.be.eql('Volvo1\nSaab1\nMercedes1\nAudi1');
+      expect(await dropDown('dropDownWithWrappedInLabel').text()).to.be.eql(
+        'Volvo1\nSaab1\nMercedes1\nAudi1',
+      );
     });
   });
 
@@ -148,19 +125,13 @@ describe(test_name, () => {
     });
 
     it('should show selected index', async () => {
-      let validatePromise = validateEmitterEvent(
-        'success',
-        'Selected 1',
-      );
+      let validatePromise = validateEmitterEvent('success', 'Selected 1');
       await dropDown(below('Reason')).select({ index: 1 });
       await validatePromise;
     });
 
     it('should show selected value', async () => {
-      let validatePromise = validateEmitterEvent(
-        'success',
-        'Selected mercedes',
-      );
+      let validatePromise = validateEmitterEvent('success', 'Selected mercedes');
       await dropDown('Cars').select('mercedes');
       await validatePromise;
     });
@@ -180,9 +151,7 @@ describe(test_name, () => {
       let elements = await dropDown({
         id: 'sampleDropDown',
       }).elements();
-      expect(elements[0].description).to.be.eql(
-        'DropDown[@id = concat(\'sampleDropDown\', "")]',
-      );
+      expect(elements[0].description).to.be.eql('DropDown[@id = concat(\'sampleDropDown\', "")]');
     });
 
     it('test text of elements', async () => {
@@ -193,10 +162,7 @@ describe(test_name, () => {
     });
 
     it('test select of elements', async () => {
-      let validatePromise = validateEmitterEvent(
-        'success',
-        'Selected someValue',
-      );
+      let validatePromise = validateEmitterEvent('success', 'Selected someValue');
       let elements = await dropDown({
         id: 'sampleDropDown',
       }).elements();
@@ -258,7 +224,6 @@ describe('nested drop down', () => {
 
   it('should bubble change event', async () => {
     await dropDown('One').select('Hot Beverages');
-    await expect(dropDown('Two').select('Tea')).not.to.be.eventually
-      .rejected;
+    await expect(dropDown('Two').select('Tea')).not.to.be.eventually.rejected;
   });
 });

@@ -1,9 +1,4 @@
-const {
-  openBrowser,
-  setConfig,
-  screenshot,
-  closeBrowser,
-} = require('taiko');
+const { openBrowser, setConfig, screenshot, closeBrowser } = require('taiko');
 const headless = process.env.headless.toLowerCase() === 'true';
 
 beforeScenario(async () => {

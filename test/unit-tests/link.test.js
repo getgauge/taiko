@@ -2,20 +2,8 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let {
-  openBrowser,
-  closeBrowser,
-  goto,
-  link,
-  toRightOf,
-  setConfig,
-} = require('../../lib/taiko');
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-  resetConfig,
-} = require('./test-util');
+let { openBrowser, closeBrowser, goto, link, toRightOf, setConfig } = require('../../lib/taiko');
+let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'link';
 
 describe(test_name, () => {
@@ -60,12 +48,7 @@ describe(test_name, () => {
       expect(await link(toRightOf('Click')).exists()).to.be.true;
     });
     it('should find the link for Hidden Elements with ID', async () => {
-      expect(
-        await link(
-          { id: 'hiddenLinkID' },
-          { selectHiddenElement: true },
-        ).exists(),
-      ).to.be.true;
+      expect(await link({ id: 'hiddenLinkID' }, { selectHiddenElement: true }).exists()).to.be.true;
     });
     it('should find the link for Hidden Elements with Text', async () => {
       expect(
@@ -94,9 +77,7 @@ describe(test_name, () => {
 
   describe('link description in page', () => {
     it('should find the link with text', async () => {
-      expect(link('here').description).to.be.eql(
-        'link with text here ',
-      );
+      expect(link('here').description).to.be.eql('link with text here ');
     });
     it('should find the link with id', async () => {
       expect(link({ id: 'redirect' }).description).to.be.eql(
@@ -104,9 +85,7 @@ describe(test_name, () => {
       );
     });
     it('should find the link with proximity selector', async () => {
-      expect(link(toRightOf('Click')).description).to.be.eql(
-        'link To right of Click',
-      );
+      expect(link(toRightOf('Click')).description).to.be.eql('link To right of Click');
     });
     it('should return true when isVisible fn is observed on non hidden element', async () => {
       expect(await link('here').isVisible()).to.be.true;
@@ -146,9 +125,7 @@ describe(test_name, () => {
 
     it('test description of elements', async () => {
       let elements = await link('similarLink').elements();
-      expect(elements[0].description).to.be.eql(
-        'link with text similarLink ',
-      );
+      expect(elements[0].description).to.be.eql('link with text similarLink ');
     });
 
     it('test text of elements', async () => {

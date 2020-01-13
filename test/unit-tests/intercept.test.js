@@ -82,10 +82,7 @@ describe(test_name, () => {
       resourceType: 'Document',
       isNavigationRequest: true,
     });
-    let res = Buffer.from(
-      actualOption.rawResponse,
-      'base64',
-    ).toString('binary');
+    let res = Buffer.from(actualOption.rawResponse, 'base64').toString('binary');
     expect(res).to.include('12345 Central St.');
   });
 
