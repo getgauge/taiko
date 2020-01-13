@@ -1,47 +1,24 @@
-/* URWGeometric font import */
-  @font-face {
-      font-family: 'URWGeometric-Medium';
-      src: url('../font/urw-geometric/354267_0_0.eot');
-      src: url('../font/urw-geometric/354267_0_0.eot?#iefix') format('embedded-opentype'), url('../font/urw-geometric/354267_0_0.woff2') format('woff2'), url('../font/urw-geometric/354267_0_0.woff') format('woff'), url('../font/urw-geometric/354267_0_0.ttf') format('truetype');
-  }
+/* PoppinsLatin font import */
 
 @font-face {
-    font-family: 'URWGeometric-SemiBold';
-    src: url('../font/urw-geometric/354267_1_0.eot');
-    src: url('../font/urw-geometric/354267_1_0.eot?#iefix') format('embedded-opentype'), url('../font/urw-geometric/354267_1_0.woff2') format('woff2'), url('../font/urw-geometric/354267_1_0.woff') format('woff'), url('../font/urw-geometric/354267_1_0.ttf') format('truetype');
+  font-family: 'PoppinsLatin-Medium';
+  src : url('../font/PoppinsLatin/PoppinsLatin-Medium.otf') format("opentype");
+  src : url('../font/PoppinsLatin/PoppinsLatin-Medium.ttf') format("truetype");
 }
 
-  @font-face {
-      font-family: 'URWGeometric-ExtraBold';
-      src: url('../font/urw-geometric/354267_2_0.eot');
-      src: url('../font/urw-geometric/354267_2_0.eot?#iefix') format('embedded-opentype'), url('../font/urw-geometric/354267_2_0.woff2') format('woff2'), url('../font/urw-geometric/354267_2_0.woff') format('woff'), url('../font/urw-geometric/354267_2_0.ttf') format('truetype');
-  }
+@font-face {
+  font-family: 'PoppinsLatin-SemiBold';
+  src : url('../font/PoppinsLatin/PoppinsLatin-SemiBold.otf') format("opentype");
+  src : url('../font/PoppinsLatin/PoppinsLatin-SemiBold.ttf') format("truetype");
+}
 
-  @font-face {
-      font-family: 'URWGeometric-Heavy';
-      src: url('../font/urw-geometric/354267_3_0.eot');
-      src: url('../font/urw-geometric/354267_3_0.eot?#iefix') format('embedded-opentype'), url('../font/urw-geometric/354267_3_0.woff2') format('woff2'), url('../font/urw-geometric/354267_3_0.woff') format('woff'), url('../font/urw-geometric/354267_3_0.ttf') format('truetype');
-  }
+/* URW Geometric font import */
 
-  @font-face {
-      font-family: 'URWGeometric-Regular';
-      src: url('../font/urw-geometric/URWGeometric-Regular.eot?#iefix') format('embedded-opentype'), url('../font/urw-geometric/URWGeometric-Regular.otf') format('opentype'), url('../font/urw-geometric/URWGeometric-Regular.woff') format('woff'), url('../font/urw-geometric/URWGeometric-Regular.ttf') format('truetype'), url('../font/urw-geometric/RWGeometric-Regular.svg#URWGeometric-Regular') format('svg');
-  }
-
-  @font-face {
-      font-family: 'URWGeometric-Medium';
-      src: url('../font/urw-geometric/URWGeometric-Medium.eot?#iefix') format('embedded-opentype'), url('../font/urw-geometric/URWGeometric-Medium.otf') format('opentype'), url('../font/urw-geometric/URWGeometric-Medium.woff') format('woff'), url('../font/urw-geometric/URWGeometric-Medium.ttf') format('truetype'), url('../font/urw-geometric/URWGeometric-Medium.svg#URWGeometric-Medium') format('svg');
-  }
-
-  @font-face {
-      font-family: 'URWGeometric-Light';
-      src: url('../font/urw-geometric/URWGeometric-Light.eot?#iefix') format('embedded-opentype'), url('../font/urw-geometric/URWGeometric-Light.otf') format('opentype'), url('../font/urw-geometric/URWGeometric-Light.woff') format('woff'), url('../font/urw-geometric/URWGeometric-Light.ttf') format('truetype'), url('../font/urw-geometric/URWGeometric-Light.svg#URWGeometric-Light') format('svg');
-  }
-
-  @font-face {
-      font-family: 'URWGeometric-ExtraLight';
-      src: url('../font/urw-geometric/URWGeometric-ExtraLight.eot?#iefix') format('embedded-opentype'), url('../font/urw-geometric/URWGeometric-ExtraLight.otf') format('opentype'), url('../font/urw-geometric/URWGeometric-ExtraLight.woff') format('woff'), url('../font/urw-geometric/URWGeometric-ExtraLight.ttf') format('truetype'), url('../font/urw-geometric/URWGeometric-ExtraLight.svg#URWGeometric-ExtraLight') format('svg');
- }
+@font-face {
+  font-family: 'URWGeometric-ExtraBold';
+   src: url('../font/urw-geometric/354267_2_0.eot');
+   src: url('../font/urw-geometric/354267_2_0.eot?#iefix') format('embedded-opentype'), url('../font/urw-geometric/354267_2_0.woff2') format('woff2'), url('../font/urw-geometric/354267_2_0.woff') format('woff'), url('../font/urw-geometric/354267_2_0.ttf') format('truetype');
+}
 
 /* Open sans font import */
 @font-face {
