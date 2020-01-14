@@ -27,9 +27,9 @@ a {
 
 nav {
   position: relative;
-  background: #1e1e1e;
+  background: #25282d;
   color: #fff;
-  height:65px;
+  height: 65px;
   border-bottom: 5px solid #2BD3EF;
   position: fixed;
   width: 100%;
@@ -46,15 +46,11 @@ pre {
 }
 
 .logo {
+  display: inline-block;
   height: 65px;
-  font-family: "URWGeometric-ExtraBold";
-  font-size: 40px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #fff;
-  line-height: 75px;
-  padding: 0px 30px;
-  margin: 0;
+  content: url('../images/taiko_logo_docs.svg');
+  padding: 16px 30px;
+  margin: -3px 0px 0px 0px;
 }
 
 .logo:hover, .logo:active, .logo:focus{
@@ -179,7 +175,7 @@ pre {
 .banner-heading {
   font-size: 36px;
   font-family: "PoppinsLatin-SemiBold";
-  color: #1E1E1E;
+  color: #25282d;
 }
 
 .banner-text-container_desc {
@@ -195,7 +191,7 @@ pre {
   border-radius: 3px;
   padding: 2px 3px;
   font-family: monospace;
-  color: #1e1e1e;
+  color: #25282d;
   background-color: #dddd;
   text-decoration: none;
 }
@@ -421,48 +417,51 @@ pre {
 /* Github Icon */
 
 .github {
+  display: flex;
   position: absolute;
   right: 50px;
   top: 50%;
   width: 100px;
   transform: translate(0, -50%);
-  display: flex;
 }
 
 .github-icon {
-  width: 20px;
-  height: 20px;
-  margin: 3px auto;
+  width: 28px;
+  height: 28px;
+  margin-right: 5px;
 }
 
 .star-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid #fff;
   border-radius: 25px;
   width: 75px;
-  margin: 0px 10px;
 }
 
 .github-star {
-  width: 12px; 
-  height: 12px;
-  margin: 5px;
-  vertical-align: text-bottom;
+  width: 14px; 
+  height: 14px;
+  margin-right: 4px;
 }
 
 .github-count {
   color: #fff;
-  font-size: 12px;
-  line-height: 2;
+  font-size: 14px;
+  font-weight: bold;
 }
 
+
 @media (min-width: 768px) {
+  
   .github { 
     width: 125px;
   }
 
   .github-icon {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     margin: 0 auto;
   }
 
@@ -472,8 +471,14 @@ pre {
     width: 60%;
   }
 
+  .github-star {
+    width: 14px; 
+    height: 14px;
+    margin-right: 4px;
+  }
+
   .github-count { 
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 
@@ -482,8 +487,7 @@ pre {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 1);
+  background: #25282d;
   width: 50px;
   height: 50px;
   display: block;
@@ -502,12 +506,12 @@ pre {
 
 .scroll-top_icon {
   display: inline-block;
-  border-right: 4px solid #f5c10e;
-  border-bottom: 4px solid #f5c10e;
-  width: 20px;
-  height: 20px;
+  border-right: 4px solid #2bd3ef;
+  border-bottom: 4px solid #2bd3ef;
+  width: 22px;
+  height: 22px;
+  margin: 19px 0px 0px 14px;
   transform: rotate(-135deg);
-  margin: 16px 0px 0px 14px;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -557,7 +561,7 @@ h2:hover .link-icon, h3:hover .link-icon{
   border: none;
   font-size: 13px;
   font-family: 'SourceCodePro-Medium';
-  color: #1E1E1E;
+  color: #25282d;
   right: 15px;
   top: 15px;
   border-radius: 3px;
