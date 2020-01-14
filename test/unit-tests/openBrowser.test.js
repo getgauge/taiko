@@ -13,7 +13,7 @@ let {
 
 let { isIncognito } = require('../../lib/browserContext');
 
-let { openBrowserArgs, createHtml } = require('./test-util');
+let { openBrowserArgs, createHtml, removeFile } = require('./test-util');
 
 describe('opens browser successfully', () => {
   xit("openBrowser should return 'Browser Opened' message", async () => {
@@ -35,8 +35,10 @@ describe('opens browser successfully', () => {
 describe('open browser and create browser context', () => {
   let url1;
   let url2;
+  let innerHtml;
+  let innerHtml1;
   it('Should have incognito window', async () => {
-    let innerHtml = `<section class="header">
+    innerHtml = `<section class="header">
       <h1>Incognito tests</h1>
         </section>
           <section class='main-content'>
@@ -49,7 +51,7 @@ describe('open browser and create browser context', () => {
       </section>
 `;
 
-    let innerHtml1 = `<section class="header">
+    innerHtml1 = `<section class="header">
 <h1>Incognitotests</h1>
   </section>
     <section class='main-content'>
@@ -95,12 +97,16 @@ describe('open browser and create browser context', () => {
     await closeWindow('admin');
     await closeWindow('user');
     await closeBrowser();
+    removeFile(url2);
+    removeFile(url1);
   });
 });
 
 describe('Open window', () => {
+  let innerHtml;
+  let url;
   it('Open window without incognito', async () => {
-    let innerHtml = `<section class="header">
+    innerHtml = `<section class="header">
     <h1>Incognitotests</h1>
       </section>
         <section class='main-content'>
@@ -112,7 +118,7 @@ describe('Open window', () => {
     </div>
     </section>
     `;
-    let url = createHtml(innerHtml, 'Incognito');
+    url = createHtml(innerHtml, 'Incognito');
     await openBrowser();
     setConfig({
       waitForNavigation: true,
@@ -126,14 +132,17 @@ describe('Open window', () => {
   after(async () => {
     await closeWindow('admin');
     await closeBrowser();
+    removeFile(url);
   });
 });
 
 describe('Isolation session storage test', () => {
   let url1;
   let url2;
+  let innerHtml;
+  let innerHtml1;
   it('should isolate localStorage and cookies', async () => {
-    let innerHtml = `<section class="header">
+    innerHtml = `<section class="header">
       <h1>Incognito tests</h1>
         </section>
           <section class='main-content'>
@@ -146,7 +155,7 @@ describe('Isolation session storage test', () => {
       </section>
 `;
 
-    let innerHtml1 = `<section class="header">
+    innerHtml1 = `<section class="header">
 <h1>Incognitotests</h1>
   </section>
     <section class='main-content'>
@@ -196,6 +205,8 @@ describe('Isolation session storage test', () => {
     await closeWindow('admin');
     await closeWindow('user');
     await closeBrowser();
+    removeFile(url2);
+    removeFile(url1);
   });
 });
 
