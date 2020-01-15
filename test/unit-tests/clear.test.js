@@ -11,12 +11,7 @@ let {
   into,
   $,
 } = require('../../lib/taiko');
-let {
-  createHtml,
-  openBrowserArgs,
-  removeFile,
-  resetConfig,
-} = require('./test-util');
+let { createHtml, openBrowserArgs, removeFile, resetConfig } = require('./test-util');
 const test_name = 'Clear';
 
 describe(test_name, () => {
@@ -73,9 +68,7 @@ multiple lines.</textarea>
 
   describe('input field', () => {
     it('should clear content', async () => {
-      expect(await textBox('Email').value()).to.equal(
-        'example@test.com',
-      );
+      expect(await textBox('Email').value()).to.equal('example@test.com');
       await clear(textBox('Email'));
       expect(await textBox('Email').value()).to.equal('');
     });
@@ -91,9 +84,7 @@ multiple lines.</textarea>
   describe('textarea', () => {
     it('should clear whole content', async () => {
       await reload();
-      expect(await textBox('Address').value()).to.equal(
-        'Address in\nmultiple lines.',
-      );
+      expect(await textBox('Address').value()).to.equal('Address in\nmultiple lines.');
       await clear(textBox('Address'));
       expect(await textBox('Address').value()).to.equal('');
     });

@@ -2,19 +2,8 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let {
-  openBrowser,
-  goto,
-  closeBrowser,
-  button,
-  setConfig,
-} = require('../../lib/taiko');
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-  resetConfig,
-} = require('./test-util');
+let { openBrowser, goto, closeBrowser, button, setConfig } = require('../../lib/taiko');
+let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'button';
 
 describe(test_name, () => {
@@ -87,37 +76,19 @@ describe(test_name, () => {
       });
 
       it('button description for different button types', async () => {
-        expect(button('Click').description).to.be.eql(
-          'Button with label Click ',
-        );
-        expect(button('Input Button').description).to.be.eql(
-          'Button with label Input Button ',
-        );
-        expect(button('Input Reset').description).to.be.eql(
-          'Button with label Input Reset ',
-        );
-        expect(button('Input Submit').description).to.be.eql(
-          'Button with label Input Submit ',
-        );
-        expect(button('Input Image').description).to.be.eql(
-          'Button with label Input Image ',
-        );
+        expect(button('Click').description).to.be.eql('Button with label Click ');
+        expect(button('Input Button').description).to.be.eql('Button with label Input Button ');
+        expect(button('Input Reset').description).to.be.eql('Button with label Input Reset ');
+        expect(button('Input Submit').description).to.be.eql('Button with label Input Submit ');
+        expect(button('Input Image').description).to.be.eql('Button with label Input Image ');
       });
 
       xit('button text()', async () => {
         expect(await button('Click').text()).to.be.eql('Click');
-        expect(await button('Input Button').text()).to.be.eql(
-          'Input Button',
-        );
-        expect(await button('Input Reset').text()).to.be.eql(
-          'Input Reset',
-        );
-        expect(await button('Input Submit').text()).to.be.eql(
-          'Input Submit',
-        );
-        expect(await button('Input Image').text()).to.be.eql(
-          'Input Image',
-        );
+        expect(await button('Input Button').text()).to.be.eql('Input Button');
+        expect(await button('Input Reset').text()).to.be.eql('Input Reset');
+        expect(await button('Input Submit').text()).to.be.eql('Input Submit');
+        expect(await button('Input Image').text()).to.be.eql('Input Image');
       }); // Todo: should be fixed with #815
 
       it('test text should throw if the element is not found', async () => {
@@ -127,8 +98,7 @@ describe(test_name, () => {
 
     describe('button with label', () => {
       it('exists with label()', async () => {
-        expect(await button('InputButtonInLabel').exists()).to.be
-          .true;
+        expect(await button('InputButtonInLabel').exists()).to.be.true;
         expect(await button('ResetInLabel').exists()).to.be.true;
         expect(await button('SubmitInLabel').exists()).to.be.true;
         expect(await button('ImageInLabel').exists()).to.be.true;
@@ -138,30 +108,16 @@ describe(test_name, () => {
         expect(button('InputButtonInLabel').description).to.be.eql(
           'Button with label InputButtonInLabel ',
         );
-        expect(button('ResetInLabel').description).to.be.eql(
-          'Button with label ResetInLabel ',
-        );
-        expect(button('SubmitInLabel').description).to.be.eql(
-          'Button with label SubmitInLabel ',
-        );
-        expect(button('ImageInLabel').description).to.be.eql(
-          'Button with label ImageInLabel ',
-        );
+        expect(button('ResetInLabel').description).to.be.eql('Button with label ResetInLabel ');
+        expect(button('SubmitInLabel').description).to.be.eql('Button with label SubmitInLabel ');
+        expect(button('ImageInLabel').description).to.be.eql('Button with label ImageInLabel ');
       });
 
       xit('input type button with label()', async () => {
-        expect(await button('InputButtonInLabel').text()).to.be.eql(
-          'inputButtonInLabel',
-        );
-        expect(await button('ResetInLabel').text()).to.be.eql(
-          'resetInLabel',
-        );
-        expect(await button('SubmitInLabel').text()).to.be.eql(
-          'submitInLabel',
-        );
-        expect(await button('ImageInLabel').text()).to.be.eql(
-          'imageInLabel',
-        );
+        expect(await button('InputButtonInLabel').text()).to.be.eql('inputButtonInLabel');
+        expect(await button('ResetInLabel').text()).to.be.eql('resetInLabel');
+        expect(await button('SubmitInLabel').text()).to.be.eql('submitInLabel');
+        expect(await button('ImageInLabel').text()).to.be.eql('imageInLabel');
       });
     });
 
@@ -174,33 +130,17 @@ describe(test_name, () => {
       });
 
       it('button description', async () => {
-        expect(button('LabelForButton').description).to.be.eql(
-          'Button with label LabelForButton ',
-        );
-        expect(button('LabelForReset').description).to.be.eql(
-          'Button with label LabelForReset ',
-        );
-        expect(button('LabelForSubmit').description).to.be.eql(
-          'Button with label LabelForSubmit ',
-        );
-        expect(button('LabelForImage').description).to.be.eql(
-          'Button with label LabelForImage ',
-        );
+        expect(button('LabelForButton').description).to.be.eql('Button with label LabelForButton ');
+        expect(button('LabelForReset').description).to.be.eql('Button with label LabelForReset ');
+        expect(button('LabelForSubmit').description).to.be.eql('Button with label LabelForSubmit ');
+        expect(button('LabelForImage').description).to.be.eql('Button with label LabelForImage ');
       });
 
       xit('test text with label for()', async () => {
-        expect(await button('LabelForButton').text()).to.be.eql(
-          'LabelForButton',
-        );
-        expect(await button('LabelForReset').text()).to.be.eql(
-          'LabelForButton',
-        );
-        expect(await button('LabelForSubmit').text()).to.be.eql(
-          'LabelForButton',
-        );
-        expect(await button('LabelForImage').text()).to.be.eql(
-          'LabelForImage',
-        );
+        expect(await button('LabelForButton').text()).to.be.eql('LabelForButton');
+        expect(await button('LabelForReset').text()).to.be.eql('LabelForButton');
+        expect(await button('LabelForSubmit').text()).to.be.eql('LabelForButton');
+        expect(await button('LabelForImage').text()).to.be.eql('LabelForImage');
       }); // Todo: should be fixed with #815
     });
 
@@ -213,27 +153,30 @@ describe(test_name, () => {
             .above(0);
         });
 
+        it('test isVisible of elements', async () => {
+          const elements = await button('similarButton').elements();
+          expect(await elements[0].isVisible()).to.be.true;
+        });
+
         it('test description of elements', async () => {
           let elements = await button('similarButton').elements();
-          expect(await elements[0].description).to.be.eql(
-            'Button with label similarButton ',
-          );
+          expect(await elements[0].description).to.be.eql('Button with label similarButton ');
         });
 
         it('test text of elements', async () => {
           let elements = await button('similarButton').elements();
-          expect(await elements[0].text()).to.be.eql(
-            'similarButton1',
-          );
+          expect(await elements[0].text()).to.be.eql('similarButton1');
+        });
+
+        it('should return true for non hidden element when isVisible fn is called on button', async () => {
+          expect(await button('similarButton').isVisible()).to.be.true;
         });
       });
 
       it('test text() to be first element text', async () => {
         let buttonElementList = await button('similarButton');
         const elements = await buttonElementList.elements();
-        expect(await buttonElementList.text()).to.be.eql(
-          await elements[0].text(),
-        );
+        expect(await buttonElementList.text()).to.be.eql(await elements[0].text());
       });
     });
 
@@ -252,8 +195,7 @@ describe(test_name, () => {
         expect(await button('boldButton').exists()).to.be.true;
         expect(await button('italicButton').exists()).to.be.true;
         expect(await button('strongButton').exists()).to.be.true;
-        expect(await button('childElementButton').exists()).to.be
-          .true;
+        expect(await button('childElementButton').exists()).to.be.true;
       });
     });
 
@@ -274,6 +216,18 @@ describe(test_name, () => {
             selectHiddenElement: true,
           }).exists(),
         ).to.be.true;
+      });
+
+      it('should return false for hidden element when isVisible fn is called on button', async () => {
+        expect(
+          await button('HiddenButton', {
+            selectHiddenElement: true,
+          }).isVisible(),
+        ).to.be.false;
+      });
+
+      it('test isVisible() should throw if the element is not found', async () => {
+        await expect(button('HiddenButton').isVisible()).to.be.eventually.rejected;
       });
     });
   });

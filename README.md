@@ -144,7 +144,7 @@ With Taiko’s API we can avoid using ids/css/xpath selectors to create reliable
 
 You can also use Taiko’s proximity selectors to visually locate elements. For example
 
-    > click(checkbox(near("Username")))
+    > click(checkBox(near("Username")))
 
 Will click the checkbox that is nearest to any element with the text `Username`. 
 

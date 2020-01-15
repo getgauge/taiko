@@ -11,12 +11,7 @@ let {
   click,
   setConfig,
 } = require('../../lib/taiko');
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-  resetConfig,
-} = require('./test-util');
+let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 
 const test_name = 'radio button';
 
@@ -68,22 +63,18 @@ describe(test_name, () => {
     });
 
     it('test exists()', async () => {
-      expect(await radioButton('radioButtonWithInlineLabel').exists())
-        .to.be.true;
+      expect(await radioButton('radioButtonWithInlineLabel').exists()).to.be.true;
       expect(await radioButton('Something').exists()).to.be.false;
     });
 
     it('test select()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
-      let isSelected = await radioButton(
-        'radioButtonWithInlineLabel',
-      ).isSelected();
+      let isSelected = await radioButton('radioButtonWithInlineLabel').isSelected();
       expect(isSelected).to.be.true;
     });
 
     it('test select() should throw if the element is not found', async () => {
-      await expect(radioButton('foo').select()).to.be.eventually
-        .rejected;
+      await expect(radioButton('foo').select()).to.be.eventually.rejected;
     });
 
     it('test select() triggers events', async () => {
@@ -94,50 +85,36 @@ describe(test_name, () => {
     it('test deselect()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
       await radioButton('radioButtonWithInlineLabel').deselect();
-      let isSelected = await radioButton(
-        'radioButtonWithInlineLabel',
-      ).isSelected();
+      let isSelected = await radioButton('radioButtonWithInlineLabel').isSelected();
       expect(isSelected).to.be.false;
     });
 
     it('test deselect() should throw error if the element is not found', async () => {
-      await expect(radioButton('foo').deselect()).to.be.eventually
-        .rejected;
+      await expect(radioButton('foo').deselect()).to.be.eventually.rejected;
     });
 
     it('test isSelected()', async () => {
       await radioButton('radioButtonWithInlineLabel').select();
-      expect(
-        await radioButton('radioButtonWithInlineLabel').isSelected(),
-      ).to.be.true;
+      expect(await radioButton('radioButtonWithInlineLabel').isSelected()).to.be.true;
     });
 
     it('test isSelected() to throw error if the element is not found', async () => {
-      await expect(
-        radioButton('foo').isSelected(),
-      ).to.be.eventually.rejectedWith('');
+      await expect(radioButton('foo').isSelected()).to.be.eventually.rejectedWith('');
     });
 
     it('test text should throw if the element is not found', async () => {
-      await expect(
-        radioButton('.foo').text(),
-      ).to.be.eventually.rejectedWith('');
+      await expect(radioButton('.foo').text()).to.be.eventually.rejectedWith('');
     });
   });
 
   describe('wrapped in label', () => {
     it('test exists()', async () => {
-      expect(
-        await radioButton('radioButtonWithWrappedLabel').exists(),
-      ).to.be.true;
+      expect(await radioButton('radioButtonWithWrappedLabel').exists()).to.be.true;
     });
 
     it('test description', async () => {
-      const description = radioButton('radioButtonWithWrappedLabel')
-        .description;
-      expect(description).to.be.eql(
-        'Radio button with label radioButtonWithWrappedLabel ',
-      );
+      const description = radioButton('radioButtonWithWrappedLabel').description;
+      expect(description).to.be.eql('Radio button with label radioButtonWithWrappedLabel ');
     });
   });
 
@@ -149,20 +126,26 @@ describe(test_name, () => {
         }).exists(),
       ).to.be.true;
     });
+
+    it('should return true for non hidden element when isVisible fn is called on button', async () => {
+      expect(await radioButton('radioButtonWithWrappedLabel').isVisible()).to.be.true;
+    });
+
+    it('should return false for hidden element when isVisible fn is called on textBox', async () => {
+      expect(
+        await radioButton({ id: 'hiddenRadioButton' }, { selectHiddenElement: true }).isVisible(),
+      ).to.be.false;
+    });
   });
 
   describe('using label for', () => {
     it('test exists()', async () => {
-      expect(await radioButton('radioButtonWithLabelFor').exists()).to
-        .be.true;
+      expect(await radioButton('radioButtonWithLabelFor').exists()).to.be.true;
     });
 
     it('test description', async () => {
-      const description = radioButton('radioButtonWithLabelFor')
-        .description;
-      expect(description).to.be.eql(
-        'Radio button with label radioButtonWithLabelFor ',
-      );
+      const description = radioButton('radioButtonWithLabelFor').description;
+      expect(description).to.be.eql('Radio button with label radioButtonWithLabelFor ');
     });
   });
 

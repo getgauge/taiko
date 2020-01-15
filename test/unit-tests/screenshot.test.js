@@ -1,17 +1,6 @@
 const expect = require('chai').expect;
-let {
-  openBrowser,
-  closeBrowser,
-  goto,
-  screenshot,
-  setConfig,
-} = require('../../lib/taiko');
-let {
-  createHtml,
-  removeFile,
-  openBrowserArgs,
-  resetConfig,
-} = require('./test-util');
+let { openBrowser, closeBrowser, goto, screenshot, setConfig } = require('../../lib/taiko');
+let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 let path = require('path');
 let fs = require('fs');
 const test_name = 'screenshot';
@@ -48,8 +37,7 @@ describe(test_name, () => {
       expect(fs.existsSync(screenshotPath)).to.be.true;
     });
     it('should get the screenshot with encoding', async () => {
-      expect(await screenshot({ encoding: 'base64' })).to.not.be
-        .empty;
+      expect(await screenshot({ encoding: 'base64' })).to.not.be.empty;
     });
   });
 });

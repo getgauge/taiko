@@ -84,7 +84,7 @@
 * Press "Enter"
 * Write "are you?"
 * Press "Enter"
-* clear "text" from textArea
+* clear textArea to left of 
 
    |Type   |Selector|
    |-------|--------|

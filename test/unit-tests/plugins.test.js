@@ -23,9 +23,7 @@ describe('Plugins', () => {
       });
       it('should give plugin name from ENV variable', () => {
         process.env.TAIKO_PLUGIN = 'some-plugin';
-        expect(PLUGINS.getPlugins()).to.deep.equal([
-          'taiko-some-plugin',
-        ]);
+        expect(PLUGINS.getPlugins()).to.deep.equal(['taiko-some-plugin']);
       });
 
       it('should give plugin names from ENV variable', () => {
@@ -57,10 +55,7 @@ describe('Plugins', () => {
                     "some-other-module" : "v1.0.1"
                 }
             }`);
-        expect(PLUGINS.getPlugins()).to.deep.equal([
-          'taiko-dep-plugin-1',
-          'taiko-dep-plugin-2',
-        ]);
+        expect(PLUGINS.getPlugins()).to.deep.equal(['taiko-dep-plugin-1', 'taiko-dep-plugin-2']);
       });
 
       it('should give plugin name from devDependencies', () => {
@@ -96,9 +91,7 @@ describe('Plugins', () => {
           'taiko-devDep-plugin-1',
           'taiko-devDep-plugin-2',
         ];
-        expect(PLUGINS.getPlugins()).to.deep.equal(
-          expectedPluginNames,
-        );
+        expect(PLUGINS.getPlugins()).to.deep.equal(expectedPluginNames);
       });
     });
   });
@@ -112,20 +105,9 @@ describe('Plugins', () => {
     }
     it('should give all globally installed executable taiko-plugin and there path', () => {
       let tmpDir = os.tmpdir();
-      let simlinkedPath = path.join(
-        tmpDir,
-        'taiko-plugin-simlinked-path',
-      );
-      let globalPluginPath = path.join(
-        tmpDir,
-        'global',
-        'taiko-plugin-path',
-      );
-      let localPluginPath = path.join(
-        tmpDir,
-        'local',
-        'taiko-plugin-path',
-      );
+      let simlinkedPath = path.join(tmpDir, 'taiko-plugin-simlinked-path');
+      let globalPluginPath = path.join(tmpDir, 'global', 'taiko-plugin-path');
+      let localPluginPath = path.join(tmpDir, 'local', 'taiko-plugin-path');
       var fsMock = {
         existsSync: function() {
           return true;
@@ -152,54 +134,24 @@ describe('Plugins', () => {
         },
         statSync: function(nodeModulePath) {
           let foo = {
-            [path.join(
-              globalPluginPath,
-              'taiko-global-plugin1',
-            )]: createFakeFsDirentObj(true, false),
-            [path.join(
-              globalPluginPath,
-              'taiko-plugin2',
-            )]: createFakeFsDirentObj(true, false),
-            [path.join(
-              globalPluginPath,
-              'taiko-plugin3',
-            )]: createFakeFsDirentObj(false, false),
-            [path.join(
-              globalPluginPath,
-              'tmpdir',
-            )]: createFakeFsDirentObj(true, false),
-            [path.join(
-              globalPluginPath,
-              'taiko-global-plugin4',
-            )]: createFakeFsDirentObj(false, true),
-            [path.join(
-              globalPluginPath,
-              'taiko-dup-plugin1',
-            )]: createFakeFsDirentObj(true, false),
-            [path.join(
-              localPluginPath,
-              'taiko-plugin1',
-            )]: createFakeFsDirentObj(true, false),
-            [path.join(
-              localPluginPath,
-              'taiko-plugin2',
-            )]: createFakeFsDirentObj(true, false),
-            [path.join(
-              localPluginPath,
-              'taiko-plugin3',
-            )]: createFakeFsDirentObj(false, false),
-            [path.join(
-              localPluginPath,
-              'tmpdir',
-            )]: createFakeFsDirentObj(true, false),
-            [path.join(
-              localPluginPath,
-              'taiko-plugin4',
-            )]: createFakeFsDirentObj(false, true),
-            [path.join(
-              localPluginPath,
-              'taiko-dup-plugin1',
-            )]: createFakeFsDirentObj(true, false),
+            [path.join(globalPluginPath, 'taiko-global-plugin1')]: createFakeFsDirentObj(
+              true,
+              false,
+            ),
+            [path.join(globalPluginPath, 'taiko-plugin2')]: createFakeFsDirentObj(true, false),
+            [path.join(globalPluginPath, 'taiko-plugin3')]: createFakeFsDirentObj(false, false),
+            [path.join(globalPluginPath, 'tmpdir')]: createFakeFsDirentObj(true, false),
+            [path.join(globalPluginPath, 'taiko-global-plugin4')]: createFakeFsDirentObj(
+              false,
+              true,
+            ),
+            [path.join(globalPluginPath, 'taiko-dup-plugin1')]: createFakeFsDirentObj(true, false),
+            [path.join(localPluginPath, 'taiko-plugin1')]: createFakeFsDirentObj(true, false),
+            [path.join(localPluginPath, 'taiko-plugin2')]: createFakeFsDirentObj(true, false),
+            [path.join(localPluginPath, 'taiko-plugin3')]: createFakeFsDirentObj(false, false),
+            [path.join(localPluginPath, 'tmpdir')]: createFakeFsDirentObj(true, false),
+            [path.join(localPluginPath, 'taiko-plugin4')]: createFakeFsDirentObj(false, true),
+            [path.join(localPluginPath, 'taiko-dup-plugin1')]: createFakeFsDirentObj(true, false),
             [simlinkedPath]: createFakeFsDirentObj(true, false),
           };
           return foo[nodeModulePath];
@@ -217,46 +169,32 @@ describe('Plugins', () => {
         },
       });
       PLUGINS.__set__('fs', fsMock);
-      PLUGINS.__set__(
-        'getPackageJsonForPlugin',
-        (pluginPath, plugin) => {
-          if (
-            [
-              'taiko-global-plugin1',
-              'taiko-global-plugin4',
-              'taiko-plugin1',
-              'taiko-plugin4',
-              'taiko-dup-plugin1',
-            ].includes(plugin)
-          ) {
-            return { capability: ['subcommands'] };
-          } else if (plugin === 'taiko-plugin2') {
-            return { capability: [] };
-          } else {
-            return {};
-          }
-        },
-      );
+      PLUGINS.__set__('getPackageJsonForPlugin', (pluginPath, plugin) => {
+        if (
+          [
+            'taiko-global-plugin1',
+            'taiko-global-plugin4',
+            'taiko-plugin1',
+            'taiko-plugin4',
+            'taiko-dup-plugin1',
+          ].includes(plugin)
+        ) {
+          return { capability: ['subcommands'] };
+        } else if (plugin === 'taiko-plugin2') {
+          return { capability: [] };
+        } else {
+          return {};
+        }
+      });
 
       const expected = {
-        'global-plugin1': path.join(
-          globalPluginPath,
-          'taiko-global-plugin1',
-        ),
-        'global-plugin4': path.join(
-          globalPluginPath,
-          'taiko-global-plugin4',
-        ),
+        'global-plugin1': path.join(globalPluginPath, 'taiko-global-plugin1'),
+        'global-plugin4': path.join(globalPluginPath, 'taiko-global-plugin4'),
         plugin1: path.join(localPluginPath, 'taiko-plugin1'),
         plugin4: path.join(localPluginPath, 'taiko-plugin4'),
-        'dup-plugin1': path.join(
-          localPluginPath,
-          'taiko-dup-plugin1',
-        ),
+        'dup-plugin1': path.join(localPluginPath, 'taiko-dup-plugin1'),
       };
-      expect(PLUGINS.getExecutablePlugins()).to.be.deep.equal(
-        expected,
-      );
+      expect(PLUGINS.getExecutablePlugins()).to.be.deep.equal(expected);
     });
   });
 });

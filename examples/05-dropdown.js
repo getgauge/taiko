@@ -1,16 +1,11 @@
 const { goto, dropDown } = require('taiko'),
   path = require('path'),
-  {
-    openBrowserAndStartScreencast,
-    closeBrowserAndStopScreencast,
-  } = require('./browserLauncher'),
+  { openBrowserAndStartScreencast, closeBrowserAndStopScreencast } = require('./browserLauncher'),
   expect = require('chai').expect;
 
 (async () => {
   try {
-    await openBrowserAndStartScreencast(
-      path.join('captures', 'dropdown', 'dropdown.gif'),
-    );
+    await openBrowserAndStartScreencast(path.join('captures', 'dropdown', 'dropdown.gif'));
     await goto('http://localhost:3000/dropdown');
     expect(await dropDown().exists()).to.be.true;
     await dropDown().select('Option 1');
