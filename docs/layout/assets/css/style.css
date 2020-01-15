@@ -149,14 +149,14 @@ pre {
 .sidebar-header-2 a:hover {
   background-color: transparent !important;
   color: rgb(85, 85, 85);
-  border-bottom: 2px solid rgb(245, 193, 14);
+  border-bottom: 2px solid #2BD3EF;
   text-decoration: none;
   font-weight: 600;
 }
 
 .active {
   background-color: transparent !important;
-  border-bottom: 2px solid rgb(245, 193, 14) !important;
+  border-bottom: 2px solid #2BD3EF !important;
   color: rgb(85, 85, 85);
   font-weight: 600;
   text-decoration: none;
@@ -191,8 +191,8 @@ pre {
   border-radius: 3px;
   padding: 2px 3px;
   font-family: monospace;
-  color: #25282d;
-  background-color: #dddd;
+  color: #333;
+  background-color: #e6e6e6;
   text-decoration: none;
 }
 
@@ -392,7 +392,7 @@ pre {
   font-weight: bold;
 }
 
-.hightlight::hover {
+.highlight:hover {
   text-decoration: none;
 }
 
