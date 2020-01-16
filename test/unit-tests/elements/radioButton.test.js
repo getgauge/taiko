@@ -9,12 +9,9 @@ class Event {
   }
 }
 RadioButton.__set__('Event', Event);
-RadioButton.__set__(
-  'doActionAwaitingNavigation',
-  async (navigationOptions, action) => {
-    await action();
-  },
-);
+RadioButton.__set__('doActionAwaitingNavigation', async (navigationOptions, action) => {
+  await action();
+});
 describe('RadioButton', () => {
   let nodes,
     dispatchedEvent = null,
@@ -57,32 +54,17 @@ describe('RadioButton', () => {
     expect(new RadioButton() instanceof Element).to.be.true;
   });
   it('should create radioButton from element', () => {
-    const expectedTextBox = RadioButton.from(
-      new Element(12, '', runtimeHandler),
-      'description',
-    );
-    const actualTextBox = new RadioButton(
-      12,
-      'description',
-      runtimeHandler,
-    );
+    const expectedTextBox = RadioButton.from(new Element(12, '', runtimeHandler), 'description');
+    const actualTextBox = new RadioButton(12, 'description', runtimeHandler);
     expect(actualTextBox).to.be.deep.equal(expectedTextBox);
   });
   describe('isSelected', () => {
     it('should be selected', async () => {
-      const radioButton = new RadioButton(
-        23,
-        'description',
-        runtimeHandler,
-      );
+      const radioButton = new RadioButton(23, 'description', runtimeHandler);
       expect(await radioButton.isSelected()).to.be.true;
     });
     it('should not be selected', async () => {
-      const radioButton = new RadioButton(
-        26,
-        'description',
-        runtimeHandler,
-      );
+      const radioButton = new RadioButton(26, 'description', runtimeHandler);
       expect(await radioButton.isSelected()).to.be.false;
     });
   });
@@ -90,11 +72,7 @@ describe('RadioButton', () => {
   describe('select', () => {
     it('should select an unselected radio button', async () => {
       let nodeId = 28;
-      const radioButton = new RadioButton(
-        nodeId,
-        'description',
-        runtimeHandler,
-      );
+      const radioButton = new RadioButton(nodeId, 'description', runtimeHandler);
       expect(nodes[nodeId].checked).to.be.false;
 
       await radioButton.select();
@@ -104,11 +82,7 @@ describe('RadioButton', () => {
     });
     it('should select an selected radio button', async () => {
       let nodeId = 30;
-      const radioButton = new RadioButton(
-        nodeId,
-        'description',
-        runtimeHandler,
-      );
+      const radioButton = new RadioButton(nodeId, 'description', runtimeHandler);
       expect(nodes[nodeId].checked).to.be.true;
 
       await radioButton.select();
@@ -121,11 +95,7 @@ describe('RadioButton', () => {
   describe('deselect', () => {
     it('should deselect an unselected radio button', async () => {
       let nodeId = 28;
-      const radioButton = new RadioButton(
-        28,
-        'description',
-        runtimeHandler,
-      );
+      const radioButton = new RadioButton(28, 'description', runtimeHandler);
       expect(nodes[nodeId].checked).to.be.false;
 
       await radioButton.deselect();
@@ -136,11 +106,7 @@ describe('RadioButton', () => {
 
     it('should deselect an selected radio button', async () => {
       let nodeId = 30;
-      const radioButton = new RadioButton(
-        nodeId,
-        'description',
-        runtimeHandler,
-      );
+      const radioButton = new RadioButton(nodeId, 'description', runtimeHandler);
       expect(nodes[nodeId].checked).to.be.true;
 
       await radioButton.deselect();

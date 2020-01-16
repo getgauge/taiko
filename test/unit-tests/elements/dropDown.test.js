@@ -10,12 +10,9 @@ class Event {
   }
 }
 DropDown.__set__('Event', Event);
-DropDown.__set__(
-  'doActionAwaitingNavigation',
-  async (navigationOptions, action) => {
-    await action();
-  },
-);
+DropDown.__set__('doActionAwaitingNavigation', async (navigationOptions, action) => {
+  await action();
+});
 describe('DropDown', () => {
   let nodes,
     dispatchedEvent,
@@ -83,25 +80,14 @@ describe('DropDown', () => {
     expect(new DropDown() instanceof Element).to.be.true;
   });
   it('should create DropDown from element', () => {
-    const expectedDropDown = DropDown.from(
-      new Element(12, '', runtimeHandler),
-      'description',
-    );
-    const actualDropDown = new DropDown(
-      12,
-      'description',
-      runtimeHandler,
-    );
+    const expectedDropDown = DropDown.from(new Element(12, '', runtimeHandler), 'description');
+    const actualDropDown = new DropDown(12, 'description', runtimeHandler);
     expect(actualDropDown).to.be.deep.equal(expectedDropDown);
   });
   describe('select', () => {
     it('should select dropdown item using index ', async () => {
       let nodeId = 25;
-      const dropDown = new DropDown(
-        nodeId,
-        'description',
-        runtimeHandler,
-      );
+      const dropDown = new DropDown(nodeId, 'description', runtimeHandler);
       expect(nodes[nodeId].selectedIndex).to.be.equal(1);
 
       await dropDown.select({ index: 2 });
@@ -115,11 +101,7 @@ describe('DropDown', () => {
 
     it('select dropdown item using value', async () => {
       let nodeId = 26;
-      const dropDown = new DropDown(
-        nodeId,
-        'description',
-        runtimeHandler,
-      );
+      const dropDown = new DropDown(nodeId, 'description', runtimeHandler);
       expect(nodes[nodeId].selectedIndex).to.be.equal(1);
 
       await dropDown.select('26 value 2');
@@ -133,11 +115,7 @@ describe('DropDown', () => {
 
     it('select dropdown item using text ', async () => {
       let nodeId = 27;
-      const dropDown = new DropDown(
-        nodeId,
-        'description',
-        runtimeHandler,
-      );
+      const dropDown = new DropDown(nodeId, 'description', runtimeHandler);
       expect(nodes[nodeId].selectedIndex).to.be.equal(1);
 
       await dropDown.select('27 text 2');
@@ -153,11 +131,7 @@ describe('DropDown', () => {
   describe('value', () => {
     it('should return value', async () => {
       let nodeId = 28;
-      const dropDown = new DropDown(
-        nodeId,
-        'description',
-        runtimeHandler,
-      );
+      const dropDown = new DropDown(nodeId, 'description', runtimeHandler);
       expect(await dropDown.value()).to.be.equal('28 value 2');
     });
   });
