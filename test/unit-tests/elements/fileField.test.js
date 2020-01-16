@@ -19,15 +19,8 @@ describe('FileField', () => {
     expect(new FileField() instanceof Element).to.be.true;
   });
   it('should create textBox from element', () => {
-    const expectedTextBox = FileField.from(
-      new Element(12, '', runtimeHandler),
-      'description',
-    );
-    const actualTextBox = new FileField(
-      12,
-      'description',
-      runtimeHandler,
-    );
+    const expectedTextBox = FileField.from(new Element(12, '', runtimeHandler), 'description');
+    const actualTextBox = new FileField(12, 'description', runtimeHandler);
     expect(actualTextBox).to.be.deep.equal(expectedTextBox);
   });
 
