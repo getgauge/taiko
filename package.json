@@ -56,7 +56,8 @@
     "https-proxy-agent": "^4.0.0",
     "progress": "^2.0.3",
     "proxy-from-env": "^1.0.0",
-    "recast": "^0.18.5"
+    "recast": "^0.18.5",
+    "sinon": "^8.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
