@@ -90,7 +90,7 @@ describe(test_name, () => {
       expect(await dropDown('Cars').value()).to.equal('mercedes');
     });
 
-    it.only('test select() should thrown when selecting on disabled option', async () => {
+    it('test select() should thrown when selecting on disabled option', async () => {
       try {
         expect(await dropDown('Cars').select('Saab'));
       } catch (err) {
