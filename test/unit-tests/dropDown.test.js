@@ -26,7 +26,7 @@ describe(test_name, () => {
       '<label for="select">Cars</label>' +
       '<select id="select" name="select" value="select">' +
       '<option value="volvo">Volvo</option>' +
-      '<option value="saab">Saab</option>' +
+      '<option value="saab" disabled>Saab</option>' +
       '<option value="mercedes">Mercedes</option>' +
       '<option value="audi">Audi</option>' +
       '</select>' +
@@ -88,6 +88,14 @@ describe(test_name, () => {
       await dropDown('Cars').select('Audi');
       await dropDown('Cars').select('mercedes');
       expect(await dropDown('Cars').value()).to.equal('mercedes');
+    });
+
+    it.only('test select() should thrown when selecting on disabled option', async () => {
+      try {
+        expect(await dropDown('Cars').select('Saab'));
+      } catch (err) {
+        expect(err.message).to.equal('Cannot set value Saab on a disabled field');
+      }
     });
   });
 
