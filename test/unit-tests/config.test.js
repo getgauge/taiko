@@ -8,7 +8,7 @@ describe('Config tests', () => {
     describe('For invalid config name', () => {
       it('should throw exception', () => {
         let allowedConfig = Array.prototype.keys.call(config.defaultConfig);
-        let allowedConfigString = allowedConfig.join(', ');
+        let allowedConfigString = Array.prototype.join.call(allowedConfig, ', ');
 
         let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfigString}`;
         expect(() => config.setConfig({ invalidConfig: true })).to.throw(
@@ -57,7 +57,7 @@ describe('Config tests', () => {
     describe('For invalid config name', () => {
       it('should throw exception', () => {
         let allowedConfig = Array.prototype.keys.call(config.defaultConfig);
-        let allowedConfigString = allowedConfig.join(', ');
+        let allowedConfigString = Array.prototype.join.call(allowedConfig, ', ');
 
         let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfigString}`;
         expect(() => config.getConfig("invalidConfig")).to.throw(
@@ -69,8 +69,9 @@ describe('Config tests', () => {
     describe('For valid config name', () => {
       it('should return the specified config', () => {
         let allowedConfig = Array.prototype.keys.call(config.defaultConfig);
+        let allowedConfigArray = Array.from(allowedConfig);
 
-        allowedConfig.forEach(optionName => {
+        allowedConfigArray.forEach(optionName => {
           let optionValue = config.getConfig(optionName);
           expect(config.defaultConfig[optionName]).to.equal(optionValue);
         });
