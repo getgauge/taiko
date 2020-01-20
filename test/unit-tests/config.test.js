@@ -52,6 +52,37 @@ describe('Config tests', () => {
     });
   });
 
+  describe('Test getConfig', () => {
+    describe('For invalid config name', () => {
+      it('should throw exception', () => {
+        let allowedConfig =
+          'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
+        let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfig}`;
+        expect(() => config.getConfig("invalidConfig")).to.throw(
+          new RegExp(`^${expectedMessage}$`),
+        );
+      });
+    });
+
+    describe('For valid config name', () => {
+      it('should return the specified config', () => {
+        let allowedConfig =
+          'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
+
+        allowedConfig.forEach(optionName => {
+          let optionValue = config.getConfig(optionName);
+          expect(config.defaultConfig[optionName]).to.equal(optionValue);
+        });
+      });
+    });
+
+    describe('For no config name', () => {
+      it('should return the full config', () => {
+        expect(config.defaultConfig).to.deep.equal(config.getConfig());
+      });
+    });
+  });
+
   describe('Test determineWaitForNavigation', () => {
     describe('For undefined or null value', () => {
       it('should return default value when provided value is undefined', () => {
