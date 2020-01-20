@@ -1,67 +1,79 @@
 const expect = require('chai').expect;
-const sandbox = require('sinon').createSandbox();
+
+const rewire = require('rewire');
 const Element = require('../../../lib/elements/element');
-const overlayHandler = require('../../../lib/handlers/overlayHandler');
-const domHandler = require('../../../lib/handlers/domHandler');
-const { highlightElement } = require('../../../lib/elements/elementHelper');
+
+const elemHelper = rewire('../../../lib/elements/elementHelper');
 const { setConfig } = require('../../../lib/config');
 
 describe('elementHelper', () => {
-  let element, stubedIsVisible, stubedGetBoxModel, stubHighlightQuad, stubHideHighlight, stubedWarn;
+  let boxModel,
+    highlightQuadArgs,
+    hideHighlightCalled,
+    warningMessage,
+    getBoxModelCalled,
+    highlightQuadCalled;
+  function createElement(id, isVisible) {
+    let elem = new Element(id, '');
+    elem.isVisible = () => {
+      return isVisible;
+    };
+    return elem;
+  }
 
   beforeEach(() => {
-    stubedIsVisible = sandbox.stub(Element.prototype, 'isVisible');
-    stubedGetBoxModel = sandbox.stub(domHandler, 'getBoxModel');
-    stubHighlightQuad = sandbox.stub(overlayHandler, 'highlightQuad');
-    stubHideHighlight = sandbox.stub(overlayHandler, 'hideHighlight');
-    stubedWarn = sandbox.stub(console, 'warn');
-    setConfig({ highlightOnAction: 'true' });
-    element = new Element(23, '');
-  });
+    boxModel = null;
+    highlightQuadArgs = null;
+    hideHighlightCalled = false;
+    warningMessage = null;
+    getBoxModelCalled = false;
+    highlightQuadCalled = false;
+    elemHelper.__set__('domHandler', {
+      getBoxModel: () => {
+        getBoxModelCalled = true;
+        return { model: { border: boxModel } };
+      },
+    });
 
-  afterEach(() => {
-    sandbox.restore();
+    elemHelper.__set__('overlayHandler', {
+      highlightQuad: async args => {
+        highlightQuadCalled = true;
+        highlightQuadArgs = args;
+      },
+      hideHighlight: async () => {
+        hideHighlightCalled = true;
+      },
+    });
+    elemHelper.__set__('console', { warn: warning => (warningMessage = warning) });
+    setConfig({ highlightOnAction: 'true' });
   });
 
   it('should highlight visible element', async () => {
-    let border = [8, 45.96875, 246, 45.96875, 246, 63.96875, 8, 63.96875];
-    stubedGetBoxModel.returns({ model: { border } });
-    stubedIsVisible.returns(true);
-    await highlightElement(element);
+    boxModel = [8, 45.96875, 246, 45.96875, 246, 63.96875, 8, 63.96875];
+    await elemHelper.highlightElement(createElement(20, true));
 
-    expect(stubedGetBoxModel.callCount).to.be.equal(1);
-    expect(stubHighlightQuad.callCount).to.be.equal(1);
-    expect(stubHighlightQuad.getCall(0).args[0]).to.be.equal(border);
-    expect(stubHideHighlight.callCount).to.be.equal(1);
-    expect(stubedWarn.callCount).to.be.equal(0);
+    expect(getBoxModelCalled).to.be.true;
+    expect(highlightQuadArgs).to.be.equal(boxModel);
+    expect(hideHighlightCalled).to.be.true;
+    expect(warningMessage).to.be.equal(null);
   });
 
   it('should not highlight when element is not visible', async () => {
-    stubedIsVisible.returns(false);
-    await highlightElement(element);
+    await elemHelper.highlightElement(createElement(20, false));
 
-    expect(stubedGetBoxModel.callCount).to.be.equal(0);
-    expect(stubHighlightQuad.callCount).to.be.equal(0);
-    expect(stubHideHighlight.callCount).to.be.equal(0);
+    expect(getBoxModelCalled).to.be.false;
+    expect(highlightQuadCalled).to.be.false;
+    expect(hideHighlightCalled).to.be.false;
+    expect(warningMessage).to.be.equal('WARNING: Taiko cannot highlight hidden elements.');
   });
 
   it('should not highlight when highlightOnAction is false', async () => {
     setConfig({ highlightOnAction: 'false' });
-    stubedIsVisible.returns(true);
-    await highlightElement(element);
+    await elemHelper.highlightElement(createElement(20, true));
 
-    expect(stubedGetBoxModel.callCount).to.be.equal(0);
-    expect(stubHighlightQuad.callCount).to.be.equal(0);
-    expect(stubHideHighlight.callCount).to.be.equal(0);
-  });
-
-  it('should print warning when element is not visible', async () => {
-    stubedIsVisible.returns(false);
-    await highlightElement(element);
-
-    expect(stubedWarn.callCount).to.be.equal(1);
-    expect(stubedWarn.getCall(0).args).to.be.deep.equal([
-      'WARNING: Taiko cannot highlight hidden elements.',
-    ]);
+    expect(getBoxModelCalled).to.be.false;
+    expect(highlightQuadCalled).to.be.false;
+    expect(hideHighlightCalled).to.be.false;
+    expect(warningMessage).to.be.equal(null);
   });
 });
