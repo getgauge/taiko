@@ -57,6 +57,7 @@ describe('Config tests', () => {
       it('should throw exception', () => {
         let allowedConfig =
           'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
+
         let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfig}`;
         expect(() => config.getConfig("invalidConfig")).to.throw(
           new RegExp(`^${expectedMessage}$`),
@@ -68,8 +69,9 @@ describe('Config tests', () => {
       it('should return the specified config', () => {
         let allowedConfig =
           'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
+        let allowedConfigArray = allowedConfig.split(', ');
 
-        allowedConfig.forEach(optionName => {
+        allowedConfigArray.forEach(optionName => {
           let optionValue = config.getConfig(optionName);
           expect(config.defaultConfig[optionName]).to.equal(optionValue);
         });
