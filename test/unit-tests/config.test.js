@@ -68,7 +68,7 @@ describe('Config tests', () => {
 
     describe('For valid config name', () => {
       it('should return the specified config', () => {
-        let allowedConfig = Array.prototype.keys.call(config.defaultConfig);
+        let allowedConfig = Object.keys(config.defaultConfig);
 
         allowedConfig.forEach(optionName => {
           let optionValue = config.getConfig(optionName);
