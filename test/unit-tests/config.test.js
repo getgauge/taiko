@@ -7,9 +7,10 @@ describe('Config tests', () => {
   describe('Test setConfig', () => {
     describe('For invalid config name', () => {
       it('should throw exception', () => {
-        let allowedConfig =
-          'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
-        let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfig}`;
+        let allowedConfig = Array.prototype.keys.call(config.defaultConfig);
+        let allowedConfigString = allowedConfig.join(', ');
+
+        let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfigString}`;
         expect(() => config.setConfig({ invalidConfig: true })).to.throw(
           new RegExp(`^${expectedMessage}$`),
         );
@@ -55,10 +56,10 @@ describe('Config tests', () => {
   describe('Test getConfig', () => {
     describe('For invalid config name', () => {
       it('should throw exception', () => {
-        let allowedConfig =
-          'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
+        let allowedConfig = Array.prototype.keys.call(config.defaultConfig);
+        let allowedConfigString = allowedConfig.join(', ');
 
-        let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfig}`;
+        let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfigString}`;
         expect(() => config.getConfig("invalidConfig")).to.throw(
           new RegExp(`^${expectedMessage}$`),
         );
@@ -67,11 +68,9 @@ describe('Config tests', () => {
 
     describe('For valid config name', () => {
       it('should return the specified config', () => {
-        let allowedConfig =
-          'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
-        let allowedConfigArray = allowedConfig.split(', ');
+        let allowedConfig = Array.prototype.keys.call(config.defaultConfig);
 
-        allowedConfigArray.forEach(optionName => {
+        allowedConfig.forEach(optionName => {
           let optionValue = config.getConfig(optionName);
           expect(config.defaultConfig[optionName]).to.equal(optionValue);
         });
