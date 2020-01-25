@@ -26,10 +26,12 @@ a {
 }
 
 nav {
-  position: relative;
-  background: #25282d;
-  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 65px;
+  width: 100%;
+  background-color: #25282d;
   border-bottom: 5px solid #2BD3EF;
   position: fixed;
   width: 100%;
@@ -417,67 +419,69 @@ pre {
 /* Github Icon */
 
 
-.github {
-  float: right;
+.github-container {
   display: flex;
-  height: 40px;
+  padding-right: 20px;
+  color: #25282d;
+  text-decoration: none;
 }
 
-.github-oval {
+.github-icons {
+  display: flex;
+  height: 36px;
+  width: 70px;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #2bd3ef;
   border-radius: 100px;
+  line-height: 0;
 }
 
-.github-icon {
-  color: #2bd3ef;
+.github-octo {
+  height: 24px;
 }
 
 .github-star {
-  color: #fff;
+  color: #ffffff;
+  height: 16px;
+  padding-left: 6px;
 }
 
-
-
-
-/*
-.github {
+.github-bubble {
   display: flex;
-  position: absolute;
-  right: 50px;
-  top: 50%;
-  width: 100px;
-  transform: translate(0, -50%);
-  border: 1px solid red;
-}
-
-.github-icon {
-  width: 13px;
-  height: 13px;
-  margin-right: 5px;
-}
-
-.star-count {
-  display: flex;
-  justify-content: center;
+  position: relative;
+  height: 36px;
+  width: auto;
   align-items: center;
-  border: 1px solid #fff;
-  border-radius: 25px;
-  width: 75px;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 3px;
+  margin-left: 12px;
 }
 
-.github-star {
-  width: 14px; 
-  height: 14px;
-  margin-right: 4px;
-}*/
+.github-bubble:after {
+  content: '';
+  position: absolute;
+  width: 12.5px;
+  height: 12.5px;
+  transform: rotate(45deg);
+  background: #fff;
+  left: -5px;
+  z-index: 0;
+  border-radius: 1px;
+}
 
 .github-count {
-  color: #fff;
-  font-size: 14px;
-  font-weight: bold;
+  font-family: 'Open Sans';
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0px 8px 0 8px;
 }
-/* github count class is important for the number */
 
+.github-container, a:hover {
+  text-decoration: none;
+  color: #25282d;
+}
 
 
 .scroll-top {
