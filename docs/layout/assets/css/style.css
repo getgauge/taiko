@@ -416,6 +416,30 @@ pre {
 
 /* Github Icon */
 
+
+.github {
+  float: right;
+  display: flex;
+  height: 40px;
+}
+
+.github-oval {
+  border: 1px solid #2bd3ef;
+  border-radius: 100px;
+}
+
+.github-icon {
+  color: #2bd3ef;
+}
+
+.github-star {
+  color: #fff;
+}
+
+
+
+
+/*
 .github {
   display: flex;
   position: absolute;
@@ -423,11 +447,12 @@ pre {
   top: 50%;
   width: 100px;
   transform: translate(0, -50%);
+  border: 1px solid red;
 }
 
 .github-icon {
-  width: 28px;
-  height: 28px;
+  width: 13px;
+  height: 13px;
   margin-right: 5px;
 }
 
@@ -444,43 +469,15 @@ pre {
   width: 14px; 
   height: 14px;
   margin-right: 4px;
-}
+}*/
 
 .github-count {
   color: #fff;
   font-size: 14px;
   font-weight: bold;
 }
+/* github count class is important for the number */
 
-
-@media (min-width: 768px) {
-  
-  .github { 
-    width: 125px;
-  }
-
-  .github-icon {
-    width: 36px;
-    height: 36px;
-    margin: 0 auto;
-  }
-
-  .star-count {
-    border: 1px solid #fff;
-    border-radius: 25px;
-    width: 60%;
-  }
-
-  .github-star {
-    width: 14px; 
-    height: 14px;
-    margin-right: 4px;
-  }
-
-  .github-count { 
-    font-size: 18px;
-  }
-}
 
 
 .scroll-top {
