@@ -232,3 +232,52 @@ describe(test_name, () => {
     });
   });
 });
+
+describe('Disable button test', () => {
+  let innerHtml;
+  let filePath;
+  before(async () => {
+    innerHtml =
+      '<div name="inline button text">' +
+      '<button type="button">Click</button>' +
+      '<button type="button" disabled>ClickDisabled</button>' +
+      '<input type="button" value="Input Button" />' +
+      '<input type="button" value="Input Button disabled" disabled/>' +
+      '<input type="reset" value="Input Reset" />' +
+      '<input type="reset" value="Input Reset disabled" disabled/>' +
+      '<input type="submit" value="Input Submit" />' +
+      '<input type="submit" value="Input Submit disabled" disabled/>' +
+      '</div>' +
+      '<div name="button in label">' +
+      '<label><input type="button" value="inputButtonInLabel" disabled/><span>InputButtonInLabelDisabled</span></label>' +
+      '<label><input type="button" value="inputButtonInLabel"/><span>InputButtonInLabel</span></label>' +
+      '<label><input type="reset" disabled/><span>ResetInLabelDisabled</span></label>' +
+      '<label><input type="reset"/><span>ResetInLabel</span></label>' +
+      '<label><input type="submit" disabled/><span>SubmitInLabelDisabled</span></label>' +
+      '<label><input type="submit"/><span>SubmitInLabel</span></label>' +
+      '</div>';
+    filePath = createHtml(innerHtml, test_name);
+    await openBrowser(openBrowserArgs);
+    await goto(filePath);
+    setConfig({ waitForNavigation: false, retryTimeout: 100, retryInterval: 10 });
+  });
+
+  after(async () => {
+    resetConfig();
+    await closeBrowser();
+    removeFile(filePath);
+  });
+
+  it('button isDisabled()', async () => {
+    expect(await button('ClickDisabled').isDisabled()).to.be.true;
+    expect(await button('Input Button disabled').isDisabled()).to.be.true;
+    expect(await button('Input Reset disabled').isDisabled()).to.be.true;
+    expect(await button('Input Submit disabled').isDisabled()).to.be.true;
+  });
+
+  it('test isDisabled with label()', async () => {
+    expect(await button('InputButtonInLabelDisabled').isDisabled()).to.be.true;
+    expect(await button('ResetInLabelDisabled').isDisabled()).to.be.true;
+    expect(await button('SubmitInLabelDisabled').isDisabled()).to.be.true;
+  });
+});

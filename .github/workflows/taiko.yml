@@ -54,6 +54,13 @@ jobs:
       - name: examples
         run: npm run examples
 
+      - name: Upload examples screencast
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: examples-screencast-${{ matrix.os }}-${{ matrix.node_version }}
+          path: examples/captures
+
   functional-tests-headful:
     needs: unit-tests
     name: FT in linux-headful

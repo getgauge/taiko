@@ -17,8 +17,11 @@ All repositories are hosted on GitHub. Taiko’s core is written in pure Javascr
 
 ## How do I start contributing
 
-There are issues of varying levels across all Taiko repositories. All issues that need to be addressed are tagged as _'Help Needed'_. One easy way to get started is to pick a small bug to fix. These have been tagged as _'Easy Picks'_.
+There are issues of varying levels across all Taiko repositories. All issues that need to be addressed are tagged as _'help wanted'_. One easy way to get started is to pick a small bug to fix. These have been tagged as _'good first issue'_.
 
-If you need help in getting started with contribution, feel free to reach out on [Spectrum](https://spectrum.chat/taiko).
+Once you pick an issue, add a comment informing that you want to work on it. To get early feedback from other contributors, it's recommended that you first raise a pull request with a small commit by prefixing "WIP" to the pull request title. Keep making
+incremental commits to this pull request and seek out help or reviews till it's complete.
+
+You can also reach out on [Spectrum](https://spectrum.chat/taiko).
 
 If your contribution is a code contribution and you do send us a pull request, you will first need to read and sign the [Contributor License Agreement](https://gauge-bot.herokuapp.com/cla/).
