@@ -17,7 +17,7 @@
     "test-functional": "cd test/functional-tests && npm install && npm test",
     "install": "node lib/install.js",
     "update-json-doc": "node build/updateJsonDoc.js",
-    "postinstall": "node lib/generateJsonDoc.js"
+    "postinstall": "node lib/documentation.js"
   },
   "repository": {
     "type": "git",
