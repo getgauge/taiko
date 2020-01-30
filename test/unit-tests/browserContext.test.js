@@ -10,7 +10,7 @@ let {
   closeWindow,
 } = require('../../lib/taiko');
 
-let { isIncognito } = require('../../lib/browserContext');
+let { isIncognito, getBrowserContexts } = require('../../lib/browserContext');
 
 let { createHtml, removeFile } = require('./test-util');
 
@@ -110,6 +110,41 @@ describe('Open window in Incognito Mode', () => {
 
     await openWindow(url, { name: 'admin' });
     expect(isIncognito({ name: 'admin' })).to.be.true;
+  });
+  after(async () => {
+    await closeWindow('admin');
+    await closeBrowser();
+    removeFile(url);
+  });
+});
+
+describe('Open window with same window name', () => {
+  let innerHtml;
+  let url;
+  it('Should switch to existing window', async () => {
+    innerHtml = `<section class="header">
+    <h1>Incognitotests</h1>
+      </section>
+        <section class='main-content'>
+          <div class='item'>
+             Item 2
+          </div>
+          <div class='item'>
+          Browser2
+    </div>
+    </section>
+    `;
+    url = createHtml(innerHtml, 'Incognito');
+    await openBrowser();
+    setConfig({
+      waitForNavigation: true,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
+
+    await openWindow(url, { name: 'admin' });
+    await openWindow(url, { name: 'admin' });
+    expect(getBrowserContexts().size).to.be.equal(1);
   });
   after(async () => {
     await closeWindow('admin');
