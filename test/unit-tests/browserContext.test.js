@@ -52,12 +52,12 @@ describe('open browser and create browser context', () => {
       retryTimeout: 100,
       retryInterval: 10,
     });
-    await openWindow(url1, { name: 'admin', incognito: true });
+    await openWindow(url1, { name: 'admin' });
     let actual = await text('Browser1').exists();
     expect(actual).to.be.true;
 
     url2 = createHtml(innerHtml1, 'Incognito1');
-    await openWindow(url2, { name: 'user', incognito: true });
+    await openWindow(url2, { name: 'user' });
 
     let actualBrowser2 = await text('Browser2').exists();
     expect(actualBrowser2).to.be.true;
@@ -84,7 +84,7 @@ describe('open browser and create browser context', () => {
   });
 });
 
-describe('Open window', () => {
+describe('Open window in Incognito Mode', () => {
   let innerHtml;
   let url;
   it('Open window without incognito', async () => {
@@ -109,7 +109,41 @@ describe('Open window', () => {
     });
 
     await openWindow(url, { name: 'admin' });
-    expect(isIncognito()).to.be.false;
+    expect(isIncognito({ name: 'admin' })).to.be.true;
+  });
+  after(async () => {
+    await closeWindow('admin');
+    await closeBrowser();
+    removeFile(url);
+  });
+});
+
+describe('Open window in Normal Mode', () => {
+  let innerHtml;
+  let url;
+  it('Open window without incognito', async () => {
+    innerHtml = `<section class="header">
+    <h1>Incognitotests</h1>
+      </section>
+        <section class='main-content'>
+          <div class='item'>
+             Item 2
+          </div>
+          <div class='item'>
+          Browser2
+    </div>
+    </section>
+    `;
+    url = createHtml(innerHtml, 'Incognito');
+    await openBrowser();
+    setConfig({
+      waitForNavigation: true,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
+
+    await openWindow(url, { name: 'admin', incognito: false });
+    expect(isIncognito({ name: 'admin' })).to.be.false;
   });
   after(async () => {
     await closeWindow('admin');
@@ -157,13 +191,13 @@ describe('Isolation session storage test', () => {
       retryInterval: 10,
     });
 
-    await openWindow(url1, { name: 'admin', incognito: true });
+    await openWindow(url1, { name: 'admin' });
     await evaluate(() => {
       localStorage.setItem('name', 'page1');
     });
 
     url2 = createHtml(innerHtml1, 'Incognito1');
-    await openWindow(url2, { name: 'user', incognito: true });
+    await openWindow(url2, { name: 'user' });
 
     await evaluate(() => {
       localStorage.setItem('name', 'page2');
