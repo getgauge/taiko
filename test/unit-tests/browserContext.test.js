@@ -260,3 +260,16 @@ describe('Isolation session storage test', () => {
     removeFile(url1);
   });
 });
+
+describe('open window throws an error', () => {
+  it('openWindow should throw an error when url parameter is missing', async () => {
+    await openBrowser();
+    await openWindow({ name: 'window' }).catch(error =>
+      expect(error).to.be.an.instanceOf(TypeError),
+    );
+  });
+
+  after(async () => {
+    await closeBrowser();
+  });
+});
