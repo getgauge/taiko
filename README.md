@@ -190,7 +190,7 @@ Learn more about [Gauge](https://docs.gauge.org)!
 
 ## Documentation
 
-* [API](http://taiko.gauge.org)
+* [API](https://docs.taiko.dev)
 
 ## Inspired by
 
