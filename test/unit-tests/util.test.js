@@ -1,4 +1,5 @@
 const chai = require('chai');
+const path = require('path');
 const rewire = require('rewire');
 const expect = chai.expect;
 const util = rewire('../../lib/util');
@@ -34,8 +35,12 @@ describe(test_name, () => {
 
   describe('taikoInstallationLocation', () => {
     let packageJSONExists = true,
-      packageJSONData;
+      packageJSONData,
+      globalPath,
+      localPath;
     before(() => {
+      globalPath = path.join('path', 'to', 'taiko-global', 'installation');
+      localPath = path.join('path', 'to', 'taiko-local', 'installation');
       util.__set__('existsSync', () => {
         return packageJSONExists;
       });
@@ -44,15 +49,15 @@ describe(test_name, () => {
       });
       util.__set__('spawnSync', (_, options) => {
         if (options.includes('-g')) {
-          return { output: [null, '/path/to/taiko-global/installation'] };
+          return { output: [null, globalPath] };
         }
-        return { output: [null, '/path/to/taiko-local/installation'] };
+        return { output: [null, localPath] };
       });
     });
 
     it('should return taiko installtion location when CWD is not an npm project', () => {
       packageJSONExists = false;
-      let expected = '/path/to/taiko-global/installation/taiko';
+      let expected = path.join(globalPath, 'taiko');
       let actual = taikoInstallationLocation();
       expect(actual).to.be.equal(expected);
     });
@@ -64,7 +69,7 @@ describe(test_name, () => {
           taiko: '1.0.3',
         },
       });
-      let expected = '/path/to/taiko-local/installation/taiko';
+      let expected = path.join(localPath, 'taiko');
       let actual = taikoInstallationLocation();
       expect(actual).to.be.equal(expected);
     });
@@ -72,7 +77,7 @@ describe(test_name, () => {
     it('should return taiko installtion location when taiko is installed globally', () => {
       packageJSONExists = true;
       packageJSONData = JSON.stringify({ name: 'npm-module' });
-      let expected = '/path/to/taiko-global/installation/taiko';
+      let expected = path.join(globalPath, 'taiko');
       let actual = taikoInstallationLocation();
       expect(actual).to.be.equal(expected);
     });
