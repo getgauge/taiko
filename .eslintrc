@@ -6,7 +6,7 @@
     "mocha": true,
     "jest/globals": true
   },
-  "ignorePatterns": [".local-chromium", "node_modules/", "test/functional-tests/reports/"],
+  "ignorePatterns": [".local-chromium", "node_modules/", "test/functional-tests/reports/", "docs"],
   "extends": ["eslint:recommended", "prettier"],
   "parserOptions": {
     "sourceType": "module",
