@@ -32,7 +32,7 @@ describe(test_name, () => {
     <article id="text__tables">
             <header><h1>Tabular data</h1></header>
             <table>
-              <caption>Table Caption</caption>
+              <caption><strong>Table Caption</strong></caption>
               <thead>
                 <tr>
                   <th>Table Heading 1</th>
@@ -44,46 +44,116 @@ describe(test_name, () => {
               </thead>
               <tfoot>
                 <tr>
-                  <th>Table Footer 1</th>
-                  <th>Table Footer 2</th>
-                  <th>Table Footer 3</th>
-                  <th>Table Footer 4</th>
-                  <th>Table Footer 5</th>
+                  <td>Table Footer 1</td>
+                  <td>Table Footer 2</td>
+                  <td>Table Footer 3</td>
+                  <td>Table Footer 4</td>
+                  <td>Table Footer 5</td>
                 </tr>
               </tfoot>
               <tbody>
                 <tr>
-                  <td>Table Cell 1</td>
-                  <td>Table Cell 2</td>
-                  <td>Table Cell 3</td>
-                  <td id='lucky'>Table Cell 4</td>
-                  <td>Table Cell 5</td>
+                  <td>Table Cell 1.1</td>
+                  <td>Table Cell 1.2</td>
+                  <td>Table Cell 1.3</td>
+                  <td id='lucky'>Table Cell 1.4</td>
+                  <td>Table Cell 1.5</td>
                 </tr>
                 <tr>
-                  <td>Table Cell 1</td>
-                  <td>Table Cell 2</td>
-                  <td>Table Cell 3</td>
-                  <td>Table Cell 4</td>
-                  <td>Table Cell 5</td>
+                  <td>Table Cell 2.1</td>
+                  <td>Table Cell 2.2</td>
+                  <td>Table Cell 2.3</td>
+                  <td>Table Cell 2.4</td>
+                  <td>Table Cell 2.5</td>
                 </tr>
                 <tr>
-                  <td>Table Cell 1</td>
-                  <td>Table Cell 2</td>
-                  <td>Table Cell 3</td>
-                  <td>Table Cell 4</td>
-                  <td>Table Cell 5</td>
+                  <td>Table Cell 3.1</td>
+                  <td>Table Cell 3.2</td>
+                  <td>Table Cell 3.3</td>
+                  <td>Table Cell 3.4</td>
+                  <td>Table Cell 3.5</td>
                 </tr>
                 <tr>
-                  <td>Table Cell 1</td>
-                  <td>Table Cell 2</td>
-                  <td>Table Cell 3</td>
-                  <td>Table Cell 4</td>
-                  <td>Table Cell 5</td>
+                  <td>Table Cell 4.1</td>
+                  <td>Table Cell 4.2</td>
+                  <td>Table Cell 4.3</td>
+                  <td>Table Cell 4.4</td>
+                  <td>Table Cell 4.5</td>
                 </tr>
               </tbody>
             </table>
             <footer><p><a href="#top">[Top]</a></p></footer>
           </article>
+          <div>
+            <table border = "1" cellspacing="1" bordercolor="blue" bgcolor="yellow">
+              <tr>
+                <th colspan="8">TIME TABLE</th>
+              </tr>
+    
+              <tr>
+                <th>DAYS</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th rowspan="7">lunch break</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+              </tr>
+              <tr>
+                  <td>MONDAY</td>
+                  <td>Accounts</td>
+                  <td>English</td>
+                  <td>Statistics</td>
+                  <td>Banking</td>
+                  <td align="center">-</td>
+                  <td align="center">EP</td>
+              </tr>
+              <tr>
+                  <td>TUESDAY</td>
+                  <td>Statistics</td>
+                  <td>Banking</td>
+                  <td>English</td>
+                  <td>Accounts</td>
+                  <td align="center">-</td>
+                  <td align="center">-</td>
+              </tr>
+              <tr>
+                  <td>WEDNESDAY</td>
+                  <td>English</td>
+                  <td>Statistics</td>
+                  <td>Accounts</td>
+                  <td align="center">EP</td>
+                  <td>Banking</td>
+                  <td align="center">-</td>
+              </tr>
+              <tr>
+                  <td>THURSDAY</td>
+                  <td align="center">-</td>
+                  <td align="center">CA</td>
+                  <td>Statistics</td>
+                  <td>English</td>
+                  <td align="center">EP</td>
+                  <td align="center">-</td>
+              </tr>
+              <tr>
+                  <td>FRIDAY</td>
+                  <td>Banking</td>
+                  <td>Statistics</td>
+                  <td>English</td>
+                  <td colspan="2" align="center">ICT</td>
+                  <td align="center">CA</td>
+              </tr>
+              <tr>
+                  <td>SATURSDAY</td>
+                  <td>Banking</td>
+                  <td align="center">CA</td>
+                  <td>Statistics</td>
+                  <td colspan="2" align="center">English</td>
+                  <td>Accounts</td>
+              </tr>
+            </table>
+          </div>
       `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -135,7 +205,7 @@ describe(test_name, () => {
           },
           'Table Caption',
         ).text(),
-      ).to.be.eql('Table Cell 1');
+      ).to.be.eql('Table Cell 1.1');
     });
 
     it('test text should throw if the element is not found', async () => {
@@ -150,7 +220,23 @@ describe(test_name, () => {
       ).to.be.eventually.rejected;
     });
     it('test tableCell throw error if row and col not provided', async () => {
-      expect(() => tableCell('Above Caption')).to.throw('Table Row or Column Value required');
+      expect(() => tableCell('Table Caption')).to.throw('Table Row or Column Value required');
+    });
+
+    it('should fetch table by header inside a <tr>', async () => {
+      expect(await tableCell({ row: 1, col: 1 }, 'Time table').exists()).to.be.true;
+    });
+
+    it('should fetch footer row using index continuing from body', async () => {
+      expect(
+        await tableCell(
+          {
+            row: 5,
+            col: 3,
+          },
+          'Table Caption',
+        ).text(),
+      ).to.be.eql('Table Footer 3');
     });
   });
 
@@ -197,7 +283,7 @@ describe(test_name, () => {
           },
           'Table Heading 1',
         ).text(),
-      ).to.be.eql('Table Cell 1');
+      ).to.be.eql('Table Cell 1.1');
     });
 
     it('test text should throw if the element is not found', async () => {
@@ -253,7 +339,7 @@ describe(test_name, () => {
           },
           below('Tabular Data'),
         ).text(),
-      ).to.be.eql('Table Cell 1');
+      ).to.be.eql('Table Cell 1.1');
     });
 
     it('2 - test TableCell text()', async () => {
@@ -265,7 +351,7 @@ describe(test_name, () => {
           },
           above('Table Footer 1'),
         ).text(),
-      ).to.be.eql('Table Cell 1');
+      ).to.be.eql('Table Cell 1.1');
     });
 
     it('test text should throw if the element is not found', async () => {
@@ -277,7 +363,10 @@ describe(test_name, () => {
   describe('Compatibility with other APIs', () => {
     it('Using tableCell in proximity selector', async () => {
       expect(
-        await text('Table Cell 2', above(tableCell({ row: 2, col: 2 }, 'Table Caption'))).exists(),
+        await text(
+          'Table Cell 1.2',
+          above(tableCell({ row: 2, col: 2 }, 'Table Caption')),
+        ).exists(),
       ).to.be.true;
     });
 
@@ -288,12 +377,12 @@ describe(test_name, () => {
     });
 
     it('Getting value using argValue', async () => {
-      expect(await tableCell({ id: 'lucky' }).text()).to.be.eql('Table Cell 4');
+      expect(await tableCell({ id: 'lucky' }).text()).to.be.eql('Table Cell 1.4');
     });
 
     it('Getting text using proximity selectors', async () => {
       expect(
-        await text('Table Cell 1', near(tableCell({ row: 1, col: 1 }, 'Table Caption'))).exists(),
+        await text('Table Cell 1.1', near(tableCell({ row: 1, col: 1 }, 'Table Caption'))).exists(),
       ).to.be.true;
     });
   });
