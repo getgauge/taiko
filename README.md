@@ -1,5 +1,5 @@
 <h1 align="center">Taiko</h1>
-<p align="center">A node.js library to automate chrome/chromium browser</p>
+<p align="center">A Node.js library for testing modern web applications</p>
 
 [![Actions Status](https://github.com/getgauge/taiko/workflows/taiko/badge.svg)](https://github.com/getgauge/taiko/actions)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/getgauge/taiko/blob/master/LICENSE)
@@ -14,7 +14,7 @@
 
 # What’s Taiko?
 
-Taiko is a free and open source browser automation tool built by the team behind [Gauge](https://gauge.org/) from [ThoughtWorks](https://www.thoughtworks.com/). Taiko is a node library with a clear and concise API to automate the chrome browser. Tests written in Taiko are highly readable and maintainable. 
+Taiko is a free and open source browser automation tool built by the team behind [Gauge](https://gauge.org/) from [ThoughtWorks](https://www.thoughtworks.com/). Taiko is a Node.js library with a clear and concise API to automate **Chromium based browsers**(Chrome, Microsoft Edge, Opera). Tests written in Taiko are highly readable and maintainable. 
 
 With Taiko it’s easy to
 
@@ -37,7 +37,7 @@ Taiko is built ground up to test modern web applications. Here’s a list of a f
 
 ## Easy Installation
 
-Taiko works on Windows, MacOS and Linux. You only need to have [Node.js](https://nodejs.org/en/) installed in your system to start writing Taiko scripts in JavaScript. After you’ve installed Node.js open a terminal application (or powershell in the case of Windows) and install Taiko using [npm](https://www.npmjs.com/) with the command
+Taiko works on Windows, MacOS and Linux. You only need [Node.js](https://nodejs.org/en/) installed in your system to start writing Taiko scripts in JavaScript. After you’ve installed Node.js open a terminal application (or powershell in the case of Windows) and install Taiko using [npm](https://www.npmjs.com/) with the command
 
     $ npm install -g taiko
 
@@ -56,7 +56,7 @@ This launches the Taiko prompt. You can now use Taiko’s API as commands in thi
 
     > openBrowser()
 
-You can now automate this Chrome browser instance with commands, for example, make the browser search google for something.
+You can now automate this Chromium browser instance with commands, for example, make the browser search google for something.
 
     > goto("google.com/?hl=en")
     > write("taiko test automation")
@@ -190,7 +190,7 @@ Learn more about [Gauge](https://docs.gauge.org)!
 
 ## Documentation
 
-* [API](http://taiko.gauge.org)
+* [API](https://docs.taiko.dev)
 
 ## Inspired by
 
