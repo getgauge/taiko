@@ -7,9 +7,10 @@ describe('Config tests', () => {
   describe('Test setConfig', () => {
     describe('For invalid config name', () => {
       it('should throw exception', () => {
-        let allowedConfig =
-          'navigationTimeout, observeTime, retryInterval, retryTimeout, observe, waitForNavigation, ignoreSSLErrors, headful, highlightOnAction';
-        let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfig}`;
+        let allowedConfig = Object.keys(config.defaultConfig);
+        let allowedConfigString = allowedConfig.join(', ');
+
+        let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfigString}`;
         expect(() => config.setConfig({ invalidConfig: true })).to.throw(
           new RegExp(`^${expectedMessage}$`),
         );
@@ -48,6 +49,37 @@ describe('Config tests', () => {
             }),
           ).to.throw(expectedMessage);
         });
+      });
+    });
+  });
+
+  describe('Test getConfig', () => {
+    describe('For invalid config name', () => {
+      it('should throw exception', () => {
+        let allowedConfig = Object.keys(config.defaultConfig);
+        let allowedConfigString = allowedConfig.join(', ');
+
+        let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfigString}`;
+        expect(() => config.getConfig('invalidConfig')).to.throw(
+          new RegExp(`^${expectedMessage}$`),
+        );
+      });
+    });
+
+    describe('For valid config name', () => {
+      it('should return the specified config', () => {
+        let allowedConfig = Object.keys(config.defaultConfig);
+
+        allowedConfig.forEach(optionName => {
+          let optionValue = config.getConfig(optionName);
+          expect(config.defaultConfig[optionName]).to.equal(optionValue);
+        });
+      });
+    });
+
+    describe('For no config name', () => {
+      it('should return the full config', () => {
+        expect(config.defaultConfig).to.deep.equal(config.getConfig());
       });
     });
   });

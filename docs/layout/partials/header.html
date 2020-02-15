@@ -23,7 +23,7 @@
     <pre class="hljs"><code>npm install -g taiko</code></pre>
   </div>
   <p class="note">
-    Note: If you are installing as root user, and it fails with <code>Permission Deniend</code> error.
+    Note: If you are installing as root user, and it fails with <code>Permission Denied</code> error.
     Please refer to the <a href="#global-installation">troubleshooting guide</a>
   </p>
   <p>This installs Taiko and the latest version of the chromium browser. Now, we are all set to do some testing!
@@ -302,7 +302,7 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
     <pre class="hljs"><code>.step tests/google.js</code></pre>
   </div>
   <p>Now that you've created your project with Gauge and Taiko, you can start to <a
-      href="https://gauge.org/getting-started-guide/create-specification" target="_blank">write test specifications
+      href="https://docs.gauge.org/writing-specifications.html" target="_blank">write test specifications
       using Gauge</a>. You can see how Gauge and Taiko work together from this <a
       href="https://github.com/getgauge-examples/js-taiko" target="_blank">sample project</a>.</p>
 </section>
@@ -367,7 +367,7 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
 
 <section class="taiko-env-variables">
   <h2 id="taiko-env-variables">Environment Variables</h2>
-  <p>Taiko lets you specify certain Environment varibles to customise its behaviour</p>
+  <p>Taiko lets you specify certain Environment variables to customise its behaviour</p>
   <ul class="desc-list">
     <li><span class="highlight">TAIKO_SKIP_CHROMIUM_DOWNLOAD</span> - set to true to skip downloading chromium</li>
     <li><span class="highlight">TAIKO_HIGHLIGHT_ON_ACTION</span> - set to false to turn off highlighting the element on
