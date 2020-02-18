@@ -171,6 +171,60 @@ describe(test_name, () => {
     removeFile(filePath);
   });
 
+  describe('using no label/caption', () => {
+    it('test tableCell exists()', async () => {
+      expect(
+        await tableCell({
+          row: 1,
+          col: 1,
+        }).exists(),
+      ).to.be.true;
+    });
+
+    it('test tableCell description', async () => {
+      expect(
+        await tableCell({
+          row: 1,
+          col: 1,
+        }).description,
+      ).to.be.eql('tableCell at row:1 and column:1');
+    });
+
+    it('test tableCell text()', async () => {
+      expect(
+        await tableCell({
+          row: 1,
+          col: 1,
+        }).text(),
+      ).to.be.oneOf(['Table Cell 1.1', 'MONDAY']); // there are two tables
+    });
+
+    it('test tableCell throw error if row and col not provided', async () => {
+      expect(() => tableCell()).to.throw('Table Row or Column Value required');
+    });
+
+    it('test tableCell throw error if row=0', async () => {
+      expect(() => tableCell({ row: 0, col: 1 })).to.throw(
+        'Table Row starts with "1", received "0"',
+      );
+    });
+
+    it('test tableCell throw error if col=0', async () => {
+      expect(() => tableCell({ row: 1, col: 0 })).to.throw(
+        'Table Column starts with "1", received "0"',
+      );
+    });
+
+    it('should fetch footer row using index continuing from body', async () => {
+      expect(
+        await tableCell({
+          row: 5,
+          col: 3,
+        }).text(),
+      ).to.be.oneOf(['Table Footer 3', 'Statistics']); // there are two tables
+    });
+  });
+
   describe('using label as Table Caption', () => {
     it('test tableCell exists()', async () => {
       expect(
