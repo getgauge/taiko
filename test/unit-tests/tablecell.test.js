@@ -219,8 +219,21 @@ describe(test_name, () => {
         ).text(),
       ).to.be.eventually.rejected;
     });
+
     it('test tableCell throw error if row and col not provided', async () => {
       expect(() => tableCell('Table Caption')).to.throw('Table Row or Column Value required');
+    });
+
+    it('test tableCell throw error if row=0', async () => {
+      expect(() => tableCell({ row: 0, col: 1 }, 'Table Caption')).to.throw(
+        'Table Row starts with "1", received "0"',
+      );
+    });
+
+    it('test tableCell throw error if col=0', async () => {
+      expect(() => tableCell({ row: 1, col: 0 }, 'Table Caption')).to.throw(
+        'Table Column starts with "1", received "0"',
+      );
     });
 
     it('should fetch table by header inside a <tr>', async () => {
