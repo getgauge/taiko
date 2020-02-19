@@ -6,7 +6,7 @@ on:
 
 jobs:
   release-and-bump-version:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && !contains(github.event.pull_request.labels.*.name, 'SkipRelease')
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'ReleaseCandidate')
     runs-on: macos-latest
     env:
       GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
