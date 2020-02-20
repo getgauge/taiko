@@ -114,14 +114,14 @@ pre {
 
 .main-content {
   flex: 6;
-  margin: 150px auto;
+  margin: 50px auto;
   height: auto;
   overflow: hidden !important;
 }
 
 @media (min-width: 768px) {
   .main-content {
-    margin: 56px auto 56px 300px;
+    margin: 50px auto 56px 300px;
   }
 
 }
@@ -343,9 +343,7 @@ pre {
   }
 }
 
-
 .menu-list {
-  margin: 100px 0px 185px;
   padding: 20px 33px;
   background-color: #fff;
 }

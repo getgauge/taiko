@@ -1,6 +1,6 @@
 {
   "name": "taiko",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Taiko is a Node.js library for automating Chromium based browsers",
   "main": "bin/taiko.js",
   "bin": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "eslint --fix .",
-    "doc": "node docs/generateDocSearch.js && documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
+    "doc": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
     "test:api": "node test/unit-tests/taiko-test.js",
     "examples": "cd examples && npm install && npm test",
     "test:unit:silent": "mocha 'test/unit-tests/**/*.test.js' --timeout 3000 -R dot",
