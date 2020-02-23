@@ -5,7 +5,7 @@ const EventEmitter = require('events').EventEmitter;
 const taiko = rewire('../../lib/taiko.js');
 chai.use(chaiAsPromised);
 const expect = chai.expect;
-let { openBrowser, goto, textBox, closeBrowser, write, into, toLeftOf, setConfig } = taiko;
+let { openBrowser, goto, textBox, closeBrowser, write, into, toLeftOf, setConfig, reload } = taiko;
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 let test_name = 'write';
 
@@ -61,6 +61,7 @@ describe(test_name, () => {
   });
 
   it('should enter emoji char into focused element', async () => {
+    await reload();
     await write('🦘 🦡 🐨 🐯 🦁 🐮 🐷 🐽 🐸 writing to focused input');
     expect(await textBox('focused input').value()).to.equal(
       '🦘 🦡 🐨 🐯 🦁 🐮 🐷 🐽 🐸 writing to focused input',
