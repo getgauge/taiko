@@ -60,6 +60,13 @@ describe(test_name, () => {
     expect(await textBox('focused input').value()).to.equal('writing to focused input');
   });
 
+  it('should enter emoji char into focused element', async () => {
+    await write('🦘 🦡 🐨 🐯 🦁 🐮 🐷 🐽 🐸 writing to focused input');
+    expect(await textBox('focused input').value()).to.equal(
+      '🦘 🦡 🐨 🐯 🦁 🐮 🐷 🐽 🐸 writing to focused input',
+    );
+  });
+
   it('into input field text', async () => {
     expect(await textBox('input-type-text').value()).to.equal('');
     await write('hello', into(textBox('input-type-text')));
