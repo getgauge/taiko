@@ -11,7 +11,7 @@
     "doc": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
     "test:api": "node test/unit-tests/taiko-test.js",
     "examples": "cd examples && npm install && npm test",
-    "test:unit:silent": "mocha 'test/unit-tests/**/*.test.js' --timeout 3000 -R dot",
+    "test:unit:silent": "mocha 'test/unit-tests/**/*.test.js' --timeout 6000 -R dot",
     "test:unit": "mocha 'test/unit-tests/**/*.test.js' --timeout 3000",
     "test": "npm run test:api && npm run test:unit:silent",
     "test-functional": "cd test/functional-tests && npm install && npm test",
