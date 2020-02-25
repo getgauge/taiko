@@ -76,3 +76,4 @@ test/functional-tests/package-lock.json
 examples/package-lock.json
 lib/api.json
 *.swp
+tags

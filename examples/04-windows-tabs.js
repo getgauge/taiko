@@ -7,7 +7,12 @@ const { goto, click, title, closeTab, currentURL, text } = require('taiko'),
   try {
     const url = 'http://localhost:3000/windows';
     await openBrowserAndStartScreencast(path.join('captures', 'windows', 'windows.gif'));
-    await goto(url);
+    let options = {
+      navigationTimeout: 40000,
+      waitForNavigation: true,
+      waitForEvents: ['firstMeaningfulPaint', 'DOMContentLoaded'],
+    };
+    await goto(url, options);
     await click('click here');
     expect(await title()).to.eq('The Internet Express');
     await closeTab();
