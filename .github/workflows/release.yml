@@ -57,7 +57,7 @@ jobs:
         env:
           GAUGE_CI_TOKEN: '${{ secrets.GAUGE_CI_TOKEN }}'
         run: |
-          git checkout master && git pull --rebase
+          git checkout master git checkout . && git pull --rebase
           version=$(npm version patch --no-git-tag-version)
           git commit -am "Bumping up -> $version"
           git push "https://$GITHUB_ACTOR:$GAUGE_CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" master
