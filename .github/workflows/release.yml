@@ -14,7 +14,7 @@ jobs:
       CI: true
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - uses: actions/setup-node@v1
         with:
@@ -54,8 +54,10 @@ jobs:
           npm publish --access=public
 
       - name: Bump up version
+        env:
+          GAUGE_CI_TOKEN: '${{ secrets.GAUGE_CI_TOKEN }}'
         run: |
-          git checkout master && git pull --rebase
+          git checkout master git checkout . && git pull --rebase
           version=$(npm version patch --no-git-tag-version)
           git commit -am "Bumping up -> $version"
-          git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" master
+          git push "https://$GITHUB_ACTOR:$GAUGE_CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" master
