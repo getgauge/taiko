@@ -30,6 +30,8 @@ const { goto, client, click } = require('taiko'),
     process.exitCode = 1;
   } finally {
     await closeBrowserAndStopScreencast();
-    fs.unlinkSync(path.join(downloadPath, 'foo.txt'));
+    if (fs.existsSync(path.join(downloadPath, 'foo.txt'))) {
+      fs.unlinkSync(path.join(downloadPath, 'foo.txt'));
+    }
   }
 })();
