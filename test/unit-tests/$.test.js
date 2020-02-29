@@ -127,7 +127,7 @@ describe(test_name, () => {
       await $('#foo')
         .element(1)
         .catch(err => {
-          expect(err).to.match(/Element Index is out of range. Found index range 0/);
+          expect(err).to.match(/Element index is out of range. There are only 1 elements/);
         });
     });
   });
