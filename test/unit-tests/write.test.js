@@ -36,13 +36,13 @@ describe(test_name, () => {
             </script>
         </div>`;
     filePath = createHtml(innerHtml, test_name);
-    await openBrowser(openBrowserArgs);
-    await goto(filePath);
     setConfig({
       waitForNavigation: false,
       retryTimeout: 100,
       retryInterval: 10,
     });
+    await openBrowser(openBrowserArgs);
+    await goto(filePath);
   });
 
   after(async () => {
