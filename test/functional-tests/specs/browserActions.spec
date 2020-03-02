@@ -1,6 +1,10 @@
 # Browser Action
 
+
 ## Switch To
+
+tags: knownIssue
+
 * Navigate to "http://localhost:3001/"
 * Click "Multiple Windows"
 * Click "Click Here"
