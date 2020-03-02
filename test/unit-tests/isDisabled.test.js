@@ -143,9 +143,4 @@ describe('Disable dropDown option test', () => {
     await closeBrowser();
     removeFile(filePath);
   });
-
-  // https://github.com/getgauge/taiko/issues/1030 Run after fix
-  it.skip('Dropdown isDisabled()', async () => {
-    expect(await dropDown().select('volvo')).to.be.true;
-  });
 });
