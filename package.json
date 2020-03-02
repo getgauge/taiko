@@ -50,7 +50,7 @@
   "dependencies": {
     "babylon": "^6.18.0",
     "chrome-remote-interface": "^0.28.1",
-    "commander": "^4.0.0",
+    "commander": "^4.1.1",
     "debug": "^4.1.1",
     "extract-zip": "^1.6.6",
     "fs-extra": "^8.0.1",
