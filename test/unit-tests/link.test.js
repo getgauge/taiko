@@ -134,5 +134,14 @@ describe(test_name, () => {
       expect(await elements[1].text()).to.be.eql('similarLink2');
       expect(await elements[2].text()).to.be.eql('similarLink3');
     });
+
+    it('test text of element with index', async () => {
+      let firstElement = await link('similarLink').element(0);
+      expect(await firstElement.text()).to.be.eql('similarLink1');
+      let secondElement = await link('similarLink').element(1);
+      expect(await secondElement.text()).to.be.eql('similarLink2');
+      let thirdElement = await link('similarLink').element(2);
+      expect(await thirdElement.text()).to.be.eql('similarLink3');
+    });
   });
 });

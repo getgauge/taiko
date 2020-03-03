@@ -1,10 +1,17 @@
 # Browser Action
 
+
 ## Switch To
+
+tags: knownIssue
+
 * Navigate to "http://localhost:3001/"
 * Click "Multiple Windows"
+* Assert page navigated to "/windows"
 * Click "Click Here"
+* Assert page navigated to "/windows/new"
 * Switch to tab with url "http://localhost:3001/windows"
+* Assert page navigated to "/windows"
 * Assert Exists
 
    |Type|Selector            |
@@ -83,7 +90,7 @@ Assert title to be "Document"
 * Navigate back
 * Assert page navigated back "localhost"
 * Navigate forward
-* Assert page navigated forward
+* Assert page navigated to "/checkboxes"
 
 ## Set Timezone
 * Navigate to relative path "./specs/data/localStorage.html"

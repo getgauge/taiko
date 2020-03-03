@@ -60,7 +60,7 @@ describe('Config tests', () => {
         let allowedConfigString = allowedConfig.join(', ');
 
         let expectedMessage = `Invalid config invalidConfig. Allowed configs are ${allowedConfigString}`;
-        expect(() => config.getConfig("invalidConfig")).to.throw(
+        expect(() => config.getConfig('invalidConfig')).to.throw(
           new RegExp(`^${expectedMessage}$`),
         );
       });

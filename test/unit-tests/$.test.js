@@ -117,5 +117,18 @@ describe(test_name, () => {
       const elems = await $('#foo').elements();
       expect(await elems[0].text()).to.be.eql('taiko');
     });
+
+    it('test text() with element index', async () => {
+      const elems = await $('#foo').element(0);
+      expect(await elems.text()).to.be.eql('taiko');
+    });
+
+    it('Should throw error when element index is out of bound', async () => {
+      await $('#foo')
+        .element(1)
+        .catch(err => {
+          expect(err).to.include(/Element index is out of range. There are only 1 element(s)/);
+        });
+    });
   });
 });
