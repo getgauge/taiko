@@ -7,7 +7,7 @@
 * Click "Click Here"
 * Assert page navigated to "/windows/new"
 * Switch to tab with url "http://localhost:3001/windows"
-* Assert page navigated to "/windows/"
+* Assert page navigated to "/windows"
 * Assert Exists
 
    |Type|Selector            |
