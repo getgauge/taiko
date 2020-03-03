@@ -365,4 +365,43 @@ describe('match', () => {
       });
     });
   });
+
+  describe('text exists', () => {
+    before(async () => {
+      let innerHtml = `
+      <!DOCTYPE html>
+      <html>
+      <body>
+          <div id='prova' style='display:none'>Element Present</div>
+      
+          <script>
+              window.onload = function () {
+                  setTimeout(appeardiv,4000);
+              }
+              function appeardiv() {
+                  document.getElementById('prova').style.display= "block";
+              }
+          </script>
+      
+      </body>
+      </html>`;
+      filePath = createHtml(innerHtml, test_name);
+      await openBrowser(openBrowserArgs);
+      await goto(filePath);
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
+    });
+    after(async () => {
+      resetConfig();
+      await closeBrowser();
+      removeFile(filePath);
+    });
+
+    it('exists fn should wait for element to present with given time interval', async () => {
+      expect(await text('Element Present').exists(100, 5000)).to.be.true;
+    });
+  });
 });
