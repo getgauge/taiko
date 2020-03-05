@@ -27,8 +27,8 @@ describe('open browser throws an error', () => {
     await openBrowser([]).catch(error => expect(error).to.be.an.instanceOf(Error)));
 
   it('openBrowser should throw error, when it is called before closeBrowser is called', async () => {
-    await openBrowser();
-    await openBrowser().catch(error => expect(error).to.be.an.instanceOf(Error));
+    await openBrowser(openBrowserArgs);
+    await openBrowser(openBrowserArgs).catch(error => expect(error).to.be.an.instanceOf(Error));
     await closeBrowser();
   });
 });
