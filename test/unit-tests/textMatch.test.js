@@ -166,6 +166,10 @@ describe('match', () => {
       it('test type as text description', async () => {
         expect(text('submit').description).to.be.eql('Element with text "submit"');
       });
+
+      it('test type as text', async () => {
+        expect(await text('Elements visibility').text()).to.be.eql('Elements visibility');
+      });
     });
 
     describe('text across element', () => {
