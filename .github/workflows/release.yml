@@ -1,20 +1,19 @@
 name: Release on PR Merge
 
-on:
-  pull_request:
-    types: [closed]
+on: deployment
 
 jobs:
   release-and-bump-version:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'ReleaseCandidate')
-    runs-on: macos-latest
+    if: github.event.deployment.environment == 'production'
+    runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      GITHUB_TOKEN: '${{ secrets.GAUGEBOT_GITHUB_TOKEN }}'
       NPM_TOKEN: '${{ secrets.NPM_TOKEN }}'
       CI: true
 
     steps:
       - uses: actions/checkout@v2
+      - uses: geertvdc/setup-hub@master
 
       - uses: actions/setup-node@v1
         with:
@@ -30,9 +29,6 @@ jobs:
           git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
           git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
 
-      - name: Install hub
-        run: brew install hub
-
       - name: Deploy on github
         run: |
           version=$(grep '"version"' package.json | sed 's/"version":[[:space:]]*"//' | sed 's/",//' | tr -d [:space:])
@@ -47,6 +43,20 @@ jobs:
           hub release create -F ./desc.txt "v$version"
           rm -rf desc.txt
 
+      - name: 'deployment success'
+        if: success()
+        uses: 'deliverybot/status@master'
+        with:
+          state: 'success'
+          token: '${{ secrets.GITHUB_TOKEN }}'
+
+      - name: 'deployment failure'
+        if: failure()
+        uses: 'deliverybot/status@master'
+        with:
+          state: 'failure'
+          token: '${{ secrets.GITHUB_TOKEN }}'
+
       - name: Deploy npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -54,10 +64,8 @@ jobs:
           npm publish --access=public
 
       - name: Bump up version
-        env:
-          GAUGE_CI_TOKEN: '${{ secrets.GAUGE_CI_TOKEN }}'
         run: |
           git checkout master git checkout . && git pull --rebase
           version=$(npm version patch --no-git-tag-version)
           git commit -am "Bumping up -> $version"
-          git push "https://$GITHUB_ACTOR:$GAUGE_CI_TOKEN@github.com/$GITHUB_REPOSITORY.git" master
+          git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" master
