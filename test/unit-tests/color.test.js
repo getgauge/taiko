@@ -5,7 +5,7 @@ chai.use(chaiAsPromised);
 let { openBrowser, closeBrowser, goto, color, toLeftOf, setConfig } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 
-describe.only('Color picker test', () => {
+describe('Color picker test', () => {
   let filePath;
 
   before(async () => {
