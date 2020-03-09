@@ -3,7 +3,7 @@
 #### Which browser does Taiko support?
 
 <details>
-<summary>Answer</summary>
+<summary></summary>
 
 Taiko can be used to automate the latest versions of
 
@@ -21,7 +21,7 @@ The following browsers are NOT supported
 #### Can I use Taiko to test mobile applications?
 
 <details>
-<summary>Answer</summary>
+<summary></summary>
 
 No. Taiko can only test web applications using chromium/chrome based
 browsers. If you are looking to test chrome browser on android you 
@@ -33,7 +33,7 @@ plugin.
 #### Can I write Taiko tests in a language other than Javascript?
 
 <details>
-<summary>Answer</summary>
+<summary></summary>
 
 Taiko is a Node.js library and Taiko script can only be written
 Javascript or languages that compile to Javascript for example 
