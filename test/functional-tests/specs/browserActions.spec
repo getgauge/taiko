@@ -3,8 +3,6 @@
 
 ## Switch To
 
-tags: knownIssue
-
 * Navigate to "http://localhost:3001/"
 * Click "Multiple Windows"
 * Assert page navigated to "/windows"
