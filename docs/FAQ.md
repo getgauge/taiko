@@ -31,7 +31,7 @@ are implemented.
 
 No. Taiko can only test web applications using chromium/chrome based
 browsers. If you are looking to test chrome browser on android you 
-can try the [android](https://github.com/saikrishna321/taiko-android)
+can try the Taiko [android](https://github.com/saikrishna321/taiko-android)
 plugin.
 
 </details>
@@ -42,7 +42,8 @@ Javascript?</summary>
 
 Taiko is a Node.js library and Taiko tests can only be written
 Javascript or languages that compile to Javascript for example 
-Typescript.
+Typescript. There's an experimental 
+[Typescript]() binding
 
 </details>
 
