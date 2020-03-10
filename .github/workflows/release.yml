@@ -62,10 +62,3 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm publish --access=public
-
-      - name: Bump up version
-        run: |
-          git checkout master && git checkout . && git pull --rebase
-          version=$(npm version patch --no-git-tag-version)
-          git commit -am "Bumping up -> $version"
-          git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" master
