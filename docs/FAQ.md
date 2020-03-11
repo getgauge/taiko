@@ -42,8 +42,7 @@ Javascript?</summary>
 
 Taiko is a Node.js library and Taiko tests can only be written
 Javascript or languages that compile to Javascript for example 
-Typescript. There's an experimental 
-[Typescript]() binding
+[Typescript](https://gist.github.com/nuclearglow/b883ce341a800ed958cb73ca10266aae).
 
 </details>
 
@@ -60,4 +59,9 @@ for example
 TAIKO_SKIP_CHROMIUM_DOWNLOAD=true npm install -g taiko
 ```
 
+or set the following property in [`.npmrc`](https://docs.npmjs.com/configuring-npm/npmrc.html)
+file
+```
+taiko_skip_chromium_download=true
+```
 </details>
