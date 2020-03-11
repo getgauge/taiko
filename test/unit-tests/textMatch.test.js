@@ -408,4 +408,37 @@ describe('match', () => {
       expect(await text('Element Present').exists(100, 5000)).to.be.true;
     });
   });
+
+  describe('match text with extact option', () => {
+    before(async () => {
+      let innerHtml = `
+      <!DOCTYPE html>
+      <html>
+      <body>
+        <p>New value</p>
+        <p>Old value</p>
+      </body>
+      </html>`;
+      filePath = createHtml(innerHtml, test_name);
+      await openBrowser(openBrowserArgs);
+      await goto(filePath);
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
+    });
+    after(async () => {
+      resetConfig();
+      await closeBrowser();
+      removeFile(filePath);
+    });
+    it('test exact match for text', async () => {
+      expect(await text('value', { exactMatch: true }).exists()).to.be.false;
+    });
+
+    it('test exact match for text with multiple elements', async () => {
+      expect(await text('value', { exactMatch: true }).elements()).to.have.lengthOf(0);
+    });
+  });
 });
