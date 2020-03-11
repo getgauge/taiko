@@ -52,7 +52,7 @@ describe('OpenBrowser', () => {
     it('should reset client when chrome process crashes', async () => {
       chromeProcess.kill('SIGKILL');
       await new Promise(resolve => {
-        setTimeout(resolve, 10);
+        setTimeout(resolve, 100);
       });
       expect(client()).to.be.null;
     });
