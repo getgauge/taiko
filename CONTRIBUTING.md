@@ -25,3 +25,21 @@ incremental commits to this pull request and seek out help or reviews till it's 
 You can also reach out on [Spectrum](https://spectrum.chat/taiko).
 
 If your contribution is a code contribution and you do send us a pull request, you will first need to read and sign the [Contributor License Agreement](https://gauge-bot.herokuapp.com/cla/).
+
+## Bumping version of taiko
+
+* For bumping patch version run
+
+    `npm version patch --no-git-tag-version`
+
+* For bumping minor version run
+
+    `npm version minor --no-git-tag-version`
+
+* For bumping major version run
+
+    `npm version major --no-git-tag-version`
+
+
+This will update the version accordingly in the `package.json`. Make sure to add and commit the changes.
+
