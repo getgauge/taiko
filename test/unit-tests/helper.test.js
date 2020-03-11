@@ -20,7 +20,7 @@ describe('Helper', () => {
     });
 
     it('should retry for given time', async () => {
-      await waitUntil(condition, 1, 20);
+      await waitUntil(condition, 1, 50);
       expect(callCount).to.be.equal(10);
     });
 
