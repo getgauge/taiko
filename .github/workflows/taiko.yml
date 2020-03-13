@@ -1,6 +1,12 @@
 name: taiko
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   unit-tests:
@@ -10,7 +16,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Use NodeJS 12
         uses: actions/setup-node@v1
         with:
@@ -22,14 +28,14 @@ jobs:
 
   functional-tests:
     needs: unit-tests
-    name: FTs & examples - NodeJS ${{ matrix.node_version }} & ${{ matrix.os }}
+    name: FTs - NodeJS ${{ matrix.node_version }} & ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         node_version: ['10', '12']
         os: [ubuntu-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Use NodeJS ${{ matrix.node_version }}
         uses: actions/setup-node@v1
         with:
@@ -51,22 +57,12 @@ jobs:
           name: ft-logs-${{ matrix.os }}-${{ matrix.node_version }}
           path: test/functional-tests/logs
 
-      - name: examples
-        run: npm run examples
-
-      - name: Upload examples screencast
-        uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: examples-screencast-${{ matrix.os }}-${{ matrix.node_version }}
-          path: examples/captures
-
   functional-tests-headful:
     needs: unit-tests
     name: FT in linux-headful
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Use NodeJS 12
         uses: actions/setup-node@v1
         with:

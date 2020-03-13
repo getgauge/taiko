@@ -166,6 +166,10 @@ describe('match', () => {
       it('test type as text description', async () => {
         expect(text('submit').description).to.be.eql('Element with text "submit"');
       });
+
+      it('test type as text', async () => {
+        expect(await text('Elements visibility').text()).to.be.eql('Elements visibility');
+      });
     });
 
     describe('text across element', () => {
@@ -363,6 +367,45 @@ describe('match', () => {
       it('should match the text in child element', async () => {
         expect(await text('spanButton for login').exists()).to.be.true;
       });
+    });
+  });
+
+  describe('text exists', () => {
+    before(async () => {
+      let innerHtml = `
+      <!DOCTYPE html>
+      <html>
+      <body>
+          <div id='prova' style='display:none'>Element Present</div>
+      
+          <script>
+              window.onload = function () {
+                  setTimeout(appeardiv,4000);
+              }
+              function appeardiv() {
+                  document.getElementById('prova').style.display= "block";
+              }
+          </script>
+      
+      </body>
+      </html>`;
+      filePath = createHtml(innerHtml, test_name);
+      await openBrowser(openBrowserArgs);
+      await goto(filePath);
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
+    });
+    after(async () => {
+      resetConfig();
+      await closeBrowser();
+      removeFile(filePath);
+    });
+
+    it('exists fn should wait for element to present with given time interval', async () => {
+      expect(await text('Element Present').exists(100, 5000)).to.be.true;
     });
   });
 });

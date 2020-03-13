@@ -6,11 +6,11 @@
     "mocha": true,
     "jest/globals": true
   },
-  "ignorePatterns": [".local-chromium", "node_modules/", "test/functional-tests/reports/"],
+  "ignorePatterns": [".local-chromium", "node_modules/", "test/functional-tests/reports/", "docs"],
   "extends": ["eslint:recommended", "prettier"],
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 8
+    "ecmaVersion": 9
   },
   "plugins": ["jest", "prettier"],
   "rules": {

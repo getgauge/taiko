@@ -61,9 +61,9 @@ step('Assert page navigated back <hostname>', async function(hostName) {
   assert.equal(new URL(url).hostname, hostName);
 });
 
-step('Assert page navigated forward', async function() {
+step('Assert page navigated to <target>', async function(target) {
   const url = await currentURL();
-  assert.equal(new URL(url).pathname, '/checkboxes');
+  assert.equal(new URL(url).pathname, target);
 });
 
 step('Tap on <arg0>', async function(arg0) {
