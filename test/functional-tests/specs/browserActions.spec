@@ -6,7 +6,7 @@
 * Navigate to "http://localhost:3001/"
 * Click "Multiple Windows"
 * Assert page navigated to "/windows"
-* Click "Click Here"
+* Click "Click Here" with options "{\"navigationTimeout\": 40000,\"waitForNavigation\": true, \"waitForEvents\": [\"firstMeaningfulPaint\", \"DOMContentLoaded\"]}"
 * Assert page navigated to "/windows/new"
 * Switch to tab with url "http://localhost:3001/windows"
 * Assert page navigated to "/windows"
