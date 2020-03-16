@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
+      - name: Get latest revision
+        run: echo "::set-env name=REVISION::$(curl -s -S https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2FLAST_CHANGE?alt=media)"  
       - name: Get Chromium version and update
         run: |
           LASTCHANGE_URL="https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2FLAST_CHANGE?alt=media"
@@ -47,6 +49,6 @@ jobs:
         uses: peter-evans/create-pull-request@v2
         with:
           token: ${{ secrets.GAUGEBOT_GITHUB_TOKEN }}
-          branch: ${{format('{{{0}{1}{2}}}', 'update-chromium', github.run_id, github.run_number)}}
-          commit-message: "update chromium revision"
-          title: "update chromium revision"
+          branch: ${{format('{0}{1}', 'update-chromium',env.REVISION)}}
+          commit-message: ${{format('{0}{1}','update chromium to revision ',env.REVISION)}}
+          title: ${{format('{0}{1}','update chromium to revision ',env.REVISION)}}
