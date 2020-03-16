@@ -46,7 +46,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GAUGEBOT_GITHUB_TOKEN }}
           branch: ${{format('{{{0}{1}{2}}}', 'update-chromium', github.run_id, github.run_number)}}
           commit-message: "update chromium revision"
           title: "update chromium revision"
