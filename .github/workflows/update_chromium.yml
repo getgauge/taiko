@@ -1,7 +1,7 @@
 name: update-chromium
 on:
   schedule:
-    # cron job that will run 1st and 15th of every month by 12pm
+    # cron job that will run 1st and 15th of every month by 12am
     - cron:  '0 12 1,15 * *'
 
 jobs:
