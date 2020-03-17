@@ -5,6 +5,7 @@ let test_name = 'Goto';
 
 describe(test_name, () => {
   let actualHeader,
+    actualDomain,
     actualUrl,
     actualOptions,
     validateCalled = false;
@@ -18,9 +19,10 @@ describe(test_name, () => {
     taiko.__set__('validate', () => {
       validateCalled = true;
     });
-    taiko.__set__('network', {
-      setExtraHTTPHeaders: header => {
+    taiko.__set__('networkHandler', {
+      setHTTPHeaders: (header, domain) => {
         actualHeader = header;
+        actualDomain = domain;
       },
     });
     taiko.__set__('pageHandler', {
@@ -32,6 +34,7 @@ describe(test_name, () => {
 
   afterEach(() => {
     actualHeader = '';
+    actualDomain = '';
     actualUrl = '';
     actualOptions = '';
     validateCalled = false;
@@ -59,12 +62,23 @@ describe(test_name, () => {
     expect(actualUrl).to.equal(expectedUrl);
   });
 
-  it('should call network.setExtraHTTPHeaders if header option is set', async () => {
+  it('should configure provided headers for the domain', async () => {
     let options = {
       headers: { Authorization: 'Basic cG9zdG1hbjpwYXNzd29y2A==' },
     };
     await taiko.goto('example.com', options);
-    expect(actualHeader.headers).to.deep.equal(options.headers);
+    expect(actualHeader).to.deep.equal(options.headers);
+    expect(actualDomain).to.deep.equal('http://example.com');
+  });
+
+  it('should configure provided headers and file name as domain', async () => {
+    let options = {
+      headers: { Authorization: 'Basic cG9zdG1hbjpwYXNzd29y2A==' },
+    };
+    const expectedFilePath = 'file://some/file/path';
+    await taiko.goto(expectedFilePath, options);
+    expect(actualHeader).to.deep.equal(options.headers);
+    expect(actualDomain).to.deep.equal(expectedFilePath);
   });
 
   it('should call doActionAwaitingNavigation with default options if options not given', async () => {
