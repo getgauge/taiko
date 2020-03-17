@@ -2,8 +2,15 @@ const app = require('the-internet-express');
 let server;
 
 const startServer = async () => {
-  server = app.listen(3001);
+  return new Promise((resolve, reject) => {
+    try {
+      server = app.listen(3001, resolve);
+    } catch (error) {
+      reject(error);
+    }
+  });
 };
+
 const stopServer = async () => {
   server.close(e => {
     if (e) {
