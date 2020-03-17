@@ -50,5 +50,5 @@ jobs:
         with:
           token: ${{ secrets.GAUGEBOT_GITHUB_TOKEN }}
           branch: ${{format('{0}{1}', 'update-chromium',env.REVISION)}}
-          commit-message: ${{format('{0}{1}','update chromium to revision ',env.REVISION)}}
-          title: ${{format('{0}{1}','update chromium to revision ',env.REVISION)}}
+          commit-message: ${{format('{0}{1}','Update chromium to revision ', env.REVISION)}}
+          title: ${{format('{0}{1}','Update chromium to revision ', env.REVISION)}}
