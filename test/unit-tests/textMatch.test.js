@@ -8,6 +8,7 @@ let {
   toRightOf,
   evaluate,
   setConfig,
+  below,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 let test_name = 'textMatch';
@@ -439,6 +440,18 @@ describe('match', () => {
 
     it('test exact match for text with multiple elements', async () => {
       expect(await text('value', { exactMatch: true }).elements()).to.have.lengthOf(0);
+    });
+
+    it('test exact match for text with proximity selectors', async () => {
+      expect(await text('Old value', { exactMatch: true }, below('New value')).exists()).to.be.true;
+    });
+
+    it('test exactMatch option set to false with proximity selectors', async () => {
+      expect(await text('value', { exactMatch: false }, below('New value')).exists()).to.be.true;
+    });
+
+    it('test exactMatch option set to true with proximity selectors', async () => {
+      expect(await text('value', { exactMatch: true }, below('New value')).exists()).to.be.false;
     });
   });
 });
