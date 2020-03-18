@@ -52,7 +52,6 @@ describe('openTab', () => {
       navigationTimeout: 30000,
       waitForNavigation: true,
       waitForStart: 100,
-      isPageNavigationAction: true,
     };
     await taiko.openTab('example.com');
     expect(actualOptions).to.deep.equal(expectedOptions);
