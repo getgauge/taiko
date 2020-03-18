@@ -1,4 +1,5 @@
 const { openBrowser, setConfig, screenshot, closeBrowser } = require('taiko');
+const { startServer, stopServer } = require('./server');
 const headless = process.env.headless.toLowerCase() === 'true';
 
 beforeScenario(async () => {
@@ -22,3 +23,11 @@ gauge.screenshotFn = async function() {
 };
 
 afterScenario(async () => await closeBrowser());
+
+beforeSuite(async () => {
+  await startServer();
+});
+
+afterSuite(async () => {
+  await stopServer();
+});
