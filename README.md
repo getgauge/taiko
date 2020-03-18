@@ -197,7 +197,7 @@ When using Gauge together with Taiko with [gauge-ts](https://github.com/BugDiver
 
 You can optionally configure your project to use our experimental type definitions. Edit your tsconfig.json and add the following lines:
 
-```ts
+```json
 {
     "compilerOptions": {
         // gauge-ts default configuration here
