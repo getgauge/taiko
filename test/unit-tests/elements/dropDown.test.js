@@ -15,7 +15,7 @@ DropDown.__set__('doActionAwaitingNavigation', async (navigationOptions, action)
 });
 describe('DropDown', () => {
   let nodes,
-    dispatchedEvent,
+    dispatchedEvents,
     runtimeHandler = {
       async runtimeCallFunctionOn(predicate, contextId, options) {
         return {
@@ -26,7 +26,7 @@ describe('DropDown', () => {
       },
     };
   beforeEach(() => {
-    dispatchedEvent = null;
+    dispatchedEvents = [];
     nodes = {
       25: {
         selectedIndex: 1,
@@ -36,7 +36,7 @@ describe('DropDown', () => {
           { value: '25 value 2', text: '25 text 2' },
         ],
         dispatchEvent(event) {
-          dispatchedEvent = event;
+          dispatchedEvents.push(event);
         },
       },
       26: {
@@ -47,7 +47,7 @@ describe('DropDown', () => {
           { value: '26 value 2', text: '26 text 2' },
         ],
         dispatchEvent(event) {
-          dispatchedEvent = event;
+          dispatchedEvents.push(event);
         },
       },
       27: {
@@ -58,7 +58,7 @@ describe('DropDown', () => {
           { value: '27 value 2', text: '27 text 2' },
         ],
         dispatchEvent(event) {
-          dispatchedEvent = event;
+          dispatchedEvents.push(event);
         },
       },
       28: {
@@ -70,7 +70,7 @@ describe('DropDown', () => {
           { value: '28 value 2', text: '28 text 2' },
         ],
         dispatchEvent(event) {
-          dispatchedEvent = event;
+          dispatchedEvents.push(event);
         },
       },
     };
@@ -79,11 +79,13 @@ describe('DropDown', () => {
   it('should be element', () => {
     expect(new DropDown() instanceof Element).to.be.true;
   });
+
   it('should create DropDown from element', () => {
     const expectedDropDown = DropDown.from(new Element(12, '', runtimeHandler), 'description');
     const actualDropDown = new DropDown(12, 'description', runtimeHandler);
     expect(actualDropDown).to.be.deep.equal(expectedDropDown);
   });
+
   describe('select', () => {
     it('should select dropdown item using index ', async () => {
       let nodeId = 25;
@@ -92,11 +94,13 @@ describe('DropDown', () => {
 
       await dropDown.select({ index: 2 });
       expect(nodes[nodeId].selectedIndex).to.be.equal(2);
-      expect(dispatchedEvent instanceof Event).to.be.true;
-      expect(dispatchedEvent.name).to.be.equal('change');
-      expect(dispatchedEvent.options).to.be.deep.equal({
-        bubbles: true,
+      dispatchedEvents.forEach(e => {
+        expect(e instanceof Event).to.be.true;
+        expect(e.options).to.be.deep.equal({
+          bubbles: true,
+        });
       });
+      expect(dispatchedEvents.map(x => x.name)).to.eql(['change', 'input']);
     });
 
     it('select dropdown item using value', async () => {
@@ -106,11 +110,13 @@ describe('DropDown', () => {
 
       await dropDown.select('26 value 2');
       expect(nodes[nodeId].selectedIndex).to.be.equal(2);
-      expect(dispatchedEvent instanceof Event).to.be.true;
-      expect(dispatchedEvent.name).to.be.equal('change');
-      expect(dispatchedEvent.options).to.be.deep.equal({
-        bubbles: true,
+      dispatchedEvents.forEach(e => {
+        expect(e instanceof Event).to.be.true;
+        expect(e.options).to.be.deep.equal({
+          bubbles: true,
+        });
       });
+      expect(dispatchedEvents.map(x => x.name)).to.eql(['change', 'input']);
     });
 
     it('select dropdown item using text ', async () => {
@@ -120,11 +126,13 @@ describe('DropDown', () => {
 
       await dropDown.select('27 text 2');
       expect(nodes[nodeId].selectedIndex).to.be.equal(2);
-      expect(dispatchedEvent instanceof Event).to.be.true;
-      expect(dispatchedEvent.name).to.be.equal('change');
-      expect(dispatchedEvent.options).to.be.deep.equal({
-        bubbles: true,
+      dispatchedEvents.forEach(e => {
+        expect(e instanceof Event).to.be.true;
+        expect(e.options).to.be.deep.equal({
+          bubbles: true,
+        });
       });
+      expect(dispatchedEvents.map(x => x.name)).to.eql(['change', 'input']);
     });
   });
 
