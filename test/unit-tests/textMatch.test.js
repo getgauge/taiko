@@ -8,6 +8,7 @@ let {
   toRightOf,
   evaluate,
   setConfig,
+  below,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 let test_name = 'textMatch';
@@ -406,6 +407,51 @@ describe('match', () => {
 
     it('exists fn should wait for element to present with given time interval', async () => {
       expect(await text('Element Present').exists(100, 5000)).to.be.true;
+    });
+  });
+
+  describe('match text with extact option', () => {
+    before(async () => {
+      let innerHtml = `
+      <!DOCTYPE html>
+      <html>
+      <body>
+        <p>New value</p>
+        <p>Old value</p>
+      </body>
+      </html>`;
+      filePath = createHtml(innerHtml, test_name);
+      await openBrowser(openBrowserArgs);
+      await goto(filePath);
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
+    });
+    after(async () => {
+      resetConfig();
+      await closeBrowser();
+      removeFile(filePath);
+    });
+    it('test exact match for text', async () => {
+      expect(await text('value', { exactMatch: true }).exists()).to.be.false;
+    });
+
+    it('test exact match for text with multiple elements', async () => {
+      expect(await text('value', { exactMatch: true }).elements()).to.have.lengthOf(0);
+    });
+
+    it('test exact match for text with proximity selectors', async () => {
+      expect(await text('Old value', { exactMatch: true }, below('New value')).exists()).to.be.true;
+    });
+
+    it('test exactMatch option set to false with proximity selectors', async () => {
+      expect(await text('value', { exactMatch: false }, below('New value')).exists()).to.be.true;
+    });
+
+    it('test exactMatch option set to true with proximity selectors', async () => {
+      expect(await text('value', { exactMatch: true }, below('New value')).exists()).to.be.false;
     });
   });
 });
