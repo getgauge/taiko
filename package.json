@@ -52,6 +52,7 @@
     "chrome-remote-interface": "^0.28.1",
     "commander": "^4.1.1",
     "debug": "^4.1.1",
+    "documentation": "^12.1.3",
     "extract-zip": "^1.6.6",
     "fs-extra": "^8.0.1",
     "https-proxy-agent": "^5.0.0",
@@ -59,7 +60,7 @@
     "progress": "^2.0.3",
     "proxy-from-env": "^1.0.0",
     "recast": "^0.18.5",
-    "documentation": "^12.1.3"
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
