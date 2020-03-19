@@ -32,11 +32,6 @@ step('Click <selector>', async function(selector) {
   await click(selector);
 });
 
-step('Click <selector> with options <options>', async function(selector, options) {
-  options = JSON.parse(options);
-  await click(selector, options);
-});
-
 step('Click link above <table>', async function(table) {
   for (const element of getElements(table)) {
     await click(link(above(element)));
