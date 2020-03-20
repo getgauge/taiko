@@ -1,6 +1,14 @@
 const { descEvent } = require('../../lib/helper');
 
-let { openBrowser, goto, below, dropDown, closeBrowser, setConfig } = require('../../lib/taiko');
+let {
+  openBrowser,
+  goto,
+  below,
+  dropDown,
+  evaluate,
+  closeBrowser,
+  setConfig,
+} = require('../../lib/taiko');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
@@ -233,5 +241,20 @@ describe('nested drop down', () => {
   it('should bubble change event', async () => {
     await dropDown('One').select('Hot Beverages');
     await expect(dropDown('Two').select('Tea')).not.to.be.eventually.rejected;
+  });
+
+  it('should emit events', async () => {
+    await evaluate(() => {
+      document.raisedEvents = [];
+      var dropDown = document.getElementById('select-one');
+      ['input', 'change'].forEach(ev => {
+        dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
+      });
+    });
+
+    await dropDown('One').select('Hot Beverages');
+
+    var events = await evaluate(() => document.raisedEvents);
+    expect(events).to.eql(['change', 'input']);
   });
 });
