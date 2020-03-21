@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 var sinon = require('sinon');
+const { descEvent } = require('../../lib/eventBus');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 let { openBrowser, closeBrowser, goto, range, setConfig } = require('../../lib/taiko');
@@ -43,9 +44,19 @@ describe('Color picker test', () => {
     expect(await range({ id: 'range-1' }).value()).to.be.equal('11');
   });
 
+  it('Set Range value with Float value as String', async () => {
+    await range({ id: 'range-1' }).select('10.81');
+    expect(await range({ id: 'range-1' }).value()).to.be.equal('11');
+  });
+
+  it('Set Range value with value as String', async () => {
+    await range({ id: 'range-1' }).select('10');
+    expect(await range({ id: 'range-1' }).value()).to.be.equal('10');
+  });
+
   it('Should throw error when value is non integer', async () => {
-    await expect(range({ id: 'range-1' }).select('10')).to.be.rejectedWith(
-      'The range value should be Int or Float. Please pass a valid value.',
+    await expect(range({ id: 'range-1' }).select('foo')).to.be.rejectedWith(
+      "The value foo is not between the input's range of 0-100",
     );
   });
 
@@ -53,10 +64,14 @@ describe('Color picker test', () => {
     sinon.stub(console, 'warn');
     await range({ id: 'range-1' }).select(110);
     expect(console.warn.calledOnce).to.be.true;
-    expect(
-      console.warn.calledWith(
-        'The value 110 should be between the minimum range 0 or maximum range 100',
-      ),
-    ).to.be.true;
+    expect(console.warn.calledWith("The value 110 is not between the input's range of 0-100")).to.be
+      .true;
+  });
+
+  it('Test Description emit', async () => {
+    descEvent.once('success', value => {
+      expect(value).to.be.equal('Selected value 100 for the given input value 1111');
+    });
+    await range({ id: 'range-1' }).select('1111');
   });
 });
