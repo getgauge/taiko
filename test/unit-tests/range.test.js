@@ -4,7 +4,7 @@ var sinon = require('sinon');
 const { descEvent } = require('../../lib/eventBus');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let { openBrowser, closeBrowser, goto, range, setConfig } = require('../../lib/taiko');
+let { openBrowser, closeBrowser, goto, range, setConfig, below } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 
 describe('Color picker test', () => {
@@ -13,6 +13,7 @@ describe('Color picker test', () => {
   before(async () => {
     let innerHtml = `
         <div>
+            <p>RangeItem</p>
             <input type="range" id="range-1" name="range" 
                 min="0" max="100" value='2'>
             <label for="volume">Volume</label>
@@ -51,6 +52,11 @@ describe('Color picker test', () => {
 
   it('Set Range value with value as String', async () => {
     await range({ id: 'range-1' }).select('10');
+    expect(await range({ id: 'range-1' }).value()).to.be.equal('10');
+  });
+
+  it('Set Range value with proximity selector', async () => {
+    await range({ id: 'range-1' }, below('RangeItem')).select('10');
     expect(await range({ id: 'range-1' }).value()).to.be.equal('10');
   });
 
