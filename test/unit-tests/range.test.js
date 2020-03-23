@@ -81,3 +81,41 @@ describe('Color picker test', () => {
     await range({ id: 'range-1' }).select('1111');
   });
 });
+
+describe('Color picker test without min and max', () => {
+  let filePath;
+
+  before(async () => {
+    let innerHtml = `
+        <div>
+            <p>RangeItem</p>
+            <input type="range" id="range-1" name="range" value='2'>
+            <label for="volume">Volume</label>
+        </div>
+     `;
+    filePath = createHtml(innerHtml, 'Range');
+    await openBrowser(openBrowserArgs);
+    await goto(filePath);
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
+  });
+
+  after(async () => {
+    resetConfig();
+    await closeBrowser();
+    removeFile(filePath);
+  });
+
+  it('Set Range value above the extreme edges', async () => {
+    await range({ id: 'range-1' }).select(110);
+    expect(await range({ id: 'range-1' }).value()).to.be.equal('100');
+  });
+
+  it('Set Range value below the extreme edges', async () => {
+    await range({ id: 'range-1' }).select(-1);
+    expect(await range({ id: 'range-1' }).value()).to.be.equal('0');
+  });
+});
