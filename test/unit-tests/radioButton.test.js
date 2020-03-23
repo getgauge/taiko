@@ -21,13 +21,22 @@ describe(test_name, () => {
     let innerHtml =
       '<form>' +
       '<input type="radio" id="radioButtonWithInlineLabel" name="testRadioButton" value="radioButtonWithInlineLabel">radioButtonWithInlineLabel</input>' +
+      '<input type="Radio" name="testRadioButton" value="radioButtonWithInlineLabelAndUpperCaseTypeAttribute">radioButtonWithInlineLabelAndUpperCaseTypeAttribute</input>' +
       '<label>' +
       '<input name="testRadioButton" type="radio" value="radioButtonWithWrappedLabel"/>' +
       '<span>radioButtonWithWrappedLabel</span>' +
       '</label>' +
+      '<label>' +
+      '<input name="testRadioButton" type="RADIO" value="radioButtonWithWrappedLabelAndUpperCaseTypeAttribute"/>' +
+      '<span>radioButtonWithWrappedLabelAndUpperCaseTypeAttribute</span>' +
+      '</label>' +
       '<p>' +
       '<input id="radioButtonWithLabelFor" name="testRadioButton" type="radio" value="radioButtonWithLabelFor"/>' +
       '<label for="radioButtonWithLabelFor">radioButtonWithLabelFor</label>' +
+      '</p>' +
+      '<p>' +
+      '<input id="radioButtonWithLabelForAndUpperCaseTypeAttribute" name="testRadioButton" type="radio" value="radioButtonWithLabelFor"/>' +
+      '<label for="radioButtonWithLabelForAndUpperCaseTypeAttribute">radioButtonWithLabelForAndUpperCaseTypeAttribute</label>' +
       '</p>' +
       '<input name="hiddenRadioButton" type="radio" id="hiddenRadioButton" value="hiddenRadioButton">hiddenRadioButton</input>' +
       '<input type="reset" value="Reset">' +
@@ -55,6 +64,27 @@ describe(test_name, () => {
     resetConfig();
     await closeBrowser();
     removeFile(filePath);
+  });
+
+  describe('case insensitive selector', async () => {
+    afterEach(async () => {
+      await click('Reset');
+    });
+
+    it('test exists() with inline text', async () => {
+      expect(await radioButton('radioButtonWithInlineLabelAndUpperCaseTypeAttribute').exists()).to
+        .be.true;
+    });
+
+    it('test exists() wrapped in label', async () => {
+      expect(await radioButton('radioButtonWithWrappedLabelAndUpperCaseTypeAttribute').exists()).to
+        .be.true;
+    });
+
+    it('test exists() using label for', async () => {
+      expect(await radioButton('radioButtonWithLabelForAndUpperCaseTypeAttribute').exists()).to.be
+        .true;
+    });
   });
 
   describe('with inline text', () => {

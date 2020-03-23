@@ -364,7 +364,18 @@ describe(test_name, () => {
       testValue: 'https://test.com',
     },
   ];
-  inputTypes.forEach(inputType => {
+
+  function toInputTypeCaseSensitive(inputType) {
+    const type = inputType.type.toUpperCase();
+    const name = 'inputType-' + type;
+    return Object.assign({}, inputType, { type: type, name: name });
+  }
+
+  var inputTypesCaseSensitive = inputTypes.map(toInputTypeCaseSensitive);
+
+  var inputTypesToTest = inputTypes.concat(inputTypesCaseSensitive);
+
+  inputTypesToTest.forEach(inputType => {
     describe('input with type ' + inputType.type, () => {
       let filePath;
       before(async () => {
