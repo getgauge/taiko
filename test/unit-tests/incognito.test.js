@@ -16,7 +16,7 @@ let { isIncognito, getBrowserContexts } = require('../../lib/browserContext');
 
 let { createHtml, removeFile } = require('./test-util');
 
-describe.only('Browser Context', () => {
+describe('Browser Context', () => {
   let url1, url2;
   before(async () => {
     await openBrowser(openBrowserArgs);

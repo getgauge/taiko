@@ -24,7 +24,7 @@ jobs:
       - name: install
         run: npm install
       - name: unit-tests
-        run: npm run test:unit
+        run: npm test
 
   functional-tests:
     needs: unit-tests
