@@ -3,6 +3,7 @@ let {
   openBrowser,
   highlight,
   closeBrowser,
+  clearHighlights,
   goto,
   evaluate,
   $,
@@ -40,8 +41,29 @@ describe(test_name, () => {
   it('should highlight text node', async () => {
     await highlight('Text node');
     let res = await evaluate($('a'), elem => {
-      return elem.style.outline;
+      return elem.classList;
     });
-    expect(res).to.equal('red solid 0.5em');
+    expect(res[0]).to.be.eql('taiko_highlight_style');
+  });
+
+  it('should add a taiko_highlight style to pages head', async () => {
+    await highlight('Text node');
+    let styleExists = await evaluate(() => {
+      return document.getElementById('taiko_highlight') != null;
+    });
+    expect(styleExists).to.be.true;
+  });
+
+  it('should clear all highlights for current page', async () => {
+    await highlight('Text node');
+    let res = await evaluate($('a'), elem => {
+      return elem.classList;
+    });
+    expect(res[0]).to.be.eql('taiko_highlight_style');
+    await clearHighlights();
+    res = await evaluate($('a'), elem => {
+      return elem.classList;
+    });
+    expect(res).to.be.empty;
   });
 });
