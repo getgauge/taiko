@@ -9,11 +9,10 @@ let {
   openWindow,
   closeWindow,
 } = require('../../lib/taiko');
-let { openBrowserArgs, resetConfig } = require('./test-util');
 
 let { isIncognito, getBrowserContexts } = require('../../lib/browserContext');
 
-let { createHtml, removeFile } = require('./test-util');
+let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 
 describe('Browser Context', () => {
   let url1, url2;
