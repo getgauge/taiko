@@ -35,6 +35,7 @@ describe(test_name, () => {
 
   after(async () => {
     removeFile(filePath);
+    removeFile(filePath1);
   });
 
   describe('on browser close', () => {
