@@ -8,13 +8,13 @@ describe('inputHandler', () => {
   beforeEach(() => {
     calledWith = [];
     inputHandler.__set__('input', {
-      dispatchKeyEvent: async param => {
+      dispatchKeyEvent: async (param) => {
         calledWith.push(param);
       },
-      dispatchMouseEvent: async param => {
+      dispatchMouseEvent: async (param) => {
         calledWith.push(param);
       },
-      dispatchTouchEvent: async param => {
+      dispatchTouchEvent: async (param) => {
         calledWith.push(param);
       },
     });

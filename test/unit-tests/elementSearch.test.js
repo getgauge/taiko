@@ -48,8 +48,8 @@ describe('Element Search', () => {
         },
       };
     });
-    const createElement = elements =>
-      elements.map(nodeId => new Element(nodeId, '', runtimeHandler));
+    const createElement = (elements) =>
+      elements.map((nodeId) => new Element(nodeId, '', runtimeHandler));
 
     it('should return visible nodes', async () => {
       const visibleNodeIds = createElement([23, 45, 67]);
@@ -72,7 +72,7 @@ describe('Element Search', () => {
     };
     beforeEach(() => {
       findElementCallCount = 0;
-      elementSearch.__set__('waitUntil', async condition => {
+      elementSearch.__set__('waitUntil', async (condition) => {
         await condition();
       });
     });

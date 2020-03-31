@@ -6,11 +6,11 @@ const taiko = rewire('../../lib/taiko');
 describe('clearIntercept', () => {
   let validateEmitterEvent;
   beforeEach(() => {
-    validateEmitterEvent = function(event, expectedText) {
+    validateEmitterEvent = function (event, expectedText) {
       let descEmitter = new EventEmitter();
       taiko.__set__('descEvent', descEmitter);
-      return new Promise(resolve => {
-        descEmitter.on(event, eventData => {
+      return new Promise((resolve) => {
+        descEmitter.on(event, (eventData) => {
           expect(eventData).to.be.equal(expectedText);
           resolve();
         });

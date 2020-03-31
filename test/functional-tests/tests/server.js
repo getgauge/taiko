@@ -12,7 +12,7 @@ const startServer = async () => {
 };
 
 const stopServer = async () => {
-  server.close(e => {
+  server.close((e) => {
     if (e) {
       console.error('Failed to close the Internet Express', e);
     }

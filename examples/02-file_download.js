@@ -6,8 +6,8 @@ const { goto, client, click } = require('taiko'),
 
 (async () => {
   var downloadPath = path.resolve(__dirname, 'data', 'downloaded');
-  var sleep = ms => {
-    return new Promise(resolve => {
+  var sleep = (ms) => {
+    return new Promise((resolve) => {
       setTimeout(resolve, ms);
     });
   };

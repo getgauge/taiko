@@ -74,7 +74,7 @@ describe('Browser Context', () => {
       let backToUser1 = await text('Browser1').exists();
       expect(backToUser1).to.be.true;
 
-      let browser1 = await evaluate(text('Item 1'), element => {
+      let browser1 = await evaluate(text('Item 1'), (element) => {
         return element.textContent.trim();
       });
       expect(browser1).to.be.equal('Item 1');
@@ -156,13 +156,13 @@ describe('Browser Context', () => {
 
   describe('open window throws an error', () => {
     it('openIncognitoWindow should throw an error when url parameter is missing', async () => {
-      await openIncognitoWindow({ name: 'window' }).catch(error =>
+      await openIncognitoWindow({ name: 'window' }).catch((error) =>
         expect(error).to.be.an.instanceOf(TypeError),
       );
     });
 
     it('openIncognitoWindow should throw an error when window name parameter is missing', async () => {
-      await openIncognitoWindow('localhost:8000').catch(error =>
+      await openIncognitoWindow('localhost:8000').catch((error) =>
         expect(error).to.be.an.instanceOf(TypeError),
       );
     });

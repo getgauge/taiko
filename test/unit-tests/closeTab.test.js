@@ -12,9 +12,9 @@ describe('closeTab', () => {
   let currentTarget;
   let descEmmitter = new EventEmitter();
 
-  let validateEmitterEvent = function(event, expectedText) {
-    return new Promise(resolve => {
-      descEmmitter.on(event, eventData => {
+  let validateEmitterEvent = function (event, expectedText) {
+    return new Promise((resolve) => {
+      descEmmitter.on(event, (eventData) => {
         expect(eventData).to.be.equal(expectedText);
         resolve();
       });
@@ -23,14 +23,14 @@ describe('closeTab', () => {
 
   before(() => {
     let mockCri = {
-      Close: async function() {},
+      Close: async function () {},
     };
 
     let mockHandler = {
       getCriTargets: () => {
         return _targets;
       },
-      constructCriTarget: arg => {
+      constructCriTarget: (arg) => {
         return arg;
       },
       isMatchingUrl: () => {
@@ -47,7 +47,7 @@ describe('closeTab', () => {
     taiko.__set__('targetHandler', mockHandler);
     taiko.__set__('descEvent', descEmmitter);
     taiko.__set__('cri', mockCri);
-    taiko.__set__('connect_to_cri', async target => {
+    taiko.__set__('connect_to_cri', async (target) => {
       currentTarget = target;
     });
     taiko.__set__('dom', { getDocument: async () => {} });

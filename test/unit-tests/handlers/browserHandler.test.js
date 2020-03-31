@@ -19,7 +19,7 @@ describe('browserHandler', () => {
     let isCalled = false;
     let calledWith = {};
     let mockBrInstance = {
-      grantPermissions: async param => {
+      grantPermissions: async (param) => {
         isCalled = true;
         calledWith = param;
       },
