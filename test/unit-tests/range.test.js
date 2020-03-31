@@ -75,7 +75,7 @@ describe('Color picker test', () => {
   });
 
   it('Test Description emit', async () => {
-    descEvent.once('success', value => {
+    descEvent.once('success', (value) => {
       expect(value).to.be.equal('Selected value 100 for the given input value 1111');
     });
     await range({ id: 'range-1' }).select('1111');

@@ -40,7 +40,7 @@ describe(test_name, () => {
 
   it('should highlight text node', async () => {
     await highlight('Text node');
-    let res = await evaluate($('a'), elem => {
+    let res = await evaluate($('a'), (elem) => {
       return elem.classList;
     });
     expect(res[0]).to.be.eql('taiko_highlight_style');
@@ -56,12 +56,12 @@ describe(test_name, () => {
 
   it('should clear all highlights for current page', async () => {
     await highlight('Text node');
-    let res = await evaluate($('a'), elem => {
+    let res = await evaluate($('a'), (elem) => {
       return elem.classList;
     });
     expect(res[0]).to.be.eql('taiko_highlight_style');
     await clearHighlights();
-    res = await evaluate($('a'), elem => {
+    res = await evaluate($('a'), (elem) => {
       return elem.classList;
     });
     expect(res).to.be.empty;

@@ -19,11 +19,11 @@ describe(test_name, () => {
       setCacheDisabled: () => {},
       setRequestInterception: () => {},
       requestIntercepted: () => {},
-      emulateNetworkConditions: networkCondition => {
+      emulateNetworkConditions: (networkCondition) => {
         actualNetworkCondition = networkCondition;
         return Promise.resolve();
       },
-      continueInterceptedRequest: async options => {
+      continueInterceptedRequest: async (options) => {
         continueInterceptedRequestOptions = options;
       },
     };
@@ -86,7 +86,7 @@ describe(test_name, () => {
         [{ header3: 'header2 value' }, 'https://another-example.com'],
         [{ header4: 'header3 value' }, 'file://path/to/some/file'],
       ];
-      headersAndHost.forEach(headerAndHost => {
+      headersAndHost.forEach((headerAndHost) => {
         networkHandler.setHTTPHeaders(headerAndHost[0], headerAndHost[1]);
       });
     });

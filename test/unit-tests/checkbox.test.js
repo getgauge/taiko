@@ -21,7 +21,7 @@ const inputTypeCaseSensitive = {
   testDescription: `${test_name} case insensitive selector`,
 };
 
-[inputType, inputTypeCaseSensitive].forEach(inputType =>
+[inputType, inputTypeCaseSensitive].forEach((inputType) =>
   describe(inputType.testDescription, () => {
     const type = inputType.type;
 
@@ -151,9 +151,7 @@ const inputTypeCaseSensitive = {
         const elements = await checkBox({
           id: 'someCheckBox',
         }).elements();
-        expect(elements[0].get())
-          .to.be.a('number')
-          .above(0);
+        expect(elements[0].get()).to.be.a('number').above(0);
       });
 
       it('test isVisible of elements', async () => {

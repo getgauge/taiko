@@ -19,9 +19,9 @@ const test_name = 'DropDown';
 describe(test_name, () => {
   let filePath;
 
-  let validateEmitterEvent = function(event, expectedText) {
-    return new Promise(resolve => {
-      descEvent.once(event, eventData => {
+  let validateEmitterEvent = function (event, expectedText) {
+    return new Promise((resolve) => {
+      descEvent.once(event, (eventData) => {
         expect(eventData).to.be.equal(expectedText);
         resolve();
       });
@@ -158,9 +158,7 @@ describe(test_name, () => {
       const elements = await dropDown({
         id: 'sampleDropDown',
       }).elements();
-      expect(elements[0].get())
-        .to.be.a('number')
-        .above(0);
+      expect(elements[0].get()).to.be.a('number').above(0);
     });
 
     it('test description of elements', async () => {
@@ -247,7 +245,7 @@ describe('nested drop down', () => {
     await evaluate(() => {
       document.raisedEvents = [];
       var dropDown = document.getElementById('select-one');
-      ['input', 'change'].forEach(ev => {
+      ['input', 'change'].forEach((ev) => {
         dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
       });
     });

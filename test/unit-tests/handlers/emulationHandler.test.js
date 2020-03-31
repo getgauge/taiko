@@ -11,13 +11,13 @@ describe('emulationHandler', () => {
     calledWith = {};
 
     emulationHandler.__set__('emulation', {
-      setGeolocationOverride: async param => {
+      setGeolocationOverride: async (param) => {
         calledWith = param;
       },
-      setDeviceMetricsOverride: async param => {
+      setDeviceMetricsOverride: async (param) => {
         calledWith = param;
       },
-      setTouchEmulationEnabled: async param => {
+      setTouchEmulationEnabled: async (param) => {
         calledWithTouch = param;
       },
     });

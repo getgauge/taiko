@@ -9,7 +9,7 @@ describe('OpenBrowser', () => {
   describe('opens browser successfully', () => {
     xit("openBrowser should return 'Browser Opened' message", async () => {
       expect(process.env.TAIKO_EMULATE_DEVICE).to.be.undefined;
-      await openBrowser(openBrowserArgs).then(data => {
+      await openBrowser(openBrowserArgs).then((data) => {
         expect(data).to.equal(undefined);
       });
     });
@@ -25,13 +25,13 @@ describe('OpenBrowser', () => {
 
   describe('throws an error', () => {
     it('openBrowser should throw an error when options parameter is string', async () =>
-      await openBrowser('someString').catch(error => expect(error).to.be.an.instanceOf(Error)));
+      await openBrowser('someString').catch((error) => expect(error).to.be.an.instanceOf(Error)));
     it('openBrowser should throw an error when options parameter is array', async () =>
-      await openBrowser([]).catch(error => expect(error).to.be.an.instanceOf(Error)));
+      await openBrowser([]).catch((error) => expect(error).to.be.an.instanceOf(Error)));
 
     it('openBrowser should throw error, when it is called before closeBrowser is called', async () => {
       await openBrowser(openBrowserArgs);
-      await openBrowser(openBrowserArgs).catch(error => expect(error).to.be.an.instanceOf(Error));
+      await openBrowser(openBrowserArgs).catch((error) => expect(error).to.be.an.instanceOf(Error));
       await closeBrowser();
     });
   });
@@ -51,7 +51,7 @@ describe('OpenBrowser', () => {
 
     it('should reset client when chrome process crashes', async () => {
       chromeProcess.kill('SIGKILL');
-      await new Promise(resolve => {
+      await new Promise((resolve) => {
         setTimeout(resolve, 100);
       });
       expect(client()).to.be.null;

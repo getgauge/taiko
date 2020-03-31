@@ -7,7 +7,7 @@ describe(test_name, () => {
   let actualOption;
   before(() => {
     networkHandler.__set__('network', {
-      continueInterceptedRequest: options => {
+      continueInterceptedRequest: (options) => {
         actualOption = options;
         return Promise.resolve();
       },
@@ -88,7 +88,7 @@ describe(test_name, () => {
 
   it('More than one intercept added for the same requestUrl', async () => {
     let actualConsoleWarn;
-    console.warn = log => {
+    console.warn = (log) => {
       actualConsoleWarn = log;
     };
     networkHandler.addInterceptor({

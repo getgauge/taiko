@@ -7,12 +7,12 @@ describe('openTab', () => {
   let actualTarget, target, actualOptions, actualUrl;
   before(async () => {
     let mockCri = {
-      New: async function(options) {
+      New: async function (options) {
         actualUrl = options.url;
         return target;
       },
     };
-    let mockConnectToCri = target => {
+    let mockConnectToCri = (target) => {
       actualTarget = target;
     };
     const mockWrapper = async (options, cb) => {

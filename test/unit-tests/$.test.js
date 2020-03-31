@@ -98,9 +98,7 @@ describe(test_name, () => {
   describe('test elementList properties', () => {
     it('test get()', async () => {
       const elems = await $('#foo').elements();
-      expect(elems[0].get())
-        .to.be.a('number')
-        .above(0);
+      expect(elems[0].get()).to.be.a('number').above(0);
     });
 
     it('test isVisible of elements', async () => {
@@ -126,7 +124,7 @@ describe(test_name, () => {
     it('Should throw error when element index is out of bound', async () => {
       await $('#foo')
         .element(1)
-        .catch(err => {
+        .catch((err) => {
           expect(err).to.include(/Element index is out of range. There are only 1 element(s)/);
         });
     });

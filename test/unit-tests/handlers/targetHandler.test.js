@@ -7,7 +7,7 @@ describe('TargetHandler', () => {
 
     before(() => {
       let mockCri = {
-        List: function() {
+        List: function () {
           return _targets.reverse();
         },
       };

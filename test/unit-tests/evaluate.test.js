@@ -37,7 +37,7 @@ describe(testName, () => {
   describe('with selector', () => {
     it('should return the result on the evaluation', async () => {
       let expected = 'Item 1';
-      let actual = await evaluate(text('Item 1'), element => {
+      let actual = await evaluate(text('Item 1'), (element) => {
         return element.textContent.trim();
       });
       expect(actual).to.be.equal(expected);
@@ -59,7 +59,7 @@ describe(testName, () => {
 
   describe('without selector', () => {
     it('should pass root html element to the function to be evaluated', async () => {
-      const actual = await evaluate(rootElement => {
+      const actual = await evaluate((rootElement) => {
         return rootElement.outerHTML;
       });
       expect(actual).to.match(/^<html>/);

@@ -20,7 +20,7 @@ describe('pageHandler', () => {
       setLifecycleEventsEnabled: async () => {},
       lifecycleEvent: async () => {},
       javascriptDialogOpening: async () => {},
-      navigate: async param => {
+      navigate: async (param) => {
         navigate.called = true;
         navigate.with = param;
         if (param.url.includes('fail')) {

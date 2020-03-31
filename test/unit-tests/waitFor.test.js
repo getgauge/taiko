@@ -16,7 +16,7 @@ const test_name = 'waitFor';
 
 chai.use(chaiAsPromised);
 
-describe(test_name, function() {
+describe(test_name, function () {
   let filePath;
   before(async () => {
     let innerHtml =
