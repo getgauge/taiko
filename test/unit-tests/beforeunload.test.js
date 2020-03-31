@@ -4,12 +4,13 @@ const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 const taiko = rewire('../../lib/taiko');
-let { openBrowser, goto, closeBrowser, write, beforeunload, accept, reload } = taiko;
+let { openBrowser, goto, closeBrowser, write, beforeunload, accept, reload, openTab } = taiko;
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'beforeunload';
 
 describe(test_name, () => {
-  let filePath, filePath1, called;
+  let filePath, filePath1;
+  let called = false;
   before(async () => {
     let innerHtml = `
     <div class="main">
@@ -42,14 +43,26 @@ describe(test_name, () => {
     it('should invoke callback when beforeunload popup shows up on close browser ', async () => {
       await openBrowser(openBrowserArgs);
       await goto(filePath);
-      beforeunload(() => {
+      beforeunload(async () => {
         called = true;
-        accept();
+        await accept();
       });
       await write('some thing', 'Write your name :');
       await closeBrowser();
       expect(called).to.be.true;
     });
+
+    it('should close browser properly', async () => {
+      await openBrowser(openBrowserArgs);
+      beforeunload(() => {
+        called = true;
+      });
+      await goto(filePath);
+      await write('some thing', 'Write your name :');
+      await openTab(filePath1);
+      await closeBrowser();
+      expect(called).to.be.false;
+    }).timeout(10000);
   });
 
   describe('on navigation out of the page', () => {
@@ -66,9 +79,9 @@ describe(test_name, () => {
     });
 
     it('should invoke callback when beforeunload popup shows up on page navigation', async () => {
-      beforeunload(() => {
+      beforeunload(async () => {
         called = true;
-        accept();
+        await accept();
       });
       await write('some thing', 'Write your name :');
       await goto(filePath1);
@@ -76,9 +89,9 @@ describe(test_name, () => {
     });
 
     it('should invoke callback when beforeunload popup shows up on reload', async () => {
-      beforeunload(() => {
+      beforeunload(async () => {
         called = true;
-        accept();
+        await accept();
       });
       await write('some thing', 'Write your name :');
       await reload();
