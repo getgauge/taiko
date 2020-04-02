@@ -23,6 +23,13 @@ describe(test_name, () => {
     await closeBrowser();
   });
 
+  const getDateForTime = (hour, min) => {
+    let date = new Date();
+    date.setHours(hour);
+    date.setMinutes(min);
+    return date;
+  };
+
   var inputTypes = [
     {
       type: 'date',
@@ -52,8 +59,8 @@ describe(test_name, () => {
       min: '2018-W18',
       max: '2018-W26',
       testValue: new Date('2018-05-09'),
-      testMinValue: new Date('2021-09-12'),
-      testMaxValue: new Date('2017-09-12'),
+      testMinValue: new Date('2018-09-12'),
+      testMaxValue: new Date('2018-02-12'),
       testDefaultValue: '2018-W18',
       testActualValue: '2018-W19',
     },
@@ -62,9 +69,9 @@ describe(test_name, () => {
       name: 'inputType-time',
       min: '09:00',
       max: '18:00',
-      testValue: new Date('2018-05-09T09:24:00'),
-      testMinValue: new Date('2021-09-12T08:24:00'),
-      testMaxValue: new Date('2017-09-12T19:24:00'),
+      testValue: getDateForTime('09', '24'),
+      testMinValue: getDateForTime('08', '24'),
+      testMaxValue: getDateForTime('19', '24'),
       testDefaultValue: '09:00',
       testActualValue: '09:24',
     },
@@ -188,6 +195,22 @@ describe(test_name, () => {
         it('test description', async () => {
           expect(timeField('With Label For').description).to.be.eql(
             'Time field with label With Label For ',
+          );
+        });
+
+        it('should throw error if value if greater than max', async () => {
+          await expect(
+            timeField('With Label For').select(inputType.testMaxValue),
+          ).to.be.eventually.rejectedWith(
+            `Value should be minimum of ${inputType.min}, maximum of ${inputType.max}`,
+          );
+        });
+
+        it('should throw error if value if lesser than min', async () => {
+          await expect(
+            timeField('With Label For').select(inputType.testMinValue),
+          ).to.be.eventually.rejectedWith(
+            `Value should be minimum of ${inputType.min}, maximum of ${inputType.max}`,
           );
         });
       });
