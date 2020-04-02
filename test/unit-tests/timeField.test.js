@@ -7,11 +7,9 @@ let {
   goto,
   timeField,
   closeBrowser,
-  write,
-  into,
   setConfig,
   above,
-  press,
+  click,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'timeField';
@@ -29,28 +27,57 @@ describe(test_name, () => {
     {
       type: 'date',
       name: 'inputType-date',
-      testValue: '12092020',
-      testActualValue: '2020-09-12',
+      min: '2018-01-01',
+      max: '2018-12-31',
+      testValue: new Date('2018-09-12'),
+      testMinValue: new Date('2021-09-12'),
+      testMaxValue: new Date('2017-09-12'),
+      testDefaultValue: '2018-01-01',
+      testActualValue: '2018-09-12',
     },
     {
       type: 'month',
       name: 'inputType-month',
-      testValue: 'May',
-      testYear: '2018',
+      min: '2018-03',
+      max: '2018-05',
+      testValue: new Date('2018-05-05'),
+      testMinValue: new Date('2021-09-12'),
+      testMaxValue: new Date('2017-09-12'),
+      testDefaultValue: '2018-03',
       testActualValue: '2018-05',
     },
     {
       type: 'week',
       name: 'inputType-week',
-      testValue: '182018',
-      testActualValue: '2018-W18',
+      min: '2018-W18',
+      max: '2018-W26',
+      testValue: new Date('2018-05-09'),
+      testMinValue: new Date('2021-09-12'),
+      testMaxValue: new Date('2017-09-12'),
+      testDefaultValue: '2018-W18',
+      testActualValue: '2018-W19',
     },
-    { type: 'time', name: 'inputType-time', testValue: '1230AM', testActualValue: '00:30' },
+    {
+      type: 'time',
+      name: 'inputType-time',
+      min: '09:00',
+      max: '18:00',
+      testValue: new Date('2018-05-09T09:24:00'),
+      testMinValue: new Date('2021-09-12T08:24:00'),
+      testMaxValue: new Date('2017-09-12T19:24:00'),
+      testDefaultValue: '09:00',
+      testActualValue: '09:24',
+    },
     {
       type: 'datetime-local',
       name: 'inputType-datetime-local',
-      testValue: '12090020180606AM',
-      testActualValue: '2018-09-12T06:06',
+      min: '2018-06-07T00:00',
+      max: '2018-06-14T00:00',
+      testValue: new Date('2018-06-09T12:30'),
+      testMinValue: new Date('2018-05-09T12:30'),
+      testMaxValue: new Date('2018-07-09T12:30'),
+      testDefaultValue: '2018-06-07T00:00',
+      testActualValue: '2018-06-09T12:30',
     },
   ];
 
@@ -62,20 +89,23 @@ describe(test_name, () => {
                 <div>
                     <form name="${inputType.name}">
                         <div name="withInlineText">
-                            <input type="${inputType.type}">With Inline Text</input>
+                            <input type="${inputType.type}" value="${inputType.testDefaultValue}">With Inline Text</input>
                         </div>
                         <div name="withWrappedLabel">
                             <label>
-                                <input type="${inputType.type}"/>
+                                <input type="${inputType.type}" value="${inputType.testDefaultValue}"/>
                                 <span>With Wrapped Label</span>
                             </label>
                         </div>
                         <div name="withLabelFor">
                             <label for="${inputType.name}WithLabelFor">With Label For</label>
-                            <input id="${inputType.name}WithLabelFor" type="${inputType.type}"/>
+                            <input id="${inputType.name}WithLabelFor" type="${inputType.type}" value="${inputType.testDefaultValue}" min="${inputType.min}" max="${inputType.max}"/>
                         </div>
                         <div>
-                            <input type="${inputType.type}" id="sample${inputType.type}" value="${inputType.testActualValue}">With Inline Text</input>
+                            <input type="${inputType.type}" id="sample${inputType.type}" value="${inputType.testDefaultValue}">With Inline Text</input>
+                        </div>
+                        <div>
+                         <input type="reset" value="Reset" />
                         </div>
                     </form>
                 </div>`;
@@ -93,17 +123,21 @@ describe(test_name, () => {
         removeFile(filePath);
       });
 
+      afterEach(async () => {
+        await click('Reset');
+      });
+
       describe('with inline text', () => {
         it('test exists()', async () => {
           expect(await timeField('With Inline Text').exists()).to.be.true;
         });
 
         it('test value()', async () => {
-          await write(inputType.testValue, into(timeField('With Inline Text')));
-          if (inputType.type === 'month') {
-            await press('Tab');
-            await write(inputType.testYear, timeField('With Inline Text'));
-          }
+          expect(await timeField('With Inline Text').value()).to.equal(inputType.testDefaultValue);
+        });
+
+        it('test select()', async () => {
+          await timeField('With Inline Text').select(inputType.testValue);
           expect(await timeField('With Inline Text').value()).to.equal(inputType.testActualValue);
         });
 
@@ -120,11 +154,13 @@ describe(test_name, () => {
         });
 
         it('test value()', async () => {
-          await write(inputType.testValue, into(timeField('With Wrapped Label')));
-          if (inputType.type === 'month') {
-            await press('Tab');
-            await write(inputType.testYear, timeField('With Wrapped Labe'));
-          }
+          expect(await timeField('With Wrapped Label').value()).to.equal(
+            inputType.testDefaultValue,
+          );
+        });
+
+        it('test select()', async () => {
+          await timeField('With Wrapped Label').select(inputType.testValue);
           expect(await timeField('With Wrapped Label').value()).to.equal(inputType.testActualValue);
         });
 
@@ -141,11 +177,11 @@ describe(test_name, () => {
         });
 
         it('test value()', async () => {
-          await write(inputType.testValue, into(timeField('With Label For')));
-          if (inputType.type === 'month') {
-            await press('Tab');
-            await write(inputType.testYear, timeField('With Label For'));
-          }
+          expect(await timeField('With Label For').value()).to.equal(inputType.testDefaultValue);
+        });
+
+        it('test select()', async () => {
+          await timeField('With Label For').select(inputType.testValue);
           expect(await timeField('With Label For').value()).to.equal(inputType.testActualValue);
         });
 
@@ -170,6 +206,18 @@ describe(test_name, () => {
             await timeField({
               id: inputType.name + 'WithLabelFor',
             }).value(),
+          ).to.equal(inputType.testDefaultValue);
+        });
+
+        it('test select()', async () => {
+          await timeField({
+            id: inputType.name + 'WithLabelFor',
+          }).select(inputType.testValue);
+
+          expect(
+            await timeField({
+              id: inputType.name + 'WithLabelFor',
+            }).value(),
           ).to.equal(inputType.testActualValue);
         });
 
@@ -188,6 +236,13 @@ describe(test_name, () => {
         });
 
         it('test value()', async () => {
+          expect(await timeField(above('With Label For')).value()).to.equal(
+            inputType.testDefaultValue,
+          );
+        });
+
+        it('test select()', async () => {
+          await timeField(above('With Label For')).select(inputType.testValue);
           expect(await timeField(above('With Label For')).value()).to.equal(
             inputType.testActualValue,
           );
@@ -217,11 +272,19 @@ describe(test_name, () => {
           );
         });
 
+        it('test select()', async () => {
+          let elements = await timeField({
+            id: `sample${inputType.type}`,
+          }).elements();
+          await elements[0].select(inputType.testValue);
+          expect(await elements[0].value()).to.equal(inputType.testActualValue);
+        });
+
         it('test value of elements', async () => {
           let elements = await timeField({
             id: `sample${inputType.type}`,
           }).elements();
-          expect(await elements[0].value()).to.be.eql(`${inputType.testActualValue}`);
+          expect(await elements[0].value()).to.be.eql(inputType.testDefaultValue);
         });
       });
     });
