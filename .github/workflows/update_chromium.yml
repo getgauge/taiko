@@ -6,45 +6,16 @@ on:
 
 jobs:
   update-to-latest-chromium:
-    
+
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
-      - name: Get latest revision
-        run: echo "::set-env name=REVISION::$(curl -s -S https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2FLAST_CHANGE?alt=media)"  
+
       - name: Get Chromium version and update
         run: |
-          LASTCHANGE_URL="https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2FLAST_CHANGE?alt=media"
-          export REVISION=$(curl -s -S $LASTCHANGE_URL)
-          echo "latest revision is $REVISION"
-          npx json -I -f package.json -e "this.taiko.chromium_revision = '$REVISION'"
-           sudo apt-get install -y libwoff1 \
-                       libopus0 \
-                       libwebp6 \
-                       libwebpdemux2 \
-                       libenchant1c2a \
-                       libgudev-1.0-0 \
-                       libsecret-1-0 \
-                       libhyphen0 \
-                       libgdk-pixbuf2.0-0 \
-                       libegl1 \
-                       libnotify4 \
-                       libxslt1.1 \
-                       libevent-2.1-6 \
-                       libgles2 \
-                       libgl1 \
-                       libegl1 \
-                       libvpx5 \
-                       libnss3 \
-                       libxss1 \
-                       libasound2 \
-                       libdbus-glib-1-2 \
-                       libxt6
-          npm install
-          export VERSION="$(bin/taiko.js getVersion.js --no-log)"
-          npx json -I -f package.json -e "this.taiko.chromium_version = '$VERSION'"
+          node updateChromium.js
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
         with:
