@@ -37,8 +37,8 @@ describe(test_name, () => {
       min: '2018-01-01',
       max: '2018-12-31',
       testValue: new Date('2018-09-12'),
-      testMinValue: new Date('2021-09-12'),
-      testMaxValue: new Date('2017-09-12'),
+      testMinValue: new Date('2017-09-12'),
+      testMaxValue: new Date('2021-09-12'),
       testDefaultValue: '2018-01-01',
       testActualValue: '2018-09-12',
     },
@@ -48,8 +48,8 @@ describe(test_name, () => {
       min: '2018-03',
       max: '2018-05',
       testValue: new Date('2018-05-05'),
-      testMinValue: new Date('2021-09-12'),
-      testMaxValue: new Date('2017-09-12'),
+      testMinValue: new Date('2017-09-12'),
+      testMaxValue: new Date('2021-09-12'),
       testDefaultValue: '2018-03',
       testActualValue: '2018-05',
     },
@@ -59,8 +59,8 @@ describe(test_name, () => {
       min: '2018-W18',
       max: '2018-W26',
       testValue: new Date('2018-05-09'),
-      testMinValue: new Date('2018-09-12'),
-      testMaxValue: new Date('2018-02-12'),
+      testMinValue: new Date('2018-02-12'),
+      testMaxValue: new Date('2018-09-12'),
       testDefaultValue: '2018-W18',
       testActualValue: '2018-W19',
     },
@@ -96,11 +96,11 @@ describe(test_name, () => {
                 <div>
                     <form name="${inputType.name}">
                         <div name="withInlineText">
-                            <input type="${inputType.type}" value="${inputType.testDefaultValue}">With Inline Text</input>
+                            <input type="${inputType.type}" value="${inputType.testDefaultValue}" min="${inputType.min}">With Inline Text</input>
                         </div>
                         <div name="withWrappedLabel">
                             <label>
-                                <input type="${inputType.type}" value="${inputType.testDefaultValue}"/>
+                                <input type="${inputType.type}" value="${inputType.testDefaultValue}" max="${inputType.max}"/>
                                 <span>With Wrapped Label</span>
                             </label>
                         </div>
@@ -148,6 +148,12 @@ describe(test_name, () => {
           expect(await timeField('With Inline Text').value()).to.equal(inputType.testActualValue);
         });
 
+        it('should throw error if less than min', async () => {
+          await expect(
+            timeField('With Inline Text').select(inputType.testMinValue),
+          ).to.be.eventually.rejectedWith(`Value should be minimum of ${inputType.min}`);
+        });
+
         it('test description', async () => {
           expect(timeField('With Inline Text').description).to.be.eql(
             'Time field with label With Inline Text ',
@@ -169,6 +175,12 @@ describe(test_name, () => {
         it('test select()', async () => {
           await timeField('With Wrapped Label').select(inputType.testValue);
           expect(await timeField('With Wrapped Label').value()).to.equal(inputType.testActualValue);
+        });
+
+        it('should throw error if less than min', async () => {
+          await expect(
+            timeField('With Wrapped Label').select(inputType.testMaxValue),
+          ).to.be.eventually.rejectedWith(`Value should be maximum of ${inputType.max}`);
         });
 
         it('test description', async () => {
@@ -202,7 +214,7 @@ describe(test_name, () => {
           await expect(
             timeField('With Label For').select(inputType.testMaxValue),
           ).to.be.eventually.rejectedWith(
-            `Value should be minimum of ${inputType.min}, maximum of ${inputType.max}`,
+            `Value should be minimum of ${inputType.min} maximum of ${inputType.max}`,
           );
         });
 
@@ -210,7 +222,7 @@ describe(test_name, () => {
           await expect(
             timeField('With Label For').select(inputType.testMinValue),
           ).to.be.eventually.rejectedWith(
-            `Value should be minimum of ${inputType.min}, maximum of ${inputType.max}`,
+            `Value should be minimum of ${inputType.min} maximum of ${inputType.max}`,
           );
         });
       });
