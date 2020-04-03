@@ -103,6 +103,7 @@ declare module 'taiko' {
     export type Selector = BasicSelector | ElementWrapper;
     // SearchElement mimics isSelector, isString, isElement
     export type SearchElement = string | Selector | Element;
+
     export type InterceptRedirectUrl = string;
 
     export interface InterceptMockData {
