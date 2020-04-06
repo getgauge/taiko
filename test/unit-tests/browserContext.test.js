@@ -11,7 +11,6 @@ let {
 } = require('../../lib/taiko');
 
 let { isIncognito, getBrowserContexts } = require('../../lib/browserContext');
-
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 
 describe('Browser Context', () => {
