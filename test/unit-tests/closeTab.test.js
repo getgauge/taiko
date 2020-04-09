@@ -56,6 +56,7 @@ describe('closeTab', () => {
   beforeEach(() => {
     descEmmitter.removeAllListeners();
     taiko.__set__('_client', new EventEmitter());
+    taiko.__set__('_client.close', () => {});
     _targets = { matching: [], others: [] };
   });
 

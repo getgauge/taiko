@@ -42,7 +42,8 @@ describe('OpenBrowser', () => {
       taiko.__set__('connect_to_cri', async () => {
         taiko.__set__({
           dom: true,
-          page: true,
+          page: { close: () => {} },
+          _client: { _ws: { readyState: 1 }, removeAllListeners: () => {}, close: () => {} },
         });
       });
       await openBrowser(openBrowserArgs);
