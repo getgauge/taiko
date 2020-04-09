@@ -4,15 +4,17 @@ let {
   closeBrowser,
   switchTo,
   text,
+  goto,
   setConfig,
   evaluate,
-  openWindow,
-  closeWindow,
+  openIncognitoWindow,
+  closeIncognitoWindow,
 } = require('../../lib/taiko');
+let { openBrowserArgs, resetConfig } = require('./test-util');
 
 let { isIncognito, getBrowserContexts } = require('../../lib/browserContext');
 
-let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
+let { createHtml, removeFile } = require('./test-util');
 
 describe('Browser Context', () => {
   let url1, url2;
@@ -59,11 +61,11 @@ describe('Browser Context', () => {
 
   describe('open browser and create browser context', () => {
     it('Should have incognito window', async () => {
-      await openWindow(url1, { name: 'admin' });
+      await openIncognitoWindow(url1, { name: 'admin' });
       let actual = await text('Browser1').exists();
       expect(actual).to.be.true;
 
-      await openWindow(url2, { name: 'user' });
+      await openIncognitoWindow(url2, { name: 'user' });
 
       let actualBrowser2 = await text('Browser2').exists();
       expect(actualBrowser2).to.be.true;
@@ -82,51 +84,51 @@ describe('Browser Context', () => {
     });
 
     after(async () => {
-      await closeWindow('admin');
-      await closeWindow('user');
+      await closeIncognitoWindow('admin');
+      await closeIncognitoWindow('user');
     });
   });
 
   describe('Open window in Incognito Mode', () => {
-    it('Open window without incognito', async () => {
-      await openWindow(url1, { name: 'admin' });
+    it('Open window in incognito', async () => {
+      await openIncognitoWindow(url1, { name: 'admin' });
       expect(isIncognito({ name: 'admin' })).to.be.true;
     });
     after(async () => {
-      await closeWindow('admin');
+      await closeIncognitoWindow('admin');
+    });
+  });
+
+  describe('Open window in Incognito Mode', () => {
+    it('Open window in incognito and use the default window', async () => {
+      await openIncognitoWindow(url1, { name: 'admin' });
+      expect(isIncognito({ name: 'admin' })).to.be.true;
+      await closeIncognitoWindow('admin');
+      await goto(url1);
+      let backToDefaultBrowser = await text('Browser1').exists();
+      expect(backToDefaultBrowser).to.be.true;
     });
   });
 
   describe('Open window with same window name', () => {
     it('Should switch to existing window', async () => {
-      await openWindow(url1, { name: 'admin' });
-      await openWindow(url1, { name: 'admin' });
+      await openIncognitoWindow(url1, { name: 'admin' });
+      await openIncognitoWindow(url1, { name: 'admin' });
       expect(getBrowserContexts().size).to.be.equal(1);
     });
     after(async () => {
-      await closeWindow('admin');
-    });
-  });
-
-  //fix closeWindow to connect to existing window
-  xdescribe('Open window in Normal Mode', () => {
-    it('Open window without incognito', async () => {
-      await openWindow(url1, { name: 'admin', incognito: false });
-      expect(isIncognito({ name: 'admin' })).to.be.false;
-    });
-    after(async () => {
-      await closeWindow('admin');
+      await closeIncognitoWindow('admin');
     });
   });
 
   describe('Isolation session storage test', () => {
     it('should isolate localStorage and cookies', async () => {
-      await openWindow(url1, { name: 'admin' });
+      await openIncognitoWindow(url1, { name: 'admin' });
       await evaluate(() => {
         localStorage.setItem('name', 'page1');
       });
 
-      await openWindow(url2, { name: 'user' });
+      await openIncognitoWindow(url2, { name: 'user' });
 
       await evaluate(() => {
         localStorage.setItem('name', 'page2');
@@ -147,14 +149,20 @@ describe('Browser Context', () => {
       expect(userSessionLocalStorage).to.equal('page1');
     });
     after(async () => {
-      await closeWindow('admin');
-      await closeWindow('user');
+      await closeIncognitoWindow('admin');
+      await closeIncognitoWindow('user');
     });
   });
 
   describe('open window throws an error', () => {
-    it('openWindow should throw an error when url parameter is missing', async () => {
-      await openWindow({ name: 'window' }).catch(error =>
+    it('openIncognitoWindow should throw an error when url parameter is missing', async () => {
+      await openIncognitoWindow({ name: 'window' }).catch(error =>
+        expect(error).to.be.an.instanceOf(TypeError),
+      );
+    });
+
+    it('openIncognitoWindow should throw an error when window name parameter is missing', async () => {
+      await openIncognitoWindow('localhost:8000').catch(error =>
         expect(error).to.be.an.instanceOf(TypeError),
       );
     });
