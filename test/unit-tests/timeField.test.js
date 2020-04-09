@@ -177,7 +177,7 @@ describe(test_name, () => {
           expect(await timeField('With Wrapped Label').value()).to.equal(inputType.testActualValue);
         });
 
-        it('should throw error if less than min', async () => {
+        it('should throw error if greater than max', async () => {
           await expect(
             timeField('With Wrapped Label').select(inputType.testMaxValue),
           ).to.be.eventually.rejectedWith(`Value should be maximum of ${inputType.max}`);
