@@ -26,7 +26,7 @@ describe(test_name, () => {
       },
     });
     taiko.__set__('pageHandler', {
-      handleNavigation: url => {
+      handleNavigation: (url) => {
         actualUrl = url;
       },
     });

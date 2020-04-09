@@ -113,9 +113,7 @@ describe(test_name, () => {
   describe('test elementsList properties', () => {
     it('test get of elements', async () => {
       const elements = await link('similarLink').elements();
-      expect(elements[0].get())
-        .to.be.a('number')
-        .above(0);
+      expect(elements[0].get()).to.be.a('number').above(0);
     });
 
     it('test isVisible of elements', async () => {

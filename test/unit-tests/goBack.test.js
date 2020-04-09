@@ -22,7 +22,7 @@ describe(test_name, () => {
   describe('to about blank page', () => {
     before(async () => {
       taiko.__set__('page', {
-        navigateToHistoryEntry: historyEntryId => {
+        navigateToHistoryEntry: (historyEntryId) => {
           actualHistoryEntryId = historyEntryId;
         },
         getNavigationHistory: () => {

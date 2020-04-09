@@ -36,7 +36,7 @@ describe('elementHelper', () => {
     });
 
     elemHelper.__set__('overlayHandler', {
-      highlightQuad: async args => {
+      highlightQuad: async (args) => {
         highlightQuadCalled = true;
         highlightQuadArgs = args;
       },
@@ -44,7 +44,7 @@ describe('elementHelper', () => {
         hideHighlightCalled = true;
       },
     });
-    elemHelper.__set__('console', { warn: warning => (warningMessage = warning) });
+    elemHelper.__set__('console', { warn: (warning) => (warningMessage = warning) });
     setConfig({ highlightOnAction: 'true' });
   });
 

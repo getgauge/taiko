@@ -94,13 +94,13 @@ describe('DropDown', () => {
 
       await dropDown.select({ index: 2 });
       expect(nodes[nodeId].selectedIndex).to.be.equal(2);
-      dispatchedEvents.forEach(e => {
+      dispatchedEvents.forEach((e) => {
         expect(e instanceof Event).to.be.true;
         expect(e.options).to.be.deep.equal({
           bubbles: true,
         });
       });
-      expect(dispatchedEvents.map(x => x.name)).to.eql(['change', 'input']);
+      expect(dispatchedEvents.map((x) => x.name)).to.eql(['change', 'input']);
     });
 
     it('select dropdown item using value', async () => {
@@ -110,13 +110,13 @@ describe('DropDown', () => {
 
       await dropDown.select('26 value 2');
       expect(nodes[nodeId].selectedIndex).to.be.equal(2);
-      dispatchedEvents.forEach(e => {
+      dispatchedEvents.forEach((e) => {
         expect(e instanceof Event).to.be.true;
         expect(e.options).to.be.deep.equal({
           bubbles: true,
         });
       });
-      expect(dispatchedEvents.map(x => x.name)).to.eql(['change', 'input']);
+      expect(dispatchedEvents.map((x) => x.name)).to.eql(['change', 'input']);
     });
 
     it('select dropdown item using text ', async () => {
@@ -126,13 +126,13 @@ describe('DropDown', () => {
 
       await dropDown.select('27 text 2');
       expect(nodes[nodeId].selectedIndex).to.be.equal(2);
-      dispatchedEvents.forEach(e => {
+      dispatchedEvents.forEach((e) => {
         expect(e instanceof Event).to.be.true;
         expect(e.options).to.be.deep.equal({
           bubbles: true,
         });
       });
-      expect(dispatchedEvents.map(x => x.name)).to.eql(['change', 'input']);
+      expect(dispatchedEvents.map((x) => x.name)).to.eql(['change', 'input']);
     });
   });
 
