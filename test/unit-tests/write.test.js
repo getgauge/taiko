@@ -182,9 +182,9 @@ describe('Write with hideText option', () => {
   let actualEmmiter;
   let emitter = new EventEmitter();
 
-  let validateEmitterEvent = function(event, expectedText) {
-    return new Promise(resolve => {
-      emitter.on(event, res => {
+  let validateEmitterEvent = function (event, expectedText) {
+    return new Promise((resolve) => {
+      emitter.on(event, (res) => {
         expect(res).to.be.equal(expectedText);
         resolve();
       });

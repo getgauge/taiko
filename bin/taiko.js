@@ -73,11 +73,11 @@ function setDisableLogout() {
 }
 
 function seekingForHelp(args) {
-  return ['-h', '--help'].some(arg => args.includes(arg));
+  return ['-h', '--help'].some((arg) => args.includes(arg));
 }
 
 function registerSubcommandForPlugins(program, plugins) {
-  Object.keys(plugins).forEach(pluginName => {
+  Object.keys(plugins).forEach((pluginName) => {
     program
       .command(`${pluginName} [options...]`)
       .allowUnknownOption(true)
@@ -128,20 +128,20 @@ if (isTaikoRunner(processArgv[1])) {
     )
     .option('--plugin <plugin1,plugin2...>', 'Load the taiko plugin.', setPluginNameInEnv)
     .option('--no-log', 'Disable log output of taiko', setDisableLogout)
-    .action(function(_, fileName, cmd) {
+    .action(function (_, fileName, cmd) {
       taiko = require('../lib/taiko');
       if (fileName) {
         validate(fileName);
         const observe = Boolean(cmd.observe || cmd.slowMod);
         if (cmd.load) {
-          runFile(taiko, fileName, true, cmd.waitTime, fileName => {
-            return new Promise(resolve => {
+          runFile(taiko, fileName, true, cmd.waitTime, (fileName) => {
+            return new Promise((resolve) => {
               repl_mode = true;
-              repl.initialize(taiko, fileName, true).then(r => {
+              repl.initialize(taiko, fileName, true).then((r) => {
                 let listeners = r.listeners('exit');
                 r.removeAllListeners('exit');
                 r.on('exit', () => {
-                  listeners.forEach(l => r.addListener('exit', l));
+                  listeners.forEach((l) => r.addListener('exit', l));
                   resolve();
                 });
               });
@@ -156,7 +156,7 @@ if (isTaikoRunner(processArgv[1])) {
       }
     });
   registerSubcommandForPlugins(program, plugins);
-  program.unknownOption = option => {
+  program.unknownOption = (option) => {
     console.error('error: unknown option `%s', option);
     program.outputHelp();
     process.exit(1);

@@ -263,7 +263,7 @@ describe('match', () => {
       });
 
       it('test text is from iframe', async () => {
-        const id = await evaluate(text('Text in iframe'), elem => {
+        const id = await evaluate(text('Text in iframe'), (elem) => {
           return elem.parentElement.id;
         });
         expect(id).to.equal('inIframe');
@@ -353,9 +353,7 @@ describe('match', () => {
     describe('test elementsList properties', () => {
       it('test get of elements', async () => {
         const elements = await text('someNode').elements();
-        expect(elements[0].get())
-          .to.be.a('number')
-          .above(0);
+        expect(elements[0].get()).to.be.a('number').above(0);
       });
 
       it('test description of elements', async () => {

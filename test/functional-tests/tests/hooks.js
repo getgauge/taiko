@@ -18,7 +18,7 @@ beforeScenario(async () => {
   setConfig({ navigationTimeout: 60000 });
 });
 
-gauge.screenshotFn = async function() {
+gauge.screenshotFn = async function () {
   return await screenshot({ encoding: 'base64' });
 };
 

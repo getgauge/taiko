@@ -9,7 +9,7 @@ describe('switchTo', () => {
   let argument;
   before(async () => {
     taiko.__set__('validate', () => {});
-    taiko.__set__('targetHandler.getCriTargets', arg => {
+    taiko.__set__('targetHandler.getCriTargets', (arg) => {
       argument = arg;
       return { matching: [] };
     });
