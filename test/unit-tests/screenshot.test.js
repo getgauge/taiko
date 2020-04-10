@@ -1,5 +1,13 @@
 const expect = require('chai').expect;
-let { openBrowser, closeBrowser, goto, screenshot, setConfig } = require('../../lib/taiko');
+let {
+  openBrowser,
+  closeBrowser,
+  goto,
+  screenshot,
+  setConfig,
+  above,
+  text,
+} = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 let path = require('path');
 let fs = require('fs');
@@ -12,7 +20,7 @@ describe(test_name, () => {
     let innerHtml = `
         <div class="example">
             <h3>Screenshot</h3>
-            <p>Sample webpage for screenshot </p>
+            <p>Sample webpage for screenshot</p>
         </div>`;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -38,6 +46,14 @@ describe(test_name, () => {
     });
     it('should get the screenshot with encoding', async () => {
       expect(await screenshot({ encoding: 'base64' })).to.not.be.empty;
+    });
+    it('should get the screenshot with proximity selectors', async () => {
+      let screenshotPath = path.join(__dirname, 'data', 'screenshot_proximity.png');
+      await screenshot(text('Screenshot', above('Sample webpage for screenshot')), {
+        path: screenshotPath,
+      });
+      expect(fs.existsSync(screenshotPath)).to.be.true;
+      removeFile(screenshotPath);
     });
   });
 });
