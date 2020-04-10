@@ -70,7 +70,7 @@ describe('Config tests', () => {
       it('should return the specified config', () => {
         let allowedConfig = Object.keys(config.defaultConfig);
 
-        allowedConfig.forEach(optionName => {
+        allowedConfig.forEach((optionName) => {
           let optionValue = config.getConfig(optionName);
           expect(config.defaultConfig[optionName]).to.equal(optionValue);
         });

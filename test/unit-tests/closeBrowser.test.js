@@ -12,7 +12,7 @@ xdescribe('close browser successfully', () => {
     // emitter.on('success', (desc) => {
     //     expect(desc).to.equal('Browser closed');
     // });
-    await closeBrowser().then(data => {
+    await closeBrowser().then((data) => {
       expect(data).to.equal(undefined);
     });
   });

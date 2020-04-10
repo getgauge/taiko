@@ -71,7 +71,7 @@
     "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-mocha": "^6.2.2",
     "eslint-plugin-prettier": "^3.1.2",
-    "handlebars": "^4.7.3",
+    "handlebars": "^4.7.6",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.9",
     "marked": "^0.8.2",

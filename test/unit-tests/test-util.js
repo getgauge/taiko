@@ -20,7 +20,7 @@ module.exports.createHtml = (innerHtml, testName) => {
   return pathToFileURL(htmlFilePath).toString();
 };
 
-module.exports.removeFile = filePath => {
+module.exports.removeFile = (filePath) => {
   try {
     filePath = fileURLToPath(filePath);
   } catch (e) {

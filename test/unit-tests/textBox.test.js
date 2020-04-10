@@ -143,9 +143,7 @@ describe(test_name, () => {
         const elements = await textBox({
           id: 'sampleTextArea',
         }).elements();
-        expect(elements[0].get())
-          .to.be.a('number')
-          .above(0);
+        expect(elements[0].get()).to.be.a('number').above(0);
       });
 
       it('test description of elements', async () => {
@@ -301,9 +299,7 @@ describe(test_name, () => {
         const elements = await textBox({
           id: 'sampleContentEditable',
         }).elements();
-        expect(elements[0].get())
-          .to.be.a('number')
-          .above(0);
+        expect(elements[0].get()).to.be.a('number').above(0);
       });
 
       it('test isVisible of elements', async () => {
@@ -375,7 +371,7 @@ describe(test_name, () => {
 
   var inputTypesToTest = inputTypes.concat(inputTypesCaseSensitive);
 
-  inputTypesToTest.forEach(inputType => {
+  inputTypesToTest.forEach((inputType) => {
     describe('input with type ' + inputType.type, () => {
       let filePath;
       before(async () => {
@@ -512,9 +508,7 @@ describe(test_name, () => {
           const elements = await textBox({
             id: `sample${inputType.type}`,
           }).elements();
-          expect(elements[0].get())
-            .to.be.a('number')
-            .above(0);
+          expect(elements[0].get()).to.be.a('number').above(0);
         });
 
         it('test description of elements', async () => {
@@ -677,9 +671,7 @@ describe(test_name, () => {
     describe('test elementList properties', () => {
       it('test get of elements', async () => {
         const elements = await textBox('sampleInputWithoutType').elements();
-        expect(elements[0].get())
-          .to.be.a('number')
-          .above(0);
+        expect(elements[0].get()).to.be.a('number').above(0);
       });
 
       it('test description of elements', async () => {

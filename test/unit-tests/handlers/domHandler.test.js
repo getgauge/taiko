@@ -8,7 +8,7 @@ describe('domHandler', () => {
   beforeEach(() => {
     calledWith = {};
     domHandler.__set__('dom', {
-      getBoxModel: async param => {
+      getBoxModel: async (param) => {
         calledWith = param;
         if (param.nodeId == 1) {
           return { model: { border: [0, 1, 2, 3, 4, 5, 6, 7] } };
