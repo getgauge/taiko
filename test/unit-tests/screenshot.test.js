@@ -7,6 +7,7 @@ let {
   setConfig,
   above,
   text,
+  $
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 let path = require('path');
@@ -19,7 +20,7 @@ describe(test_name, () => {
   before(async () => {
     let innerHtml = `
         <div class="example">
-            <h3>Screenshot</h3>
+            <h3 id='header'>Screenshot</h3>
             <p>Sample webpage for screenshot</p>
         </div>`;
     filePath = createHtml(innerHtml, test_name);
@@ -50,6 +51,15 @@ describe(test_name, () => {
     it('should get the screenshot with proximity selectors', async () => {
       let screenshotPath = path.join(__dirname, 'data', 'screenshot_proximity.png');
       await screenshot(text('Screenshot', above('Sample webpage for screenshot')), {
+        path: screenshotPath,
+      });
+      expect(fs.existsSync(screenshotPath)).to.be.true;
+      removeFile(screenshotPath);
+    });
+
+    it('should get the screenshot with elements', async () => {
+      let screenshotPath = path.join(__dirname, 'data', 'screenshot_proximity.png');
+      await screenshot(await $('#header').element(0), {
         path: screenshotPath,
       });
       expect(fs.existsSync(screenshotPath)).to.be.true;
