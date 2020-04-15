@@ -1,5 +1,5 @@
 let path = require('path');
-let { writeFileSync, unlinkSync } = require('fs');
+let { writeFileSync, unlinkSync, existsSync } = require('fs');
 let { pathToFileURL, fileURLToPath } = require('url');
 let { setConfig } = require('../../lib/taiko');
 
@@ -25,7 +25,7 @@ module.exports.removeFile = (filePath) => {
     filePath = fileURLToPath(filePath);
   } catch (e) {
   } finally {
-    unlinkSync(filePath);
+    if (existsSync(filePath)) unlinkSync(filePath);
   }
 };
 
