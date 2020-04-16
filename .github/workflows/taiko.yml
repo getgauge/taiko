@@ -24,6 +24,7 @@ jobs:
       - name: install
         run: npm install
       - name: install browser dependencies
+        if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get install -y libwoff1 \
                         libopus0 \
