@@ -231,183 +231,183 @@ declare module 'taiko' {
      * Browser Actions
      **/
 
-    // https://taiko.gauge.org/#openbrowser
+    // https://docs.taiko.dev/#openbrowser
     export function openBrowser(options?: BrowserOptions): Promise<void>;
-    // https://taiko.gauge.org/#closebrowser
+    // https://docs.taiko.dev/#closebrowser
     export function closeBrowser(): Promise<void>;
-    // https://taiko.gauge.org/#client
+    // https://docs.taiko.dev/#client
     export function client(): any; // TODO: no TS Bindings available: https://github.com/cyrus-and/chrome-remote-interface/issues/112
-    // https://taiko.gauge.org/#switchto
+    // https://docs.taiko.dev/#switchto
     export function switchTo(targetUrl: string): Promise<void>;
-    // https://taiko.gauge.org/#intercept
+    // https://docs.taiko.dev/#intercept
     // https://github.com/getgauge/taiko/issues/98#issuecomment-42024186
     export function intercept(requestUrl: string, options?: InterceptMockData | interceptRequestHandler | InterceptRedirectUrl): Promise<void>;
-    // https://taiko.gauge.org/#emulatenetwork
+    // https://docs.taiko.dev/#emulatenetwork
     export function emulateNetwork(
         networkType: 'GPRS' | 'Regular2G' | 'Good2G' | 'Good3G' | 'Regular3G' | 'Regular4G' | 'DSL' | 'WiFi, Offline'
     ): Promise<void>;
-    // https://taiko.gauge.org/#emulatedevice
+    // https://docs.taiko.dev/#emulatedevice
     export function emulateDevice(deviceModel: string);
-    // https://taiko.gauge.org/#setviewport
+    // https://docs.taiko.dev/#setviewport
     export function setViewPort(options: ViewPortOptions): Promise<void>;
-    // https://taiko.gauge.org/#opentab
+    // https://docs.taiko.dev/#opentab
     export function openTab(targetUrl: string, options?: NavigationOptions): Promise<void>;
-    // https://taiko.gauge.org/#closetab
+    // https://docs.taiko.dev/#closetab
     export function closeTab(targetUrl: string): Promise<void>;
-    // https://taiko.gauge.org/#overridepermissions
+    // https://docs.taiko.dev/#overridepermissions
     export function overridePermissions(origin: string, permissions: string[]): Promise<void>;
-    // https://taiko.gauge.org/#clearpermissionoverrides
+    // https://docs.taiko.dev/#clearpermissionoverrides
     export function clearPermissionOverrides(): Promise<void>;
-    // https://taiko.gauge.org/#setcookie
+    // https://docs.taiko.dev/#setcookie
     export function setCookie(name: string, value: string, options?: CookieDetailOptions): Promise<void>;
-    // https://taiko.gauge.org/#deletecookies
+    // https://docs.taiko.dev/#deletecookies
     export function deleteCookies(cookieName?: string, options?: CookieOptions): Promise<void>;
-    // https://taiko.gauge.org/#getcookies
+    // https://docs.taiko.dev/#getcookies
     export function getCookies(options?: { urls: string[] }): Promise<Object[]>;
-    // https://taiko.gauge.org/#setlocation
+    // https://docs.taiko.dev/#setlocation
     export function setLocation(options: LocationOptions): Promise<void>;
 
     /**
      * Page Actions
      */
 
-    // https://taiko.gauge.org/#goto
+    // https://docs.taiko.dev/#goto
     export function goto(url: string, options?: NavigationOptions): Promise<void>;
-    // https://taiko.gauge.org/#reload
+    // https://docs.taiko.dev/#reload
     export function reload(url: string, options?: NavigationOptions): Promise<void>;
-    // https://taiko.gauge.org/#goback
+    // https://docs.taiko.dev/#goback
     export function goBack(options?: NavigationOptions): Promise<void>;
-    // https://taiko.gauge.org/#goforward
+    // https://docs.taiko.dev/#goforward
     export function goForward(options?: NavigationOptions): Promise<void>;
-    // https://taiko.gauge.org/#title
+    // https://docs.taiko.dev/#title
     export function title(): Promise<string>;
-    // https://taiko.gauge.org/#click
+    // https://docs.taiko.dev/#click
     export function click(selector: SearchElement | MouseCoordinates, options?: ClickOptions, ...args: RelativeSearchElement[]): Promise<void>;
-    // https://taiko.gauge.org/#doubleclick
+    // https://docs.taiko.dev/#doubleclick
     export function doubleClick(selector: SearchElement | MouseCoordinates, options?: BasicNavigationOptions, ...args: RelativeSearchElement[]): Promise<void>;
-    // https://taiko.gauge.org/#rightclick
+    // https://docs.taiko.dev/#rightclick
     export function rightClick(selector: SearchElement | MouseCoordinates, options?: BasicNavigationOptions, ...args: RelativeSearchElement[]): Promise<void>;
-    // https://taiko.gauge.org/#draganddrop
+    // https://docs.taiko.dev/#draganddrop
     export function dragAndDrop(
         source: SearchElement,
         destination: SearchElement,
         distance: DragAndDropDistance
     ): Promise<void>;
-    // https://taiko.gauge.org/#hover
+    // https://docs.taiko.dev/#hover
     export function hover(selector: SearchElement, options?: NavigationOptions): Promise<void>;
-    // https://taiko.gauge.org/#focus
+    // https://docs.taiko.dev/#focus
     export function focus(selector: SearchElement, options?: EventOptions): Promise<void>;
-    // https://taiko.gauge.org/#write
+    // https://docs.taiko.dev/#write
     export function write(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
-    // https://taiko.gauge.org/#clear
+    // https://docs.taiko.dev/#clear
     export function clear(selector: SearchElement, options?: NavigationOptions): Promise<void>;
-    // https://taiko.gauge.org/#attach
+    // https://docs.taiko.dev/#attach
     export function attach(filepath: string, to: SearchElement): Promise<void>;
-    // https://taiko.gauge.org/#press
+    // https://docs.taiko.dev/#press
     export function press(keys: string | string[], options?: KeyOptions): Promise<void>;
-    // https://taiko.gauge.org/#highlight
+    // https://docs.taiko.dev/#highlight
     export function highlight(selector: SearchElement): Promise<void>;
-    // https://taiko.gauge.org/#mouseaction
+    // https://docs.taiko.dev/#mouseaction
     export function mouseAction(action: 'press' | 'move' | 'release', coordinates: MouseCoordinates, options?: NavigationOptions): Promise<void>;
-    // https://taiko.gauge.org/#scrollto
+    // https://docs.taiko.dev/#scrollto
     export function scrollTo(selector: SearchElement, options?: EventOptions): Promise<void>;
-    // https://taiko.gauge.org/#scrollright
+    // https://docs.taiko.dev/#scrollright
     export function scrollRight(selector?: SearchElement | number, px?: number): Promise<void>;
-    // https://taiko.gauge.org/#scrollleft
+    // https://docs.taiko.dev/#scrollleft
     export function scrollLeft(selector?: SearchElement | number, px?: number): Promise<void>;
-    // https://taiko.gauge.org/#scrollup
+    // https://docs.taiko.dev/#scrollup
     export function scrollUp(selector?: SearchElement | number, px?: number): Promise<void>;
-    // https://taiko.gauge.org/#scrolldown
+    // https://docs.taiko.dev/#scrolldown
     export function scrollDown(selector?: SearchElement | number, px?: number): Promise<void>;
-    // https://taiko.gauge.org/#screenshot
+    // https://docs.taiko.dev/#screenshot
     export function screenshot(options?: ScreenshotOptions, ...args: SearchElement[]): Promise<Buffer>;
-    // https://taiko.gauge.org/#tap
+    // https://docs.taiko.dev/#tap
     export function tap(selector: SearchElement, options?: TapOptions, ...args: SearchElement[]): Promise<void>;
 
     /**
      * Selectors
      */
 
-    // https://taiko.gauge.org/#dollar
+    // https://docs.taiko.dev/#dollar
     export function $(selector: string, ...args: SearchElement[]): Selector;
-    // https://taiko.gauge.org/#image
+    // https://docs.taiko.dev/#image
     export function image(selector: SearchElement, ...args: SearchElement[]): SearchElement;
-    // https://taiko.gauge.org/#link
+    // https://docs.taiko.dev/#link
     export function link(selector: SearchElement, ...args: SearchElement[]): SearchElement;
-    // https://taiko.gauge.org/#listitem
+    // https://docs.taiko.dev/#listitem
     export function listItem(selector: SearchElement, ...args: SearchElement[]): SearchElement;
-    // https://taiko.gauge.org/#button
+    // https://docs.taiko.dev/#button
     export function button(selector: SearchElement, ...args: SearchElement[]): SearchElement;
-    // https://taiko.gauge.org/#inputfield
+    // https://docs.taiko.dev/#inputfield
     export function inputField(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
-    // https://taiko.gauge.org/#filefield
+    // https://docs.taiko.dev/#filefield
     export function fileField(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
-    // https://taiko.gauge.org/#textbox
+    // https://docs.taiko.dev/#textbox
     export function textBox(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
-    // https://taiko.gauge.org/#combobox
+    // https://docs.taiko.dev/#combobox
     export function comboBox(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
-    // https://taiko.gauge.org/#dropdown
+    // https://docs.taiko.dev/#dropdown
     export function dropDown(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
-    // https://taiko.gauge.org/#checkbox
+    // https://docs.taiko.dev/#checkbox
     export function checkBox(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
-    // https://taiko.gauge.org/#radiobutton
+    // https://docs.taiko.dev/#radiobutton
     export function radioButton(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): ElementWrapper;
-    // https://taiko.gauge.org/#text
+    // https://docs.taiko.dev/#text
     export function text(selector: string, options?: MatchingOptions, ...args: SearchElement[]): ElementWrapper;
 
     /**
      * Proximity Selectors
      */
 
-    // https://taiko.gauge.org/#toleftof
+    // https://docs.taiko.dev/#toleftof
     export function toLeftOf(selector: SearchElement | ElementWrapper): RelativeSearchElement;
-    // https://taiko.gauge.org/#torightof
+    // https://docs.taiko.dev/#torightof
     export function toRightOf(selector: SearchElement | ElementWrapper): RelativeSearchElement;
-    // https://taiko.gauge.org/#above
+    // https://docs.taiko.dev/#above
     export function above(selector: SearchElement | ElementWrapper): RelativeSearchElement;
-    // https://taiko.gauge.org/#below
+    // https://docs.taiko.dev/#below
     export function below(selector: SearchElement | ElementWrapper): RelativeSearchElement;
-    // https://taiko.gauge.org/#near
+    // https://docs.taiko.dev/#near
     export function near(selector: SearchElement | ElementWrapper, opts?: ProximitySelectorNearOptions): RelativeSearchElement;
 
     /**
      * Events
      */
 
-    // https://taiko.gauge.org/#prompt
+    // https://docs.taiko.dev/#prompt
     export function prompt(message: string, callback: Function): void;
-    // https://taiko.gauge.org/#confirm
+    // https://docs.taiko.dev/#confirm
     export function confirm(message: string, callback: Function): void;
-    // https://taiko.gauge.org/#beforeunload
+    // https://docs.taiko.dev/#beforeunload
     export function beforeunload(message: string, callback: Function): void;
 
     /**
      * Helpers
      */
 
-    // https://taiko.gauge.org/#evaluate
+    // https://docs.taiko.dev/#evaluate
     export function evaluate(
         selector?: SearchElement,
         handlerCallback?: (element: HTMLElement, args?: EvaluateElementOptions) => Object,
         options?: NavigationOptions
     ): Promise<Object>;
-    // https://taiko.gauge.org/#intervalsecs
+    // https://docs.taiko.dev/#intervalsecs
     export function intervalSecs(secs: number): number;
-    // https://taiko.gauge.org/#timeoutsecs
+    // https://docs.taiko.dev/#timeoutsecs
     export function timeoutSecs(secs: number): number;
-    // https://taiko.gauge.org/#to
+    // https://docs.taiko.dev/#to
     export function to(value: SearchElement): SearchElement;
-    // https://taiko.gauge.org/#into
+    // https://docs.taiko.dev/#into
     export function into(value: SearchElement): SearchElement;
-    // https://taiko.gauge.org/#accept
+    // https://docs.taiko.dev/#accept
     export function accept(text?: string): Promise<void>;
-    // https://taiko.gauge.org/#dismiss
+    // https://docs.taiko.dev/#dismiss
     export function dismiss(text?: string): Promise<void>;
-    // https://taiko.gauge.org/#setconfig
+    // https://docs.taiko.dev/#setconfig
     export function setConfig(options: GlobalConfigurationOptions): void;
-    // https://taiko.gauge.org/#currenturl
+    // https://docs.taiko.dev/#currenturl
     export function currentURL(): Promise<string>;
-    // https://taiko.gauge.org/#waitfor
+    // https://docs.taiko.dev/#waitfor
     export function waitFor(time: number): Promise<void>;
     export function waitFor(element: SearchElement, time: number): Promise<void>;
 }
