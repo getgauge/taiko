@@ -3,6 +3,7 @@
 //
 
 declare module 'taiko' {
+
     export type BrowserEvent =
         | 'DOMContentLoaded'
         | 'loadEventFired'
@@ -11,6 +12,10 @@ declare module 'taiko' {
         | 'firstPaint'
         | 'firstContentfulPaint'
         | 'firstMeaningfulPaint';
+
+    /**
+     * Options
+     */
 
     export interface BrowserOptions {
         headless?: boolean;
@@ -67,6 +72,52 @@ declare module 'taiko' {
         fullPage?: boolean;
     }
 
+    export interface ViewPortOptions {
+        width: number;
+        height: number;
+        deviceScaleFactor?: number;
+        mobile?: boolean;
+        scale?: number;
+        screenWidth?: number;
+        screenHeight?: number;
+        positionX?: number;
+        positionY?: number;
+        dontSetVisibleSize?: boolean;
+        screenOrientation?: ViewPortScreenOrientation;
+        viewport?: ViewPort;
+    }
+
+    export interface CookieOptions {
+        url?: string;
+        domain?: string;
+        path?: string;
+    }
+
+    export interface CookieDetailOptions extends CookieOptions {
+        secure?: boolean;
+        httpOnly?: boolean;
+        sameSite?: string;
+        expires?: number;
+    }
+
+    export interface LocationOptions {
+        latitude: number;
+        longitude: number;
+        accuracy: number;
+    }
+
+    export interface ProximitySelectorNearOptions {
+        offset: number;
+    }
+
+    export interface EvaluateElementOptions {
+        [key: string]: any;
+    }
+
+    /**
+     * Elements, Selectors and Searches
+     */
+
     export interface Element {
         nodeId: string;
         description?: string;
@@ -117,6 +168,10 @@ declare module 'taiko' {
     // SearchElement mimics isSelector, isString, isElement and also allows relative search elements
     export type SearchElement = string | Selector | Element | RelativeSearchElement;
 
+    /**
+     * Intercept
+     */
+
     export type InterceptRedirectUrl = string;
 
     export interface InterceptMockData {
@@ -127,6 +182,10 @@ declare module 'taiko' {
         respond(response: InterceptMockData);
     }
     export type interceptRequestHandler = (request: InterceptRequest) => Promise<void>;
+
+    /**
+     * Viewport
+     */
 
     export interface ViewPortScreenOrientation {
         type: 'portraitPrimary' | 'portraitSecondary' | 'landscapePrimary' | 'landscapeSecondary';
@@ -139,39 +198,10 @@ declare module 'taiko' {
         height: number;
         scale: number;
     }
-    export interface ViewPortOptions {
-        width: number;
-        height: number;
-        deviceScaleFactor?: number;
-        mobile?: boolean;
-        scale?: number;
-        screenWidth?: number;
-        screenHeight?: number;
-        positionX?: number;
-        positionY?: number;
-        dontSetVisibleSize?: boolean;
-        screenOrientation?: ViewPortScreenOrientation;
-        viewport?: ViewPort;
-    }
 
-    export interface CookieOptions {
-        url?: string;
-        domain?: string;
-        path?: string;
-    }
-
-    export interface CookieDetailOptions extends CookieOptions {
-        secure?: boolean;
-        httpOnly?: boolean;
-        sameSite?: string;
-        expires?: number;
-    }
-
-    export interface LocationOptions {
-        latitude: number;
-        longitude: number;
-        accuracy: number;
-    }
+    /**
+     * Distances
+     */
 
     export interface DragAndDropDistance {
         up: number;
@@ -180,17 +210,13 @@ declare module 'taiko' {
         right: number;
     }
 
+    /**
+     * Coordinates
+     */
+
     export interface MouseCoordinates {
         x: number;
         y: number;
-    }
-
-    export interface ProximitySelectorNearOptions {
-        offset: number;
-    }
-
-    export interface EvaluateElementOptions {
-        [key: string]: any;
     }
 
     /**
