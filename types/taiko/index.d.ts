@@ -94,15 +94,28 @@ declare module 'taiko' {
 
     // BasicSelector mimics isSelector
     export interface BasicSelector {
-        // FIXME: @sriv: is that correct?
         elements: Element[] | Node[] | string[];
         exists(): boolean;
         [key: string]: any;
     };
+
+    export interface MatchingNode { elem: Element, dist: number };
+
+    /**
+     * a relative search element is returned by proximity methods such as near,
+     */
+    export interface RelativeSearchElement {
+        desc: string;
+        condition(element: Element, value: number): boolean;
+        findProximityElementRects(): { elem: Element, result: any }; // result is wrapped in a callback
+        validNodes(nodeId: Element): MatchingNode;
+    }
+
     // isSelector also allows ElementWrapper instances
     export type Selector = BasicSelector | ElementWrapper;
-    // SearchElement mimics isSelector, isString, isElement
-    export type SearchElement = string | Selector | Element;
+
+    // SearchElement mimics isSelector, isString, isElement and also allows relative search elements
+    export type SearchElement = string | Selector | Element | RelativeSearchElement;
 
     export type InterceptRedirectUrl = string;
 
@@ -235,11 +248,11 @@ declare module 'taiko' {
     // https://taiko.gauge.org/#title
     export function title(): Promise<string>;
     // https://taiko.gauge.org/#click
-    export function click(selector: SearchElement | MouseCoordinates, options?: ClickOptions, args?: string[]): Promise<void>;
+    export function click(selector: SearchElement | MouseCoordinates, options?: ClickOptions, ...args: RelativeSearchElement[]): Promise<void>;
     // https://taiko.gauge.org/#doubleclick
-    export function doubleClick(selector: SearchElement | MouseCoordinates, options?: BasicNavigationOptions, args?: string[]): Promise<void>;
+    export function doubleClick(selector: SearchElement | MouseCoordinates, options?: BasicNavigationOptions, ...args: RelativeSearchElement[]): Promise<void>;
     // https://taiko.gauge.org/#rightclick
-    export function rightClick(selector: SearchElement | MouseCoordinates, options?: BasicNavigationOptions, args?: string[]): Promise<void>;
+    export function rightClick(selector: SearchElement | MouseCoordinates, options?: BasicNavigationOptions, ...args: RelativeSearchElement[]): Promise<void>;
     // https://taiko.gauge.org/#draganddrop
     export function dragAndDrop(
         source: SearchElement,
@@ -313,15 +326,15 @@ declare module 'taiko' {
      */
 
     // https://taiko.gauge.org/#toleftof
-    export function toLeftOf(selector: SearchElement | ElementWrapper): SearchElement;
+    export function toLeftOf(selector: SearchElement | ElementWrapper): RelativeSearchElement;
     // https://taiko.gauge.org/#torightof
-    export function toRightOf(selector: SearchElement | ElementWrapper): SearchElement;
+    export function toRightOf(selector: SearchElement | ElementWrapper): RelativeSearchElement;
     // https://taiko.gauge.org/#above
-    export function above(selector: SearchElement | ElementWrapper): SearchElement;
+    export function above(selector: SearchElement | ElementWrapper): RelativeSearchElement;
     // https://taiko.gauge.org/#below
-    export function below(selector: SearchElement | ElementWrapper): SearchElement;
+    export function below(selector: SearchElement | ElementWrapper): RelativeSearchElement;
     // https://taiko.gauge.org/#near
-    export function near(selector: SearchElement | ElementWrapper, opts?: ProximitySelectorNearOptions): SearchElement;
+    export function near(selector: SearchElement | ElementWrapper, opts?: ProximitySelectorNearOptions): RelativeSearchElement;
 
     /**
      * Events
@@ -362,5 +375,5 @@ declare module 'taiko' {
     export function currentURL(): Promise<string>;
     // https://taiko.gauge.org/#waitfor
     export function waitFor(time: number): Promise<void>;
-    export function waitFor(element: string, time: number): Promise<void>;
+    export function waitFor(element: SearchElement, time: number): Promise<void>;
 }
