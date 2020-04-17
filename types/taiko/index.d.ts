@@ -296,7 +296,7 @@ declare module 'taiko' {
     // https://docs.taiko.dev/#hover
     export function hover(selector: SearchElement, options?: NavigationOptions): Promise<void>;
     // https://docs.taiko.dev/#focus
-    export function focus(selector: SearchElement, options?: EventOptions): Promise<void>;
+    export function focus(selector: SearchElement, options?: NavigationOptions): Promise<void>;
     // https://docs.taiko.dev/#write
     export function write(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
     // https://docs.taiko.dev/#clear
@@ -306,11 +306,11 @@ declare module 'taiko' {
     // https://docs.taiko.dev/#press
     export function press(keys: string | string[], options?: KeyOptions): Promise<void>;
     // https://docs.taiko.dev/#highlight
-    export function highlight(selector: SearchElement): Promise<void>;
+    export function highlight(selector: SearchElement, ...args: RelativeSearchElement[]): Promise<void>;
     // https://docs.taiko.dev/#mouseaction
     export function mouseAction(action: 'press' | 'move' | 'release', coordinates: MouseCoordinates, options?: NavigationOptions): Promise<void>;
     // https://docs.taiko.dev/#scrollto
-    export function scrollTo(selector: SearchElement, options?: EventOptions): Promise<void>;
+    export function scrollTo(selector: SearchElement, options?: NavigationOptions): Promise<void>;
     // https://docs.taiko.dev/#scrollright
     export function scrollRight(selector?: SearchElement | number, px?: number): Promise<void>;
     // https://docs.taiko.dev/#scrollleft
@@ -331,25 +331,21 @@ declare module 'taiko' {
     // https://docs.taiko.dev/#dollar
     export function $(selector: string, ...args: SearchElement[]): Selector;
     // https://docs.taiko.dev/#image
-    export function image(selector: SearchElement, ...args: SearchElement[]): SearchElement;
+    export function image(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): SearchElement;
     // https://docs.taiko.dev/#link
-    export function link(selector: SearchElement, ...args: SearchElement[]): SearchElement;
+    export function link(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): SearchElement;
     // https://docs.taiko.dev/#listitem
     export function listItem(selector: SearchElement, ...args: SearchElement[]): SearchElement;
     // https://docs.taiko.dev/#button
-    export function button(selector: SearchElement, ...args: SearchElement[]): SearchElement;
-    // https://docs.taiko.dev/#inputfield
-    export function inputField(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
+    export function button(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): SearchElement;
     // https://docs.taiko.dev/#filefield
-    export function fileField(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
+    export function fileField(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): ElementWrapper;
     // https://docs.taiko.dev/#textbox
     export function textBox(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
-    // https://docs.taiko.dev/#combobox
-    export function comboBox(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
     // https://docs.taiko.dev/#dropdown
-    export function dropDown(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
+    export function dropDown(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): ElementWrapper;
     // https://docs.taiko.dev/#checkbox
-    export function checkBox(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
+    export function checkBox(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): ElementWrapper;
     // https://docs.taiko.dev/#radiobutton
     export function radioButton(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): ElementWrapper;
     // https://docs.taiko.dev/#text
