@@ -114,6 +114,14 @@ declare module 'taiko' {
         [key: string]: any;
     }
 
+    export interface SelectionOptions {
+        selectHiddenElement: boolean;
+    }
+
+    export interface MatchingOptions {
+        exactMatch: boolean;
+    }
+
     /**
      * Elements, Selectors and Searches
      */
@@ -286,7 +294,7 @@ declare module 'taiko' {
         distance: DragAndDropDistance
     ): Promise<void>;
     // https://taiko.gauge.org/#hover
-    export function hover(selector: SearchElement, options?: EventOptions): Promise<void>;
+    export function hover(selector: SearchElement, options?: NavigationOptions): Promise<void>;
     // https://taiko.gauge.org/#focus
     export function focus(selector: SearchElement, options?: EventOptions): Promise<void>;
     // https://taiko.gauge.org/#write
@@ -343,9 +351,9 @@ declare module 'taiko' {
     // https://taiko.gauge.org/#checkbox
     export function checkBox(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
     // https://taiko.gauge.org/#radiobutton
-    export function radioButton(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
+    export function radioButton(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): ElementWrapper;
     // https://taiko.gauge.org/#text
-    export function text(selector: string, ...args: SearchElement[]): ElementWrapper;
+    export function text(selector: string, options?: MatchingOptions, ...args: SearchElement[]): ElementWrapper;
 
     /**
      * Proximity Selectors
