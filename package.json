@@ -49,7 +49,7 @@
   "author": "getgauge",
   "license": "MIT",
   "dependencies": {
-    "babylon": "^6.18.0",
+    "@babel/parser": "^7.9.4",
     "chrome-remote-interface": "^0.28.1",
     "commander": "^5.0.0",
     "debug": "^4.1.1",
