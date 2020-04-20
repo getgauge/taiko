@@ -1,0 +1,7 @@
+[build]
+  command = "npm run doc"
+  publish = "docs/site"
+
+[[redirects]]
+  from = "/devices"
+  to = "https://github.com/getgauge/taiko/blob/master/lib/data/devices.js"
