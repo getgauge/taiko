@@ -118,7 +118,7 @@ if (isTaikoRunner(processArgv[1])) {
     .option('-w, --wait-time <time in ms>', 'runs script with provided delay\n', parseInt)
     .option(
       '--emulate-device <device>',
-      'Allows to simulate device viewport. Visit https://github.com/getgauge/taiko/blob/master/lib/devices.js for all the available devices\n',
+      'Allows to simulate device viewport. Visit https://docs.taiko.dev/devices for all the available devices\n',
       setupEmulateDevice,
     )
     .option(
