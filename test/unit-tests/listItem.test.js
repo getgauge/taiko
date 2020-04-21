@@ -18,7 +18,7 @@ describe(test_name, () => {
         <li>Milk</li>
       </ul>
       <div class="hiddenTest">
-           <p id="hidden" style="display:none>taiko-hidden</p>
+           <li id="hidden" style="display:none">taiko-hidden</li>
            <p>demo</p>
       </div>
     `;
@@ -57,9 +57,8 @@ describe(test_name, () => {
       await expect(listItem('.foo').text()).to.be.eventually.rejected;
     });
 
-    // Should run after fix #811
-    it.skip('should return false for hidden element when isVisible fn is called on listItem', async () => {
-      expect(await listItem({ id: 'hidden' }, { selectHiddenElement: true }).isVisible()).to.be
+    it('should return false for hidden element when isVisible fn is called on listItem', async () => {
+      expect(await listItem({ id: 'hidden' }, { selectHiddenElements: true }).isVisible()).to.be
         .false;
     });
 

@@ -152,7 +152,7 @@ describe(test_name, () => {
     it('should find hidden radio buttons', async () => {
       expect(
         await radioButton('hiddenRadioButton', {
-          selectHiddenElement: true,
+          selectHiddenElements: true,
         }).exists(),
       ).to.be.true;
     });
@@ -163,7 +163,7 @@ describe(test_name, () => {
 
     it('should return false for hidden element when isVisible fn is called on textBox', async () => {
       expect(
-        await radioButton({ id: 'hiddenRadioButton' }, { selectHiddenElement: true }).isVisible(),
+        await radioButton({ id: 'hiddenRadioButton' }, { selectHiddenElements: true }).isVisible(),
       ).to.be.false;
     });
   });

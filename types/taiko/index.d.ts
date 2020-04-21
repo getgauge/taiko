@@ -115,7 +115,7 @@ declare module 'taiko' {
     }
 
     export interface SelectionOptions {
-        selectHiddenElement: boolean;
+        selectHiddenElements: boolean;
     }
 
     export interface MatchingOptions {
