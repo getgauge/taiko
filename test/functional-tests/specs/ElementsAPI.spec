@@ -7,7 +7,7 @@ Combo Box
 ---------
 
 * Ensure Drop down "Cars" exists
-* Select "Sab" of Drop down "Cars". The value now should be "saab"
+* Select "Saab" of Drop down "Cars". The value now should be "saab"
 
 Check Box
 ---------
