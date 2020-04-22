@@ -201,17 +201,17 @@ describe(test_name, () => {
       it('Should match hidden buttons', async () => {
         expect(
           await button('HiddenButton', {
-            selectHiddenElement: true,
+            selectHiddenElements: true,
           }).exists(),
         ).to.be.true;
         expect(
           await button('Input Hidden Reset', {
-            selectHiddenElement: true,
+            selectHiddenElements: true,
           }).exists(),
         ).to.be.true;
         expect(
           await button('Input Hidden Submit', {
-            selectHiddenElement: true,
+            selectHiddenElements: true,
           }).exists(),
         ).to.be.true;
       });
@@ -219,7 +219,7 @@ describe(test_name, () => {
       it('should return false for hidden element when isVisible fn is called on button', async () => {
         expect(
           await button('HiddenButton', {
-            selectHiddenElement: true,
+            selectHiddenElements: true,
           }).isVisible(),
         ).to.be.false;
       });

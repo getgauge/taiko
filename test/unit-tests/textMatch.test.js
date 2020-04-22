@@ -25,6 +25,7 @@ describe('match', () => {
             <div name="text_node">
                 User name: <input type="text" name="uname">
             </div>
+            <p style="display:none"> Hidden text </p>
             <div name="value_or_type_of_field_as_text">
                 <input type="button" value="click me">
                 <input type="submit">
@@ -347,6 +348,12 @@ describe('match', () => {
 
       it('text should be visible when ', async () => {
         expect(await text('Element with display inline should be invisible').exists()).to.be.true;
+      });
+    });
+
+    describe('fetch hidden text', () => {
+      it('should return false for hidden element when isVisible fn is called on text', async () => {
+        expect(await text('Hidden text', { selectHiddenElements: true }).isVisible()).to.be.false;
       });
     });
 

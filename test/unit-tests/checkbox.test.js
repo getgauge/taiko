@@ -196,7 +196,7 @@ const inputTypeCaseSensitive = {
       it('test finding hidden checkbox elements', async () => {
         expect(
           await checkBox('hiddenCheckbox', {
-            selectHiddenElement: true,
+            selectHiddenElements: true,
           }).exists(),
         ).to.be.true;
       });
@@ -208,7 +208,7 @@ const inputTypeCaseSensitive = {
       it('should return false for hidden element when isVisible fn is called on textBox', async () => {
         expect(
           await checkBox('hiddenCheckbox', {
-            selectHiddenElement: true,
+            selectHiddenElements: true,
           }).isVisible(),
         ).to.be.false;
       });

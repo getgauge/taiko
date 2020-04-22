@@ -166,10 +166,9 @@ describe(test_name, () => {
         expect(await textBox('sampleTextArea').isVisible()).to.be.true;
       });
 
-      // Should run after fix811
-      it.skip('should return false for hidden element when isVisible fn is called on textBox', async () => {
+      it('should return false for hidden element when isVisible fn is called on textBox', async () => {
         expect(
-          await textBox({ id: 'hiddenTextAreaStyle' }, { selectHiddenElement: true }).isVisible(),
+          await textBox({ id: 'hiddenTextAreaStyle' }, { selectHiddenElements: true }).isVisible(),
         ).to.be.false;
       });
     });
@@ -394,6 +393,9 @@ describe(test_name, () => {
                         <div>
                             <input type="${inputType.type}" id="sample${inputType.type}" value="${inputType.testValue}">With Inline Text</input>
                         </div>
+                        <div>
+                            <input type="${inputType.type}" id="hidden${inputType.type}" value="${inputType.testValue}" style="display:none">With Inline Text</input>
+                        </div>
                     </form>
                 </div>`;
         filePath = createHtml(innerHtml, test_name + inputType.type);
@@ -484,6 +486,17 @@ describe(test_name, () => {
               id: inputType.name + 'WithLabelFor',
             }).description,
           ).to.be.eql(`Text field[@id = concat('inputType-${inputType.type}WithLabelFor', "")]`);
+        });
+
+        it('should return false for hidden element when isVisible fn is called', async () => {
+          expect(
+            await textBox(
+              {
+                id: `hidden${inputType.type}`,
+              },
+              { selectHiddenElements: true },
+            ).isVisible(),
+          ).to.be.false;
         });
       });
 
