@@ -142,7 +142,7 @@ declare module 'taiko' {
         get(selector: SearchElement): ElementWrapper;
         text(): string;
         value(): string;
-        select(): void;
+        select(value?:string|number): void;
         check(): void;
         uncheck(): void;
         isChecked(): boolean;
@@ -174,7 +174,7 @@ declare module 'taiko' {
     export type Selector = BasicSelector | ElementWrapper;
 
     // SearchElement mimics isSelector, isString, isElement and also allows relative search elements
-    export type SearchElement = string | Selector | Element | RelativeSearchElement;
+    export type SearchElement = string | Selector | Element | RelativeSearchElement | object;
 
     /**
      * Intercept
@@ -369,7 +369,8 @@ declare module 'taiko' {
     /**
      * Events
      */
-
+    // https://docs.taiko.dev/#alert
+    export function alert(message: string, callback: Function): void;     
     // https://docs.taiko.dev/#prompt
     export function prompt(message: string, callback: Function): void;
     // https://docs.taiko.dev/#confirm
@@ -406,4 +407,5 @@ declare module 'taiko' {
     // https://docs.taiko.dev/#waitfor
     export function waitFor(time: number): Promise<void>;
     export function waitFor(element: SearchElement, time: number): Promise<void>;
+    export function clearIntercept(requestUrl?:string):void;
 }
