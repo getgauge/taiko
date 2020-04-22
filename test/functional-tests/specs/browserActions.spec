@@ -91,9 +91,6 @@ Assert title to be "Document"
 * Assert page navigated to "/checkboxes"
 
 ## Set Timezone
-
-tags: knownIssue
-
 * Navigate to relative path "./specs/data/localStorage.html"
 * Set timezone "America/Jamaica"
 * Assert page has set timezome

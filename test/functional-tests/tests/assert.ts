@@ -1,5 +1,3 @@
-/* global date */
-
 const assert = require('assert');
 import { getElements } from './selectors';
 import {Step} from 'gauge-ts'
@@ -50,7 +48,7 @@ public async assertTextExistsOnTextArea (
 @Step('Assert page has set timezome')
 public async assertPageHasSetTimezone() {
   const getTime = await evaluate(() => {
-    return Date.now().toString();
+    return new Date(1479579154987).toString();
   });
   assert.equal(getTime, 'Sat Nov 19 2016 13:12:34 GMT-0500 (Eastern Standard Time)');
 }

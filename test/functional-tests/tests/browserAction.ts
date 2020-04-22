@@ -1,5 +1,3 @@
-/* global globalThis */
-
 import {
   switchTo,
   openTab,
@@ -134,9 +132,6 @@ export default class Assert {
 
   @Step('Set timezone <arg0>')
   public async setTimeZone(arg0) {
-    await evaluate(() => {
-      return (globalThis.date = new Date(1479579154987));
-    });
     await emulateTimezone(arg0);
   }
 

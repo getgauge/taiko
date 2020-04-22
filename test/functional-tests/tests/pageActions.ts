@@ -85,7 +85,8 @@ public async tapOnElement(arg0) {
 
 @Step('Assert tap on screen')
 public async assertTapOnScreen() {
-  const touch = await evaluate(() => []);
+  function getResult():void{}
+  const touch = await evaluate(() => getResult());
   assert.deepEqual(touch, ['Touchstart: 0', 'Touchend: 0']);
 }
 

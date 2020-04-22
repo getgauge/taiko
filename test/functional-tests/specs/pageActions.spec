@@ -68,9 +68,6 @@
 * Assert url host is "localhost"
 
 ## Tap
-
-tags: knownIssue
-
 * Navigate to file with relative Path "/specs/data/touch.html"
 * Tap on "Click"
 * Assert tap on screen
