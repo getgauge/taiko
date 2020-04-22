@@ -1,6 +1,7 @@
 import { openBrowser, setConfig, screenshot, closeBrowser } from 'taiko';
-import { AfterSuite, BeforeSuite, AfterScenario, BeforeScenario, CustomScreenGrabber } from 'gauge-ts';
+import { AfterSuite, BeforeSuite, AfterScenario, BeforeScenario, CustomScreenshotWriter } from 'gauge-ts';
 import { startServer, stopServer } from './server';
+import { join, basename } from "path";
 const headless = process.env.headless.toLowerCase() === 'true';
 
 export default class Hooks {
@@ -22,11 +23,12 @@ export default class Hooks {
     setConfig({ navigationTimeout: 60000 });
   };
 
-  // @CustomScreenGrabber()
-  // public async takeScreenshot():Promise<Uint8Array>{
-  //   const screenshotGrabbed = await screenshot({ encoding: 'base64' });
-  //   return screenshotGrabbed;
-  // }
+  @CustomScreenshotWriter()
+  public async takeScreenshot():Promise<string>{
+    let fileName =  join(process.env["gauge_screenshots_dir"], `screenshot${Date.now()}.png`);
+    await screenshot({path:fileName});
+    return basename(fileName);
+  }
 
   @AfterScenario()
   public async afterScenario() { await closeBrowser() };
