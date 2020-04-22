@@ -30,7 +30,7 @@ import {
 } from 'taiko';
 
 import { Step, ContinueOnFailure } from 'gauge-ts';
-export default class StepImplementation {
+export default class HtmlElementAPI{
 
 
   @Step('Navigate to <url>')

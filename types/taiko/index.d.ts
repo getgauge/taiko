@@ -70,6 +70,7 @@ declare module 'taiko' {
     export interface ScreenshotOptions {
         path?: string;
         fullPage?: boolean;
+        encoding?: string;
     }
 
     export interface ViewPortOptions {
@@ -103,7 +104,7 @@ declare module 'taiko' {
     export interface LocationOptions {
         latitude: number;
         longitude: number;
-        accuracy: number;
+        accuracy?: number;
     }
 
     export interface ProximitySelectorNearOptions {
@@ -135,7 +136,7 @@ declare module 'taiko' {
         isVisible?(): boolean;
         create?(nodeIds: string[], runtimeHandler?: any);
         isDisabled?(): boolean;
-    };
+    }
 
     export interface ElementWrapper {
         description: string;
@@ -156,9 +157,9 @@ declare module 'taiko' {
         elements: Element[] | Node[] | string[];
         exists(): boolean;
         [key: string]: any;
-    };
+    }
 
-    export interface MatchingNode { elem: Element, dist: number };
+    export interface MatchingNode { elem: Element, dist: number }
 
     /**
      * a relative search element is returned by proximity methods such as near,
@@ -250,10 +251,12 @@ declare module 'taiko' {
     export function emulateDevice(deviceModel: string);
     // https://docs.taiko.dev/#setviewport
     export function setViewPort(options: ViewPortOptions): Promise<void>;
+    // https://docs.taiko.dev/#emulateTimezone
+    export function emulateTimezone(timezoneId: string): Promise<void>;
     // https://docs.taiko.dev/#opentab
     export function openTab(targetUrl: string, options?: NavigationOptions): Promise<void>;
     // https://docs.taiko.dev/#closetab
-    export function closeTab(targetUrl: string): Promise<void>;
+    export function closeTab(targetUrl?: string): Promise<void>;
     // https://docs.taiko.dev/#overridepermissions
     export function overridePermissions(origin: string, permissions: string[]): Promise<void>;
     // https://docs.taiko.dev/#clearpermissionoverrides
@@ -274,7 +277,7 @@ declare module 'taiko' {
     // https://docs.taiko.dev/#goto
     export function goto(url: string, options?: NavigationOptions): Promise<void>;
     // https://docs.taiko.dev/#reload
-    export function reload(url: string, options?: NavigationOptions): Promise<void>;
+    export function reload(url?: string, options?: NavigationOptions): Promise<void>;
     // https://docs.taiko.dev/#goback
     export function goBack(options?: NavigationOptions): Promise<void>;
     // https://docs.taiko.dev/#goforward
@@ -290,8 +293,8 @@ declare module 'taiko' {
     // https://docs.taiko.dev/#draganddrop
     export function dragAndDrop(
         source: SearchElement,
-        destination: SearchElement,
-        distance: DragAndDropDistance
+        destination?: SearchElement,
+        distance?: DragAndDropDistance
     ): Promise<void>;
     // https://docs.taiko.dev/#hover
     export function hover(selector: SearchElement, options?: NavigationOptions): Promise<void>;
@@ -308,7 +311,7 @@ declare module 'taiko' {
     // https://docs.taiko.dev/#highlight
     export function highlight(selector: SearchElement, ...args: RelativeSearchElement[]): Promise<void>;
     // https://docs.taiko.dev/#mouseaction
-    export function mouseAction(action: 'press' | 'move' | 'release', coordinates: MouseCoordinates, options?: NavigationOptions): Promise<void>;
+    export function mouseAction(selector: SearchElement|'press' | 'move' | 'release', action?: 'press' | 'move' | 'release'|MouseCoordinates, coordinates?: MouseCoordinates|NavigationOptions, options?: NavigationOptions): Promise<void>;
     // https://docs.taiko.dev/#scrollto
     export function scrollTo(selector: SearchElement, options?: NavigationOptions): Promise<void>;
     // https://docs.taiko.dev/#scrollright
@@ -329,27 +332,27 @@ declare module 'taiko' {
      */
 
     // https://docs.taiko.dev/#dollar
-    export function $(selector: string, ...args: SearchElement[]): Selector;
+    export function $(selector: string, ...args: RelativeSearchElement[]): Selector;
     // https://docs.taiko.dev/#image
-    export function image(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): SearchElement;
+    export function image(selector: SearchElement, options?: SelectionOptions|RelativeSearchElement, ...args: RelativeSearchElement[]): SearchElement;
     // https://docs.taiko.dev/#link
-    export function link(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): SearchElement;
+    export function link(selector: SearchElement, options?: SelectionOptions|RelativeSearchElement, ...args: SearchElement[]): SearchElement;
     // https://docs.taiko.dev/#listitem
-    export function listItem(selector: SearchElement, ...args: SearchElement[]): SearchElement;
+    export function listItem(selector: SearchElement, ...args: RelativeSearchElement[]): SearchElement;
     // https://docs.taiko.dev/#button
-    export function button(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): SearchElement;
+    export function button(selector: SearchElement, options?: SelectionOptions|RelativeSearchElement, ...args: RelativeSearchElement[]): SearchElement;
     // https://docs.taiko.dev/#filefield
-    export function fileField(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): ElementWrapper;
+    export function fileField(selector: SearchElement, options?: SelectionOptions|RelativeSearchElement, ...args: RelativeSearchElement[]): ElementWrapper;
     // https://docs.taiko.dev/#textbox
-    export function textBox(selector: SearchElement, ...args: SearchElement[]): ElementWrapper;
+    export function textBox(selector: SearchElement, ...args: RelativeSearchElement[]): ElementWrapper;
     // https://docs.taiko.dev/#dropdown
-    export function dropDown(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): ElementWrapper;
+    export function dropDown(selector: SearchElement, options?: SelectionOptions|RelativeSearchElement, ...args: RelativeSearchElement[]): ElementWrapper;
     // https://docs.taiko.dev/#checkbox
-    export function checkBox(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): ElementWrapper;
+    export function checkBox(selector: SearchElement, options?: SelectionOptions|RelativeSearchElement, ...args: RelativeSearchElement[]): ElementWrapper;
     // https://docs.taiko.dev/#radiobutton
-    export function radioButton(selector: SearchElement, options?: SelectionOptions, ...args: SearchElement[]): ElementWrapper;
+    export function radioButton(selector: SearchElement, options?: SelectionOptions|RelativeSearchElement, ...args: RelativeSearchElement[]): ElementWrapper;
     // https://docs.taiko.dev/#text
-    export function text(selector: string, options?: MatchingOptions, ...args: SearchElement[]): ElementWrapper;
+    export function text(selector: string, options?: MatchingOptions|RelativeSearchElement, ...args: RelativeSearchElement[]): ElementWrapper;
 
     /**
      * Proximity Selectors

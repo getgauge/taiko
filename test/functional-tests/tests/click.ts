@@ -1,7 +1,7 @@
 'use strict';
-var { getElements } = require('./selectors');
+import { getElements } from './selectors';
 
-const {
+import {
   link,
   click,
   below,
@@ -12,51 +12,64 @@ const {
   doubleClick,
   mouseAction,
   $,
-} = require('taiko');
+} from 'taiko';
 
-step('Click link <userlink> below <table>', async function (userlink, table) {
+import {Step} from 'gauge-ts';
+
+export default class Click{
+  
+@Step('Click link <userlink> below <table>')
+public async clickLinkBelowTable(userlink, table) {
   for (const element of getElements(table)) {
     await click(link(userlink, below(element)));
   }
-});
+}
 
-step('Click an element that contains <text>', async function (text) {
+@Step('Click an element that contains <text>')
+public async clickElementWithText(text) {
   await click(text);
-});
+}
 
-step('Click link <userlink>', async function (userlink) {
+@Step('Click link <userlink>')
+public async clickLink (userlink) {
   await click(link(userlink));
-});
+}
 
-step('Click <selector>', async function (selector) {
+@Step('Click <selector>')
+public async clickSelector(selector) {
   await click(selector);
-});
+}
 
-step('Click link above <table>', async function (table) {
+@Step('Click link above <table>')
+public async clickLinkAbove(table) {
   for (const element of getElements(table)) {
     await click(link(above(element)));
   }
-});
+}
 
-step('Click button to right of <table>', async function (table) {
+@Step('Click button to right of <table>')
+public async clickButtonToRightOf(table) {
   for (const element of getElements(table)) {
     await click(button(toRightOf(element)));
   }
-});
+}
 
-step('Right click <table>', async function (table) {
+@Step('Right click <table>')
+public async rightClick(table) {
   for (const element of getElements(table)) {
     await rightClick(element);
   }
-});
+}
 
-step('Double click <table>', async function (table) {
+@Step('Double click <table>')
+public async doubleClick(table) {
   for (const element of getElements(table)) {
     await doubleClick(element);
   }
-});
+}
 
-step('Press & Release To Element with element1 and <X>,<Y> co-ordinates', async function (X, Y) {
+@Step('Press & Release To Element with element1 and <X>,<Y> co-ordinates')
+public async pressAndReleaseElement1(X, Y) {
   await mouseAction($('#button1'), 'press', {
     x: parseInt(X),
     y: parseInt(Y),
@@ -65,9 +78,10 @@ step('Press & Release To Element with element1 and <X>,<Y> co-ordinates', async 
     x: parseInt(X),
     y: parseInt(Y),
   });
-});
+}
 
-step('Press & Release To Element with element2 and <X>,<Y> co-ordinates', async function (X, Y) {
+@Step('Press & Release To Element with element2 and <X>,<Y> co-ordinates')
+public async pressAndReleaseElement2(X, Y) {
   await mouseAction($('#button4'), 'press', {
     x: parseInt(X),
     y: parseInt(Y),
@@ -76,9 +90,10 @@ step('Press & Release To Element with element2 and <X>,<Y> co-ordinates', async 
     x: parseInt(X),
     y: parseInt(Y),
   });
-});
+}
 
-step('Press & Release To Element with <X>,<Y> co-ordinates', async function (X, Y) {
+@Step('Press & Release To Element with <X>,<Y> co-ordinates')
+public async pressAndReleaseElement (X, Y) {
   await mouseAction('press', {
     x: parseInt(X),
     y: parseInt(Y),
@@ -87,4 +102,6 @@ step('Press & Release To Element with <X>,<Y> co-ordinates', async function (X, 
     x: parseInt(X),
     y: parseInt(Y),
   });
-});
+}
+
+}
