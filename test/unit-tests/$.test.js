@@ -15,7 +15,7 @@ describe(test_name, () => {
             <p>demo</p>
         </div>
         <div class="hiddenTest">
-            <p id="hidden" style="display:none>taiko-hidden</p>
+            <p id="hidden" style="display:none">taiko-hidden</p>
             <p>demo</p>
     </div>
             `;
@@ -58,11 +58,10 @@ describe(test_name, () => {
       await expect($("//*[text()='foo']").isVisible()).to.be.eventually.rejected;
     });
 
-    //TODO $ API does not accept selectHiddenElement as options should be fixed #811
-    it.skip('should return false for hidden element when isVisible fn is called on text', async () => {
+    it('should return false for hidden element when isVisible fn is called on text', async () => {
       expect(
-        await $('#taiko-hidden', {
-          selectHiddenElement: true,
+        await $('#hidden', {
+          selectHiddenElements: true,
         }).isVisible(),
       ).to.be.false;
     });

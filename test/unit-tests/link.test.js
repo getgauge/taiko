@@ -48,12 +48,12 @@ describe(test_name, () => {
       expect(await link(toRightOf('Click')).exists()).to.be.true;
     });
     it('should find the link for Hidden Elements with ID', async () => {
-      expect(await link({ id: 'hiddenLinkID' }, { selectHiddenElement: true }).exists()).to.be.true;
+      expect(await link({ id: 'hiddenLinkID' }, { selectHiddenElements: true }).exists()).to.be.true;
     });
     it('should find the link for Hidden Elements with Text', async () => {
       expect(
         await link('HiddenLink', {
-          selectHiddenElement: true,
+          selectHiddenElements: true,
         }).exists(),
       ).to.be.true;
     });
@@ -61,7 +61,7 @@ describe(test_name, () => {
     it('should return false when isVisible fn is observed on hidden element', async () => {
       expect(
         await link('HiddenLink', {
-          selectHiddenElement: true,
+          selectHiddenElements: true,
         }).isVisible(),
       ).to.be.false;
     });
@@ -69,7 +69,7 @@ describe(test_name, () => {
     it('test isVisible() should throw err when element not found', async () => {
       await expect(
         link('foo', {
-          selectHiddenElement: true,
+          selectHiddenElements: true,
         }).isVisible(),
       ).to.be.rejected;
     });

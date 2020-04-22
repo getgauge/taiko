@@ -38,6 +38,13 @@ describe(test_name, () => {
       '<option value="mercedes">Mercedes</option>' +
       '<option value="audi">Audi</option>' +
       '</select>' +
+      '<label for="hiddenselect">Hidden Cars</label>' +
+      '<select id="hiddenselect" name="select" value="select" style="display:none">' +
+      '<option value="volvo">Volvo</option>' +
+      '<option value="saab" disabled>Saab</option>' +
+      '<option value="mercedes">Mercedes</option>' +
+      '<option value="audi">Audi</option>' +
+      '</select>' +
       '<div name="ReasonText"> Reason: </div>' +
       '<select class="select" name="reasonselection">' +
       '<option value="-99"> Select </option>' +
@@ -90,6 +97,10 @@ describe(test_name, () => {
       await expect(dropDown('.foo').text()).to.be.eventually.rejectedWith(
         'DropDown with label .foo  not found',
       );
+    });
+
+    it('should return false for hidden element when isVisible fn is called on dropDown', async () => {
+      expect(await dropDown('Hidden Cars', { selectHiddenElements: true }).isVisible()).to.be.false;
     });
 
     it('test select()', async () => {
