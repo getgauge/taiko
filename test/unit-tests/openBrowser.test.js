@@ -36,7 +36,7 @@ describe('OpenBrowser', () => {
     });
   });
 
-  describe.only('should set args', async () => {
+  describe('should set args', async () => {
     it('from env variable TAIKO_BROWSER_ARGS', async () => {
       process.env.TAIKO_BROWSER_ARGS = '--test-arg,--test-arg1';
       const setBrowserArgs = taiko.__get__('setBrowserArgs');
