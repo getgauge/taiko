@@ -28,6 +28,7 @@ describe(test_name, () => {
     taiko.__set__('pageHandler', {
       handleNavigation: (url) => {
         actualUrl = url;
+        return 200;
       },
     });
   });
@@ -99,5 +100,10 @@ describe(test_name, () => {
     };
     await taiko.goto('example.com', expectedOptions);
     expect(actualOptions).to.deep.equal(expectedOptions);
+  });
+
+  it('should return status code', async () => {
+    const status = await taiko.goto('example.com');
+    expect(status).to.equal(200);
   });
 });
