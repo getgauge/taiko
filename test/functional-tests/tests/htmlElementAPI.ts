@@ -26,13 +26,11 @@ import {
   intercept,
   toRightOf,
   alert,
-  clearIntercept
+  clearIntercept,
 } from 'taiko';
 
 import { Step, ContinueOnFailure } from 'gauge-ts';
-export default class HtmlElementAPI{
-
-
+export default class HtmlElementAPI {
   @Step('Navigate to <url>')
   public async navigate(url) {
     await goto(url);
@@ -42,7 +40,7 @@ export default class HtmlElementAPI{
   public async dropdownExists(dropDownName) {
     const box = dropDown(dropDownName);
     assert.ok(await box.exists());
-  };
+  }
 
   @Step('Select <value> of Drop down <dropDownName>. The value now should be <fieldValue>')
   public async selectDropDownValue(value, dropDownName, fieldValue) {
@@ -136,7 +134,6 @@ export default class HtmlElementAPI{
     await click(button(buttonName));
   }
 
-
   @Step('Wait for dismiss message <message> on click of button <buttonName>')
   public async waitForDismiss(message, buttonName) {
     alert(message, async () => await dismiss());
@@ -155,8 +152,8 @@ export default class HtmlElementAPI{
   }
 
   @Step('Navigate to relative path <relativePath>')
-  public async  navigateToPath(relativePath) {
-    var absolutePath = _path.resolve(relativePath);
+  public async navigateToPath(relativePath) {
+    const absolutePath = _path.resolve(relativePath);
     await goto('file:///' + absolutePath);
   }
 
@@ -190,12 +187,8 @@ export default class HtmlElementAPI{
     await scrollUp(parseInt(pixels, 10));
   }
 
-
   @Step('Scroll element <element> up by pixels <pixels>')
-  public async scrollElementUp(
-    element,
-    pixels,
-  ) {
+  public async scrollElementUp(element, pixels) {
     await scrollUp($(element), parseInt(pixels, 10));
   }
 
@@ -225,7 +218,7 @@ export default class HtmlElementAPI{
 
   @Step('Navigate to relative path <path> with timeout <timeout> ms')
   public async navigateToPathWithTimeout(path, timeout) {
-    var absolutePath = _path.resolve(path);
+    const absolutePath = _path.resolve(path);
     await goto('file:///' + absolutePath, {
       navigationTimeout: timeout,
     });
@@ -245,5 +238,4 @@ export default class HtmlElementAPI{
   public async resetAllIntercept() {
     clearIntercept();
   }
-
 }

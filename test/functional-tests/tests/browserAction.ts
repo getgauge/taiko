@@ -17,9 +17,7 @@ import { Step } from 'gauge-ts';
 const assert = require('assert');
 const cwd = process.cwd();
 
-
 export default class Assert {
-
   @Step('Switch to tab with url <title>')
   public async switchTabWithURL(title) {
     await switchTo(title);
@@ -69,18 +67,12 @@ export default class Assert {
   }
 
   @Step('Override browser permission with <geolocation> for site <url>')
-  public async overrideBrowserPermission(
-    geolocation,
-    url,
-  ) {
+  public async overrideBrowserPermission(geolocation, url) {
     await overridePermissions(url, [geolocation]);
   }
 
   @Step('Setlocation with longitude as <longitude> and latitude as <latitude>')
-  public async setLocationWithLatAndLong(
-    longitude,
-    latitude,
-  ) {
+  public async setLocationWithLatAndLong(longitude, latitude) {
     await setLocation({
       longitude: parseFloat(longitude),
       latitude: parseFloat(latitude),
@@ -88,10 +80,7 @@ export default class Assert {
   }
 
   @Step('Assert location longitude as <longitude> and latitude as <latitude>')
-  public async function(
-    longitude,
-    latitude,
-  ) {
+  public async function(longitude, latitude) {
     const geolocation: any = await evaluate(
       () =>
         new Promise((resolve) =>
@@ -134,5 +123,4 @@ export default class Assert {
   public async setTimeZone(arg0) {
     await emulateTimezone(arg0);
   }
-
 }

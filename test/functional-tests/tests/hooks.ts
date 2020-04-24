@@ -1,11 +1,16 @@
 import { openBrowser, setConfig, screenshot, closeBrowser } from 'taiko';
-import { AfterSuite, BeforeSuite, AfterScenario, BeforeScenario, CustomScreenshotWriter } from 'gauge-ts';
+import {
+  AfterSuite,
+  BeforeSuite,
+  AfterScenario,
+  BeforeScenario,
+  CustomScreenshotWriter,
+} from 'gauge-ts';
 import { startServer, stopServer } from './server';
-import { join, basename } from "path";
+import { join, basename } from 'path';
 const headless = process.env.headless.toLowerCase() === 'true';
 
 export default class Hooks {
-
   @BeforeScenario()
   public async beforeScenario() {
     await openBrowser({
@@ -21,25 +26,27 @@ export default class Hooks {
       ],
     });
     setConfig({ navigationTimeout: 60000 });
-  };
+  }
 
   @CustomScreenshotWriter()
-  public async takeScreenshot():Promise<string>{
-    let fileName =  join(process.env["gauge_screenshots_dir"], `screenshot${Date.now()}.png`);
-    await screenshot({path:fileName});
+  public async takeScreenshot(): Promise<string> {
+    const fileName = join(process.env['gauge_screenshots_dir'], `screenshot${Date.now()}.png`);
+    await screenshot({ path: fileName });
     return basename(fileName);
   }
 
   @AfterScenario()
-  public async afterScenario() { await closeBrowser() };
+  public async afterScenario() {
+    await closeBrowser();
+  }
 
   @BeforeSuite()
   public async beforeSuite() {
     await startServer();
-  };
+  }
 
   @AfterSuite()
-  public async afterSuite(){
+  public async afterSuite() {
     await stopServer();
-  };
+  }
 }

@@ -1,10 +1,9 @@
 'use strict';
 import { button, link, textBox, text, $ } from 'taiko';
 
-
 function getElementWithSelector(element, selector) {
-  var selectedElement = null;
-  var selectedItem;
+  let selectedElement = null;
+  let selectedItem;
   try {
     selectedItem = JSON.parse(selector);
   } catch (err) {
@@ -31,10 +30,9 @@ function getElementWithSelector(element, selector) {
 }
 
 export function getElements(table) {
-  var referenceElements = [];
+  const referenceElements = [];
   table.rows.forEach(function (row) {
     referenceElements.push(getElementWithSelector(row.cells[0], row.cells[1]));
   });
   return referenceElements;
 }
-
