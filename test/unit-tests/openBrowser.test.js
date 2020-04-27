@@ -36,6 +36,15 @@ describe('OpenBrowser', () => {
     });
   });
 
+  describe('should set args', async () => {
+    it('from env variable TAIKO_BROWSER_ARGS', async () => {
+      process.env.TAIKO_BROWSER_ARGS = '--test-arg,--test-arg1';
+      const setBrowserArgs = taiko.__get__('setBrowserArgs');
+      const testArgs = await setBrowserArgs({ args: ['something'] });
+      expect(testArgs).to.include.members(['something', '--test-arg', '--test-arg1']);
+    });
+  });
+
   describe('browser crashes', () => {
     let chromeProcess;
     beforeEach(async () => {
