@@ -52,6 +52,24 @@ describe(test_name, () => {
             <div style="height:1500px"></div>
             <div id="root" style="background:red;"></div>
             <span onclick="displayText('Click works with auto scroll.')">Show Message</span>
+            <style>
+                .overlayContainer{
+                  position:relative;
+                }
+                .overlay {
+                  position: absolute;
+                  top:0;
+                  left:0;
+                  width:100%;
+                  height:100%;
+                  text-align:center;
+                }
+            </style>
+            <div class="overlayContainer">
+                <div class='a'>Click Element covered</div>
+                <span class='overlay'></span>
+            </div>
+            <button type="button" disabled>Click Me!</button>
             `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -116,69 +134,20 @@ describe(test_name, () => {
       await click('Click ghost element covering text');
       expect(await text('Click works with ghost element covering text.').exists()).to.be.true;
     });
-  });
 
-  describe('With element covered by an overlay', () => {
-    before(async () => {
-      let innerHtml = `
-            <style>
-                .overlay {
-                    position: absolute;
-                    top:0px;
-                    display:block;
-                    width:100%;
-                    height:100%;
-                }
-            </style>
-            <div>
-                <div class='a' onclick="alert('foo')" >Click me</div>
-                <span class='overlay'></span>
-            </div>
-            `;
-      overlayFilePath = createHtml(innerHtml, `${test_name}-overlay`);
-      await goto(overlayFilePath);
-      setConfig({
-        waitForNavigation: false,
-        retryTimeout: 100,
-        retryInterval: 10,
+    describe('With element covered by an overlay', () => {
+      it('should throw error', async () => {
+        await expect(click('Click Element covered')).to.be.rejectedWith(
+          'Element matching text "Click Element covered" is covered by other element',
+        );
       });
     });
-
-    after(() => {
-      resetConfig();
-      removeFile(overlayFilePath);
-    });
-
-    it('should throw error', async () => {
-      await expect(click('Click me')).to.be.rejectedWith(
-        'Element matching text "Click me" is covered by other element',
-      );
-    });
-  });
-  describe('With element disabled', () => {
-    before(async () => {
-      let innerHtml = `
-        <body>
-            <button type="button" disabled>Click Me!</button>
-        </body>`;
-      overlayFilePath = createHtml(innerHtml, `${test_name}-disabled`);
-      await goto(overlayFilePath);
-      setConfig({
-        waitForNavigation: false,
-        retryTimeout: 100,
-        retryInterval: 10,
+    describe('With element disabled', () => {
+      it('should throw error if element is disabled', async () => {
+        await expect(click(button('Click me'))).to.be.rejectedWith(
+          'Button with label Click me is disabled',
+        );
       });
-    });
-
-    after(() => {
-      resetConfig();
-      removeFile(overlayFilePath);
-    });
-
-    it('should throw error if element is disabled', async () => {
-      await expect(click(button('Click me'))).to.be.rejectedWith(
-        'Button with label Click me is disabled',
-      );
     });
   });
 });
