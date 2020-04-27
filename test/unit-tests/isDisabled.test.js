@@ -26,7 +26,7 @@ describe('Disable fieldset test', () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false, retryTimeout: 100, retryInterval: 10 });
+    setConfig({ waitForNavigation: false, retryTimeout: 10, retryInterval: 10 });
   });
 
   after(async () => {
@@ -81,7 +81,7 @@ describe('Disable textArea test', () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false, retryTimeout: 100, retryInterval: 10 });
+    setConfig({ waitForNavigation: false, retryTimeout: 10, retryInterval: 10 });
   });
 
   after(async () => {
@@ -108,7 +108,7 @@ describe('Disable dropDown test', () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false, retryTimeout: 100, retryInterval: 10 });
+    setConfig({ waitForNavigation: false, retryTimeout: 10, retryInterval: 10 });
   });
 
   after(async () => {
@@ -135,7 +135,7 @@ describe('Disable dropDown option test', () => {
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
-    setConfig({ waitForNavigation: false, retryTimeout: 100, retryInterval: 10 });
+    setConfig({ waitForNavigation: false, retryTimeout: 10, retryInterval: 10 });
   });
 
   after(async () => {

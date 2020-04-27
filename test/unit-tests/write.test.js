@@ -38,7 +38,7 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     setConfig({
       waitForNavigation: false,
-      retryTimeout: 100,
+      retryTimeout: 10,
       retryInterval: 10,
     });
     await openBrowser(openBrowserArgs);

@@ -19,8 +19,8 @@ describe('Browser Context', () => {
   before(async () => {
     await openBrowser(openBrowserArgs);
     setConfig({
-      waitForNavigation: true,
-      retryTimeout: 100,
+      waitForNavigation: false,
+      retryTimeout: 10,
       retryInterval: 10,
     });
     const innerHtml = `<section class="header">
