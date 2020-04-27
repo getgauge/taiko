@@ -54,7 +54,7 @@ declare module 'taiko' {
         retryTimeout?: number;
     }
 
-    export interface TapOptions extends BasicNavigationOptions, EventOptions {}
+    export interface TapOptions extends BasicNavigationOptions, EventOptions { }
 
     export interface KeyOptions extends NavigationOptions {
         text?: string;
@@ -122,6 +122,16 @@ declare module 'taiko' {
         exactMatch: boolean;
     }
 
+    export interface BasicResponse {
+        url: string,
+        status: number,
+        statusText: string,
+    }
+
+    export interface Response extends BasicResponse{
+        redirectedResponse?: BasicResponse[]
+    }
+
     /**
      * Elements, Selectors and Searches
      */
@@ -135,7 +145,7 @@ declare module 'taiko' {
         isVisible?(): boolean;
         create?(nodeIds: string[], runtimeHandler?: any);
         isDisabled?(): boolean;
-    };
+    }
 
     export interface ElementWrapper {
         description: string;
@@ -156,9 +166,9 @@ declare module 'taiko' {
         elements: Element[] | Node[] | string[];
         exists(): boolean;
         [key: string]: any;
-    };
+    }
 
-    export interface MatchingNode { elem: Element, dist: number };
+    export interface MatchingNode { elem: Element, dist: number }
 
     /**
      * a relative search element is returned by proximity methods such as near,
@@ -272,7 +282,7 @@ declare module 'taiko' {
      */
 
     // https://docs.taiko.dev/#goto
-    export function goto(url: string, options?: NavigationOptions): Promise<void>;
+    export function goto(url: string, options?: NavigationOptions): Promise<Response>;
     // https://docs.taiko.dev/#reload
     export function reload(url: string, options?: NavigationOptions): Promise<void>;
     // https://docs.taiko.dev/#goback
