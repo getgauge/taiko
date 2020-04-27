@@ -28,7 +28,18 @@ describe(test_name, () => {
     taiko.__set__('pageHandler', {
       handleNavigation: (url) => {
         actualUrl = url;
-        return 200;
+        return {
+          redirectedResponse: [
+            {
+              status: 301,
+              statusText: 'Moved Permanently',
+              url: 'http://gauge.org',
+            },
+          ],
+          url: 'http://gauge.org',
+          status: 200,
+          statusText: 'OK',
+        };
       },
     });
   });
@@ -104,6 +115,17 @@ describe(test_name, () => {
 
   it('should return status code', async () => {
     const status = await taiko.goto('example.com');
-    expect(status).to.equal(200);
+    expect(status).to.deep.equal({
+      redirectedResponse: [
+        {
+          status: 301,
+          statusText: 'Moved Permanently',
+          url: 'http://gauge.org',
+        },
+      ],
+      url: 'http://gauge.org',
+      status: 200,
+      statusText: 'OK',
+    });
   });
 });
