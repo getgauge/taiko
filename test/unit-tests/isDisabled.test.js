@@ -12,7 +12,7 @@ let {
   dropDown,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
-let test_name = 'tsesr';
+let test_name = 'isDisabled';
 describe(test_name, () => {
   let innerHtml;
   let filePath;
@@ -54,31 +54,23 @@ describe(test_name, () => {
     removeFile(filePath);
   });
 
-  describe('Disable fieldset test', () => {
-    it('fieldset text isDisabled()', async () => {
-      expect(await textBox(toRightOf('Name:')).isDisabled()).to.be.true;
-    });
+  it('fieldset text isDisabled()', async () => {
+    expect(await textBox(toRightOf('Name:')).isDisabled()).to.be.true;
   });
 
-  describe('Disable fieldset test', () => {
-    it('textBox in form isDisabled() when attribute is set', async () => {
-      expect(await textBox(toRightOf('Last name:')).isDisabled()).to.be.true;
-    });
-
-    it('textBox in form isDisabled() when attribute is not set', async () => {
-      expect(await textBox(toRightOf('First name:')).isDisabled()).to.be.false;
-    });
+  it('textBox in form isDisabled() when attribute is set', async () => {
+    expect(await textBox(toRightOf('Last name:')).isDisabled()).to.be.true;
   });
 
-  describe('Disable textArea test', () => {
-    it('textArea isDisabled()', async () => {
-      expect(await textBox().isDisabled()).to.be.true;
-    });
+  it('textBox in form isDisabled() when attribute is not set', async () => {
+    expect(await textBox(toRightOf('First name:')).isDisabled()).to.be.false;
   });
 
-  describe('Disable dropDown test', () => {
-    it('Dropdown isDisabled()', async () => {
-      expect(await dropDown().isDisabled()).to.be.true;
-    });
+  it('textArea test', async () => {
+    expect(await textBox().isDisabled()).to.be.true;
+  });
+
+  it('Dropdown test', async () => {
+    expect(await dropDown().isDisabled()).to.be.true;
   });
 });
