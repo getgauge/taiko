@@ -124,8 +124,7 @@ declare module 'taiko' {
 
     export interface BasicResponse {
         url: string,
-        status: number,
-        statusText: string,
+        status: {code :number, text: string}
     }
 
     export interface Response extends BasicResponse{

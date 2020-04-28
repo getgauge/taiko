@@ -64,14 +64,18 @@ describe('pageHandler', () => {
     expect(await actualResponse).to.deep.equal({
       redirectedResponse: [
         {
-          status: 301,
-          statusText: 'Moved Permanently',
+          status: {
+            code: 301,
+            text: 'Moved Permanently',
+          },
           url: 'http://gauge.org',
         },
       ],
       url: 'http://gauge.org',
-      status: 301,
-      statusText: 'Moved Permanently',
+      status: {
+        code: 301,
+        text: 'Moved Permanently',
+      },
     });
   });
 
