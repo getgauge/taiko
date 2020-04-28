@@ -6,15 +6,6 @@ let { openBrowser, closeBrowser, client } = taiko;
 
 let { openBrowserArgs } = require('./test-util');
 describe('OpenBrowser', () => {
-  before(() => {
-    taiko.__set__('connect_to_cri', async () => {
-      taiko.__set__({
-        dom: true,
-        page: { close: () => {} },
-        _client: { _ws: { readyState: 1 }, removeAllListeners: () => {}, close: () => {} },
-      });
-    });
-  });
   describe('throws an error', () => {
     it('openBrowser should throw an error when options parameter is string', async () =>
       await openBrowser('someString').catch((error) => expect(error).to.be.an.instanceOf(Error)));
@@ -40,6 +31,13 @@ describe('OpenBrowser', () => {
   describe('browser crashes', () => {
     let chromeProcess;
     beforeEach(async () => {
+      taiko.__set__('connect_to_cri', async () => {
+        taiko.__set__({
+          dom: true,
+          page: { close: () => {} },
+          _client: { _ws: { readyState: 1 }, removeAllListeners: () => {}, close: () => {} },
+        });
+      });
       await openBrowser(openBrowserArgs);
       chromeProcess = taiko.__get__('chromeProcess');
     });
