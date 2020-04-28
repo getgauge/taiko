@@ -38,7 +38,7 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     setConfig({
       waitForNavigation: false,
-      retryTimeout: 10,
+      retryTimeout: 100,
       retryInterval: 10,
     });
     await openBrowser(openBrowserArgs);
@@ -104,7 +104,7 @@ describe(test_name, () => {
             <script type="text/javascript">
                 setTimeout( () => {
                     document.getElementById('disabled-input').disabled = false;
-                }, 100);
+                }, 10);
             </script>
         </div>`;
     filePath = createHtml(innerHtml, test_name);
