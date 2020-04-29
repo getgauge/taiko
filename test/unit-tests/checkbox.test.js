@@ -54,7 +54,7 @@ const inputTypeCaseSensitive = {
       await goto(filePath);
       setConfig({
         waitForNavigation: false,
-        retryTimeout: 100,
+        retryTimeout: 10,
         retryInterval: 10,
       });
     });
@@ -72,7 +72,7 @@ const inputTypeCaseSensitive = {
 
       it('test exists()', async () => {
         expect(await checkBox('checkboxWithInlineLabel').exists()).to.be.true;
-        expect(await checkBox('Something').exists()).to.be.false;
+        expect(await checkBox('Something').exists(0, 0)).to.be.false;
       });
 
       it('test description', async () => {

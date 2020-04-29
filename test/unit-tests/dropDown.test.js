@@ -63,13 +63,35 @@ describe(test_name, () => {
       '<select id="sampleDropDown" name="select" value="select">' +
       '<option value="someValue">someValue</option>' +
       '</select>' +
-      '</form>';
+      '</form>' +
+      `<div id="one">
+        <label for="select-one">One</label>
+        <select id="select-one" name="select" value="select">
+          <option>Select One</option> 
+          <option>Hot Beverages</option>
+          </select>
+      </div>
+      <div id="two">
+        <label for="select-two">Two</label>
+        <select id="select-two" name="select" value="select">
+          <option>Please select from above</option>
+          </select>
+      </div>
+      <script>
+        var textTwo = document.getElementById("select-two");
+      var divOne = document.getElementById("one");
+
+      divOne.addEventListener("change", function() {
+        console.log("Hello");
+        textTwo.innerHTML = "<option>Tea</option><option>Cofee</option>";
+      });
+  </script>`;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
     await goto(filePath);
     setConfig({
       waitForNavigation: false,
-      retryTimeout: 100,
+      retryTimeout: 10,
       retryInterval: 10,
     });
   });
@@ -203,67 +225,26 @@ describe(test_name, () => {
       expect(await elements[0].value()).to.equal('someValue');
     });
   });
-});
 
-describe('nested drop down', () => {
-  let filePath;
-
-  before(async () => {
-    let innerHtml = `<div id="one">
-    <label for="select-one">One</label>
-    <select id="select-one" name="select" value="select">
-       <option>Select One</option> 
-       <option>Hot Beverages</option>
-      </select>
-  </div>
-  <div id="two">
-    <label for="select-two">Two</label>
-    <select id="select-two" name="select" value="select">
-       <option>Please select from above</option>
-      </select>
-  </div>
-  <script>
-    var textTwo = document.getElementById("select-two");
-  var divOne = document.getElementById("one");
-
-  divOne.addEventListener("change", function() {
-    console.log("Hello");
-    textTwo.innerHTML = "<option>Tea</option><option>Cofee</option>";
-  });
-  </script>`;
-    filePath = createHtml(innerHtml, test_name);
-    await openBrowser(openBrowserArgs);
-    await goto(filePath);
-    setConfig({
-      waitForNavigation: false,
-      retryTimeout: 100,
-      retryInterval: 10,
+  describe('nested drop down', () => {
+    it('should bubble change event', async () => {
+      await dropDown('One').select('Hot Beverages');
+      await expect(dropDown('Two').select('Tea')).not.to.be.eventually.rejected;
     });
-  });
 
-  after(async () => {
-    resetConfig();
-    await closeBrowser();
-    removeFile(filePath);
-  });
-
-  it('should bubble change event', async () => {
-    await dropDown('One').select('Hot Beverages');
-    await expect(dropDown('Two').select('Tea')).not.to.be.eventually.rejected;
-  });
-
-  it('should emit events', async () => {
-    await evaluate(() => {
-      document.raisedEvents = [];
-      var dropDown = document.getElementById('select-one');
-      ['input', 'change'].forEach((ev) => {
-        dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
+    it('should emit events', async () => {
+      await evaluate(() => {
+        document.raisedEvents = [];
+        var dropDown = document.getElementById('select-one');
+        ['input', 'change'].forEach((ev) => {
+          dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
+        });
       });
+
+      await dropDown('One').select('Hot Beverages');
+
+      var events = await evaluate(() => document.raisedEvents);
+      expect(events).to.eql(['change', 'input']);
     });
-
-    await dropDown('One').select('Hot Beverages');
-
-    var events = await evaluate(() => document.raisedEvents);
-    expect(events).to.eql(['change', 'input']);
   });
 });

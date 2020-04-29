@@ -10,6 +10,7 @@ let {
   write,
   into,
   $,
+  click,
 } = require('../../lib/taiko');
 let { createHtml, openBrowserArgs, removeFile, resetConfig } = require('./test-util');
 const test_name = 'Clear';
@@ -35,13 +36,14 @@ multiple lines.</textarea>
                 <label for="country">
                         Country<input type="text" name="user[country]" id="user[country]" value="" onkeyup="displayInfo(this)"/>
                 </label>
+                <input type="reset" value="Reset" />
             </p>
         </form>
         <div id='info-borad' ></div>
         <script type="text/javascript">
             setTimeout( () => {
                 document.getElementById('user[name]').disabled = false;
-            }, 100);
+            }, 50);
 
             function displayInfo(element) {
                 console.log(element)
@@ -55,7 +57,7 @@ multiple lines.</textarea>
     await goto(filePath);
     setConfig({
       waitForNavigation: false,
-      retryTimeout: 100,
+      retryTimeout: 10,
       retryInterval: 10,
     });
   });
@@ -67,6 +69,10 @@ multiple lines.</textarea>
   });
 
   describe('input field', () => {
+    afterEach(async () => {
+      await click('Reset');
+    });
+
     it('should clear content', async () => {
       expect(await textBox('Email').value()).to.equal('example@test.com');
       await clear(textBox('Email'));
@@ -74,7 +80,6 @@ multiple lines.</textarea>
     });
 
     it('should wait for input to be clearable', async () => {
-      await reload();
       expect(await textBox('Name').value()).to.equal('Example');
       await clear(textBox('Name'));
       expect(await textBox('Name').value()).to.equal('');
@@ -82,8 +87,10 @@ multiple lines.</textarea>
   });
 
   describe('textarea', () => {
+    afterEach(async () => {
+      await click('Reset');
+    });
     it('should clear whole content', async () => {
-      await reload();
       expect(await textBox('Address').value()).to.equal('Address in\nmultiple lines.');
       await clear(textBox('Address'));
       expect(await textBox('Address').value()).to.equal('');
@@ -91,9 +98,11 @@ multiple lines.</textarea>
   });
 
   describe('events', () => {
+    afterEach(async () => {
+      await click('Reset');
+    });
     it('should be trigged after clearing textbox', async () => {
-      await reload();
-      await write('No man land', into(textBox('Country')));
+      await write('No man land', into(textBox('Country')), { delay: 0 });
       expect(await $('#info-borad').text()).to.equal('No man land');
       await clear(textBox('Country'));
       expect(await $('#info-borad').text()).to.equal('');
