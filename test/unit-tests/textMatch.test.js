@@ -103,7 +103,7 @@ describe('match', () => {
       await goto(filePath);
       setConfig({
         waitForNavigation: false,
-        retryTimeout: 100,
+        retryTimeout: 10,
         retryInterval: 10,
       });
     });
@@ -386,7 +386,7 @@ describe('match', () => {
       
           <script>
               window.onload = function () {
-                  setTimeout(appeardiv,4000);
+                  setTimeout(appeardiv,1000);
               }
               function appeardiv() {
                   document.getElementById('prova').style.display= "block";

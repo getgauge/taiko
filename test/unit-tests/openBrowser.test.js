@@ -6,23 +6,6 @@ let { openBrowser, closeBrowser, client } = taiko;
 
 let { openBrowserArgs } = require('./test-util');
 describe('OpenBrowser', () => {
-  describe('opens browser successfully', () => {
-    xit("openBrowser should return 'Browser Opened' message", async () => {
-      expect(process.env.TAIKO_EMULATE_DEVICE).to.be.undefined;
-      await openBrowser(openBrowserArgs).then((data) => {
-        expect(data).to.equal(undefined);
-      });
-    });
-
-    it('openBrowser should initiate the CRI client object', () => {
-      return openBrowser(openBrowserArgs).then(() => {
-        expect(client).not.to.be.null;
-      });
-    });
-
-    afterEach(async () => await closeBrowser());
-  });
-
   describe('throws an error', () => {
     it('openBrowser should throw an error when options parameter is string', async () =>
       await openBrowser('someString').catch((error) => expect(error).to.be.an.instanceOf(Error)));

@@ -26,7 +26,7 @@ describe(test_name, () => {
     await goto(filePath);
     setConfig({
       waitForNavigation: false,
-      retryTimeout: 100,
+      retryTimeout: 10,
       retryInterval: 10,
     });
   });
@@ -48,7 +48,8 @@ describe(test_name, () => {
       expect(await link(toRightOf('Click')).exists()).to.be.true;
     });
     it('should find the link for Hidden Elements with ID', async () => {
-      expect(await link({ id: 'hiddenLinkID' }, { selectHiddenElements: true }).exists()).to.be.true;
+      expect(await link({ id: 'hiddenLinkID' }, { selectHiddenElements: true }).exists()).to.be
+        .true;
     });
     it('should find the link for Hidden Elements with Text', async () => {
       expect(

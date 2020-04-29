@@ -160,6 +160,8 @@ describe(test_name, () => {
     await goto(filePath);
     setConfig({
       waitForNavigation: false,
+      retryTimeout: 10,
+      retryInterval: 10,
     });
   });
 

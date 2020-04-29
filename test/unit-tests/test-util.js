@@ -25,7 +25,9 @@ module.exports.removeFile = (filePath) => {
     filePath = fileURLToPath(filePath);
   } catch (e) {
   } finally {
-    if (existsSync(filePath)) unlinkSync(filePath);
+    if (existsSync(filePath)) {
+      unlinkSync(filePath);
+    }
   }
 };
 

@@ -4,7 +4,17 @@ const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 const taiko = rewire('../../lib/taiko');
-let { openBrowser, goto, closeBrowser, write, beforeunload, accept, reload, openTab } = taiko;
+let {
+  openBrowser,
+  goto,
+  closeBrowser,
+  write,
+  beforeunload,
+  accept,
+  reload,
+  openTab,
+  setConfig,
+} = taiko;
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'beforeunload';
 
@@ -28,6 +38,11 @@ describe(test_name, () => {
     `;
     filePath = createHtml(innerHtml, test_name);
     filePath1 = createHtml('<div>empty</div>', 'Page without beforeunload');
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 10,
+      retryInterval: 10,
+    });
   });
 
   afterEach(() => {
