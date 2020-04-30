@@ -44,6 +44,41 @@ describe('pageHandler', () => {
     expect(event.eventNames()).to.be.eql(['requestStarted', 'responseReceived']);
   });
 
+  it('.handleNavigation should return response with redirection details', async () => {
+    pageHandler.__set__('isSameUrl', () => {
+      return true;
+    });
+    const actualResponse = pageHandler.handleNavigation('http://gauge.org');
+    event.emit('requestStarted', { request: { url: 'gauge.org' }, requestId: 123 });
+    event.emit('requestStarted', {
+      requestId: 123,
+      request: {
+        url: 'gauge.org',
+      },
+      redirectResponse: { url: 'http://gauge.org', status: 301, statusText: 'Moved Permanently' },
+    });
+    event.emit('responseReceived', {
+      requestId: 123,
+      response: { url: 'http://gauge.org', status: 301, statusText: 'Moved Permanently' },
+    });
+    expect(await actualResponse).to.deep.equal({
+      redirectedResponse: [
+        {
+          status: {
+            code: 301,
+            text: 'Moved Permanently',
+          },
+          url: 'http://gauge.org',
+        },
+      ],
+      url: 'http://gauge.org',
+      status: {
+        code: 301,
+        text: 'Moved Permanently',
+      },
+    });
+  });
+
   it('.handleNavigation should fail if navigation fails', async () => {
     try {
       await pageHandler.handleNavigation('http://gauge.fail');
