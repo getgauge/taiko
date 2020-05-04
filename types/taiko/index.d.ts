@@ -120,6 +120,15 @@ declare module 'taiko' {
   export interface MatchingOptions {
     exactMatch: boolean;
   }
+  
+  export interface BasicResponse {
+    url: string,
+    status: {code :number, text: string}
+}
+
+export interface Response extends BasicResponse{
+    redirectedResponse?: BasicResponse[]
+}
 
   /**
    * Elements, Selectors and Searches
@@ -291,7 +300,7 @@ declare module 'taiko' {
    */
 
   // https://docs.taiko.dev/#goto
-  export function goto(url: string, options?: NavigationOptions): Promise<void>;
+  export function goto(url: string, options?: NavigationOptions): Promise<Response>;
   // https://docs.taiko.dev/#reload
   export function reload(url?: string, options?: NavigationOptions): Promise<void>;
   // https://docs.taiko.dev/#goback

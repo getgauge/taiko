@@ -98,7 +98,7 @@ describe(test_name, function () {
 
     it('should wait for given condition', async () => {
       await click('Click me');
-      await expect(waitFor(async () => await $('//*[text()="Wait is Over..!"]').exists())).not.to
+      await expect(waitFor(async () => await $('//*[text()="Wait is Over..!"]').exists(0.0))).not.to
         .eventually.be.rejected;
     });
   });

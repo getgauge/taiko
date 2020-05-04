@@ -52,7 +52,7 @@ describe(test_name, () => {
       await goto(filePath);
       setConfig({
         waitForNavigation: false,
-        retryTimeout: 100,
+        retryTimeout: 10,
         retryInterval: 10,
       });
     });
@@ -68,7 +68,9 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        await write('textAreaWithWrappedLabel', into(textBox('textAreaWithWrappedLabel')));
+        await write('textAreaWithWrappedLabel', into(textBox('textAreaWithWrappedLabel')), {
+          delay: 0,
+        });
         expect(await textBox('textAreaWithWrappedLabel').value()).to.equal(
           'textAreaWithWrappedLabel',
         );
@@ -87,7 +89,7 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        await write('textAreaWithLabelFor', into(textBox('textAreaWithLabelFor')));
+        await write('textAreaWithLabelFor', into(textBox('textAreaWithLabelFor')), { delay: 0 });
         expect(await textBox('textAreaWithLabelFor').value()).to.equal('textAreaWithLabelFor');
       });
 
@@ -217,6 +219,7 @@ describe(test_name, () => {
         await write(
           'contentEditableWithWrappedLabel',
           into(textBox('contentEditableWithWrappedLabel')),
+          { delay: 0 },
         );
         expect(await textBox('contentEditableWithWrappedLabel').value()).to.equal(
           'contentEditableWithWrappedLabel',
@@ -236,7 +239,9 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        await write('contentEditableWithLabelFor', into(textBox('contentEditableWithLabelFor')));
+        await write('contentEditableWithLabelFor', into(textBox('contentEditableWithLabelFor')), {
+          delay: 0,
+        });
         expect(await textBox('contentEditableWithLabelFor').value()).to.equal(
           'contentEditableWithLabelFor',
         );
@@ -418,7 +423,7 @@ describe(test_name, () => {
         });
 
         it('test value()', async () => {
-          await write(inputType.testValue, into(textBox('With Inline Text')));
+          await write(inputType.testValue, into(textBox('With Inline Text')), { delay: 0 });
           expect(await textBox('With Inline Text').value()).to.equal(inputType.testValue);
         });
 
@@ -435,7 +440,7 @@ describe(test_name, () => {
         });
 
         it('test value()', async () => {
-          await write(inputType.testValue, into(textBox('With Wrapped Label')));
+          await write(inputType.testValue, into(textBox('With Wrapped Label')), { delay: 0 });
           expect(await textBox('With Wrapped Label').value()).to.equal(inputType.testValue);
         });
 
@@ -452,7 +457,7 @@ describe(test_name, () => {
         });
 
         it('test value()', async () => {
-          await write(inputType.testValue, into(textBox('With Label For')));
+          await write(inputType.testValue, into(textBox('With Label For')), { delay: 0 });
           expect(await textBox('With Label For').value()).to.equal(inputType.testValue);
         });
 
@@ -590,7 +595,7 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        await write(inputValue, into(textBox('With Inline Text')));
+        await write(inputValue, into(textBox('With Inline Text')), { delay: 0 });
         expect(await textBox('With Inline Text').value()).to.equal(inputValue);
       });
 
@@ -607,7 +612,7 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        await write(inputValue, into(textBox('With Wrapped Label')));
+        await write(inputValue, into(textBox('With Wrapped Label')), { delay: 0 });
         expect(await textBox('With Wrapped Label').value()).to.equal(inputValue);
       });
 
@@ -624,7 +629,7 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        await write(inputValue, into(textBox('With Label For')));
+        await write(inputValue, into(textBox('With Label For')), { delay: 0 });
         expect(await textBox('With Label For').value()).to.equal(inputValue);
       });
 
