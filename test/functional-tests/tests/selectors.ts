@@ -1,9 +1,9 @@
 'use strict';
-const { button, link, textBox, text, $ } = require('taiko');
+import { button, link, textBox, text, $ } from 'taiko';
 
 function getElementWithSelector(element, selector) {
-  var selectedElement = null;
-  var selectedItem;
+  let selectedElement = null;
+  let selectedItem;
   try {
     selectedItem = JSON.parse(selector);
   } catch (err) {
@@ -29,14 +29,10 @@ function getElementWithSelector(element, selector) {
   return selectedElement;
 }
 
-function getElements(table) {
-  var referenceElements = [];
+export function getElements(table) {
+  const referenceElements = [];
   table.rows.forEach(function (row) {
     referenceElements.push(getElementWithSelector(row.cells[0], row.cells[1]));
   });
   return referenceElements;
 }
-
-module.exports = {
-  getElements,
-};

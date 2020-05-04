@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "@getgauge/cli": "latest",
+    "gauge-ts": "0.0.5",
     "taiko": "file:../.."
   },
   "devDependencies": {
+    "@types/node": "latest",
     "the-internet-express": "git+https://github.com/getgauge-contrib/the-internet-express.git"
   }
 }
