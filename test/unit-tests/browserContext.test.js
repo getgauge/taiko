@@ -59,11 +59,11 @@ describe('Browser Context', () => {
 
   describe('open browser and create browser context', () => {
     it('Should have incognito window', async () => {
-      await openWindow(url1, { name: 'admin' });
+      await openWindow(url1, { name: 'admin', waitForNavigation:true });
       let actual = await text('Browser1').exists();
       expect(actual).to.be.true;
 
-      await openWindow(url2, { name: 'user' });
+      await openWindow(url2, { name: 'user', waitForNavigation:true });
 
       let actualBrowser2 = await text('Browser2').exists();
       expect(actualBrowser2).to.be.true;
@@ -89,7 +89,7 @@ describe('Browser Context', () => {
 
   describe('Open window in Incognito Mode', () => {
     it('Open window without incognito', async () => {
-      await openWindow(url1, { name: 'admin' });
+      await openWindow(url1, { name: 'admin', waitForNavigation:true });
       expect(isIncognito({ name: 'admin' })).to.be.true;
     });
     after(async () => {
@@ -99,8 +99,8 @@ describe('Browser Context', () => {
 
   describe('Open window with same window name', () => {
     it('Should switch to existing window', async () => {
-      await openWindow(url1, { name: 'admin' });
-      await openWindow(url1, { name: 'admin' });
+      await openWindow(url1, { name: 'admin', waitForNavigation:true });
+      await openWindow(url1, { name: 'admin', waitForNavigation:true });
       expect(getBrowserContexts().size).to.be.equal(1);
     });
     after(async () => {
@@ -111,7 +111,7 @@ describe('Browser Context', () => {
   //fix closeWindow to connect to existing window
   xdescribe('Open window in Normal Mode', () => {
     it('Open window without incognito', async () => {
-      await openWindow(url1, { name: 'admin', incognito: false });
+      await openWindow(url1, { name: 'admin', incognito: false, waitForNavigation:true });
       expect(isIncognito({ name: 'admin' })).to.be.false;
     });
     after(async () => {
@@ -121,12 +121,12 @@ describe('Browser Context', () => {
 
   describe('Isolation session storage test', () => {
     it('should isolate localStorage and cookies', async () => {
-      await openWindow(url1, { name: 'admin' });
+      await openWindow(url1, { name: 'admin', waitForNavigation:true });
       await evaluate(() => {
         localStorage.setItem('name', 'page1');
       });
 
-      await openWindow(url2, { name: 'user' });
+      await openWindow(url2, { name: 'user', waitForNavigation:true });
 
       await evaluate(() => {
         localStorage.setItem('name', 'page2');

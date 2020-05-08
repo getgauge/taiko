@@ -194,7 +194,7 @@ describe('match', () => {
       });
 
       it('test partial match get()', async () => {
-        expect(await text('Text').elements()).to.have.lengthOf(8);
+        expect(await text('Text').elements()).to.have.lengthOf(9);
       });
 
       it('test partial match description', async () => {
@@ -240,7 +240,7 @@ describe('match', () => {
     describe('match text for type and paragraph', () => {
       it('test exact match for type', async () => {
         expect(await text('text').exists()).to.be.true;
-        expect(await text('text').elements()).to.have.lengthOf(8);
+        expect(await text('text').elements()).to.have.lengthOf(9);
         expect(text('text').description).to.be.eql('Element with text "text"');
       });
       it('test contains match for type and text', async () => {
@@ -321,7 +321,7 @@ describe('match', () => {
     describe('match text for type and paragraph', () => {
       it('test exact match for type', async () => {
         expect(await text('text').exists()).to.be.true;
-        expect(await text('text').elements()).to.have.lengthOf(8);
+        expect(await text('text').elements()).to.have.lengthOf(9);
         expect(text('text').description).to.be.eql('Element with text "text"');
       });
       it('test contains match for type and text', async () => {
