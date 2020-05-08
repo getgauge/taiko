@@ -9,6 +9,7 @@ let {
   evaluate,
   openIncognitoWindow,
   closeIncognitoWindow,
+  currentURL,
 } = require('../../lib/taiko');
 let { openBrowserArgs, resetConfig } = require('./test-util');
 
@@ -86,6 +87,14 @@ describe('Browser Context', () => {
     after(async () => {
       await closeIncognitoWindow('admin');
       await closeIncognitoWindow('user');
+    });
+  });
+
+  describe('open incognito window without url',() => {
+    it('should open a blank page when url not given', async () => {
+      await openIncognitoWindow({name:'admin'});
+      expect(await currentURL()).to.equal('about:blank');
+      await closeIncognitoWindow('admin');
     });
   });
 
