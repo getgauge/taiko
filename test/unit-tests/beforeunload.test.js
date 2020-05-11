@@ -40,8 +40,8 @@ describe(test_name, () => {
     filePath1 = createHtml('<div>empty</div>', 'Page without beforeunload');
     setConfig({
       waitForNavigation: false,
-      retryTimeout: 10,
-      retryInterval: 10,
+      retryTimeout: 100,
+      retryInterval: 1000,
     });
   });
 
