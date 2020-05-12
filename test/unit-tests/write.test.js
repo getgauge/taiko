@@ -56,13 +56,13 @@ describe(test_name, () => {
   });
 
   it('into focused element', async () => {
-    await write('writing to focused input', { delay: 0 });
+    await write('writing to focused input');
     expect(await textBox('focused input').value()).to.equal('writing to focused input');
   });
 
   it('should enter emoji char into focused element', async () => {
     await reload();
-    await write('🦘 🦡 🐨 🐯 🦁 🐮 🐷 🐽 🐸 writing to focused input', { delay: 0 });
+    await write('🦘 🦡 🐨 🐯 🦁 🐮 🐷 🐽 🐸 writing to focused input');
     expect(await textBox('focused input').value()).to.equal(
       '🦘 🦡 🐨 🐯 🦁 🐮 🐷 🐽 🐸 writing to focused input',
     );
@@ -70,15 +70,13 @@ describe(test_name, () => {
 
   it('into input field text', async () => {
     expect(await textBox('input-type-text').value()).to.equal('');
-    await write('hello', into(textBox('input-type-text')), { delay: 0 });
+    await write('hello', into(textBox('input-type-text')));
     expect(await textBox('input-type-text').value()).to.equal('hello');
   });
 
   it('should fail for readonly feild', async () => {
     await expect(
-      write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineTextReadonly')), {
-        delay: 0,
-      }),
+      write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineTextReadonly'))),
     ).to.eventually.be.rejected;
   });
 
@@ -86,7 +84,6 @@ describe(test_name, () => {
     await write(
       'Taiko can wait for element to be writable.',
       into(textBox('initially disabled input-type-text')),
-      { delay: 0 },
     );
     expect(await textBox('initially disabled input-type-text').value()).to.equal(
       'Taiko can wait for element to be writable.',
@@ -112,7 +109,6 @@ describe(test_name, () => {
     await write(
       'Taiko can wait for element to be writable.',
       into(textBox('initially disabled input-type-text')),
-      { delay: 0 },
     );
     expect(await textBox('initially disabled input-type-text').value()).to.equal(
       'Taiko can wait for element to be writable.',
@@ -251,7 +247,7 @@ describe('Write with hideText option', () => {
 
   it('should mask the text when writing to focused element', async () => {
     let validatePromise = validateEmitterEvent('success', 'Wrote ***** into the focused element.');
-    await taiko.write('writing to focused input', { hideText: true, delay: 0 });
+    await taiko.write('writing to focused input', { hideText: true });
     await validatePromise;
   });
 
@@ -262,7 +258,6 @@ describe('Write with hideText option', () => {
     );
     await taiko.write('something', into(textBox(toLeftOf('input-type-text'))), {
       hideText: true,
-      delay: 0,
     });
     await validatePromise;
   });

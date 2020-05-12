@@ -514,5 +514,6 @@ declare module 'taiko' {
   // https://docs.taiko.dev/#waitfor
   export function waitFor(time: number): Promise<void>;
   export function waitFor(element: SearchElement, time: number): Promise<void>;
+  export function waitFor(condition: () => Promise<boolean>, time: number): Promise<void>;
   export function clearIntercept(requestUrl?: string): void;
 }
