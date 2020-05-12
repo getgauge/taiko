@@ -11,6 +11,11 @@ describe('browserHandler', () => {
       },
     };
     browserHandler.__set__('_browser', mockBrInstance);
+    browserHandler.__set__('_target', {
+      getTargets: () => {
+        return { targetInfos: [] };
+      },
+    });
     browserHandler.clearPermissionOverrides();
     expect(isCalled).to.be.true;
   });
@@ -25,6 +30,11 @@ describe('browserHandler', () => {
       },
     };
     browserHandler.__set__('_browser', mockBrInstance);
+    browserHandler.__set__('_target', {
+      getTargets: () => {
+        return { targetInfos: [] };
+      },
+    });
     browserHandler.overridePermissions('https://url.com', ['geolocation']);
     expect(isCalled).to.be.true;
     expect(calledWith).to.be.eql({
@@ -41,6 +51,11 @@ describe('browserHandler', () => {
       },
     };
     browserHandler.__set__('_browser', mockBrInstance);
+    browserHandler.__set__('_target', {
+      getTargets: () => {
+        return { targetInfos: [] };
+      },
+    });
     try {
       await browserHandler.overridePermissions('https://url.com', ['foo-bar']);
     } catch (error) {

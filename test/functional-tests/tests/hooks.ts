@@ -1,4 +1,11 @@
-import { openBrowser, setConfig, screenshot, closeBrowser } from 'taiko';
+import {
+  openBrowser,
+  setConfig,
+  screenshot,
+  closeBrowser,
+  openIncognitoWindow,
+  closeIncognitoWindow,
+} from 'taiko';
 import {
   AfterSuite,
   BeforeSuite,
@@ -13,6 +20,24 @@ const headless = process.env.headless.toLowerCase() === 'true';
 export default class Hooks {
   @BeforeScenario()
   public async beforeScenario() {
+    await openIncognitoWindow({ name: 'admin' });
+  }
+
+  @CustomScreenshotWriter()
+  public async takeScreenshot(): Promise<string> {
+    const fileName = join(process.env['gauge_screenshots_dir'], `screenshot${Date.now()}.png`);
+    await screenshot({ path: fileName });
+    return basename(fileName);
+  }
+
+  @AfterScenario()
+  public async afterScenario() {
+    await closeIncognitoWindow('admin');
+  }
+
+  @BeforeSuite()
+  public async beforeSuite() {
+    await startServer();
     await openBrowser({
       headless: headless,
       args: [
@@ -28,25 +53,9 @@ export default class Hooks {
     setConfig({ navigationTimeout: 60000 });
   }
 
-  @CustomScreenshotWriter()
-  public async takeScreenshot(): Promise<string> {
-    const fileName = join(process.env['gauge_screenshots_dir'], `screenshot${Date.now()}.png`);
-    await screenshot({ path: fileName });
-    return basename(fileName);
-  }
-
-  @AfterScenario()
-  public async afterScenario() {
-    await closeBrowser();
-  }
-
-  @BeforeSuite()
-  public async beforeSuite() {
-    await startServer();
-  }
-
   @AfterSuite()
   public async afterSuite() {
+    await closeBrowser();
     await stopServer();
   }
 }

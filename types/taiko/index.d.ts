@@ -121,6 +121,10 @@ declare module 'taiko' {
     exactMatch: boolean;
   }
 
+  export interface OpenWindowOptions extends NavigationOptions {
+    name: string;
+  }
+
   export interface BasicResponse {
     url: string;
     status: { code: number; text: string };
@@ -156,13 +160,13 @@ declare module 'taiko' {
     isChecked(): boolean;
     deselect(): void;
     isSelected(): boolean;
-    exists(): boolean;
+    exists(retryInterval?: number, retryTimeout?: number): boolean;
   }
 
   // BasicSelector mimics isSelector
   export interface BasicSelector {
     elements: Element[] | Node[] | string[];
-    exists(): boolean;
+    exists(retryInterval?: number, retryTimeout?: number): boolean;
     [key: string]: any;
   }
 
@@ -278,6 +282,13 @@ declare module 'taiko' {
   export function openTab(targetUrl: string, options?: NavigationOptions): Promise<void>;
   // https://docs.taiko.dev/#closetab
   export function closeTab(targetUrl?: string): Promise<void>;
+  // https://docs.taiko.dev/#openincognitowindow
+  export function openIncognitoWindow(
+    url?: string | OpenWindowOptions,
+    options?: OpenWindowOptions,
+  ): Promise<void>;
+  // https://docs.taiko.dev/#closeincognitowindow
+  export function closeIncognitoWindow(name: string): Promise<void>;
   // https://docs.taiko.dev/#overridepermissions
   export function overridePermissions(origin: string, permissions: string[]): Promise<void>;
   // https://docs.taiko.dev/#clearpermissionoverrides

@@ -30,7 +30,7 @@ export default class Assert {
 
   @Step('Assert text <content> does not exist')
   public async assertTextDoesNotExists(content) {
-    assert.ok(!(await text(content).exists()));
+    assert.ok(!(await text(content).exists(0, 0)));
   }
 
   @Step('Assert text <expectedText> exists on the textArea. <table>')
