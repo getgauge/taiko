@@ -120,15 +120,15 @@ declare module 'taiko' {
   export interface MatchingOptions {
     exactMatch: boolean;
   }
-  
-  export interface BasicResponse {
-    url: string,
-    status: {code :number, text: string}
-}
 
-export interface Response extends BasicResponse{
-    redirectedResponse?: BasicResponse[]
-}
+  export interface BasicResponse {
+    url: string;
+    status: { code: number; text: string };
+  }
+
+  export interface Response extends BasicResponse {
+    redirectedResponse?: BasicResponse[];
+  }
 
   /**
    * Elements, Selectors and Searches
@@ -503,5 +503,6 @@ export interface Response extends BasicResponse{
   // https://docs.taiko.dev/#waitfor
   export function waitFor(time: number): Promise<void>;
   export function waitFor(element: SearchElement, time: number): Promise<void>;
+  export function waitFor(condition: () => Promise<boolean>, time: number): Promise<void>;
   export function clearIntercept(requestUrl?: string): void;
 }
