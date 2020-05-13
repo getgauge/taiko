@@ -41,7 +41,7 @@ describe(test_name, () => {
     setConfig({
       waitForNavigation: false,
       retryTimeout: 100,
-      retryInterval: 1000,
+      retryInterval: 10,
     });
   });
 
