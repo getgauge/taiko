@@ -24,7 +24,12 @@ async function exitOnUnhandledFailures(e) {
   if (!repl_mode) {
     console.error(e);
     if (taiko && (await taiko.client())) {
-      await taiko.closeBrowser();
+      try {
+        await taiko.closeBrowser();
+      } catch (error) {
+        console.error(error);
+        process.exit(1);
+      }
     }
     process.exit(1);
   }
