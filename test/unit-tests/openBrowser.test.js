@@ -33,6 +33,7 @@ describe('OpenBrowser', () => {
         '--test-arg3',
       ];
       expect(testArgs).to.include.members(expectedArgs);
+      delete process.env.TAIKO_BROWSER_ARGS;
     });
   });
 
