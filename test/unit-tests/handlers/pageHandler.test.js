@@ -84,7 +84,7 @@ describe('pageHandler', () => {
       await pageHandler.handleNavigation('http://gauge.fail');
     } catch (error) {
       expect(error.message).to.be.eql(
-        'Navigation to url http://gauge.fail failed.\n REASON: failed to navigate',
+        'Navigation to url http://gauge.fail failed. REASON: failed to navigate',
       );
     }
   });
