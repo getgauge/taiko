@@ -24,7 +24,7 @@ incremental commits to this pull request and seek out help or reviews till it's 
 
 You can also reach out on [Spectrum](https://spectrum.chat/taiko).
 
-If your contribution is a code contribution and you do send us a pull request, you will first need to read and sign the [Contributor License Agreement](https://gauge-bot.herokuapp.com/cla/).
+If your contribution is a code contribution and you do send us a pull request, please sign all your commits.
 
 ## Bumping version of taiko
 
