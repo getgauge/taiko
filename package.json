@@ -7,6 +7,7 @@
   "bin": {
     "taiko": "bin/taiko.js"
   },
+  "types": "./types/taiko/index.d.ts",
   "scripts": {
     "lint": "eslint --fix . --ext ts,tsx .",
     "doc": "documentation build lib/taiko.js -f md --shallow -o docs/index.md --markdown-toc=false && node docs/setup.js",
