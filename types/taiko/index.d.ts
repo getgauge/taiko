@@ -143,30 +143,30 @@ declare module 'taiko' {
     description?: string;
     runtimeHandler?: any;
     get(): string;
-    text(): string;
-    isVisible?(): boolean;
+    text(): Promise<string>;
+    isVisible?(): Promise<boolean>;
     create?(nodeIds: string[], runtimeHandler?: any);
-    isDisabled?(): boolean;
+    isDisabled?(): Promise<boolean>;
   }
 
   export interface ElementWrapper {
     description: string;
     get(selector: SearchElement): ElementWrapper;
-    text(): string;
-    value(): string;
-    select(value?: string | number): void;
-    check(): void;
-    uncheck(): void;
-    isChecked(): boolean;
-    deselect(): void;
-    isSelected(): boolean;
-    exists(retryInterval?: number, retryTimeout?: number): boolean;
+    text(): Promise<string>;
+    value(): Promise<string>;
+    select(value?: string | number): Promise<void>;
+    check(): Promise<void>;
+    uncheck(): Promise<void>;
+    isChecked(): Promise<boolean>;
+    deselect(): Promise<void>;
+    isSelected(): Promise<boolean>;
+    exists(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
   }
 
   // BasicSelector mimics isSelector
   export interface BasicSelector {
     elements: Element[] | Node[] | string[];
-    exists(retryInterval?: number, retryTimeout?: number): boolean;
+    exists(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
     [key: string]: any;
   }
 
