@@ -1,15 +1,26 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
-const Element = rewire('../../lib/elements/element');
-const elementSearch = rewire('../../lib/elementSearch');
-const { getIfExists } = elementSearch;
 class DomRects {}
 const TEXT_NODE = 3;
+
 describe('Element Search', () => {
+  let Element, elementSearch, getIfExists;
+
+  before(() => {
+    Element = rewire('../../lib/elements/element');
+    elementSearch = rewire('../../lib/elementSearch');
+    getIfExists = elementSearch.getIfExists;
+  });
+
+  after(() => {
+    Element = rewire('../../lib/elements/element');
+    elementSearch = rewire('../../lib/elementSearch');
+  });
+
   describe('Filter visible nodes', () => {
-    let nodeIds, runtimeHandler;
-    const filterVisibleNodes = elementSearch.__get__('filterVisibleNodes');
+    let nodeIds, runtimeHandler, filterVisibleNodes;
     beforeEach(() => {
+      filterVisibleNodes = elementSearch.__get__('filterVisibleNodes');
       Element.__set__('Node', { TEXT_NODE });
       nodeIds = {
         23: {
@@ -64,13 +75,13 @@ describe('Element Search', () => {
     });
   });
   describe('getIfExists', () => {
-    let findElementCallCount,
-      originalWaitUntil = elementSearch.__get__('waitUntil');
+    let findElementCallCount, originalWaitUntil;
     const findElement = async () => {
       findElementCallCount++;
       return [{ id: 23 }];
     };
     beforeEach(() => {
+      originalWaitUntil = elementSearch.__get__('waitUntil');
       findElementCallCount = 0;
       elementSearch.__set__('waitUntil', async (condition) => {
         await condition();

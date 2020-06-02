@@ -1,19 +1,16 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
 const Element = require('../../../lib/elements/element');
-const RadioButton = rewire('../../../lib/elements/radioButton');
 
 class Event {
   constructor(name) {
     this.name = name;
   }
 }
-RadioButton.__set__('Event', Event);
-RadioButton.__set__('doActionAwaitingNavigation', async (navigationOptions, action) => {
-  await action();
-});
+
 describe('RadioButton', () => {
   let nodes,
+    RadioButton,
     dispatchedEvent = null,
     runtimeHandler = {
       async runtimeCallFunctionOn(predicate, contextId, options) {
@@ -25,6 +22,11 @@ describe('RadioButton', () => {
       },
     };
   beforeEach(() => {
+    RadioButton = rewire('../../../lib/elements/radioButton');
+    RadioButton.__set__('Event', Event);
+    RadioButton.__set__('doActionAwaitingNavigation', async (navigationOptions, action) => {
+      await action();
+    });
     nodes = {
       23: {
         checked: true,
@@ -47,6 +49,7 @@ describe('RadioButton', () => {
     };
   });
   afterEach(() => {
+    RadioButton = rewire('../../../lib/elements/radioButton');
     dispatchedEvent = null;
   });
 

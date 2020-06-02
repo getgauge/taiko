@@ -1,7 +1,6 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
 const Element = require('../../../lib/elements/element');
-const DropDown = rewire('../../../lib/elements/dropDown');
 
 class Event {
   constructor(name, options) {
@@ -9,12 +8,10 @@ class Event {
     this.options = options;
   }
 }
-DropDown.__set__('Event', Event);
-DropDown.__set__('doActionAwaitingNavigation', async (navigationOptions, action) => {
-  await action();
-});
+
 describe('DropDown', () => {
   let nodes,
+    DropDown,
     dispatchedEvents,
     runtimeHandler = {
       async runtimeCallFunctionOn(predicate, contextId, options) {
@@ -26,6 +23,11 @@ describe('DropDown', () => {
       },
     };
   beforeEach(() => {
+    DropDown = rewire('../../../lib/elements/dropDown');
+    DropDown.__set__('Event', Event);
+    DropDown.__set__('doActionAwaitingNavigation', async (navigationOptions, action) => {
+      await action();
+    });
     dispatchedEvents = [];
     nodes = {
       25: {
@@ -74,6 +76,10 @@ describe('DropDown', () => {
         },
       },
     };
+  });
+
+  afterEach(() => {
+    DropDown = rewire('../../../lib/elements/dropDown');
   });
 
   it('should be element', () => {

@@ -1,9 +1,7 @@
 const chai = require('chai');
-const rewire = require('rewire');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-const taiko = rewire('../../lib/taiko');
 let {
   openBrowser,
   goto,
@@ -14,7 +12,7 @@ let {
   reload,
   openTab,
   setConfig,
-} = taiko;
+} = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'beforeunload';
 

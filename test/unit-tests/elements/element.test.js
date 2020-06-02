@@ -1,8 +1,7 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
-const Element = rewire('../../../lib/elements/element');
 const TEXT_NODE = 3;
-Element.__set__('Node', { TEXT_NODE });
+
 class DomRects {}
 const nodes = {
   23: {
@@ -36,6 +35,15 @@ const nodes = {
   },
 };
 describe('Element', () => {
+  let Element;
+  beforeEach(() => {
+    Element = rewire('../../../lib/elements/element');
+    Element.__set__('Node', { TEXT_NODE });
+  });
+  afterEach(() => {
+    Element = rewire('../../../lib/elements/element');
+  });
+
   let runtimeHandler = {
     runtimeCallFunctionOn: (predicate, contextId, options) => {
       return {

@@ -1,19 +1,16 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
 const Element = require('../../../lib/elements/element');
-const CheckBox = rewire('../../../lib/elements/checkBox');
 
 class Event {
   constructor(name) {
     this.name = name;
   }
 }
-CheckBox.__set__('Event', Event);
-CheckBox.__set__('doActionAwaitingNavigation', async (navigationOptions, action) => {
-  await action();
-});
+
 describe('CheckBox', () => {
   let nodes,
+    CheckBox,
     dispatchedEvent = null,
     runtimeHandler = {
       async runtimeCallFunctionOn(predicate, contextId, options) {
@@ -24,7 +21,13 @@ describe('CheckBox', () => {
         };
       },
     };
+
   beforeEach(() => {
+    CheckBox = rewire('../../../lib/elements/checkBox');
+    CheckBox.__set__('Event', Event);
+    CheckBox.__set__('doActionAwaitingNavigation', async (navigationOptions, action) => {
+      await action();
+    });
     nodes = {
       23: {
         checked: true,
@@ -47,6 +50,7 @@ describe('CheckBox', () => {
     };
   });
   afterEach(() => {
+    CheckBox = rewire('../../../lib/elements/checkBox');
     dispatchedEvent = null;
   });
 

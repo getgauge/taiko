@@ -1,11 +1,12 @@
 const rewire = require('rewire');
 const expect = require('chai').expect;
-const domHandler = rewire('../../../lib/handlers/domHandler');
 
 describe('domHandler', () => {
-  let calledWith = {};
+  let calledWith = {},
+    domHandler;
 
-  beforeEach(() => {
+  before(() => {
+    domHandler = rewire('../../../lib/handlers/domHandler');
     calledWith = {};
     domHandler.__set__('dom', {
       getBoxModel: async (param) => {
@@ -16,6 +17,13 @@ describe('domHandler', () => {
         return { model: { border: [8, 9, 10, 11, 12, 13, 14, 15] } };
       },
     });
+  });
+
+  after(() => {
+    const createdSessionListener = domHandler.__get__('createdSessionListener');
+    domHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    domHandler = rewire('../../../lib/handlers/domHandler');
+    domHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
   });
 
   it('.boundBox should give the bound  box of given node id', async () => {

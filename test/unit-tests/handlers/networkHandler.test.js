@@ -3,13 +3,13 @@ const rewire = require('rewire');
 const expect = chai.expect;
 const chaiAsPromissed = require('chai-as-promised');
 chai.use(chaiAsPromissed);
-let networkHandler = rewire('../../../lib/handlers/networkHandler');
 const test_name = 'Network Handler';
 
 describe(test_name, () => {
-  let actualNetworkCondition, requestInterceptor, continueInterceptedRequestOptions;
+  let actualNetworkCondition, requestInterceptor, continueInterceptedRequestOptions, networkHandler;
 
-  beforeEach(() => {
+  before(() => {
+    networkHandler = rewire('../../../lib/handlers/networkHandler');
     delete process.env.TAIKO_EMULATE_NETWORK;
     let network = {
       requestWillBeSent: () => {},
@@ -30,8 +30,12 @@ describe(test_name, () => {
     networkHandler.__set__('network', network);
     requestInterceptor = networkHandler.__get__('handleInterceptor');
   });
-  afterEach(() => {
+  after(() => {
     actualNetworkCondition = {};
+    const createdSessionListener = networkHandler.__get__('createdSessionListener');
+    networkHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    networkHandler = rewire('../../../lib/handlers/networkHandler');
+    networkHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
     continueInterceptedRequestOptions = null;
     process.env.TAIKO_EMULATE_NETWORK = '';
   });

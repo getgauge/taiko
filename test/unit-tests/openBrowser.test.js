@@ -1,11 +1,19 @@
 const chai = require('chai');
 const expect = chai.expect;
 const rewire = require('rewire');
-const taiko = rewire('../../lib/taiko');
-let { openBrowser, closeBrowser, client } = taiko;
 
 let { openBrowserArgs } = require('./test-util');
 describe('OpenBrowser', () => {
+  let taiko, openBrowser, closeBrowser, client;
+  before(() => {
+    taiko = rewire('../../lib/taiko');
+    openBrowser = taiko.openBrowser;
+    closeBrowser = taiko.closeBrowser;
+    client = taiko.client;
+  });
+  after(() => {
+    taiko = rewire('../../lib/taiko');
+  });
   describe('throws an error', () => {
     it('openBrowser should throw an error when options parameter is string', async () =>
       await openBrowser('someString').catch((error) => expect(error).to.be.an.instanceOf(Error)));
