@@ -37,8 +37,8 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     filePath1 = createHtml('<div>empty</div>', 'Page without beforeunload');
     setConfig({
-      waitForNavigation: false,
-      retryTimeout: 100,
+      waitForNavigation: true,
+      retryTimeout: 1000,
       retryInterval: 10,
     });
   });
