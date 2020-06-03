@@ -10,7 +10,7 @@ describe('FileField', () => {
   let runtimeHandler = {
     runtimeCallFunctionOn: (predicate, contextId, options) => {
       return {
-        result: { value: predicate.call(nodes[options.nodeId]) },
+        result: { value: predicate.call(nodes[options.objectId]) },
       };
     },
   };

@@ -16,7 +16,7 @@ describe('RadioButton', () => {
       async runtimeCallFunctionOn(predicate, contextId, options) {
         return {
           result: {
-            value: predicate.call(nodes[options.nodeId], options.arg),
+            value: predicate.call(nodes[options.objectId], options.arg),
           },
         };
       },
@@ -74,22 +74,22 @@ describe('RadioButton', () => {
 
   describe('select', () => {
     it('should select an unselected radio button', async () => {
-      let nodeId = 28;
-      const radioButton = new RadioButton(nodeId, 'description', runtimeHandler);
-      expect(nodes[nodeId].checked).to.be.false;
+      let objectId = 28;
+      const radioButton = new RadioButton(objectId, 'description', runtimeHandler);
+      expect(nodes[objectId].checked).to.be.false;
 
       await radioButton.select();
-      expect(nodes[nodeId].checked).to.be.true;
+      expect(nodes[objectId].checked).to.be.true;
       expect(dispatchedEvent instanceof Event).to.be.true;
       expect(dispatchedEvent.name).to.be.equal('click');
     });
     it('should select an selected radio button', async () => {
-      let nodeId = 30;
-      const radioButton = new RadioButton(nodeId, 'description', runtimeHandler);
-      expect(nodes[nodeId].checked).to.be.true;
+      let objectId = 30;
+      const radioButton = new RadioButton(objectId, 'description', runtimeHandler);
+      expect(nodes[objectId].checked).to.be.true;
 
       await radioButton.select();
-      expect(nodes[nodeId].checked).to.be.true;
+      expect(nodes[objectId].checked).to.be.true;
       expect(dispatchedEvent instanceof Event).to.be.true;
       expect(dispatchedEvent.name).to.be.equal('click');
     });
@@ -97,23 +97,23 @@ describe('RadioButton', () => {
 
   describe('deselect', () => {
     it('should deselect an unselected radio button', async () => {
-      let nodeId = 28;
+      let objectId = 28;
       const radioButton = new RadioButton(28, 'description', runtimeHandler);
-      expect(nodes[nodeId].checked).to.be.false;
+      expect(nodes[objectId].checked).to.be.false;
 
       await radioButton.deselect();
-      expect(nodes[nodeId].checked).to.be.false;
+      expect(nodes[objectId].checked).to.be.false;
       expect(dispatchedEvent instanceof Event).to.be.true;
       expect(dispatchedEvent.name).to.be.equal('click');
     });
 
     it('should deselect an selected radio button', async () => {
-      let nodeId = 30;
-      const radioButton = new RadioButton(nodeId, 'description', runtimeHandler);
-      expect(nodes[nodeId].checked).to.be.true;
+      let objectId = 30;
+      const radioButton = new RadioButton(objectId, 'description', runtimeHandler);
+      expect(nodes[objectId].checked).to.be.true;
 
       await radioButton.deselect();
-      expect(nodes[nodeId].checked).to.be.false;
+      expect(nodes[objectId].checked).to.be.false;
       expect(dispatchedEvent instanceof Event).to.be.true;
       expect(dispatchedEvent.name).to.be.equal('click');
     });

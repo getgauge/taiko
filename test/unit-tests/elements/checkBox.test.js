@@ -16,7 +16,7 @@ describe('CheckBox', () => {
       async runtimeCallFunctionOn(predicate, contextId, options) {
         return {
           result: {
-            value: predicate.call(nodes[options.nodeId], options.arg),
+            value: predicate.call(nodes[options.objectId], options.arg),
           },
         };
       },
@@ -75,22 +75,22 @@ describe('CheckBox', () => {
 
   describe('check', () => {
     it('should check an uncheckedd checkbox', async () => {
-      let nodeId = 28;
-      const checkBox = new CheckBox(nodeId, 'description', runtimeHandler);
-      expect(nodes[nodeId].checked).to.be.false;
+      let objectId = 28;
+      const checkBox = new CheckBox(objectId, 'description', runtimeHandler);
+      expect(nodes[objectId].checked).to.be.false;
 
       await checkBox.check();
-      expect(nodes[nodeId].checked).to.be.true;
+      expect(nodes[objectId].checked).to.be.true;
       expect(dispatchedEvent instanceof Event).to.be.true;
       expect(dispatchedEvent.name).to.be.equal('click');
     });
     it('should check a checked checkbox', async () => {
-      let nodeId = 30;
-      const checkBox = new CheckBox(nodeId, 'description', runtimeHandler);
-      expect(nodes[nodeId].checked).to.be.true;
+      let objectId = 30;
+      const checkBox = new CheckBox(objectId, 'description', runtimeHandler);
+      expect(nodes[objectId].checked).to.be.true;
 
       await checkBox.check();
-      expect(nodes[nodeId].checked).to.be.true;
+      expect(nodes[objectId].checked).to.be.true;
       expect(dispatchedEvent instanceof Event).to.be.true;
       expect(dispatchedEvent.name).to.be.equal('click');
     });
@@ -98,23 +98,23 @@ describe('CheckBox', () => {
 
   describe('uncheck', () => {
     it('should uncheck an unchecked checkbox', async () => {
-      let nodeId = 28;
+      let objectId = 28;
       const checkBox = new CheckBox(28, 'description', runtimeHandler);
-      expect(nodes[nodeId].checked).to.be.false;
+      expect(nodes[objectId].checked).to.be.false;
 
       await checkBox.uncheck();
-      expect(nodes[nodeId].checked).to.be.false;
+      expect(nodes[objectId].checked).to.be.false;
       expect(dispatchedEvent instanceof Event).to.be.true;
       expect(dispatchedEvent.name).to.be.equal('click');
     });
 
     it('should uncheck a checked checkbox', async () => {
-      let nodeId = 30;
-      const checkBox = new CheckBox(nodeId, 'description', runtimeHandler);
-      expect(nodes[nodeId].checked).to.be.true;
+      let objectId = 30;
+      const checkBox = new CheckBox(objectId, 'description', runtimeHandler);
+      expect(nodes[objectId].checked).to.be.true;
 
       await checkBox.uncheck();
-      expect(nodes[nodeId].checked).to.be.false;
+      expect(nodes[objectId].checked).to.be.false;
       expect(dispatchedEvent instanceof Event).to.be.true;
       expect(dispatchedEvent.name).to.be.equal('click');
     });

@@ -18,11 +18,11 @@ describe('Element Search', () => {
   });
 
   describe('Filter visible nodes', () => {
-    let nodeIds, runtimeHandler, filterVisibleNodes;
+    let objectIds, runtimeHandler, filterVisibleNodes;
     beforeEach(() => {
       filterVisibleNodes = elementSearch.__get__('filterVisibleNodes');
       Element.__set__('Node', { TEXT_NODE });
-      nodeIds = {
+      objectIds = {
         23: {
           offsetHeight: 1,
           offsetWidth: 0,
@@ -53,25 +53,25 @@ describe('Element Search', () => {
       runtimeHandler = {
         runtimeCallFunctionOn: (predicate, args, obj) => {
           const result = {
-            result: { value: predicate.call(nodeIds[obj.nodeId]) },
+            result: { value: predicate.call(objectIds[obj.objectId]) },
           };
           return result;
         },
       };
     });
     const createElement = (elements) =>
-      elements.map((nodeId) => new Element(nodeId, '', runtimeHandler));
+      elements.map((objectId) => new Element(objectId, '', runtimeHandler));
 
     it('should return visible nodes', async () => {
-      const visibleNodeIds = createElement([23, 45, 67]);
+      const visibleobjectIds = createElement([23, 45, 67]);
       const elementsToFilter = createElement([23, 45, 67, 68]);
-      expect(await filterVisibleNodes(elementsToFilter)).to.eql(visibleNodeIds);
+      expect(await filterVisibleNodes(elementsToFilter)).to.eql(visibleobjectIds);
     });
 
     it('should use parentElement to determine visibility for text nodes', async () => {
-      const visibleNodeIds = createElement([23, 89]);
+      const visibleobjectIds = createElement([23, 89]);
       const elementsToFilter = createElement([23, 68, 89]);
-      expect(await filterVisibleNodes(elementsToFilter)).to.eql(visibleNodeIds);
+      expect(await filterVisibleNodes(elementsToFilter)).to.eql(visibleobjectIds);
     });
   });
   describe('getIfExists', () => {
