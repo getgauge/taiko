@@ -12,7 +12,7 @@
     "url": "git+https://github.com/getgauge/taiko.git"
   },
   "dependencies": {
-    "@getgauge/cli": "1.0.8",
+    "@getgauge/cli": "latest",
     "gauge-ts": "0.0.5",
     "taiko": "file:../.."
   },
