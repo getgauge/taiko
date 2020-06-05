@@ -1,7 +1,6 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
 const Element = require('../../../lib/elements/element');
-const DropDown = rewire('../../../lib/elements/dropDown');
 
 class Event {
   constructor(name, options) {
@@ -9,23 +8,26 @@ class Event {
     this.options = options;
   }
 }
-DropDown.__set__('Event', Event);
-DropDown.__set__('doActionAwaitingNavigation', async (navigationOptions, action) => {
-  await action();
-});
+
 describe('DropDown', () => {
   let nodes,
+    DropDown,
     dispatchedEvents,
     runtimeHandler = {
       async runtimeCallFunctionOn(predicate, contextId, options) {
         return {
           result: {
-            value: predicate.call(nodes[options.nodeId], options.arg),
+            value: predicate.call(nodes[options.objectId], options.arg),
           },
         };
       },
     };
   beforeEach(() => {
+    DropDown = rewire('../../../lib/elements/dropDown');
+    DropDown.__set__('Event', Event);
+    DropDown.__set__('doActionAwaitingNavigation', async (navigationOptions, action) => {
+      await action();
+    });
     dispatchedEvents = [];
     nodes = {
       25: {
@@ -76,6 +78,10 @@ describe('DropDown', () => {
     };
   });
 
+  afterEach(() => {
+    DropDown = rewire('../../../lib/elements/dropDown');
+  });
+
   it('should be element', () => {
     expect(new DropDown() instanceof Element).to.be.true;
   });
@@ -88,12 +94,12 @@ describe('DropDown', () => {
 
   describe('select', () => {
     it('should select dropdown item using index ', async () => {
-      let nodeId = 25;
-      const dropDown = new DropDown(nodeId, 'description', runtimeHandler);
-      expect(nodes[nodeId].selectedIndex).to.be.equal(1);
+      let objectId = 25;
+      const dropDown = new DropDown(objectId, 'description', runtimeHandler);
+      expect(nodes[objectId].selectedIndex).to.be.equal(1);
 
       await dropDown.select({ index: 2 });
-      expect(nodes[nodeId].selectedIndex).to.be.equal(2);
+      expect(nodes[objectId].selectedIndex).to.be.equal(2);
       dispatchedEvents.forEach((e) => {
         expect(e instanceof Event).to.be.true;
         expect(e.options).to.be.deep.equal({
@@ -104,12 +110,12 @@ describe('DropDown', () => {
     });
 
     it('select dropdown item using value', async () => {
-      let nodeId = 26;
-      const dropDown = new DropDown(nodeId, 'description', runtimeHandler);
-      expect(nodes[nodeId].selectedIndex).to.be.equal(1);
+      let objectId = 26;
+      const dropDown = new DropDown(objectId, 'description', runtimeHandler);
+      expect(nodes[objectId].selectedIndex).to.be.equal(1);
 
       await dropDown.select('26 value 2');
-      expect(nodes[nodeId].selectedIndex).to.be.equal(2);
+      expect(nodes[objectId].selectedIndex).to.be.equal(2);
       dispatchedEvents.forEach((e) => {
         expect(e instanceof Event).to.be.true;
         expect(e.options).to.be.deep.equal({
@@ -120,12 +126,12 @@ describe('DropDown', () => {
     });
 
     it('select dropdown item using text ', async () => {
-      let nodeId = 27;
-      const dropDown = new DropDown(nodeId, 'description', runtimeHandler);
-      expect(nodes[nodeId].selectedIndex).to.be.equal(1);
+      let objectId = 27;
+      const dropDown = new DropDown(objectId, 'description', runtimeHandler);
+      expect(nodes[objectId].selectedIndex).to.be.equal(1);
 
       await dropDown.select('27 text 2');
-      expect(nodes[nodeId].selectedIndex).to.be.equal(2);
+      expect(nodes[objectId].selectedIndex).to.be.equal(2);
       dispatchedEvents.forEach((e) => {
         expect(e instanceof Event).to.be.true;
         expect(e.options).to.be.deep.equal({
@@ -138,8 +144,8 @@ describe('DropDown', () => {
 
   describe('value', () => {
     it('should return value', async () => {
-      let nodeId = 28;
-      const dropDown = new DropDown(nodeId, 'description', runtimeHandler);
+      let objectId = 28;
+      const dropDown = new DropDown(objectId, 'description', runtimeHandler);
       expect(await dropDown.value()).to.be.equal('28 value 2');
     });
   });

@@ -2,17 +2,22 @@ const chai = require('chai');
 const expect = require('chai').expect;
 let chaiAsPromised = require('chai-as-promised');
 const rewire = require('rewire');
-const taiko = rewire('../../lib/taiko');
+
 chai.use(chaiAsPromised);
 
 describe('switchTo', () => {
-  let argument;
+  let argument, taiko;
   before(async () => {
+    taiko = rewire('../../lib/taiko');
     taiko.__set__('validate', () => {});
     taiko.__set__('targetHandler.getCriTargets', (arg) => {
       argument = arg;
       return { matching: [] };
     });
+  });
+
+  after(() => {
+    taiko = rewire('../../lib/taiko');
   });
 
   it('should throw error if no url specified', async () => {

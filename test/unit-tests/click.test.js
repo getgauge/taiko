@@ -17,7 +17,6 @@ const test_name = 'Click';
 
 describe(test_name, () => {
   let filePath;
-  let overlayFilePath;
   before(async () => {
     let innerHtml = `
             <span>Click with proximity</span>

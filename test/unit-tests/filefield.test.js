@@ -153,7 +153,7 @@ describe(test_name, () => {
       const elements = await fileField({
         id: 'similarFileField',
       }).elements();
-      expect(elements[0].get()).to.be.a('number').above(0);
+      expect(elements[0].get()).to.be.a('string');
     });
 
     it('test description of elements', async () => {

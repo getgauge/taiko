@@ -146,6 +146,7 @@ jobs:
       - name: functional-tests-headful
         env:
           headless: false
+          TAIKO_HIGHLIGHT_ON_ACTION: false
         run: xvfb-run npm run test-functional
       - name: Upload html report
         uses: actions/upload-artifact@v1
