@@ -4,12 +4,11 @@ const rewire = require('rewire');
 
 let { openBrowserArgs } = require('./test-util');
 describe('OpenBrowser', () => {
-  let taiko, openBrowser, closeBrowser, client;
+  let taiko, openBrowser, closeBrowser;
   before(() => {
     taiko = rewire('../../lib/taiko');
     openBrowser = taiko.openBrowser;
     closeBrowser = taiko.closeBrowser;
-    client = taiko.client;
   });
   after(() => {
     taiko = rewire('../../lib/taiko');
@@ -23,53 +22,6 @@ describe('OpenBrowser', () => {
     it('openBrowser should throw error, when it is called before closeBrowser is called', async () => {
       await openBrowser(openBrowserArgs);
       await openBrowser(openBrowserArgs).catch((error) => expect(error).to.be.an.instanceOf(Error));
-      await closeBrowser();
-    });
-  });
-
-  describe('should set args', async () => {
-    it('from env variable TAIKO_BROWSER_ARGS', async () => {
-      process.env.TAIKO_BROWSER_ARGS =
-        '--test-arg, --test-arg1,--test-arg2=testArg2zValue1,testArg2zValue2, --test-arg3';
-      const setBrowserArgs = taiko.__get__('setBrowserArgs');
-      const testArgs = await setBrowserArgs({ args: ['something'] });
-      const expectedArgs = [
-        'something',
-        '--test-arg',
-        '--test-arg1',
-        '--test-arg2=testArg2zValue1,testArg2zValue2',
-        '--test-arg3',
-      ];
-      expect(testArgs).to.include.members(expectedArgs);
-      delete process.env.TAIKO_BROWSER_ARGS;
-    });
-  });
-
-  describe('browser crashes', () => {
-    let chromeProcess;
-    beforeEach(async () => {
-      taiko.__set__('connect_to_cri', async () => {
-        taiko.__set__({
-          dom: true,
-          page: { close: () => {} },
-          _client: { _ws: { readyState: 1 }, removeAllListeners: () => {}, close: () => {} },
-        });
-      });
-      await openBrowser(openBrowserArgs);
-      chromeProcess = taiko.__get__('chromeProcess');
-    });
-
-    it('should reset client when chrome process crashes', async () => {
-      chromeProcess.kill('SIGKILL');
-      await new Promise((resolve) => {
-        setTimeout(resolve, 100);
-      });
-      expect(client()).to.be.null;
-    });
-
-    it('should allow to open a browser after chrome process crashes', async () => {
-      chromeProcess.kill('SIGKILL');
-      await openBrowser(openBrowserArgs);
       await closeBrowser();
     });
   });
