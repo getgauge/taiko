@@ -2,8 +2,6 @@ const expect = require('chai').expect;
 
 const rewire = require('rewire');
 const Element = require('../../../lib/elements/element');
-
-const elemHelper = rewire('../../../lib/elements/elementHelper');
 const { setConfig } = require('../../../lib/config');
 
 describe('elementHelper', () => {
@@ -12,6 +10,7 @@ describe('elementHelper', () => {
     hideHighlightCalled,
     warningMessage,
     getBoxModelCalled,
+    elemHelper,
     highlightQuadCalled;
   function createElement(id, isVisible) {
     let elem = new Element(id, '');
@@ -22,6 +21,7 @@ describe('elementHelper', () => {
   }
 
   beforeEach(() => {
+    elemHelper = rewire('../../../lib/elements/elementHelper');
     boxModel = null;
     highlightQuadArgs = null;
     hideHighlightCalled = false;
@@ -46,6 +46,10 @@ describe('elementHelper', () => {
     });
     elemHelper.__set__('console', { warn: (warning) => (warningMessage = warning) });
     setConfig({ highlightOnAction: 'true' });
+  });
+
+  afterEach(() => {
+    elemHelper = rewire('../../../lib/elements/elementHelper');
   });
 
   it('should highlight visible element', async () => {

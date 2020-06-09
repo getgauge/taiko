@@ -139,13 +139,13 @@ declare module 'taiko' {
    */
 
   export interface Element {
-    nodeId: string;
+    objectId: string;
     description?: string;
     runtimeHandler?: any;
     get(): string;
     text(): Promise<string>;
     isVisible?(): Promise<boolean>;
-    create?(nodeIds: string[], runtimeHandler?: any);
+    create?(objectIds: string[], runtimeHandler?: any);
     isDisabled?(): Promise<boolean>;
   }
 
@@ -182,7 +182,7 @@ declare module 'taiko' {
     desc: string;
     condition(element: Element, value: number): boolean;
     findProximityElementRects(): { elem: Element; result: any }; // result is wrapped in a callback
-    validNodes(nodeId: Element): MatchingNode;
+    validNodes(objectId: Element): MatchingNode;
   }
 
   // isSelector also allows ElementWrapper instances

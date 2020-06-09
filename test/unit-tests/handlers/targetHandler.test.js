@@ -1,17 +1,30 @@
 const expect = require('chai').expect;
 let rewire = require('rewire');
-const targetHandler = rewire('../../../lib/handlers/targetHandler');
+
 describe('TargetHandler', () => {
   describe('.getCriTargets', () => {
-    let _targets = [];
+    let _targets = [],
+      targetHandler;
 
     before(() => {
+      targetHandler = rewire('../../../lib/handlers/targetHandler');
       let mockCri = {
         List: function () {
           return _targets.reverse();
         },
       };
       targetHandler.__set__('cri', mockCri);
+    });
+
+    after(() => {
+      const createdSessionListener = targetHandler.__get__('createdSessionListener');
+      targetHandler
+        .__get__('eventHandler')
+        .removeListener('createdSession', createdSessionListener);
+      targetHandler = rewire('../../../lib/handlers/targetHandler');
+      targetHandler
+        .__get__('eventHandler')
+        .removeListener('createdSession', createdSessionListener);
     });
 
     beforeEach(() => {

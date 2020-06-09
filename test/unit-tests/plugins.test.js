@@ -1,10 +1,16 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
-const PLUGINS = rewire('../../lib/plugins');
 const path = require('path');
 const os = require('os');
 
 describe('Plugins', () => {
+  let PLUGINS;
+  before(() => {
+    PLUGINS = rewire('../../lib/plugins');
+  });
+  after(() => {
+    PLUGINS = rewire('../../lib/plugins');
+  });
   describe('GetPlugins', () => {
     function mockReadFileSyncWith(content) {
       var fsMock = {

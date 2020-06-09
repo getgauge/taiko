@@ -166,7 +166,7 @@ describe(test_name, () => {
       describe('elements()', () => {
         it('test get of elements', async () => {
           const elements = await button('similarButton').elements();
-          expect(elements[0].get()).to.be.a('number').above(0);
+          expect(elements[0].get()).to.be.a('string');
         });
 
         it('test isVisible of elements', async () => {

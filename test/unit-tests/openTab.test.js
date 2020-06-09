@@ -1,11 +1,11 @@
 const expect = require('chai').expect;
 const { EventEmitter } = require('events');
 const rewire = require('rewire');
-const taiko = rewire('../../lib/taiko');
 
 describe('openTab', () => {
-  let actualTarget, target, actualOptions, actualUrl;
+  let actualTarget, target, actualOptions, actualUrl, taiko;
   before(async () => {
+    taiko = rewire('../../lib/taiko');
     let mockCri = {
       New: async function (options) {
         actualUrl = options.url;
@@ -24,6 +24,10 @@ describe('openTab', () => {
     taiko.__set__('cri', mockCri);
     taiko.__set__('connect_to_cri', mockConnectToCri);
     taiko.__set__('_client', new EventEmitter());
+  });
+
+  after(() => {
+    taiko = rewire('../../lib/taiko');
   });
 
   it('Open tab without any url should call connectToCri', async () => {
