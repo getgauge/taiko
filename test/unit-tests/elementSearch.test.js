@@ -1,17 +1,28 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
-const Element = rewire('../../lib/elements/element');
-const elementSearch = rewire('../../lib/elementSearch');
-const { getIfExists } = elementSearch;
 class DomRects {}
 const TEXT_NODE = 3;
+
 describe('Element Search', () => {
+  let Element, elementSearch, getIfExists;
+
+  before(() => {
+    Element = rewire('../../lib/elements/element');
+    elementSearch = rewire('../../lib/elementSearch');
+    getIfExists = elementSearch.getIfExists;
+  });
+
+  after(() => {
+    Element = rewire('../../lib/elements/element');
+    elementSearch = rewire('../../lib/elementSearch');
+  });
+
   describe('Filter visible nodes', () => {
-    let nodeIds, runtimeHandler;
-    const filterVisibleNodes = elementSearch.__get__('filterVisibleNodes');
+    let objectIds, runtimeHandler, filterVisibleNodes;
     beforeEach(() => {
+      filterVisibleNodes = elementSearch.__get__('filterVisibleNodes');
       Element.__set__('Node', { TEXT_NODE });
-      nodeIds = {
+      objectIds = {
         23: {
           offsetHeight: 1,
           offsetWidth: 0,
@@ -42,35 +53,35 @@ describe('Element Search', () => {
       runtimeHandler = {
         runtimeCallFunctionOn: (predicate, args, obj) => {
           const result = {
-            result: { value: predicate.call(nodeIds[obj.nodeId]) },
+            result: { value: predicate.call(objectIds[obj.objectId]) },
           };
           return result;
         },
       };
     });
     const createElement = (elements) =>
-      elements.map((nodeId) => new Element(nodeId, '', runtimeHandler));
+      elements.map((objectId) => new Element(objectId, '', runtimeHandler));
 
     it('should return visible nodes', async () => {
-      const visibleNodeIds = createElement([23, 45, 67]);
+      const visibleobjectIds = createElement([23, 45, 67]);
       const elementsToFilter = createElement([23, 45, 67, 68]);
-      expect(await filterVisibleNodes(elementsToFilter)).to.eql(visibleNodeIds);
+      expect(await filterVisibleNodes(elementsToFilter)).to.eql(visibleobjectIds);
     });
 
     it('should use parentElement to determine visibility for text nodes', async () => {
-      const visibleNodeIds = createElement([23, 89]);
+      const visibleobjectIds = createElement([23, 89]);
       const elementsToFilter = createElement([23, 68, 89]);
-      expect(await filterVisibleNodes(elementsToFilter)).to.eql(visibleNodeIds);
+      expect(await filterVisibleNodes(elementsToFilter)).to.eql(visibleobjectIds);
     });
   });
   describe('getIfExists', () => {
-    let findElementCallCount,
-      originalWaitUntil = elementSearch.__get__('waitUntil');
+    let findElementCallCount, originalWaitUntil;
     const findElement = async () => {
       findElementCallCount++;
       return [{ id: 23 }];
     };
     beforeEach(() => {
+      originalWaitUntil = elementSearch.__get__('waitUntil');
       findElementCallCount = 0;
       elementSearch.__set__('waitUntil', async (condition) => {
         await condition();

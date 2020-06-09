@@ -1,13 +1,14 @@
 const rewire = require('rewire');
 const EventEmitter = require('events').EventEmitter;
 const expect = require('chai').expect;
-let pageHandler = rewire('../../../lib/handlers/pageHandler');
 
 describe('pageHandler', () => {
   let navigate = {};
+  let pageHandler;
   let event = new EventEmitter();
 
-  beforeEach(() => {
+  before(() => {
+    pageHandler = rewire('../../../lib/handlers/pageHandler');
     let page = {
       bringToFront: async () => {},
       domContentEventFired: async () => {},
@@ -31,6 +32,13 @@ describe('pageHandler', () => {
     };
     pageHandler.__set__('page', page);
     pageHandler.__set__('eventHandler', event);
+  });
+
+  after(() => {
+    const createdSessionListener = pageHandler.__get__('createdSessionListener');
+    pageHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    pageHandler = rewire('../../../lib/handlers/pageHandler');
+    pageHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
   });
 
   it('.handleNavigation should call page.navigate', () => {

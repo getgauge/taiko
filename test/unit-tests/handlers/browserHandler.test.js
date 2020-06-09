@@ -1,8 +1,19 @@
 const rewire = require('rewire');
 const expect = require('chai').expect;
-const browserHandler = rewire('../../../lib/handlers/browserHandler');
 
 describe('browserHandler', () => {
+  let browserHandler;
+  before(() => {
+    browserHandler = rewire('../../../lib/handlers/browserHandler');
+  });
+
+  after(() => {
+    const createdSessionListener = browserHandler.__get__('createdSessionListener');
+    browserHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    browserHandler = rewire('../../../lib/handlers/browserHandler');
+    browserHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+  });
+
   it('.clearPermissionOverrides should clear all overriden permissions', () => {
     let isCalled = false;
     let mockBrInstance = {

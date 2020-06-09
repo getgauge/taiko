@@ -21,8 +21,7 @@
 * Open Tab "http://localhost:3001/"
 * Assert title to be "The Internet"
 * Close Tab "http://localhost:3001/"
-TODO: Add this step when Open/Close tab fix for headful
-Assert title to be "Document"
+* Assert title to be "Document"
 
 
 ## Close Tab with no parameters
