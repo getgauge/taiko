@@ -58,7 +58,60 @@ describe('TargetHandler', () => {
       expect(someOtherTarget.matching.length).to.be.equal(2);
     });
 
-    it('should give all matching tabs if url is given', async () => {
+	  
+    it('should give all matching tabs if url is given without protocol ', async () => {
+      _targets.push({
+        id: '1',
+        type: 'page',
+        url: 'https://flipkart.com/a/c',
+      });
+      _targets.push({
+        id: '2',
+        type: 'page',
+        url: 'https://amazon.com',
+      });
+      _targets.push({
+        id: '3',
+        type: 'page',
+        url: 'https://flipkart.com/a/b',
+      });
+
+      let targets = await targetHandler.getCriTargets('flipkart.com/a/b');
+
+      expect(targets.matching.length).to.be.equal(1);
+      expect(targets.matching[0].id).to.be.equal('3');
+      expect(targets.matching[0].url).to.be.equal('https://flipkart.com/a/b');
+      expect(targets.others.length).to.be.equal(2);
+      expect(targets.others[0].url).to.be.equal('https://amazon.com');
+    });
+
+    it('should give all matching tabs if url is given with multi path ', async () => {
+      _targets.push({
+        id: '1',
+        type: 'page',
+        url: 'https://flipkart.com/a/c',
+      });
+      _targets.push({
+        id: '2',
+        type: 'page',
+        url: 'https://amazon.com',
+      });
+      _targets.push({
+        id: '3',
+        type: 'page',
+        url: 'https://flipkart.com/a/b',
+      });
+
+      let targets = await targetHandler.getCriTargets('https://flipkart.com/a/b');
+
+      expect(targets.matching.length).to.be.equal(1);
+      expect(targets.matching[0].id).to.be.equal('3');
+      expect(targets.matching[0].url).to.be.equal('https://flipkart.com/a/b');
+      expect(targets.others.length).to.be.equal(2);
+      expect(targets.others[0].url).to.be.equal('https://amazon.com');
+    });
+
+    it('should give all matching tabs if host is given', async () => {
       _targets.push({
         id: '1',
         type: 'page',
@@ -122,6 +175,29 @@ describe('TargetHandler', () => {
       let targets = await targetHandler.getCriTargets(/Go*gle/);
       expect(targets.matching.length).to.be.equal(1);
       expect(targets.others.length).to.be.equal(1);
+    });
+
+    it('should give all matching tabs if targets has blank page', async () => {
+      _targets.push({
+        id: '1',
+        type: 'page',
+        url: 'http://localhost:3001/windows',
+      });
+      _targets.push({
+        id: '2',
+        type: 'page',
+        url: 'http://localhost:3001/windows/new',
+      });
+      _targets.push({
+        id: '3',
+        type: 'page',
+        url: 'about:blank',
+      });
+      let targets = await targetHandler.getCriTargets('http://localhost:3001/windows');
+
+      expect(targets.matching.length).to.be.equal(1);
+      expect(targets.matching[0].id).to.be.equal('1');
+      expect(targets.others.length).to.be.equal(2);
     });
   });
 });
