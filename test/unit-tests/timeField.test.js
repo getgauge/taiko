@@ -295,7 +295,7 @@ describe(test_name, () => {
           const elements = await timeField({
             id: `sample${inputType.type}`,
           }).elements();
-          expect(elements[0].get()).to.be.a('number').above(0);
+          expect(elements[0].get()).to.be.a('string');
         });
 
         it('test description of elements', async () => {

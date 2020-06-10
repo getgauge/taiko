@@ -1,8 +1,7 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
-const Element = rewire('../../../lib/elements/element');
 const TEXT_NODE = 3;
-Element.__set__('Node', { TEXT_NODE });
+
 class DomRects {}
 const nodes = {
   23: {
@@ -36,10 +35,19 @@ const nodes = {
   },
 };
 describe('Element', () => {
+  let Element;
+  beforeEach(() => {
+    Element = rewire('../../../lib/elements/element');
+    Element.__set__('Node', { TEXT_NODE });
+  });
+  afterEach(() => {
+    Element = rewire('../../../lib/elements/element');
+  });
+
   let runtimeHandler = {
     runtimeCallFunctionOn: (predicate, contextId, options) => {
       return {
-        result: { value: predicate.call(nodes[options.nodeId]) },
+        result: { value: predicate.call(nodes[options.objectId]) },
       };
     },
   };
@@ -55,48 +63,48 @@ describe('Element', () => {
     expect(actualElements).to.be.deep.equal(expectedElements);
   });
 
-  it('get should return nodeId', () => {
-    let nodeId = 12;
-    let element = new Element(nodeId, 'element description', runtimeHandler);
-    expect(element.get()).to.be.equal(nodeId);
+  it('get should return objectId', () => {
+    let objectId = 12;
+    let element = new Element(objectId, 'element description', runtimeHandler);
+    expect(element.get()).to.be.equal(objectId);
   });
 
   describe('text', () => {
     it('should return innerText of element', async () => {
-      let nodeId = 23;
-      let element = new Element(nodeId, 'element description', runtimeHandler);
+      let objectId = 23;
+      let element = new Element(objectId, 'element description', runtimeHandler);
       expect(await element.text()).to.be.equal('element text');
     });
   });
 
   describe('isVisible', () => {
     it('should be visible when offsetHeight is not zero', async () => {
-      let nodeId = 45;
-      let element = new Element(nodeId, 'element description', runtimeHandler);
+      let objectId = 45;
+      let element = new Element(objectId, 'element description', runtimeHandler);
       expect(await element.isVisible()).to.be.true;
     });
 
     it('should be visible when offsetWidth is not zero', async () => {
-      let nodeId = 41;
-      let element = new Element(nodeId, 'element description', runtimeHandler);
+      let objectId = 41;
+      let element = new Element(objectId, 'element description', runtimeHandler);
       expect(await element.isVisible()).to.be.true;
     });
 
     it('should be visible when ClientRects are more than one', async () => {
-      let nodeId = 47;
-      let element = new Element(nodeId, 'element description', runtimeHandler);
+      let objectId = 47;
+      let element = new Element(objectId, 'element description', runtimeHandler);
       expect(await element.isVisible()).to.be.true;
     });
 
     it('should not be visible', async () => {
-      let nodeId = 50;
-      let element = new Element(nodeId, 'element description', runtimeHandler);
+      let objectId = 50;
+      let element = new Element(objectId, 'element description', runtimeHandler);
       expect(await element.isVisible()).to.be.false;
     });
 
     it('should use parent node of TEXT_NODE', async () => {
-      let nodeId = 89;
-      let element = new Element(nodeId, 'element description', runtimeHandler);
+      let objectId = 89;
+      let element = new Element(objectId, 'element description', runtimeHandler);
       expect(await element.isVisible()).to.be.true;
     });
   });

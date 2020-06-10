@@ -97,7 +97,7 @@ describe(test_name, () => {
   describe('test elementList properties', () => {
     it('test get()', async () => {
       const elems = await $('#foo').elements();
-      expect(elems[0].get()).to.be.a('number').above(0);
+      expect(elems[0].get()).to.be.a('string');
     });
 
     it('test isVisible of elements', async () => {

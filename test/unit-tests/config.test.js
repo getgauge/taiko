@@ -1,9 +1,15 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
-const config = rewire('../../lib/config');
-const originalConfig = Object.assign({}, config.defaultConfig);
 
 describe('Config tests', () => {
+  let config, originalConfig;
+  beforeEach(() => {
+    config = rewire('../../lib/config');
+    Object.assign({}, config.defaultConfig);
+  });
+  afterEach(() => {
+    config = rewire('../../lib/config');
+  });
   describe('Test setConfig', () => {
     describe('For invalid config name', () => {
       it('should throw exception', () => {
@@ -149,7 +155,11 @@ describe('Config tests', () => {
   });
 
   describe('Test determineObserveDelay', () => {
-    const determineObserveDelay = config.__get__('determineObserveDelay');
+    let determineObserveDelay;
+
+    before(() => {
+      determineObserveDelay = config.__get__('determineObserveDelay');
+    });
 
     describe('with observe true', () => {
       it('should return provided value', () => {
