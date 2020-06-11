@@ -1,15 +1,14 @@
 const expect = require('chai').expect;
 const { EventEmitter } = require('events');
 const rewire = require('rewire');
-const taiko = rewire('../../lib/taiko');
-const targetHandler = rewire('../../lib/handlers/targetHandler');
+const { eventHandler } = require('../../lib/eventBus');
 
 describe('closeTab', () => {
   let _targets = { matching: [], others: [] };
   let currentURL = '';
   let _isMatchUrl = false;
   let _isMatchRegex = false;
-  let currentTarget;
+  let currentTarget, taiko, targetHandler;
   let descEmmitter = new EventEmitter();
 
   let validateEmitterEvent = function (event, expectedText) {
@@ -22,6 +21,8 @@ describe('closeTab', () => {
   };
 
   before(() => {
+    taiko = rewire('../../lib/taiko');
+    targetHandler = rewire('../../lib/handlers/targetHandler');
     let mockCri = {
       Close: async function () {},
     };
@@ -51,6 +52,13 @@ describe('closeTab', () => {
       currentTarget = target;
     });
     taiko.__set__('dom', { getDocument: async () => {} });
+  });
+
+  after(() => {
+    taiko = rewire('../../lib/taiko');
+    targetHandler = rewire('../../lib/handlers/targetHandler');
+    const createdSessionListener = targetHandler.__get__('createdSessionListener');
+    eventHandler.removeListener('createdSession', createdSessionListener);
   });
 
   beforeEach(() => {

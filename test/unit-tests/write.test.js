@@ -2,10 +2,19 @@ const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const rewire = require('rewire');
 const EventEmitter = require('events').EventEmitter;
-const taiko = rewire('../../lib/taiko.js');
 chai.use(chaiAsPromised);
 const expect = chai.expect;
-let { openBrowser, goto, textBox, closeBrowser, write, into, toLeftOf, setConfig, reload } = taiko;
+let {
+  openBrowser,
+  goto,
+  textBox,
+  closeBrowser,
+  write,
+  into,
+  toLeftOf,
+  setConfig,
+  reload,
+} = require('../../lib/taiko.js');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 let test_name = 'write';
 
@@ -179,7 +188,7 @@ describe('write test on multiple similar elements', () => {
 
 describe('Write with hideText option', () => {
   let filePath;
-  let actualEmmiter;
+  let actualEmmiter, taiko;
   let emitter = new EventEmitter();
 
   let validateEmitterEvent = function (event, expectedText) {
@@ -192,6 +201,7 @@ describe('Write with hideText option', () => {
   };
 
   before(async () => {
+    taiko = rewire('../../lib/taiko.js');
     actualEmmiter = taiko.__get__('descEvent');
 
     taiko.__set__('descEvent', emitter);
@@ -256,7 +266,7 @@ describe('Write with hideText option', () => {
       'success',
       'Wrote ***** into the text field To left of input-type-text',
     );
-    await taiko.write('something', into(textBox(toLeftOf('input-type-text'))), {
+    await taiko.write('something', taiko.into(taiko.textBox(taiko.toLeftOf('input-type-text'))), {
       hideText: true,
     });
     await validatePromise;
