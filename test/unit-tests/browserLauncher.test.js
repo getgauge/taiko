@@ -33,10 +33,10 @@ describe('OpenBrowser', () => {
   });
 
   describe('browser crashes', () => {
-    let chromeProcess;
+    let browserProcess;
     beforeEach(async () => {
-      await browserLauncher.launchChrome(openBrowserArgs);
-      chromeProcess = browserLauncher.__get__('chromeProcess');
+      await browserLauncher.launchBrowser(openBrowserArgs);
+      browserProcess = browserLauncher.__get__('browserProcess');
     });
 
     afterEach(() => {
@@ -48,7 +48,7 @@ describe('OpenBrowser', () => {
       eventHandler.on('browserCrashed', () => {
         browserCrashedEmitted = true;
       });
-      chromeProcess.kill('SIGKILL');
+      browserProcess.kill('SIGKILL');
       await new Promise((resolve) => {
         setTimeout(resolve, 100);
       });
@@ -56,7 +56,7 @@ describe('OpenBrowser', () => {
     });
 
     it('should allow to open a browser after chrome process crashes', async () => {
-      chromeProcess.kill('SIGKILL');
+      browserProcess.kill('SIGKILL');
       await openBrowser(openBrowserArgs);
       await closeBrowser();
     });
