@@ -3,7 +3,8 @@
   <p class="banner-text-container_desc">
     <a href="https://github.com/getgauge/taiko">Taiko</a> is a free and open source browser automation tool built by the
     team behind <a href="https://gauge.org">Gauge by ThoughtWorks</a>. It is a node library with a clear and concise API
-    to automate the chrome browser. Taiko uses the Chrome DevTools API and is built ground up to test modern web
+    to automate the chromium based browsers and Firefox. Taiko uses the Chrome DevTools Protocol and is built ground up
+    to test modern web
     applications.
   </p>
 </section>
@@ -42,11 +43,11 @@
     We built Taiko to make browser automation reliable. To fix the underlying problem behind ‘flaky tests’ and improve
     the browser automation experience, Taiko comes with an <a href="#interactive-recorder">interactive recorder</a> and
     a powerful API that provides
-    <ul class="desc-list">
-      <li><a href="#smart-selectors">Smart Selectors</a></li>
-      <li><a href="#xhr-dynamic-content">Ability to handle XHR and dynamic content</a></li>
-      <li><a href="#request-response">Request/Response stubbing and mocking</a></li>
-    </ul>
+  <ul class="desc-list">
+    <li><a href="#smart-selectors">Smart Selectors</a></li>
+    <li><a href="#xhr-dynamic-content">Ability to handle XHR and dynamic content</a></li>
+    <li><a href="#request-response">Request/Response stubbing and mocking</a></li>
+  </ul>
   </p>
 </section>
 
@@ -88,11 +89,11 @@ write(<span class="hljs-string">"taiko test automation"</span>)
 click(<span class="hljs-string">"Google Search"</span>)</code></pre>
     </div>
     <p>These commands get the browser to
-      <ul class="desc-list">
-        <li>go to Google’s home page, </li>
-        <li>type the text "taiko test automation" and then </li>
-        <li>click on the "Google Search" button.</li>
-      </ul>
+    <ul class="desc-list">
+      <li>go to Google’s home page, </li>
+      <li>type the text "taiko test automation" and then </li>
+      <li>click on the "Google Search" button.</li>
+    </ul>
     </p>
     <p>You can see the browser performing these actions as you type and press enter for each command.
     </p>
@@ -374,12 +375,27 @@ openBrowser({args:<span class="hljs-string">['--window-size=1440,900']</span>}) 
       action</li>
     <li><span class="highlight">TAIKO_CHROMIUM_URL</span> - set to host url of mirror to download chromium </li>
     <li><span class="highlight">TAIKO_BROWSER_PATH</span> - set to launch browser from different location</li>
-    <li><span class="highlight">TAIKO_BROWSER_ARGS</span> - set ',' separated browser command line switches to launch browser with extra args</li>
+    <li><span class="highlight">TAIKO_BROWSER_ARGS</span> - set ',' separated browser command line switches to launch
+      browser with extra args</li>
     <li><span class="highlight">TAIKO_EMULATE_DEVICE</span> - set to device model to emulate device view port</li>
     <li><span class="highlight">TAIKO_EMULATE_NETWORK</span> - set to the network type for Taiko to simulate. Available
       options are GPRS, Regular2G, Good2G, Regular3G, Good3G, Regular4G, DSL, WiFi, Offline</li>
     <li><span class="highlight">TAIKO_PLUGIN</span> - set to the plugin which you want Taiko to load. Takes comma
       separated values.</li>
+  </ul>
+</section>
+
+<section class="taiko-firefox-support">
+  <h2 id="taiko-firefox-support">
+    Experimental Firefox support
+  </h2>
+  <p>To launch taiko with firefox:</p>
+  <ul class="desc-list">
+  <li>Download and install <a href="https://www.mozilla.org/en-US/firefox/all/#product-desktop-nightly">firefox
+      nightly</a></li>
+  <li>Set <span class="highlight">TAIKO_BROWSER_PATH</span> to firefox nightly's executable.</li>
+  Example: <span class="highlight">TAIKO_BROWSER_PATH="/Applications/Firefoxnightly.app/Contents/MacOS/firefox"
+    taiko</span>
   </ul>
 </section>
 
