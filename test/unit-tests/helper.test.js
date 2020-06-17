@@ -50,12 +50,12 @@ describe('Helper', () => {
         waitUntil(
           async () => {
             await condition();
-            throw new Error('Chrome process with pid 2045 exited with signal SIGTERM');
+            throw new Error('Browser process with pid 2045 exited with signal SIGTERM');
           },
           1,
           20,
         ),
-      ).to.be.eventually.rejectedWith('Chrome process with pid 2045 exited with signal SIGTERM');
+      ).to.be.eventually.rejectedWith('Browser process with pid 2045 exited with signal SIGTERM');
       expect(callCount).to.be.equal(1);
     });
 
