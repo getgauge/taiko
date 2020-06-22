@@ -1,37 +1,39 @@
 const expect = require('chai').expect;
 const rewire = require('rewire');
-let networkHandler = rewire('../../lib/handlers/networkHandler');
+let fetchHandler = rewire('../../lib/handlers/fetchHandler');
 const test_name = 'Intercept';
 
 describe(test_name, () => {
   let actualOption;
   before(() => {
-    networkHandler.__set__('network', {
-      continueInterceptedRequest: (options) => {
+    fetchHandler.__set__('fetch', {
+      continueRequest: (options) => {
         actualOption = options;
         return Promise.resolve();
       },
-      requestWillBeSent: () => {},
-      loadingFinished: () => {},
-      loadingFailed: () => {},
-      responseReceived: () => {},
-      setCacheDisabled: () => {},
-      setRequestInterception: () => {},
-      requestIntercepted: () => {},
+      failRequest: (options) => {
+        actualOption = options;
+        return Promise.resolve();
+      },
+      fulfillRequest: (options) => {
+        actualOption = options;
+        return Promise.resolve();
+      },
     });
   });
 
   afterEach(() => {
-    networkHandler.resetInterceptors();
+    actualOption = null;
+    fetchHandler.resetInterceptors();
   });
 
   it('Check redirection using interception', async () => {
-    networkHandler.addInterceptor({
+    fetchHandler.addInterceptor({
       requestUrl: 'www.google.com',
       action: 'www.ibibo.com',
     });
-    networkHandler.handleInterceptor({
-      interceptionId: 'interceptionId',
+    fetchHandler.handleInterceptor({
+      requestId: 'requestId',
       request: {
         url: 'http://www.google.com',
         method: 'GET',
@@ -43,9 +45,9 @@ describe(test_name, () => {
   });
 
   it('Block url', async () => {
-    networkHandler.addInterceptor({ requestUrl: 'www.google.com' });
-    networkHandler.handleInterceptor({
-      interceptionId: 'interceptionId',
+    fetchHandler.addInterceptor({ requestUrl: 'www.google.com' });
+    fetchHandler.handleInterceptor({
+      requestId: 'requestId',
       request: {
         url: 'http://www.google.com',
         method: 'GET',
@@ -57,7 +59,7 @@ describe(test_name, () => {
   });
 
   it('Mock Response', async () => {
-    networkHandler.addInterceptor({
+    fetchHandler.addInterceptor({
       requestUrl: 'http://localhost:3000/api/customers/11',
       action: {
         body: {
@@ -73,8 +75,8 @@ describe(test_name, () => {
         },
       },
     });
-    networkHandler.handleInterceptor({
-      interceptionId: 'interceptionId',
+    fetchHandler.handleInterceptor({
+      requestId: 'requestId',
       request: {
         url: 'http://localhost:3000/api/customers/11',
         method: 'GET',
@@ -82,7 +84,7 @@ describe(test_name, () => {
       resourceType: 'Document',
       isNavigationRequest: true,
     });
-    let res = Buffer.from(actualOption.rawResponse, 'base64').toString('binary');
+    let res = Buffer.from(actualOption.body, 'base64').toString('binary');
     expect(res).to.include('12345 Central St.');
   });
 
@@ -91,16 +93,16 @@ describe(test_name, () => {
     console.warn = (log) => {
       actualConsoleWarn = log;
     };
-    networkHandler.addInterceptor({
+    fetchHandler.addInterceptor({
       requestUrl: 'www.google.com',
       action: 'www.ibibo.com',
     });
-    networkHandler.addInterceptor({
+    fetchHandler.addInterceptor({
       requestUrl: 'www.google.com',
       action: 'www.gauge.org',
     });
-    networkHandler.handleInterceptor({
-      interceptionId: 'interceptionId',
+    fetchHandler.handleInterceptor({
+      requestId: 'requestId',
       request: {
         url: 'http://www.google.com',
         method: 'GET',
@@ -116,15 +118,15 @@ describe(test_name, () => {
 
   it('intercept with count added for the requestUrl', async () => {
     let count = 3;
-    networkHandler.addInterceptor({
+    fetchHandler.addInterceptor({
       requestUrl: 'www.google.com',
       action: 'www.gauge.org',
       count,
     });
 
     for (var i = 0; i < count + 1; i++) {
-      networkHandler.handleInterceptor({
-        interceptionId: 'interceptionId',
+      fetchHandler.handleInterceptor({
+        requestId: 'requestId',
         request: {
           url: 'http://www.google.com',
           method: 'GET',
@@ -137,13 +139,13 @@ describe(test_name, () => {
     }
   });
   it('reset intercept for the requestUrl if interceptor is present for the url', async () => {
-    networkHandler.addInterceptor({
+    fetchHandler.addInterceptor({
       requestUrl: 'www.google.com',
       action: 'www.gauge.org',
     });
-    var result = networkHandler.resetInterceptor('www.google.com');
-    networkHandler.handleInterceptor({
-      interceptionId: 'interceptionId',
+    var result = fetchHandler.resetInterceptor('www.google.com');
+    fetchHandler.handleInterceptor({
+      requestId: 'requestId',
       request: {
         url: 'http://www.google.com',
         method: 'GET',
@@ -155,7 +157,7 @@ describe(test_name, () => {
     expect(result).to.equal(true);
   });
   it('reset intercept returns false if intercept does not exist for the requestUrl', async () => {
-    var result = networkHandler.resetInterceptor('www.google.com');
+    var result = fetchHandler.resetInterceptor('www.google.com');
     expect(result).to.equal(false);
   });
 });
