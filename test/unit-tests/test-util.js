@@ -32,7 +32,6 @@ module.exports.removeFile = (filePath) => {
 };
 
 module.exports.openBrowserArgs = {
-  dumpio: true,
   args: [
     '--disable-gpu',
     '--disable-dev-shm-usage',

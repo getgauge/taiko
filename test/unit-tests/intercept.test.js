@@ -5,8 +5,10 @@ const test_name = 'Intercept';
 
 describe(test_name, () => {
   let actualOption;
-  before(() => {
+  beforeEach(() => {
     fetchHandler.__set__('fetch', {
+      enable: () => {},
+      requestPaused: () => {},
       continueRequest: (options) => {
         actualOption = options;
         return Promise.resolve();
@@ -25,6 +27,10 @@ describe(test_name, () => {
   afterEach(() => {
     actualOption = null;
     fetchHandler.resetInterceptors();
+    const createdSessionListener = fetchHandler.__get__('createdSessionListener');
+    fetchHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    fetchHandler = rewire('../../lib/handlers/fetchHandler');
+    fetchHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
   });
 
   it('Check redirection using interception', async () => {
@@ -159,5 +165,56 @@ describe(test_name, () => {
   it('reset intercept returns false if intercept does not exist for the requestUrl', async () => {
     var result = fetchHandler.resetInterceptor('www.google.com');
     expect(result).to.equal(false);
+  });
+  it('reset interceptors should set interceptors empty array and userEnabledIntercept false', async () => {
+    fetchHandler.__set__('interceptors', ['intercept1', 'intercept2']);
+    fetchHandler.__set__('userEnabledIntercept', true);
+    fetchHandler.resetInterceptors();
+    expect(fetchHandler.__get__('interceptors')).to.be.empty;
+    expect(fetchHandler.__get__('userEnabledIntercept')).to.be.false;
+  });
+  it('add interceptor should put a entry in interceptors', async () => {
+    const intercept = { request: 'action' };
+    fetchHandler.addInterceptor(intercept);
+    expect(fetchHandler.__get__('interceptors')[0]).to.deep.equal(intercept);
+  });
+  it('add interceptor should call enableFetchIntercept for the first time and set userEnabledIntercept to true', async () => {
+    let called = false;
+    fetchHandler.__set__('enableFetchIntercept', () => {
+      called = true;
+    });
+    fetchHandler.addInterceptor('intercept');
+    expect(fetchHandler.__get__('userEnabledIntercept')).to.be.true;
+    expect(called).to.be.true;
+  });
+  it('add interceptor should not call enableFetchIntercept if userEnabledIntercept is set to true', async () => {
+    let called = false;
+    fetchHandler.__set__('enableFetchIntercept', () => {
+      called = true;
+    });
+    fetchHandler.__set__('userEnabledIntercept', true);
+    fetchHandler.addInterceptor('intercept');
+    expect(fetchHandler.__get__('userEnabledIntercept')).to.be.true;
+    expect(called).to.be.false;
+  });
+  it('createdSessionListener should call enableFetchIntercept if userEnabledIntercept is set to true', async () => {
+    let called = false;
+    fetchHandler.__set__('enableFetchIntercept', () => {
+      called = true;
+    });
+    fetchHandler.__set__('userEnabledIntercept', true);
+    fetchHandler.__get__('createdSessionListener')({ Fetch: 'domain' });
+    expect(fetchHandler.__get__('userEnabledIntercept')).to.be.true;
+    expect(called).to.be.true;
+  });
+  it('createdSessionListener should not call enableFetchIntercept if userEnabledIntercept is set to false', async () => {
+    let called = false;
+    fetchHandler.__set__('enableFetchIntercept', () => {
+      called = true;
+    });
+    fetchHandler.__set__('userEnabledIntercept', false);
+    fetchHandler.__get__('createdSessionListener')({ Fetch: 'domain' });
+    expect(fetchHandler.__get__('userEnabledIntercept')).to.be.false;
+    expect(called).to.be.false;
   });
 });
