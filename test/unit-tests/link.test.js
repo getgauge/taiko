@@ -81,9 +81,7 @@ describe(test_name, () => {
       expect(link('here').description).to.be.eql('link with text here ');
     });
     it('should find the link with id', async () => {
-      expect(link({ id: 'redirect' }).description).to.be.eql(
-        'link[@id = concat(\'redirect\', "")]',
-      );
+      expect(link({ id: 'redirect' }).description).to.be.eql('link[id="redirect"]');
     });
     it('should find the link with proximity selector', async () => {
       expect(link(toRightOf('Click')).description).to.be.eql('link To right of Click');
