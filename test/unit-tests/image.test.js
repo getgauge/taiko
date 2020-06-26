@@ -69,25 +69,19 @@ describe(test_name, () => {
       expect(image('avatar').description).to.be.eql('image with alt avatar ');
     });
     it('should find the image with selectors', async () => {
-      expect(image({ id: 'brokenImage' }).description).to.be.eql(
-        'image[@id = concat(\'brokenImage\', "")]',
-      );
+      expect(image({ id: 'brokenImage' }).description).to.be.eql('image[id="brokenImage"]');
       expect(image({ src: 'brokenImage.jpg' }).description).to.be.eql(
-        'image[@src = concat(\'brokenImage.jpg\', "")]',
+        'image[src="brokenImage.jpg"]',
       );
     });
     it('should find the image with proximity selector', async () => {
       expect(image(below('Images')).description).to.be.eql('image Below Images');
     });
     it('should find div image using selectors', async () => {
-      expect(image({ id: 'divImage' }).description).to.be.eql(
-        'image[@id = concat(\'divImage\', "")]',
-      );
+      expect(image({ id: 'divImage' }).description).to.be.eql('image[id="divImage"]');
     });
     it('should find p tag image using selectors', async () => {
-      expect(image({ id: 'paraImage' }).description).to.be.eql(
-        'image[@id = concat(\'paraImage\', "")]',
-      );
+      expect(image({ id: 'paraImage' }).description).to.be.eql('image[id="paraImage"]');
     });
     it('should find the div image with proximity selector', async () => {
       expect(image(below('Div Image')).description).to.be.eql('image Below Div Image');
