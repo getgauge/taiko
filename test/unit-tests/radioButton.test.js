@@ -63,7 +63,7 @@ describe(test_name, () => {
   after(async () => {
     resetConfig();
     await closeBrowser();
-    removeFile(filePath);
+    // removeFile(filePath);
   });
 
   describe('case insensitive selector', async () => {
@@ -191,9 +191,7 @@ describe(test_name, () => {
       let elements = await radioButton({
         id: 'someRadioButton',
       }).elements();
-      expect(elements[0].description).to.be.eql(
-        'Radio button[@id = concat(\'someRadioButton\', "")]',
-      );
+      expect(elements[0].description).to.be.eql('Radio button[id="someRadioButton"]');
     });
 
     it('test isSelected of elements', async () => {
