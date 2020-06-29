@@ -198,7 +198,7 @@ describe(test_name, () => {
       let elements = await dropDown({
         id: 'sampleDropDown',
       }).elements();
-      expect(elements[0].description).to.be.eql('DropDown[@id = concat(\'sampleDropDown\', "")]');
+      expect(elements[0].description).to.be.eql('DropDown[id="sampleDropDown"]');
     });
 
     it('test text of elements', async () => {
