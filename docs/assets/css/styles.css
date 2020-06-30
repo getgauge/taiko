@@ -93,8 +93,6 @@ img {
 
 p {
   margin: 1em 0;
-  text-align: justify;
-  text-justify: inter-word;
 }
 
 code,
@@ -241,10 +239,6 @@ aside ol li::before {
   display: inline-block;
   width: 1em;
   margin-left: -1em;
-}
-
-h1 {
-  text-transform: capitalize;
 }
 
 pre {

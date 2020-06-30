@@ -1,0 +1,41 @@
+---
+pagination: 
+    data: apis
+    size: 1
+    alias: api
+permalink: "api/{{ api.name | slug }}/"
+layout: api.njk
+---
+
+<h1>{{api.name}}</h1>
+{%- for child in api.description.children %}
+
+{% if child.type == 'paragraph' %}
+<p>
+    {%- for content in child.children %}
+        {% if content.type == 'text' %}
+            {{ content.value }}
+        {% endif %}
+        {% if content.type == 'html' %}
+            {{ content.value | safe }}
+        {% endif %}
+        {% if content.type == 'inlineCode' %}
+            <code>{{ content.value }}</code>
+        {% endif %}
+        {% if content.type == 'link' %}
+                    {% if 'http' in content.url %}
+                        <a href="{{ content.url }}">{{ content.url }}</a>
+                    {% else %}
+                        <a href="../{{ content.url }}">{{ content.url }}</a>
+
+                    {% endif %}
+        {% endif %}
+    {% endfor -%}
+</p>
+{% endif %}
+{% endfor -%}
+
+<h3>Examples</h3>
+{%- for example in api.examples %}
+<pre><code>{{ example.description }}</code></pre>
+{% endfor -%}

@@ -78,4 +78,4 @@ lib/api.json
 *.swp
 tags
 _site
-api.json
+apis.json

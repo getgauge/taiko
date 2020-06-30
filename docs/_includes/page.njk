@@ -2,7 +2,7 @@
 layout: base.njk
 ---
 <small><a href="/">Home</a></small>
-<h1>{{ page.url | heading }}</h1>
+<h1 style="text-transform: capitalize">{{ page.url | heading }}</h1>
 <aside>
   {{ content |  toc | safe }}
 </aside>
