@@ -133,7 +133,6 @@ header {
   flex-direction: column;
   width: 100%;
   height: 320px;
-/*  background: #2BD3EF;*/
   background-image: url("../images/background.svg");
   background-size: cover;
   background-position: center;
@@ -165,7 +164,7 @@ article {
 
 .home-section ul {
   list-style: none;
-  columns-count: 2;
+  columns: 15em;
 }
 
 .home-section ul li::before {
