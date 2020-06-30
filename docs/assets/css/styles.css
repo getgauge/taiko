@@ -165,7 +165,7 @@ article {
 
 .home-section ul {
   list-style: none;
-  columns: 2;
+  columns-count: 2;
 }
 
 .home-section ul li::before {
