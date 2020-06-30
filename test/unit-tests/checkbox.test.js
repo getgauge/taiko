@@ -165,7 +165,7 @@ const inputTypeCaseSensitive = {
         let elements = await checkBox({
           id: 'someCheckBox',
         }).elements();
-        expect(elements[0].description).to.be.eql('Checkbox[@id = concat(\'someCheckBox\', "")]');
+        expect(elements[0].description).to.be.eql('Checkbox[id="someCheckBox"]');
       });
 
       it('test isChecked of elements', async () => {
