@@ -39,3 +39,9 @@ layout: api.njk
 {%- for example in api.examples %}
 <pre><code>{{ example.description }}</code></pre>
 {% endfor -%}
+
+<h3>Parameters</h3>
+{%- for parameter in api.params %}
+<h4><code>{{ parameter.name }}</code></h4>
+<p>Default Value: <code>{{ parameter.default}}</code></p>
+{% endfor -%}
