@@ -1,3 +1,6 @@
+---
+layout: base.njk
+---
 ## Frequently Asked Questions
 
 <details>
@@ -9,10 +12,9 @@ Taiko can be used to automate the latest versions of
 * Microsoft Edge
 * Opera (unverified)
 
-Experimental support for Firefox is available. Can be used against Nightly version of Firefox with some limitations.
-
 The following browsers are NOT supported
 
+* Firefox
 * Safari
 
 </details>

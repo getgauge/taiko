@@ -1,0 +1,11 @@
+---
+layout: base.njk
+---
+<small><a href="/">Home</a></small>
+<h1>{{ page.url | heading }}</h1>
+<aside>
+  {{ content |  toc | safe }}
+</aside>
+{{ content | safe }}
+<hr/>
+<a style="float:right" href="#">Back to Top</a>

@@ -77,3 +77,4 @@ examples/package-lock.json
 lib/api.json
 *.swp
 tags
+_site
