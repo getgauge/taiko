@@ -111,7 +111,7 @@ describe(test_name, () => {
 
       it('test description', async () => {
         expect(textBox({ id: 'textAreaWithLabelFor' }).description).to.be.eql(
-          'Text field[@id = concat(\'textAreaWithLabelFor\', "")]',
+          'Text field[id="textAreaWithLabelFor"]',
         );
       });
     });
@@ -150,9 +150,7 @@ describe(test_name, () => {
         let elements = await textBox({
           id: 'sampleTextArea',
         }).elements();
-        expect(elements[0].description).to.be.eql(
-          'Text field[@id = concat(\'sampleTextArea\', "")]',
-        );
+        expect(elements[0].description).to.be.eql('Text field[id="sampleTextArea"]');
       });
 
       it('test value of elements', async () => {
@@ -271,7 +269,7 @@ describe(test_name, () => {
           textBox({
             id: 'contentEditableWithWrappedLabel',
           }).description,
-        ).to.be.eql('Text field[@id = concat(\'contentEditableWithWrappedLabel\', "")]');
+        ).to.be.eql('Text field[id="contentEditableWithWrappedLabel"]');
       });
     });
 
@@ -312,9 +310,7 @@ describe(test_name, () => {
         let elements = await textBox({
           id: 'sampleContentEditable',
         }).elements();
-        expect(elements[0].description).to.be.eql(
-          'Text field[@id = concat(\'sampleContentEditable\', "")]',
-        );
+        expect(elements[0].description).to.be.eql('Text field[id="sampleContentEditable"]');
       });
 
       it('test value of elements', async () => {
@@ -485,7 +481,7 @@ describe(test_name, () => {
             textBox({
               id: inputType.name + 'WithLabelFor',
             }).description,
-          ).to.be.eql(`Text field[@id = concat('inputType-${inputType.type}WithLabelFor', "")]`);
+          ).to.be.eql(`Text field[id="inputType-${inputType.type}WithLabelFor"]`);
         });
 
         it('should return false for hidden element when isVisible fn is called', async () => {
@@ -528,9 +524,7 @@ describe(test_name, () => {
           let elements = await textBox({
             id: `sample${inputType.type}`,
           }).elements();
-          expect(elements[0].description).to.be.eql(
-            `Text field[@id = concat('sample${inputType.type}', "")]`,
-          );
+          expect(elements[0].description).to.be.eql(`Text field[id="sample${inputType.type}"]`);
         });
 
         it('test value of elements', async () => {
@@ -657,7 +651,7 @@ describe(test_name, () => {
           textBox({
             id: inputTypeName + 'WithLabelFor',
           }).description,
-        ).to.be.eql('Text field[@id = concat(\'input-without-typeWithLabelFor\', "")]');
+        ).to.be.eql('Text field[id="input-without-typeWithLabelFor"]');
       });
     });
 
