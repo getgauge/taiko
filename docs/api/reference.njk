@@ -1,0 +1,14 @@
+---
+layout: page.njk
+---
+
+{%- for api, keys in metadata %}
+<h2>{{api}}</h2>
+<ul style="columns: 15em">
+{%- for key in keys %}
+<li>
+<a href="/api/{{key}}">{{key}}</a>
+</li>
+{% endfor -%}
+</ul>
+{% endfor -%}
