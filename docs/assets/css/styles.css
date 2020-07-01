@@ -70,12 +70,7 @@ h6 {
   color: #2bd3ef;
 }
 
-ul {
-  padding-inline-start: 20px;
-}
-
 a, a:visited, a:active {
-  text-decoration: none;
   color: #25282D;
   font-weight: 600;
 }
@@ -205,9 +200,12 @@ ul, ol {
   list-style: none;
   padding-inline-start: 20px;
   margin-bottom: 2em;
-  columns: 15em;
+  padding-inline-start: 20px;
 }
 
+.home-section ul {
+  columns: 15em;
+}
 
 li::before {
   content: "\2022";
