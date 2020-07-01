@@ -2,15 +2,25 @@
 layout: page.njk
 ---
 
-This is an index page of all the API available to use in Taiko's 
-<a href="/using_the_recorder">recorder</a> as well as scripts. You can use the API in Taiko's recorder 
-as follows
+This index of all Taiko's API. You can use them in Taiko's
+<a href="/using_the_recorder">recorder</a> as well as scripts. 
+Use the API in Taiko's recorder as follows
 
 <pre><code>> openBrowser()</code></pre>
 
-or in your test scripts as
+In your test scripts you need to import the API
 
-<pre><code class="javascript">const { openBrowser, goto, click } = require('taiko')</code></pre>
+<pre><code class="javascript">const { openBrowser, goto, click } = require('taiko')
+</code></pre>
+
+Before using it
+
+<pre><code class="javascript">(async () => {
+    await openBrowser();
+    await goto('google.com');
+    await click('Google search');
+})();
+</code></pre>
 
 {%- for api, keys in metadata %}
 <h2>{{api}}</h2>
