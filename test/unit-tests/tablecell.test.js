@@ -170,7 +170,7 @@ describe(test_name, () => {
       waitForNavigation: true,
     });
     await closeBrowser();
-    // removeFile(filePath);
+    removeFile(filePath);
   });
 
   describe('using no label/caption', () => {
