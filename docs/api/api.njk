@@ -40,7 +40,7 @@ layout: api.njk
     <pre><code>{{ example.description }}</code></pre>
 {% endfor -%}
 
-<h3>Parameters</h3>
+    <h3>Parameters</h3>
 {% if api.params | length %}
     {%- for tag in api.tags %}
         {% if tag.title == 'param' %}
@@ -51,7 +51,7 @@ layout: api.njk
                     <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.expression.name }}">{{ tag.type.expression.name }}</a>
             </dt>
             <dd>
-                {{ tag.description | urlize | safe}}
+                {{ tag.description }}
                     {% if tag.default %}
                             <dl>
                             <dt><b>Default value</b></dt>
@@ -62,9 +62,11 @@ layout: api.njk
         </dl>
         {% endif %}
     {% endfor -%}
+    <hr/>
 {% else%}
 <p>This API does not have any paramters</p>
 {% endif %}
+
 <h3>Returns</h3>
 {% if api.returns | length %}
     {%- for tag in api.tags %}
