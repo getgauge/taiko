@@ -223,3 +223,9 @@ code {
   padding: 2px 3px;
   background-color: #e6e6e6;
 }
+
+hr{
+  height: 1px;
+  background-color: lightgrey;
+  border: none;
+}

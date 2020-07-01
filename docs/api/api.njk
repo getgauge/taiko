@@ -10,43 +10,68 @@ layout: api.njk
 <h1>{{api.name}}</h1>
 {%- for child in api.description.children %}
 
-{% if child.type == 'paragraph' %}
-<p>
-    {%- for content in child.children %}
-        {% if content.type == 'text' %}
-            {{ content.value }}
-        {% endif %}
-        {% if content.type == 'html' %}
-            {{ content.value | safe }}
-        {% endif %}
-        {% if content.type == 'inlineCode' %}
-            <code>{{ content.value }}</code>
-        {% endif %}
-        {% if content.type == 'link' %}
+    {% if child.type == 'paragraph' %}
+        <p>
+            {%- for content in child.children %}
+                {% if content.type == 'text' %}
+                    {{ content.value }}
+                {% endif %}
+                {% if content.type == 'html' %}
+                    {{ content.value | safe }}
+                {% endif %}
+                {% if content.type == 'inlineCode' %}
+                    <code>{{ content.value }}</code>
+                {% endif %}
+                {% if content.type == 'link' %}
                     {% if 'http' in content.url %}
                         <a href="{{ content.url }}">{{ content.url }}</a>
                     {% else %}
                         <a href="../{{ content.url }}">{{ content.url }}</a>
 
                     {% endif %}
-        {% endif %}
-    {% endfor -%}
-</p>
-{% endif %}
+                {% endif %}
+            {% endfor -%}
+        </p>
+    {% endif %}
 {% endfor -%}
 
 <h3>Examples</h3>
 {%- for example in api.examples %}
-<pre><code>{{ example.description }}</code></pre>
+    <pre><code>{{ example.description }}</code></pre>
 {% endfor -%}
 
 <h3>Parameters</h3>
-<ul style="columns: auto">
-{%- for parameter in api.params %}
-<li>
-<code>{{ parameter.name }}</code>
-<td><code>{{ parameter.type.name}}</code></h4> (default <code>{{ parameter.default}}</code>)
-<code>{{ parameter.default}}</code>
-</li>
-{% endfor -%}
-</ul>
+{% if api.params | length %}
+    {%- for tag in api.tags %}
+        {% if tag.title == 'param' %}
+        <hr/>
+        <dl>
+            <dt>
+                <code>{{ tag.name }}</code>
+                    <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.expression.name }}">{{ tag.type.expression.name }}</a>
+            </dt>
+            <dd>
+                {{ tag.description | urlize | safe}}
+                    {% if tag.default %}
+                            <dl>
+                            <dt><b>Default value</b></dt>
+                            <dd><code>{{ tag.default }}</code></dd>
+                            </dl>
+                    {% endif %}
+            </dd>
+        </dl>
+        {% endif %}
+    {% endfor -%}
+{% else%}
+<p>This API does not have any paramters</p>
+{% endif %}
+<h3>Returns</h3>
+{% if api.returns | length %}
+    {%- for tag in api.tags %}
+        {% if tag.title == 'returns' %}
+            <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.name }}">{{ tag.type.name }}</a>
+        {% endif %}
+    {% endfor -%}
+{% else%}
+<p>This API does not return any values</p>
+{% endif %}
