@@ -41,7 +41,12 @@ layout: api.njk
 {% endfor -%}
 
 <h3>Parameters</h3>
+<ul style="columns: auto">
 {%- for parameter in api.params %}
-<h4><code>{{ parameter.name }}</code></h4>
-<p>Default Value: <code>{{ parameter.default}}</code></p>
+<li>
+<code>{{ parameter.name }}</code>
+<td><code>{{ parameter.type.name}}</code></h4> (default <code>{{ parameter.default}}</code>)
+<code>{{ parameter.default}}</code>
+</li>
 {% endfor -%}
+</ul>
