@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<title>Taiko Documentation</title>
-	<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<title>Taiko Documentation</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+		<!-- and it's easy to individually load additional languages -->
+		<script charset="UTF-8"
+ src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/javascript.min.js"></script>
+	</head>
 
-</head>
+	<body>
+		<header>
+			<h1 class="header-text">Taiko Documentation</h1>
+			<form class="search">
+				<input type="text" id="search" placeholder="Search Taiko Docs"/>
+			</form>
+		</header>
 
-<body>
-	<header>
-		<h1 class="header-text">Taiko Documentation</h1>
-		<form class="search">
-		 <input type="text" id="search" placeholder="Search Taiko Docs" />
-		</form>
-	</header>
+		<article>
+			{{ content | safe }}
+		</article>
 
-	<article>
-	{{ content | safe }}
-	</article>
+		<script>hljs.initHighlightingOnLoad();</script>
 
-</body>
+	</body>
 </html>

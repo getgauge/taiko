@@ -2,13 +2,23 @@
 layout: page.njk
 ---
 
+This is an index page of all the API available to use in Taiko's 
+<a href="/using_the_recorder">recorder</a> as well as scripts. You can use the API in Taiko's recorder 
+as follows
+
+<pre><code>> openBrowser()</code></pre>
+
+or in your test scripts as
+
+<pre><code class="javascript">const { openBrowser, goto, click } = require('taiko')</code></pre>
+
 {%- for api, keys in metadata %}
 <h2>{{api}}</h2>
-<ul style="columns: 15em">
-{%- for key in keys %}
-<li>
-<a href="/api/{{key}}">{{key}}</a>
-</li>
-{% endfor -%}
-</ul>
+    <ul style="columns: 15em">
+        {%- for key in keys %}
+        <li>
+        <a href="/api/{{key}}">{{key}}</a>
+        </li>
+        {% endfor -%}
+    </ul>
 {% endfor -%}

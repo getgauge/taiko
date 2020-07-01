@@ -76,7 +76,7 @@ ul {
 
 a, a:visited, a:active {
   text-decoration: none;
-  color: #0e7c9d;
+  color: #25282D;
   font-weight: 600;
 }
 
@@ -95,29 +95,8 @@ p {
   margin: 1em 0;
 }
 
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, serif;
-}
-
-pre {
-  white-space: pre-wrap;
-}
-
 li {
   line-height: 2;
-}
-
-pre,
-pre>code {
-font-family: monospace;
-background: #25282D;
-color: #fff;
-font-size: 16px;
-display: block;
-padding: 10px;
 }
 
 blockquote {
@@ -222,28 +201,20 @@ form.search input::placeholder {
 
 }
 
-aside ol {
+ul, ol {
   list-style: none;
   padding-inline-start: 20px;
   margin-bottom: 2em;
   columns: 15em;
 }
 
-aside a, a:visited {
-  color: #25282D;
-}
 
-aside ol li::before {
+li::before {
   content: "\2022";
   color: #2BD3EF;
   display: inline-block;
   width: 1em;
   margin-left: -1em;
-}
-
-pre {
- margin-top: 2em;
- margin-bottom: 2em;
 }
 
 a.direct-link {
