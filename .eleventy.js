@@ -3,7 +3,7 @@ const markdownIt = require("markdown-it");
 
 module.exports = function (eleventyConfig) {
 
-  eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy("docs/assets");
 
   // This filter is used for deriving the chapter names
   // from data in chapters.json

@@ -48,7 +48,6 @@ h6 {
   text-rendering: geometricPrecision;
   font-weight: normal;
   font-style: normal;
-  margin: 0;
 }
 
 h1 {
@@ -233,4 +232,22 @@ article hr{
   height: 1px;
   background-color: lightgrey;
   border: none;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
 }
