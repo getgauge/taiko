@@ -64,7 +64,7 @@ multiple lines.</textarea>
   after(async () => {
     resetConfig();
     await closeBrowser();
-    // removeFile(filePath);
+    removeFile(filePath);
   });
 
   describe('input field', () => {

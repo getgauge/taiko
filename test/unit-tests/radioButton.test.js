@@ -63,7 +63,7 @@ describe(test_name, () => {
   after(async () => {
     resetConfig();
     await closeBrowser();
-    // removeFile(filePath);
+    removeFile(filePath);
   });
 
   describe('case insensitive selector', async () => {
