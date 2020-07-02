@@ -296,8 +296,7 @@ describe(test_name, () => {
       );
     });
 
-    //TODO: Handle rows without td to fix this
-    it.skip('should fetch table by header inside a <tr>', async () => {
+    it('should fetch table by header inside a <tr>', async () => {
       expect(await tableCell({ row: 1, col: 1 }, 'Time table').exists()).to.be.true;
     });
 
