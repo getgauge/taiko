@@ -5,6 +5,9 @@
 		<title>Taiko Documentation</title>
 		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"/>
+
 		<link rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
@@ -27,6 +30,11 @@
 
 		<script>
 			hljs.initHighlightingOnLoad();
+			(function algoliaSearch() {
+				docsearch({
+					apiKey: 'b36d75c493b44a8f2605db66708a283b', indexName: 'taiko', inputSelector: '#search', debug: false 
+				});
+			})();
 		</script>
 		<div style="text-align:center">𝆒𝆓</div>
 	</body>
