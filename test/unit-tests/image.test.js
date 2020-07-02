@@ -66,25 +66,25 @@ describe(test_name, () => {
 
   describe('image description in page', () => {
     it('should find the image with text', async () => {
-      expect(image('avatar').description).to.be.eql('image with alt avatar ');
+      expect(image('avatar').description).to.be.eql('Image with alt avatar ');
     });
     it('should find the image with selectors', async () => {
-      expect(image({ id: 'brokenImage' }).description).to.be.eql('image[id="brokenImage"]');
+      expect(image({ id: 'brokenImage' }).description).to.be.eql('Image[id="brokenImage"]');
       expect(image({ src: 'brokenImage.jpg' }).description).to.be.eql(
-        'image[src="brokenImage.jpg"]',
+        'Image[src="brokenImage.jpg"]',
       );
     });
     it('should find the image with proximity selector', async () => {
-      expect(image(below('Images')).description).to.be.eql('image Below Images');
+      expect(image(below('Images')).description).to.be.eql('Image Below Images');
     });
     it('should find div image using selectors', async () => {
-      expect(image({ id: 'divImage' }).description).to.be.eql('image[id="divImage"]');
+      expect(image({ id: 'divImage' }).description).to.be.eql('Image[id="divImage"]');
     });
     it('should find p tag image using selectors', async () => {
-      expect(image({ id: 'paraImage' }).description).to.be.eql('image[id="paraImage"]');
+      expect(image({ id: 'paraImage' }).description).to.be.eql('Image[id="paraImage"]');
     });
     it('should find the div image with proximity selector', async () => {
-      expect(image(below('Div Image')).description).to.be.eql('image Below Div Image');
+      expect(image(below('Div Image')).description).to.be.eql('Image Below Div Image');
     });
   });
 
@@ -127,7 +127,7 @@ describe(test_name, () => {
 
     it('test description of elements', async () => {
       let elements = await image('similarImage').elements();
-      expect(elements[0].description).to.be.eql('image with alt similarImage ');
+      expect(elements[0].description).to.be.eql('Image with alt similarImage ');
     });
 
     xit('test text of elements', async () => {
@@ -137,7 +137,7 @@ describe(test_name, () => {
 
     it('test text should throw if the element is not found', async () => {
       await expect(image('.foo').text()).to.be.eventually.rejectedWith(
-        'image with alt .foo  not found',
+        'Image with alt .foo  not found',
       );
     });
   });

@@ -44,7 +44,7 @@ describe(test_name, () => {
     });
 
     it('test description', async () => {
-      expect(listItem({ id: 'coffee' }).description).to.be.eql('list Item[id="coffee"]');
+      expect(listItem({ id: 'coffee' }).description).to.be.eql('ListItem[id="coffee"]');
     });
 
     it('test text()', async () => {
@@ -82,7 +82,7 @@ describe(test_name, () => {
 
     it('test description', async () => {
       const elems = await listItem({ id: 'coffee' }).elements();
-      expect(elems[0].description).to.be.eql('list Item[id="coffee"]');
+      expect(elems[0].description).to.be.eql('ListItem[id="coffee"]');
     });
 
     it('test text()', async () => {

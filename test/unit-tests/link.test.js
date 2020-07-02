@@ -78,13 +78,13 @@ describe(test_name, () => {
 
   describe('link description in page', () => {
     it('should find the link with text', async () => {
-      expect(link('here').description).to.be.eql('link with text here ');
+      expect(link('here').description).to.be.eql('Link with text here ');
     });
     it('should find the link with id', async () => {
-      expect(link({ id: 'redirect' }).description).to.be.eql('link[id="redirect"]');
+      expect(link({ id: 'redirect' }).description).to.be.eql('Link[id="redirect"]');
     });
     it('should find the link with proximity selector', async () => {
-      expect(link(toRightOf('Click')).description).to.be.eql('link To right of Click');
+      expect(link(toRightOf('Click')).description).to.be.eql('Link To right of Click');
     });
     it('should return true when isVisible fn is observed on non hidden element', async () => {
       expect(await link('here').isVisible()).to.be.true;
@@ -104,7 +104,7 @@ describe(test_name, () => {
 
     it('test text should throw if the element is not found', async () => {
       await expect(link('.foo').text()).to.be.eventually.rejectedWith(
-        'link with text .foo  not found',
+        'Link with text .foo  not found',
       );
     });
   });
@@ -122,7 +122,7 @@ describe(test_name, () => {
 
     it('test description of elements', async () => {
       let elements = await link('similarLink').elements();
-      expect(elements[0].description).to.be.eql('link with text similarLink ');
+      expect(elements[0].description).to.be.eql('Link with text similarLink ');
     });
 
     it('test text of elements', async () => {
