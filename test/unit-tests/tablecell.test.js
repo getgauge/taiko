@@ -189,7 +189,7 @@ describe(test_name, () => {
           row: 1,
           col: 1,
         }).description,
-      ).to.be.eql('tableCell at row:1 and column:1');
+      ).to.be.eql('Table with tableCell at row:1 and column:1');
     });
 
     it('test tableCell text()', async () => {
@@ -202,7 +202,9 @@ describe(test_name, () => {
     });
 
     it('test tableCell throw error if row and col not provided', async () => {
-      expect(() => tableCell()).to.throw('Table Row and Column Value required');
+      await expect(tableCell().exists()).to.be.eventually.rejectedWith(
+        'Table Row and Column Value required',
+      );
     });
 
     it('test tableCell throw error if row=0', async () => {
@@ -249,7 +251,7 @@ describe(test_name, () => {
           },
           'Table Caption',
         ).description,
-      ).to.be.eql('tableCell at row:1 and column:1');
+      ).to.be.eql('Table with tableCell at row:1 and column:1 and label Table Caption ');
     });
 
     it('test tableCell text()', async () => {
@@ -277,7 +279,9 @@ describe(test_name, () => {
     });
 
     it('test tableCell throw error if row and col not provided', async () => {
-      expect(() => tableCell('Table Caption')).to.throw('Table Row and Column Value required');
+      await expect(tableCell('Table Caption').exists()).to.be.eventually.rejectedWith(
+        'Table Row and Column Value required',
+      );
     });
 
     it('test tableCell throw error if row=0', async () => {
@@ -341,7 +345,7 @@ describe(test_name, () => {
           },
           'Table Heading 1',
         ).description,
-      ).to.be.eql('tableCell at row:1 and column:1');
+      ).to.be.eql('Table with tableCell at row:1 and column:1 and label Table Heading 1 ');
     });
 
     it('test tableCell text()', async () => {
@@ -396,7 +400,7 @@ describe(test_name, () => {
 
     it('test tableCell description', async () => {
       expect(await tableCell({ row: '1', col: '1' }, below('Tabular data')).description).to.be.eql(
-        'Table Cell Below Tabular data',
+        'Table with tableCell at row:1 and column:1 and Below Tabular data',
       );
     });
 
