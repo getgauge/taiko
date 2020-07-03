@@ -164,7 +164,7 @@ Please use Selenium if you need
 * Distribute tests using something like selenium grid
 
 Try out Taiko if you
-* Want to work with the JavaScript and the Node js eco-system
+* Want to work with the JavaScript and the [Node.js](https://nodejs.org) eco-system
 * Do not want to install or manage drivers to test web applications
 * Focus on testing the functionality of your web application
 * Manage tests using docker on headless mode
