@@ -2,8 +2,8 @@
 layout: page.njk
 ---
 
-The `taiko` is a basic runner for Taiko scripts. Taiko's
-runner logs only logs command execution to the console.
+The `taiko` command is a basic runner for Taiko scripts. Taiko's
+runner logs command execution.
 
 ```
 > taiko google.js
