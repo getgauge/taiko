@@ -132,6 +132,8 @@ article {
   background: white;
   padding: 2em;
   margin: 1em auto;
+  animation-name: fadeIn;
+  animation-duration: 2s;
 }
 
 .home-section a {
@@ -254,4 +256,29 @@ body {
 
 span {
   width: 100%;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
