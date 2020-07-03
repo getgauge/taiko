@@ -84,7 +84,7 @@ a:hover {
 }
 
 img {
-  max-width: 830px;
+  max-width: 40em;
   border: 0;
   margin-left: auto;
   margin-right: auto;
@@ -250,9 +250,4 @@ body {
   margin: 0;
   padding-bottom: 6rem;
   min-height: 100%;
-}
-
-
-span {
-  width: 100%;
 }
