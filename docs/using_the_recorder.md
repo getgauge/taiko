@@ -2,22 +2,23 @@
 layout: page.njk
 ---
 
-Taiko comes with a Recorder that’s a [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) to write test scripts. 
+Taiko comes with a recorder that’s a [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) 
+for writing test scripts. Taiko's recorder generates clean, maintainable 
+[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) code. 
 
-You can use Taiko’s API to control the browser from Taiko's REPL. The commands
-e
+The following sections explain how to launch the recorder, automate a browser and
+generate test scripts.
 
 ## Launching
 
-After making sure you have the latest 
-version of Node.js installed of you machine you can launch the REPL in 
-your favorite terminal application using.
+Install the latest version of version of [Node.js](https://nodejs.org) and launch the Taiko REPL in 
+your favorite terminal application using
 
 ```
 npx taiko
 ```
 
-This launches the Taiko prompt.
+This launches the Taiko REPL prompt.
 
 ```
 Version: 1.x.x (Chromium: XX.x.x)
@@ -25,10 +26,16 @@ Type .api for help and .exit to quit
 > 
 ```
 
+You start exploring and using Taiko's API. 
+
+Taiko's REPL is a specialised wrapper
+over `node` [REPL](https://nodejs.org/api/repl.html#repl_the_node_js_repl) for handling 
+Taiko's API. You can also Taiko's REPL to run JavaScript code or use any Node.js libraries.
+
 ## Exploring
 
-Taiko REPL command `.api` lists all the API that is available in
-the following format. (This is shortened to show a sample output structure)
+Taiko REPL command `.api` lists all available API in
+the following format (This is a shortened output)
 
 ```
 > .api
@@ -44,8 +51,7 @@ Page actions
 ...
 ```
 
-If you need more info on any of the Taiko's API like paramters
-and example usage you can run `.api` on the API
+For more info Taiko's API like paramters and example usage you can run `.api <api>`
 
 ```
 > .api click
@@ -62,10 +68,12 @@ Example:
   ...
 ```
 
+This API reference is also available [online](/api/reference).
+
 ## Running commands
 
 To start automating the browser you can type in Taiko's API. For example
-to lauching a browser instance
+to launch a browser instance
 
 ```
 > openBrowser()
@@ -75,9 +83,9 @@ This launches an instance of Chromium that is bundled with Taiko.
 
 ![Open Browser Screenshot](/assets/images/openBrowser.png)
 
-To automate this Chrome browser instance, you can use other commands 
-from the Taiko API. Here's another example to get the browser to search 
-google for something.
+To automate this browser instance, you can use other commands 
+from Taiko's API. Here's an example automating the browser to search 
+Google
 
 ```
 > goto("google.com")
@@ -85,11 +93,11 @@ google for something.
 > click("Google Search")
 ```
 
-These commands get the browser to
+These commands automate the browser to
 
-* go to Google’s home page,
-* type the text "taiko test automation" and then
-* click on the "Google Search" button.
+* `goto` Google’s home page,
+* `write` the text "taiko test automation" and then
+* `click` on the "Google Search" button.
 
 You can see the browser performing these actions as you type and press enter for 
 each command.
@@ -98,14 +106,14 @@ each command.
 
 ## Generate code
 
-Taiko’s REPL keeps a history of all successful commands. Once you finish a flow of execution, 
-you can generate a test script using the special command `.code`
+Taiko’s REPL keeps a history of all successful commands. Once you finish an execution flow, 
+generate a test script using the special command `.code`
 
 ```
 > .code
 ```
 
-This command generates readable and maintainable JavaScript code.
+This command generates JavaScript code.
 
 ```
 const { openBrowser, goto, write, click } = require('taiko');
@@ -123,20 +131,122 @@ const { openBrowser, goto, write, click } = require('taiko');
 })();
 ```
 
-You can copy and modify this code or save it directly to a file using
+Copy/Modify this code or save it directly to a file using
 
 
 ```
-.code googlesearch.js
+> .code googlesearch.js
 ```
 
 ## Stopping
-Choose to continue automation or finish the recording using
+
+Stop and exit a recording session using
 
 ```
-.exit
+> .exit
+```
+
+Please note that you will lose all previous sessions recording history each\
+time you launch Taiko's REPL.
+
+## Playback
+
+You can re-run the test scripts saved from a session using the `taiko` command
+
+```
+npx taiko googlesearch.js
+```
+
+By default this will run the script in headless mode and you will not see a browser 
+instance. However, if you would like to see the browser you can run
+
+```
+npx taiko googlesearch.js --observe
+```
+
+The `--observe` command adds a delay of three seconds between each actions and highlights 
+Taiko's API actions on the page under test.
+
+## Resume
+
+You can resume a session by using the [`repl`](/api/repl) API in your test script
+and using the `--load` options while launching the Taiko REPL 
+
+For example 
+
+```
+const { openBrowser, goto, write, click, repl } = require('taiko');
+(async () => {
+  try {
+    await openBrowser();
+    await goto("google.com");
+    await write("taiko test automation");
+    await click("Google Search");
+
+    // Launchs the REPL after executing 
+    // the commands above
+
+    await repl(); 
+  } catch (error) {
+      console.error(error);
+  } finally {
+    closeBrowser();
+  }
+})();
+```
+
+```
+npx taiko --load googlesearch.js
 ```
 
 ## Load plugins
 
-## Other options
+If you want to use Taiko [plugins](/plugins) in the REPL. You can use `--plugin <plugin>` 
+option, for example to use [Taiko diagnostics](https://github.com/saikrishna321/taiko-diagnostics) 
+plugin 
+
+```
+npx taiko --plugin taiko-diagnostics
+> openBrowser();
+> diagnostics.startTracing();
+> goto('google.com');
+> diagnostics.endTracing();
+```
+
+## Manage browsers
+
+You can use the environment variable `TAIKO_BROWSER_PATH` to launch Taiko's recorder on any browser
+(other than chromium version bundled with Taiko). Please follow your Operating System's instruction on 
+setting environment variables. For example in `bash` or `zsh` you can try
+
+```
+TAIKO_BROWSER_PATH=/complete/path/to/browser/executable/file npx taiko
+```
+
+Note, the path should be to the browser executable file and not just the browser executable's folder.
+You can point this environment variable to [chromium](https://www.chromium.org) based browsers like 
+[Chrome](https://www.google.com/intl/en_uk/chrome/), [Microsoft Edge](https://www.microsoft.com/en-us/edge), 
+[Opera](https://www.opera.com) etc. and [FireFox](https://www.mozilla.org/en-GB/firefox/)
+
+## Emulation
+
+Taiko also has an options for emulating
+
+* Devices
+* Networks
+
+To emulate devices (using the browser's viewport) you can use the `--emulate-device` option as follows
+
+```
+npx taiko --emulate-device 'iPhone X'
+```
+You can refer [devices.js](https://docs.taiko.dev/devices) for the full list of devices.
+
+To emulate network you can use the `--emulate-network` option for example
+
+```
+npx taiko --emulate-network 'Regular2G`
+```
+
+The available options are `GPRS`, `Regular2G`, `Good2G`, `Regular3G`, `Good3G`, `Regular4G`, `DSL`, 
+`WiFi`, `Offline`
