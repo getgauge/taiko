@@ -2,8 +2,8 @@
 layout: page.njk
 ---
 
-Taiko is a node js library and runs on all platforms that is
-supported by node js versions 10+ and above (Windows, MacOS, Linux). 
+Taiko is a [Node.js](https://nodejs.org) library and runs on all platforms that is
+supported by [Node.js](https://nodejs.org) versions 10+ and above (Windows, MacOS, Linux). 
 
 Once you have the latest version of node installed you can install
 and run Taiko in any of the following ways.
@@ -53,7 +53,7 @@ If everything looks fine, try [using the recorder](using_the_recorder) to record
 
 ## Local installation
 
-As any other Node js library Taiko, you can add Taiko to your node projects 
+As any other [Node.js](https://nodejs.org) library Taiko, you can add Taiko to your node projects 
 by running
 
 ```
@@ -68,7 +68,7 @@ You can also run
 npx taiko
 ```
 
-To launch the Taiko recorder. This will refer to the local installation
+To launch the Taiko recorder locally. This will refer to the local installation
 of Taiko in the `node_modules` folder.
 
 ## Unreleased versions
@@ -93,6 +93,17 @@ or
 npm install -D https://github.com/getgauge/taiko
 ```
 
+or 
+
+```
+// package.json
+...
+"dependencies": {
+"taiko": "getgauge/taiko",
+}
+....
+```
+
 ## Install options
 
 You can skip downloading chromium while running or install Taiko
@@ -109,7 +120,7 @@ please refer OS specific instructions on how to do that.
 ## Installing as `root` User
 
 Note: Avoid installing Taiko as a root user unless you are using 
-docker containers. Refer to `npm` and Node js documentation for 
+docker containers. Refer to `npm` and [Node js](https://nodejs.org) documentation for 
 installing packages using the right permissions.
 
 When installing taiko globally as a `root` user, `npm` explicitly changes the UID and GID,
