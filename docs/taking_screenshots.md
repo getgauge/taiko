@@ -2,7 +2,7 @@
 layout: page.njk
 ---
 
-Taiko's `screenshot` API can save images of the page you 
+Taiko's [`screenshot`](/api/screenshot) API can save images of the page you 
 are testing. 
 
 Since Taiko uses the browser to capture screenshots, this 
