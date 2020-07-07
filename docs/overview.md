@@ -161,15 +161,18 @@ Please use Selenium if you need
 * Extensive cross browser testing
 * Support for programming languages other than JavaScript
 * Have your tests running on services like Browserstack and Saucelabs
-* Distribute tests using something like selenium grid
+* Distribute tests using something like Selenium grid
+* Need a GUI based click and record option like Selenium IDE
+* Use a design pattern to organize your source code like the Page Object pattern
 
 Try out Taiko if you
 * Want to work with the JavaScript and the [Node.js](https://nodejs.org) eco-system
-* Do not want to install or manage drivers to test web applications
-* Focus on testing the functionality of your web application
-* Manage tests using docker on headless mode
+* Do not want to install or manage drivers 
 * Want an easy to use API with implicit waits
+* Focus on end to end or user journey testing of your web application
 * Want a command line recorder for scripting tests
+* Run tests on headless mode by default
+* Run tests on managed docker instances
 * Faster test runs
 
 ## Useful links
