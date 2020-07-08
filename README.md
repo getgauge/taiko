@@ -228,6 +228,10 @@ You can optionally configure your project to use our experimental type definitio
 
 * [API](https://docs.taiko.dev)
 
+## Branding
+
+* [Brand Style Guide](https://brand.taiko.dev) which includes assets like logos and images.
+
 ## Inspired by
 
 * [Helium](https://heliumhq.com/)
