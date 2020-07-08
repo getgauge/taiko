@@ -1,10 +1,13 @@
 const tocPlugin = require('eleventy-plugin-toc');
 const markdownIt = require("markdown-it");
+const CleanCSS = require("clean-css");
 
 module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("docs/assets");
-
+  eleventyConfig.addFilter("cssmin", function(code) {
+    return new CleanCSS({}).minify(code).styles;
+  });
   // This filter is used for deriving the chapter names
   // from data in chapters.json
   eleventyConfig.addFilter('heading', function (str) {

@@ -17,7 +17,6 @@ body {
   margin: 0;
 }
 
-
 /*  Global Default Header Styles */
 
 h1,
@@ -32,32 +31,13 @@ h6 {
   text-rendering: geometricPrecision;
   font-weight: normal;
   font-style: normal;
+  margin-top: 2em;
 }
 
 h1 {
-    font-size: 2.125em;
+  margin-top: 1em;
+  font-size: 2em;
 }
-
-h2 {
-  font-size: 1.6875em;
-  margin-top: 2em;
-  border-spacing: 2em;
-}
-
-
-h4 {
-  font-size: 1.125em;
-}
-
-h5 {
-  font-size: 1.125em;
-}
-
-h6 {
-  font-size: 1em;
-  color: #2bd3ef;
-}
-
 a, a:visited, a:active {
   color: #25282D;
   font-weight: 600;
@@ -93,7 +73,7 @@ header {
   flex-direction: column;
   width: 100%;
   height: 320px;
-  background-image: url("../images/background.svg");
+  background-image: url("/assets/images/background.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -104,7 +84,6 @@ header {
 
 header h1 {
   font-size: 48px;
-  margin-bottom: .5em;
   text-align: center;
   line-height: 1;
 }

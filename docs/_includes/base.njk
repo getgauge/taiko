@@ -4,8 +4,13 @@
 	<head>
 		<meta name="robots" content="noindex">
 		<title>Taiko Documentation</title>
-		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% set css %}
+		  {% include "styles.css" %}
+		{% endset %}
+		<style>
+		{{ css | cssmin | safe }}
+		</style>
 	</head>
 
 	<body>
