@@ -6,7 +6,7 @@ chai.use(chaiAsPromissed);
 const test_name = 'Network Handler';
 
 describe(test_name, () => {
-  let actualNetworkCondition, requestInterceptor, continueInterceptedRequestOptions, networkHandler;
+  let actualNetworkCondition, networkHandler;
 
   before(() => {
     networkHandler = rewire('../../../lib/handlers/networkHandler');
@@ -23,12 +23,8 @@ describe(test_name, () => {
         actualNetworkCondition = networkCondition;
         return Promise.resolve();
       },
-      continueInterceptedRequest: async (options) => {
-        continueInterceptedRequestOptions = options;
-      },
     };
     networkHandler.__set__('network', network);
-    requestInterceptor = networkHandler.__get__('handleInterceptor');
   });
   after(() => {
     actualNetworkCondition = {};
@@ -36,7 +32,6 @@ describe(test_name, () => {
     networkHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
     networkHandler = rewire('../../../lib/handlers/networkHandler');
     networkHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
-    continueInterceptedRequestOptions = null;
     process.env.TAIKO_EMULATE_NETWORK = '';
   });
   describe('setNetworkEmulation', () => {
@@ -79,42 +74,6 @@ describe(test_name, () => {
       };
       await networkHandler.setNetworkEmulation();
       expect(actualNetworkCondition).to.deep.equal(expectedNetworkCondition);
-    });
-  });
-
-  describe('http headers', () => {
-    let headersAndHost;
-    before(() => {
-      headersAndHost = [
-        [{ header1: 'header1 value' }, 'https://example.com'],
-        [{ header3: 'header2 value' }, 'https://another-example.com'],
-        [{ header4: 'header3 value' }, 'file://path/to/some/file'],
-      ];
-      headersAndHost.forEach((headerAndHost) => {
-        networkHandler.setHTTPHeaders(headerAndHost[0], headerAndHost[1]);
-      });
-    });
-    it('should set appropriate headers for a host', () => {
-      headersAndHost.forEach((headerAndHost, index) => {
-        const hostUrl = headerAndHost[1];
-        const headers = headerAndHost[0];
-        requestInterceptor({
-          interceptionId: index,
-          request: { url: hostUrl, headers: {} },
-        });
-        expect(continueInterceptedRequestOptions).to.be.deep.equal({
-          interceptionId: index,
-          headers: headers,
-        });
-      });
-    });
-
-    it('should not overwrite headers for a host', () => {
-      requestInterceptor({
-        interceptionId: 123,
-        request: { url: 'https://example.com', headers: { header1: 'header1 custom value' } },
-      });
-      expect(continueInterceptedRequestOptions).to.be.deep.equal({ interceptionId: 123 });
     });
   });
 });
