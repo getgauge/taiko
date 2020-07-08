@@ -73,7 +73,7 @@ header {
   flex-direction: column;
   width: 100%;
   height: 320px;
-  background-image: url("/assets/images/background.svg");
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNTAwIDUwMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiMyYmQzZWY7fS5jbHMtMntmaWxsOm5vbmU7c3Ryb2tlOiNmZmY7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjVweDt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cmVjdCBjbGFzcz0iY2xzLTEiIHdpZHRoPSIxNTAwIiBoZWlnaHQ9IjUwMCIvPjxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iNzUwLjUiIGN5PSIyNTAuNSIgcj0iMjEzIi8+PC9nPjwvZz48L3N2Zz4=");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -90,7 +90,7 @@ header h1 {
 
 /* single-column content page layout width */
 
-article {
+article, footer {
   max-width: 40em;
   background: white;
   padding: 2em;
@@ -227,4 +227,10 @@ pre code {
   display: block;
   padding: 15px;
   overflow: auto;
+}
+
+.footer {
+  display: flex;
+  flex-flow: row wrap;  
+  justify-content: space-between;
 }
