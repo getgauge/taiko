@@ -20,7 +20,7 @@ describe(test_name, () => {
     taiko.__set__('validate', () => {
       validateCalled = true;
     });
-    taiko.__set__('networkHandler', {
+    taiko.__set__('fetchHandler', {
       setHTTPHeaders: (header, domain) => {
         actualHeader = header;
         actualDomain = domain;
