@@ -2,21 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 @font-face {
-  font-family: 'PoppinsLatin-Bold';
-  src: url('../fonts/poppins-latin/Poppins-Bold.ttf') format('truetype'),
-       url('../fonts/poppins-latin/Poppins-Bold.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'PoppinsLatin-Medium';
-  src: url('../fonts/poppins-latin/Poppins-Medium.ttf') format('truetype'),
-       url('../fonts/poppins-latin/Poppins-Medium.otf') format("opentype");
-}
-
-@font-face {
   font-family: 'PoppinsLatin-SemiBold';
-  src: url('../fonts/poppins-latin/PoppinsLatin-SemiBold.ttf') format('truetype'),
-       url('../fonts/poppins-latin/PoppinsLatin-SemiBoldItalicm.otf') format("opentype");
+  src: url('/assets/fonts/poppins-latin/PoppinsLatin-SemiBold.ttf') format('truetype')
 }
 
 /* Global Styles */
@@ -30,10 +17,7 @@ body {
   margin: 0;
 }
 
-pre, code {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 14px;
-}
+
 /*  Global Default Header Styles */
 
 h1,
@@ -132,8 +116,6 @@ article {
   background: white;
   padding: 2em;
   margin: 1em auto;
-  animation-name: fadeIn;
-  animation-duration: 2s;
 }
 
 .home-section a {
@@ -258,27 +240,12 @@ span {
   width: 100%;
 }
 
-@keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-moz-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-webkit-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-o-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-ms-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+pre code {
+  font-family: 'Roboto Mono', monospace;
+  background: #222222;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  padding: 15px;
+  overflow: auto;
 }
