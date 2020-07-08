@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-
-@font-face {
-  font-family: 'PoppinsLatin-SemiBold';
-  src: url('/assets/fonts/poppins-latin/PoppinsLatin-SemiBold.ttf') format('truetype')
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
 /* Global Styles */
 
@@ -25,7 +21,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'PoppinsLatin-SemiBold';
+  font-family: 'Poppins', sans-serif;
   line-height: 1.5;
   color: #25282D;
   text-rendering: geometricPrecision;
@@ -223,7 +219,6 @@ pre code {
   font-family: 'Roboto Mono', monospace;
   background: #222222;
   color: #fff;
-  font-size: 16px;
   display: block;
   padding: 15px;
   overflow: auto;
