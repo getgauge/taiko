@@ -1,11 +1,11 @@
 ### Building the website
 
 ```
-npx @11ty/eleventy 
+npm run doc 
 ```
 
 ### Preview and Develop
 
 ```
-npx @11ty/eleventy --serve
+npm run doc:serve
 ```
