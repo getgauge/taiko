@@ -71,7 +71,11 @@ layout: api.njk
 {% if api.returns | length %}
     {%- for tag in api.tags %}
         {% if tag.title == 'returns' %}
-            <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.name }}">{{ tag.type.name }}</a>
+                {% if tag.type.name == 'Promise' %}
+                    <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.name }}">{{ tag.type.name }}</a>
+                {% else %}
+                    <a href="/api/{{ tag.type.name }}">{{ tag.type.name }}</a>
+                {% endif %}
         {% endif %}
     {% endfor -%}
 {% else%}
