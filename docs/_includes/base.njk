@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	    <meta charset="utf-8">
+		<title>Taiko Documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% set css %}
+		  {% include "styles.css" %}
+		{% endset %}
+		<style>
+		{{ css | cssmin | safe }}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<h1 class="header-text"><a href="https://taiko.dev">Taiko</a> <br/>Documentation</h1>
+			<form class="search">
+				<input type="text" id="search" placeholder="Search Taiko Docs"/>
+			</form>
+		</header>
+
+		<article>
+			{{ content | safe }}
+		</article>
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"/>
+
+		<script>
+			(function algoliaSearch() {
+				docsearch({
+					apiKey: 'b36d75c493b44a8f2605db66708a283b', indexName: 'taiko', inputSelector: '#search', debug: false 
+				});
+			})();
+		</script>
+		<footer>
+			<div class="footer">
+				<div><strong>Copyright &copy; <a href="https://taiko.dev">Taiko</a>,</strong> <a href="https://github.com/getgauge/taiko/blob/master/LICENSE">MIT license</a></div>
+				<div>
+					<a href="https://www.netlify.com">
+						<img src="https://www.netlify.com/img/global/badges/netlify-light.svg" alt="Deploys by Netlify" />
+					</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,6 +1,6 @@
 [build]
   command = "npm run doc"
-  publish = "docs/site"
+  publish = "docs/_site"
 
 [[redirects]]
   from = "/devices"
