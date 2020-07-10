@@ -28,6 +28,11 @@ module.exports = function (eleventyConfig) {
       permalinkSymbol: "#",
       level: [1, 2]
     });
+  eleventyConfig.addFilter("markdown", function(code) {
+      if(code) {
+        return mdIt.render(code);
+      }
+  });
   eleventyConfig.setLibrary("md", mdIt);
   eleventyConfig.addPlugin(tocPlugin);
 

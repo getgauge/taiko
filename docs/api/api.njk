@@ -51,7 +51,7 @@ layout: api.njk
                     <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.expression.name }}">{{ tag.type.expression.name }}</a>
             </dt>
             <dd>
-                {{ tag.description }}
+                {{ tag.description | markdown | safe }}
                     {% if tag.default %}
                             <dl>
                             <dt><b>Default value</b></dt>
@@ -71,7 +71,7 @@ layout: api.njk
 {% if api.returns | length %}
     {%- for tag in api.tags %}
         {% if tag.title == 'returns' %}
-            <p>{{ tag.description }}</p>
+            <p>{{ tag.description | markdown | safe }}</p>
             <p>
                 {% if tag.type.name == 'Promise' %}
                     <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.name }}">{{ tag.type.name }}</a>
