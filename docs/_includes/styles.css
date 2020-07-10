@@ -87,7 +87,7 @@ header h1 {
 /* single-column content page layout width */
 
 article, footer {
-  max-width: 40em;
+  max-width: 46em;
   background: white;
   padding: 2em;
   margin: 1em auto;
@@ -115,7 +115,7 @@ article, footer {
 
 form.search {
   padding: 0;
-  width: 50%;
+  width: 46em;
 }
 
 form.search input {
