@@ -1,6 +1,4 @@
-// Custom Typings for Taiko - https://taiko.gauge.org/#/
-// Custom type definitions for Taiko 1.0.5
-//
+// Custom Typings for Taiko - https://docs.taiko.dev/api/reference
 
 declare module 'taiko' {
   export type BrowserEvent =
@@ -246,21 +244,21 @@ declare module 'taiko' {
    * Browser Actions
    **/
 
-  // https://docs.taiko.dev/#openbrowser
+  // https://docs.taiko.dev/api/openbrowser
   export function openBrowser(options?: BrowserOptions): Promise<void>;
-  // https://docs.taiko.dev/#closebrowser
+  // https://docs.taiko.dev/api/closebrowser
   export function closeBrowser(): Promise<void>;
-  // https://docs.taiko.dev/#client
+  // https://docs.taiko.dev/api/client
   export function client(): any; // TODO: no TS Bindings available: https://github.com/cyrus-and/chrome-remote-interface/issues/112
-  // https://docs.taiko.dev/#switchto
+  // https://docs.taiko.dev/api/switchto
   export function switchTo(targetUrl: string): Promise<void>;
-  // https://docs.taiko.dev/#intercept
+  // https://docs.taiko.dev/api/intercept
   // https://github.com/getgauge/taiko/issues/98#issuecomment-42024186
   export function intercept(
     requestUrl: string,
     options?: InterceptMockData | interceptRequestHandler | InterceptRedirectUrl,
   ): Promise<void>;
-  // https://docs.taiko.dev/#emulatenetwork
+  // https://docs.taiko.dev/api/emulatenetwork
   export function emulateNetwork(
     networkType:
       | 'GPRS'
@@ -272,118 +270,118 @@ declare module 'taiko' {
       | 'DSL'
       | 'WiFi, Offline',
   ): Promise<void>;
-  // https://docs.taiko.dev/#emulatedevice
+  // https://docs.taiko.dev/api/emulatedevice
   export function emulateDevice(deviceModel: string);
-  // https://docs.taiko.dev/#setviewport
+  // https://docs.taiko.dev/api/setviewport
   export function setViewPort(options: ViewPortOptions): Promise<void>;
-  // https://docs.taiko.dev/#emulateTimezone
+  // https://docs.taiko.dev/api/emulateTimezone
   export function emulateTimezone(timezoneId: string): Promise<void>;
-  // https://docs.taiko.dev/#opentab
+  // https://docs.taiko.dev/api/opentab
   export function openTab(targetUrl: string, options?: NavigationOptions): Promise<void>;
-  // https://docs.taiko.dev/#closetab
+  // https://docs.taiko.dev/api/closetab
   export function closeTab(targetUrl?: string): Promise<void>;
-  // https://docs.taiko.dev/#openincognitowindow
+  // https://docs.taiko.dev/api/openincognitowindow
   export function openIncognitoWindow(
     url?: string | OpenWindowOptions,
     options?: OpenWindowOptions,
   ): Promise<void>;
-  // https://docs.taiko.dev/#closeincognitowindow
+  // https://docs.taiko.dev/api/closeincognitowindow
   export function closeIncognitoWindow(name: string): Promise<void>;
-  // https://docs.taiko.dev/#overridepermissions
+  // https://docs.taiko.dev/api/overridepermissions
   export function overridePermissions(origin: string, permissions: string[]): Promise<void>;
-  // https://docs.taiko.dev/#clearpermissionoverrides
+  // https://docs.taiko.dev/api/clearpermissionoverrides
   export function clearPermissionOverrides(): Promise<void>;
-  // https://docs.taiko.dev/#setcookie
+  // https://docs.taiko.dev/api/setcookie
   export function setCookie(
     name: string,
     value: string,
     options?: CookieDetailOptions,
   ): Promise<void>;
-  // https://docs.taiko.dev/#deletecookies
+  // https://docs.taiko.dev/api/deletecookies
   export function deleteCookies(cookieName?: string, options?: CookieOptions): Promise<void>;
-  // https://docs.taiko.dev/#getcookies
+  // https://docs.taiko.dev/api/getcookies
   export function getCookies(options?: { urls: string[] }): Promise<Record<string, any>[]>;
-  // https://docs.taiko.dev/#setlocation
+  // https://docs.taiko.dev/api/setlocation
   export function setLocation(options: LocationOptions): Promise<void>;
 
   /**
    * Page Actions
    */
 
-  // https://docs.taiko.dev/#goto
+  // https://docs.taiko.dev/api/goto
   export function goto(url: string, options?: NavigationOptions): Promise<Response>;
-  // https://docs.taiko.dev/#reload
+  // https://docs.taiko.dev/api/reload
   export function reload(url?: string, options?: NavigationOptions): Promise<void>;
-  // https://docs.taiko.dev/#goback
+  // https://docs.taiko.dev/api/goback
   export function goBack(options?: NavigationOptions): Promise<void>;
-  // https://docs.taiko.dev/#goforward
+  // https://docs.taiko.dev/api/goforward
   export function goForward(options?: NavigationOptions): Promise<void>;
-  // https://docs.taiko.dev/#title
+  // https://docs.taiko.dev/api/title
   export function title(): Promise<string>;
-  // https://docs.taiko.dev/#click
+  // https://docs.taiko.dev/api/click
   export function click(
     selector: SearchElement | MouseCoordinates,
     options?: ClickOptions,
     ...args: RelativeSearchElement[]
   ): Promise<void>;
-  // https://docs.taiko.dev/#doubleclick
+  // https://docs.taiko.dev/api/doubleclick
   export function doubleClick(
     selector: SearchElement | MouseCoordinates,
     options?: BasicNavigationOptions,
     ...args: RelativeSearchElement[]
   ): Promise<void>;
-  // https://docs.taiko.dev/#rightclick
+  // https://docs.taiko.dev/api/rightclick
   export function rightClick(
     selector: SearchElement | MouseCoordinates,
     options?: BasicNavigationOptions,
     ...args: RelativeSearchElement[]
   ): Promise<void>;
-  // https://docs.taiko.dev/#draganddrop
+  // https://docs.taiko.dev/api/draganddrop
   export function dragAndDrop(
     source: SearchElement,
     destination?: SearchElement,
     distance?: DragAndDropDistance,
   ): Promise<void>;
-  // https://docs.taiko.dev/#hover
+  // https://docs.taiko.dev/api/hover
   export function hover(selector: SearchElement, options?: NavigationOptions): Promise<void>;
-  // https://docs.taiko.dev/#focus
+  // https://docs.taiko.dev/api/focus
   export function focus(selector: SearchElement, options?: NavigationOptions): Promise<void>;
-  // https://docs.taiko.dev/#write
+  // https://docs.taiko.dev/api/write
   export function write(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
-  // https://docs.taiko.dev/#clear
+  // https://docs.taiko.dev/api/clear
   export function clear(selector: SearchElement, options?: NavigationOptions): Promise<void>;
-  // https://docs.taiko.dev/#attach
+  // https://docs.taiko.dev/api/attach
   export function attach(filepath: string, to: SearchElement): Promise<void>;
-  // https://docs.taiko.dev/#press
+  // https://docs.taiko.dev/api/press
   export function press(keys: string | string[], options?: KeyOptions): Promise<void>;
-  // https://docs.taiko.dev/#highlight
+  // https://docs.taiko.dev/api/highlight
   export function highlight(
     selector: SearchElement,
     ...args: RelativeSearchElement[]
   ): Promise<void>;
-  // https://docs.taiko.dev/#mouseaction
+  // https://docs.taiko.dev/api/mouseaction
   export function mouseAction(
     selector: SearchElement | 'press' | 'move' | 'release',
     action?: 'press' | 'move' | 'release' | MouseCoordinates,
     coordinates?: MouseCoordinates | NavigationOptions,
     options?: NavigationOptions,
   ): Promise<void>;
-  // https://docs.taiko.dev/#scrollto
+  // https://docs.taiko.dev/api/scrollto
   export function scrollTo(selector: SearchElement, options?: NavigationOptions): Promise<void>;
-  // https://docs.taiko.dev/#scrollright
+  // https://docs.taiko.dev/api/scrollright
   export function scrollRight(selector?: SearchElement | number, px?: number): Promise<void>;
-  // https://docs.taiko.dev/#scrollleft
+  // https://docs.taiko.dev/api/scrollleft
   export function scrollLeft(selector?: SearchElement | number, px?: number): Promise<void>;
-  // https://docs.taiko.dev/#scrollup
+  // https://docs.taiko.dev/api/scrollup
   export function scrollUp(selector?: SearchElement | number, px?: number): Promise<void>;
-  // https://docs.taiko.dev/#scrolldown
+  // https://docs.taiko.dev/api/scrolldown
   export function scrollDown(selector?: SearchElement | number, px?: number): Promise<void>;
-  // https://docs.taiko.dev/#screenshot
+  // https://docs.taiko.dev/api/screenshot
   export function screenshot(
     options?: ScreenshotOptions,
     ...args: SearchElement[]
   ): Promise<Buffer>;
-  // https://docs.taiko.dev/#tap
+  // https://docs.taiko.dev/api/tap
   export function tap(
     selector: SearchElement,
     options?: TapOptions,
@@ -394,61 +392,61 @@ declare module 'taiko' {
    * Selectors
    */
 
-  // https://docs.taiko.dev/#dollar
+  // https://docs.taiko.dev/api/$
   export function $(selector: string, ...args: RelativeSearchElement[]): Selector;
-  // https://docs.taiko.dev/#image
+  // https://docs.taiko.dev/api/image
   export function image(
     selector: SearchElement,
     options?: SelectionOptions | RelativeSearchElement,
     ...args: RelativeSearchElement[]
   ): SearchElement;
-  // https://docs.taiko.dev/#link
+  // https://docs.taiko.dev/api/link
   export function link(
     selector: SearchElement,
     options?: SelectionOptions | RelativeSearchElement,
     ...args: SearchElement[]
   ): SearchElement;
-  // https://docs.taiko.dev/#listitem
+  // https://docs.taiko.dev/api/listitem
   export function listItem(
     selector: SearchElement,
     ...args: RelativeSearchElement[]
   ): SearchElement;
-  // https://docs.taiko.dev/#button
+  // https://docs.taiko.dev/api/button
   export function button(
     selector: SearchElement,
     options?: SelectionOptions | RelativeSearchElement,
     ...args: RelativeSearchElement[]
   ): SearchElement;
-  // https://docs.taiko.dev/#filefield
+  // https://docs.taiko.dev/api/filefield
   export function fileField(
     selector: SearchElement,
     options?: SelectionOptions | RelativeSearchElement,
     ...args: RelativeSearchElement[]
   ): ElementWrapper;
-  // https://docs.taiko.dev/#textbox
+  // https://docs.taiko.dev/api/textbox
   export function textBox(
     selector: SearchElement,
     ...args: RelativeSearchElement[]
   ): ElementWrapper;
-  // https://docs.taiko.dev/#dropdown
+  // https://docs.taiko.dev/api/dropdown
   export function dropDown(
     selector: SearchElement,
     options?: SelectionOptions | RelativeSearchElement,
     ...args: RelativeSearchElement[]
   ): ElementWrapper;
-  // https://docs.taiko.dev/#checkbox
+  // https://docs.taiko.dev/api/checkbox
   export function checkBox(
     selector: SearchElement,
     options?: SelectionOptions | RelativeSearchElement,
     ...args: RelativeSearchElement[]
   ): ElementWrapper;
-  // https://docs.taiko.dev/#radiobutton
+  // https://docs.taiko.dev/api/radiobutton
   export function radioButton(
     selector: SearchElement,
     options?: SelectionOptions | RelativeSearchElement,
     ...args: RelativeSearchElement[]
   ): ElementWrapper;
-  // https://docs.taiko.dev/#text
+  // https://docs.taiko.dev/api/text
   export function text(
     selector: string,
     options?: MatchingOptions | RelativeSearchElement,
@@ -459,15 +457,15 @@ declare module 'taiko' {
    * Proximity Selectors
    */
 
-  // https://docs.taiko.dev/#toleftof
+  // https://docs.taiko.dev/api/toleftof
   export function toLeftOf(selector: SearchElement | ElementWrapper): RelativeSearchElement;
-  // https://docs.taiko.dev/#torightof
+  // https://docs.taiko.dev/api/torightof
   export function toRightOf(selector: SearchElement | ElementWrapper): RelativeSearchElement;
-  // https://docs.taiko.dev/#above
+  // https://docs.taiko.dev/api/above
   export function above(selector: SearchElement | ElementWrapper): RelativeSearchElement;
-  // https://docs.taiko.dev/#below
+  // https://docs.taiko.dev/api/below
   export function below(selector: SearchElement | ElementWrapper): RelativeSearchElement;
-  // https://docs.taiko.dev/#near
+  // https://docs.taiko.dev/api/near
   export function near(
     selector: SearchElement | ElementWrapper,
     opts?: ProximitySelectorNearOptions,
@@ -476,42 +474,42 @@ declare module 'taiko' {
   /**
    * Events
    */
-  // https://docs.taiko.dev/#alert
+  // https://docs.taiko.dev/api/alert
   export function alert(message: string, callback: Function): void;
-  // https://docs.taiko.dev/#prompt
+  // https://docs.taiko.dev/api/prompt
   export function prompt(message: string, callback: Function): void;
-  // https://docs.taiko.dev/#confirm
+  // https://docs.taiko.dev/api/confirm
   export function confirm(message: string, callback: Function): void;
-  // https://docs.taiko.dev/#beforeunload
+  // https://docs.taiko.dev/api/beforeunload
   export function beforeunload(message: string, callback: Function): void;
 
   /**
    * Helpers
    */
 
-  // https://docs.taiko.dev/#evaluate
+  // https://docs.taiko.dev/api/evaluate
   export function evaluate(
     selector?: SearchElement,
     handlerCallback?: (element: HTMLElement, args?: EvaluateElementOptions) => Record<string, any>,
     options?: NavigationOptions,
   ): Promise<Record<string, any>>;
-  // https://docs.taiko.dev/#intervalsecs
+  // https://docs.taiko.dev/api/intervalsecs
   export function intervalSecs(secs: number): number;
-  // https://docs.taiko.dev/#timeoutsecs
+  // https://docs.taiko.dev/api/timeoutsecs
   export function timeoutSecs(secs: number): number;
-  // https://docs.taiko.dev/#to
+  // https://docs.taiko.dev/api/to
   export function to(value: SearchElement): SearchElement;
-  // https://docs.taiko.dev/#into
+  // https://docs.taiko.dev/api/into
   export function into(value: SearchElement): SearchElement;
-  // https://docs.taiko.dev/#accept
+  // https://docs.taiko.dev/api/accept
   export function accept(text?: string): Promise<void>;
-  // https://docs.taiko.dev/#dismiss
+  // https://docs.taiko.dev/api/dismiss
   export function dismiss(text?: string): Promise<void>;
-  // https://docs.taiko.dev/#setconfig
+  // https://docs.taiko.dev/api/setconfig
   export function setConfig(options: GlobalConfigurationOptions): void;
-  // https://docs.taiko.dev/#currenturl
+  // https://docs.taiko.dev/api/currenturl
   export function currentURL(): Promise<string>;
-  // https://docs.taiko.dev/#waitfor
+  // https://docs.taiko.dev/api/waitfor
   export function waitFor(time: number): Promise<void>;
   export function waitFor(element: SearchElement, time: number): Promise<void>;
   export function waitFor(condition: () => Promise<boolean>, time: number): Promise<void>;
