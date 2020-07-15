@@ -34,7 +34,10 @@ h1 {
   margin-top: 1em;
   font-size: 2em;
 }
-a, a:visited, a:active {
+
+a,
+a:visited,
+a:active {
   color: #25282D;
   font-weight: 600;
 }
@@ -86,10 +89,12 @@ header h1 {
 
 /* single-column content page layout width */
 
-article, footer {
+article,
+footer,
+section {
   max-width: 46em;
   background: white;
-  padding: 2em;
+  padding: 1em 1em 1em 2em;
   margin: 1em auto;
 }
 
@@ -146,20 +151,21 @@ form.search input::placeholder {
 /* Small screen overrides */
 
 @media (max-width: 600px) {
-  
+
   .header-text {
     font-size: 34px;
     max-width: 300px;
   }
 
   form.search {
-  padding: 0;
-  width: 90%;
+    padding: 0;
+    width: 90%;
   }
 
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
   padding-inline-start: 20px;
   margin-bottom: 2em;
@@ -187,7 +193,7 @@ code {
   background-color: #e6e6e6;
 }
 
-article hr{
+article hr {
   height: 1px;
   background-color: lightgrey;
   border: none;
@@ -226,6 +232,16 @@ pre code {
 
 .footer {
   display: flex;
-  flex-flow: row wrap;  
+  flex-flow: row wrap;
+  font-size: smaller;
   justify-content: space-between;
+}
+
+@media(max-width:800px) {
+  article,
+  footer,
+  section {
+    background: white;
+    padding: 15px;
+  }
 }

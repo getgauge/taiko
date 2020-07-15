@@ -2,7 +2,9 @@
 layout: page.njk
 ---
 
-This index of all Taiko's API. You can use them in Taiko's
+<details>
+<Summary>This index of all Taiko's API.</Summary>
+You can use them in Taiko's
 <a href="/using_the_recorder">recorder</a> as well as scripts. 
 Use the API in Taiko's recorder as follows
 
@@ -21,7 +23,7 @@ Before using it
     await click('Google search');
 })();
 </code></pre>
-
+</details>
 {%- for api, keys in metadata %}
 <h2>{{api}}</h2>
     <ul style="columns: 15em">
