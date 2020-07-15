@@ -75,7 +75,7 @@ describe(test_name, () => {
 
       it('test description', async () => {
         expect(fileField(above(button('Upload'))).description).to.be.eql(
-          'File field Above Button with label Upload ',
+          'FileField Above Button with label Upload ',
         );
       });
 
@@ -101,7 +101,7 @@ describe(test_name, () => {
 
       it('test description', async () => {
         expect(fileField('Select a file').description).to.be.eql(
-          'File field with label Select a file ',
+          'FileField with label Select a file ',
         );
       });
 
@@ -123,7 +123,7 @@ describe(test_name, () => {
 
       it('test description', async () => {
         expect(fileField('Choose a file').description).to.be.eql(
-          'File field with label Choose a file ',
+          'FileField with label Choose a file ',
         );
       });
 
@@ -160,9 +160,7 @@ describe(test_name, () => {
       let elements = await fileField({
         id: 'similarFileField',
       }).elements();
-      expect(elements[0].description).to.be.eql(
-        'File field[@id = concat(\'similarFileField\', "")]',
-      );
+      expect(elements[0].description).to.be.eql('FileField[id="similarFileField"]');
     });
 
     it('test value of elements', async () => {

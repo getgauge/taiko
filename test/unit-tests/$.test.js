@@ -42,7 +42,7 @@ describe(test_name, () => {
 
     it('test description with xpath', async () => {
       expect($("//*[text()='taiko']").description).to.be.eql(
-        "Custom selector $(//*[text()='taiko'])",
+        "CustomSelector with query //*[text()='taiko'] ",
       );
     });
 
@@ -78,8 +78,8 @@ describe(test_name, () => {
     });
 
     it('test description with selectors', async () => {
-      expect($('#foo').description).to.be.eql('Custom selector $(#foo)');
-      expect($('.test').description).to.be.eql('Custom selector $(.test)');
+      expect($('#foo').description).to.be.eql('CustomSelector with query #foo ');
+      expect($('.test').description).to.be.eql('CustomSelector with query .test ');
     });
 
     it('test text with selectors', async () => {
@@ -89,7 +89,7 @@ describe(test_name, () => {
 
     it('test text should throw if the element is not found', async () => {
       await expect($('.foo').text()).to.be.eventually.rejectedWith(
-        'Custom selector $(.foo) not found',
+        'CustomSelector with query .foo  not found',
       );
     });
   });
@@ -107,7 +107,7 @@ describe(test_name, () => {
 
     it('test description', async () => {
       const elems = await $('#foo').elements();
-      expect(elems[0].description).to.be.eql('Custom selector $(#foo)');
+      expect(elems[0].description).to.be.eql('CustomSelector with query #foo ');
     });
 
     it('test text()', async () => {

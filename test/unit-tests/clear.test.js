@@ -6,7 +6,6 @@ let {
   closeBrowser,
   clear,
   setConfig,
-  reload,
   write,
   into,
   $,
@@ -22,19 +21,19 @@ describe(test_name, () => {
         <form>
             <p>
                 <label for="name">
-                    Name<input type="text" name="user[name]" id="user[name]" value="Example" disabled/>
+                    Name<input type="text" name="user[name]" id="name" value="Example" disabled/>
                 </label>
                 <label for="email">
-                    Email<input type="text" name="user[email]" id="user[email]" value="example@test.com"/>
+                    Email<input type="text" name="user[email]" id="email" value="example@test.com"/>
                 </label>
                 <label for="address">
                     Address
-                    <textarea name="user[address]" id="user[address]">Address in
+                    <textarea name="user[address]" id="address">Address in
 multiple lines.</textarea>
                 </label>
 
                 <label for="country">
-                        Country<input type="text" name="user[country]" id="user[country]" value="" onkeyup="displayInfo(this)"/>
+                        Country<input type="text" name="user[country]" id="country" value="" onkeyup="displayInfo(this)"/>
                 </label>
                 <input type="reset" value="Reset" />
             </p>
@@ -42,7 +41,7 @@ multiple lines.</textarea>
         <div id='info-borad' ></div>
         <script type="text/javascript">
             setTimeout( () => {
-                document.getElementById('user[name]').disabled = false;
+                document.getElementById('name').disabled = false;
             }, 50);
 
             function displayInfo(element) {

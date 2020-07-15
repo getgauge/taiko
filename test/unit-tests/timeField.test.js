@@ -156,7 +156,7 @@ describe(test_name, () => {
 
         it('test description', async () => {
           expect(timeField('With Inline Text').description).to.be.eql(
-            'Time field with label With Inline Text ',
+            'TimeField with label With Inline Text ',
           );
         });
       });
@@ -185,7 +185,7 @@ describe(test_name, () => {
 
         it('test description', async () => {
           expect(timeField('With Wrapped Label').description).to.be.eql(
-            'Time field with label With Wrapped Label ',
+            'TimeField with label With Wrapped Label ',
           );
         });
       });
@@ -206,7 +206,7 @@ describe(test_name, () => {
 
         it('test description', async () => {
           expect(timeField('With Label For').description).to.be.eql(
-            'Time field with label With Label For ',
+            'TimeField with label With Label For ',
           );
         });
 
@@ -261,7 +261,7 @@ describe(test_name, () => {
             timeField({
               id: inputType.name + 'WithLabelFor',
             }).description,
-          ).to.be.eql(`Time field[@id = concat('inputType-${inputType.type}WithLabelFor', "")]`);
+          ).to.be.eql(`TimeField[id="inputType-${inputType.type}WithLabelFor"]`);
         });
       });
 
@@ -285,7 +285,7 @@ describe(test_name, () => {
 
         it('test description', async () => {
           expect(timeField(above('With Label For')).description).to.be.eql(
-            'Time field Above With Label For',
+            'TimeField Above With Label For',
           );
         });
       });
@@ -302,9 +302,7 @@ describe(test_name, () => {
           let elements = await timeField({
             id: `sample${inputType.type}`,
           }).elements();
-          expect(elements[0].description).to.be.eql(
-            `Time field[@id = concat('sample${inputType.type}', "")]`,
-          );
+          expect(elements[0].description).to.be.eql(`TimeField[id="sample${inputType.type}"]`);
         });
 
         it('test select()', async () => {

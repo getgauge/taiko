@@ -4,10 +4,18 @@ var sinon = require('sinon');
 const { descEvent } = require('../../lib/eventBus');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let { openBrowser, closeBrowser, goto, range, setConfig, below, evaluate } = require('../../lib/taiko');
+let {
+  openBrowser,
+  closeBrowser,
+  goto,
+  range,
+  setConfig,
+  below,
+  evaluate,
+} = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 
-describe('Color picker test', () => {
+describe('Range test', () => {
   let filePath;
 
   before(async () => {
@@ -86,20 +94,20 @@ describe('Color picker test', () => {
     await range({ id: 'range-1' }).select('1111');
   });
 
-    it('should emit events', async () => {
-      await evaluate(() => {
-        document.raisedEvents = [];
-        var range = document.getElementById('range-2');
-        ['input', 'change'].forEach((ev) => {
-          range.addEventListener(ev, () => document.raisedEvents.push(ev));
-        });
+  it('should emit events', async () => {
+    await evaluate(() => {
+      document.raisedEvents = [];
+      var range = document.getElementById('range-2');
+      ['input', 'change'].forEach((ev) => {
+        range.addEventListener(ev, () => document.raisedEvents.push(ev));
       });
-
-      await range({ id: 'range-2' }).select(110);
-
-      var events = await evaluate(() => document.raisedEvents);
-      expect(events).to.eql(['change', 'input']);
     });
+
+    await range({ id: 'range-2' }).select(110);
+
+    var events = await evaluate(() => document.raisedEvents);
+    expect(events).to.eql(['change', 'input']);
+  });
 
   describe('Color picker test without min and max', () => {
     it('Set Range value above the extreme edges', async () => {

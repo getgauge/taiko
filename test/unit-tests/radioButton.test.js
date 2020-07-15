@@ -144,7 +144,7 @@ describe(test_name, () => {
 
     it('test description', async () => {
       const description = radioButton('radioButtonWithWrappedLabel').description;
-      expect(description).to.be.eql('Radio button with label radioButtonWithWrappedLabel ');
+      expect(description).to.be.eql('RadioButton with label radioButtonWithWrappedLabel ');
     });
   });
 
@@ -175,7 +175,7 @@ describe(test_name, () => {
 
     it('test description', async () => {
       const description = radioButton('radioButtonWithLabelFor').description;
-      expect(description).to.be.eql('Radio button with label radioButtonWithLabelFor ');
+      expect(description).to.be.eql('RadioButton with label radioButtonWithLabelFor ');
     });
   });
 
@@ -191,9 +191,7 @@ describe(test_name, () => {
       let elements = await radioButton({
         id: 'someRadioButton',
       }).elements();
-      expect(elements[0].description).to.be.eql(
-        'Radio button[@id = concat(\'someRadioButton\', "")]',
-      );
+      expect(elements[0].description).to.be.eql('RadioButton[id="someRadioButton"]');
     });
 
     it('test isSelected of elements', async () => {
