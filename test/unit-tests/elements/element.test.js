@@ -33,6 +33,9 @@ const nodes = {
       getClientRects: () => [new DomRects(), new DomRects()],
     },
   },
+  100: {
+    draggable: true,
+  },
 };
 describe('Element', () => {
   let Element;
@@ -74,6 +77,19 @@ describe('Element', () => {
       let objectId = 23;
       let element = new Element(objectId, 'element description', runtimeHandler);
       expect(await element.text()).to.be.equal('element text');
+    });
+  });
+
+  describe('isDraggable', () => {
+    it('should return true when draggable attribute is set', async () => {
+      let objectId = 100;
+      let element = new Element(objectId, 'element description', runtimeHandler);
+      expect(await element.isDraggable()).to.be.true;
+    });
+    it('should return false when draggable attribute is not set', async () => {
+      let objectId = 45;
+      let element = new Element(objectId, 'element description', runtimeHandler);
+      expect(await element.isDraggable()).to.be.false;
     });
   });
 
