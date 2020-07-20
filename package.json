@@ -54,7 +54,7 @@
   "dependencies": {
     "@babel/parser": "^7.9.4",
     "chrome-remote-interface": "^0.28.1",
-    "commander": "^5.0.0",
+    "commander": "^6.0.0",
     "debug": "^4.1.1",
     "extract-zip": "^2.0.0",
     "fs-extra": "^9.0.0",
