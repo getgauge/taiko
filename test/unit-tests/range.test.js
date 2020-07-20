@@ -12,6 +12,7 @@ let {
   setConfig,
   below,
   evaluate,
+  $,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 
@@ -118,6 +119,14 @@ describe('Range test', () => {
     it('Set Range value below the extreme edges', async () => {
       await range({ id: 'range-2' }).select(-1);
       expect(await range({ id: 'range-2' }).value()).to.be.equal('0');
+    });
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => range($('div'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `range` selector. Refer https://docs.taiko.dev/api/range/ for the correct parameters',
+      );
     });
   });
 });

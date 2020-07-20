@@ -11,6 +11,7 @@ let {
   into,
   setConfig,
   above,
+  $,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'textBox';
@@ -690,6 +691,14 @@ describe(test_name, () => {
         let elements = await textBox('sampleInputWithoutType').elements();
         expect(await elements[0].value()).to.be.eql('inputWithoutTypeValue');
       });
+    });
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => textBox($('div'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `textBox` selector. Refer https://docs.taiko.dev/api/textbox/ for the correct parameters',
+      );
     });
   });
 });

@@ -9,6 +9,7 @@ let {
   evaluate,
   setConfig,
   below,
+  $,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 let test_name = 'textMatch';
@@ -457,6 +458,33 @@ describe('match', () => {
 
     it('test exactMatch option set to true with proximity selectors', async () => {
       expect(await text('value', { exactMatch: true }, below('New value')).exists()).to.be.false;
+    });
+  });
+
+  describe('Parameters validation', () => {
+    before(async () => {
+      let innerHtml = `
+        <div id='prova' style='display:none'>Element Present</div>
+      `;
+      filePath = createHtml(innerHtml, test_name);
+      await openBrowser(openBrowserArgs);
+      await goto(filePath);
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
+    });
+    after(async () => {
+      resetConfig();
+      await closeBrowser();
+      removeFile(filePath);
+    });
+
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => text($('div'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `text` selector. Refer https://docs.taiko.dev/api/text/ for the correct parameters',
+      );
     });
   });
 });

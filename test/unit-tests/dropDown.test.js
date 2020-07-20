@@ -8,6 +8,7 @@ let {
   evaluate,
   closeBrowser,
   setConfig,
+  $,
 } = require('../../lib/taiko');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
@@ -245,6 +246,14 @@ describe(test_name, () => {
 
       var events = await evaluate(() => document.raisedEvents);
       expect(events).to.eql(['change', 'input']);
+    });
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => dropDown($('div'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `dropDown` selector. Refer https://docs.taiko.dev/api/dropdown/ for the correct parameters',
+      );
     });
   });
 });

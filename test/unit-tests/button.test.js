@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let { openBrowser, goto, closeBrowser, button, setConfig } = require('../../lib/taiko');
+let { openBrowser, goto, closeBrowser, button, setConfig, $ } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'button';
 
@@ -260,6 +260,14 @@ describe(test_name, () => {
       expect(await button('InputButtonInLabelDisabled').isDisabled()).to.be.true;
       expect(await button('ResetInLabelDisabled').isDisabled()).to.be.true;
       expect(await button('SubmitInLabelDisabled').isDisabled()).to.be.true;
+    });
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => button($('div'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `button` selector. Refer https://docs.taiko.dev/api/button/ for the correct parameters',
+      );
     });
   });
 });

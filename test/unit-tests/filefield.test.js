@@ -11,6 +11,7 @@ let {
   button,
   attach,
   setConfig,
+  $,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const path = require('path');
@@ -184,6 +185,14 @@ describe(test_name, () => {
       await expect(
         attach(path.join(__dirname, 'data', 'foowrong.txt'), fileField('Select a file')),
       ).to.be.rejectedWith(`File ${path.join(__dirname, 'data', 'foowrong.txt')} does not exist.`);
+    });
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => fileField($('div'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `fileField` selector. Refer https://docs.taiko.dev/api/filefield/ for the correct parameters',
+      );
     });
   });
 });
