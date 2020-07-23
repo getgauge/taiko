@@ -99,3 +99,7 @@
 * Navigate to relative path "./specs/data/samePageNavigation.html#gauge-navigation"
 * Navigate to relative path "./specs/data/samePageNavigation.html#gauge-navigation"
 
+## Goto with basic authentication
+* Navigate to "http://localhost:3001/basic_auth" with basic auth "admin" and "admin"
+* Assert text "Congratulations! You must have the proper credentials." exists on the page.
+

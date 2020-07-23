@@ -36,6 +36,14 @@ export default class HtmlElementAPI {
     await goto(url);
   }
 
+  @Step('Navigate to <url> with basic auth <username> and <password>')
+  public async navigateWithBasicAuth(url, username, password) {
+    const encodedCredentials = Buffer.from(`${username}:${password}`).toString('base64');
+    await goto(url, {
+      headers: { Authorization: `Basic ${encodedCredentials}` },
+    });
+  }
+
   @Step('Ensure Drop down <dropDownName> exists')
   public async dropdownExists(dropDownName) {
     const box = dropDown(dropDownName);
