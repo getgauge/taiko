@@ -474,12 +474,31 @@ declare module 'taiko' {
   /**
    * Events
    */
+  export interface DialogValue {
+    message: string;
+    type: string;
+    url: string;
+    defaultPrompt: string;
+  }
+
+  export type DialogHandler = (value: DialogValue) => void;
+
   // https://docs.taiko.dev/api/alert
-  export function alert(message: string, callback: Function): void;
+  export function alert(
+    messageOrCallback: string | RegExp | DialogHandler,
+    callback?: DialogHandler,
+  ): void;
   // https://docs.taiko.dev/api/prompt
-  export function prompt(message: string, callback: Function): void;
+  export function prompt(
+    messageOrCallback: string | RegExp | DialogHandler,
+    callback?: DialogHandler,
+  ): void;
   // https://docs.taiko.dev/api/confirm
-  export function confirm(message: string, callback: Function): void;
+  export function confirm(
+    messageOrCallback: string | RegExp | DialogHandler,
+    callback?: DialogHandler,
+  ): void;
+
   // https://docs.taiko.dev/api/beforeunload
   export function beforeunload(message: string, callback: Function): void;
 
