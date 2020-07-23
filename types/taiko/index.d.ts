@@ -35,7 +35,7 @@ declare module 'taiko' {
   }
 
   export interface NavigationOptions extends BasicNavigationOptions, EventOptions {
-    headers?: Map<string, string>;
+    headers?: object;
     waitForStart?: boolean;
   }
 
