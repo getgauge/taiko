@@ -10,6 +10,8 @@ describe('Fetch Handler', () => {
   before(() => {
     fetchHandler = rewire('../../../lib/handlers/fetchHandler');
     let fetch = {
+      enable: () => {},
+      requestPaused: () => {},
       continueRequest: async (options) => {
         continueInterceptedRequestOptions = options;
       },
@@ -27,12 +29,32 @@ describe('Fetch Handler', () => {
   });
 
   describe('http headers', () => {
-    let headersAndHost;
+    let headersAndHost, expectedHeaders;
     before(() => {
       headersAndHost = [
         [{ header1: 'header1 value' }, 'https://example.com'],
         [{ header3: 'header2 value' }, 'https://another-example.com'],
         [{ header4: 'header3 value' }, 'file://path/to/some/file'],
+      ];
+      expectedHeaders = [
+        [
+          {
+            name: 'header1',
+            value: 'header1 value',
+          },
+        ],
+        [
+          {
+            name: 'header3',
+            value: 'header2 value',
+          },
+        ],
+        [
+          {
+            name: 'header4',
+            value: 'header3 value',
+          },
+        ],
       ];
       headersAndHost.forEach((headerAndHost) => {
         fetchHandler.setHTTPHeaders(headerAndHost[0], headerAndHost[1]);
@@ -41,7 +63,7 @@ describe('Fetch Handler', () => {
     it('should set appropriate headers for a host', () => {
       headersAndHost.forEach((headerAndHost, index) => {
         const hostUrl = headerAndHost[1];
-        const headers = headerAndHost[0];
+        const headers = expectedHeaders[index];
         requestInterceptor({
           requestId: index,
           request: { url: hostUrl, headers: {} },
