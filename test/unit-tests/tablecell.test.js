@@ -9,6 +9,7 @@ let {
   above,
   link,
   near,
+  $,
 } = require('../../lib/taiko');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
@@ -278,6 +279,7 @@ describe(test_name, () => {
       ).to.be.eventually.rejected;
     });
 
+    //TODO Should i move these checks inside the "Parameters validation" describe?
     it('test tableCell throw error if row and col not provided', async () => {
       await expect(tableCell('Table Caption').exists()).to.be.eventually.rejectedWith(
         'Table Row and Column Value required',
@@ -457,6 +459,14 @@ describe(test_name, () => {
       expect(
         await text('Table Cell 1.1', near(tableCell({ row: 1, col: 1 }, 'Table Caption'))).exists(),
       ).to.be.true;
+    });
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => tableCell({ row: 1, col: 1 }, $('div'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `tableCell` selector. Refer https://docs.taiko.dev/api/tablecell/ for the correct parameters',
+      );
     });
   });
 });

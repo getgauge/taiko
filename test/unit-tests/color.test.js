@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let { openBrowser, closeBrowser, goto, color, toLeftOf, setConfig } = require('../../lib/taiko');
+let { openBrowser, closeBrowser, goto, color, toLeftOf, setConfig, $ } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 
 describe('Color picker test', () => {
@@ -73,5 +73,21 @@ describe('Color picker test', () => {
     await expect(color(toLeftOf('Head')).select('#3233333')).to.be.rejectedWith(
       'The color code #3233333 is invalid. Please pass a valid HTML color code.',
     );
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => color($('div'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `color` selector. Refer https://docs.taiko.dev/api/color/ for the correct parameters',
+      );
+    });
+
+    it('should throw an Error when an no argument is passed', async () => {
+      expect(() => color()).to.throw('At least one attribute is required!');
+    });
+
+    it('should throw an Error when an empty string is passed as argument', async () => {
+      expect(() => color('')).to.throw('At least one attribute is required!');
+    });
   });
 });

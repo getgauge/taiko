@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let { openBrowser, closeBrowser, goto, link, toRightOf, setConfig } = require('../../lib/taiko');
+let { openBrowser, closeBrowser, goto, link, toRightOf, setConfig, $ } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'link';
 
@@ -139,6 +139,14 @@ describe(test_name, () => {
       expect(await secondElement.text()).to.be.eql('similarLink2');
       let thirdElement = await link('similarLink').element(2);
       expect(await thirdElement.text()).to.be.eql('similarLink3');
+    });
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => link($('p'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `link` selector. Refer https://docs.taiko.dev/api/link/ for the correct parameters',
+      );
     });
   });
 });

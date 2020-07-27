@@ -10,6 +10,7 @@ let {
   setConfig,
   above,
   click,
+  $,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'timeField';
@@ -320,6 +321,14 @@ describe(test_name, () => {
           expect(await elements[0].value()).to.be.eql(inputType.testDefaultValue);
         });
       });
+    });
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => timeField($('div'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `timeField` selector. Refer https://docs.taiko.dev/api/timefield/ for the correct parameters',
+      );
     });
   });
 });

@@ -11,6 +11,7 @@ let {
   text,
   click,
   setConfig,
+  $,
 } = require('../../lib/taiko');
 
 const test_name = 'Checkbox';
@@ -215,3 +216,32 @@ const inputTypeCaseSensitive = {
     });
   }),
 );
+
+describe('Parameters validation', () => {
+  let filePath;
+
+  before(async () => {
+    let innerHtml = `
+      <div id='prova' style='display:none'>Element Present</div>
+    `;
+    filePath = createHtml(innerHtml, test_name);
+    await openBrowser(openBrowserArgs);
+    await goto(filePath);
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 100,
+      retryInterval: 10,
+    });
+  });
+  after(async () => {
+    resetConfig();
+    await closeBrowser();
+    removeFile(filePath);
+  });
+
+  it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+    expect(() => checkBox($('div'))).to.throw(
+      'You are passing a `ElementWrapperList` to a `checkBox` selector. Refer https://docs.taiko.dev/api/checkbox/ for the correct parameters',
+    );
+  });
+});

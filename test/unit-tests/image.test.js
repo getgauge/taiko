@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let { openBrowser, closeBrowser, goto, image, below, setConfig } = require('../../lib/taiko');
+let { openBrowser, closeBrowser, goto, image, below, setConfig, $ } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'image';
 
@@ -157,6 +157,14 @@ describe(test_name, () => {
 
     it('test isVisible() should throw if the element is not found', async () => {
       await expect(image('#foo').isVisible()).to.be.eventually.rejected;
+    });
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => image($('div'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `image` selector. Refer https://docs.taiko.dev/api/image/ for the correct parameters',
+      );
     });
   });
 });

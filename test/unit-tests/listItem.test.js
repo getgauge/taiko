@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-let { openBrowser, closeBrowser, goto, listItem, setConfig } = require('../../lib/taiko');
+let { openBrowser, closeBrowser, goto, listItem, setConfig, $ } = require('../../lib/taiko');
 
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 
@@ -88,6 +88,14 @@ describe(test_name, () => {
     it('test text()', async () => {
       const elems = await listItem({ id: 'coffee' }).elements();
       expect(await elems[0].text()).to.be.eql('Coffee');
+    });
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => listItem($('p'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `listItem` selector. Refer https://docs.taiko.dev/api/listitem/ for the correct parameters',
+      );
     });
   });
 });

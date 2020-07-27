@@ -10,6 +10,7 @@ let {
   button,
   click,
   setConfig,
+  $,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 
@@ -215,6 +216,14 @@ describe(test_name, () => {
       }).elements();
       await elements[0].deselect();
       expect(await elements[0].isSelected()).to.be.false;
+    });
+  });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => radioButton($('div'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `radioButton` selector. Refer https://docs.taiko.dev/api/radiobutton/ for the correct parameters',
+      );
     });
   });
 });

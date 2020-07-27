@@ -128,4 +128,12 @@ describe(test_name, () => {
         });
     });
   });
+
+  describe('Parameters validation', () => {
+    it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+      expect(() => $($('#foo'))).to.throw(
+        'You are passing a `ElementWrapperList` to a `$` selector. Refer https://docs.taiko.dev/api/$/ for the correct parameters',
+      );
+    });
+  });
 });
