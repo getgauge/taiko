@@ -78,7 +78,7 @@ const inputTypeCaseSensitive = {
 
       it('test description', async () => {
         const description = checkBox('checkboxWithInlineLabel').description;
-        expect(description).to.be.eql('Checkbox with label checkboxWithInlineLabel ');
+        expect(description).to.be.eql('CheckBox with label checkboxWithInlineLabel ');
       });
 
       it('test check()', async () => {
@@ -132,7 +132,7 @@ const inputTypeCaseSensitive = {
 
       it('test description', async () => {
         const description = checkBox('checkboxWithWrappedInLabel').description;
-        expect(description).to.be.eql('Checkbox with label checkboxWithWrappedInLabel ');
+        expect(description).to.be.eql('CheckBox with label checkboxWithWrappedInLabel ');
       });
     });
 
@@ -143,7 +143,7 @@ const inputTypeCaseSensitive = {
 
       it('test description', async () => {
         const description = checkBox('checkboxWithLabelFor').description;
-        expect(description).to.be.eql('Checkbox with label checkboxWithLabelFor ');
+        expect(description).to.be.eql('CheckBox with label checkboxWithLabelFor ');
       });
     });
 
@@ -166,7 +166,7 @@ const inputTypeCaseSensitive = {
         let elements = await checkBox({
           id: 'someCheckBox',
         }).elements();
-        expect(elements[0].description).to.be.eql('Checkbox[id="someCheckBox"]');
+        expect(elements[0].description).to.be.eql('CheckBox[id="someCheckBox"]');
       });
 
       it('test isChecked of elements', async () => {
