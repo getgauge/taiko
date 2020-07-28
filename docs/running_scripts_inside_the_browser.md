@@ -31,7 +31,7 @@ browser to read the value.
     console.log(text); // Prints "some metadata"
 
 Please note that `element.dataset.text` runs in the context
-of the page, it is plain JavasScript in the browser. You cannot 
+of the page, it is plain JavaScript in the browser. You cannot 
 access Taiko's API within `evaluate`.
 
 You can also use `evaluate` to read other attributes or content
