@@ -105,25 +105,20 @@ Invoke `foo` using `evaluate` as follows
 
 ## Passing data
 
-The `evaluate` function can only return a string for example
+The `evaluate` function can return values for example
 
     var title = await evaluate(() => { return document.title });
 
 Here `document.title` is a string type. The following is an example
-that won't work as the return type is JSON
+that returns a JSON Object
 
     var result = await evaluate(() => { return { title: "Page 1" } });
+    console.log(result.title) // Prints "Page 1"
 
-If you want to pass JSON around you can serialize it to a string and 
-de-serialize it in your Taiko script for example.
+You cannot return HTML elements. `evaluate` must return only serializable 
+data.
 
-    var stringResult = await evaluate(() => { 
-        return JSON.stringify({ title: "Page 1" }) });
-
-    var jsonResult = JSON.parse(stringResult);
-
-`evaluate` also has an option to pass data from Taiko scripts to the 
-JavaScript command running on the browser as follows
+`evaluate` also has an option to receive data from Taiko scripts as follows
 
       message = { greeting: "Hello"};
       
