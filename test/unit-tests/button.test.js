@@ -67,7 +67,52 @@ describe(test_name, () => {
       '<label><input type="reset"/><span>ResetInLabel</span></label>' +
       '<label><input type="submit" disabled/><span>SubmitInLabelDisabled</span></label>' +
       '<label><input type="submit"/><span>SubmitInLabel</span></label>' +
-      '</div>';
+      '</div>' +
+      `<script>
+      class ShadowNestedButton extends HTMLElement {
+          constructor() {
+            super();
+            var shadow = this.attachShadow({mode: 'open'});
+    
+            var button = document.createElement('input');
+            button.setAttribute('type', 'button');
+            button.setAttribute('value', 'Shadow Nested Click');
+            button.addEventListener("click", event => {
+              alert("Hello from the nested shadows");
+            });
+            shadow.appendChild(button);
+          }
+        }
+    
+        class ShadowButton extends HTMLElement {
+          constructor() {
+            super();
+            var shadow = this.attachShadow({mode: 'open'});
+    
+            var button = document.createElement('input');
+            button.setAttribute('type', 'button');
+            button.setAttribute('value', 'Shadow Click');
+            button.addEventListener("click", event => {
+              alert("Hello from the shadows");
+            });
+            shadow.appendChild(button);
+
+            var hiddenButton = document.createElement('input');
+            hiddenButton.setAttribute('type', 'button');
+            hiddenButton.setAttribute('value', 'HiddenShadowButton');
+            hiddenButton.setAttribute('style','display:none');
+            shadow.appendChild(hiddenButton);
+            
+            customElements.define('shadow-nested-button', ShadowNestedButton)
+            var nestedButton = document.createElement('shadow-nested-button');
+            shadow.appendChild(nestedButton);
+          }
+        }
+        customElements.define('shadow-button', ShadowButton);
+      </script>
+        <input type='button' value='normalButton'/>
+        <shadow-button>
+        </shadow-button>`;
 
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -129,6 +174,14 @@ describe(test_name, () => {
         expect(button('ResetInLabel').description).to.be.eql('Button with label ResetInLabel ');
         expect(button('SubmitInLabel').description).to.be.eql('Button with label SubmitInLabel ');
         expect(button('ImageInLabel').description).to.be.eql('Button with label ImageInLabel ');
+      });
+
+      it('inside shadow dom', async () => {
+        expect(await button('Shadow Click').exists()).to.be.true;
+      });
+
+      it('inside nested shadow dom', async () => {
+        expect(await button('Shadow Nested Click').exists()).to.be.true;
       });
 
       xit('input type button with label()', async () => {
@@ -237,6 +290,14 @@ describe(test_name, () => {
       it('should return false for hidden element when isVisible fn is called on button', async () => {
         expect(
           await button('HiddenButton', {
+            selectHiddenElements: true,
+          }).isVisible(),
+        ).to.be.false;
+      });
+
+      it('should return false for hidden element when isVisible fn is called on shadow button', async () => {
+        expect(
+          await button('HiddenShadowButton', {
             selectHiddenElements: true,
           }).isVisible(),
         ).to.be.false;
