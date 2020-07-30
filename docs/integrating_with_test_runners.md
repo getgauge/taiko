@@ -195,8 +195,6 @@ Add a Taiko script to `jest-test.js`
 ```
 const { openBrowser, goto, closeBrowser, write, press } = require('taiko');
 
-const { openBrowser, goto, closeBrowser, write, press } = require('taiko');
-
 describe('Taiko with Jest', () => {
     beforeAll(async() => {
         await openBrowser();
