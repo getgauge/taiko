@@ -20,6 +20,32 @@ describe(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml =
+      `<script>
+     
+        class ShadowButton extends HTMLElement {
+          constructor() {
+            super();
+            var shadow = this.attachShadow({mode: 'open'});
+    
+            var button = document.createElement('input');
+            button.setAttribute('type', 'radio');
+            button.setAttribute('id', 'Shadow Click');
+            button.addEventListener("click", event => {
+              alert("Hello from the shadows");
+            });
+            shadow.appendChild(button);
+
+            var hiddenButton = document.createElement('input');
+            hiddenButton.setAttribute('type', 'radio');
+            hiddenButton.setAttribute('id', 'HiddenShadowButton');
+            hiddenButton.setAttribute('style','display:none');
+            shadow.appendChild(hiddenButton);
+            
+          }
+        }
+        customElements.define('shadow-button', ShadowButton);
+      </script>` +
+      ' <shadow-button></shadow-button>' +
       '<form>' +
       '<input type="radio" id="radioButtonWithInlineLabel" name="testRadioButton" value="radioButtonWithInlineLabel">radioButtonWithInlineLabel</input>' +
       '<input type="Radio" name="testRadioButton" value="radioButtonWithInlineLabelAndUpperCaseTypeAttribute">radioButtonWithInlineLabelAndUpperCaseTypeAttribute</input>' +
@@ -85,6 +111,23 @@ describe(test_name, () => {
     it('test exists() using label for', async () => {
       expect(await radioButton('radioButtonWithLabelForAndUpperCaseTypeAttribute').exists()).to.be
         .true;
+    });
+  });
+
+  describe('shadow dom', () => {
+    it('inside shadow dom', async () => {
+      expect(await radioButton({ id: 'Shadow Click' }).exists()).to.be.true;
+    });
+
+    it('should return false for hidden element when isVisible fn is called on shadow radio button', async () => {
+      expect(
+        await radioButton(
+          { id: 'HiddenShadowButton' },
+          {
+            selectHiddenElements: true,
+          },
+        ).isVisible(),
+      ).to.be.false;
     });
   });
 

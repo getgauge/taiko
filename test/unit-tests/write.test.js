@@ -11,7 +11,6 @@ let {
   closeBrowser,
   write,
   into,
-  toLeftOf,
   setConfig,
   reload,
 } = require('../../lib/taiko.js');
@@ -23,6 +22,25 @@ describe(test_name, () => {
   before(async () => {
     let innerHtml = `
         <div>
+
+      <script>
+     
+    class ShadowButton extends HTMLElement {
+      constructor() {
+        super();
+        var shadow = this.attachShadow({mode: 'open'});
+
+        var button = document.createElement('input');
+        button.setAttribute('type', 'text');
+        button.setAttribute('id', 'Shadow text');
+        button.setAttribute('value', 'Shadow text');
+        shadow.appendChild(button);
+        
+      }
+    }
+    customElements.define('shadow-button', ShadowButton);
+  </script>
+      <shadow-button></shadow-button>
             <form name="inputTypeText">
             <!--  //Read only input with type text -->
                 <div name="inputTypeTextWithInlineTextReadonly">
@@ -97,6 +115,12 @@ describe(test_name, () => {
     expect(await textBox('initially disabled input-type-text').value()).to.equal(
       'Taiko can wait for element to be writable.',
     );
+  });
+
+  //TODO: fix clear for shadow dom
+  it.skip('should write into shadow dom element', async () => {
+    await write('Shadow text updated', into(textBox({ id: 'Shadow text' })));
+    expect(await textBox({ id: 'Shadow text' })).to.equal('Shadow text updated');
   });
 
   it('should wait for element to be writable', async () => {
