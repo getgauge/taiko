@@ -17,7 +17,26 @@ const test_name = 'Clear';
 describe(test_name, () => {
   let filePath;
   before(async () => {
-    let innerHtml = `
+    let innerHtml =
+      `<script>
+     
+    class ShadowButton extends HTMLElement {
+      constructor() {
+        super();
+        var shadow = this.attachShadow({mode: 'open'});
+
+        var button = document.createElement('input');
+        button.setAttribute('type', 'text');
+        button.setAttribute('id', 'Shadow text');
+        button.setAttribute('value', 'Shadow text');
+        shadow.appendChild(button);
+        
+      }
+    }
+    customElements.define('shadow-button', ShadowButton);
+  </script>` +
+      ' <shadow-button></shadow-button>' +
+      `
         <form>
             <p>
                 <label for="name">
@@ -93,6 +112,15 @@ multiple lines.</textarea>
       expect(await textBox('Address').value()).to.equal('Address in\nmultiple lines.');
       await clear(textBox('Address'));
       expect(await textBox('Address').value()).to.equal('');
+    });
+  });
+
+  //TODO: fix clear for shadow dom
+  describe.skip('shadowDom', () => {
+    it('should clear whole content', async () => {
+      expect(await textBox({ id: 'Shadow text' }).value()).to.equal('Shadow text');
+      await clear(textBox({ id: 'Shadow text' }));
+      expect(await textBox({ id: 'Shadow text' })).to.equal('');
     });
   });
 
