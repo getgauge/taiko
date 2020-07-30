@@ -29,6 +29,32 @@ const inputTypeCaseSensitive = {
     let filePath;
     before(async () => {
       let innerHtml =
+        `<script>
+     
+        class ShadowButton extends HTMLElement {
+          constructor() {
+            super();
+            var shadow = this.attachShadow({mode: 'open'});
+    
+            var button = document.createElement('input');
+            button.setAttribute('type', '${type}');
+            button.setAttribute('id', 'Shadow Click');
+            button.addEventListener("click", event => {
+              alert("Hello from the shadows");
+            });
+            shadow.appendChild(button);
+
+            var hiddenButton = document.createElement('input');
+            hiddenButton.setAttribute('type', '${type}');
+            hiddenButton.setAttribute('id', 'HiddenShadowButton');
+            hiddenButton.setAttribute('style','display:none');
+            shadow.appendChild(hiddenButton);
+            
+          }
+        }
+        customElements.define('shadow-button', ShadowButton);
+      </script>` +
+        ' <shadow-button></shadow-button>' +
         '<form>' +
         `<input type="${type}" id="checkboxWithInlineLabel" name="testCheckbox" value="checkboxWithInlineLabel">checkboxWithInlineLabel</input>` +
         `<input type="${type}" style="display: none" id="hiddenCheckbox" name="testCheckbox" value="hiddenCheckbox">hiddenCheckbox</input>` +
@@ -123,6 +149,10 @@ const inputTypeCaseSensitive = {
       it('test isVisible() to throw if no element is found', async () => {
         await expect(checkBox('foo').isVisible()).to.be.eventually.rejected;
       });
+
+      it('inside shadow dom', async () => {
+        expect(await checkBox({ id: 'Shadow Click' }).exists()).to.be.true;
+      });
     });
 
     describe('wrapped in label', () => {
@@ -202,8 +232,19 @@ const inputTypeCaseSensitive = {
         ).to.be.true;
       });
 
-      it('should return true for non hidden element when isVisible fn is called on button', async () => {
+      it('should return true for non hidden element when isVisible fn is called on checkbox', async () => {
         expect(await checkBox('someCheckBox').isVisible()).to.be.true;
+      });
+
+      it('should return false for hidden element when isVisible fn is called on shadow checkbox', async () => {
+        expect(
+          await checkBox(
+            { id: 'HiddenShadowButton' },
+            {
+              selectHiddenElements: true,
+            },
+          ).isVisible(),
+        ).to.be.false;
       });
 
       it('should return false for hidden element when isVisible fn is called on textBox', async () => {
