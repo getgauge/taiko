@@ -15,7 +15,7 @@ Please read this document to understand the process for contributing.
 * Help us [test Taiko](https://github.com/getgauge/taiko/tree/master/test/functional-tests) by adding to our existing automated tests
 * Help someone get started with Taiko on [our discussion forum](https://spectrum.chat/taiko)
 * Add to our [set of examples](https://github.com/getgauge/taiko/tree/master/examples) to help someone new to Taiko get started easily
-* Help us improve [our documentation](https://taiko.dev/)
+* Help us improve [our documentation](https://github.com/getgauge/taiko/tree/master/docs)
 * Contribute code to Taiko! 
 
 All repositories are hosted on GitHub. Taiko’s core is written in pure Javascript. 
