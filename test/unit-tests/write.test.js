@@ -33,7 +33,6 @@ describe(test_name, () => {
         var button = document.createElement('input');
         button.setAttribute('type', 'text');
         button.setAttribute('id', 'Shadow text');
-        button.setAttribute('value', 'Shadow text');
         shadow.appendChild(button);
         
       }
@@ -117,10 +116,9 @@ describe(test_name, () => {
     );
   });
 
-  //TODO: fix clear for shadow dom
-  it.skip('should write into shadow dom element', async () => {
+  it('should write into shadow dom element', async () => {
     await write('Shadow text updated', into(textBox({ id: 'Shadow text' })));
-    expect(await textBox({ id: 'Shadow text' })).to.equal('Shadow text updated');
+    expect(await textBox({ id: 'Shadow text' }).value()).to.equal('Shadow text updated');
   });
 
   it('should wait for element to be writable', async () => {

@@ -115,12 +115,11 @@ multiple lines.</textarea>
     });
   });
 
-  //TODO: fix clear for shadow dom
-  describe.skip('shadowDom', () => {
+  describe('shadowDom', () => {
     it('should clear whole content', async () => {
       expect(await textBox({ id: 'Shadow text' }).value()).to.equal('Shadow text');
       await clear(textBox({ id: 'Shadow text' }));
-      expect(await textBox({ id: 'Shadow text' })).to.equal('');
+      expect(await textBox({ id: 'Shadow text' }).value()).to.equal('');
     });
   });
 
