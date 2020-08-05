@@ -30,7 +30,7 @@ describe('Config tests', () => {
             headful: false,
             highlightOnAction: 'true',
             firefox: false,
-            ignoreSSLErrors: false,
+            ignoreSSLErrors: true,
             navigationTimeout: 2,
             observe: false,
             observeTime: 2,
