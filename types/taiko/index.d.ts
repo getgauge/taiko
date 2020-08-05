@@ -142,6 +142,13 @@ declare module 'taiko' {
     runtimeHandler?: any;
     get(): string;
     text(): Promise<string>;
+    value(): Promise<string>;
+    select(value?: string | number): Promise<void>;
+    check(): Promise<void>;
+    uncheck(): Promise<void>;
+    isChecked(): Promise<boolean>;
+    deselect(): Promise<void>;
+    isSelected(): Promise<boolean>;
     isVisible(): Promise<boolean>;
     create(objectIds: string[], runtimeHandler?: any);
     isDisabled(): Promise<boolean>;
