@@ -11,7 +11,7 @@ describe(test_name, () => {
   before(async () => {
     let innerHtml =
       '<div name="inline button text">' +
-      '<button type="button">Click</button>' +
+      '<button type="button" class="test test1">Click</button>' +
       '<input type="button" value="Input Button" />' +
       '<input type="reset" value="Input Reset" />' +
       '<input type="submit" value="Input Submit" />' +
@@ -193,6 +193,12 @@ describe(test_name, () => {
         let buttonElementList = await button('similarButton');
         const elements = await buttonElementList.elements();
         expect(await buttonElementList.text()).to.be.eql(await elements[0].text());
+      });
+    });
+
+    describe('button with attribute value pair', () => {
+      it('should match multiple class attributes', async () => {
+        expect(await button({ class: 'test test1' }).exists()).to.be.true;
       });
     });
 

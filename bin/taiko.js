@@ -12,12 +12,16 @@ const processArgv = process.argv;
 let repl_mode = false;
 let taiko;
 function printVersion() {
-  const packageJson = require('../package.json');
-  let hash = 'RELEASE';
-  if (packageJson._resolved && packageJson._resolved.includes('#')) {
-    hash = packageJson._resolved.split('#')[1];
+  try {
+    const packageJson = require('../package.json');
+    let hash = 'RELEASE';
+    if (packageJson._resolved && packageJson._resolved.includes('#')) {
+      hash = packageJson._resolved.split('#')[1];
+    }
+    return `Version: ${packageJson.version} (Chromium: ${packageJson.taiko.chromium_version}) ${hash}`;
+  } catch (error) {
+    return 'Could not find the package.json file to read version information';
   }
-  return `Version: ${packageJson.version} (Chromium: ${packageJson.taiko.chromium_version}) ${hash}`;
 }
 
 async function exitOnUnhandledFailures(e) {
