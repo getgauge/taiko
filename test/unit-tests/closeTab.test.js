@@ -123,7 +123,7 @@ describe('closeTab', () => {
       url: 'https://flipkart.com',
     });
     currentURL = 'https://flipkart.com';
-    _isMatchUrl = false;
+    _isMatchUrl = true;
     _isMatchRegex = false;
 
     let validatePromise = validateEmitterEvent(
@@ -151,7 +151,7 @@ describe('closeTab', () => {
       url: 'https://amazon.com',
     });
     currentURL = 'https://amazon.com';
-    _isMatchUrl = true;
+    _isMatchUrl = false;
     _isMatchRegex = false;
 
     let validatePromise = validateEmitterEvent(
@@ -182,7 +182,7 @@ describe('closeTab', () => {
     });
     currentURL = 'https://amazon.com';
     title = 'Amazon';
-    _isMatchUrl = true;
+    _isMatchUrl = false;
     _isMatchRegex = false;
 
     let validatePromise = validateEmitterEvent('success', 'Closed tab(s) matching Flipkart');
@@ -216,6 +216,6 @@ describe('closeTab', () => {
     );
     await taiko.closeTab(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/);
     await validatePromise;
-    expect(currentTarget.url).to.be.eql('https://amazon.com');
+    expect(currentTarget).to.be.undefined;
   });
 });
