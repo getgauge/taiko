@@ -78,7 +78,7 @@ describe('Color picker test', () => {
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => color($('div'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `color` selector. Refer https://docs.taiko.dev/api/color/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `color` selector. Refer https://docs.taiko.dev/api/color/ for the correct parameters',
       );
     });
 

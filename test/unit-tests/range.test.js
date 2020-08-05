@@ -125,7 +125,7 @@ describe('Range test', () => {
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => range($('div'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `range` selector. Refer https://docs.taiko.dev/api/range/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `range` selector. Refer https://docs.taiko.dev/api/range/ for the correct parameters',
       );
     });
   });
