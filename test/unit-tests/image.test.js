@@ -75,7 +75,7 @@ describe(test_name, () => {
       );
     });
     it('should find the image with proximity selector', async () => {
-      expect(image(below('Images')).description).to.be.eql('Image Below Images');
+      expect(image(below('Images')).description).to.be.eql('Image below Images');
     });
     it('should find div image using selectors', async () => {
       expect(image({ id: 'divImage' }).description).to.be.eql('Image[id="divImage"]');
@@ -84,7 +84,7 @@ describe(test_name, () => {
       expect(image({ id: 'paraImage' }).description).to.be.eql('Image[id="paraImage"]');
     });
     it('should find the div image with proximity selector', async () => {
-      expect(image(below('Div Image')).description).to.be.eql('Image Below Div Image');
+      expect(image(below('Div Image')).description).to.be.eql('Image below Div Image');
     });
   });
 
@@ -102,7 +102,7 @@ describe(test_name, () => {
       );
     });
     it('should find the image with proximity selector', async () => {
-      expect(await image(below('Images')).text()).to.be.eql('image Below Images');
+      expect(await image(below('Images')).text()).to.be.eql('image below Images');
     });
     it('should find div image using selectors', async () => {
       expect(await image({ id: 'divImage' }).text()).to.be.eql(
@@ -115,7 +115,7 @@ describe(test_name, () => {
       );
     });
     it('should find the div image with proximity selector', async () => {
-      expect(await image(below('Div Image')).text()).to.be.eql('image Below Div Image');
+      expect(await image(below('Div Image')).text()).to.be.eql('image below Div Image');
     });
   });
 
