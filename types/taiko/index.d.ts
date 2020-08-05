@@ -271,11 +271,11 @@ declare module 'taiko' {
       | 'WiFi'
       | 'Offline'
       | {
-        offline: boolean;
-        downloadThroughput: number;
-        uploadThroughput: number;
-        latency: number;
-      }
+          offline?: boolean;
+          downloadThroughput?: number;
+          uploadThroughput?: number;
+          latency?: number;
+        },
   ): Promise<void>;
   // https://docs.taiko.dev/api/emulatedevice
   export function emulateDevice(deviceModel: string);
