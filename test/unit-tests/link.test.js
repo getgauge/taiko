@@ -84,7 +84,7 @@ describe(test_name, () => {
       expect(link({ id: 'redirect' }).description).to.be.eql('Link[id="redirect"]');
     });
     it('should find the link with proximity selector', async () => {
-      expect(link(toRightOf('Click')).description).to.be.eql('Link To right of Click');
+      expect(link(toRightOf('Click')).description).to.be.eql('Link to right of Click');
     });
     it('should return true when isVisible fn is observed on non hidden element', async () => {
       expect(await link('here').isVisible()).to.be.true;
