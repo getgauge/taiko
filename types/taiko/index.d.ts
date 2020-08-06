@@ -268,7 +268,14 @@ declare module 'taiko' {
       | 'Regular3G'
       | 'Regular4G'
       | 'DSL'
-      | 'WiFi, Offline',
+      | 'WiFi'
+      | 'Offline'
+      | {
+          offline?: boolean;
+          downloadThroughput?: number;
+          uploadThroughput?: number;
+          latency?: number;
+        },
   ): Promise<void>;
   // https://docs.taiko.dev/api/emulatedevice
   export function emulateDevice(deviceModel: string);
