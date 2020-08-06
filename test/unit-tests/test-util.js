@@ -50,7 +50,7 @@ module.exports.resetConfig = () => {
     retryTimeout: 10000,
     observe: false,
     waitForNavigation: true,
-    ignoreSSLErrors: false,
+    ignoreSSLErrors: true,
     headful: false,
     highlightOnAction: 'true',
   });
