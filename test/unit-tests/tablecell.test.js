@@ -401,7 +401,7 @@ describe(test_name, () => {
 
     it('test tableCell description', async () => {
       expect(await tableCell({ row: '1', col: '1' }, below('Tabular data')).description).to.be.eql(
-        'Table with tableCell at row:1 and column:1 and Below Tabular data',
+        'Table with tableCell at row:1 and column:1 and below Tabular data',
       );
     });
 

@@ -152,8 +152,8 @@ Will click the checkbox that is nearest to any element with the text `Username`.
 
 Taiko’s also supports XPath and CSS selectors
 
-    > click($("#button_id")) // Using CSS selectors
-    > click($("//input[name=`button_name`]")) // Xpath selectors
+    > click($("#button_id")) // Using CSS selector
+    > click($("//input[@name='button_name']")) // XPath selector
 
 ## Handle XHR and dynamic content
 
