@@ -76,13 +76,13 @@ describe(test_name, () => {
 
       it('test description', async () => {
         expect(fileField(above(button('Upload'))).description).to.be.eql(
-          'FileField Above Button with label Upload ',
+          'FileField above Button with label Upload ',
         );
       });
 
       xit('test text()', async () => {
         expect(await fileField(above(button('Upload'))).text()).to.be.eql(
-          'File field Above Button with label Upload ',
+          'File field above Button with label Upload ',
         );
       });
 

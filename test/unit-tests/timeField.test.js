@@ -286,7 +286,7 @@ describe(test_name, () => {
 
         it('test description', async () => {
           expect(timeField(above('With Label For')).description).to.be.eql(
-            'TimeField Above With Label For',
+            'TimeField above With Label For',
           );
         });
       });
