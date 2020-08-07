@@ -2,7 +2,7 @@ const path = require('path');
 const util = require('util');
 const recorder = require('../recorder');
 
-const { removeQuotes, symbols } = require('../lib/util');
+const { removeQuotes } = require('../lib/util');
 module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
   const realFuncs = {};
   for (let func in taiko) {
@@ -55,18 +55,6 @@ module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
     }
     require.cache[path.join(__dirname, 'taiko.js')].exports[func] = global[func];
   }
-  var eventEmitter = taiko.emitter;
-  eventEmitter.on('success', (desc) => {
-    if (
-      process.env.TAIKO_DISABLE_LOGOUT &&
-      process.env.TAIKO_DISABLE_LOGOUT.toLowerCase() !== 'false'
-    ) {
-      return;
-    }
-    desc = symbols.pass + desc;
-    desc = removeQuotes(util.inspect(desc, { colors: true }), desc);
-    console.log(desc);
-  });
   const oldNodeModulesPaths = module.constructor._nodeModulePaths;
   module.constructor._nodeModulePaths = function () {
     const ret = oldNodeModulesPaths.apply(this, arguments);
