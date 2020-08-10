@@ -9,7 +9,34 @@ describe('Color picker test', () => {
   let filePath;
 
   before(async () => {
-    let innerHtml = `
+    let innerHtml =
+      `<script>
+     
+        class ShadowButton extends HTMLElement {
+          constructor() {
+            super();
+            var shadow = this.attachShadow({mode: 'open'});
+    
+            var button = document.createElement('input');
+            button.setAttribute('type', 'color');
+            button.setAttribute('id', 'Shadow Click');
+            button.addEventListener("click", event => {
+              alert("Hello from the shadows");
+            });
+            shadow.appendChild(button);
+
+            var hiddenButton = document.createElement('input');
+            hiddenButton.setAttribute('type', 'color');
+            hiddenButton.setAttribute('id', 'HiddenShadowButton');
+            hiddenButton.setAttribute('style','display:none');
+            shadow.appendChild(hiddenButton);
+            
+          }
+        }
+        customElements.define('shadow-button', ShadowButton);
+      </script>` +
+      ' <shadow-button></shadow-button>' +
+      `
       <div>
           <input type="color" id="head" name="head"
                  value="#e66465">
@@ -41,6 +68,23 @@ describe('Color picker test', () => {
     resetConfig();
     await closeBrowser();
     removeFile(filePath);
+  });
+
+  describe('shadow dom', () => {
+    it('inside shadow dom', async () => {
+      expect(await color({ id: 'Shadow Click' }).exists()).to.be.true;
+    });
+
+    it('should return false for hidden element when isVisible fn is called on shadow range', async () => {
+      expect(
+        await color(
+          { id: 'HiddenShadowButton' },
+          {
+            selectHiddenElements: true,
+          },
+        ).isVisible(),
+      ).to.be.false;
+    });
   });
 
   it('Set color picker', async () => {
@@ -78,7 +122,7 @@ describe('Color picker test', () => {
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => color($('div'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `color` selector. Refer https://docs.taiko.dev/api/color/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `color` selector. Refer https://docs.taiko.dev/api/color/ for the correct parameters',
       );
     });
 

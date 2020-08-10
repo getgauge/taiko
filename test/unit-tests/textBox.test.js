@@ -29,6 +29,23 @@ describe(test_name, () => {
     let filePath;
     before(async () => {
       let innerHtml =
+        ` <script>
+     
+          class ShadowButton extends HTMLElement {
+            constructor() {
+              super();
+              var shadow = this.attachShadow({mode: 'open'});
+      
+              var button = document.createElement('textarea');
+              button.setAttribute('id', 'Shadow text');
+              button.textContent = "Shadow text"
+              shadow.appendChild(button);
+              
+            }
+          }
+          customElements.define('shadow-button', ShadowButton);
+        </script>
+        <shadow-button></shadow-button>` +
         '<div>' +
         //Textarea
         '<form name="textArea">' +
@@ -82,6 +99,20 @@ describe(test_name, () => {
       });
     });
 
+    describe('shadow dom', () => {
+      it('test exists()', async () => {
+        expect(await textBox({ id: 'Shadow text' }).exists()).to.be.true;
+      });
+
+      it('test value()', async () => {
+        expect(await textBox({ id: 'Shadow text' }).value()).to.equal('Shadow text');
+      });
+
+      it('test description', async () => {
+        expect(textBox({ id: 'Shadow text' }).description).to.be.eql('TextBox[id="Shadow text"]');
+      });
+    });
+
     describe('using label for', () => {
       it('test exists()', async () => {
         expect(await textBox('textAreaWithLabelFor').exists()).to.be.true;
@@ -123,9 +154,7 @@ describe(test_name, () => {
       });
 
       it('test value()', async () => {
-        expect(await textBox(above('textAreaWithLabelFor')).value()).to.equal(
-          'textAreaWithWrappedLabel',
-        );
+        expect(await textBox(above('textAreaWithLabelFor')).value()).to.equal('Shadow text');
       });
 
       it('test value() should throw if the element is not found', async () => {
@@ -134,7 +163,7 @@ describe(test_name, () => {
 
       it('test description', async () => {
         expect(textBox(above('textAreaWithLabelFor')).description).to.be.eql(
-          'TextBox Above textAreaWithLabelFor',
+          'TextBox above textAreaWithLabelFor',
         );
       });
     });
@@ -287,7 +316,7 @@ describe(test_name, () => {
 
       it('test description', async () => {
         expect(textBox(above('contentEditableWithLabelFor')).description).to.be.eql(
-          'TextBox Above contentEditableWithLabelFor',
+          'TextBox above contentEditableWithLabelFor',
         );
       });
     });
@@ -508,7 +537,7 @@ describe(test_name, () => {
 
         it('test description', async () => {
           expect(textBox(above('With Label For')).description).to.be.eql(
-            'TextBox Above With Label For',
+            'TextBox above With Label For',
           );
         });
       });
@@ -667,7 +696,7 @@ describe(test_name, () => {
 
       it('test description', async () => {
         expect(textBox(above('With Label For')).description).to.be.eql(
-          'TextBox Above With Label For',
+          'TextBox above With Label For',
         );
       });
 
@@ -697,7 +726,7 @@ describe(test_name, () => {
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => textBox($('div'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `textBox` selector. Refer https://docs.taiko.dev/api/textbox/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `textBox` selector. Refer https://docs.taiko.dev/api/textbox/ for the correct parameters',
       );
     });
   });
