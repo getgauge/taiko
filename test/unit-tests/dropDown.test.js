@@ -249,11 +249,35 @@ describe(test_name, () => {
     });
   });
 
+  describe('regex based selection', () => {
+    it('should select value specified by a regex ', async () => {
+      await dropDown('Cars').select(/mercedes/);
+      expect(await dropDown('Cars').value()).to.equal('mercedes');
+    });
+    it('should throw error when there are no items matching regex ', async () => {
+      await dropDown('Cars').select(/Renault/);
+    });
+  });
+
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => dropDown($('div'))).to.throw(
         'You are passing a `ElementWrapperList` to a `dropDown` selector. Refer https://docs.taiko.dev/api/dropdown/ for the correct parameters',
       );
+    });
+    it('should throw error for null values', async () => {
+      try {
+        expect(await dropDown('Cars').select(null));
+      } catch (err) {
+        expect(err.message).to.equal('Option null not available in drop down');
+      }
+    });
+    it('should throw error for undefined values', async () => {
+      try {
+        expect(await dropDown('Cars').select(undefined));
+      } catch (err) {
+        expect(err.message).to.equal('Option undefined not available in drop down');
+      }
     });
   });
 });
