@@ -20,7 +20,34 @@ describe('Range test', () => {
   let filePath;
 
   before(async () => {
-    let innerHtml = `
+    let innerHtml =
+      `<script>
+     
+        class ShadowButton extends HTMLElement {
+          constructor() {
+            super();
+            var shadow = this.attachShadow({mode: 'open'});
+    
+            var button = document.createElement('input');
+            button.setAttribute('type', 'range');
+            button.setAttribute('id', 'Shadow Click');
+            button.addEventListener("click", event => {
+              alert("Hello from the shadows");
+            });
+            shadow.appendChild(button);
+
+            var hiddenButton = document.createElement('input');
+            hiddenButton.setAttribute('type', 'range');
+            hiddenButton.setAttribute('id', 'HiddenShadowButton');
+            hiddenButton.setAttribute('style','display:none');
+            shadow.appendChild(hiddenButton);
+            
+          }
+        }
+        customElements.define('shadow-button', ShadowButton);
+      </script>` +
+      ' <shadow-button></shadow-button>' +
+      `
         <div>
             <p>RangeItem</p>
             <input type="range" id="range-1" name="range" 
@@ -47,6 +74,23 @@ describe('Range test', () => {
     resetConfig();
     await closeBrowser();
     removeFile(filePath);
+  });
+
+  describe('shadow dom', () => {
+    it('inside shadow dom', async () => {
+      expect(await range({ id: 'Shadow Click' }).exists()).to.be.true;
+    });
+
+    it('should return false for hidden element when isVisible fn is called on shadow range', async () => {
+      expect(
+        await range(
+          { id: 'HiddenShadowButton' },
+          {
+            selectHiddenElements: true,
+          },
+        ).isVisible(),
+      ).to.be.false;
+    });
   });
 
   it('Set Range value with Integer', async () => {
