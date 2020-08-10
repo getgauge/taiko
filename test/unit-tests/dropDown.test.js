@@ -251,7 +251,7 @@ describe(test_name, () => {
 
   describe('regex based selection', () => {
     it('should select value specified by a regex ', async () => {
-      await dropDown('Cars').select(/Mercedes/);
+      await dropDown('Cars').select(/M.rc.d.s/);
       expect(await dropDown('Cars').value()).to.equal('mercedes');
     });
 
