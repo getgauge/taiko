@@ -102,7 +102,7 @@ function isCLICommand() {
 }
 
 if (isTaikoRunner(processArgv[1])) {
-  process.env.TAIKO_ENABLE_ACTION_OUTPUT = true;
+  process.env.TAIKO_ENABLE_ACTION_OUTPUT = process.env.TAIKO_ENABLE_ACTION_OUTPUT || true;
   let plugins = getExecutablePlugins();
   if (
     isCLICommand() &&

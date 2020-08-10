@@ -7,7 +7,7 @@ for specific uses cases
 
 ## Using environment variables
 
-Taiko lets you specify certain Environment variables to customize its behavior
+Taiko lets you specify certain Environment variables to customize its behaviour
 
 * `TAIKO_ENABLE_ACTION_OUTPUT` - set to `true` to print output of each action. It's set to `true` by default with Taiko runner and in REPL mode.
 * `TAIKO_SKIP_CHROMIUM_DOWNLOAD` - set to `true` to skip downloading chromium
