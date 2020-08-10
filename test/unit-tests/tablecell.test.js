@@ -465,7 +465,7 @@ describe(test_name, () => {
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => tableCell({ row: 1, col: 1 }, $('div'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `tableCell` selector. Refer https://docs.taiko.dev/api/tablecell/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `tableCell` selector. Refer https://docs.taiko.dev/api/tablecell/ for the correct parameters',
       );
     });
   });

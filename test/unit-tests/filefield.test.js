@@ -191,7 +191,7 @@ describe(test_name, () => {
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => fileField($('div'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `fileField` selector. Refer https://docs.taiko.dev/api/filefield/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `fileField` selector. Refer https://docs.taiko.dev/api/filefield/ for the correct parameters',
       );
     });
   });

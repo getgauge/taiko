@@ -483,7 +483,7 @@ describe('match', () => {
 
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => text($('div'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `text` selector. Refer https://docs.taiko.dev/api/text/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `text` selector. Refer https://docs.taiko.dev/api/text/ for the correct parameters',
       );
     });
   });

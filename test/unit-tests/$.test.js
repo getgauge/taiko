@@ -10,6 +10,26 @@ describe(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml = `
+    <script>
+    class ShadowButton extends HTMLElement {
+      constructor() {
+        super();
+        var shadow = this.attachShadow({mode: 'open'});
+
+        var button = document.createElement('input');
+        button.setAttribute('type', 'button');
+        button.setAttribute('value', 'Shadow Click');
+        button.addEventListener("click", event => {
+          alert("Hello from the shadows");
+        });
+        shadow.appendChild(button);
+        
+      }
+    }
+    customElements.define('shadow-button', ShadowButton);
+  </script>
+  
+  <input type='button' value='normalButton'/>
         <div class="test">
             <p id="foo">taiko</p>
             <p>demo</p>
@@ -18,6 +38,7 @@ describe(test_name, () => {
             <p id="hidden" style="display:none">taiko-hidden</p>
             <p>demo</p>
     </div>
+    <shadow-button>
             `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -92,6 +113,10 @@ describe(test_name, () => {
         'CustomSelector with query .foo  not found',
       );
     });
+
+    it('test exists inside shadow dom', async () => {
+      expect(await $('input[value="Shadow Click"]').exists()).to.be.true;
+    });
   });
 
   describe('test elementList properties', () => {
@@ -127,12 +152,16 @@ describe(test_name, () => {
           expect(err).to.include(/Element index is out of range. There are only 1 element(s)/);
         });
     });
+
+    it('should get all elements matching including shadow dom', async () => {
+      expect((await $('input[type="button"]').elements()).length).to.equal(2);
+    });
   });
 
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => $($('#foo'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `$` selector. Refer https://docs.taiko.dev/api/$/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `$` selector. Refer https://docs.taiko.dev/api/$/ for the correct parameters',
       );
     });
   });

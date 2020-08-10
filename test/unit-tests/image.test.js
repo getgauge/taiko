@@ -163,7 +163,7 @@ describe(test_name, () => {
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => image($('div'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `image` selector. Refer https://docs.taiko.dev/api/image/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `image` selector. Refer https://docs.taiko.dev/api/image/ for the correct parameters',
       );
     });
   });

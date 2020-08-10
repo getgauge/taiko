@@ -11,6 +11,8 @@ let {
   button,
   below,
   setConfig,
+  accept,
+  alert,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'Click';
@@ -69,6 +71,25 @@ describe(test_name, () => {
                 <span class='overlay'></span>
             </div>
             <button type="button" disabled>Click Me!</button>
+            <script>
+    class ShadowButton extends HTMLElement {
+      constructor() {
+        super();
+        var shadow = this.attachShadow({mode: 'open'});
+
+        var button = document.createElement('input');
+        button.setAttribute('type', 'button');
+        button.setAttribute('value', 'Shadow Click');
+        button.addEventListener("click", event => {
+          alert("Hello from the shadows");
+        });
+        shadow.appendChild(button);
+        
+      }
+    }
+    customElements.define('shadow-button', ShadowButton);
+  </script>
+  <shadow-button>
             `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
@@ -97,6 +118,15 @@ describe(test_name, () => {
     it('should click', async () => {
       await click('on text');
       expect(await text('Click works with text nodes.').exists()).to.be.true;
+    });
+  });
+
+  describe('element inside shadow dom', () => {
+    it('should click', async () => {
+      alert('Hello from the shadows', async () => {
+        await accept();
+      });
+      await click(button('Shadow Click'));
     });
   });
 
