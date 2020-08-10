@@ -78,7 +78,7 @@
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-jest": "^23.1.1",
-    "eslint-plugin-mocha": "^7.0.1",
+    "eslint-plugin-mocha": "^8.0.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.9",

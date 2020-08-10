@@ -286,7 +286,7 @@ describe('Write with hideText option', () => {
   it('should mask the text when writing into a selected element', async () => {
     let validatePromise = validateEmitterEvent(
       'success',
-      'Wrote ***** into the textBox To left of input-type-text',
+      'Wrote ***** into the textBox to left of input-type-text',
     );
     await taiko.write('something', taiko.into(taiko.textBox(taiko.toLeftOf('input-type-text'))), {
       hideText: true,

@@ -163,7 +163,7 @@ describe(test_name, () => {
 
       it('test description', async () => {
         expect(textBox(above('textAreaWithLabelFor')).description).to.be.eql(
-          'TextBox Above textAreaWithLabelFor',
+          'TextBox above textAreaWithLabelFor',
         );
       });
     });
@@ -316,7 +316,7 @@ describe(test_name, () => {
 
       it('test description', async () => {
         expect(textBox(above('contentEditableWithLabelFor')).description).to.be.eql(
-          'TextBox Above contentEditableWithLabelFor',
+          'TextBox above contentEditableWithLabelFor',
         );
       });
     });
@@ -537,7 +537,7 @@ describe(test_name, () => {
 
         it('test description', async () => {
           expect(textBox(above('With Label For')).description).to.be.eql(
-            'TextBox Above With Label For',
+            'TextBox above With Label For',
           );
         });
       });
@@ -696,7 +696,7 @@ describe(test_name, () => {
 
       it('test description', async () => {
         expect(textBox(above('With Label For')).description).to.be.eql(
-          'TextBox Above With Label For',
+          'TextBox above With Label For',
         );
       });
 
@@ -726,7 +726,7 @@ describe(test_name, () => {
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => textBox($('div'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `textBox` selector. Refer https://docs.taiko.dev/api/textbox/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `textBox` selector. Refer https://docs.taiko.dev/api/textbox/ for the correct parameters',
       );
     });
   });

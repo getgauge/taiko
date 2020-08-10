@@ -282,7 +282,7 @@ describe('Parameters validation', () => {
 
   it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
     expect(() => checkBox($('div'))).to.throw(
-      'You are passing a `ElementWrapperList` to a `checkBox` selector. Refer https://docs.taiko.dev/api/checkbox/ for the correct parameters',
+      'You are passing a `ElementWrapper` to a `checkBox` selector. Refer https://docs.taiko.dev/api/checkbox/ for the correct parameters',
     );
   });
 });

@@ -35,7 +35,7 @@ describe(test_name, () => {
     process.env.TAIKO_EMULATE_NETWORK = '';
   });
   describe('setNetworkEmulation', () => {
-    it('should invoke emulateNetworkConditions with correct options', async () => {
+    it('should invoke emulateNetworkConditions with a correct String option', async () => {
       const expectedNetworkCondition = {
         offline: false,
         downloadThroughput: 6400,
@@ -43,6 +43,32 @@ describe(test_name, () => {
         latency: 500,
       };
       await networkHandler.setNetworkEmulation('GPRS');
+      expect(actualNetworkCondition).to.deep.equal(expectedNetworkCondition);
+    });
+
+    it('should invoke emulateNetworkConditions with a correct Object option', async () => {
+      const expectedNetworkCondition = {
+        offline: false,
+        downloadThroughput: 6400,
+        uploadThroughput: 2560,
+        latency: 500,
+      };
+      await networkHandler.setNetworkEmulation(expectedNetworkCondition);
+      expect(actualNetworkCondition).to.deep.equal(expectedNetworkCondition);
+    });
+
+    it('should invoke emulateNetworkConditions with the set defaults if an incomplete Object option is provided', async () => {
+      const defaultNetworkCondition = {
+        offline: false,
+        downloadThroughput: 0,
+        uploadThroughput: 0,
+        latency: 0,
+      };
+      const expectedNetworkCondition = {
+        ...defaultNetworkCondition,
+        uploadThroughput: 2500
+      };
+      await networkHandler.setNetworkEmulation({ uploadThroughput: 2500 });
       expect(actualNetworkCondition).to.deep.equal(expectedNetworkCondition);
     });
 

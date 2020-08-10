@@ -286,7 +286,7 @@ describe(test_name, () => {
 
         it('test description', async () => {
           expect(timeField(above('With Label For')).description).to.be.eql(
-            'TimeField Above With Label For',
+            'TimeField above With Label For',
           );
         });
       });
@@ -327,7 +327,7 @@ describe(test_name, () => {
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => timeField($('div'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `timeField` selector. Refer https://docs.taiko.dev/api/timefield/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `timeField` selector. Refer https://docs.taiko.dev/api/timefield/ for the correct parameters',
       );
     });
   });
