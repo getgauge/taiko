@@ -84,7 +84,7 @@ describe(test_name, () => {
       expect(link({ id: 'redirect' }).description).to.be.eql('Link[id="redirect"]');
     });
     it('should find the link with proximity selector', async () => {
-      expect(link(toRightOf('Click')).description).to.be.eql('Link To right of Click');
+      expect(link(toRightOf('Click')).description).to.be.eql('Link to right of Click');
     });
     it('should return true when isVisible fn is observed on non hidden element', async () => {
       expect(await link('here').isVisible()).to.be.true;
@@ -145,7 +145,7 @@ describe(test_name, () => {
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => link($('p'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `link` selector. Refer https://docs.taiko.dev/api/link/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `link` selector. Refer https://docs.taiko.dev/api/link/ for the correct parameters',
       );
     });
   });

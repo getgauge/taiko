@@ -11,7 +11,6 @@ let {
   closeBrowser,
   write,
   into,
-  toLeftOf,
   setConfig,
   reload,
 } = require('../../lib/taiko.js');
@@ -23,6 +22,24 @@ describe(test_name, () => {
   before(async () => {
     let innerHtml = `
         <div>
+
+      <script>
+     
+    class ShadowButton extends HTMLElement {
+      constructor() {
+        super();
+        var shadow = this.attachShadow({mode: 'open'});
+
+        var button = document.createElement('input');
+        button.setAttribute('type', 'text');
+        button.setAttribute('id', 'Shadow text');
+        shadow.appendChild(button);
+        
+      }
+    }
+    customElements.define('shadow-button', ShadowButton);
+  </script>
+      <shadow-button></shadow-button>
             <form name="inputTypeText">
             <!--  //Read only input with type text -->
                 <div name="inputTypeTextWithInlineTextReadonly">
@@ -47,7 +64,7 @@ describe(test_name, () => {
     filePath = createHtml(innerHtml, test_name);
     setConfig({
       waitForNavigation: false,
-      retryTimeout: 100,
+      retryTimeout: 1000,
       retryInterval: 10,
     });
     await openBrowser(openBrowserArgs);
@@ -97,6 +114,11 @@ describe(test_name, () => {
     expect(await textBox('initially disabled input-type-text').value()).to.equal(
       'Taiko can wait for element to be writable.',
     );
+  });
+
+  it('should write into shadow dom element', async () => {
+    await write('Shadow text updated', into(textBox({ id: 'Shadow text' })));
+    expect(await textBox({ id: 'Shadow text' }).value()).to.equal('Shadow text updated');
   });
 
   it('should wait for element to be writable', async () => {
@@ -264,7 +286,7 @@ describe('Write with hideText option', () => {
   it('should mask the text when writing into a selected element', async () => {
     let validatePromise = validateEmitterEvent(
       'success',
-      'Wrote ***** into the textBox To left of input-type-text',
+      'Wrote ***** into the textBox to left of input-type-text',
     );
     await taiko.write('something', taiko.into(taiko.textBox(taiko.toLeftOf('input-type-text'))), {
       hideText: true,

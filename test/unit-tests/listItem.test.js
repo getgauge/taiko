@@ -94,7 +94,7 @@ describe(test_name, () => {
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => listItem($('p'))).to.throw(
-        'You are passing a `ElementWrapperList` to a `listItem` selector. Refer https://docs.taiko.dev/api/listitem/ for the correct parameters',
+        'You are passing a `ElementWrapper` to a `listItem` selector. Refer https://docs.taiko.dev/api/listitem/ for the correct parameters',
       );
     });
   });
