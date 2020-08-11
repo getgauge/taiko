@@ -2,13 +2,14 @@
 layout: page.njk
 ---
 
-Listed below are instructions on how to modify Taiko's default paramaters
+Listed below are instructions on how to modify Taiko's default parameters
 for specific uses cases
 
 ## Using environment variables
 
-Taiko lets you specify certain Environment variables to customise its behaviour
+Taiko lets you specify certain Environment variables to customize its behaviour
 
+* `TAIKO_ENABLE_ACTION_OUTPUT` - set to `true` to print output of each action. It's set to `true` by default with Taiko runner and in REPL mode.
 * `TAIKO_SKIP_CHROMIUM_DOWNLOAD` - set to `true` to skip downloading chromium
 * `TAIKO_HIGHLIGHT_ON_ACTION` - set to `false` to turn off highlighting the element on action
 * `TAIKO_CHROMIUM_URL` - set to host url of mirror to download chromium
