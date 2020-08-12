@@ -6,6 +6,7 @@ const { eventHandler } = require('../../lib/eventBus');
 describe('closeTab', () => {
   let _targets = { matching: [], others: [] };
   let currentURL = '';
+  let title = '';
   let _isMatchUrl = false;
   let _isMatchRegex = false;
   let currentTarget, taiko, targetHandler;
@@ -44,6 +45,7 @@ describe('closeTab', () => {
 
     taiko.__set__('validate', () => {});
     taiko.__set__('currentURL', () => currentURL);
+    taiko.__set__('title', () => title);
     targetHandler.__set__('cri', mockCri);
     taiko.__set__('targetHandler', mockHandler);
     taiko.__set__('descEvent', descEmmitter);
@@ -66,6 +68,7 @@ describe('closeTab', () => {
     taiko.__set__('_client', new EventEmitter());
     taiko.__set__('_client.close', () => {});
     _targets = { matching: [], others: [] };
+    currentTarget = undefined;
   });
 
   it('should close the browser if there are no tabs to reconnect', async () => {
@@ -120,34 +123,6 @@ describe('closeTab', () => {
       url: 'https://flipkart.com',
     });
     currentURL = 'https://flipkart.com';
-    _isMatchUrl = false;
-    _isMatchRegex = false;
-
-    let validatePromise = validateEmitterEvent(
-      'success',
-      'Closed tab(s) matching https://flipkart.com',
-    );
-    await taiko.closeTab('https://flipkart.com');
-    await validatePromise;
-    expect(currentTarget.url).to.be.eql('https://amazon.com');
-  });
-  it('should close all matching tabs if target is non active tab', async () => {
-    _targets.matching.push({
-      id: '1',
-      type: 'page',
-      url: 'https://flipkart.com',
-    });
-    _targets.others.push({
-      id: '2',
-      type: 'page',
-      url: 'https://flipkart.com',
-    });
-    _targets.others.push({
-      id: '3',
-      type: 'page',
-      url: 'https://amazon.com',
-    });
-    currentURL = 'https://amazon.com';
     _isMatchUrl = true;
     _isMatchRegex = false;
 
@@ -158,6 +133,62 @@ describe('closeTab', () => {
     await taiko.closeTab('https://flipkart.com');
     await validatePromise;
     expect(currentTarget.url).to.be.eql('https://amazon.com');
+  });
+  it('should close all matching tabs if target is non active tab and no reconnect should happen', async () => {
+    _targets.matching.push({
+      id: '1',
+      type: 'page',
+      url: 'https://flipkart.com',
+    });
+    _targets.matching.push({
+      id: '2',
+      type: 'page',
+      url: 'https://flipkart.com',
+    });
+    _targets.others.push({
+      id: '3',
+      type: 'page',
+      url: 'https://amazon.com',
+    });
+    currentURL = 'https://amazon.com';
+    _isMatchUrl = false;
+    _isMatchRegex = false;
+
+    let validatePromise = validateEmitterEvent(
+      'success',
+      'Closed tab(s) matching https://flipkart.com',
+    );
+    await taiko.closeTab('https://flipkart.com');
+    await validatePromise;
+    expect(currentTarget).to.be.undefined;
+  });
+  it('should close all matching tabs by title and no reconnect should happen if active tab is not matched', async () => {
+    _targets.matching.push({
+      id: '1',
+      type: 'page',
+      title: 'Flipkart',
+      url: 'https://flipkart.com',
+    });
+    _targets.matching.push({
+      id: '2',
+      type: 'page',
+      title: 'Flipkart',
+      url: 'https://flipkart.com',
+    });
+    _targets.others.push({
+      id: '3',
+      type: 'page',
+      url: 'https://amazon.com',
+    });
+    currentURL = 'https://amazon.com';
+    title = 'Amazon';
+    _isMatchUrl = false;
+    _isMatchRegex = false;
+
+    let validatePromise = validateEmitterEvent('success', 'Closed tab(s) matching Flipkart');
+    await taiko.closeTab('Flipkart');
+    await validatePromise;
+    expect(currentTarget).to.be.undefined;
   });
   it('should close all matching tabs for given regex', async () => {
     _targets.matching.push({
@@ -185,6 +216,6 @@ describe('closeTab', () => {
     );
     await taiko.closeTab(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/);
     await validatePromise;
-    expect(currentTarget.url).to.be.eql('https://amazon.com');
+    expect(currentTarget).to.be.undefined;
   });
 });
