@@ -212,4 +212,27 @@ describe('TargetHandler', () => {
       expect(targets.others.length).to.be.equal(2);
     });
   });
+
+  describe('.getCriTargets', () => {
+    let targetHandler;
+
+    beforeEach(() => {
+      targetHandler = rewire('../../../lib/handlers/targetHandler');
+    });
+
+    it('should register a target with name', async () => {
+      targetHandler.register('one', { id: 'first', type: 'page' });
+      targetHandler.register('two', { id: 'second', type: 'page' });
+      expect(targetHandler.register('two').id).to.be.equal('second');
+    });
+
+    it('should throw error if there is a target already registered with same name', async () => {
+      targetHandler.register('one', { id: 'first', type: 'page' });
+      expect(() => {
+        targetHandler.register('one', { id: 'first', type: 'page' });
+      }).to.throw(
+        "There is a tab/page already registered with the name 'one' please use another name.",
+      );
+    });
+  });
 });
