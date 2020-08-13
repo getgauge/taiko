@@ -66,7 +66,7 @@ describe(test_name, () => {
       };
       const expectedNetworkCondition = {
         ...defaultNetworkCondition,
-        uploadThroughput: 2500
+        uploadThroughput: 2500,
       };
       await networkHandler.setNetworkEmulation({ uploadThroughput: 2500 });
       expect(actualNetworkCondition).to.deep.equal(expectedNetworkCondition);
