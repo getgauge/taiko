@@ -9,7 +9,7 @@
   },
   "types": "./types/taiko/index.d.ts",
   "scripts": {
-    "lint": "eslint --fix . --ext ts,tsx .",
+    "lint": "eslint --fix --ext js,ts .",
     "doc": "npm run doc:api && eleventy",
     "doc:serve": "npm run doc:api && eleventy --serve",
     "doc:api": "node lib/documentation.js",
