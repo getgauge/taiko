@@ -217,7 +217,11 @@ describe('TargetHandler', () => {
     let targetHandler;
 
     beforeEach(() => {
-      targetHandler = rewire('../../../lib/handlers/targetHandler');
+      targetHandler = new require('../../../lib/handlers/targetHandler');
+    });
+
+    afterEach(() => {
+      targetHandler.clearRegister();
     });
 
     it('should register a target with name', async () => {
