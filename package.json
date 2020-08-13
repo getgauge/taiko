@@ -34,7 +34,7 @@
     "headless-browser"
   ],
   "lint-staged": {
-    "**/*.{js}": [
+    "**/*.{js,ts}": [
       "npm run lint",
       "git add"
     ]
