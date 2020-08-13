@@ -69,7 +69,7 @@ async function main() {
   let { executablePath } = browserFetcher.revisionInfo(revision);
   let out = execSync(`${executablePath} --version`);
   let versionInfo = out.toString();
-  let version = versionInfo.replace(/[^0-9\.]/g, '');
+  let version = versionInfo.replace(/[^0-9.]/g, '');
   updatePackageJSON('version', version);
 }
 
