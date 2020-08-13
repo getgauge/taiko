@@ -194,8 +194,8 @@ describe('match', () => {
         expect(await text('Text').exists()).to.be.true;
       });
 
-      it.skip('test partial match get()', async () => {
-        expect(await text('Text').elements()).to.have.lengthOf(4);
+      it('test partial match get()', async () => {
+        expect(await text('Text').elements()).to.have.lengthOf(2);
       });
 
       it('test partial match description', async () => {
@@ -239,15 +239,15 @@ describe('match', () => {
       });
     });
     describe('match text for type and paragraph', () => {
-      it.skip('test exact match for type', async () => {
+      it('test exact match for type', async () => {
         expect(await text('text').exists()).to.be.true;
-        expect(await text('text').elements()).to.have.lengthOf(9);
+        expect(await text('text').elements()).to.have.lengthOf(2);
         expect(text('text').description).to.be.eql('Element with text text ');
       });
-      //TODO: verify with master looks 4 is write
-      it.skip('test contains match for type and text', async () => {
+
+      it('test contains match for type and text', async () => {
         expect(await text('tex').exists()).to.be.true;
-        expect(await text('tex').elements()).to.have.lengthOf(11);
+        expect(await text('tex').elements()).to.have.lengthOf(4);
         expect(text('tex').description).to.be.eql('Element with text tex ');
       });
     });
@@ -320,15 +320,15 @@ describe('match', () => {
         expect(text('demo').description).to.be.eql('Element with text demo ');
       });
     });
-    describe.skip('match text for type and paragraph', () => {
+    describe('match text for type and paragraph', () => {
       it('test exact match for type', async () => {
         expect(await text('text').exists()).to.be.true;
-        expect(await text('text').elements()).to.have.lengthOf(9);
+        expect(await text('text').elements()).to.have.lengthOf(2);
         expect(text('text').description).to.be.eql('Element with text text ');
       });
       it('test contains match for type and text', async () => {
         expect(await text('tex').exists()).to.be.true;
-        expect(await text('tex').elements()).to.have.lengthOf(11);
+        expect(await text('tex').elements()).to.have.lengthOf(4);
         expect(text('tex').description).to.be.eql('Element with text tex ');
       });
     });

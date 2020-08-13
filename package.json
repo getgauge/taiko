@@ -45,7 +45,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run test:api"
+      "pre-commit": "lint-staged && npm run test:api",
+      "pre-push": "npm test"
     }
   },
   "author": "getgauge",
