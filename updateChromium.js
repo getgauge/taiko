@@ -5,12 +5,14 @@ const BrowserFetcher = require('./lib/browserFetcher');
 const supportedPlatforms = BrowserFetcher.supportedPlatforms;
 
 async function checkAvailableRevision(revision, browserFetcher) {
-  let results = await Promise.all(supportedPlatforms.map((platform) => browserFetcher.canDownload(revision, platform)));
+  let results = await Promise.all(
+    supportedPlatforms.map((platform) => browserFetcher.canDownload(revision, platform)),
+  );
   if (results.includes(false)) {
     return await checkAvailableRevision(--revision, browserFetcher);
   } else {
     return revision;
-  };
+  }
 }
 
 async function findLatestCommonRevision(chromiumReleases) {
@@ -47,16 +49,16 @@ async function getChromeReleasesInfo() {
       })
       .on('error', (e) => {
         reject(e);
-      })
+      });
   });
 }
 
 async function main() {
   let releasesInfo = await getChromeReleasesInfo();
   let revision = await findLatestCommonRevision(JSON.parse(releasesInfo));
-  let {chromium_revision} = require('./package.json').taiko;
-  if( chromium_revision >= revision ) {
-      console.log(
+  let { chromium_revision } = require('./package.json').taiko;
+  if (chromium_revision >= revision) {
+    console.log(
       `Skipping updating package.json as current chromium revision(${chromium_revision}) is similar or greater than available revision(${revision}).`,
     );
     return;
@@ -64,10 +66,10 @@ async function main() {
   updatePackageJSON('revision', revision);
   execSync('node ./lib/install.js');
   let browserFetcher = new BrowserFetcher();
-  let {executablePath} = browserFetcher.revisionInfo(revision);
+  let { executablePath } = browserFetcher.revisionInfo(revision);
   let out = execSync(`${executablePath} --version`);
   let versionInfo = out.toString();
-  let version = versionInfo.replace(/[^0-9\.]/g, '');
+  let version = versionInfo.replace(/[^0-9.]/g, '');
   updatePackageJSON('version', version);
 }
 

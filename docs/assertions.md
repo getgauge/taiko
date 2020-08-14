@@ -13,6 +13,7 @@ an action. A test will fails by throwing an [`Error`](https://developer.mozilla.
 In the following script
 
     const { openBrowser, goto, click, closeBrowser } = require('taiko');
+    (async () => {
       await openBrowser();
       await goto("google.com");
       await click("Google Search");
@@ -28,21 +29,6 @@ the test fails when
 All Page actions, browser actions, selectors, proximity 
 selectors have implicit assertions.
 
-For implicit assertions on elements without performing an action use
-`exists` on a selector API for example
-
-    const { openBrowser, goto, click, closeBrowser } = require('taiko');
-      await openBrowser();
-      await goto("google.com");
-      await link('Google Search').exists();
-    })();   
-
-By default `exists` waits for `100000` milliseconds checking every `100` milliseconds
-if the element is visible on the screen. If you want to check the element on the page
-immediately you can use set these wait times to `0`.
-
-    await link('Google Search').exists(0,0);
-
 ### Selecting hidden elements
 
 If you do not want to assert the visibility of elements on a page
@@ -56,27 +42,62 @@ option on the API for example
 To ignore implicit assertions use JavaScript's `try` and `catch` block to handle the error
 
     const { openBrowser, goto, click, closeBrowser } = require('taiko');
+    (async () => {
       await openBrowser();
       await goto("google.com");
       try {
         await click("Google Search");
       } catch(e) {
         //Ignore or log the error.
+      } finally {
+        closeBrowser();
       }
     })();   
 
 ## Custom assertions
 
-You can also use any Node.js assertion framework along with Taiko's
+You can use any Node.js assertion framework along with Taiko's
 API. For example using node's 
 [`assert`](https://nodejs.org/api/assert.html#assert_strict_assertion_mode) function.
 
     const { openBrowser, goto, click, closeBrowser } = require('taiko');
     const assert = require('assert').strict;
+
+    (async () => {
       await openBrowser();
       await goto("google.com");
       assert.equal(button({name: 'btnK'}).text(), 'Google Search');
+      closeBrowser();
     })();   
 
 Here node's `assert` function fails when the name a `button` with the 
 name `btnK` does not have the text 'Google Search'.
+
+To check if an element without performing an action use
+`exists` on a selector API for example
+
+    const { openBrowser, goto, click, closeBrowser } = require('taiko');
+    const assert = require('assert').strict;
+
+    (async () => {
+      await openBrowser();
+      await goto("google.com");
+      await assert.ok(await button('Gmail').exists());
+      await closeBrowser();
+    })();   
+
+By default `exists` waits for `100000` milliseconds checking every `100` milliseconds
+if the element is visible on the screen. 
+
+If you want to check the element on the page immediately (checking if an element does not exist) 
+you can use set these wait times to `0`.
+
+    const { openBrowser, goto, click, closeBrowser } = require('taiko');
+    const assert = require('assert').strict;
+
+    (async () => {
+      await openBrowser();
+      await goto("google.com");
+      await assert.ok(!await text('Facebook').exists(0,0));
+      await closeBrowser();
+    })(); 

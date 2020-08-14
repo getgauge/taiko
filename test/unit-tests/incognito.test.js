@@ -90,9 +90,9 @@ describe('Browser Context', () => {
     });
   });
 
-  describe('open incognito window without url',() => {
+  describe('open incognito window without url', () => {
     it('should open a blank page when url not given', async () => {
-      await openIncognitoWindow({name:'admin'});
+      await openIncognitoWindow({ name: 'admin' });
       expect(await currentURL()).to.equal('about:blank');
       await closeIncognitoWindow('admin');
     });
