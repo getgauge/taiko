@@ -13,7 +13,7 @@ let {
 } = require('../../lib/taiko');
 let { openBrowserArgs, resetConfig } = require('./test-util');
 
-let { isIncognito, getBrowserContexts } = require('../../lib/browserContext');
+let { isIncognito } = require('../../lib/browserContext');
 
 let { createHtml, removeFile } = require('./test-util');
 
@@ -120,10 +120,15 @@ describe('Browser Context', () => {
   });
 
   describe('Open window with same window name', () => {
-    it('Should switch to existing window', async () => {
+    it('Should throw error if window name is not unique', async () => {
       await openIncognitoWindow(url1, { name: 'admin' });
-      await openIncognitoWindow(url1, { name: 'admin' });
-      expect(getBrowserContexts().size).to.be.equal(1);
+      try {
+        await openIncognitoWindow(url1, { name: 'admin' });
+      } catch (err) {
+        expect(err.message).to.be.equal(
+          'There is a already a window/tab with name admin. Please use another name',
+        );
+      }
     });
     after(async () => {
       await closeIncognitoWindow('admin');
