@@ -235,7 +235,7 @@ describe('TargetHandler', () => {
       expect(() => {
         targetHandler.register('one', { id: 'first', type: 'page' });
       }).to.throw(
-        "There is a tab/page already registered with the name 'one' please use another name.",
+        "There is a window or tab already registered with the name 'one' please use another name.",
       );
     });
 
