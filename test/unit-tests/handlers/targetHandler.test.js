@@ -71,7 +71,6 @@ describe('TargetHandler', () => {
       expect(someOtherTarget.matching.length).to.be.equal(2);
     });
 
-	  
     it('should give all matching tabs if url is given without protocol ', async () => {
       _targets.push({
         id: '1',

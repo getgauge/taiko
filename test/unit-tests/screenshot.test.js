@@ -7,7 +7,7 @@ let {
   setConfig,
   above,
   text,
-  $
+  $,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 let path = require('path');
