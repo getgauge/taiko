@@ -52,6 +52,7 @@ describe('closeTab', () => {
     taiko.__set__('cri', mockCri);
     taiko.__set__('connect_to_cri', async (target) => {
       currentTarget = target;
+      return currentTarget;
     });
     taiko.__set__('dom', { getDocument: async () => {} });
   });

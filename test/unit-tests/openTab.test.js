@@ -1,9 +1,12 @@
 const expect = require('chai').expect;
 const { EventEmitter } = require('events');
 const rewire = require('rewire');
+const { fail } = require('assert');
 
 describe('openTab', () => {
-  let actualTarget, target, actualOptions, actualUrl, taiko;
+  let actualTarget, actualOptions, actualUrl, taiko;
+  let target = { id: 'TARGET' };
+
   before(async () => {
     taiko = rewire('../../lib/taiko');
     let mockCri = {
@@ -12,9 +15,11 @@ describe('openTab', () => {
         return target;
       },
     };
-    let mockConnectToCri = (target) => {
-      actualTarget = target;
+
+    let mockConnectToCri = (tgt) => {
+      actualTarget = tgt;
     };
+
     const mockWrapper = async (options, cb) => {
       actualOptions = options;
       await cb();
@@ -69,5 +74,17 @@ describe('openTab', () => {
     };
     await taiko.openTab('example.com', expectedOptions);
     expect(actualOptions).to.deep.equal(expectedOptions);
+  });
+
+  it('should throw error if tab is opened with same identifier more than once', async () => {
+    await taiko.openTab('example.com', { name: 'example' });
+    try {
+      await taiko.openTab('anotherexamplecom', { name: 'example' });
+      fail('Did not throw error on duplicate name registration');
+    } catch (err) {
+      expect(err.message).to.equal(
+        "There is a window or tab already registered with the name 'example' please use another name.",
+      );
+    }
   });
 });
