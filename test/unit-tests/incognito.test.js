@@ -13,8 +13,6 @@ let {
 } = require('../../lib/taiko');
 let { openBrowserArgs, resetConfig } = require('./test-util');
 
-let { isIncognito } = require('../../lib/browserContext');
-
 let { createHtml, removeFile } = require('./test-util');
 
 describe('Browser Context', () => {
@@ -101,7 +99,6 @@ describe('Browser Context', () => {
   describe('Open window in Incognito Mode', () => {
     it('Open window in incognito', async () => {
       await openIncognitoWindow(url1, { name: 'admin' });
-      expect(isIncognito({ name: 'admin' })).to.be.true;
     });
     after(async () => {
       await closeIncognitoWindow('admin');
@@ -111,7 +108,6 @@ describe('Browser Context', () => {
   describe('Open window in Incognito Mode', () => {
     it('Open window in incognito and use the default window', async () => {
       await openIncognitoWindow(url1, { name: 'admin' });
-      expect(isIncognito({ name: 'admin' })).to.be.true;
       await closeIncognitoWindow('admin');
       await goto(url1);
       let backToDefaultBrowser = await text('Browser1').exists();
