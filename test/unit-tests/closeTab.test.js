@@ -9,6 +9,8 @@ describe('closeTab', () => {
   let title = '';
   let _isMatchUrl = false;
   let _isMatchRegex = false;
+  let _isMatchTarget = false;
+
   let currentTarget, taiko, targetHandler;
   let descEmmitter = new EventEmitter();
 
@@ -40,6 +42,9 @@ describe('closeTab', () => {
       },
       isMatchingRegex: () => {
         return _isMatchRegex;
+      },
+      isMatchingTarget: () => {
+        return _isMatchTarget;
       },
       register: (name, target) => {
         return targetHandler.register(name, target);
@@ -255,6 +260,5 @@ describe('closeTab', () => {
     await taiko.closeTab({ name: 'google' });
     expect(targetHandler.register('google')).to.be.undefined;
     await validatePromise;
-    expect(currentTarget).to.be.undefined;
   });
 });
