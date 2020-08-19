@@ -532,10 +532,6 @@ declare module 'taiko' {
     handlerCallback?: (element: HTMLElement, args?: EvaluateElementOptions) => Record<string, any>,
     options?: NavigationOptions,
   ): Promise<Record<string, any>>;
-  // https://docs.taiko.dev/api/intervalsecs
-  export function intervalSecs(secs: number): number;
-  // https://docs.taiko.dev/api/timeoutsecs
-  export function timeoutSecs(secs: number): number;
   // https://docs.taiko.dev/api/to
   export function to(value: SearchElement): SearchElement;
   // https://docs.taiko.dev/api/into
