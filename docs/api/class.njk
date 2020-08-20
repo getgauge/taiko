@@ -39,12 +39,10 @@ layout: api.njk
 
 {% macro func(fn) -%}
     {% if fn.examples | length %}
-        <details>
-            <summary>Examples</summary>
-            {%- for example in fn.examples %}
-                <pre><code>{{ example.description }}</code></pre>
-            {% endfor -%}
-        </details>
+        <h5>Examples</h5>
+        {%- for example in fn.examples %}
+            <pre><code>{{ example.description }}</code></pre>
+        {% endfor -%}
     {% endif %}
 
     <h5>Parameters</h5>
