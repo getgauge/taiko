@@ -79,3 +79,6 @@ lib/api.json
 tags
 _site
 apis.json
+
+#generated types testing
+types/taiko/test/generated
