@@ -447,6 +447,18 @@ export function range(
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ElementWrapper;
+// https://docs.taiko.dev/api/color
+export function color(
+  selector: SearchElement,
+  options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
+// https://docs.taiko.dev/api/tableCell
+export function tableCell(
+  options: SelectionOptions | RelativeSearchElement | undefined,
+  selector: SearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
 // https://docs.taiko.dev/api/textbox
 export function textBox(selector: SearchElement, ...args: RelativeSearchElement[]): ElementWrapper;
 // https://docs.taiko.dev/api/dropdown
