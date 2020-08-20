@@ -10,6 +10,7 @@
   "types": "./types/taiko/index.d.ts",
   "scripts": {
     "lint": "eslint --fix --ext js,ts .",
+    "dtslint": "dtslint types/taiko",
     "doc": "npm run doc:api && eleventy",
     "doc:serve": "npm run doc:api && eleventy --serve",
     "doc:api": "node lib/documentation.js",
@@ -73,6 +74,7 @@
     "chai-as-promised": "^7.1.1",
     "cssnano": "^4.1.10",
     "documentation": "^13.0.2",
+    "dtslint": "^3.6.14",
     "eleventy-plugin-toc": "^1.0.1",
     "eslint": "^7.5.0",
     "eslint-config-airbnb": "^18.1.0",
