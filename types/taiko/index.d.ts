@@ -435,6 +435,12 @@ export function fileField(
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ElementWrapper;
+// https://docs.taiko.dev/api/timefield
+export function timeField(
+  selector: SearchElement,
+  options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
 // https://docs.taiko.dev/api/textbox
 export function textBox(selector: SearchElement, ...args: RelativeSearchElement[]): ElementWrapper;
 // https://docs.taiko.dev/api/dropdown
