@@ -237,6 +237,28 @@ pre code {
   justify-content: space-between;
 }
 
+.params, .returns {
+  display: flex;
+  line-height: 1;
+  flex-wrap: wrap;
+}
+
+.params .name {
+  flex: 1 0 25%;
+}
+
+.params .type, .returns .type {
+  flex: 1 0 25%;
+}
+
+.params .description {
+  flex: 1 0 50%;
+}
+
+.returns .description {
+  flex: 1 0 75%;
+}
+
 @media(max-width:800px) {
   article,
   footer,

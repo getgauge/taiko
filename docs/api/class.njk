@@ -1,0 +1,124 @@
+---
+pagination: 
+    data: apis.classes
+    size: 1
+    alias: api
+permalink: "api/{{ api.name }}/"
+layout: api.njk
+---
+
+{% macro meta(api, headerTag) -%}
+    <{{headerTag}}>{{api.name}}</{{headerTag}}>
+    {%- for child in api.description.children %}
+
+        {% if child.type == 'paragraph' %}
+            <p>
+                {%- for content in child.children %}
+                    {% if content.type == 'text' %}
+                        {{ content.value }}
+                    {% endif %}
+                    {% if content.type == 'html' %}
+                        {{ content.value | safe }}
+                    {% endif %}
+                    {% if content.type == 'inlineCode' %}
+                        <code>{{ content.value }}</code>
+                    {% endif %}
+                    {% if content.type == 'link' %}
+                        {% if 'http' in content.url %}
+                            <a href="{{ content.url }}">{{ content.url }}</a>
+                        {% else %}
+                            <a href="../{{ content.url }}">{{ content.url }}</a>
+
+                        {% endif %}
+                    {% endif %}
+                {% endfor -%}
+            </p>
+        {% endif %}
+    {% endfor -%}
+{%- endmacro %}
+
+{% macro func(fn) -%}
+    {% if fn.examples | length %}
+        <details>
+            <summary>Examples</summary>
+            {%- for example in fn.examples %}
+                <pre><code>{{ example.description }}</code></pre>
+            {% endfor -%}
+        </details>
+    {% endif %}
+
+    <h5>Parameters</h5>
+    {% if fn.params | length %}
+        {%- for tag in fn.tags %}
+            {% if tag.title == 'param' %}
+            <div class="params">
+                <div class="name">
+                    <p>
+                        <code>{{ tag.name }}</code>
+                    </p>
+                </div>
+                <div class="type">
+                    <p>
+                        <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.name }}">
+                            {{ tag.type.name }}
+                        </a>
+                    </p>
+                </div>
+                <div class="description">
+                    {{ tag.description | markdown | safe }}
+                    {% if tag.default %}
+                        <dl>
+                            <dt><b>Default value</b></dt>
+                            <dd><code>{{ tag.default }}</code></dd>
+                        </dl>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        {% endfor -%}
+    {% else%}
+    <p>This API does not have any paramters</p>
+    {% endif %}
+
+    <h5>Returns</h5>
+    {% for tag in fn.tags %}
+        {% if tag.title == 'returns' %}
+            <div class="returns">
+                <div class="type">
+                    <p>
+                        {% if tag.type.name == 'Promise' %}
+                            <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.name }}">{{ tag.type.name }}</a>
+                        {% elif tag.type.expression.name == 'Array' %}
+                            <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>.<<a href="/api/{{ tag.type.applications[0].name }}">{{ tag.type.applications[0].name }}</a>>
+                        {% else %}
+                            <a href="/api/{{ tag.type.name }}">{{ tag.type.name }}</a>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="description">
+                    {{ tag.description | markdown | safe }}
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <p>This API does not return any values</p>
+    {% endfor %}
+{%- endmacro %}
+
+{% macro listFuncs(fnList, category) -%}
+    {% if fnList | length %}
+        <h2>{{category}} Members</h2>
+        {% for fn in fnList %}
+            {{ meta(fn, 'h3') }}
+            {{ func(fn) }}
+        <hr/>
+        {% endfor %}
+    {% endif %}
+{%- endmacro %}
+
+{{ meta(api, 'h1') }}
+{{ listFuncs(api.members.global, 'Global') }}
+{{ listFuncs(api.members.inner, 'Inner') }}
+{{ listFuncs(api.members.instance, 'Instance') }}
+{{ listFuncs(api.members.events, 'Events') }}
+{{ listFuncs(api.members.static, 'static') }}

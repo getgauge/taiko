@@ -1,6 +1,6 @@
 ---
 pagination: 
-    data: apis
+    data: apis.functions
     size: 1
     alias: api
 permalink: "api/{{ api.name }}/"
@@ -40,7 +40,7 @@ layout: api.njk
     <pre><code>{{ example.description }}</code></pre>
 {% endfor -%}
 
-    <h3>Parameters</h3>
+<h3>Parameters</h3>
 {% if api.params | length %}
     {%- for tag in api.tags %}
         {% if tag.title == 'param' %}
