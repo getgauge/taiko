@@ -375,6 +375,8 @@ export function attach(filepath: string, to: SearchElement): Promise<void>;
 export function press(keys: string | string[], options?: KeyOptions): Promise<void>;
 // https://docs.taiko.dev/api/highlight
 export function highlight(selector: SearchElement, ...args: RelativeSearchElement[]): Promise<void>;
+// https://docs.taiko.dev/api/clearHighlights
+export function clearHighlights(): Promise<void>;
 // https://docs.taiko.dev/api/mouseaction
 export function mouseAction(
   selector: SearchElement | 'press' | 'move' | 'release',
