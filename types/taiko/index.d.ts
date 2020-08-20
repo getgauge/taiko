@@ -254,7 +254,7 @@ export interface MouseCoordinates {
 
 /**
  * Browser Actions
- **/
+ */
 
 // https://docs.taiko.dev/api/openbrowser
 export function openBrowser(options?: BrowserOptions): Promise<void>;
@@ -319,7 +319,7 @@ export function setCookie(
 // https://docs.taiko.dev/api/deletecookies
 export function deleteCookies(cookieName?: string, options?: CookieOptions): Promise<void>;
 // https://docs.taiko.dev/api/getcookies
-export function getCookies(options?: { urls: string[] }): Promise<Record<string, any>[]>;
+export function getCookies(options?: { urls: string[] }): Promise<Array<Record<string, any>>>;
 // https://docs.taiko.dev/api/setlocation
 export function setLocation(options: LocationOptions): Promise<void>;
 
@@ -507,7 +507,7 @@ export function confirm(
 ): void;
 
 // https://docs.taiko.dev/api/beforeunload
-export function beforeunload(message: string, callback: Function): void;
+export function beforeunload(message: string, callback: () => Promise<void>): void;
 
 /**
  * Helpers
@@ -533,6 +533,8 @@ export function setConfig(options: GlobalConfigurationOptions): void;
 export function currentURL(): Promise<string>;
 // https://docs.taiko.dev/api/waitfor
 export function waitFor(time: number): Promise<void>;
-export function waitFor(element: SearchElement, time: number): Promise<void>;
-export function waitFor(condition: () => Promise<boolean>, time: number): Promise<void>;
+export function waitFor(
+  elementOrCondition: SearchElement | (() => Promise<boolean>),
+  time: number,
+): Promise<void>;
 export function clearIntercept(requestUrl?: string): void;
