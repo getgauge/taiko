@@ -441,6 +441,12 @@ export function timeField(
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ElementWrapper;
+// https://docs.taiko.dev/api/range
+export function range(
+  selector: SearchElement,
+  options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
 // https://docs.taiko.dev/api/textbox
 export function textBox(selector: SearchElement, ...args: RelativeSearchElement[]): ElementWrapper;
 // https://docs.taiko.dev/api/dropdown
