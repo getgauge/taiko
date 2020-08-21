@@ -21,18 +21,20 @@ describe('switchTo', () => {
   });
 
   it('should throw error if no url specified', async () => {
-    await expect(taiko.switchTo()).to.eventually.rejectedWith(TypeError);
+    await expect(taiko.switchTo()).to.eventually.rejectedWith(
+      'The "targetUrl" argument must be of type string, regex or identifier. Received type undefined',
+    );
   });
 
   it('should throw error if url is empty', async () => {
     await expect(taiko.switchTo('')).to.eventually.rejectedWith(
-      'Cannot switch to tab or window. Hint: The targetUrl is empty. Please use a valid string or regex',
+      'Cannot switch to tab or window as the targetUrl is empty. Please use a valid string, regex or identifier',
     );
   });
 
   it('should throw error if url is only spaces', async () => {
     await expect(taiko.switchTo('  ')).to.eventually.rejectedWith(
-      'Cannot switch to tab or window. Hint: The targetUrl is empty. Please use a valid string or regex',
+      'Cannot switch to tab or window as the targetUrl is empty. Please use a valid string, regex or identifier',
     );
   });
 
