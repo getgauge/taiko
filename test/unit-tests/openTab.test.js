@@ -2,6 +2,7 @@ const expect = require('chai').expect;
 const { EventEmitter } = require('events');
 const rewire = require('rewire');
 const { fail } = require('assert');
+const targetHandler = new require('../../lib/handlers/targetHandler');
 
 describe('openTab', () => {
   let actualTarget, actualOptions, actualUrl, taiko;
@@ -33,6 +34,10 @@ describe('openTab', () => {
 
   after(() => {
     taiko = rewire('../../lib/taiko');
+  });
+
+  afterEach(() => {
+    targetHandler.clearRegister();
   });
 
   it('Open tab without any url should call connectToCri', async () => {
@@ -86,5 +91,21 @@ describe('openTab', () => {
         "There is a window or tab already registered with the name 'example' please use another name.",
       );
     }
+  });
+
+  it('should register with identifier if no url and an identifier is passed', async () => {
+    await taiko.openTab({ name: 'github' });
+    expect(actualOptions.name).to.equal('github');
+    expect(targetHandler.register('github')).to.equal(target.id);
+  });
+
+  it('should set about:blank as the url with identifier', async () => {
+    await taiko.openTab({ name: 'github' });
+    expect(actualUrl).to.equal('about:blank');
+  });
+
+  it('should set about:blank when no parameters are passed', async () => {
+    await taiko.openTab();
+    expect(actualUrl).to.equal('about:blank');
   });
 });
