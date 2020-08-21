@@ -7,12 +7,20 @@ chai.use(chaiAsPromised);
 
 describe('switchTo', () => {
   let argument, taiko;
+  let registeredTarget;
+
   before(async () => {
     taiko = rewire('../../lib/taiko');
     taiko.__set__('validate', () => {});
     taiko.__set__('targetHandler.getCriTargets', (arg) => {
       argument = arg;
       return { matching: [] };
+    });
+    taiko.__set__('targetHandler.register', () => {
+      return registeredTarget;
+    });
+    taiko.__set__('connect_to_cri', () => {
+      return registeredTarget;
     });
   });
 
@@ -43,5 +51,18 @@ describe('switchTo', () => {
       'No tab(s) matching /http(s):\\/\\/www.google.com/ found',
     );
     await expect(argument).to.deep.equal(new RegExp(/http(s):\/\/www.google.com/));
+  });
+
+  it('should accept window identifier', async () => {
+    await expect(taiko.switchTo({ name: 'github' })).to.eventually.rejectedWith(
+      'Could not find window/tab with name github to switch.',
+    );
+  });
+
+  it('should switch to tab matching identifier', async () => {
+    registeredTarget = {
+      id: 'github',
+    };
+    await expect(taiko.switchTo({ name: 'github' })).to.eventually.fulfilled;
   });
 });
