@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package",
   "name": "taiko",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "Taiko is a Node.js library for automating Chromium based browsers",
   "main": "bin/taiko.js",
   "bin": {
@@ -88,6 +88,6 @@
     "prettier": "^2.0.1",
     "rewire": "^5.0.0",
     "sinon": "^9.0.1",
-    "typescript": "^3.8.3"
+    "typescript": "^4.0.2"
   }
 }
