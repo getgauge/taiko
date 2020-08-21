@@ -240,23 +240,39 @@ pre code {
 .params, .returns {
   display: flex;
   line-height: 1;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .params .name {
-  flex: 1 0 25%;
+  flex: 1 0;
 }
 
 .params .type, .returns .type {
-  flex: 1 0 25%;
+  flex: 1 0;
 }
 
 .params .description {
-  flex: 1 0 50%;
+  flex: 2 0;
 }
 
 .returns .description {
-  flex: 1 0 75%;
+  flex: 3 0;
+}
+
+.api-body {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.api-body > .content {
+  flex: 3 0 content;
+}
+
+.api-body > .nav {
+  flex: 1 0 content;
+  padding-left: 10em;
 }
 
 @media(max-width:800px) {
@@ -265,5 +281,26 @@ pre code {
   section {
     background: white;
     padding: 15px;
+  }
+
+  .api-body {
+    max-width: 100%;
+  }
+}
+
+@media(max-width:800px) {
+  article,
+  footer,
+  section {
+    background: white;
+    padding: 15px;
+  }
+
+  .api-body {
+    max-width: 100%;
+  }
+
+  .params, .returns {
+    display: inline;
   }
 }

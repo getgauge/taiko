@@ -1,15 +1,33 @@
 ---
 layout: base.njk
 ---
-<section>
-    <small>
-        <a href="/">Home</a>
-    </small>
-    <small>/</small>
-    <small>
-        <a href="/api/reference">API Reference</a>
-    </small>
-</section>
-<article>
-    {{ content | safe }}
-</article>
+<div class="api-body">
+    <div class="content">
+        <section>
+            <small>
+                <a href="/">Home</a>
+            </small>
+            <small>/</small>
+            <small>
+                <a href="/api/reference">API Reference</a>
+            </small>
+        </section>
+        <article>
+            {{ content | safe }}
+        </article>
+    </div>
+    <div class="nav">
+        <nav>
+        {%- for api, keys in metadata %}
+            <h3>{{api}}</h3>
+            <ul>
+                {%- for key in keys %}
+                    <li>
+                        <a href="/api/{{key}}">{{key}}</a>
+                    </li>
+                {% endfor -%}
+            </ul>
+        {% endfor -%}
+        </nav>
+    </div>
+</div>
