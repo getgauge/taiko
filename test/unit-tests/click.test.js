@@ -151,13 +151,6 @@ describe(test_name, () => {
     });
   });
 
-  describe('Text as type', () => {
-    it('should click', async () => {
-      await click('Text as type');
-      expect(await text('Click works with text as type.').exists()).to.be.true;
-    });
-  });
-
   describe('With ghost element', () => {
     it('should click the ghost element', async () => {
       await click('Click ghost element covering text');
