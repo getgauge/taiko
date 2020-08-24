@@ -89,6 +89,7 @@ describe('match', () => {
             <input type="text" value="Enter user name" />
         </div>
         <div >
+            <p>Test&nbsp;text</p>       
             <h1>Elements visibility</h1>
             <div>
                 <p>Visible content</p>
@@ -265,7 +266,7 @@ describe('match', () => {
         expect(text('demo').description).to.be.eql('Element with text demo ');
       });
     });
-    describe('match text for type and paragraph', () => {
+    describe('match text for paragraph', () => {
       //should be 1 since an exact match is found
       it.skip('test exact match for type', async () => {
         expect(await text('text').exists()).to.be.true;
@@ -273,10 +274,16 @@ describe('match', () => {
         expect(text('text').description).to.be.eql('Element with text text ');
       });
 
-      it('test contains match for type and text', async () => {
+      it('test contains match for text', async () => {
         expect(await text('tex').exists()).to.be.true;
-        expect(await text('tex').elements()).to.have.lengthOf(5);
+        expect(await text('tex').elements()).to.have.lengthOf(6);
         expect(text('tex').description).to.be.eql('Element with text tex ');
+      });
+    });
+
+    describe('text with &nbsp should be considers as with normal space', () => {
+      it('test exists()', async () => {
+        expect(await text('Test text').exists()).to.be.true;
       });
     });
 
@@ -357,7 +364,7 @@ describe('match', () => {
       });
       it('test contains match for type and text', async () => {
         expect(await text('tex').exists()).to.be.true;
-        expect(await text('tex').elements()).to.have.lengthOf(5);
+        expect(await text('tex').elements()).to.have.lengthOf(6);
         expect(text('tex').description).to.be.eql('Element with text tex ');
       });
     });
