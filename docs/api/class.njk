@@ -35,7 +35,7 @@ layout: api.njk
                     {% endif %}
                     {% if content.type == 'link' %}
                         {% if 'http' in content.url %}
-                            <a href="{{ content.url }}">{{ content.url }}</a>
+                            <a href="{{ content.url }}">{{ content.children[0].value }}</a>
                         {% else %}
                             <a href="../{{ content.url }}">{{ content.url }}</a>
 
