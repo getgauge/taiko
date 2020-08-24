@@ -9,6 +9,12 @@ layout: api.njk
 
 {% macro meta(api, headerTag) -%}
     <{{headerTag}}>{{api.name}}</{{headerTag}}>
+    {% if api.augments | length %}
+        <span>extends</span>
+        {%- for augmentation in api.augments %}
+            <a href="/api/{{ augmentation.type.name }}">{{ augmentation.type.name }}</a> {% if not loop.last %}, {% endif %}
+        {% endfor -%}
+    {% endif %}
     {%- for child in api.description.children %}
 
         {% if child.type == 'paragraph' %}
