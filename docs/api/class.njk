@@ -7,8 +7,12 @@ permalink: "api/{{ api.name }}/"
 layout: api.njk
 ---
 
-{% macro meta(api, headerTag) -%}
-    <{{headerTag}}>{{api.name}}</{{headerTag}}>
+{% macro meta(api, forFunc=false) -%}
+    {% if forFunc %}
+        <h3 id="{{ api.name }}">{{ api.name }}</h3>
+    {% else %}
+        <h1>{{api.name}}</h1>
+    {% endif %}
     {% if api.augments | length %}
         <span>extends</span>
         {%- for augmentation in api.augments %}
@@ -113,14 +117,14 @@ layout: api.njk
     {% if fnList | length %}
         <h2>{{category}} Members</h2>
         {% for fn in fnList %}
-            {{ meta(fn, 'h3') }}
+            {{ meta(fn, true) }}
             {{ func(fn) }}
         <hr/>
         {% endfor %}
     {% endif %}
 {%- endmacro %}
 
-{{ meta(api, 'h1') }}
+{{ meta(api) }}
 {{ listFuncs(api.members.global, 'Global') }}
 {{ listFuncs(api.members.inner, 'Inner') }}
 {{ listFuncs(api.members.instance, 'Instance') }}
