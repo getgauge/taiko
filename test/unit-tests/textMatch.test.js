@@ -89,7 +89,7 @@ describe('match', () => {
             <input type="text" value="Enter user name" />
         </div>
         <div >
-            <p>Test&nbsp;text</p>       
+            <p>Test&nbsp;text&nbsp;<span>with&nbsp;nbsp space</span></p>       
             <h1>Elements visibility</h1>
             <div>
                 <p>Visible content</p>
@@ -282,8 +282,11 @@ describe('match', () => {
     });
 
     describe('text with &nbsp should be considers as with normal space', () => {
-      it('test exists()', async () => {
+      it('test contains exists()', async () => {
         expect(await text('Test text').exists()).to.be.true;
+      });
+      it('test exists', async () => {
+        expect(await text('Test text with nbsp space').exists()).to.be.true;
       });
     });
 
