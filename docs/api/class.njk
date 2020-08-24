@@ -35,10 +35,15 @@ layout: api.njk
                     {% endif %}
                     {% if content.type == 'link' %}
                         {% if 'http' in content.url %}
-                            <a href="{{ content.url }}">{{ content.children[0].value }}</a>
+                            <a href="{{ content.url }}">
+                                {% if content.children[0].type == "inlineCode" %} 
+                                    <code>{{ content.children[0].value }}</code>
+                                {% else %}
+                                    {{ content.children[0].value }}
+                                {% endif %}
+                            </a>
                         {% else %}
                             <a href="../{{ content.url }}">{{ content.url }}</a>
-
                         {% endif %}
                     {% endif %}
                 {% endfor -%}
