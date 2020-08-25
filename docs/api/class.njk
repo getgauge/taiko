@@ -64,58 +64,50 @@ layout: api.njk
     {% if fn.params | length %}
         {%- for tag in fn.tags %}
             {% if tag.title == 'param' %}
-            <div class="params">
-                <div class="name">
-                    <p>
-                        <code>{{ tag.name }}</code>
-                    </p>
-                </div>
-                <div class="type">
-                    <p>
-                        <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.name }}">
-                            {{ tag.type.name }}
-                        </a>
-                    </p>
-                </div>
-                <div class="description">
+            <hr/>
+            <dl>
+                <dt>
+                    <code>{{ tag.name }}</code>
+                    <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.name }}">
+                        {{ tag.type.name }}
+                    </a>
+                </dt>
+                <dd>
                     {{ tag.description | markdown | safe }}
-                    {% if tag.default %}
+                        {% if tag.default %}
                         <dl>
                             <dt><b>Default value</b></dt>
                             <dd><code>{{ tag.default }}</code></dd>
                         </dl>
-                    {% endif %}
-                </div>
-            </div>
+                        {% endif %}
+                </dd>
+            </dl>
             {% endif %}
         {% endfor -%}
+        <hr/>
     {% else%}
     <p>This API does not have any paramters</p>
     {% endif %}
 
     <h5>Returns</h5>
-    {% for tag in fn.tags %}
-        {% if tag.title == 'returns' %}
-            <div class="returns">
-                <div class="type">
-                    <p>
-                        {% if tag.type.name == 'Promise' %}
-                            <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.name }}">{{ tag.type.name }}</a>
-                        {% elif tag.type.expression.name == 'Array' %}
-                            <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>.<<a href="/api/{{ tag.type.applications[0].name }}">{{ tag.type.applications[0].name }}</a>>
-                        {% else %}
-                            <a href="/api/{{ tag.type.name }}">{{ tag.type.name }}</a>
-                        {% endif %}
-                    </p>
-                </div>
-                <div class="description">
-                    {{ tag.description | markdown | safe }}
-                </div>
-            </div>
-        {% endif %}
-    {% else %}
+    {% if fn.returns | length %}
+        {%- for tag in fn.tags %}
+            {% if tag.title == 'returns' %}
+                <p>{{ tag.description | markdown | safe }}</p>
+                <p>
+                    {% if tag.type.name == 'Promise' %}
+                        <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.name }}">{{ tag.type.name }}</a>
+                    {% elif tag.type.expression.name == 'Array' %}
+                        <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>.<<a href="/api/{{ tag.type.applications[0].name }}">{{ tag.type.applications[0].name }}</a>>
+                    {% else %}
+                        <a href="/api/{{ tag.type.name }}">{{ tag.type.name }}</a>
+                    {% endif %}
+                </p>
+            {% endif %}
+        {% endfor -%}
+    {% else%}
         <p>This API does not return any values</p>
-    {% endfor %}
+    {% endif %}
 {%- endmacro %}
 
 {% macro listFuncs(fnList, category) -%}

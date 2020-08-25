@@ -166,7 +166,6 @@ form.search input::placeholder {
     padding: 0;
     width: 90%;
   }
-
 }
 
 ul,
@@ -240,30 +239,6 @@ pre code {
   flex-flow: row wrap;
   font-size: smaller;
   justify-content: space-between;
-}
-
-.params, .returns {
-  display: flex;
-  line-height: 1;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.params .name {
-  flex: 1 0;
-}
-
-.params .type, .returns .type {
-  flex: 1 0;
-}
-
-.params .description {
-  flex: 2 0;
-}
-
-.returns .description {
-  flex: 3 0;
 }
 
 @media(max-width:800px) {
