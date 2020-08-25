@@ -9,7 +9,7 @@ layout: api.njk
 
 {% macro meta(api, forFunc=false) -%}
     {% if forFunc %}
-        <h3 id="{{ api.name }}">{{ api.name }}</h3>
+        <h3 id="{{ api.name }}">{{ api.name }}<a href="#{{ api.name }}">¶</a></h3>
     {% else %}
         <h1>{{api.name}}</h1>
     {% endif %}

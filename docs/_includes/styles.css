@@ -35,6 +35,11 @@ h1 {
   font-size: 2em;
 }
 
+h3 > a {
+  padding-left: 5px;
+  text-decoration: none;
+}
+
 a,
 a:visited,
 a:active {
@@ -261,46 +266,11 @@ pre code {
   flex: 3 0;
 }
 
-.api-body {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.api-body > .content {
-  flex: 3 0 content;
-}
-
-.api-body > .nav {
-  flex: 1 0 content;
-  padding-left: 10em;
-}
-
 @media(max-width:800px) {
   article,
   footer,
   section {
     background: white;
     padding: 15px;
-  }
-
-  .api-body {
-    max-width: 100%;
-  }
-}
-
-@media(max-width:800px) {
-  article,
-  footer,
-  section {
-    background: white;
-    padding: 15px;
-  }
-
-  .api-body {
-    max-width: 100%;
-  }
-
-  .params, .returns {
-    display: inline;
   }
 }
