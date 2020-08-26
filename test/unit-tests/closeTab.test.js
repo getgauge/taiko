@@ -9,6 +9,8 @@ describe('closeTab', () => {
   let title = '';
   let _isMatchUrl = false;
   let _isMatchRegex = false;
+  let _isMatchTarget = false;
+
   let currentTarget, taiko, targetHandler;
   let descEmmitter = new EventEmitter();
 
@@ -41,6 +43,15 @@ describe('closeTab', () => {
       isMatchingRegex: () => {
         return _isMatchRegex;
       },
+      isMatchingTarget: () => {
+        return _isMatchTarget;
+      },
+      register: (name, target) => {
+        return targetHandler.register(name, target);
+      },
+      unregister: (name) => {
+        return targetHandler.unregister(name);
+      },
     };
 
     taiko.__set__('validate', () => {});
@@ -52,6 +63,7 @@ describe('closeTab', () => {
     taiko.__set__('cri', mockCri);
     taiko.__set__('connect_to_cri', async (target) => {
       currentTarget = target;
+      return currentTarget;
     });
     taiko.__set__('dom', { getDocument: async () => {} });
   });
@@ -217,5 +229,36 @@ describe('closeTab', () => {
     await taiko.closeTab(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/);
     await validatePromise;
     expect(currentTarget).to.be.undefined;
+  });
+
+  it('should close tab matching identifier', async () => {
+    let targetWithIdentifier = {
+      id: '1',
+      type: 'page',
+      url: 'https://www.google.com',
+    };
+
+    _targets.matching.push(targetWithIdentifier);
+
+    targetHandler.register('google', targetWithIdentifier);
+
+    _targets.others.push({
+      id: '2',
+      type: 'page',
+      url: 'https://www.google.co.uk',
+    });
+    _targets.others.push({
+      id: '3',
+      type: 'page',
+      url: 'https://amazon.com',
+    });
+    currentURL = 'https://amazon.com';
+    _isMatchUrl = false;
+    _isMatchRegex = false;
+
+    let validatePromise = validateEmitterEvent('success', 'Closed tab(s) matching google');
+    await taiko.closeTab({ name: 'google' });
+    expect(targetHandler.register('google')).to.be.undefined;
+    await validatePromise;
   });
 });

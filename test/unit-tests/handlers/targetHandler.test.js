@@ -212,4 +212,32 @@ describe('TargetHandler', () => {
       expect(targets.others.length).to.be.equal(2);
     });
   });
+
+  describe('register and unregister', () => {
+    let targetHandler;
+
+    beforeEach(() => {
+      targetHandler = new require('../../../lib/handlers/targetHandler');
+    });
+
+    afterEach(() => {
+      targetHandler.clearRegister();
+    });
+
+    it('should register a target with name', async () => {
+      targetHandler.register('one', { id: 'first', type: 'page' });
+      targetHandler.register('two', { id: 'second', type: 'page' });
+      expect(targetHandler.register('two').id).to.be.equal('second');
+    });
+
+    it('should unregister a tab with the given name', async () => {
+      targetHandler.register('one', { id: 'first', type: 'page' });
+      targetHandler.register('two', { id: 'second', type: 'page' });
+
+      targetHandler.unregister('one');
+
+      expect(targetHandler.register('one')).to.be.undefined;
+      expect(targetHandler.register('two').id).to.equal('second');
+    });
+  });
 });
