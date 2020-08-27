@@ -79,3 +79,9 @@ lib/api.json
 tags
 _site
 apis.json
+
+#generated types testing
+types/taiko/test/generated
+
+# Ignore testscripts with this name in the root folder (created for debugging)
+test-script.js
