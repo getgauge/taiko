@@ -254,7 +254,7 @@ export interface MouseCoordinates {
 
 /**
  * Browser Actions
- **/
+ */
 
 // https://docs.taiko.dev/api/openbrowser
 export function openBrowser(options?: BrowserOptions): Promise<void>;
@@ -319,7 +319,7 @@ export function setCookie(
 // https://docs.taiko.dev/api/deletecookies
 export function deleteCookies(cookieName?: string, options?: CookieOptions): Promise<void>;
 // https://docs.taiko.dev/api/getcookies
-export function getCookies(options?: { urls: string[] }): Promise<Record<string, any>[]>;
+export function getCookies(options?: { urls: string[] }): Promise<Array<Record<string, any>>>;
 // https://docs.taiko.dev/api/setlocation
 export function setLocation(options: LocationOptions): Promise<void>;
 
@@ -375,6 +375,8 @@ export function attach(filepath: string, to: SearchElement): Promise<void>;
 export function press(keys: string | string[], options?: KeyOptions): Promise<void>;
 // https://docs.taiko.dev/api/highlight
 export function highlight(selector: SearchElement, ...args: RelativeSearchElement[]): Promise<void>;
+// https://docs.taiko.dev/api/clearHighlights
+export function clearHighlights(): Promise<void>;
 // https://docs.taiko.dev/api/mouseaction
 export function mouseAction(
   selector: SearchElement | 'press' | 'move' | 'release',
@@ -431,6 +433,30 @@ export function button(
 export function fileField(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
+// https://docs.taiko.dev/api/timefield
+export function timeField(
+  selector: SearchElement,
+  options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
+// https://docs.taiko.dev/api/range
+export function range(
+  selector: SearchElement,
+  options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
+// https://docs.taiko.dev/api/color
+export function color(
+  selector: SearchElement,
+  options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
+// https://docs.taiko.dev/api/tableCell
+export function tableCell(
+  options: SelectionOptions | RelativeSearchElement | undefined,
+  selector: SearchElement,
   ...args: RelativeSearchElement[]
 ): ElementWrapper;
 // https://docs.taiko.dev/api/textbox
@@ -507,7 +533,7 @@ export function confirm(
 ): void;
 
 // https://docs.taiko.dev/api/beforeunload
-export function beforeunload(message: string, callback: Function): void;
+export function beforeunload(message: string, callback: () => Promise<void>): void;
 
 /**
  * Helpers
@@ -533,6 +559,8 @@ export function setConfig(options: GlobalConfigurationOptions): void;
 export function currentURL(): Promise<string>;
 // https://docs.taiko.dev/api/waitfor
 export function waitFor(time: number): Promise<void>;
-export function waitFor(element: SearchElement, time: number): Promise<void>;
-export function waitFor(condition: () => Promise<boolean>, time: number): Promise<void>;
+export function waitFor(
+  elementOrCondition: SearchElement | (() => Promise<boolean>),
+  time: number,
+): Promise<void>;
 export function clearIntercept(requestUrl?: string): void;
