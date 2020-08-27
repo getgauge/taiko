@@ -44,10 +44,18 @@ export interface ClickOptions extends NavigationOptions {
   elementsToMatch?: number;
 }
 
-export interface GlobalConfigurationOptions extends BasicNavigationOptions {
+export interface GlobalConfigurationOptions {
+  navigationTimeout?: number;
   observeTime?: number;
   retryInterval?: number;
   retryTimeout?: number;
+  observe?: boolean;
+  waitForNavigation?: boolean;
+  ignoreSSLErrors?: boolean;
+  headful?: boolean;
+  criConnectionRetries?: number;
+  firefox?: boolean;
+  highlightOnAction?: 'true' | 'false';
 }
 
 export interface TapOptions extends BasicNavigationOptions, EventOptions {}
@@ -555,6 +563,8 @@ export function accept(text?: string): Promise<void>;
 export function dismiss(text?: string): Promise<void>;
 // https://docs.taiko.dev/api/setconfig
 export function setConfig(options: GlobalConfigurationOptions): void;
+// https://docs.taiko.dev/api/getconfig
+export function getConfig(option?: keyof GlobalConfigurationOptions): number | boolean | undefined;
 // https://docs.taiko.dev/api/currenturl
 export function currentURL(): Promise<string>;
 // https://docs.taiko.dev/api/waitfor
