@@ -6,6 +6,7 @@ import {
   emulateNetwork,
   emulateDevice,
   setViewPort,
+  openTab,
 } from '../../taiko';
 
 // ------------------------------------------
@@ -143,4 +144,28 @@ setViewPort({
   dontSetVisibleSize: true,
   screenOrientation: { type: 'landscapePrimary', angle: 0 },
   viewport: { x: 1, y: 1, width: 1, height: 1, scale: 1 },
+});
+
+// ------------------------------------------
+// openTab
+// https://docs.taiko.dev/api/opentab
+// ------------------------------------------
+
+openTab('https://taiko.dev');
+openTab();
+openTab('https://taiko.dev', { name: 'taiko' });
+openTab('https://taiko.dev', {
+  waitForNavigation: true,
+  name: 'aaa',
+  navigationTimeout: 10000,
+  waitForStart: 200,
+  waitForEvents: [
+    'DOMContentLoaded',
+    'loadEventFired',
+    'networkAlmostIdle',
+    'networkIdle',
+    'firstPaint',
+    'firstContentfulPaint',
+    'firstMeaningfulPaint',
+  ],
 });

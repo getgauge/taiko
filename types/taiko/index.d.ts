@@ -35,7 +35,7 @@ export interface BasicNavigationOptions {
 
 export interface NavigationOptions extends BasicNavigationOptions, EventOptions {
   headers?: object;
-  waitForStart?: boolean;
+  waitForStart?: number;
 }
 
 export interface ClickOptions extends NavigationOptions {
@@ -127,7 +127,7 @@ export interface MatchingOptions {
   exactMatch: boolean;
 }
 
-export interface OpenWindowOptions extends NavigationOptions {
+export interface OpenWindowOrTabOptions extends NavigationOptions {
   name: string;
 }
 
@@ -278,7 +278,7 @@ export function closeBrowser(): Promise<void>;
 export function client(): any; // TODO: no TS Bindings available: https://github.com/cyrus-and/chrome-remote-interface/issues/112
 // https://docs.taiko.dev/api/switchto
 // TODO: fix corresponding JSDoc in lib/taiko.js
-export function switchTo(target: RegExp | OpenWindowOptions): Promise<void>;
+export function switchTo(target: RegExp | OpenWindowOrTabOptions): Promise<void>;
 // https://docs.taiko.dev/api/intercept
 // https://github.com/getgauge/taiko/issues/98#issuecomment-42024186
 export function intercept(
@@ -311,13 +311,13 @@ export function setViewPort(options: ViewPortOptions): Promise<void>;
 // https://docs.taiko.dev/api/emulateTimezone
 export function emulateTimezone(timezoneId: string): Promise<void>;
 // https://docs.taiko.dev/api/opentab
-export function openTab(targetUrl: string, options?: NavigationOptions): Promise<void>;
+export function openTab(targetUrl?: string, options?: OpenWindowOrTabOptions): Promise<void>;
 // https://docs.taiko.dev/api/closetab
 export function closeTab(targetUrl?: string): Promise<void>;
 // https://docs.taiko.dev/api/openincognitowindow
 export function openIncognitoWindow(
-  url?: string | OpenWindowOptions,
-  options?: OpenWindowOptions,
+  url?: string | OpenWindowOrTabOptions,
+  options?: OpenWindowOrTabOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/closeincognitowindow
 export function closeIncognitoWindow(name: string): Promise<void>;
