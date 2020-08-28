@@ -1,4 +1,12 @@
-import { openBrowser, closeBrowser, switchTo, intercept } from '../../taiko';
+import {
+  openBrowser,
+  closeBrowser,
+  switchTo,
+  intercept,
+  emulateNetwork,
+  emulateDevice,
+  setViewPort,
+} from '../../taiko';
 
 // ------------------------------------------
 // openBrowser
@@ -31,7 +39,7 @@ closeBrowser({}); // $ExpectError
 
 // ------------------------------------------
 // switchTo
-// https://docs.taiko.dev/api/switchTo
+// https://docs.taiko.dev/api/switchto
 // ------------------------------------------
 
 switchTo(/taiko.dev/); // $ExpectType Promise<void>
@@ -65,6 +73,16 @@ intercept('http://localhost:3000/api/customers/11', {
 intercept('https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png', (request) => {
   request.continue({ url: 'http://localhost:3000/assets/images/female.png' });
 });
+// $ExpectType Promise<void>
+intercept('https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png', (request) => {
+  request.continue({
+    url: 'http://localhost:3000/assets/images/female.png',
+    headers: {
+      foo: 'bar', // set "foo" header
+      origin: undefined, // remove "origin" header
+    },
+  });
+});
 
 // Case 4: Redirect URL (Overrides male.png to female.png)
 // $ExpectType Promise<void>
@@ -85,4 +103,44 @@ intercept('http://localhost:3000/api/customers/1', (request) => {
       '{"productName":"Shoes","itemCost":199.99}],' +
       '"latitude":33.299,"longitude":-111.963}',
   });
+});
+
+// ------------------------------------------
+// emulateNetwork
+// https://docs.taiko.dev/api/emulatenetwork
+// ------------------------------------------
+
+emulateNetwork('Offline'); // $ExpectType Promise<void>
+emulateNetwork('Good2G'); // $ExpectType Promise<void>
+emulateNetwork({ offline: false, downloadThroughput: 6400, uploadThroughput: 2560, latency: 500 }); // $ExpectType Promise<void>
+emulateNetwork({ downloadThroughput: 6400, uploadThroughput: 2560, latency: 500 }); // $ExpectType Promise<void>
+
+// ------------------------------------------
+// emulateDevice
+// https://docs.taiko.dev/api/emulatedevice
+// ------------------------------------------
+
+emulateDevice('iPhone 6'); // $ExpectType Promise<void>
+
+// ------------------------------------------
+// setViewPort
+// https://docs.taiko.dev/api/setviewport
+// ------------------------------------------
+
+setViewPort({ width: 600, height: 800 }); // $ExpectType Promise<void>
+
+// $ExpectType Promise<void>
+setViewPort({
+  width: 600,
+  height: 800,
+  deviceScaleFactor: 1,
+  mobile: true,
+  scale: 1,
+  screenWidth: 1,
+  screenHeight: 1,
+  positionX: 1,
+  positionY: 1,
+  dontSetVisibleSize: true,
+  screenOrientation: { type: 'landscapePrimary', angle: 0 },
+  viewport: { x: 1, y: 1, width: 1, height: 1, scale: 1 },
 });

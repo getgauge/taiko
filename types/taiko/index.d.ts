@@ -76,6 +76,7 @@ export interface ScreenshotOptions {
   encoding?: string;
 }
 
+// TODO: remove this type declaration and replace with devtools-protocol Emulation.SetDeviceMetricsOverrideRequest
 export interface ViewPortOptions {
   width: number;
   height: number;
