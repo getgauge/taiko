@@ -10,7 +10,7 @@
   "types": "./types/taiko/index.d.ts",
   "scripts": {
     "lint": "eslint --fix --ext js,ts .",
-    "dtslint": "node ./test/types-test-support/generate-types-test.js && dtslint types/taiko",
+    "dtslint": "node ./test/types-test-support/generate-types-test.js && eslint --fix --ext js,ts . && dtslint types/taiko",
     "doc": "npm run doc:api && eleventy",
     "doc:serve": "npm run doc:api && eleventy --serve",
     "doc:api": "node lib/documentation.js",
