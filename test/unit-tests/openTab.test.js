@@ -1,9 +1,13 @@
 const expect = require('chai').expect;
 const { EventEmitter } = require('events');
 const rewire = require('rewire');
+const { fail } = require('assert');
+const targetHandler = new require('../../lib/handlers/targetHandler');
 
 describe('openTab', () => {
-  let actualTarget, target, actualOptions, actualUrl, taiko;
+  let actualTarget, actualOptions, actualUrl, taiko;
+  let target = { id: 'TARGET' };
+
   before(async () => {
     taiko = rewire('../../lib/taiko');
     let mockCri = {
@@ -12,9 +16,11 @@ describe('openTab', () => {
         return target;
       },
     };
-    let mockConnectToCri = (target) => {
-      actualTarget = target;
+
+    let mockConnectToCri = (tgt) => {
+      actualTarget = tgt;
     };
+
     const mockWrapper = async (options, cb) => {
       actualOptions = options;
       await cb();
@@ -28,6 +34,10 @@ describe('openTab', () => {
 
   after(() => {
     taiko = rewire('../../lib/taiko');
+  });
+
+  afterEach(() => {
+    targetHandler.clearRegister();
   });
 
   it('Open tab without any url should call connectToCri', async () => {
@@ -69,5 +79,33 @@ describe('openTab', () => {
     };
     await taiko.openTab('example.com', expectedOptions);
     expect(actualOptions).to.deep.equal(expectedOptions);
+  });
+
+  it('should throw error if tab is opened with same identifier more than once', async () => {
+    await taiko.openTab('example.com', { name: 'example' });
+    try {
+      await taiko.openTab('anotherexamplecom', { name: 'example' });
+      fail('Did not throw error on duplicate name registration');
+    } catch (err) {
+      expect(err.message).to.equal(
+        "There is a window or tab already registered with the name 'example' please use another name.",
+      );
+    }
+  });
+
+  it('should register with identifier if no url and an identifier is passed', async () => {
+    await taiko.openTab({ name: 'github' });
+    expect(actualOptions.name).to.equal('github');
+    expect(targetHandler.register('github')).to.equal(target.id);
+  });
+
+  it('should set about:blank as the url with identifier', async () => {
+    await taiko.openTab({ name: 'github' });
+    expect(actualUrl).to.equal('about:blank');
+  });
+
+  it('should set about:blank when no parameters are passed', async () => {
+    await taiko.openTab();
+    expect(actualUrl).to.equal('about:blank');
   });
 });
