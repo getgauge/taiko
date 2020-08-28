@@ -35,6 +35,11 @@ h1 {
   font-size: 2em;
 }
 
+h3 > a {
+  padding-left: 5px;
+  text-decoration: none;
+}
+
 a,
 a:visited,
 a:active {
@@ -161,7 +166,6 @@ form.search input::placeholder {
     padding: 0;
     width: 90%;
   }
-
 }
 
 ul,
