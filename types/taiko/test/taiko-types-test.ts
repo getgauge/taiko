@@ -12,6 +12,11 @@ import {
   closeIncognitoWindow,
   overridePermissions,
   clearPermissionOverrides,
+  setCookie,
+  deleteCookies,
+  getCookies,
+  setLocation,
+  clearIntercept,
 } from '../../taiko';
 
 // ------------------------------------------
@@ -233,3 +238,68 @@ overridePermissions('http://maps.google.com', ['geolocation']); // $ExpectType P
 // ------------------------------------------
 
 clearPermissionOverrides(); // $ExpectType Promise<void>
+
+// ------------------------------------------
+// setCookie
+// https://docs.taiko.dev/api/setCookie
+// ------------------------------------------
+
+setCookie('CSRFToken', 'csrfToken', { url: 'http://the-internet.herokuapp.com' }); // $ExpectType Promise<void>
+setCookie('CSRFToken', 'csrfToken', { domain: 'herokuapp.com' }); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
+setCookie('CSRFToken', 'csrfToken', {
+  url: 'an url',
+  domain: 'a domain',
+  path: 'a path',
+  secure: true,
+  httpOnly: true,
+  sameSite: 'a string',
+  expires: 1000000,
+});
+setCookie('CSRFToken', 'csrfToken', {}); // $ExpectType Promise<void>
+setCookie('CSRFToken', 'csrfToken'); // $ExpectType Promise<void>
+
+// ------------------------------------------
+// deleteCookies
+// https://docs.taiko.dev/api/deleteCookies
+// ------------------------------------------
+
+deleteCookies(); // $ExpectType Promise<void>
+deleteCookies('CSRFToken', { url: 'http://the-internet.herokuapp.com' }); // $ExpectType Promise<void>
+deleteCookies('CSRFToken', { domain: 'herokuapp.com' }); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
+deleteCookies('CSRFToken', {
+  url: 'an url',
+  domain: 'a domain',
+  path: 'a path',
+});
+
+// ------------------------------------------
+// getCookies
+// https://docs.taiko.dev/api/getCookies
+// ------------------------------------------
+
+getCookies(); // $ExpectType Cookie[]
+getCookies({ urls: ['https://the-internet.herokuapp.com'] }); // $ExpectType Cookie[]
+
+// ------------------------------------------
+// setLocation
+// https://docs.taiko.dev/api/setLocation
+// ------------------------------------------
+
+// $ExpectType Promise<void>
+setLocation({ latitude: 27.1752868, longitude: 78.040009, accuracy: 20 });
+// $ExpectType Promise<void>
+setLocation({ latitude: 27.1752868, longitude: 78.040009 });
+// $ExpectError
+setLocation({ latitude: 27.1752868 });
+// $ExpectError
+setLocation({ longitude: 78.040009 });
+
+// ------------------------------------------
+// clearIntercept
+// https://docs.taiko.dev/api/clearIntercept
+// ------------------------------------------
+
+clearIntercept('https://google.com'); // $ExpectType void
+clearIntercept(); // $ExpectType void

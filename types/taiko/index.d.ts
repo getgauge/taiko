@@ -1,5 +1,10 @@
 // Custom Typings for Taiko - https://docs.taiko.dev/api/reference
 
+// eslint-disable-next-line no-unused-vars
+import Protocol from 'devtools-protocol';
+
+export type Cookie = Protocol.Network.Cookie;
+
 export type BrowserEvent =
   | 'DOMContentLoaded'
   | 'loadEventFired'
@@ -335,7 +340,7 @@ export function setCookie(
 // https://docs.taiko.dev/api/deletecookies
 export function deleteCookies(cookieName?: string, options?: CookieOptions): Promise<void>;
 // https://docs.taiko.dev/api/getcookies
-export function getCookies(options?: { urls: string[] }): Promise<Array<Record<string, any>>>;
+export function getCookies(options?: { urls: string[] }): Cookie[];
 // https://docs.taiko.dev/api/setlocation
 export function setLocation(options: LocationOptions): Promise<void>;
 
