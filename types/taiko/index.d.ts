@@ -219,7 +219,12 @@ export interface InterceptMockData {
   [key: string]: any;
 }
 export interface InterceptRequest {
-  continue(url: string): Promise<void>;
+  continue(overrides: {
+    url?: string;
+    method?: string;
+    postData?: string;
+    headers?: Record<string, unknown>;
+  }): Promise<void>;
   respond(response: InterceptMockData): Promise<void>;
 }
 export type interceptRequestHandler = (request: InterceptRequest) => Promise<void>;
