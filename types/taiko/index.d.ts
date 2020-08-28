@@ -271,7 +271,8 @@ export function closeBrowser(): Promise<void>;
 // https://docs.taiko.dev/api/client
 export function client(): any; // TODO: no TS Bindings available: https://github.com/cyrus-and/chrome-remote-interface/issues/112
 // https://docs.taiko.dev/api/switchto
-export function switchTo(targetUrl: string): Promise<void>;
+// TODO: fix corresponding JSDoc in lib/taiko.js
+export function switchTo(target: RegExp | OpenWindowOptions): Promise<void>;
 // https://docs.taiko.dev/api/intercept
 // https://github.com/getgauge/taiko/issues/98#issuecomment-42024186
 export function intercept(
