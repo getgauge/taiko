@@ -7,6 +7,7 @@ import {
   emulateDevice,
   setViewPort,
   openTab,
+  closeTab,
 } from '../../taiko';
 
 // ------------------------------------------
@@ -151,9 +152,10 @@ setViewPort({
 // https://docs.taiko.dev/api/opentab
 // ------------------------------------------
 
-openTab('https://taiko.dev');
-openTab();
-openTab('https://taiko.dev', { name: 'taiko' });
+openTab('https://taiko.dev'); // $ExpectType Promise<void>
+openTab(); // $ExpectType Promise<void>
+openTab('https://taiko.dev', { name: 'taiko' }); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
 openTab('https://taiko.dev', {
   waitForNavigation: true,
   name: 'aaa',
@@ -169,3 +171,14 @@ openTab('https://taiko.dev', {
     'firstMeaningfulPaint',
   ],
 });
+
+// ------------------------------------------
+// closeTab
+// https://docs.taiko.dev/api/closetab
+// ------------------------------------------
+
+closeTab(); // $ExpectType Promise<void>
+closeTab('Open Source Test Automation Framework | Gauge'); // $ExpectType Promise<void>
+closeTab('https://gauge.org'); // $ExpectType Promise<void>
+closeTab(/Go*gle/); // $ExpectType Promise<void>
+closeTab(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/); // $ExpectType Promise<void>

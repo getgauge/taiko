@@ -313,7 +313,7 @@ export function emulateTimezone(timezoneId: string): Promise<void>;
 // https://docs.taiko.dev/api/opentab
 export function openTab(targetUrl?: string, options?: OpenWindowOrTabOptions): Promise<void>;
 // https://docs.taiko.dev/api/closetab
-export function closeTab(targetUrl?: string): Promise<void>;
+export function closeTab(targetUrl?: string | RegExp): Promise<void>;
 // https://docs.taiko.dev/api/openincognitowindow
 export function openIncognitoWindow(
   url?: string | OpenWindowOrTabOptions,
