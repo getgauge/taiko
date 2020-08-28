@@ -322,6 +322,7 @@ export function openIncognitoWindow(
 // https://docs.taiko.dev/api/closeincognitowindow
 export function closeIncognitoWindow(name: string): Promise<void>;
 // https://docs.taiko.dev/api/overridepermissions
+// TODO: use the proper type for the second param from devtools-protocol
 export function overridePermissions(origin: string, permissions: string[]): Promise<void>;
 // https://docs.taiko.dev/api/clearpermissionoverrides
 export function clearPermissionOverrides(): Promise<void>;

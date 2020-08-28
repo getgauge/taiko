@@ -8,6 +8,10 @@ import {
   setViewPort,
   openTab,
   closeTab,
+  openIncognitoWindow,
+  closeIncognitoWindow,
+  overridePermissions,
+  clearPermissionOverrides,
 } from '../../taiko';
 
 // ------------------------------------------
@@ -182,3 +186,50 @@ closeTab('Open Source Test Automation Framework | Gauge'); // $ExpectType Promis
 closeTab('https://gauge.org'); // $ExpectType Promise<void>
 closeTab(/Go*gle/); // $ExpectType Promise<void>
 closeTab(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/); // $ExpectType Promise<void>
+
+// ------------------------------------------
+// openIncognitoWindow
+// https://docs.taiko.dev/api/openIncognitoWindow
+// ------------------------------------------
+
+openIncognitoWindow(); // $ExpectType Promise<void>
+openIncognitoWindow('https://google.com'); // $ExpectType Promise<void>
+openIncognitoWindow('https://google.com', { name: 'windowName' }); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
+openIncognitoWindow('https://google.com', {
+  waitForNavigation: true,
+  name: 'aaa',
+  navigationTimeout: 10000,
+  waitForStart: 200,
+  waitForEvents: [
+    'DOMContentLoaded',
+    'loadEventFired',
+    'networkAlmostIdle',
+    'networkIdle',
+    'firstPaint',
+    'firstContentfulPaint',
+    'firstMeaningfulPaint',
+  ],
+});
+
+// ------------------------------------------
+// closeIncognitoWindow
+// https://docs.taiko.dev/api/closeIncognitoWindow
+// ------------------------------------------
+
+closeIncognitoWindow('windowName'); // $ExpectType Promise<void>
+closeIncognitoWindow(); // $ExpectError
+
+// ------------------------------------------
+// overridePermissions
+// https://docs.taiko.dev/api/overridePermissions
+// ------------------------------------------
+
+overridePermissions('http://maps.google.com', ['geolocation']); // $ExpectType Promise<void>
+
+// ------------------------------------------
+// clearPermissionOverrides
+// https://docs.taiko.dev/api/clearPermissionOverrides
+// ------------------------------------------
+
+clearPermissionOverrides(); // $ExpectType Promise<void>
