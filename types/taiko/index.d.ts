@@ -1,5 +1,10 @@
 // Custom Typings for Taiko - https://docs.taiko.dev/api/reference
 
+// eslint-disable-next-line no-unused-vars
+import Protocol from 'devtools-protocol';
+
+export type Cookie = Protocol.Network.Cookie;
+
 export type BrowserEvent =
   | 'DOMContentLoaded'
   | 'loadEventFired'
@@ -35,7 +40,7 @@ export interface BasicNavigationOptions {
 
 export interface NavigationOptions extends BasicNavigationOptions, EventOptions {
   headers?: object;
-  waitForStart?: boolean;
+  waitForStart?: number;
 }
 
 export interface ClickOptions extends NavigationOptions {
@@ -76,6 +81,7 @@ export interface ScreenshotOptions {
   encoding?: string;
 }
 
+// TODO: remove this type declaration and replace with devtools-protocol Emulation.SetDeviceMetricsOverrideRequest
 export interface ViewPortOptions {
   width: number;
   height: number;
@@ -126,7 +132,7 @@ export interface MatchingOptions {
   exactMatch: boolean;
 }
 
-export interface OpenWindowOptions extends NavigationOptions {
+export interface OpenWindowOrTabOptions extends NavigationOptions {
   name: string;
 }
 
@@ -219,7 +225,12 @@ export interface InterceptMockData {
   [key: string]: any;
 }
 export interface InterceptRequest {
-  continue(url: string): Promise<void>;
+  continue(overrides: {
+    url?: string;
+    method?: string;
+    postData?: string;
+    headers?: Record<string, unknown>;
+  }): Promise<void>;
   respond(response: InterceptMockData): Promise<void>;
 }
 export type interceptRequestHandler = (request: InterceptRequest) => Promise<void>;
@@ -271,7 +282,8 @@ export function closeBrowser(): Promise<void>;
 // https://docs.taiko.dev/api/client
 export function client(): any; // TODO: no TS Bindings available: https://github.com/cyrus-and/chrome-remote-interface/issues/112
 // https://docs.taiko.dev/api/switchto
-export function switchTo(targetUrl: string): Promise<void>;
+// TODO: fix corresponding JSDoc in lib/taiko.js
+export function switchTo(target: RegExp | OpenWindowOrTabOptions): Promise<void>;
 // https://docs.taiko.dev/api/intercept
 // https://github.com/getgauge/taiko/issues/98#issuecomment-42024186
 export function intercept(
@@ -304,17 +316,18 @@ export function setViewPort(options: ViewPortOptions): Promise<void>;
 // https://docs.taiko.dev/api/emulateTimezone
 export function emulateTimezone(timezoneId: string): Promise<void>;
 // https://docs.taiko.dev/api/opentab
-export function openTab(targetUrl: string, options?: NavigationOptions): Promise<void>;
+export function openTab(targetUrl?: string, options?: OpenWindowOrTabOptions): Promise<void>;
 // https://docs.taiko.dev/api/closetab
-export function closeTab(targetUrl?: string): Promise<void>;
+export function closeTab(targetUrl?: string | RegExp): Promise<void>;
 // https://docs.taiko.dev/api/openincognitowindow
 export function openIncognitoWindow(
-  url?: string | OpenWindowOptions,
-  options?: OpenWindowOptions,
+  url?: string | OpenWindowOrTabOptions,
+  options?: OpenWindowOrTabOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/closeincognitowindow
 export function closeIncognitoWindow(name: string): Promise<void>;
 // https://docs.taiko.dev/api/overridepermissions
+// TODO: use the proper type for the second param from devtools-protocol
 export function overridePermissions(origin: string, permissions: string[]): Promise<void>;
 // https://docs.taiko.dev/api/clearpermissionoverrides
 export function clearPermissionOverrides(): Promise<void>;
@@ -327,7 +340,7 @@ export function setCookie(
 // https://docs.taiko.dev/api/deletecookies
 export function deleteCookies(cookieName?: string, options?: CookieOptions): Promise<void>;
 // https://docs.taiko.dev/api/getcookies
-export function getCookies(options?: { urls: string[] }): Promise<Array<Record<string, any>>>;
+export function getCookies(options?: { urls: string[] }): Cookie[];
 // https://docs.taiko.dev/api/setlocation
 export function setLocation(options: LocationOptions): Promise<void>;
 
