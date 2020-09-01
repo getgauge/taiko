@@ -1,4 +1,4 @@
-import { goto } from '..';
+import { goto, reload } from '..';
 
 // ------------------------------------------
 // goto
@@ -22,6 +22,24 @@ async () => {
 // reload
 // https://docs.taiko.dev/api/reload
 // ------------------------------------------
+reload('https://google.com'); // $ExpectType Promise<void>
+reload('https://google.com', { navigationTimeout: 10000 }); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
+reload('https://google.com', {
+  waitForNavigation: true,
+  waitForEvents: [
+    'DOMContentLoaded',
+    'loadEventFired',
+    'networkAlmostIdle',
+    'networkIdle',
+    'firstPaint',
+    'firstContentfulPaint',
+    'firstMeaningfulPaint',
+  ],
+  navigationTimeout: 30000,
+  waitForStart: 100,
+  ignoreCache: false,
+});
 
 // ------------------------------------------
 // goBack

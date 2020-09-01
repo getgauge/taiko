@@ -43,6 +43,10 @@ export interface NavigationOptions extends BasicNavigationOptions, EventOptions 
   waitForStart?: number;
 }
 
+export interface ReloadOptions extends NavigationOptions {
+  ignoreCache?: boolean;
+}
+
 export interface ClickOptions extends NavigationOptions {
   button?: 'left' | 'right' | 'middle';
   clickCount?: number;
@@ -351,7 +355,7 @@ export function setLocation(options: LocationOptions): Promise<void>;
 // https://docs.taiko.dev/api/goto
 export function goto(url: string, options?: NavigationOptions): Promise<Response>;
 // https://docs.taiko.dev/api/reload
-export function reload(url?: string, options?: NavigationOptions): Promise<void>;
+export function reload(url?: string, options?: ReloadOptions): Promise<void>;
 // https://docs.taiko.dev/api/goback
 export function goBack(options?: NavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/goforward
