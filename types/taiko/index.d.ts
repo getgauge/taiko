@@ -33,8 +33,11 @@ export interface EventOptions {
   waitForEvents?: BrowserEvent[];
 }
 
-export interface BasicNavigationOptions {
+export interface VeryBasicNavigationOptions {
   waitForNavigation?: boolean;
+}
+
+export interface BasicNavigationOptions extends VeryBasicNavigationOptions {
   navigationTimeout?: number;
 }
 
@@ -371,13 +374,13 @@ export function click(
 // https://docs.taiko.dev/api/doubleclick
 export function doubleClick(
   selector: SearchElement | MouseCoordinates,
-  options?: BasicNavigationOptions,
+  options?: VeryBasicNavigationOptions,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/rightclick
 export function rightClick(
   selector: SearchElement | MouseCoordinates,
-  options?: BasicNavigationOptions,
+  options?: VeryBasicNavigationOptions,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/draganddrop

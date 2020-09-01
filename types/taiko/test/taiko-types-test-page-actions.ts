@@ -1,4 +1,16 @@
-import { goto, reload, goBack, goForward, currentURL, title } from '..';
+import {
+  goto,
+  reload,
+  goBack,
+  goForward,
+  currentURL,
+  title,
+  click,
+  link,
+  below,
+  doubleClick,
+  rightClick,
+} from '..';
 
 // ------------------------------------------
 // goto
@@ -99,16 +111,78 @@ title(); // $ExpectType Promise<string>
 // click
 // https://docs.taiko.dev/api/click
 // ------------------------------------------
-
+click('Get Started'); // $ExpectType Promise<void>
+click(link('Get Started')); // $ExpectType Promise<void>
+click({ x: 170, y: 567 }); // $ExpectType Promise<void>
+click('Get Started', { navigationTimeout: 60000 }); // $ExpectType Promise<void>
+click('Get Started', { navigationTimeout: 60000 }, below('text')); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
+click(
+  { x: 170, y: 567 },
+  {
+    waitForNavigation: true,
+    navigationTimeout: 30000,
+    button: 'middle',
+    clickCount: 1,
+    elementsToMatch: 10,
+    waitForEvents: [
+      'DOMContentLoaded',
+      'loadEventFired',
+      'networkAlmostIdle',
+      'networkIdle',
+      'firstPaint',
+      'firstContentfulPaint',
+      'firstMeaningfulPaint',
+    ],
+    waitForStart: 100,
+  },
+);
+click(
+  { x: 170, y: 567 },
+  {
+    waitForNavigation: true,
+    navigationTimeout: 30000,
+    button: 'middle',
+    clickCount: 1,
+    elementsToMatch: 10,
+    waitForEvents: [
+      'DOMContentLoaded',
+      'loadEventFired',
+      'networkAlmostIdle',
+      'networkIdle',
+      'firstPaint',
+      'firstContentfulPaint',
+      'firstMeaningfulPaint',
+    ],
+    waitForStart: 100,
+  },
+  below('text'),
+);
 // ------------------------------------------
 // doubleClick
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/doubleClick
 // ------------------------------------------
+doubleClick('Get Started'); // $ExpectType Promise<void>
+doubleClick(link('Get Started')); // $ExpectType Promise<void>
+doubleClick('Get Started', { waitForNavigation: true }); // $ExpectType Promise<void>
+doubleClick('Get Started', { waitForNavigation: false }, below('text')); // $ExpectType Promise<void>
+doubleClick('Get Started', {
+  waitForNavigation: true,
+  navigationTimeout: 30000, // $ExpectError
+});
 
 // ------------------------------------------
 // rightClick
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/rightClick
 // ------------------------------------------
+rightClick('Get Started'); // $ExpectType Promise<void>
+rightClick(link('Get Started')); // $ExpectType Promise<void>
+rightClick('Get Started', { waitForNavigation: true }); // $ExpectType Promise<void>
+rightClick('Get Started', { waitForNavigation: false }, below('text')); // $ExpectType Promise<void>
+rightClick('Get Started', {
+  waitForNavigation: true,
+  navigationTimeout: 30000, // $ExpectError
+});
 
 // ------------------------------------------
 // dragAndDrop
