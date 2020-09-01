@@ -1,4 +1,4 @@
-import { goto, reload } from '..';
+import { goto, reload, goBack, goForward, currentURL, title } from '..';
 
 // ------------------------------------------
 // goto
@@ -45,25 +45,59 @@ reload('https://google.com', {
 // goBack
 // https://docs.taiko.dev/api/goBack
 // ------------------------------------------
+goBack(); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
+goBack({
+  waitForNavigation: true,
+  waitForEvents: [
+    'DOMContentLoaded',
+    'loadEventFired',
+    'networkAlmostIdle',
+    'networkIdle',
+    'firstPaint',
+    'firstContentfulPaint',
+    'firstMeaningfulPaint',
+  ],
+  navigationTimeout: 30000,
+  waitForStart: 100,
+});
 
 // ------------------------------------------
 // goForward
 // https://docs.taiko.dev/api/goForward
 // ------------------------------------------
+goForward(); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
+goForward({
+  waitForNavigation: true,
+  waitForEvents: [
+    'DOMContentLoaded',
+    'loadEventFired',
+    'networkAlmostIdle',
+    'networkIdle',
+    'firstPaint',
+    'firstContentfulPaint',
+    'firstMeaningfulPaint',
+  ],
+  navigationTimeout: 30000,
+  waitForStart: 100,
+});
 
 // ------------------------------------------
 // currentURL
 // https://docs.taiko.dev/api/currentURL
 // ------------------------------------------
+currentURL(); // $ExpectType Promise<string>
 
 // ------------------------------------------
 // title
 // https://docs.taiko.dev/api/title
 // ------------------------------------------
+title(); // $ExpectType Promise<string>
 
 // ------------------------------------------
 // click
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/click
 // ------------------------------------------
 
 // ------------------------------------------
