@@ -1,4 +1,5 @@
 import {
+  $,
   goto,
   reload,
   goBack,
@@ -10,6 +11,12 @@ import {
   below,
   doubleClick,
   rightClick,
+  dragAndDrop,
+  into,
+  hover,
+  focus,
+  textBox,
+  write,
 } from '..';
 
 // ------------------------------------------
@@ -186,23 +193,43 @@ rightClick('Get Started', {
 
 // ------------------------------------------
 // dragAndDrop
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/dragAndDrop
 // ------------------------------------------
+dragAndDrop($('work'), into($('work done'))); // $ExpectType Promise<void>
+dragAndDrop($('work'), { up: 10, down: 10, left: 10, right: 10 }); // $ExpectType Promise<void>
+dragAndDrop($('work')); // $ExpectError
+dragAndDrop($('work'), into($('work done')), { up: 10, down: 10, left: 10, right: 10 }); // $ExpectError
 
 // ------------------------------------------
 // hover
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/hover
 // ------------------------------------------
+hover('Get Started'); // $ExpectType Promise<void>
+hover(link('Get Started')); // $ExpectType Promise<void>
+hover(link('Get Started'), { waitForEvents: ['firstMeaningfulPaint'] }); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // focus
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/focus
 // ------------------------------------------
+focus(textBox('Username:')); // $ExpectType Promise<void>
+focus(textBox('Username:'), { waitForEvents: ['firstMeaningfulPaint'] }); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // write
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/write
 // ------------------------------------------
+write('admin'); // $ExpectType Promise<void>
+write('admin', into(textBox('Username'))); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
+write('admin', into(textBox('Username')), {
+  delay: 0,
+  waitForNavigation: true,
+  waitForStart: 100,
+  navigationTimeout: 30000,
+  hideText: false,
+  waitForEvents: ['firstMeaningfulPaint'],
+});
 
 // ------------------------------------------
 // clear

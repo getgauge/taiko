@@ -386,8 +386,7 @@ export function rightClick(
 // https://docs.taiko.dev/api/draganddrop
 export function dragAndDrop(
   source: SearchElement,
-  destination?: SearchElement,
-  distance?: DragAndDropDistance,
+  destinationOrDistance: SearchElement | DragAndDropDistance,
 ): Promise<void>;
 // https://docs.taiko.dev/api/hover
 export function hover(selector: SearchElement, options?: NavigationOptions): Promise<void>;
