@@ -17,6 +17,12 @@ import {
   focus,
   textBox,
   write,
+  clear,
+  attach,
+  to,
+  press,
+  highlight,
+  clearHighlights,
 } from '..';
 
 // ------------------------------------------
@@ -233,28 +239,58 @@ write('admin', into(textBox('Username')), {
 
 // ------------------------------------------
 // clear
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/clear
 // ------------------------------------------
+clear(); // $ExpectType Promise<void>
+clear(textBox({ placeholder: 'Email' })); // $ExpectType Promise<void>
+clear(textBox({ placeholder: 'Email' }), { waitForNavigation: true }); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
+clear(textBox({ placeholder: 'Email' }), {
+  waitForNavigation: true,
+  waitForStart: 100,
+  navigationTimeout: 10000,
+  waitForEvents: ['firstMeaningfulPaint'],
+});
 
 // ------------------------------------------
 // attach
-// https://docs.taiko.dev/api/aaa
-// ------------------------------------------
+// https://docs.taiko.dev/api/attach
+// -----------------------------------------
+attach('c:/abc.txt', to('Please select a file:')); // $ExpectType Promise<void>
+attach('c:/abc.txt', 'Please select a file:'); // $ExpectType Promise<void>
+attach('c:/abc.txt'); // $ExpectError
 
 // ------------------------------------------
 // press
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/press
 // ------------------------------------------
+press('Enter'); // $ExpectType Promise<void>
+press('a'); // $ExpectType Promise<void>
+press(['Shift', 'ArrowLeft', 'ArrowLeft']); // $ExpectType Promise<void>
+press('a', { waitForNavigation: false }); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
+press('a', {
+  text: 'abcde',
+  delay: 100,
+  waitForNavigation: false,
+  waitForStart: 100,
+  navigationTimeout: 10000,
+  waitForEvents: ['firstMeaningfulPaint'],
+});
 
 // ------------------------------------------
 // highlight
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/highlight
 // ------------------------------------------
+highlight('Get Started'); // $ExpectType Promise<void>
+highlight(link('Get Started')); // $ExpectType Promise<void>
+highlight('Get Started', below('Welcome')); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // clearHighlights
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/clearHighlights
 // ------------------------------------------
+clearHighlights(); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // mouseAction
