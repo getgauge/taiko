@@ -422,7 +422,10 @@ export function scrollUp(selector?: SearchElement | number, px?: number): Promis
 // https://docs.taiko.dev/api/scrolldown
 export function scrollDown(selector?: SearchElement | number, px?: number): Promise<void>;
 // https://docs.taiko.dev/api/screenshot
-export function screenshot(options?: ScreenshotOptions, ...args: SearchElement[]): Promise<Buffer>;
+export function screenshot(
+  selector?: SearchElement,
+  options?: ScreenshotOptions,
+): Promise<Buffer | undefined>;
 // https://docs.taiko.dev/api/tap
 export function tap(
   selector: SearchElement,

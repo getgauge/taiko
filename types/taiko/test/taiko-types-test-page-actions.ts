@@ -23,6 +23,17 @@ import {
   press,
   highlight,
   clearHighlights,
+  mouseAction,
+  scrollTo,
+  scrollRight,
+  scrollLeft,
+  scrollUp,
+  scrollDown,
+  screenshot,
+  text,
+  toRightOf,
+  tap,
+  emulateTimezone,
 } from '..';
 
 // ------------------------------------------
@@ -294,45 +305,105 @@ clearHighlights(); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // mouseAction
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/mouseAction
 // ------------------------------------------
+mouseAction('press', { x: 0, y: 0 }); // $ExpectType Promise<void>
+mouseAction('move', { x: 9, y: 9 }); // $ExpectType Promise<void>
+mouseAction('release', { x: 9, y: 9 }); // $ExpectType Promise<void>
+mouseAction($('#elementID'), 'press', { x: 0, y: 0 }); // $ExpectType Promise<void>
+mouseAction($('.elementClass'), 'move', { x: 9, y: 9 }); // $ExpectType Promise<void>
+mouseAction($('testxpath'), 'release', { x: 9, y: 9 }); // $ExpectType Promise<void>
+// $ExpectType Promise<void>
+mouseAction(
+  'release',
+  { x: 9, y: 9 },
+  {
+    navigationTimeout: 30000,
+  },
+);
+// $ExpectType Promise<void>
+mouseAction(
+  $('testxpath'),
+  'release',
+  { x: 9, y: 9 },
+  {
+    waitForNavigation: true,
+    navigationTimeout: 30000,
+    waitForEvents: ['firstMeaningfulPaint'],
+    waitForStart: 100,
+  },
+);
 
 // ------------------------------------------
 // scrollTo
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/scrollTo
 // ------------------------------------------
+scrollTo('Get Started'); // $ExpectType Promise<void>
+scrollTo(link('Get Started')); // $ExpectType Promise<void>
+scrollTo(link('Get Started'), { waitForEvents: ['firstMeaningfulPaint'] }); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // scrollRight
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/scrollRight
 // ------------------------------------------
+scrollRight(); // $ExpectType Promise<void>
+scrollRight(1000); // $ExpectType Promise<void>
+scrollRight('Element containing text'); // $ExpectType Promise<void>
+scrollRight('Element containing text', 1000); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // scrollLeft
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/scrollLeft
 // ------------------------------------------
+scrollLeft(); // $ExpectType Promise<void>
+scrollLeft(1000); // $ExpectType Promise<void>
+scrollLeft('Element containing text'); // $ExpectType Promise<void>
+scrollLeft('Element containing text', 1000); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // scrollUp
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/scrollUp
 // ------------------------------------------
+scrollUp(); // $ExpectType Promise<void>
+scrollUp(1000); // $ExpectType Promise<void>
+scrollUp('Element containing text'); // $ExpectType Promise<void>
+scrollUp('Element containing text', 1000); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // scrollDown
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/scrollDown
 // ------------------------------------------
+scrollDown(); // $ExpectType Promise<void>
+scrollDown(1000); // $ExpectType Promise<void>
+scrollDown('Element containing text'); // $ExpectType Promise<void>
+scrollDown('Element containing text', 1000); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // screenshot
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/screenshot
 // ------------------------------------------
+screenshot(); // $ExpectType Promise<Buffer | undefined>
+screenshot({ path: 'screenshot.png' }); // $ExpectType Promise<Buffer | undefined>
+screenshot({ fullPage: true }); // $ExpectType Promise<Buffer | undefined>
+screenshot(text('Images', toRightOf('gmail'))); // $ExpectType Promise<Buffer | undefined>
+// $ExpectType Promise<Buffer | undefined>
+screenshot(text('Images', toRightOf('gmail')), {
+  fullPage: true,
+  path: 'shot.png',
+  encoding: 'base64',
+});
 
 // ------------------------------------------
 // tap
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/tap
 // ------------------------------------------
+tap('Gmail'); // $ExpectType Promise<void>
+tap(link('Gmail')); // $ExpectType Promise<void>
+tap(link('Gmail'), { waitForNavigation: true, waitForEvents: ['firstMeaningfulPaint'] }); // $ExpectType Promise<void>
+tap(link('Gmail'), {}, below('title')); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // emulateTimezone
-// https://docs.taiko.dev/api/aaa
+// https://docs.taiko.dev/api/emulateTimezone
 // ------------------------------------------
+emulateTimezone('America/Jamaica'); // $ExpectType Promise<void>
