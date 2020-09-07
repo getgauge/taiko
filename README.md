@@ -150,7 +150,7 @@ You can also use Taiko’s proximity selectors to visually locate elements. For 
 
 Will click the checkbox that is nearest to any element with the text `Username`.
 
-Taiko’s also supports XPath and CSS selectors
+Taiko also supports XPath and CSS selectors
 
     > click($("#button_id")) // Using CSS selector
     > click($("//input[@name='button_name']")) // XPath selector
