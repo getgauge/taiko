@@ -33,14 +33,21 @@ export interface EventOptions {
   waitForEvents?: BrowserEvent[];
 }
 
-export interface BasicNavigationOptions {
+export interface VeryBasicNavigationOptions {
   waitForNavigation?: boolean;
+}
+
+export interface BasicNavigationOptions extends VeryBasicNavigationOptions {
   navigationTimeout?: number;
 }
 
 export interface NavigationOptions extends BasicNavigationOptions, EventOptions {
   headers?: object;
   waitForStart?: number;
+}
+
+export interface ReloadOptions extends NavigationOptions {
+  ignoreCache?: boolean;
 }
 
 export interface ClickOptions extends NavigationOptions {
@@ -351,7 +358,7 @@ export function setLocation(options: LocationOptions): Promise<void>;
 // https://docs.taiko.dev/api/goto
 export function goto(url: string, options?: NavigationOptions): Promise<Response>;
 // https://docs.taiko.dev/api/reload
-export function reload(url?: string, options?: NavigationOptions): Promise<void>;
+export function reload(url?: string, options?: ReloadOptions): Promise<void>;
 // https://docs.taiko.dev/api/goback
 export function goBack(options?: NavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/goforward
@@ -367,20 +374,19 @@ export function click(
 // https://docs.taiko.dev/api/doubleclick
 export function doubleClick(
   selector: SearchElement | MouseCoordinates,
-  options?: BasicNavigationOptions,
+  options?: VeryBasicNavigationOptions,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/rightclick
 export function rightClick(
   selector: SearchElement | MouseCoordinates,
-  options?: BasicNavigationOptions,
+  options?: VeryBasicNavigationOptions,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/draganddrop
 export function dragAndDrop(
   source: SearchElement,
-  destination?: SearchElement,
-  distance?: DragAndDropDistance,
+  destinationOrDistance: SearchElement | DragAndDropDistance,
 ): Promise<void>;
 // https://docs.taiko.dev/api/hover
 export function hover(selector: SearchElement, options?: NavigationOptions): Promise<void>;
@@ -389,7 +395,7 @@ export function focus(selector: SearchElement, options?: NavigationOptions): Pro
 // https://docs.taiko.dev/api/write
 export function write(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
 // https://docs.taiko.dev/api/clear
-export function clear(selector: SearchElement, options?: NavigationOptions): Promise<void>;
+export function clear(selector?: SearchElement, options?: NavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/attach
 export function attach(filepath: string, to: SearchElement): Promise<void>;
 // https://docs.taiko.dev/api/press
@@ -416,7 +422,10 @@ export function scrollUp(selector?: SearchElement | number, px?: number): Promis
 // https://docs.taiko.dev/api/scrolldown
 export function scrollDown(selector?: SearchElement | number, px?: number): Promise<void>;
 // https://docs.taiko.dev/api/screenshot
-export function screenshot(options?: ScreenshotOptions, ...args: SearchElement[]): Promise<Buffer>;
+export function screenshot(
+  selector?: SearchElement,
+  options?: ScreenshotOptions,
+): Promise<Buffer | undefined>;
 // https://docs.taiko.dev/api/tap
 export function tap(
   selector: SearchElement,
