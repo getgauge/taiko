@@ -13,7 +13,7 @@ to JavaScript, for example [TypeScript](https://www.typescriptlang.org).
 
 Taiko's API is designed for testers. Unlike other testing frameworks, 
 Taiko treats the browser like a black box. With Taiko you can write scripts by looking 
-at a web page and without inspecting it’s source code. 
+at a web page and without inspecting its source code. 
 
 For example on google.com, this command will click on any element with the text 
 'Google Search' (a button on the page).
@@ -29,14 +29,14 @@ Or, if you want to write into a specific text field
 
     write("something", into(textBox({placeholder: "Username"})))
 
-And, ofcourse other selectors including XPath for rare use cases
+And, of course other selectors including XPath for rare use cases
 
     click({id: "elementId"})
     click($(`//*[text()='text']`))
 
 
-Taiko's API also implicitly waits for web page or the elements in the page to finish loading. 
-This speeds up your considerably speeds up your tests. Taiko tests run fast, [really fast](https://gauge.org/2019/08/21/how-taiko-compares-to-other-browser-automation-tools/). 
+Taiko's API also implicitly waits for the web page or the elements in the page to finish loading. 
+This considerably speeds up your tests. Taiko tests run fast, [really fast](https://gauge.org/2019/08/21/how-taiko-compares-to-other-browser-automation-tools/). 
 Here's a quick comparison with other tools.
 
 <script src="https://gist.github.com/NivedhaSenthil/919cdb1f9d8d3fee493bd428a851d125.js"></script>
@@ -68,8 +68,8 @@ following in your favorite CLI (Command Line Interface)
     ✔ Browser closed 
 
 This command will download the latest 
-version [Chromium](https://www.chromium.org/Home) browser and run the tests 
-is [headless](https://developers.google.com/web/updates/2017/04/headless-chrome#drivers) 
+version of the [Chromium](https://www.chromium.org/Home) browser and run the tests 
+in [headless](https://developers.google.com/web/updates/2017/04/headless-chrome#drivers) 
 mode. If you want to see how the tests execute in the browser window you can use
 the `--observe` option. 
 

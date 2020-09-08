@@ -190,7 +190,7 @@ describe('match', () => {
       });
 
       it('test type as text get()', async () => {
-        expect(await text('submit').elements()).to.have.lengthOf(4);
+        expect(await text('submit').elements()).to.have.lengthOf(1);
       });
 
       it('test type as text description', async () => {
