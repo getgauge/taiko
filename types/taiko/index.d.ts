@@ -438,27 +438,35 @@ export function tap(
  */
 
 // https://docs.taiko.dev/api/$
-export function $(selector: string, ...args: RelativeSearchElement[]): Selector;
+export function $(
+  selector: string,
+  _options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
 // https://docs.taiko.dev/api/image
 export function image(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): SearchElement;
+): ElementWrapper;
 // https://docs.taiko.dev/api/link
 export function link(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: SearchElement[]
-): SearchElement;
+): ElementWrapper;
 // https://docs.taiko.dev/api/listitem
-export function listItem(selector: SearchElement, ...args: RelativeSearchElement[]): SearchElement;
+export function listItem(
+  selector: SearchElement,
+  options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
 // https://docs.taiko.dev/api/button
 export function button(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): SearchElement;
+): ElementWrapper;
 // https://docs.taiko.dev/api/filefield
 export function fileField(
   selector: SearchElement,
