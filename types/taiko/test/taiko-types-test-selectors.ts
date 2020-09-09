@@ -14,6 +14,10 @@ import {
   tableCell,
   above,
   textBox,
+  text,
+  dropDown,
+  checkBox,
+  radioButton,
 } from '..';
 
 // ------------------------------------------
@@ -133,3 +137,39 @@ textBox('Username:'); // $ExpectType ElementWrapper
 textBox('Username:', { id: 'textBoxId' }); // $ExpectError
 textBox({ id: 'textBoxId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
 textBox({ selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+
+// ------------------------------------------
+// dropDown
+// https://docs.taiko.dev/api/dropDown
+// ------------------------------------------
+dropDown('Vehicle:'); // $ExpectType ElementWrapper
+dropDown({ id: 'dropDownId' }, below('text')); // $ExpectType ElementWrapper
+dropDown(below('text')); // $ExpectType ElementWrapper
+dropDown('Vehicle:', { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+
+// ------------------------------------------
+// checkBox
+// https://docs.taiko.dev/api/checkBox
+// ------------------------------------------
+checkBox('Vehicle'); // $ExpectType ElementWrapper
+checkBox({ id: 'checkBoxId' }, below('text')); // $ExpectType ElementWrapper
+checkBox(below('text')); // $ExpectType ElementWrapper
+checkBox('Vehicle', { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+
+// ------------------------------------------
+// radioButton
+// https://docs.taiko.dev/api/radioButton
+// ------------------------------------------
+radioButton('Vehicle'); // $ExpectType ElementWrapper
+radioButton({ id: 'radioButtonId' }, below('text')); // $ExpectType ElementWrapper
+radioButton(below('text')); // $ExpectType ElementWrapper
+radioButton('Vehicle', { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+
+// ------------------------------------------
+// text
+// https://docs.taiko.dev/api/text
+// ------------------------------------------
+text('Vehicle'); // $ExpectType ElementWrapper
+text('Vehicle', below('text')); // $ExpectType ElementWrapper
+text('Vehicle', { exactMatch: true }, below('text')); // $ExpectType ElementWrapper
+text('Vehicle', { selectHiddenElements: true }); // $ExpectType ElementWrapper

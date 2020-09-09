@@ -140,8 +140,8 @@ export interface TableCellOptions extends SelectionOptions {
   col: number;
 }
 
-export interface MatchingOptions {
-  exactMatch: boolean;
+export interface MatchingOptions extends SelectionOptions {
+  exactMatch?: boolean;
 }
 
 export interface OpenWindowOrTabOptions extends NavigationOptions {
@@ -513,13 +513,13 @@ export function textBox(
 ): ElementWrapper;
 // https://docs.taiko.dev/api/dropdown
 export function dropDown(
-  selector: SearchElement,
+  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ElementWrapper;
 // https://docs.taiko.dev/api/checkbox
 export function checkBox(
-  selector: SearchElement,
+  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ElementWrapper;
