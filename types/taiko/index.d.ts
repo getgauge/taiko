@@ -132,7 +132,12 @@ export interface EvaluateElementOptions {
 }
 
 export interface SelectionOptions {
-  selectHiddenElements: boolean;
+  selectHiddenElements?: boolean;
+}
+
+export interface TableCellOptions extends SelectionOptions {
+  row: number;
+  col: number;
 }
 
 export interface MatchingOptions {
@@ -222,6 +227,9 @@ export type Selector = BasicSelector | ElementWrapper;
 // SearchElement mimics isSelector, isString, isElement and also allows relative search elements
 export type SearchElement = string | Selector | Element | RelativeSearchElement | object;
 
+export interface AttrValuePairs {
+  [key: string]: string;
+}
 /**
  * Intercept
  */
@@ -493,12 +501,16 @@ export function color(
 ): ElementWrapper;
 // https://docs.taiko.dev/api/tableCell
 export function tableCell(
-  options: SelectionOptions | RelativeSearchElement | undefined,
-  selector: SearchElement,
+  options?: TableCellOptions | SearchElement,
+  selector?: SearchElement,
   ...args: RelativeSearchElement[]
 ): ElementWrapper;
 // https://docs.taiko.dev/api/textbox
-export function textBox(selector: SearchElement, ...args: RelativeSearchElement[]): ElementWrapper;
+export function textBox(
+  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
+  options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
 // https://docs.taiko.dev/api/dropdown
 export function dropDown(
   selector: SearchElement,
