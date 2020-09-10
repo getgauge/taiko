@@ -24,13 +24,17 @@
   "plugins": [
     "jest",
     "prettier",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "no-instanceof"
   ],
   "rules": {
     "prettier/prettier": [
       "error"
     ],
     "no-control-regex": 0,
+    "no-instanceof/no-instanceof": [
+      "error"
+    ],
     "quotes": [
       "error",
       "single",
