@@ -132,11 +132,16 @@ export interface EvaluateElementOptions {
 }
 
 export interface SelectionOptions {
-  selectHiddenElements: boolean;
+  selectHiddenElements?: boolean;
 }
 
-export interface MatchingOptions {
-  exactMatch: boolean;
+export interface TableCellOptions extends SelectionOptions {
+  row: number;
+  col: number;
+}
+
+export interface MatchingOptions extends SelectionOptions {
+  exactMatch?: boolean;
 }
 
 export interface OpenWindowOrTabOptions extends NavigationOptions {
@@ -222,6 +227,9 @@ export type Selector = BasicSelector | ElementWrapper;
 // SearchElement mimics isSelector, isString, isElement and also allows relative search elements
 export type SearchElement = string | Selector | Element | RelativeSearchElement | object;
 
+export interface AttrValuePairs {
+  [key: string]: string;
+}
 /**
  * Intercept
  */
@@ -438,27 +446,35 @@ export function tap(
  */
 
 // https://docs.taiko.dev/api/$
-export function $(selector: string, ...args: RelativeSearchElement[]): Selector;
+export function $(
+  selector: string,
+  _options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
 // https://docs.taiko.dev/api/image
 export function image(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): SearchElement;
+): ElementWrapper;
 // https://docs.taiko.dev/api/link
 export function link(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: SearchElement[]
-): SearchElement;
+): ElementWrapper;
 // https://docs.taiko.dev/api/listitem
-export function listItem(selector: SearchElement, ...args: RelativeSearchElement[]): SearchElement;
+export function listItem(
+  selector: SearchElement,
+  options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
 // https://docs.taiko.dev/api/button
 export function button(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): SearchElement;
+): ElementWrapper;
 // https://docs.taiko.dev/api/filefield
 export function fileField(
   selector: SearchElement,
@@ -485,21 +501,25 @@ export function color(
 ): ElementWrapper;
 // https://docs.taiko.dev/api/tableCell
 export function tableCell(
-  options: SelectionOptions | RelativeSearchElement | undefined,
-  selector: SearchElement,
+  options?: TableCellOptions | SearchElement,
+  selector?: SearchElement,
   ...args: RelativeSearchElement[]
 ): ElementWrapper;
 // https://docs.taiko.dev/api/textbox
-export function textBox(selector: SearchElement, ...args: RelativeSearchElement[]): ElementWrapper;
+export function textBox(
+  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
+  options?: SelectionOptions | RelativeSearchElement,
+  ...args: RelativeSearchElement[]
+): ElementWrapper;
 // https://docs.taiko.dev/api/dropdown
 export function dropDown(
-  selector: SearchElement,
+  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ElementWrapper;
 // https://docs.taiko.dev/api/checkbox
 export function checkBox(
-  selector: SearchElement,
+  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ElementWrapper;
