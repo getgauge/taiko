@@ -18,3 +18,4 @@ Taiko lets you specify certain Environment variables to customize its behaviour
 * `TAIKO_EMULATE_DEVICE` - set to device model to emulate device view port
 * `TAIKO_EMULATE_NETWORK` - set to the network type for Taiko to simulate. Available options are GPRS, Regular2G, Good2G, Regular3G, Good3G, Regular4G, DSL, WiFi, Offline
 * `TAIKO_PLUGIN` - set to the plugin which you want Taiko to load. Takes comma separated values.
+* `TAIKO_SKIP_DOCUMENTATION` - set to skip API documentation generation during install.
