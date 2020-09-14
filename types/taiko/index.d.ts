@@ -1,3 +1,5 @@
+// Minimum TypeScript Version: 3.5
+
 // Custom Typings for Taiko - https://docs.taiko.dev/api/reference
 
 // eslint-disable-next-line no-unused-vars
@@ -127,8 +129,12 @@ export interface ProximitySelectorNearOptions {
   offset: number;
 }
 
-export interface EvaluateElementOptions {
+export interface EvaluateHandlerArgs {
   [key: string]: any;
+}
+
+export interface EvaluateOptions extends Omit<NavigationOptions, 'headers'> {
+  args?: EvaluateHandlerArgs;
 }
 
 export interface SelectionOptions {
@@ -583,36 +589,47 @@ export function confirm(
 ): void;
 
 // https://docs.taiko.dev/api/beforeunload
-export function beforeunload(message: string, callback: () => Promise<void>): void;
+export function beforeunload(callback: () => Promise<void>): void;
+
+export type EvaluateHandler<T> = (element: HTMLElement, args?: EvaluateHandlerArgs) => T;
 
 /**
  * Helpers
  */
 
 // https://docs.taiko.dev/api/evaluate
-export function evaluate(
-  selector?: SearchElement,
-  handlerCallback?: (element: Element, args?: EvaluateElementOptions) => Record<string, any>,
-  options?: NavigationOptions,
-): Promise<Record<string, any>>;
+export function evaluate<T>(
+  selector?: Selector | string | EvaluateHandler<T>,
+  handlerCallback?: EvaluateHandler<T>,
+  options?: EvaluateOptions,
+): Promise<T>;
 // https://docs.taiko.dev/api/to
-export function to(value: SearchElement): SearchElement;
+export function to<T extends string | Selector>(value: T): T;
 // https://docs.taiko.dev/api/into
-export function into(value: SearchElement): SearchElement;
+export function into<T extends string | Selector>(value: T): T;
 // https://docs.taiko.dev/api/accept
 export function accept(text?: string): Promise<void>;
 // https://docs.taiko.dev/api/dismiss
-export function dismiss(text?: string): Promise<void>;
+export function dismiss(): Promise<void>;
 // https://docs.taiko.dev/api/setconfig
 export function setConfig(options: GlobalConfigurationOptions): void;
 // https://docs.taiko.dev/api/getconfig
-export function getConfig(option?: keyof GlobalConfigurationOptions): number | boolean | undefined;
+export function getConfig(): GlobalConfigurationOptions;
+export function getConfig<T extends keyof GlobalConfigurationOptions>(
+  option: T,
+): Required<GlobalConfigurationOptions>[T];
 // https://docs.taiko.dev/api/currenturl
 export function currentURL(): Promise<string>;
 // https://docs.taiko.dev/api/waitfor
 export function waitFor(time: number): Promise<void>;
 export function waitFor(
   elementOrCondition: SearchElement | (() => Promise<boolean>),
-  time: number,
+  time?: number,
 ): Promise<void>;
 export function clearIntercept(requestUrl?: string): void;
+
+// TODO
+// trying to support recorder.repl, not sure this is the right approach
+// export namespace recorder {
+//   export function repl(): Promise<void>;
+// }
