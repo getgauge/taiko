@@ -57,14 +57,14 @@ evalOptions = {
 // https://docs.taiko.dev/api/to
 // ------------------------------------------
 to('Please select a file:' as string); // $ExpectType string
-to(link('Please select a file:')); // $ExpectType ElementWrapper
+to(link('Please select a file:')); // $ExpectType LinkWrapper
 
 // ------------------------------------------
 // into
 // https://docs.taiko.dev/api/into
 // ------------------------------------------
 into('Please select a file:' as string); // $ExpectType string
-into(link('Please select a file:')); // $ExpectType ElementWrapper
+into(link('Please select a file:')); // $ExpectType LinkWrapper
 
 // ------------------------------------------
 // waitFor

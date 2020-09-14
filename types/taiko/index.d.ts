@@ -187,22 +187,57 @@ export interface Element {
 }
 
 export interface ElementWrapper {
-  description: string;
-  get(selector: SearchElement): ElementWrapper;
+  get(retryInterval?: number, retryTimeout?: number): Promise<ElementWrapper>;
+  readonly description: string;
+  exists(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
   text(): Promise<string>;
+  isVisible(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
+  isDisabled(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
+  isDraggable(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
+  attribute(name: string): Promise<string>;
+  elements(retryInterval?: number, retryTimeout?: number): Promise<Element[]>;
+  element(index: number, retryInterval?: number, retryTimeout?: number): Promise<Element>;
+}
+
+export interface ValueWrapper extends ElementWrapper {
   value(): Promise<string>;
+}
+
+export interface ButtonWrapper extends ElementWrapper {}
+export interface DollarWrapper extends ElementWrapper {}
+export interface ImageWrapper extends ElementWrapper {}
+export interface LinkWrapper extends ElementWrapper {}
+export interface ListItemWrapper extends ElementWrapper {}
+export interface TableCellWrapper extends ElementWrapper {}
+export interface TextWrapper extends ElementWrapper {}
+
+export interface ColorWrapper extends ValueWrapper {
   select(value?: string | number): Promise<void>;
+}
+
+export interface FileFieldWrapper extends ValueWrapper {}
+export interface TextBoxWrapper extends ValueWrapper {}
+
+export interface DropDownWrapper extends ValueWrapper {
+  select(value?: string | number): Promise<void>;
+}
+export interface TimeFieldWrapper extends ValueWrapper {
+  select(value?: string | number): Promise<void>;
+}
+export interface RangeWrapper extends ValueWrapper {
+  select(value?: string | number): Promise<void>;
+}
+
+export interface CheckBoxWrapper extends ElementWrapper {
   check(): Promise<void>;
   uncheck(): Promise<void>;
   isChecked(): Promise<boolean>;
+}
+
+export interface RadioButtonWrapper extends ElementWrapper {
+  select(value?: string | number): Promise<void>;
   deselect(): Promise<void>;
   isSelected(): Promise<boolean>;
-  element(index: number, retryInterval?: number, retryTimeout?: number): Promise<Element>;
-  elements(retryInterval?: number, retryTimeout?: number): Promise<Element[]>;
-  exists(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
-  isDisabled(retryInterval?: number, retryTimeout?: number): Promise<any>;
-  isDraggable(): Promise<boolean>;
-  isVisible(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
 }
 
 // BasicSelector mimics isSelector
@@ -456,91 +491,91 @@ export function $(
   selector: string,
   _options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): DollarWrapper;
 // https://docs.taiko.dev/api/image
 export function image(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): ImageWrapper;
 // https://docs.taiko.dev/api/link
 export function link(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: SearchElement[]
-): ElementWrapper;
+): LinkWrapper;
 // https://docs.taiko.dev/api/listitem
 export function listItem(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): ListItemWrapper;
 // https://docs.taiko.dev/api/button
 export function button(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): ButtonWrapper;
 // https://docs.taiko.dev/api/filefield
 export function fileField(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): FileFieldWrapper;
 // https://docs.taiko.dev/api/timefield
 export function timeField(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): TimeFieldWrapper;
 // https://docs.taiko.dev/api/range
 export function range(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): RangeWrapper;
 // https://docs.taiko.dev/api/color
 export function color(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): ColorWrapper;
 // https://docs.taiko.dev/api/tableCell
 export function tableCell(
   options?: TableCellOptions | SearchElement,
   selector?: SearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): TableCellWrapper;
 // https://docs.taiko.dev/api/textbox
 export function textBox(
   labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): TextBoxWrapper;
 // https://docs.taiko.dev/api/dropdown
 export function dropDown(
   labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): DropDownWrapper;
 // https://docs.taiko.dev/api/checkbox
 export function checkBox(
   labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): CheckBoxWrapper;
 // https://docs.taiko.dev/api/radiobutton
 export function radioButton(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): RadioButtonWrapper;
 // https://docs.taiko.dev/api/text
 export function text(
   selector: string,
   options?: MatchingOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): TextWrapper;
 
 /**
  * Proximity Selectors

@@ -2,6 +2,7 @@
   "extends": "dtslint/dtslint.json",
   "rules": {
     "no-relative-import-in-test": false,
-    "no-return-await": false
+    "no-return-await": false,
+    "no-empty-interface": false
   }
 }

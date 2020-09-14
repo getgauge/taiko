@@ -25,151 +25,151 @@ import {
 // https://docs.taiko.dev/api/$
 // ------------------------------------------
 
-$('//*[text()="text"]'); // $ExpectType ElementWrapper
-$('//*[text()="text"]', { selectHiddenElements: true }); // $ExpectType ElementWrapper
-$('#id', near('username'), below('login')); // $ExpectType ElementWrapper
-$('#id', { selectHiddenElements: true }, near('username'), below('login')); // $ExpectType ElementWrapper
+$('//*[text()="text"]'); // $ExpectType DollarWrapper
+$('//*[text()="text"]', { selectHiddenElements: true }); // $ExpectType DollarWrapper
+$('#id', near('username'), below('login')); // $ExpectType DollarWrapper
+$('#id', { selectHiddenElements: true }, near('username'), below('login')); // $ExpectType DollarWrapper
 
 // ------------------------------------------
 // image
 // https://docs.taiko.dev/api/image
 // ------------------------------------------
-image('alt'); // $ExpectType ElementWrapper
-image('alt', { selectHiddenElements: true }); // $ExpectType ElementWrapper
-image({ id: 'imageId' }); // $ExpectType ElementWrapper
-image({ id: 'imageId' }, below('text')); // $ExpectType ElementWrapper
-image(below('text')); // $ExpectType ElementWrapper
-image({ selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
-image({ id: 'imageId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+image('alt'); // $ExpectType ImageWrapper
+image('alt', { selectHiddenElements: true }); // $ExpectType ImageWrapper
+image({ id: 'imageId' }); // $ExpectType ImageWrapper
+image({ id: 'imageId' }, below('text')); // $ExpectType ImageWrapper
+image(below('text')); // $ExpectType ImageWrapper
+image({ selectHiddenElements: true }, below('text')); // $ExpectType ImageWrapper
+image({ id: 'imageId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ImageWrapper
 
 // ------------------------------------------
 // link
 // https://docs.taiko.dev/api/link
 // ------------------------------------------
-link('Get Started'); // $ExpectType ElementWrapper
-link('Get Started', { selectHiddenElements: true }); // $ExpectType ElementWrapper
-link({ id: 'linkId' }); // $ExpectType ElementWrapper
-link({ id: 'linkId' }, below('text')); // $ExpectType ElementWrapper
-link({ id: 'linkId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
-link(below('text')); // $ExpectType ElementWrapper
+link('Get Started'); // $ExpectType LinkWrapper
+link('Get Started', { selectHiddenElements: true }); // $ExpectType LinkWrapper
+link({ id: 'linkId' }); // $ExpectType LinkWrapper
+link({ id: 'linkId' }, below('text')); // $ExpectType LinkWrapper
+link({ id: 'linkId' }, { selectHiddenElements: true }, below('text')); // $ExpectType LinkWrapper
+link(below('text')); // $ExpectType LinkWrapper
 
 // ------------------------------------------
 // listitem
 // https://docs.taiko.dev/api/listitem
 // ------------------------------------------
-listItem('Get Started'); // $ExpectType ElementWrapper
-listItem('Get Started', { selectHiddenElements: true }); // $ExpectType ElementWrapper
-listItem({ id: 'listId' }); // $ExpectType ElementWrapper
-listItem({ id: 'listItemId' }, below('text')); // $ExpectType ElementWrapper
-listItem(below('text')); // $ExpectType ElementWrapper
-listItem({ id: 'listItemId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+listItem('Get Started'); // $ExpectType ListItemWrapper
+listItem('Get Started', { selectHiddenElements: true }); // $ExpectType ListItemWrapper
+listItem({ id: 'listId' }); // $ExpectType ListItemWrapper
+listItem({ id: 'listItemId' }, below('text')); // $ExpectType ListItemWrapper
+listItem(below('text')); // $ExpectType ListItemWrapper
+listItem({ id: 'listItemId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ListItemWrapper
 
 // ------------------------------------------
 // button
 // https://docs.taiko.dev/api/button
 // ------------------------------------------
-button('Get Started'); // $ExpectType ElementWrapper
-button('Get Started', { selectHiddenElements: true }); // $ExpectType ElementWrapper
-button({ id: 'buttonId' }); // $ExpectType ElementWrapper
-button({ id: 'buttonId' }, below('text')); // $ExpectType ElementWrapper
-button(below('text')); // $ExpectType ElementWrapper
-button({ id: 'buttonId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+button('Get Started'); // $ExpectType ButtonWrapper
+button('Get Started', { selectHiddenElements: true }); // $ExpectType ButtonWrapper
+button({ id: 'buttonId' }); // $ExpectType ButtonWrapper
+button({ id: 'buttonId' }, below('text')); // $ExpectType ButtonWrapper
+button(below('text')); // $ExpectType ButtonWrapper
+button({ id: 'buttonId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ButtonWrapper
 
 // ------------------------------------------
 // filefield
 // https://docs.taiko.dev/api/filefield
 // ------------------------------------------
-fileField('Please select a file:'); // $ExpectType ElementWrapper
-fileField('Please select a file:', { selectHiddenElements: true }); // $ExpectType ElementWrapper
-fileField({ id: 'file' }); // $ExpectType ElementWrapper
-fileField({ id: 'fileFieldId' }, below('text')); // $ExpectType ElementWrapper
-fileField(below('text')); // $ExpectType ElementWrapper
-fileField({ selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
-fileField({ id: 'fileFieldId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+fileField('Please select a file:'); // $ExpectType FileFieldWrapper
+fileField('Please select a file:', { selectHiddenElements: true }); // $ExpectType FileFieldWrapper
+fileField({ id: 'file' }); // $ExpectType FileFieldWrapper
+fileField({ id: 'fileFieldId' }, below('text')); // $ExpectType FileFieldWrapper
+fileField(below('text')); // $ExpectType FileFieldWrapper
+fileField({ selectHiddenElements: true }, below('text')); // $ExpectType FileFieldWrapper
+fileField({ id: 'fileFieldId' }, { selectHiddenElements: true }, below('text')); // $ExpectType FileFieldWrapper
 
 // ------------------------------------------
 // timefield
 // https://docs.taiko.dev/api/timefield
 // ------------------------------------------
-timeField('Birthday:'); // $ExpectType ElementWrapper
-timeField('Birthday:', { selectHiddenElements: true }); // $ExpectType ElementWrapper
-timeField({ id: 'Birthday' }); // $ExpectType ElementWrapper
-timeField({ id: 'Birthday' }, below('text')); // $ExpectType ElementWrapper
-timeField(below('text')); // $ExpectType ElementWrapper
-timeField({ selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
-timeField({ id: 'fileFieldId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+timeField('Birthday:'); // $ExpectType TimeFieldWrapper
+timeField('Birthday:', { selectHiddenElements: true }); // $ExpectType TimeFieldWrapper
+timeField({ id: 'Birthday' }); // $ExpectType TimeFieldWrapper
+timeField({ id: 'Birthday' }, below('text')); // $ExpectType TimeFieldWrapper
+timeField(below('text')); // $ExpectType TimeFieldWrapper
+timeField({ selectHiddenElements: true }, below('text')); // $ExpectType TimeFieldWrapper
+timeField({ id: 'fileFieldId' }, { selectHiddenElements: true }, below('text')); // $ExpectType TimeFieldWrapper
 
 // ------------------------------------------
 // range
 // https://docs.taiko.dev/api/range
 // ------------------------------------------
-range({ id: 'range-1' }); // $ExpectType ElementWrapper
-range({ id: 'range-1' }, { selectHiddenElements: true }); // $ExpectType ElementWrapper
-range({ id: 'range-1' }, below('head')); // $ExpectType ElementWrapper
-range({ id: 'range-1' }, { selectHiddenElements: true }, below('head')); // $ExpectType ElementWrapper
+range({ id: 'range-1' }); // $ExpectType RangeWrapper
+range({ id: 'range-1' }, { selectHiddenElements: true }); // $ExpectType RangeWrapper
+range({ id: 'range-1' }, below('head')); // $ExpectType RangeWrapper
+range({ id: 'range-1' }, { selectHiddenElements: true }, below('head')); // $ExpectType RangeWrapper
 
 // ------------------------------------------
 // color
 // https://docs.taiko.dev/api/color
 // ------------------------------------------
-color({ id: 'colorId' }); // $ExpectType ElementWrapper
-color({ id: 'colorId' }, below('text')); // $ExpectType ElementWrapper
-color(below('text')); // $ExpectType ElementWrapper
-color(below('text')); // $ExpectType ElementWrapper
-color({ id: 'colorId' }); // $ExpectType ElementWrapper
-color({ id: 'colorId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+color({ id: 'colorId' }); // $ExpectType ColorWrapper
+color({ id: 'colorId' }, below('text')); // $ExpectType ColorWrapper
+color(below('text')); // $ExpectType ColorWrapper
+color(below('text')); // $ExpectType ColorWrapper
+color({ id: 'colorId' }); // $ExpectType ColorWrapper
+color({ id: 'colorId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ColorWrapper
 
 // ------------------------------------------
 // tableCell
 // https://docs.taiko.dev/api/tableCell
 // ------------------------------------------
-tableCell({ row: 1, col: 1 }, 'Table Caption'); // $ExpectType ElementWrapper
-tableCell({ id: 'myColumn' }); // $ExpectType ElementWrapper
-tableCell({ row: 1, col: 3 }); // $ExpectType ElementWrapper
-tableCell({ row: 4, col: 1 }, above('Code')); // $ExpectType ElementWrapper
-tableCell({ row: 4, col: 1, selectHiddenElements: true }, above('Code')); // $ExpectType ElementWrapper
+tableCell({ row: 1, col: 1 }, 'Table Caption'); // $ExpectType TableCellWrapper
+tableCell({ id: 'myColumn' }); // $ExpectType TableCellWrapper
+tableCell({ row: 1, col: 3 }); // $ExpectType TableCellWrapper
+tableCell({ row: 4, col: 1 }, above('Code')); // $ExpectType TableCellWrapper
+tableCell({ row: 4, col: 1, selectHiddenElements: true }, above('Code')); // $ExpectType TableCellWrapper
 
 // ------------------------------------------
 // textBox
 // https://docs.taiko.dev/api/textBox
 // ------------------------------------------
-textBox('Username:'); // $ExpectType ElementWrapper
+textBox('Username:'); // $ExpectType TextBoxWrapper
 textBox('Username:', { id: 'textBoxId' }); // $ExpectError
-textBox({ id: 'textBoxId' }, { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
-textBox({ selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+textBox({ id: 'textBoxId' }, { selectHiddenElements: true }, below('text')); // $ExpectType TextBoxWrapper
+textBox({ selectHiddenElements: true }, below('text')); // $ExpectType TextBoxWrapper
 
 // ------------------------------------------
 // dropDown
 // https://docs.taiko.dev/api/dropDown
 // ------------------------------------------
-dropDown('Vehicle:'); // $ExpectType ElementWrapper
-dropDown({ id: 'dropDownId' }, below('text')); // $ExpectType ElementWrapper
-dropDown(below('text')); // $ExpectType ElementWrapper
-dropDown('Vehicle:', { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+dropDown('Vehicle:'); // $ExpectType DropDownWrapper
+dropDown({ id: 'dropDownId' }, below('text')); // $ExpectType DropDownWrapper
+dropDown(below('text')); // $ExpectType DropDownWrapper
+dropDown('Vehicle:', { selectHiddenElements: true }, below('text')); // $ExpectType DropDownWrapper
 
 // ------------------------------------------
 // checkBox
 // https://docs.taiko.dev/api/checkBox
 // ------------------------------------------
-checkBox('Vehicle'); // $ExpectType ElementWrapper
-checkBox({ id: 'checkBoxId' }, below('text')); // $ExpectType ElementWrapper
-checkBox(below('text')); // $ExpectType ElementWrapper
-checkBox('Vehicle', { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+checkBox('Vehicle'); // $ExpectType CheckBoxWrapper
+checkBox({ id: 'checkBoxId' }, below('text')); // $ExpectType CheckBoxWrapper
+checkBox(below('text')); // $ExpectType CheckBoxWrapper
+checkBox('Vehicle', { selectHiddenElements: true }, below('text')); // $ExpectType CheckBoxWrapper
 
 // ------------------------------------------
 // radioButton
 // https://docs.taiko.dev/api/radioButton
 // ------------------------------------------
-radioButton('Vehicle'); // $ExpectType ElementWrapper
-radioButton({ id: 'radioButtonId' }, below('text')); // $ExpectType ElementWrapper
-radioButton(below('text')); // $ExpectType ElementWrapper
-radioButton('Vehicle', { selectHiddenElements: true }, below('text')); // $ExpectType ElementWrapper
+radioButton('Vehicle'); // $ExpectType RadioButtonWrapper
+radioButton({ id: 'radioButtonId' }, below('text')); // $ExpectType RadioButtonWrapper
+radioButton(below('text')); // $ExpectType RadioButtonWrapper
+radioButton('Vehicle', { selectHiddenElements: true }, below('text')); // $ExpectType RadioButtonWrapper
 
 // ------------------------------------------
 // text
 // https://docs.taiko.dev/api/text
 // ------------------------------------------
-text('Vehicle'); // $ExpectType ElementWrapper
-text('Vehicle', below('text')); // $ExpectType ElementWrapper
-text('Vehicle', { exactMatch: true }, below('text')); // $ExpectType ElementWrapper
-text('Vehicle', { selectHiddenElements: true }); // $ExpectType ElementWrapper
+text('Vehicle'); // $ExpectType TextWrapper
+text('Vehicle', below('text')); // $ExpectType TextWrapper
+text('Vehicle', { exactMatch: true }, below('text')); // $ExpectType TextWrapper
+text('Vehicle', { selectHiddenElements: true }); // $ExpectType TextWrapper
