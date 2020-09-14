@@ -83,6 +83,7 @@
     "eslint-plugin-jest": "^24.0.0",
     "eslint-plugin-mocha": "^8.0.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-no-instanceof": "file:./eslint-plugin-no-instanceof",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.9",
     "markdown-it": "^11.0.0",
