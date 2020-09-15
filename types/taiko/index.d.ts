@@ -1,3 +1,5 @@
+// Minimum TypeScript Version: 3.5
+
 // Custom Typings for Taiko - https://docs.taiko.dev/api/reference
 
 // eslint-disable-next-line no-unused-vars
@@ -127,8 +129,12 @@ export interface ProximitySelectorNearOptions {
   offset: number;
 }
 
-export interface EvaluateElementOptions {
+export interface EvaluateHandlerArgs {
   [key: string]: any;
+}
+
+export interface EvaluateOptions extends Omit<NavigationOptions, 'headers'> {
+  args?: EvaluateHandlerArgs;
 }
 
 export interface SelectionOptions {
@@ -181,22 +187,57 @@ export interface Element {
 }
 
 export interface ElementWrapper {
-  description: string;
-  get(selector: SearchElement): ElementWrapper;
+  get(retryInterval?: number, retryTimeout?: number): Promise<ElementWrapper>;
+  readonly description: string;
+  exists(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
   text(): Promise<string>;
+  isVisible(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
+  isDisabled(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
+  isDraggable(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
+  attribute(name: string): Promise<string>;
+  elements(retryInterval?: number, retryTimeout?: number): Promise<Element[]>;
+  element(index: number, retryInterval?: number, retryTimeout?: number): Promise<Element>;
+}
+
+export interface ValueWrapper extends ElementWrapper {
   value(): Promise<string>;
+}
+
+export interface ButtonWrapper extends ElementWrapper {}
+export interface DollarWrapper extends ElementWrapper {}
+export interface ImageWrapper extends ElementWrapper {}
+export interface LinkWrapper extends ElementWrapper {}
+export interface ListItemWrapper extends ElementWrapper {}
+export interface TableCellWrapper extends ElementWrapper {}
+export interface TextWrapper extends ElementWrapper {}
+
+export interface ColorWrapper extends ValueWrapper {
   select(value?: string | number): Promise<void>;
+}
+
+export interface FileFieldWrapper extends ValueWrapper {}
+export interface TextBoxWrapper extends ValueWrapper {}
+
+export interface DropDownWrapper extends ValueWrapper {
+  select(value?: string | number): Promise<void>;
+}
+export interface TimeFieldWrapper extends ValueWrapper {
+  select(value?: string | number): Promise<void>;
+}
+export interface RangeWrapper extends ValueWrapper {
+  select(value?: string | number): Promise<void>;
+}
+
+export interface CheckBoxWrapper extends ElementWrapper {
   check(): Promise<void>;
   uncheck(): Promise<void>;
   isChecked(): Promise<boolean>;
+}
+
+export interface RadioButtonWrapper extends ElementWrapper {
+  select(value?: string | number): Promise<void>;
   deselect(): Promise<void>;
   isSelected(): Promise<boolean>;
-  element(index: number, retryInterval?: number, retryTimeout?: number): Promise<Element>;
-  elements(retryInterval?: number, retryTimeout?: number): Promise<Element[]>;
-  exists(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
-  isDisabled(retryInterval?: number, retryTimeout?: number): Promise<any>;
-  isDraggable(): Promise<boolean>;
-  isVisible(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
 }
 
 // BasicSelector mimics isSelector
@@ -450,91 +491,91 @@ export function $(
   selector: string,
   _options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): DollarWrapper;
 // https://docs.taiko.dev/api/image
 export function image(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): ImageWrapper;
 // https://docs.taiko.dev/api/link
 export function link(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: SearchElement[]
-): ElementWrapper;
+): LinkWrapper;
 // https://docs.taiko.dev/api/listitem
 export function listItem(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): ListItemWrapper;
 // https://docs.taiko.dev/api/button
 export function button(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): ButtonWrapper;
 // https://docs.taiko.dev/api/filefield
 export function fileField(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): FileFieldWrapper;
 // https://docs.taiko.dev/api/timefield
 export function timeField(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): TimeFieldWrapper;
 // https://docs.taiko.dev/api/range
 export function range(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): RangeWrapper;
 // https://docs.taiko.dev/api/color
 export function color(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): ColorWrapper;
 // https://docs.taiko.dev/api/tableCell
 export function tableCell(
   options?: TableCellOptions | SearchElement,
   selector?: SearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): TableCellWrapper;
 // https://docs.taiko.dev/api/textbox
 export function textBox(
   labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): TextBoxWrapper;
 // https://docs.taiko.dev/api/dropdown
 export function dropDown(
   labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): DropDownWrapper;
 // https://docs.taiko.dev/api/checkbox
 export function checkBox(
   labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): CheckBoxWrapper;
 // https://docs.taiko.dev/api/radiobutton
 export function radioButton(
   selector: SearchElement,
   options?: SelectionOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): RadioButtonWrapper;
 // https://docs.taiko.dev/api/text
 export function text(
   selector: string,
   options?: MatchingOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
-): ElementWrapper;
+): TextWrapper;
 
 /**
  * Proximity Selectors
@@ -583,36 +624,47 @@ export function confirm(
 ): void;
 
 // https://docs.taiko.dev/api/beforeunload
-export function beforeunload(message: string, callback: () => Promise<void>): void;
+export function beforeunload(callback: () => Promise<void>): void;
+
+export type EvaluateHandler<T> = (element: HTMLElement, args?: EvaluateHandlerArgs) => T;
 
 /**
  * Helpers
  */
 
 // https://docs.taiko.dev/api/evaluate
-export function evaluate(
-  selector?: SearchElement,
-  handlerCallback?: (element: Element, args?: EvaluateElementOptions) => Record<string, any>,
-  options?: NavigationOptions,
-): Promise<Record<string, any>>;
+export function evaluate<T>(
+  selector?: Selector | string | EvaluateHandler<T>,
+  handlerCallback?: EvaluateHandler<T>,
+  options?: EvaluateOptions,
+): Promise<T>;
 // https://docs.taiko.dev/api/to
-export function to(value: SearchElement): SearchElement;
+export function to<T extends string | Selector>(value: T): T;
 // https://docs.taiko.dev/api/into
-export function into(value: SearchElement): SearchElement;
+export function into<T extends string | Selector>(value: T): T;
 // https://docs.taiko.dev/api/accept
 export function accept(text?: string): Promise<void>;
 // https://docs.taiko.dev/api/dismiss
-export function dismiss(text?: string): Promise<void>;
+export function dismiss(): Promise<void>;
 // https://docs.taiko.dev/api/setconfig
 export function setConfig(options: GlobalConfigurationOptions): void;
 // https://docs.taiko.dev/api/getconfig
-export function getConfig(option?: keyof GlobalConfigurationOptions): number | boolean | undefined;
+export function getConfig(): GlobalConfigurationOptions;
+export function getConfig<T extends keyof GlobalConfigurationOptions>(
+  option: T,
+): Required<GlobalConfigurationOptions>[T];
 // https://docs.taiko.dev/api/currenturl
 export function currentURL(): Promise<string>;
 // https://docs.taiko.dev/api/waitfor
 export function waitFor(time: number): Promise<void>;
 export function waitFor(
   elementOrCondition: SearchElement | (() => Promise<boolean>),
-  time: number,
+  time?: number,
 ): Promise<void>;
 export function clearIntercept(requestUrl?: string): void;
+
+// TODO
+// trying to support recorder.repl, not sure this is the right approach
+// export namespace recorder {
+//   export function repl(): Promise<void>;
+// }
