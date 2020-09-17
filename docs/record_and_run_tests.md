@@ -51,7 +51,7 @@ Page actions
 ...
 ```
 
-For more info Taiko's API like paramters and example usage you can run `.api <api>`
+For more info Taiko's API like parameters and example usage you can run `.api <api>`
 
 ```
 > .api click
