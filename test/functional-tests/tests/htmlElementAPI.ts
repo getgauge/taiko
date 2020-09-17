@@ -159,6 +159,13 @@ export default class HtmlElementAPI {
     await intercept(url, { body: JSON.parse(jsonString) });
   }
 
+  @Step('Intercept <url> and continue with postData <mockData>')
+  public async interceptRequest(url, mockData) {
+    await intercept(url, (request) => {
+      request.continue({ postData: mockData });
+    });
+  }
+
   @Step('Navigate to relative path <relativePath>')
   public async navigateToPath(relativePath) {
     const absolutePath = _path.resolve(relativePath);

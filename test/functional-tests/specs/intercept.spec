@@ -52,3 +52,9 @@
 * Navigate to "http://localhost:3001/"
 * Click "Dropdown"
 * Assert text "mocked dropdown page" does not exist
+
+## Override a request and continue
+* Intercept "http://localhost:3001/submit_form" and continue with postData "name=taiko"
+* Navigate to "http://localhost:3001/simple_form"
+* Click "Submit"
+* Assert text "taiko" exists on the page.
