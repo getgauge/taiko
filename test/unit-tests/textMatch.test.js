@@ -141,6 +141,27 @@ describe('match', () => {
       });
     });
 
+    describe('regex', () => {
+      it('test exact match exists', async () => {
+        expect(await text(/User/).exists()).to.be.true;
+      });
+      it('test contains match exists', async () => {
+        expect(await text(/account/).exists()).to.be.true;
+      });
+      it('test value match', async () => {
+        expect(await text(/Enter password/).exists()).to.be.true;
+      });
+      it('test regex as string', async () => {
+        expect(await text('/Enter password/').exists()).to.be.true;
+      });
+      it('test with regex object', async () => {
+        expect(await text(new RegExp('Enter password')).exists()).to.be.true;
+      });
+      it('test regex with flag', async () => {
+        expect(await text(/Enter password/g).exists()).to.be.true;
+      });
+    });
+
     describe('text node', () => {
       it('test exact match exists()', async () => {
         expect(await text('User name:').exists()).to.be.true;
