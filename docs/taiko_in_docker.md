@@ -82,7 +82,9 @@ docker build -t gauge-taiko .
 ```
 
 ## Run tests 
-docker run --rm -v gauge-reports:/gauge/reports gauge-taiko 
+```
+docker run --rm -v gauge-reports:/gauge/reports gauge-taiko
+```
 
 The reports will be available on the host machine in the gauge-reports directory after the run.
 
