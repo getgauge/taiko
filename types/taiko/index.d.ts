@@ -396,7 +396,7 @@ export function setCookie(
 // https://docs.taiko.dev/api/deletecookies
 export function deleteCookies(cookieName?: string, options?: CookieOptions): Promise<void>;
 // https://docs.taiko.dev/api/getcookies
-export function getCookies(options?: { urls: string[] }): Cookie[];
+export function getCookies(options?: { urls: string[] }): Promise<Cookie[]>;
 // https://docs.taiko.dev/api/setlocation
 export function setLocation(options: LocationOptions): Promise<void>;
 
