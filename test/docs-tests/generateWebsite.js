@@ -7,25 +7,22 @@ const util = require('util');
 const path = require('path');
 const launchEleventy = require('./launchEleventy');
 const { jsDocToJson } = require('../../lib/jsDocToJson');
-const ncp = require('ncp').ncp;
-ncp.limit = 16;
-const recursiveCp = (source, destination) =>
-  new Promise((resolve, reject) =>
-    ncp(source, destination, (err) => (err ? reject(err) : resolve())),
-  );
-
+const _ncp = require('ncp').ncp;
+_ncp.limit = 16;
+const recursiveCp = util.promisify(_ncp);
 const mkdir = util.promisify(fs.mkdir);
-describe("when return type is Promise<string> the html contains 'Returns Promise<string>'", async () => {
+
+async function generateWebsite() {
   try {
     const docsConstants = prepareDocsConstants();
     await prepareDocsDirs(docsConstants);
-    const jsonConstants = prepareJsonConstants('./inputs/returnPromiseOfObject.js');
+    const jsonConstants = prepareJsonConstants('./jsdoc-inputs/*.js');
     await prepareJson(jsonConstants);
     await launchEleventy();
   } catch (e) {
     console.error(e);
   }
-});
+}
 
 function prepareDocsConstants() {
   const destBaseDir = './tmp/docs';
@@ -89,3 +86,5 @@ async function prepareJson({ sourceCodeFiles, jsonDir, jsonFileName }) {
   const outputFile = path.join(jsonDir, jsonFileName);
   await jsDocToJson(sourceCodeFiles, outputFile);
 }
+
+generateWebsite();
