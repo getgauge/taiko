@@ -417,19 +417,19 @@ export function title(): Promise<string>;
 // https://docs.taiko.dev/api/click
 export function click(
   selector: SearchElement | MouseCoordinates,
-  options?: ClickOptions,
+  options?: ClickOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/doubleclick
 export function doubleClick(
   selector: SearchElement | MouseCoordinates,
-  options?: VeryBasicNavigationOptions,
+  options?: VeryBasicNavigationOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/rightclick
 export function rightClick(
   selector: SearchElement | MouseCoordinates,
-  options?: VeryBasicNavigationOptions,
+  options?: VeryBasicNavigationOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/draganddrop
@@ -478,7 +478,7 @@ export function screenshot(
 // https://docs.taiko.dev/api/tap
 export function tap(
   selector: SearchElement,
-  options?: TapOptions,
+  options?: TapOptions | RelativeSearchElement,
   ...args: SearchElement[]
 ): Promise<void>;
 
