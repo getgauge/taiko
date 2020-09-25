@@ -7,7 +7,7 @@ permalink: "api/{{ api.name }}/"
 layout: api.njk 
 ---
 
-{% macro simpleTypeParser(type) -%}
+{% macro linkToType(type) -%}
     {% if type.name == 'Promise' -%}
         <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ type.name }}">{{ type.name }}</a>
     {%- else -%}
@@ -17,9 +17,9 @@ layout: api.njk
 
 {% macro typeParser(type) -%}
     {% if type.type == 'NameExpression' -%}
-        {{ simpleTypeParser(type) }}
+        {{ linkToType(type) }}
     {%- endif %}{% if type.type == 'TypeApplication' -%}
-        {{ simpleTypeParser(type.expression) }}&lt;{{ typeParser(type.applications[0]) }}&gt;
+        {{ linkToType(type.expression) }}&lt;{{ typeParser(type.applications[0]) }}&gt;
     {%- endif %}
 {%- endmacro %}
 
