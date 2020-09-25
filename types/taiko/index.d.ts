@@ -288,6 +288,20 @@ export interface InterceptRequest {
     headers?: Record<string, unknown>;
   }): Promise<void>;
   respond(response: InterceptMockData): Promise<void>;
+  requestId: string;
+  request: {
+    url: string;
+    method: string;
+    headers: { [key: string]: string };
+    postData?: string;
+    hasPostData: boolean;
+    postDataEntries: { bytes: string }[];
+    initialPriority: string;
+    referrerPolicy: string;
+  };
+  frameId: string;
+  resourceType: string;
+  networkId: string;
 }
 export type interceptRequestHandler = (request: InterceptRequest) => Promise<void>;
 
