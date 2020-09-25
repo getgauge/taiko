@@ -288,6 +288,20 @@ export interface InterceptRequest {
     headers?: Record<string, unknown>;
   }): Promise<void>;
   respond(response: InterceptMockData): Promise<void>;
+  requestId: string;
+  request: {
+    url: string;
+    method: string;
+    headers: { [key: string]: string };
+    postData?: string;
+    hasPostData: boolean;
+    postDataEntries: { bytes: string }[];
+    initialPriority: string;
+    referrerPolicy: string;
+  };
+  frameId: string;
+  resourceType: string;
+  networkId: string;
 }
 export type interceptRequestHandler = (request: InterceptRequest) => Promise<void>;
 
@@ -396,7 +410,7 @@ export function setCookie(
 // https://docs.taiko.dev/api/deletecookies
 export function deleteCookies(cookieName?: string, options?: CookieOptions): Promise<void>;
 // https://docs.taiko.dev/api/getcookies
-export function getCookies(options?: { urls: string[] }): Cookie[];
+export function getCookies(options?: { urls: string[] }): Promise<Cookie[]>;
 // https://docs.taiko.dev/api/setlocation
 export function setLocation(options: LocationOptions): Promise<void>;
 
@@ -417,19 +431,19 @@ export function title(): Promise<string>;
 // https://docs.taiko.dev/api/click
 export function click(
   selector: SearchElement | MouseCoordinates,
-  options?: ClickOptions,
+  options?: ClickOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/doubleclick
 export function doubleClick(
   selector: SearchElement | MouseCoordinates,
-  options?: VeryBasicNavigationOptions,
+  options?: VeryBasicNavigationOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/rightclick
 export function rightClick(
   selector: SearchElement | MouseCoordinates,
-  options?: VeryBasicNavigationOptions,
+  options?: VeryBasicNavigationOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/draganddrop
@@ -478,7 +492,7 @@ export function screenshot(
 // https://docs.taiko.dev/api/tap
 export function tap(
   selector: SearchElement,
-  options?: TapOptions,
+  options?: TapOptions | RelativeSearchElement,
   ...args: SearchElement[]
 ): Promise<void>;
 
