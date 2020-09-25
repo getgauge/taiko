@@ -212,20 +212,6 @@ When using Gauge together with Taiko with [gauge-ts](https://github.com/BugDiver
     $ npm install @getgauge/cli
     $ gauge init ts
 
-You can optionally configure your project to use our experimental type definitions. Edit your tsconfig.json and add the following lines:
-
-```json
-{
-    "compilerOptions": {
-        // gauge-ts default configuration here
-        // add experimental taiko TypeScript Type Definition folder to the project
-        "typeRoots": ["node_modules/@types", "node_modules/taiko/types"],
-        // use taiko types in the project
-        "types": ["node", "taiko"]
-    }
-}
-```
-
 ## Documentation
 
 * [API](https://docs.taiko.dev)

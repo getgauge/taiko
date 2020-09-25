@@ -279,8 +279,8 @@ deleteCookies('CSRFToken', {
 // https://docs.taiko.dev/api/getCookies
 // ------------------------------------------
 
-getCookies(); // $ExpectType Cookie[]
-getCookies({ urls: ['https://the-internet.herokuapp.com'] }); // $ExpectType Cookie[]
+getCookies(); // $ExpectType Promise<Cookie[]>
+getCookies({ urls: ['https://the-internet.herokuapp.com'] }); // $ExpectType Promise<Cookie[]>
 
 // ------------------------------------------
 // setLocation
