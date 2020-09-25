@@ -572,7 +572,7 @@ export function radioButton(
 ): RadioButtonWrapper;
 // https://docs.taiko.dev/api/text
 export function text(
-  selector: string,
+  selector: string | RegExp,
   options?: MatchingOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): TextWrapper;
