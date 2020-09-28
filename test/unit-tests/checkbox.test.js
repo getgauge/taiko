@@ -12,6 +12,7 @@ let {
   click,
   setConfig,
   $,
+  evaluate,
 } = require('../../lib/taiko');
 
 const test_name = 'Checkbox';
@@ -163,6 +164,23 @@ const inputTypeCaseSensitive = {
       it('test description', async () => {
         const description = checkBox('checkboxWithWrappedInLabel').description;
         expect(description).to.be.eql('CheckBox with label checkboxWithWrappedInLabel ');
+      });
+    });
+
+    describe('event bubble', () => {
+      it('should emit events', async () => {
+        await evaluate(() => {
+          document.raisedEvents = [];
+          var dropDown = document.getElementById('checkboxWithLabelFor');
+          ['input', 'change', 'click'].forEach((ev) => {
+            dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
+          });
+        });
+
+        await checkBox('checkboxWithLabelFor').check();
+
+        var events = await evaluate(() => document.raisedEvents);
+        expect(events).to.eql(['change', 'input', 'click']);
       });
     });
 
