@@ -7,9 +7,9 @@ let {
   radioButton,
   closeBrowser,
   goto,
-  button,
   click,
   setConfig,
+  evaluate,
   $,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
@@ -152,8 +152,16 @@ describe(test_name, () => {
     });
 
     it('test select() triggers events', async () => {
-      await radioButton('radioButtonWithInlineLabel').select();
-      expect(await button('show on check').exists()).to.be.true;
+      await evaluate(() => {
+        document.raisedEvents = [];
+        var dropDown = document.getElementById('radioButtonWithLabelFor');
+        ['input', 'change', 'click'].forEach((ev) => {
+          dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
+        });
+      });
+      await radioButton('radioButtonWithLabelFor').select();
+      var events = await evaluate(() => document.raisedEvents);
+      expect(events).to.eql(['change', 'input', 'click']);
     });
 
     it('test deselect()', async () => {
