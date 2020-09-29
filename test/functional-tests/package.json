@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
-    "test": "gauge run -v --tags=\\!knownIssue --simple-console",
+    "test": "gauge uninstall ts --version 0.1.0 && gauge install ts --version 0.0.5 && gauge run -v --tags=\\!knownIssue --simple-console",
     "format": "prettier --write --single-quote '**/*.{js,jsx,ts,tsx}'",
     "eslint": "eslint tests/* --ext .js --ext .jsx"
   },
