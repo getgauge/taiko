@@ -164,3 +164,58 @@ jobs:
           name: ft-logs-linux-headful
           path: test/functional-tests/logs
 
+  docs-tests:
+    needs: unit-tests
+    name: Docs tests - ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: install
+        run: npm install
+      - name: install browser dependencies
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwoff1 \
+                        libopus0 \
+                        libwebp6 \
+                        libwebpdemux2 \
+                        libenchant1c2a \
+                        libgudev-1.0-0 \
+                        libsecret-1-0 \
+                        libhyphen0 \
+                        libgdk-pixbuf2.0-0 \
+                        libegl1 \
+                        libnotify4 \
+                        libxslt1.1 \
+                        libevent-2.1-6 \
+                        libgles2 \
+                        libgl1 \
+                        libegl1 \
+                        libvpx5 \
+                        libnss3 \
+                        libxss1 \
+                        libasound2 \
+                        libdbus-glib-1-2 \
+                        libxt6      
+      - name: test-docs
+        run: npm run test-docs
+      - name: Upload html report
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: docs-tests-reports-${{ matrix.os }}
+          path: test/docs-tests/gauge/reports/html-report        
+      - name: Upload logs
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: docs-tests-logs-${{ matrix.os }}
+          path: test/docs-tests/gauge/logs
