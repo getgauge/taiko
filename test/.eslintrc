@@ -1,5 +1,6 @@
 {
-    "rules": {
-        "no-instanceof/no-instanceof": "off"
-    }
+  "rules": {
+    "no-instanceof/no-instanceof": "off",
+    "no-unused-vars": "off"
+  }
 }
