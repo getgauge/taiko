@@ -1,7 +1,8 @@
 'use strict';
+import { Table } from 'gauge-ts';
 import { button, link, textBox, text, $ } from 'taiko';
 
-function getElementWithSelector(element, selector) {
+function getElementWithSelector(element: string, selector: string) {
   let selectedElement = null;
   let selectedItem;
   try {
@@ -29,10 +30,13 @@ function getElementWithSelector(element, selector) {
   return selectedElement;
 }
 
-export function getElements(table) {
+export function getElements(table: Table) {
   const referenceElements = [];
-  table.rows.forEach(function (row) {
-    referenceElements.push(getElementWithSelector(row.cells[0], row.cells[1]));
+  let headers = table.getColumnNames();
+  table.getTableRows().forEach(function (row) {
+    referenceElements.push(
+      getElementWithSelector(row.getCell(headers[0]), row.getCell(headers[1])),
+    );
   });
   return referenceElements;
 }
