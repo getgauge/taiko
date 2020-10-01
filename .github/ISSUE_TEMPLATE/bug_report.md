@@ -36,10 +36,18 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Versions (please complete the following information):**
- - Taiko: [e.g. 1.0.23 (use `taiko --version`]
+<!--- please complete the following information -->
+**Versions:**
+ - Taiko: [e.g. 1.0.23 (use `taiko --version`)]
  - OS [e.g. 10.15.6 (19G2021) please be specific ]
- - Node.Js [e.g. v.12.18.14]
+ - Node.js [e.g. v.12.18.14]
+
+
+<!--- If you are using Gauge please paste the output of "gauge -v"  -->
+```
+gauge -v
+```
+
 
 **Additional context**
 Add any other context about the problem here.
