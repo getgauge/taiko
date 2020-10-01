@@ -78,7 +78,7 @@ want your plugin to be listed on the [plugins](https://docs.taiko.dev/plugins/) 
 
 ## Contribute code and pull requests to Taiko! 
 
-Taiko is a [Node.js](https://nodejs.org/en/) library written in Javascript. You only need 
+Taiko is a [Node.js](https://nodejs.org/en/) library written in Javascript (with Typescript bindings). You only need 
 the latest version of Node.js installed to clone the [repository](https://github.com/getgauge/taiko)
 and get started.
 
