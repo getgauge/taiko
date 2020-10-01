@@ -54,7 +54,7 @@ You can help by answering queries by users who are getting started on Taiko or l
 test automation tasks on [Spectrum](https://spectrum.chat/gauge?tab=posts).
 
 You can also comment on [issues](https://github.com/getgauge/taiko/issues) raised by users. 
-To get notified of new issues make sure are watching the repository.
+To get notified of new issues make sure you are [watching](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/be-social#watching-a-repository) the repository.
 
 ## Talking/Writing about Taiko
 
