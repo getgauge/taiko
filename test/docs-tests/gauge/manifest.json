@@ -1,0 +1,7 @@
+{
+  "Language": "ts",
+  "Plugins": [
+    "html-report",
+    "screenshot"
+  ]
+}
