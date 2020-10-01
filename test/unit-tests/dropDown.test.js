@@ -133,7 +133,7 @@ describe(test_name, () => {
     });
 
     it('test values()', async () => {
-      expect(await dropDown({ id: 'select' }).values()).to.eql([
+      expect(await dropDown({ id: 'select' }).options()).to.eql([
         'volvo',
         'saab',
         'mercedes',
