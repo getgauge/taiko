@@ -112,7 +112,9 @@ automatically certifies all your future commits by default.
 
 ### Bumping version of taiko
 
-Any pull request tagged with the label 
+Any pull request tagged with the label [ReleaseCandidate](https://github.com/getgauge/taiko/pulls?q=is%3Apr+label%3AReleaseCandidate+)
+will trigger a release on merge and must add a commit bumping up the version of the release.
+
 For bumping patch version run
 
     npm version patch --no-git-tag-version
@@ -126,4 +128,3 @@ For bumping major version run
     npm version major --no-git-tag-version
 
 This will update the version accordingly in the `package.json`. 
-Make sure to add and commit the changes.
