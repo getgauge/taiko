@@ -1,7 +1,7 @@
 const assert = require('assert');
 import { getElements } from './selectors';
 import { Step, Table } from 'gauge-ts';
-import { title, text, textBox, toLeftOf, evaluate } from 'taiko';
+import { title, text, textBox, toLeftOf, evaluate, below } from 'taiko';
 
 export default class Assert {
   @Step('Assert title to be <userTitle>')
@@ -26,6 +26,10 @@ export default class Assert {
   @Step('Assert text <content> exists on the page.')
   public async assertTextExists(content: string) {
     assert.ok(await text(content).exists());
+  }
+  @Step('Assert text <lowerContent> exists below <upperContent>.')
+  public async assertTextExistsBelow(lowerContent: string, upperContent: string) {
+    assert.ok(await text(lowerContent, below(upperContent)).exists());
   }
 
   @Step('Assert text <content> does not exist')
