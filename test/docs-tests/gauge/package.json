@@ -14,7 +14,7 @@
   "dependencies": {
     "@getgauge/cli": "latest",
     "gauge-ts": "0.1.0",
-    "taiko": "file:../.."
+    "taiko": "file:../../.."
   },
   "devDependencies": {
     "@types/node": "latest",
