@@ -132,7 +132,7 @@ describe(test_name, () => {
       expect(await dropDown('Cars').value()).to.equal('mercedes');
     });
 
-    it('test values()', async () => {
+    it('test options()', async () => {
       expect(await dropDown({ id: 'select' }).options()).to.eql([
         'volvo',
         'saab',
