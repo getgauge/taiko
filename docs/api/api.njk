@@ -8,8 +8,10 @@ layout: api.njk
 ---
 
 {% macro linkToType(type) -%}
-    {% if type.name == 'Promise' -%}
+    {% if type.name == 'Promise' or type.name == 'Object' or type.name == 'string' or type.name == 'Array' -%}
         <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ type.name }}">{{ type.name }}</a>
+    {%- elif type.name === 'void' -%}
+        <span>{{ type.name }}</span>
     {%- else -%}
         <a href="/api/{{ type.name }}">{{ type.name }}</a>
     {%- endif %}
