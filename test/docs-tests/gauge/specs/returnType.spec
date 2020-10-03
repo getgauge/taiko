@@ -1,12 +1,14 @@
 # API Function Return Type
 
 
-| Function Name                         | Return Type                  |
-|---------------------------------------|------------------------------|
-| functionReturningPromise              | Promise                      |
-| functionReturningPromiseOfObject      | Promise<Object>              |
-| functionReturningPromiseOfVoid        | Promise<void>                |
-| functionReturningArrayOfObjects       | Array<Object>                |
+| Function Name                              | Return Type                  |
+|--------------------------------------------|------------------------------|
+| functionReturningPromise                   | Promise                      |
+| functionReturningPromiseOfObject           | Promise<Object>              |
+| functionReturningPromiseOfVoid             | Promise<void>                |
+| functionReturningArrayOfObjects            | Array<Object>                |
+| functionReturningPromiseOfArrayOfObjects   | Promise<Array<Object>>       |
+
 ## <Function Name> should display <Return Type> after 'Returns'
 
 * Navigate to relative API reference page for <Function Name>
