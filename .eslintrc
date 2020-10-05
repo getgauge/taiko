@@ -10,6 +10,7 @@
     ".local-chromium",
     "node_modules/",
     "test/functional-tests/reports/",
+    "test/docs-tests/gauge/reports/",
     "docs"
   ],
   "extends": [
