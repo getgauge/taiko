@@ -108,7 +108,7 @@ describe('Browser Context', () => {
       expect(inactiveUser2).to.be.false;
     });
 
-    it.only('Open Tab on incognito window', async () => {
+    it('Open Tab on incognito window', async () => {
       await openIncognitoWindow({ name: 'admin' });
       await openTab(url1, { name: 'tab1-firstWindow' });
       let actual = await text('Browser1').exists();
@@ -119,21 +119,21 @@ describe('Browser Context', () => {
       let actualBrowser2 = await text('Browser2').exists();
       expect(actualBrowser2).to.be.true;
 
-      await switchTo({ name: 'admin' });
+      await switchTo({ name: 'tab1-firstWindow' });
       let backToUser1 = await text('Browser1').exists();
       expect(backToUser1).to.be.true;
 
-      await openTab(url3, { name: 'tab1-firstWindow' });
+      await openTab(url3, { name: 'tab2-firstWindow' });
       let newTabAdminWindow = await text('Browser3').exists();
       expect(newTabAdminWindow).to.be.true;
 
-      await switchTo({ name: 'user' });
+      await switchTo({ name: 'tab1-secondWindow' });
       await openTab(url4, { name: 'tab2-SecondWindow' });
       let newTabUserWindow = await text('Browser4').exists();
       expect(newTabUserWindow).to.be.true;
     });
 
-    after(async () => {
+    afterEach(async () => {
       await closeIncognitoWindow('admin');
       await closeIncognitoWindow('user');
     });
