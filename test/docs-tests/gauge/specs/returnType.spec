@@ -1,16 +1,17 @@
 # API Function Return Type
 
-## functionReturningPromise should display 'Promise' after 'Returns'
 
-* Navigate to relative path "../tmp/docs/_site/api/functionReturningPromise/index.html"
+| Function Name                              | Return Type                  |
+|--------------------------------------------|------------------------------|
+| functionReturningPromise                   | Promise                      |
+| functionReturningPromiseOfObject           | Promise<Object>              |
+| functionReturningPromiseOfVoid             | Promise<void>                |
+| functionReturningArrayOfObjects            | Array<Object>                |
+| functionReturningPromiseOfArrayOfObjects   | Promise<Array<Object>>       |
+
+## <Function Name> should display <Return Type> after 'Returns'
+
+* Navigate to relative API reference page for <Function Name>
 * Assert text "Returns" exists on the page.
 * Assert text "Description of the return" exists below "Returns".
-* Assert text "Promise" exists below "Returns".
-
-## functionReturningPromiseOfObject should display 'Promise<Object>' after 'Returns'
-
-* Navigate to relative path "../tmp/docs/_site/api/functionReturningPromiseOfObject/index.html"
-* Assert text "Returns" exists on the page.
-* Assert text "Description of the return" exists below "Returns".
-* Assert text "Promise<Object>" exists below "Returns".
-
+* Assert text <Return Type> exists below "Returns".
