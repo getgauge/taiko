@@ -295,7 +295,7 @@ export interface InterceptRequest {
     headers: { [key: string]: string };
     postData?: string;
     hasPostData: boolean;
-    postDataEntries: { bytes: string }[];
+    postDataEntries: Array<{ bytes: string }>;
     initialPriority: string;
     referrerPolicy: string;
   };
@@ -603,6 +603,8 @@ export function toRightOf(selector: SearchElement | ElementWrapper): RelativeSea
 export function above(selector: SearchElement | ElementWrapper): RelativeSearchElement;
 // https://docs.taiko.dev/api/below
 export function below(selector: SearchElement | ElementWrapper): RelativeSearchElement;
+// https://docs.taiko.dev/api/within
+export function within(selector: SearchElement | ElementWrapper): RelativeSearchElement;
 // https://docs.taiko.dev/api/near
 export function near(
   selector: SearchElement | ElementWrapper,

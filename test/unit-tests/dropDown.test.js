@@ -132,6 +132,15 @@ describe(test_name, () => {
       expect(await dropDown('Cars').value()).to.equal('mercedes');
     });
 
+    it('test options()', async () => {
+      expect(await dropDown({ id: 'select' }).options()).to.eql([
+        'volvo',
+        'saab',
+        'mercedes',
+        'audi',
+      ]);
+    });
+
     it('test select() should thrown when selecting on disabled option', async () => {
       try {
         expect(await dropDown('Cars').select('Saab'));
