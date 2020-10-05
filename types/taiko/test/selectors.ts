@@ -173,3 +173,7 @@ text('Vehicle'); // $ExpectType TextWrapper
 text('Vehicle', below('text')); // $ExpectType TextWrapper
 text('Vehicle', { exactMatch: true }, below('text')); // $ExpectType TextWrapper
 text('Vehicle', { selectHiddenElements: true }); // $ExpectType TextWrapper
+text('Vehicle', { selectHiddenElements: true }); // $ExpectType TextWrapper
+text('/Vehicle/'); // $ExpectType TextWrapper
+text(/Vehicle/); // $ExpectType TextWrapper
+text(new RegExp('Vehicle')); // $ExpectType TextWrapper
