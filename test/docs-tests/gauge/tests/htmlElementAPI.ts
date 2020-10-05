@@ -174,6 +174,13 @@ export default class HtmlElementAPI {
     await goto('file:///' + absolutePath);
   }
 
+  @Step('Navigate to relative API reference page for <functionName>')
+  public async navigateToApiRefPage(functionName: string) {
+    const relativePath = '../tmp/docs/_site/api/' + functionName + '/index.html';
+    const absolutePath = _path.resolve(relativePath);
+    await goto('file:///' + absolutePath);
+  }
+
   @ContinueOnFailure()
   @Step('Scroll to element <div>')
   public async ScrollToElement(div: string) {
