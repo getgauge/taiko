@@ -10,13 +10,14 @@ let {
   openIncognitoWindow,
   closeIncognitoWindow,
   currentURL,
+  openTab,
 } = require('../../lib/taiko');
 let { openBrowserArgs, resetConfig } = require('./test-util');
 
 let { createHtml, removeFile } = require('./test-util');
 
 describe('Browser Context', () => {
-  let url1, url2;
+  let url1, url2, url3, url4;
   before(async () => {
     await openBrowser(openBrowserArgs);
     setConfig({
@@ -47,8 +48,33 @@ describe('Browser Context', () => {
                             Browser2
                       </div>
                       </section>`;
+
+    const innerHtml2 = `<section class="header">
+                      <h1>Incognitotests</h1>
+                        </section>
+                          <section class='main-content'>
+                            <div class='item'>
+                              Item 2
+                            </div>
+                            <div class='item'>
+                            Browser3
+                      </div>
+                      </section>`;
+    const innerHtml3 = `<section class="header">
+                      <h1>Incognitotests</h1>
+                        </section>
+                          <section class='main-content'>
+                            <div class='item'>
+                              Item 2
+                            </div>
+                            <div class='item'>
+                            Browser4
+                      </div>
+                      </section>`;
     url1 = createHtml(innerHtml, 'Incognito');
     url2 = createHtml(innerHtml1, 'Incognito1');
+    url3 = createHtml(innerHtml2, 'IncognitoTab');
+    url4 = createHtml(innerHtml3, 'IncognitoTab2');
   });
 
   after(async () => {
@@ -80,6 +106,31 @@ describe('Browser Context', () => {
 
       let inactiveUser2 = await text('Browser2').exists();
       expect(inactiveUser2).to.be.false;
+    });
+
+    it.only('Open Tab on incognito window', async () => {
+      await openIncognitoWindow({ name: 'admin' });
+      await openTab(url1, { name: 'tab1-firstWindow' });
+      let actual = await text('Browser1').exists();
+      expect(actual).to.be.true;
+
+      await openIncognitoWindow({ name: 'user' });
+      await openTab(url2, { name: 'tab1-secondWindow' });
+      let actualBrowser2 = await text('Browser2').exists();
+      expect(actualBrowser2).to.be.true;
+
+      await switchTo({ name: 'admin' });
+      let backToUser1 = await text('Browser1').exists();
+      expect(backToUser1).to.be.true;
+
+      await openTab(url3, { name: 'tab1-firstWindow' });
+      let newTabAdminWindow = await text('Browser3').exists();
+      expect(newTabAdminWindow).to.be.true;
+
+      await switchTo({ name: 'user' });
+      await openTab(url4, { name: 'tab2-SecondWindow' });
+      let newTabUserWindow = await text('Browser4').exists();
+      expect(newTabUserWindow).to.be.true;
     });
 
     after(async () => {
