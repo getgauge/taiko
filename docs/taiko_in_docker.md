@@ -40,7 +40,7 @@ docker build -t gauge-taiko .
 docker run  --rm -it -v ${PWD}/reports:/gauge/reports gauge-taiko
 ```
 
-The reports will be available on the host machine in the gauge-reports directory after the run.
+The reports will be available on the host machine in the `reports` directory after the run.
 
 ## View Reports
 
