@@ -42,10 +42,6 @@ docker run  --rm -it -v ${PWD}/reports:/gauge/reports gauge-taiko
 
 The reports will be available on the host machine in the `reports` directory after the run.
 
-## View Reports
-
-To see the reports on the host machine, volume mount the gauge reports folder by using the parameter `-v $(pwd)/gauge-reports:/gauge/reports`. Then the reports will be available on the host machine in the `gauge-reports` directory.
-
 ## A note on the flags used
 Taiko reads TAIKO_BROWSER_ARGS environment variable and passes the values as command line arguments to the chromium browser it launches. 
 
