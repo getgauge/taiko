@@ -48,6 +48,7 @@ describe('pageActionChecks', () => {
   });
   describe('waitAndGetActionableElement', () => {
     beforeEach(() => {
+      pageActionChecks.__set__('scrollToElement', () => {});
       pageActionChecks.__set__('defaultConfig', { retryInterval: 5, retryTimeout: 10 });
     });
     afterEach(() => (pageActionChecks = rewire('../../../lib/actions/pageActionChecks')));

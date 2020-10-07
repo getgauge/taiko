@@ -160,14 +160,14 @@ describe(test_name, () => {
     describe('With element covered by an overlay', () => {
       it('should throw error', async () => {
         await expect(click('Click Element covered')).to.be.rejectedWith(
-          'Element matching text "Click Element covered" is covered by other element',
+          'Element matching text "Click Element covered" is not actionable. Check failed for anyone of the following cases visible,disabled,covered',
         );
       });
     });
     describe('With element disabled', () => {
       it('should throw error if element is disabled', async () => {
         await expect(click(button('Click me'))).to.be.rejectedWith(
-          'Button with label Click me is disabled',
+          'Button with label Click me  is not actionable. Check failed for anyone of the following cases visible,disabled,covered',
         );
       });
     });
