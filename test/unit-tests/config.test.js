@@ -38,7 +38,7 @@ describe('Config tests', () => {
             retryTimeout: 2,
             waitForNavigation: false,
             criConnectionRetries: 50,
-            noOfElementToMatch: 50,
+            noOfElementToMatch: 20,
           };
           expect(config.defaultConfig).not.deep.equal(newConfig);
 
@@ -240,7 +240,7 @@ describe('Config tests', () => {
         retryTimeout: 10000,
         waitForNavigation: true,
         criConnectionRetries: 50,
-        noOfElementToMatch: 50,
+        noOfElementToMatch: 20,
       };
       config.setBrowserOptions(options);
       expect(config.defaultConfig).to.deep.equal(expectedConfig);
