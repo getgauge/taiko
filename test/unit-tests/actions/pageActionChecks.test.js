@@ -37,13 +37,13 @@ describe('pageActionChecks', () => {
       const checks = ['visible', 'disabled'];
       const elem = { isVisible: () => true, isDisabled: () => true };
       const result = await pageActionChecks.__get__('checkIfActionable')(elem, checks);
-      expect(result).to.be.false;
+      expect(result.actionable).to.be.false;
     });
     it('should check all given checks and return true if all are true', async () => {
       const checks = ['visible', 'disabled'];
       const elem = { isVisible: () => true, isDisabled: () => false };
       const result = await pageActionChecks.__get__('checkIfActionable')(elem, checks);
-      expect(result).to.be.true;
+      expect(result.actionable).to.be.true;
     });
   });
   describe('waitAndGetActionableElement', () => {
@@ -57,7 +57,7 @@ describe('pageActionChecks', () => {
       let actualCheck;
       pageActionChecks.__set__('checkIfActionable', (elem, checks) => {
         actualCheck = checks;
-        return true;
+        return { actionable: true, error: null };
       });
       pageActionChecks.__set__('findElements', () => [
         { isVisible: () => true, isDisabled: () => false },
@@ -70,7 +70,7 @@ describe('pageActionChecks', () => {
       let actualCheck;
       pageActionChecks.__set__('checkIfActionable', (elem, checks) => {
         actualCheck = checks;
-        return true;
+        return { actionable: true, error: null };
       });
       pageActionChecks.__set__('findElements', () => [
         { isVisible: () => true, isDisabled: () => false },
@@ -93,9 +93,7 @@ describe('pageActionChecks', () => {
       ]);
       await expect(
         pageActionChecks.waitAndGetActionableElement('Something'),
-      ).to.be.eventually.rejectedWith(
-        'Element matching text "Something" is not actionable. Check failed for anyone of the following cases visible,disabled',
-      );
+      ).to.be.eventually.rejectedWith('Element matching text "Something" is disabled');
     });
   });
 });

@@ -160,7 +160,7 @@ describe(test_name, () => {
     describe('With element covered by an overlay', () => {
       it('should throw error', async () => {
         await expect(tap('tap Element covered')).to.be.rejectedWith(
-          'Element matching text "tap Element covered" is not actionable. Check failed for anyone of the following cases visible,disabled,covered',
+          'Element matching text "tap Element covered" is covered by other element',
         );
       });
     });
