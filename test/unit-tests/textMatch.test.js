@@ -88,6 +88,7 @@ describe('match', () => {
             <p>Enter user name in textbox</p>
             <input type="text" value="Enter user name" />
         </div>
+        <div>+1 234 567</div>
         <div >
             <p>Test&nbsp;text&nbsp;<span>with&nbsp;nbsp space</span></p>       
             <h1>Elements visibility</h1>
@@ -199,6 +200,10 @@ describe('match', () => {
 
       it('test proximity selector', async () => {
         expect(await textBox(toRightOf('User name:')).exists()).to.be.true;
+      });
+
+      it('test text with special character', async () => {
+        expect(await text('+1 234 567').exists()).to.be.true;
       });
     });
 
