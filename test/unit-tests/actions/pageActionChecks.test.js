@@ -49,7 +49,11 @@ describe('pageActionChecks', () => {
   describe('waitAndGetActionableElement', () => {
     beforeEach(() => {
       pageActionChecks.__set__('scrollToElement', () => {});
-      pageActionChecks.__set__('defaultConfig', { retryInterval: 5, retryTimeout: 10 });
+      pageActionChecks.__set__('defaultConfig', {
+        noOfElementToMatch: 2,
+        retryInterval: 5,
+        retryTimeout: 10,
+      });
     });
     afterEach(() => (pageActionChecks = rewire('../../../lib/actions/pageActionChecks')));
     it('should call checkActionable with default checks if not given', async () => {
@@ -85,6 +89,16 @@ describe('pageActionChecks', () => {
       ]);
       const result = await pageActionChecks.waitAndGetActionableElement('Something');
       expect(result.name).to.equal('Actionable');
+    });
+    it('should throw error when no actionable element is found in default number of element to check', async () => {
+      pageActionChecks.__set__('findElements', () => [
+        { name: 'notActionable', isVisible: () => true, isDisabled: () => true },
+        { name: 'notActionable', isVisible: () => true, isDisabled: () => true },
+        { name: 'notActionable', isVisible: () => true, isDisabled: () => false },
+      ]);
+      await expect(
+        pageActionChecks.waitAndGetActionableElement('Something'),
+      ).to.be.eventually.rejectedWith('Please provide a more specific selector, too many matches.');
     });
     it('should throw error when no actionable element is found', async () => {
       pageActionChecks.__set__('findElements', () => [
