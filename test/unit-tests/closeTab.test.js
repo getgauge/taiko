@@ -94,7 +94,7 @@ describe('closeTab', () => {
     _targets.matching.push({
       id: '1',
       type: 'page',
-      url: 'https://flipkart.com',
+      url: 'https://amazon.com',
     });
     _targets.others.push({
       id: '2',
@@ -104,14 +104,14 @@ describe('closeTab', () => {
     _targets.others.push({
       id: '3',
       type: 'page',
-      url: 'https://amazon.com',
+      url: 'https://flipkart.com',
     });
     currentURL = 'https://amazon.com';
-    _isMatchUrl = false;
+    _isMatchUrl = true;
     _isMatchRegex = false;
     let validatePromise = validateEmitterEvent(
       'success',
-      'Closed current tab matching https://flipkart.com',
+      'Closed tab(s) matching https://amazon.com',
     );
     await taiko.closeTab();
     await validatePromise;
