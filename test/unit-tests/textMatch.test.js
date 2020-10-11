@@ -88,6 +88,7 @@ describe('match', () => {
             <p>Enter user name in textbox</p>
             <input type="text" value="Enter user name" />
         </div>
+        <div>+1 234 567</div>
         <div >
             <p>Test&nbsp;text&nbsp;<span>with&nbsp;nbsp space</span></p>       
             <h1>Elements visibility</h1>
@@ -141,6 +142,36 @@ describe('match', () => {
       });
     });
 
+    describe('regex', () => {
+      it('test exact match exists', async () => {
+        expect(await text(/User/).exists()).to.be.true;
+      });
+      it('test contains match exists', async () => {
+        expect(await text(/account/).exists()).to.be.true;
+      });
+      it('test value match', async () => {
+        expect(await text(/Enter password/).exists()).to.be.true;
+      });
+      it('test regex as string', async () => {
+        expect(await text('/Enter password/').exists()).to.be.true;
+      });
+      it('test with regex object', async () => {
+        expect(await text(new RegExp('Enter password')).exists()).to.be.true;
+      });
+      it('test regex with flag', async () => {
+        expect(await text(/Enter password/g).exists()).to.be.true;
+      });
+      it('test exact match for text', async () => {
+        expect(await text(/value/, { exactMatch: true }).exists()).to.be.false;
+      });
+      it('test partial match get()', async () => {
+        expect(await text(/User/i).elements()).to.have.lengthOf(4);
+      });
+      it('test partial match get()', async () => {
+        expect(await text(/Text/).elements()).to.have.lengthOf(3);
+      });
+    });
+
     describe('text node', () => {
       it('test exact match exists()', async () => {
         expect(await text('User name:').exists()).to.be.true;
@@ -169,6 +200,10 @@ describe('match', () => {
 
       it('test proximity selector', async () => {
         expect(await textBox(toRightOf('User name:')).exists()).to.be.true;
+      });
+
+      it('test text with special character', async () => {
+        expect(await text('+1 234 567').exists()).to.be.true;
       });
     });
 
