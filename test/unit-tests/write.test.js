@@ -21,46 +21,45 @@ describe(test_name, () => {
   let filePath;
   before(async () => {
     let innerHtml = `
-        <div>
+      <div>
+        <script>
+          class ShadowButton extends HTMLElement {
+            constructor() {
+              super();
+              var shadow = this.attachShadow({mode: 'open'});
 
-      <script>
-     
-    class ShadowButton extends HTMLElement {
-      constructor() {
-        super();
-        var shadow = this.attachShadow({mode: 'open'});
-
-        var button = document.createElement('input');
-        button.setAttribute('type', 'text');
-        button.setAttribute('id', 'Shadow text');
-        shadow.appendChild(button);
-        
-      }
-    }
-    customElements.define('shadow-button', ShadowButton);
-  </script>
-      <shadow-button></shadow-button>
-            <form name="inputTypeText">
-            <!--  //Read only input with type text -->
-                <div name="inputTypeTextWithInlineTextReadonly">
-                    <input type="text" readonly>inputTypeTextWithInlineTextReadonly</input>
-                </div>
-                <div name="focused input" >
-                    <input type="text" autofocus >focused input</input>
-                </div>
-                <div name="input-type-text">
-                    <input type="text">input-type-text</input>
-                </div>
-                <div>
-                    <input type="text" disabled='true' id='disabled-input'>initially disabled input-type-text</input>
-                </div>
-            </form>
-            <script type="text/javascript">
-                setTimeout( () => {
-                    document.getElementById('disabled-input').disabled = false;
-                }, 100);
-            </script>
-        </div>`;
+              var button = document.createElement('input');
+              button.setAttribute('type', 'text');
+              button.setAttribute('id', 'Shadow text');
+              shadow.appendChild(button);
+            }
+          }
+          customElements.define('shadow-button', ShadowButton);
+        </script>
+        <shadow-button></shadow-button>
+        <form name="inputTypeText">
+          <!--  //Read only input with type text -->
+          <div name="inputTypeTextWithInlineTextReadonly">
+            <input type="text" readonly>inputTypeTextWithInlineTextReadonly</input>
+          </div>
+          <div name="focused input" >
+            <input type="text" autofocus >focused input</input>
+          </div>
+          <div name="input-type-text">
+            <input type="text">input-type-text</input>
+          </div>
+          <label for="input-type-text-labelled">Labelled input:</label>
+          <input type="text" id="input-type-text-labelled" />input-type-text-labelled
+          <div>
+            <input type="text" disabled='true' id='disabled-input'>initially disabled input-type-text</input>
+          </div>
+        </form>
+        <script type="text/javascript">
+          setTimeout( () => {
+            document.getElementById('disabled-input').disabled = false;
+          }, 100);
+        </script>
+      </div>`;
     filePath = createHtml(innerHtml, test_name);
     setConfig({
       waitForNavigation: false,
@@ -100,7 +99,13 @@ describe(test_name, () => {
     expect(await textBox('input-type-text').value()).to.equal('hello');
   });
 
-  it('should fail for readonly feild', async () => {
+  it('into input field by label', async () => {
+    expect(await textBox('input-type-text-labelled').value()).to.equal('');
+    await write('hello', into('Labelled input:'));
+    expect(await textBox('input-type-text-labelled').value()).to.equal('hello');
+  });
+
+  it('should fail for readonly field', async () => {
     await expect(
       write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineTextReadonly'))),
     ).to.eventually.be.rejected;
