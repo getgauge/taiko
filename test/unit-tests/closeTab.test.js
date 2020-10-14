@@ -65,6 +65,7 @@ describe('closeTab', () => {
       currentTarget = target;
       return currentTarget;
     });
+    taiko.__set__('activeTarget', '1');
     taiko.__set__('dom', { getDocument: async () => {} });
   });
 
@@ -107,11 +108,10 @@ describe('closeTab', () => {
       url: 'https://flipkart.com',
     });
     currentURL = 'https://amazon.com';
-    _isMatchUrl = true;
-    _isMatchRegex = false;
+    _isMatchTarget = true;
     let validatePromise = validateEmitterEvent(
       'success',
-      'Closed tab(s) matching https://amazon.com',
+      'Closed current tab matching https://amazon.com',
     );
     await taiko.closeTab();
     await validatePromise;
