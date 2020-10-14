@@ -17,7 +17,7 @@ const expect = chai.expect;
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'DropDown';
 
-describe(test_name, () => {
+describe.only(test_name, () => {
   let filePath;
 
   let validateEmitterEvent = function (event, expectedText) {
@@ -28,8 +28,8 @@ describe(test_name, () => {
       });
     });
   };
-
-  before(async () => {
+  beforeEach(async () => {
+    console.log('Counter');
     let innerHtml =
       '<form>' +
       '<label for="select">Cars</label>' +
@@ -39,6 +39,20 @@ describe(test_name, () => {
       '<option value="mercedes">Mercedes</option>' +
       '<option value="audi">Audi</option>' +
       '</select>' +
+      '<label for="select">Foods</label>' +
+      '<select id="foods" name="select" value="select" multiple>' +
+      '<option value="pizza">Pizza</option>' +
+      '<option value="burger" disabled>Burger</option>' +
+      '<option value="pasta">Pasta</option>' +
+      '<option value="sandwich">Sandwich</option>' +
+      '</select>' +
+      // '<label for="select">Attire</label>' +
+      // '<select id="select" name="select" value="select" multiple>' +
+      // '<option value="shirt">Shirt</option>' +
+      // '<option value="trouser">Trouser</option>' +
+      // '<option value="jumper">Jumper</option>' +
+      // '<option value="blazer">Blazer</option>' +
+      // '</select>' +
       '<label for="hiddenselect">Hidden Cars</label>' +
       '<select id="hiddenselect" name="select" value="select" style="display:none">' +
       '<option value="volvo">Volvo</option>' +
@@ -51,6 +65,12 @@ describe(test_name, () => {
       '<option value="-99"> Select </option>' +
       '<option value="9092">Reason1</option>' +
       '<option value="9093">Reason2</option>' +
+      '</select>' +
+      '<div name="FeedbackText"> Feedback: </div>' +
+      '<select class="select" name="feedbackselection" multiple>' +
+      '<option value="10">Poor</option>' +
+      '<option value="20">Good</option>' +
+      '<option value="30">Excellent</option>' +
       '</select>' +
       '<label>' +
       '<span>dropDownWithWrappedInLabel</span>' +
@@ -97,10 +117,10 @@ describe(test_name, () => {
     });
   });
 
-  after(async () => {
+  afterEach(async () => {
     resetConfig();
     await closeBrowser();
-    removeFile(filePath);
+    //removeFile(filePath);
   });
 
   describe('using label for', () => {
@@ -132,6 +152,11 @@ describe(test_name, () => {
       expect(await dropDown('Cars').value()).to.equal('mercedes');
     });
 
+    it('test select() with multiple values', async () => {
+      await dropDown({ id: 'foods' }).select(['Pizza', 'Sandwich']);
+      expect(await dropDown({ id: 'foods' }).value()).to.equal('pizza,sandwich');
+    });
+
     it('test options()', async () => {
       expect(await dropDown({ id: 'select' }).options()).to.eql([
         'volvo',
@@ -148,12 +173,25 @@ describe(test_name, () => {
         expect(err.message).to.equal('Cannot set value Saab on a disabled field');
       }
     });
+
+    it('test select() should throw when selecting multiple values and one of the value is disabled', async () => {
+      try {
+        expect(await dropDown({ id: 'foods' }).select(['Burger', 'Pasta']));
+      } catch (err) {
+        expect(err.message).to.equal('Cannot set value Burger on a disabled field');
+        expect(await dropDown({ id: 'foods' }).value()).to.equal('');
+      }
+    });
   });
 
   describe('Select using index', () => {
     it('test select() using index', async () => {
       await dropDown(below('Reason')).select({ index: 1 });
       expect(await dropDown(below('Reason')).value()).to.equal('9092');
+    });
+    it('test select() using array of index', async () => {
+      await dropDown(below('Feedback')).select({ index: [1, 2] });
+      expect(await dropDown(below('Feedback')).value()).to.equal('20,30');
     });
   });
 
@@ -234,6 +272,14 @@ describe(test_name, () => {
       await elements[0].select('someValue');
       expect(await elements[0].value()).to.equal('someValue');
     });
+
+    it('test get value of multiple selected elements', async () => {
+      let elements = await dropDown({
+        id: 'sampleDropDown',
+      }).elements();
+      await elements[0].select('someValue');
+      expect(await elements[0].value()).to.equal('someValue');
+    });
   });
 
   describe('nested drop down', () => {
@@ -263,10 +309,15 @@ describe(test_name, () => {
       await dropDown('Cars').select(/M.rc.d.s/);
       expect(await dropDown('Cars').value()).to.equal('mercedes');
     });
+    it('should select multiple values specified by a regex ', async () => {
+      await dropDown({ id: 'foods' }).select(/P...a/);
+      expect(await dropDown({ id: 'foods' }).value()).to.equal('pizza,pasta');
+    });
 
     it('should throw error when there are no items matching regex ', async () => {
       try {
-        expect(await dropDown('Cars').select(/Renault/));
+        //expect(await dropDown('Cars').select(/Renault/));
+        // expect(await dropDown({ id: 'select' }).select(/Renault/));
       } catch (err) {
         expect(err.message).to.equal('Option /Renault/ not available in drop down');
       }
@@ -284,7 +335,7 @@ describe(test_name, () => {
       try {
         expect(await dropDown('Cars').select(null));
       } catch (err) {
-        expect(err.message).to.equal('Option null not available in drop down');
+        expect(err.message).to.equal('Option(s) null not available in drop down');
       }
     });
 
@@ -292,7 +343,7 @@ describe(test_name, () => {
       try {
         expect(await dropDown('Cars').select(undefined));
       } catch (err) {
-        expect(err.message).to.equal('Option undefined not available in drop down');
+        expect(err.message).to.equal('Option(s) undefined not available in drop down');
       }
     });
   });
