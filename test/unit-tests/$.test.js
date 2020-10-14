@@ -77,7 +77,7 @@ describe(test_name, () => {
     });
     it('should throw an error if the query function does not return a node or nodeList', async () => {
       await expect($(() => {}).exists()).to.be.eventually.rejectedWith(
-        'Query function should return a Node or NodeList',
+        'Query function should return a DOM Node or DOM NodeList',
       );
     });
   });
