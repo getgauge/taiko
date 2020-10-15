@@ -16,7 +16,7 @@ async function generateWebsite() {
   try {
     const docsConstants = prepareDocsConstants();
     await prepareDocsDirs(docsConstants);
-    const jsonConstants = prepareJsonConstants('./jsdoc-inputs/*.js');
+    const jsonConstants = prepareJsonConstants(['./jsdoc-inputs/*.js']);
     await prepareJson(jsonConstants);
     await launchEleventy();
   } catch (e) {
@@ -81,6 +81,7 @@ function prepareJsonConstants(sourceCodeFiles) {
   const jsonConstants = { sourceCodeFiles, jsonDir, jsonFileName };
   return jsonConstants;
 }
+
 async function prepareJson({ sourceCodeFiles, jsonDir, jsonFileName }) {
   await mkdir(jsonDir, { recursive: true });
   const outputFile = path.join(jsonDir, jsonFileName);
