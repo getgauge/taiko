@@ -76,7 +76,7 @@ async function prepareDataDir(srcDataDir, destDataDir, apiJsFileName) {
 }
 
 function prepareJsonConstants(sourceCodeFiles) {
-  const jsonDir = './lib';
+  const jsonDir = path.join(process.cwd(), 'lib');
   const jsonFileName = 'api.json';
   const jsonConstants = { sourceCodeFiles, jsonDir, jsonFileName };
   return jsonConstants;
