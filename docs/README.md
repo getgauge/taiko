@@ -24,10 +24,11 @@ This steps uses the [documentation.js](https://documentation.js.org/)  library t
 
 The chain is the following:
 
-- you digit `npm run doc`
-- As a first step this runs `npm run doc:api`
+- `npm run doc`
+- Which runs `npm run doc:api`
 - Which launches `lib/documentation.js`
-- Which in turn checks the environment variable `TAIKO_SKIP_DOCUMENTATION`, if false it launches `npx documentation build --shallow lib/taiko.js lib/elementWrapper/*.js -o lib/api.json`
+- Which in turn checks the environment variable `TAIKO_SKIP_DOCUMENTATION`, 
+if false generates lib/api.json
 
 This is the same as running the following command in the terminal:
 ```bash
