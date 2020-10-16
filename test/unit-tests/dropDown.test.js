@@ -149,7 +149,7 @@ describe(test_name, () => {
 
     it('test should throw error if multiple values are selected for single dropdown', async () => {
       try {
-        await expect(dropDown('Cars').select(['Audi', 'mercedes']));
+        expect(await dropDown('Cars').select(['Audi', 'mercedes']));
       } catch (err) {
         expect(err.message).to.equal('Cannot select multiple values on a single select dropdown');
       }
