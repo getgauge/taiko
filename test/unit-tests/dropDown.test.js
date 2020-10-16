@@ -28,7 +28,6 @@ describe(test_name, () => {
       });
     });
   };
-
   before(async () => {
     let innerHtml =
       '<form>' +
@@ -38,6 +37,27 @@ describe(test_name, () => {
       '<option value="saab" disabled>Saab</option>' +
       '<option value="mercedes">Mercedes</option>' +
       '<option value="audi">Audi</option>' +
+      '</select>' +
+      '<label for="foods">Foods</label>' +
+      '<select id="foods" name="select" value="select" multiple>' +
+      '<option value="pizza">Pizza</option>' +
+      '<option value="burger" disabled>Burger</option>' +
+      '<option value="pasta">Pasta</option>' +
+      '<option value="sandwich">Sandwich</option>' +
+      '</select>' +
+      '<label for="attire">Attire</label>' +
+      '<select id="attire" name="select" value="select" multiple>' +
+      '<option value="shirt">Shirt</option>' +
+      '<option value="trouser">Trouser</option>' +
+      '<option value="jumper" disabled>Jumper</option>' +
+      '<option value="blazer">Blazer</option>' +
+      '</select>' +
+      '<label for="country">Country</label>' +
+      '<select id="country" name="select" value="select" multiple>' +
+      '<option value="england">England</option>' +
+      '<option value="india">India</option>' +
+      '<option value="canada">Canada</option>' +
+      '<option value="scotland">Scotland</option>' +
       '</select>' +
       '<label for="hiddenselect">Hidden Cars</label>' +
       '<select id="hiddenselect" name="select" value="select" style="display:none">' +
@@ -51,6 +71,12 @@ describe(test_name, () => {
       '<option value="-99"> Select </option>' +
       '<option value="9092">Reason1</option>' +
       '<option value="9093">Reason2</option>' +
+      '</select>' +
+      '<div name="FeedbackText"> Feedback: </div>' +
+      '<select class="select" name="feedbackselection" multiple>' +
+      '<option value="10">Poor</option>' +
+      '<option value="20">Good</option>' +
+      '<option value="30">Excellent</option>' +
       '</select>' +
       '<label>' +
       '<span>dropDownWithWrappedInLabel</span>' +
@@ -83,7 +109,6 @@ describe(test_name, () => {
       var divOne = document.getElementById("one");
 
       divOne.addEventListener("change", function() {
-        console.log("Hello");
         textTwo.innerHTML = "<option>Tea</option><option>Cofee</option>";
       });
   </script>`;
@@ -122,6 +147,14 @@ describe(test_name, () => {
       );
     });
 
+    it('test should throw error if multiple values are selected for single dropdown', async () => {
+      try {
+        await expect(dropDown('Cars').select(['Audi', 'mercedes']));
+      } catch (err) {
+        expect(err.message).to.equal('Cannot select multiple values on a single select dropdown');
+      }
+    });
+
     it('should return false for hidden element when isVisible fn is called on dropDown', async () => {
       expect(await dropDown('Hidden Cars', { selectHiddenElements: true }).isVisible()).to.be.false;
     });
@@ -130,6 +163,11 @@ describe(test_name, () => {
       await dropDown('Cars').select('Audi');
       await dropDown('Cars').select('mercedes');
       expect(await dropDown('Cars').value()).to.equal('mercedes');
+    });
+
+    it('test select() with multiple values', async () => {
+      await dropDown('Attire').select(['Shirt', 'Blazer']);
+      expect(await dropDown('Attire').value()).to.equal('shirt,blazer');
     });
 
     it('test options()', async () => {
@@ -148,12 +186,25 @@ describe(test_name, () => {
         expect(err.message).to.equal('Cannot set value Saab on a disabled field');
       }
     });
+
+    it('test select() should throw when selecting multiple values and one of the value is disabled', async () => {
+      try {
+        expect(await dropDown('Foods').select(['Burger', 'Pasta']));
+      } catch (err) {
+        expect(err.message).to.equal('Cannot set value Burger on a disabled field');
+        expect(await dropDown('Foods').value()).to.equal('');
+      }
+    });
   });
 
   describe('Select using index', () => {
     it('test select() using index', async () => {
       await dropDown(below('Reason')).select({ index: 1 });
       expect(await dropDown(below('Reason')).value()).to.equal('9092');
+    });
+    it('test select() using array of index', async () => {
+      await dropDown(below('Feedback')).select({ index: [1, 2] });
+      expect(await dropDown(below('Feedback')).value()).to.equal('20,30');
     });
   });
 
@@ -234,6 +285,14 @@ describe(test_name, () => {
       await elements[0].select('someValue');
       expect(await elements[0].value()).to.equal('someValue');
     });
+
+    it('test get value of multiple selected elements', async () => {
+      let elements = await dropDown({
+        id: 'sampleDropDown',
+      }).elements();
+      await elements[0].select('someValue');
+      expect(await elements[0].value()).to.equal('someValue');
+    });
   });
 
   describe('nested drop down', () => {
@@ -262,6 +321,10 @@ describe(test_name, () => {
     it('should select value specified by a regex ', async () => {
       await dropDown('Cars').select(/M.rc.d.s/);
       expect(await dropDown('Cars').value()).to.equal('mercedes');
+    });
+    it('should select multiple values specified by a regex ', async () => {
+      await dropDown('Country').select(/and/);
+      expect(await dropDown('Country').value()).to.equal('england,scotland');
     });
 
     it('should throw error when there are no items matching regex ', async () => {
