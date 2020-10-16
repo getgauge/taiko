@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package",
   "name": "taiko",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Taiko is a Node.js library for automating Chromium based browsers",
   "main": "bin/taiko.js",
   "bin": {
@@ -87,7 +87,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.9",
-    "markdown-it": "^11.0.0",
+    "markdown-it": "^12.0.0",
     "markdown-it-anchor": "^6.0.0",
     "mocha": "^8.0.1",
     "ncp": "^2.0.0",
