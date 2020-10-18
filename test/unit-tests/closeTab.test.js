@@ -172,7 +172,7 @@ describe('closeTab', () => {
     );
     await taiko.closeTab('https://flipkart.com');
     await validatePromise;
-    expect(currentTarget).to.be.undefined;
+    expect(currentTarget).not.to.be.undefined;
   });
   it('should close all matching tabs by title and no reconnect should happen if active tab is not matched', async () => {
     _targets.matching.push({
@@ -200,7 +200,7 @@ describe('closeTab', () => {
     let validatePromise = validateEmitterEvent('success', 'Closed tab(s) matching Flipkart');
     await taiko.closeTab('Flipkart');
     await validatePromise;
-    expect(currentTarget).to.be.undefined;
+    expect(currentTarget).not.to.be.undefined;
   });
   it('should close all matching tabs for given regex', async () => {
     _targets.matching.push({
@@ -228,7 +228,7 @@ describe('closeTab', () => {
     );
     await taiko.closeTab(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/);
     await validatePromise;
-    expect(currentTarget).to.be.undefined;
+    expect(currentTarget).not.to.be.undefined;
   });
 
   it('should close tab matching identifier', async () => {
