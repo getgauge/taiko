@@ -1,0 +1,105 @@
+--- 
+pagination: 
+    data: apis.functions 
+    size: 1 
+    alias: api 
+permalink: "api/{{ api.name }}/" 
+layout: api.njk 
+---
+
+{% macro linkToType(type) -%}
+    {% if type.name == 'Promise' or type.name == 'Object' or type.name == 'string' or type.name == 'Array' -%}
+        <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ type.name }}">{{ type.name }}</a>
+    {%- elif type.name === 'void' -%}
+        <span>{{ type.name }}</span>
+    {%- else -%}
+        <a href="/api/{{ type.name }}">{{ type.name }}</a>
+    {%- endif %}
+{%- endmacro %}
+
+{% macro typeParser(type) -%}
+    {% if type.type == 'NameExpression' -%}
+        {{ linkToType(type) }}
+    {%- endif %}{% if type.type == 'TypeApplication' -%}
+        {{ linkToType(type.expression) }}&lt;{{ typeParser(type.applications[0]) }}&gt;
+    {%- endif %}
+{%- endmacro %}
+
+
+<h1>{{api.name}}</h1>
+{%- for child in api.description.children %}
+
+    {% if child.type == 'paragraph' %}
+        <p>
+            {%- for content in child.children %}
+                {% if content.type == 'text' %}
+                    {{ content.value }}
+                {% endif %}
+                {% if content.type == 'html' %}
+                    {{ content.value | safe }}
+                {% endif %}
+                {% if content.type == 'inlineCode' %}
+                    <code>{{ content.value }}</code>
+                {% endif %}
+                {% if content.type == 'link' %}
+                    {% if 'http' in content.url %}
+                        <a href="{{ content.url }}">{{ content.url }}</a>
+                    {% else %}
+                        <a href="../{{ content.url }}">{{ content.url }}</a>
+
+                    {% endif %}
+                {% endif %}
+            {% endfor -%}
+        </p>
+    {% endif %}
+{% endfor -%}
+
+<h3>Examples</h3>
+{%- for example in api.examples %}
+    <pre><code>{{ example.description }}</code></pre>
+{% endfor -%}
+
+<h3>Parameters</h3>
+{% if api.params | length %}
+    {%- for tag in api.tags %}
+        {% if tag.title == 'param' %}
+            <hr/>
+            <dl>
+                <dt>
+                    <code>{{ tag.name }}</code>
+                    <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.expression.name }}">{{ tag.type.expression.name }}</a>
+                </dt>
+                <dd>
+                    {{ tag.description | markdown | safe }}
+                    {% if tag.default %}
+                        <dl>
+                            <dt>
+                                <b>Default value</b>
+                            </dt>
+                            <dd>
+                                <code>{{ tag.default }}</code>
+                            </dd>
+                        </dl>
+                    {% endif %}
+                </dd>
+            </dl>
+        {% endif %}
+    {% endfor -%}
+    <hr/>
+    {% else%}
+    <p>This API does not have any parameters</p>
+{% endif %}
+
+<h3>Returns</h3>
+{% if api.returns | length %}
+    {%- for tag in api.tags %}
+        {% if tag.title == 'returns' %}
+            <p>{{ tag.description | markdown | safe }}</p>
+            <p>
+                {{ typeParser(tag.type) }}
+            </p>
+        {% endif %}
+    {% endfor -%}
+    {% else%}
+    <p>This API does not return any values</p>
+{% endif %}

@@ -1,0 +1,64 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "mocha": true,
+    "jest/globals": true
+  },
+  "ignorePatterns": [
+    ".local-chromium",
+    "node_modules/",
+    "test/functional-tests/reports/",
+    "test/docs-tests/gauge/reports/",
+    "docs"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 9
+  },
+  "plugins": [
+    "jest",
+    "prettier",
+    "@typescript-eslint",
+    "no-instanceof"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error"
+    ],
+    "no-control-regex": 0,
+    "no-instanceof/no-instanceof": [
+      "error"
+    ],
+    "quotes": [
+      "error",
+      "single",
+      "avoid-escape"
+    ],
+    "no-constant-condition": [
+      "error",
+      {
+        "checkLoops": false
+      }
+    ],
+    "no-empty": [
+      "error",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-console": 0,
+    "curly": 2,
+    "require-atomic-updates": 0
+  }
+}
