@@ -61,7 +61,7 @@
     "extract-zip": "^2.0.0",
     "fs-extra": "^9.0.0",
     "https-proxy-agent": "^5.0.0",
-    "is-reachable": "^4.0.0",
+    "is-reachable": "^5.0.0",
     "progress": "^2.0.3",
     "proxy-from-env": "^1.0.0",
     "recast": "^0.20.1",
