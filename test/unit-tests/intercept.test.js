@@ -122,28 +122,58 @@ describe(test_name, () => {
     expect(actualOption.url).to.equal('http://www.gauge.org');
   });
 
-  it('intercept with count added for the requestUrl', async () => {
+  describe('Intercept with count added', async () => {
     let count = 3;
-    fetchHandler.addInterceptor({
-      requestUrl: 'www.google.com',
-      action: 'www.gauge.org',
-      count,
+    beforeEach(() => {
+      fetchHandler.addInterceptor({
+        requestUrl: 'www.google.com',
+        action: 'www.gauge.org',
+        count,
+      });
     });
 
-    for (var i = 0; i < count + 1; i++) {
-      fetchHandler.handleInterceptor({
-        requestId: 'requestId',
-        request: {
-          url: 'http://www.google.com',
-          method: 'GET',
-        },
-        resourceType: 'Document',
-        isNavigationRequest: true,
-      });
-      var result = count === i ? undefined : 'http://www.gauge.org';
-      expect(actualOption.url).to.equal(result);
-    }
+    it('intercepts requestUrl', async () => {
+      for (var i = 0; i < count + 1; i++) {
+        fetchHandler.handleInterceptor({
+          requestId: 'requestId',
+          request: {
+            url: 'http://www.google.com',
+            method: 'GET',
+          },
+          resourceType: 'Document',
+          isNavigationRequest: true,
+        });
+        var result = count === i ? undefined : 'http://www.gauge.org';
+        expect(actualOption.url).to.equal(result);
+      }
+    });
+
+    it('maintains count amidst interleaving matched requests', async () => {
+      for (var i = 0; i < count + 1; i++) {
+        fetchHandler.handleInterceptor({
+          requestId: 'otherRequestId',
+          request: {
+            url: 'http://www.otherrequest.com',
+            method: 'GET',
+          },
+          resourceType: 'Document',
+          isNavigationRequest: true,
+        });
+        fetchHandler.handleInterceptor({
+          requestId: 'requestId',
+          request: {
+            url: 'http://www.google.com',
+            method: 'GET',
+          },
+          resourceType: 'Document',
+          isNavigationRequest: true,
+        });
+        var result = count === i ? undefined : 'http://www.gauge.org';
+        expect(actualOption.url).to.equal(result);
+      }
+    });
   });
+
   it('reset intercept for the requestUrl if interceptor is present for the url', async () => {
     fetchHandler.addInterceptor({
       requestUrl: 'www.google.com',

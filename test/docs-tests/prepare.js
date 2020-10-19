@@ -5,20 +5,18 @@ chai.use(chaiAsPromised);
 const fs = require('fs');
 const util = require('util');
 const path = require('path');
-const launchEleventy = require('./launchEleventy');
 const { jsDocToJson } = require('../../lib/documentation');
 const _ncp = require('ncp').ncp;
 _ncp.limit = 16;
 const recursiveCp = util.promisify(_ncp);
 const mkdir = util.promisify(fs.mkdir);
 
-async function generateWebsite() {
+async function prepare() {
   try {
     const docsConstants = prepareDocsConstants();
     await prepareDocsDirs(docsConstants);
-    const jsonConstants = prepareJsonConstants('./jsdoc-inputs/*.js');
+    const jsonConstants = prepareJsonConstants(['./jsdoc-inputs/*.js']);
     await prepareJson(jsonConstants);
-    await launchEleventy();
   } catch (e) {
     console.error(e);
   }
@@ -76,15 +74,16 @@ async function prepareDataDir(srcDataDir, destDataDir, apiJsFileName) {
 }
 
 function prepareJsonConstants(sourceCodeFiles) {
-  const jsonDir = './lib';
+  const jsonDir = path.join(process.cwd(), 'lib');
   const jsonFileName = 'api.json';
   const jsonConstants = { sourceCodeFiles, jsonDir, jsonFileName };
   return jsonConstants;
 }
+
 async function prepareJson({ sourceCodeFiles, jsonDir, jsonFileName }) {
   await mkdir(jsonDir, { recursive: true });
   const outputFile = path.join(jsonDir, jsonFileName);
   await jsDocToJson(sourceCodeFiles, outputFile);
 }
 
-generateWebsite();
+prepare();
