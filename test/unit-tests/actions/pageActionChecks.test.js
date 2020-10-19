@@ -98,7 +98,9 @@ describe('pageActionChecks', () => {
       ]);
       await expect(
         pageActionChecks.waitAndGetActionableElement('Something'),
-      ).to.be.eventually.rejectedWith('Please provide a more specific selector, too many matches.');
+      ).to.be.eventually.rejectedWith(
+        'Found too many matches. Please use a selector that is more specific',
+      );
     });
     it('should throw error when no actionable element is found', async () => {
       pageActionChecks.__set__('findElements', () => [

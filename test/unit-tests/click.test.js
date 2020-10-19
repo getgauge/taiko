@@ -167,7 +167,7 @@ describe(test_name, () => {
     describe('With element disabled', () => {
       it('should throw error if element is disabled', async () => {
         await expect(click(button('Click me'))).to.be.rejectedWith(
-          'Button with label Click me  is disabled',
+          'Button with label Click me is disabled',
         );
       });
     });
