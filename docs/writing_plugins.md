@@ -34,17 +34,17 @@ Only if the package.json has the above capability added taiko will consider it t
 const { openBrowser, goto, write, press, closeBrowser , inputField, into, screencast} = require('taiko');
 
 (async () => {
-    try {
-         await openBrowser();
-	   await screencast.start();	
-         await goto('google.com');
-         await write('taiko', into(inputField()));
-         await press('Enter');
-   } catch (e) {
+  try {
+        await openBrowser();
+        await screencast.startScreencast("output.gif");
+        await goto('google.com');
+        await write('taiko', into(textBox()));
+        await press('Enter');
+  } catch (e) {
         console.log(e);
   } finally {
+        await screencast.stopScreencast();
         await closeBrowser();
-        await screencast.stop(); 
   }
 })();
 ```
