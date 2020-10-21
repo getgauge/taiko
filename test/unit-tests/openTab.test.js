@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 const { EventEmitter } = require('events');
 const rewire = require('rewire');
 const { fail } = require('assert');
-const targetHandler = new require('../../lib/handlers/targetHandler');
+const targetHandler = require('../../lib/handlers/targetHandler');
 
 describe('openTab', () => {
   let actualTarget, actualOptions, actualUrl, taiko;
