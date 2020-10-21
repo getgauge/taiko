@@ -2,7 +2,6 @@ const expect = require('chai').expect;
 const { EventEmitter } = require('events');
 const rewire = require('rewire');
 const { fail } = require('assert');
-const targetHandler = require('../../lib/handlers/targetHandler');
 
 describe('openTab', () => {
   let actualTarget, actualOptions, actualUrl, taiko;
@@ -10,24 +9,36 @@ describe('openTab', () => {
 
   before(async () => {
     taiko = rewire('../../lib/taiko');
-    let mockCri = {
-      New: async function (options) {
-        actualUrl = options.url;
-        return target;
-      },
-    };
 
     let mockConnectToCri = (tgt) => {
       actualTarget = tgt;
     };
-
+    let targetRegistry = new Map();
     const mockWrapper = async (options, cb) => {
       actualOptions = options;
       await cb();
     };
     taiko.__set__('validate', () => {});
+    taiko.__set__('targetHandler', {
+      createTarget: async function (url) {
+        actualUrl = url;
+        return target;
+      },
+      register: function (name, target) {
+        if (name && target) {
+          targetRegistry.set(name, target);
+        } else {
+          return targetRegistry.get(name);
+        }
+      },
+      unregister: function (name) {
+        targetRegistry.delete(name);
+      },
+      clearRegister: function () {
+        targetRegistry.clear();
+      },
+    });
     taiko.__set__('doActionAwaitingNavigation', mockWrapper);
-    taiko.__set__('cri', mockCri);
     taiko.__set__('connect_to_cri', mockConnectToCri);
     taiko.__set__('_client', new EventEmitter());
   });
@@ -37,7 +48,7 @@ describe('openTab', () => {
   });
 
   afterEach(() => {
-    targetHandler.clearRegister();
+    taiko.__get__('targetHandler').clearRegister();
   });
 
   it('Open tab without any url should call connectToCri', async () => {
@@ -96,7 +107,7 @@ describe('openTab', () => {
   it('should register with identifier if no url and an identifier is passed', async () => {
     await taiko.openTab({ name: 'github' });
     expect(actualOptions.name).to.equal('github');
-    expect(targetHandler.register('github')).to.equal(target.id);
+    expect(taiko.__get__('targetHandler').register('github')).to.equal(target.id);
   });
 
   it('should set about:blank as the url with identifier', async () => {
