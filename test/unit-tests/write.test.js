@@ -12,54 +12,54 @@ let {
   write,
   into,
   setConfig,
-  reload,
 } = require('../../lib/taiko.js');
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 let test_name = 'write';
 
+let innerHtml = `
+  <div>
+    <script>
+      class ShadowButton extends HTMLElement {
+        constructor() {
+          super();
+          var shadow = this.attachShadow({mode: 'open'});
+
+          var button = document.createElement('input');
+          button.setAttribute('type', 'text');
+          button.setAttribute('id', 'shadow');
+          shadow.appendChild(button);
+        }
+      }
+      customElements.define('shadow-button', ShadowButton);
+    </script>
+    <shadow-button></shadow-button>
+    <div>
+      <input type='text' id='readonly' readonly />inputTypeTextWithInlineTextReadonly
+    </div>
+    <div>
+      <input type='text' id='focused' autofocus />focused input
+    </div>
+    <div>
+      <input type='text' id='text' />text
+    </div>
+    <div>
+      <label for='labelled'>Labelled input:</label>
+      <input type='text' id='labelled' />labelled
+    </div>
+    <div>
+      <input type='text' disabled id='disabled' />initially disabled
+    </div>
+    <script type='text/javascript'>
+      setTimeout( () => {
+        document.getElementById('disabled').disabled = false;
+      }, 100);
+    </script>
+  </div>`;
+
 describe(test_name, () => {
   let filePath;
-  before(async () => {
-    let innerHtml = `
-      <div>
-        <script>
-          class ShadowButton extends HTMLElement {
-            constructor() {
-              super();
-              var shadow = this.attachShadow({mode: 'open'});
 
-              var button = document.createElement('input');
-              button.setAttribute('type', 'text');
-              button.setAttribute('id', 'Shadow text');
-              shadow.appendChild(button);
-            }
-          }
-          customElements.define('shadow-button', ShadowButton);
-        </script>
-        <shadow-button></shadow-button>
-        <form name="inputTypeText">
-          <!--  //Read only input with type text -->
-          <div name="inputTypeTextWithInlineTextReadonly">
-            <input type="text" readonly>inputTypeTextWithInlineTextReadonly</input>
-          </div>
-          <div name="focused input" >
-            <input type="text" autofocus >focused input</input>
-          </div>
-          <div name="input-type-text">
-            <input type="text">input-type-text</input>
-          </div>
-          <label for="input-type-text-labelled">Labelled input:</label>
-          <input type="text" id="input-type-text-labelled" />input-type-text-labelled
-          <div>
-            <input type="text" disabled='true' id='disabled-input'>initially disabled input-type-text</input>
-          </div>
-        </form>
-        <script type="text/javascript">
-          setTimeout( () => {
-            document.getElementById('disabled-input').disabled = false;
-          }, 100);
-        </script>
-      </div>`;
+  before(async () => {
     filePath = createHtml(innerHtml, test_name);
     setConfig({
       waitForNavigation: false,
@@ -67,155 +67,121 @@ describe(test_name, () => {
       retryInterval: 10,
     });
     await openBrowser(openBrowserArgs);
-    await goto(filePath);
   });
 
   after(async () => {
     removeFile(filePath);
-    setConfig({
-      waitForNavigation: true,
-      retryTimeout: 10000,
-      retryInterval: 100,
-    });
     await closeBrowser();
+  });
+
+  beforeEach(async () => {
+    await goto(filePath);
   });
 
   it('into focused element', async () => {
-    await write('writing to focused input');
-    expect(await textBox('focused input').value()).to.equal('writing to focused input');
+    const input = textBox({ id: 'focused' });
+    const text = 'writing to focused input';
+    await write(text);
+    expect(await input.value()).to.equal(text);
   });
 
   it('should enter emoji char into focused element', async () => {
-    await reload();
-    await write('🦘 🦡 🐨 🐯 🦁 🐮 🐷 🐽 🐸 writing to focused input');
-    expect(await textBox('focused input').value()).to.equal(
-      '🦘 🦡 🐨 🐯 🦁 🐮 🐷 🐽 🐸 writing to focused input',
-    );
+    const input = textBox({ id: 'focused' });
+    const text = '🦘 🦡 🐨 🐯 🦁 🐮 🐷 🐽 🐸 writing to focused input';
+    await write(text);
+    expect(await input.value()).to.equal(text);
   });
 
   it('into input field text', async () => {
-    expect(await textBox('input-type-text').value()).to.equal('');
-    await write('hello', into(textBox('input-type-text')));
-    expect(await textBox('input-type-text').value()).to.equal('hello');
+    const input = textBox({ id: 'text' });
+    const text = 'hello';
+    await write(text, into(input));
+    expect(await input.value()).to.equal(text);
   });
 
   it('into input field by label', async () => {
-    expect(await textBox('input-type-text-labelled').value()).to.equal('');
-    await write('hello', into('Labelled input:'));
-    expect(await textBox('input-type-text-labelled').value()).to.equal('hello');
+    const input = textBox({ id: 'labelled' });
+    const label = 'Labelled input:';
+    const text = 'hello';
+    await write(text, into(label));
+    expect(await input.value()).to.equal(text);
   });
 
   it('should fail for readonly field', async () => {
-    await expect(
-      write('inputTypeTextWithInlineText', into(textBox('inputTypeTextWithInlineTextReadonly'))),
-    ).to.eventually.be.rejected;
-  });
-
-  it('should wait for element to be writable when selector is provided', async () => {
-    await write(
-      'Taiko can wait for element to be writable.',
-      into(textBox('initially disabled input-type-text')),
-    );
-    expect(await textBox('initially disabled input-type-text').value()).to.equal(
-      'Taiko can wait for element to be writable.',
-    );
-  });
-
-  it('should write into shadow dom element', async () => {
-    await write('Shadow text updated', into(textBox({ id: 'Shadow text' })));
-    expect(await textBox({ id: 'Shadow text' }).value()).to.equal('Shadow text updated');
-  });
-
-  it('should wait for element to be writable', async () => {
-    let innerHtml = `
-        <div>
-            <form name="inputTypeText">
-                <div>
-                    <input type="text" disabled='true' id='disabled-input' autofocus>initially disabled input-type-text</input>
-                </div>
-            </form>
-            <script type="text/javascript">
-                setTimeout( () => {
-                    document.getElementById('disabled-input').disabled = false;
-                }, 10);
-            </script>
-        </div>`;
-    filePath = createHtml(innerHtml, test_name);
-    await goto(filePath);
-    await write(
-      'Taiko can wait for element to be writable.',
-      into(textBox('initially disabled input-type-text')),
-    );
-    expect(await textBox('initially disabled input-type-text').value()).to.equal(
-      'Taiko can wait for element to be writable.',
-    );
-  });
-});
-
-describe('write test on multiple similar elements', () => {
-  let readonlyFilePath;
-  before(async () => {
-    let innerHtml =
-      '<div>' +
-      '<form name="inputTypeText">' +
-      //Read only input with type text
-      '<div name="inputTypeText">' +
-      '<input type="text" readonly>inputTypeText</input>' +
-      '</div>' +
-      '<div name="inputTypeText">' +
-      '<input type="text">inputTypeText</input>' +
-      '</div>' +
-      '<div name="readonlyInputTypeText">' +
-      '<input type="text" readonly>readonlyInputTypeText</input>' +
-      '</div>' +
-      '<div name="readonlyInputTypeText">' +
-      '<input type="text" readonly>readonlyInputTypeText</input>' +
-      '</div>' +
-      '</form>';
-    ('</div>');
-    readonlyFilePath = createHtml(innerHtml, test_name);
-    await openBrowser(openBrowserArgs);
-    setConfig({
-      waitForNavigation: false,
-      retryTimeout: 100,
-      retryInterval: 10,
-    });
-    await goto(readonlyFilePath);
-  });
-
-  after(async () => {
-    removeFile(readonlyFilePath);
-    setConfig({ waitForNavigation: true });
-    await closeBrowser();
-  });
-
-  it('should write into first writable element', async () => {
-    await expect(write('inputTypeTextWithInlineText', into(textBox('inputTypeText')))).not.to
-      .eventually.be.rejected;
-  });
-
-  it('should reject if no element is writable', async () => {
-    await expect(
-      write('inputTypeTextWithInlineText', into(textBox('readonlyInputTypeText'))),
-    ).to.eventually.be.rejectedWith('Element focused is not writable');
+    const input = textBox({ id: 'readonly' });
+    const text = 'hello';
+    await expect(write(text, into(input))).to.eventually.be.rejected;
   });
 
   it('should convert number to string value', async () => {
-    await expect(write(12345, into(textBox('inputTypeText')))).not.to.eventually.be.rejected;
+    const input = textBox({ id: 'text' });
+    const number = 12345;
+    await expect(write(number, into(input))).not.to.eventually.be.rejected;
+    expect(await input.value()).to.equal(number.toString());
   });
 
   it('should convert null to empty string value', async () => {
-    await expect(write(null, into(textBox('inputTypeText')))).not.to.eventually.be.rejected;
+    const input = textBox({ id: 'text' });
+    const empty = null;
+    await expect(write(empty, into(input))).not.to.eventually.be.rejected;
+    expect(await input.value()).to.equal('');
   });
 
   it('should convert undefined to empty string value', async () => {
-    await expect(write(undefined, into(textBox('inputTypeText')))).not.to.eventually.be.rejected;
+    const input = textBox({ id: 'text' });
+    const empty = undefined;
+    await expect(write(empty, into(input))).not.to.eventually.be.rejected;
+    expect(await input.value()).to.equal('');
+  });
+
+  it('should wait for element to be writable when selector is provided', async () => {
+    const input = textBox({ id: 'disabled' });
+    const text = 'Taiko can wait for element to be writable.';
+    await write(text, into(input));
+    expect(await input.value()).to.equal(text);
+  });
+
+  it('should write into shadow dom element', async () => {
+    const input = textBox({ id: 'shadow' });
+    const text = 'Shadow text updated';
+    await write(text, into(input));
+    expect(await input.value()).to.equal(text);
+  });
+
+  describe('write test on multiple similar elements', () => {
+    before(async () => {
+      let innerHtml = `
+        <input type='text' id='text' readonly />
+        <input type='text' id='text' />
+        <input type='text' id='readonly' readonly />
+        <input type='text' id='readonly' readonly />
+      `;
+      filePath = createHtml(innerHtml, test_name);
+    });
+
+    after(async () => {
+      removeFile(filePath);
+    });
+
+    it('should write into first writable element', async () => {
+      const input = textBox({ id: 'text' });
+      const text = 'hello';
+      await expect(write(text, into(input))).not.to.eventually.be.rejected;
+    });
+
+    it('should reject if no element is writable', async () => {
+      const input = textBox({ id: 'readonly' });
+      const text = 'hello';
+      await expect(write(text, into(input))).to.eventually.be.rejectedWith(
+        'Element focused is not writable',
+      );
+    });
   });
 });
 
-describe('Write with hideText option', () => {
-  let filePath;
-  let actualEmmiter, taiko;
+// separated from the rest because taiko needs to get rewired
+describe('write with hideText option', () => {
+  let filePath, actualEmmiter, taiko;
   let emitter = new EventEmitter();
 
   let validateEmitterEvent = function (event, expectedText) {
@@ -233,30 +199,6 @@ describe('Write with hideText option', () => {
 
     taiko.__set__('descEvent', emitter);
 
-    let innerHtml = `
-        <div>
-            <form name="inputTypeText">
-            <!--  //Read only input with type text -->
-                <div name="inputTypeTextWithInlineTextReadonly">
-                    <input type="text" readonly />inputTypeTextWithInlineTextReadonly
-                </div>
-                <div name="focused input">
-                    <input type="text" autofocus />focused input
-                </div>
-                <div name="input-type-text">
-                    <input type="text" />input-type-text
-                </div>
-                <div>
-                    <input type="text" disabled="true" id="disabled-input" />initially disabled input-type-text
-                </div>
-            </form>
-            <script type="text/javascript">
-                setTimeout( () => {
-                    document.getElementById('disabled-input').disabled = false;
-                }, 100);
-            </script>
-        </div>`;
-
     filePath = createHtml(innerHtml, test_name);
     await taiko.openBrowser(openBrowserArgs);
     await taiko.goto(filePath);
@@ -269,12 +211,7 @@ describe('Write with hideText option', () => {
 
   after(async () => {
     removeFile(filePath);
-    taiko.setConfig({
-      waitForNavigation: true,
-      retryTimeout: 10000,
-      retryInterval: 100,
-    });
-    await taiko.closeBrowser();
+    taiko.closeBrowser();
     taiko.__set__('descEvent', actualEmmiter);
   });
 
@@ -291,11 +228,11 @@ describe('Write with hideText option', () => {
   it('should mask the text when writing into a selected element', async () => {
     let validatePromise = validateEmitterEvent(
       'success',
-      'Wrote ***** into the textBox to left of input-type-text',
+      'Wrote ***** into the textBox[id="text"]',
     );
-    await taiko.write('something', taiko.into(taiko.textBox(taiko.toLeftOf('input-type-text'))), {
-      hideText: true,
-    });
+    const input = taiko.textBox({ id: 'text' });
+    const text = 'hello';
+    await taiko.write(text, taiko.into(input), { hideText: true });
     await validatePromise;
   });
 });
