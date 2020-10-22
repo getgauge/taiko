@@ -33,7 +33,7 @@ describe('TargetHandler', () => {
     it('should give current tab as matching if no url given', async () => {
       _targets.push({ id: '1', type: 'page' });
       _targets.push({ id: '2', type: 'page' });
-      targetHandler.__set__('currentTargetId', '2');
+      targetHandler.__set__('activeTargetId', '2');
       let targets = await targetHandler.getCriTargets();
       expect(targets.matching.length).to.be.equal(1);
       expect(targets.matching[0].id).to.be.equal('2');
