@@ -200,7 +200,7 @@ export interface ElementWrapper {
 }
 
 export interface ValueWrapper extends ElementWrapper {
-  value(): Promise<string>;
+  value(): Promise<string | Array<string> | Array<number>>;
 }
 
 export interface ButtonWrapper extends ElementWrapper {}

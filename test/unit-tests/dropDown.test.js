@@ -167,7 +167,7 @@ describe(test_name, () => {
 
     it('test select() with multiple values', async () => {
       await dropDown('Attire').select(['Shirt', 'Blazer']);
-      expect(await dropDown('Attire').value()).to.equal('shirt,blazer');
+      expect(await dropDown('Attire').value()).to.deep.equal(['shirt', 'blazer']);
     });
 
     it('test options()', async () => {
@@ -204,7 +204,7 @@ describe(test_name, () => {
     });
     it('test select() using array of index', async () => {
       await dropDown(below('Feedback')).select({ index: [1, 2] });
-      expect(await dropDown(below('Feedback')).value()).to.equal('20,30');
+      expect(await dropDown(below('Feedback')).value()).to.deep.equal(['20', '30']);
     });
   });
 
@@ -324,7 +324,7 @@ describe(test_name, () => {
     });
     it('should select multiple values specified by a regex ', async () => {
       await dropDown('Country').select(/and/);
-      expect(await dropDown('Country').value()).to.equal('england,scotland');
+      expect(await dropDown('Country').value()).to.deep.equal(['england', 'scotland']);
     });
 
     it('should throw error when there are no items matching regex ', async () => {
