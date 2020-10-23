@@ -41,6 +41,16 @@ describe('TargetHandler', () => {
       expect(targets.others[0].id).to.be.equal('1');
     });
 
+    it('should create target and return target id on createTarget call', async () => {
+      targetHandler.__set__('browserDebugUrlTarget', {
+        createTarget: () => {
+          return { targetId: 'id1' };
+        },
+      });
+      const actualTargetId = await targetHandler.createTarget('url');
+      expect(actualTargetId).to.equal('id1');
+    });
+
     it('should give all the matching tabs if regex is given', async () => {
       _targets.push({
         id: '1',

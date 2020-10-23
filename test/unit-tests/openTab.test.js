@@ -5,7 +5,7 @@ const { fail } = require('assert');
 
 describe('openTab', () => {
   let actualTarget, actualOptions, actualUrl, taiko;
-  let target = { id: 'TARGET' };
+  let target = 'TARGET';
 
   before(async () => {
     taiko = rewire('../../lib/taiko');
@@ -107,7 +107,7 @@ describe('openTab', () => {
   it('should register with identifier if no url and an identifier is passed', async () => {
     await taiko.openTab({ name: 'github' });
     expect(actualOptions.name).to.equal('github');
-    expect(taiko.__get__('targetHandler').register('github')).to.equal(target.id);
+    expect(taiko.__get__('targetHandler').register('github')).to.equal(target);
   });
 
   it('should set about:blank as the url with identifier', async () => {
