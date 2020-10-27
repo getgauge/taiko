@@ -223,7 +223,7 @@ export interface FileFieldWrapper extends ValueWrapper {}
 export interface TextBoxWrapper extends ValueWrapper {}
 
 export interface DropDownWrapper extends ValueWrapper {
-  select(value?: string | number): Promise<void>;
+  select(value?: string | number | string[] | number[] | { index: number[] }): Promise<void>;
 }
 export interface TimeFieldWrapper extends ValueWrapper {
   select(value?: string | number): Promise<void>;
