@@ -43,7 +43,7 @@ describe('TargetHandler', () => {
 
     it('should create target and return target id on createTarget call', async () => {
       targetHandler.__set__('browserDebugUrlTarget', {
-        createTarget: () => {
+        createTarget: async () => {
           return { targetId: 'id1' };
         },
       });
