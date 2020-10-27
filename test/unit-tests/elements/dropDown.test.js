@@ -32,6 +32,7 @@ describe('DropDown', () => {
     nodes = {
       25: {
         selectedIndex: 1,
+        multiple: false,
         options: [
           { value: '25 value 0', text: '25 text 0' },
           { value: '25 value 1', text: '25 text 1' },
@@ -43,6 +44,7 @@ describe('DropDown', () => {
       },
       26: {
         selectedIndex: 1,
+        multiple: false,
         options: [
           { value: '26 value 0', text: '26 text 0' },
           { value: '26 value 1', text: '26 text 1' },
@@ -54,6 +56,7 @@ describe('DropDown', () => {
       },
       27: {
         selectedIndex: 1,
+        multiple: false,
         options: [
           { value: '27 value 0', text: '27 text 0' },
           { value: '27 value 1', text: '27 text 1' },
@@ -65,6 +68,7 @@ describe('DropDown', () => {
       },
       28: {
         selectedIndex: 1,
+        multiple: false,
         value: '28 value 2',
         options: [
           { value: '28 value 0', text: '28 text 0' },
@@ -146,6 +150,7 @@ describe('DropDown', () => {
     it('should return value', async () => {
       let objectId = 28;
       const dropDown = new DropDown(objectId, 'description', runtimeHandler);
+      await dropDown.select('28 text 2');
       expect(await dropDown.value()).to.be.equal('28 value 2');
     });
   });
