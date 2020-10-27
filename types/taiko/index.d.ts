@@ -661,7 +661,7 @@ export function evaluate<T>(
 // https://docs.taiko.dev/api/to
 export function to<T extends string | Selector>(value: T): T;
 // https://docs.taiko.dev/api/into
-export function into<T extends string | Selector>(value: T): T;
+export function into<T extends SearchElement>(value: T): T;
 // https://docs.taiko.dev/api/accept
 export function accept(text?: string): Promise<void>;
 // https://docs.taiko.dev/api/dismiss
