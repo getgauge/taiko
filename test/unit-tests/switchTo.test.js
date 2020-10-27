@@ -19,6 +19,7 @@ describe('switchTo', () => {
     taiko.__set__('targetHandler.register', () => {
       return registeredTarget;
     });
+    taiko.__set__('targetHandler.switchBrowserContext', () => {});
     taiko.__set__('connect_to_cri', () => {
       return registeredTarget;
     });

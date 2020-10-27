@@ -33,11 +33,22 @@ describe('TargetHandler', () => {
     it('should give current tab as matching if no url given', async () => {
       _targets.push({ id: '1', type: 'page' });
       _targets.push({ id: '2', type: 'page' });
+      targetHandler.__set__('activeTargetId', '2');
       let targets = await targetHandler.getCriTargets();
       expect(targets.matching.length).to.be.equal(1);
       expect(targets.matching[0].id).to.be.equal('2');
       expect(targets.others.length).to.be.equal(1);
       expect(targets.others[0].id).to.be.equal('1');
+    });
+
+    it('should create target and return target id on createTarget call', async () => {
+      targetHandler.__set__('browserDebugUrlTarget', {
+        createTarget: async () => {
+          return { targetId: 'id1' };
+        },
+      });
+      const actualTargetId = await targetHandler.createTarget('url');
+      expect(actualTargetId).to.equal('id1');
     });
 
     it('should give all the matching tabs if regex is given', async () => {
