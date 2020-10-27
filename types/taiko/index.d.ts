@@ -141,6 +141,10 @@ export interface SelectionOptions {
   selectHiddenElements?: boolean;
 }
 
+export interface DollarOptions extends SelectionOptions {
+  args?: any;
+}
+
 export interface TableCellOptions extends SelectionOptions {
   row: number;
   col: number;
@@ -502,8 +506,8 @@ export function tap(
 
 // https://docs.taiko.dev/api/$
 export function $(
-  selector: string,
-  _options?: SelectionOptions | RelativeSearchElement,
+  selector: string | ((args?: any) => any),
+  _options?: DollarOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): DollarWrapper;
 // https://docs.taiko.dev/api/image
