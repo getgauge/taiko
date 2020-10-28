@@ -89,6 +89,7 @@ Google
 
 ```
 > goto("google.com")
+> click("I agree") 
 > write("taiko test automation")
 > click("Google Search")
 ```
@@ -96,11 +97,12 @@ Google
 These commands automate the browser to
 
 * `goto` Google’s home page,
+* `click` on the "I agree" button (to consent to the use of cookies).
 * `write` the text "taiko test automation" and then
 * `click` on the "Google Search" button.
 
 You can see the browser performing these actions as you type and press enter for 
-each command.
+each command. (The recording was made before Google added the cookie consent.)
 
 ![Recorder](/assets/images/recording.gif)
 
@@ -121,6 +123,7 @@ const { openBrowser, goto, write, click } = require('taiko');
   try {
     await openBrowser();
     await goto("google.com");
+    await click("I agree")
     await write("taiko test automation");
     await click("Google Search");
   } catch (error) {
@@ -177,17 +180,15 @@ For example
 ```
 const { openBrowser, goto, write, click } = require('taiko');
 const { repl } = require('taiko/recorder');
-
 (async () => {
   try {
     await openBrowser();
     await goto("google.com");
+    await click("I agree"); // remove this line if you run headless, because the cookie consent will not appear
     await write("taiko test automation");
     await click("Google Search");
-
     // Launchs the REPL after executing 
     // the commands above
-
     await repl(); 
   } catch (error) {
       console.error(error);
