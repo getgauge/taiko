@@ -34,13 +34,13 @@ describe('pageActionChecks', () => {
     });
     afterEach(() => (pageActionChecks = rewire('../../../lib/actions/pageActionChecks')));
     it('should check all given checks and return false if anyone is false', async () => {
-      const checks = ['visible', 'disabled'];
+      const checks = [pageActionChecks.checksMap.visible, pageActionChecks.checksMap.disabled];
       const elem = { isVisible: () => true, isDisabled: () => true };
       const result = await pageActionChecks.__get__('checkIfActionable')(elem, checks);
       expect(result.actionable).to.be.false;
     });
     it('should check all given checks and return true if all are true', async () => {
-      const checks = ['visible', 'disabled'];
+      const checks = [pageActionChecks.checksMap.visible, pageActionChecks.checksMap.disabled];
       const elem = { isVisible: () => true, isDisabled: () => false };
       const result = await pageActionChecks.__get__('checkIfActionable')(elem, checks);
       expect(result.actionable).to.be.true;
@@ -57,7 +57,10 @@ describe('pageActionChecks', () => {
     });
     afterEach(() => (pageActionChecks = rewire('../../../lib/actions/pageActionChecks')));
     it('should call checkActionable with default checks if not given', async () => {
-      const defaultChecks = ['visible', 'disabled'];
+      const defaultChecks = [
+        pageActionChecks.checksMap.visible,
+        pageActionChecks.checksMap.disabled,
+      ];
       let actualCheck;
       pageActionChecks.__set__('checkIfActionable', (elem, checks) => {
         actualCheck = checks;
@@ -70,7 +73,7 @@ describe('pageActionChecks', () => {
       expect(actualCheck).to.deep.equal(defaultChecks);
     });
     it('should call checkActionable with given checks', async () => {
-      const expectedChecks = ['visible'];
+      const expectedChecks = [pageActionChecks.checksMap.visible];
       let actualCheck;
       pageActionChecks.__set__('checkIfActionable', (elem, checks) => {
         actualCheck = checks;
