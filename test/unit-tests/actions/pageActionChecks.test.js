@@ -34,29 +34,37 @@ describe('pageActionChecks', () => {
     });
     afterEach(() => (pageActionChecks = rewire('../../../lib/actions/pageActionChecks')));
     it('should check all given checks and return false if anyone is false', async () => {
-      const checks = ['visible', 'disabled'];
+      const checks = [pageActionChecks.checksMap.visible, pageActionChecks.checksMap.disabled];
       const elem = { isVisible: () => true, isDisabled: () => true };
       const result = await pageActionChecks.__get__('checkIfActionable')(elem, checks);
-      expect(result).to.be.false;
+      expect(result.actionable).to.be.false;
     });
     it('should check all given checks and return true if all are true', async () => {
-      const checks = ['visible', 'disabled'];
+      const checks = [pageActionChecks.checksMap.visible, pageActionChecks.checksMap.disabled];
       const elem = { isVisible: () => true, isDisabled: () => false };
       const result = await pageActionChecks.__get__('checkIfActionable')(elem, checks);
-      expect(result).to.be.true;
+      expect(result.actionable).to.be.true;
     });
   });
   describe('waitAndGetActionableElement', () => {
     beforeEach(() => {
-      pageActionChecks.__set__('defaultConfig', { retryInterval: 5, retryTimeout: 10 });
+      pageActionChecks.__set__('scrollToElement', () => {});
+      pageActionChecks.__set__('defaultConfig', {
+        noOfElementToMatch: 2,
+        retryInterval: 5,
+        retryTimeout: 10,
+      });
     });
     afterEach(() => (pageActionChecks = rewire('../../../lib/actions/pageActionChecks')));
     it('should call checkActionable with default checks if not given', async () => {
-      const defaultChecks = ['visible', 'disabled'];
+      const defaultChecks = [
+        pageActionChecks.checksMap.visible,
+        pageActionChecks.checksMap.disabled,
+      ];
       let actualCheck;
       pageActionChecks.__set__('checkIfActionable', (elem, checks) => {
         actualCheck = checks;
-        return true;
+        return { actionable: true, error: null };
       });
       pageActionChecks.__set__('findElements', () => [
         { isVisible: () => true, isDisabled: () => false },
@@ -65,11 +73,11 @@ describe('pageActionChecks', () => {
       expect(actualCheck).to.deep.equal(defaultChecks);
     });
     it('should call checkActionable with given checks', async () => {
-      const expectedChecks = ['visible'];
+      const expectedChecks = [pageActionChecks.checksMap.visible];
       let actualCheck;
       pageActionChecks.__set__('checkIfActionable', (elem, checks) => {
         actualCheck = checks;
-        return true;
+        return { actionable: true, error: null };
       });
       pageActionChecks.__set__('findElements', () => [
         { isVisible: () => true, isDisabled: () => false },
@@ -85,6 +93,18 @@ describe('pageActionChecks', () => {
       const result = await pageActionChecks.waitAndGetActionableElement('Something');
       expect(result.name).to.equal('Actionable');
     });
+    it('should throw error when no actionable element is found in default number of element to check', async () => {
+      pageActionChecks.__set__('findElements', () => [
+        { name: 'notActionable', isVisible: () => true, isDisabled: () => true },
+        { name: 'notActionable', isVisible: () => true, isDisabled: () => true },
+        { name: 'notActionable', isVisible: () => true, isDisabled: () => false },
+      ]);
+      await expect(
+        pageActionChecks.waitAndGetActionableElement('Something'),
+      ).to.be.eventually.rejectedWith(
+        'Found too many matches. Please use a selector that is more specific',
+      );
+    });
     it('should throw error when no actionable element is found', async () => {
       pageActionChecks.__set__('findElements', () => [
         { name: 'notActionable', isVisible: () => true, isDisabled: () => true },
@@ -92,9 +112,7 @@ describe('pageActionChecks', () => {
       ]);
       await expect(
         pageActionChecks.waitAndGetActionableElement('Something'),
-      ).to.be.eventually.rejectedWith(
-        'Element matching text "Something" is not actionable. Check failed for anyone of the following cases visible,disabled',
-      );
+      ).to.be.eventually.rejectedWith('Element matching text "Something" is disabled');
     });
   });
 });
