@@ -175,7 +175,9 @@ and using the `--load` options while launching the Taiko REPL
 For example 
 
 ```
-const { openBrowser, goto, write, click, repl } = require('taiko');
+const { openBrowser, goto, write, click } = require('taiko');
+const { repl } = require('taiko/recorder');
+
 (async () => {
   try {
     await openBrowser();
