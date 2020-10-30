@@ -1,7 +1,6 @@
 const expect = require('chai').expect;
 const { EventEmitter } = require('events');
 const rewire = require('rewire');
-const { eventHandler } = require('../../lib/eventBus');
 
 describe('closeTab', () => {
   let _targets = { matching: [], others: [] };
@@ -25,11 +24,10 @@ describe('closeTab', () => {
 
   before(() => {
     taiko = rewire('../../lib/taiko');
-    targetHandler = rewire('../../lib/handlers/targetHandler');
     let mockCri = {
       Close: async function () {},
     };
-
+    let targetRegistry = new Map();
     let mockHandler = {
       getCriTargets: () => {
         return _targets;
@@ -47,17 +45,20 @@ describe('closeTab', () => {
         return _isMatchTarget;
       },
       register: (name, target) => {
-        return targetHandler.register(name, target);
+        if (name && target) {
+          targetRegistry.set(name, target);
+        } else {
+          return targetRegistry.get(name);
+        }
       },
       unregister: (name) => {
-        return targetHandler.unregister(name);
+        targetRegistry.delete(name);
       },
     };
 
     taiko.__set__('validate', () => {});
     taiko.__set__('currentURL', () => currentURL);
     taiko.__set__('title', () => title);
-    targetHandler.__set__('cri', mockCri);
     taiko.__set__('targetHandler', mockHandler);
     taiko.__set__('descEvent', descEmmitter);
     taiko.__set__('cri', mockCri);
@@ -70,9 +71,6 @@ describe('closeTab', () => {
 
   after(() => {
     taiko = rewire('../../lib/taiko');
-    targetHandler = rewire('../../lib/handlers/targetHandler');
-    const createdSessionListener = targetHandler.__get__('createdSessionListener');
-    eventHandler.removeListener('createdSession', createdSessionListener);
   });
 
   beforeEach(() => {
@@ -240,7 +238,7 @@ describe('closeTab', () => {
 
     _targets.matching.push(targetWithIdentifier);
 
-    targetHandler.register('google', targetWithIdentifier);
+    taiko.__get__('targetHandler').register('google', targetWithIdentifier);
 
     _targets.others.push({
       id: '2',
@@ -258,7 +256,7 @@ describe('closeTab', () => {
 
     let validatePromise = validateEmitterEvent('success', 'Closed tab(s) matching google');
     await taiko.closeTab({ name: 'google' });
-    expect(targetHandler.register('google')).to.be.undefined;
+    expect(taiko.__get__('targetHandler').register('google')).to.be.undefined;
     await validatePromise;
   });
 });
