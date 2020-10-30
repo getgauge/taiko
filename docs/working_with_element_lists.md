@@ -50,14 +50,14 @@ in two ways.
 By passing the index of the match you want to fetch
 
 ```
-var fruit = await listItem({class: "fruit"}).elements(0); 
+var fruit = await listItem({class: "fruit"}).element(0); 
 
 // Prints Apple
 console.log(fruit);
 ```
 
 ```
-var fruit = await listItem({class: "fruit"}).elements(3); 
+var fruit = await listItem({class: "fruit"}).element(3); 
 
 // Prints Pear
 console.log(fruit);
