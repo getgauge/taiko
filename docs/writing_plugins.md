@@ -22,7 +22,7 @@ over the website, taiko-screencast - which can let users record a video of the s
 ```
 module.exports = {
     'exec': (options) => {
-        console.log('Taiko\'s plugin executes operation with following options');
+        console.log("Taiko's plugin executes operation with following options");
         console.log(options);
     }
 };
