@@ -19,6 +19,14 @@ over the website, taiko-screencast - which can let users record a video of the s
 - Plugins should implement ‘init()’ method which will be called by taiko on load passing taiko and event handler instances.
 - Taiko will communicate with plugins via events.
 - Plugins should implement ‘exec()’ method to extend taiko CLI to execute any action. 
+```
+module.exports = {
+    'exec': (options) => {
+        console.log("Taiko's plugin executes operation with following options");
+        console.log(options);
+    }
+};
+```
 - Plugins should add capability in their package.json if they have execute functionality.
  ```
 capability:[‘subcommands’]` - in plugins package.json 
@@ -31,20 +39,20 @@ Only if the package.json has the above capability added taiko will consider it t
 
 #### Example:
 ```
-const { openBrowser, goto, write, press, closeBrowser , inputField, into, screencast} = require('taiko');
+const { openBrowser, goto, write, press, closeBrowser, into, screencast} = require('taiko');
 
 (async () => {
-    try {
-         await openBrowser();
-	   await screencast.start();	
-         await goto('google.com');
-         await write('taiko', into(inputField()));
-         await press('Enter');
-   } catch (e) {
+  try {
+        await openBrowser();
+        await screencast.startScreencast("output.gif");
+        await goto('google.com');
+        await write('taiko', into(textBox()));
+        await press('Enter');
+  } catch (e) {
         console.log(e);
   } finally {
+        await screencast.stopScreencast();
         await closeBrowser();
-        await screencast.stop(); 
   }
 })();
 ```
