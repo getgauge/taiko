@@ -38,27 +38,32 @@ await listItem({class: "fruit"}).text();
 ```
 
 Notice that the method `text()` returns the text of the first match for the `listitem` 
-with the class attribute `fruit` even though there are more than one item that class attribute.
+with the class attribute `fruit` even though there are more matches.
 The following sections explains how you can access all the matches in the list.
 
-## Using loops and indexes
+## Using indexes and loops
 
-To access all other list items that match the 
-class attribute `fruit` you can use the
-[`elements`](https://docs.taiko.dev/api/elementwrapper/#elements) method which
-returns an array of matches
+To access other matches of the list items with the class attribute `fruit` 
+you can use the [`elements`](https://docs.taiko.dev/api/elementwrapper/#elements) 
+in two ways.
+
+By passing the index of the match you want to fetch
 
 ```
-var fruits = await listItem({class: "fruit"}).elements(); 
+var fruit = await listItem({class: "fruit"}).element(0); 
 
 // Prints Apple
-console.log(await fruits[0].text());
-
-// Prints Pear
-console.log(await fruits[3].text());
+console.log(fruit);
 ```
 
-To loop and print/read all you can use JavaScript's `for` loop 
+```
+var fruit = await listItem({class: "fruit"}).element(3); 
+
+// Prints Pear
+console.log(fruit);
+```
+
+or by looping through all matches in the elements array using a `for` loop 
 
 ```
 /* Prints
@@ -73,6 +78,7 @@ var fruits = await listItem({class: "fruit"}).elements();
 for (fruit of fruits) {
     console.log(await fruit.text());
 }
+
 ```
 
 The `elements` method is also available for CSS and XPath selectors
