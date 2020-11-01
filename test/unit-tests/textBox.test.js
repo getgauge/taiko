@@ -408,7 +408,7 @@ describe(test_name, () => {
                         </div>
                         <div name="withWrappedLabel">
                             <label>
-                                <input type="${inputType.type}"/>
+                            <input type="${inputType.type}" placeholder='Filter'/>
                                 <span>With Wrapped Label</span>
                             </label>
                         </div>
@@ -441,6 +441,10 @@ describe(test_name, () => {
       describe('with inline text', () => {
         it('test exists()', async () => {
           expect(await textBox('With Inline Text').exists()).to.be.true;
+        });
+
+        it('placeholder exists()', async () => {
+          expect(await textBox('Filter').exists()).to.be.true;
         });
 
         it('test value()', async () => {
