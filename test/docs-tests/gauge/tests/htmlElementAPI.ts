@@ -56,7 +56,7 @@ export default class HtmlElementAPI {
   public async selectDropDownValue(value: string | number, dropDownName: string, fieldValue: any) {
     const box = dropDown(dropDownName);
     await box.select(value);
-    assert.equal(await box.value(), fieldValue);
+    assert.equal(await box.values(), fieldValue);
   }
 
   @Step('Ensure Check Box <checkBoxName> exists')
