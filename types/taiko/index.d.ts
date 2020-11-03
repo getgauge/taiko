@@ -208,6 +208,10 @@ export interface ValueWrapper extends ElementWrapper {
   value(): Promise<string>;
 }
 
+export interface MultiValueWrapper extends ElementWrapper {
+  values(): Promise<string | string[] | number[]>;
+}
+
 export interface ButtonWrapper extends ElementWrapper {}
 export interface DollarWrapper extends ElementWrapper {}
 export interface ImageWrapper extends ElementWrapper {}
@@ -223,7 +227,7 @@ export interface ColorWrapper extends ValueWrapper {
 export interface FileFieldWrapper extends ValueWrapper {}
 export interface TextBoxWrapper extends ValueWrapper {}
 
-export interface DropDownWrapper extends ValueWrapper {
+export interface DropDownWrapper extends MultiValueWrapper {
   select(value?: string | number | string[] | number[] | { index: number[] }): Promise<void>;
 }
 export interface TimeFieldWrapper extends ValueWrapper {

@@ -151,7 +151,7 @@ describe('DropDown', () => {
       let objectId = 28;
       const dropDown = new DropDown(objectId, 'description', runtimeHandler);
       await dropDown.select('28 text 2');
-      expect(await dropDown.value()).to.be.equal('28 value 2');
+      expect(await dropDown.values()).to.be.equal('28 value 2');
     });
   });
 });

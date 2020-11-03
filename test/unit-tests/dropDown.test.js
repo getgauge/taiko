@@ -162,12 +162,12 @@ describe(test_name, () => {
     it('test select()', async () => {
       await dropDown('Cars').select('Audi');
       await dropDown('Cars').select('mercedes');
-      expect(await dropDown('Cars').value()).to.equal('mercedes');
+      expect(await dropDown('Cars').values()).to.equal('mercedes');
     });
 
     it('test select() with multiple values', async () => {
       await dropDown('Attire').select(['Shirt', 'Blazer']);
-      expect(await dropDown('Attire').value()).to.deep.equal(['shirt', 'blazer']);
+      expect(await dropDown('Attire').values()).to.deep.equal(['shirt', 'blazer']);
     });
 
     it('test options()', async () => {
@@ -192,7 +192,7 @@ describe(test_name, () => {
         expect(await dropDown('Foods').select(['Burger', 'Pasta']));
       } catch (err) {
         expect(err.message).to.equal('Cannot set value Burger on a disabled field');
-        expect(await dropDown('Foods').value()).to.equal('');
+        expect(await dropDown('Foods').values()).to.equal('');
       }
     });
   });
@@ -200,18 +200,18 @@ describe(test_name, () => {
   describe('Select using index', () => {
     it('test select() using index', async () => {
       await dropDown(below('Reason')).select({ index: 1 });
-      expect(await dropDown(below('Reason')).value()).to.equal('9092');
+      expect(await dropDown(below('Reason')).values()).to.equal('9092');
     });
     it('test select() using array of index', async () => {
       await dropDown(below('Feedback')).select({ index: [1, 2] });
-      expect(await dropDown(below('Feedback')).value()).to.deep.equal(['20', '30']);
+      expect(await dropDown(below('Feedback')).values()).to.deep.equal(['20', '30']);
     });
   });
 
   describe('wrapped in label', () => {
     it('test exists()', async () => {
       expect(await dropDown('dropDownWithWrappedInLabel').exists()).to.be.true;
-      expect(await dropDown('dropDownWithWrappedInLabel').value()).to.not.equal('mercedes');
+      expect(await dropDown('dropDownWithWrappedInLabel').values()).to.not.equal('mercedes');
     });
 
     it('test description', async () => {
@@ -283,7 +283,7 @@ describe(test_name, () => {
         id: 'sampleDropDown',
       }).elements();
       await elements[0].select('someValue');
-      expect(await elements[0].value()).to.equal('someValue');
+      expect(await elements[0].values()).to.equal('someValue');
     });
 
     it('test get value of multiple selected elements', async () => {
@@ -291,7 +291,7 @@ describe(test_name, () => {
         id: 'sampleDropDown',
       }).elements();
       await elements[0].select('someValue');
-      expect(await elements[0].value()).to.equal('someValue');
+      expect(await elements[0].values()).to.equal('someValue');
     });
   });
 
@@ -320,11 +320,11 @@ describe(test_name, () => {
   describe('regex based selection', () => {
     it('should select value specified by a regex ', async () => {
       await dropDown('Cars').select(/M.rc.d.s/);
-      expect(await dropDown('Cars').value()).to.equal('mercedes');
+      expect(await dropDown('Cars').values()).to.equal('mercedes');
     });
     it('should select multiple values specified by a regex ', async () => {
       await dropDown('Country').select(/and/);
-      expect(await dropDown('Country').value()).to.deep.equal(['england', 'scotland']);
+      expect(await dropDown('Country').values()).to.deep.equal(['england', 'scotland']);
     });
 
     it('should throw error when there are no items matching regex ', async () => {
