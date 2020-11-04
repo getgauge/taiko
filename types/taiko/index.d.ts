@@ -63,6 +63,7 @@ export interface GlobalConfigurationOptions {
   observeTime?: number;
   retryInterval?: number;
   retryTimeout?: number;
+  noOfElementToMatch?: number;
   observe?: boolean;
   waitForNavigation?: boolean;
   ignoreSSLErrors?: boolean;
