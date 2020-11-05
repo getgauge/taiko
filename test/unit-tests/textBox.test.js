@@ -408,7 +408,7 @@ describe(test_name, () => {
                         </div>
                         <div name="withWrappedLabel">
                             <label>
-                            <input type="${inputType.type}" placeholder='Filter'/>
+                            <input type="${inputType.type}"/>
                                 <span>With Wrapped Label</span>
                             </label>
                         </div>
@@ -441,10 +441,6 @@ describe(test_name, () => {
       describe('with inline text', () => {
         it('test exists()', async () => {
           expect(await textBox('With Inline Text').exists()).to.be.true;
-        });
-
-        it('placeholder exists()', async () => {
-          expect(await textBox('Filter').exists()).to.be.true;
         });
 
         it('test value()', async () => {
@@ -724,6 +720,48 @@ describe(test_name, () => {
         let elements = await textBox('sampleInputWithoutType').elements();
         expect(await elements[0].value()).to.be.eql('inputWithoutTypeValue');
       });
+    });
+  });
+
+  describe('input with placeholder ', () => {
+    let filePath;
+    before(async () => {
+      let innerHtml = `
+      <!DOCTYPE html>
+      <html>
+      <body>
+      
+      <input type="search" id="mySearch" placeholder="Filter items">
+      
+      <p>Click the button to change the placeholder text of the search field.</p>
+      
+      <button onclick="myFunction()">Try it</button>
+      
+      <script>
+      function myFunction() {
+        document.getElementById("mySearch").placeholder = "Search files";
+      }
+      </script>
+      
+      </body>
+      </html>
+      `;
+      filePath = createHtml(innerHtml);
+      await goto(filePath);
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
+    });
+
+    after(() => {
+      resetConfig();
+      removeFile(filePath);
+    });
+
+    it('placeholder exists()', async () => {
+      expect(await textBox('Filter items').exists()).to.be.true;
     });
   });
 
