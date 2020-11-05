@@ -732,17 +732,6 @@ describe(test_name, () => {
       <body>
       
       <input type="search" id="mySearch" placeholder="Filter items">
-      
-      <p>Click the button to change the placeholder text of the search field.</p>
-      
-      <button onclick="myFunction()">Try it</button>
-      
-      <script>
-      function myFunction() {
-        document.getElementById("mySearch").placeholder = "Search files";
-      }
-      </script>
-      
       </body>
       </html>
       `;
