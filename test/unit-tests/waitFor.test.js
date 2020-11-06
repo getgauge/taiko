@@ -27,11 +27,16 @@ describe(test_name, function () {
       '<p id="demo"></p>' +
       '<script>' +
       'function myFunction() {' +
+      'setTimeout(function() {' +
       'document.getElementById("demo").innerHTML = "Wait is Over..!";' +
+      '}, 500)' +
       '}' +
       '</script>';
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
+  });
+
+  beforeEach(async () => {
     await goto(filePath);
   });
 
@@ -100,6 +105,16 @@ describe(test_name, function () {
       await click('Click me');
       await expect(waitFor(async () => await $('//*[text()="Wait is Over..!"]').exists(0.0))).not.to
         .eventually.be.rejected;
+    });
+
+    it('should wait for given string', async () => {
+      await click('Click me');
+      await expect(waitFor('Wait is Over', 2000)).not.to.eventually.be.rejected;
+    });
+
+    it('should wait for given selector', async () => {
+      await click('Click me');
+      await expect(waitFor(text('Wait is Over'), 2000)).not.to.eventually.be.rejected;
     });
   });
 });
