@@ -754,6 +754,46 @@ describe(test_name, () => {
     });
   });
 
+  describe('input with shadow DOM placeholder ', () => {
+    let filePath;
+    before(async () => {
+      let innerHtml = ` <script>
+     
+      class ShadowButton extends HTMLElement {
+        constructor() {
+          super();
+          var shadow = this.attachShadow({mode: 'open'});
+  
+          var button = document.createElement('input');
+          button.setAttribute('id', 'Shadow text');
+          button.setAttribute('placeholder', 'Shadow Placeholder');
+          shadow.appendChild(button);
+          
+        }
+      }
+      customElements.define('shadow-button', ShadowButton);
+    </script>
+    <shadow-button></shadow-button>`;
+
+      filePath = createHtml(innerHtml);
+      await goto(filePath);
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
+    });
+
+    after(() => {
+      resetConfig();
+      removeFile(filePath);
+    });
+
+    it('placeholder exists() within shadowDOM', async () => {
+      expect(await textBox('Shadow Placeholder').exists()).to.be.true;
+    });
+  });
+
   describe('Parameters validation', () => {
     it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
       expect(() => textBox($('div'))).to.throw(
