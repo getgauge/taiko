@@ -408,7 +408,7 @@ describe(test_name, () => {
                         </div>
                         <div name="withWrappedLabel">
                             <label>
-                                <input type="${inputType.type}"/>
+                            <input type="${inputType.type}"/>
                                 <span>With Wrapped Label</span>
                             </label>
                         </div>
@@ -720,6 +720,77 @@ describe(test_name, () => {
         let elements = await textBox('sampleInputWithoutType').elements();
         expect(await elements[0].value()).to.be.eql('inputWithoutTypeValue');
       });
+    });
+  });
+
+  describe('input with placeholder ', () => {
+    let filePath;
+    before(async () => {
+      let innerHtml = `
+      <!DOCTYPE html>
+      <html>
+      <body>
+      
+      <input type="search" id="mySearch" placeholder="Filter items">
+      </body>
+      </html>
+      `;
+      filePath = createHtml(innerHtml);
+      await goto(filePath);
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
+    });
+
+    after(() => {
+      resetConfig();
+      removeFile(filePath);
+    });
+
+    it('placeholder exists()', async () => {
+      expect(await textBox('Filter items').exists()).to.be.true;
+    });
+  });
+
+  describe('input with shadow DOM placeholder ', () => {
+    let filePath;
+    before(async () => {
+      let innerHtml = ` <script>
+     
+      class ShadowButton extends HTMLElement {
+        constructor() {
+          super();
+          var shadow = this.attachShadow({mode: 'open'});
+  
+          var button = document.createElement('input');
+          button.setAttribute('id', 'Shadow text');
+          button.setAttribute('placeholder', 'Shadow Placeholder');
+          shadow.appendChild(button);
+          
+        }
+      }
+      customElements.define('shadow-button', ShadowButton);
+    </script>
+    <shadow-button></shadow-button>`;
+
+      filePath = createHtml(innerHtml);
+      await goto(filePath);
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
+    });
+
+    after(() => {
+      resetConfig();
+      removeFile(filePath);
+    });
+
+    it('placeholder exists() within shadowDOM', async () => {
+      expect(await textBox('Shadow Placeholder').exists()).to.be.true;
     });
   });
 

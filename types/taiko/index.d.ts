@@ -63,6 +63,7 @@ export interface GlobalConfigurationOptions {
   observeTime?: number;
   retryInterval?: number;
   retryTimeout?: number;
+  noOfElementToMatch?: number;
   observe?: boolean;
   waitForNavigation?: boolean;
   ignoreSSLErrors?: boolean;
@@ -223,7 +224,7 @@ export interface FileFieldWrapper extends ValueWrapper {}
 export interface TextBoxWrapper extends ValueWrapper {}
 
 export interface DropDownWrapper extends ValueWrapper {
-  select(value?: string | number): Promise<void>;
+  select(value?: string | number | string[] | number[] | { index: number[] }): Promise<void>;
 }
 export interface TimeFieldWrapper extends ValueWrapper {
   select(value?: string | number): Promise<void>;
@@ -661,7 +662,7 @@ export function evaluate<T>(
 // https://docs.taiko.dev/api/to
 export function to<T extends string | Selector>(value: T): T;
 // https://docs.taiko.dev/api/into
-export function into<T extends string | Selector>(value: T): T;
+export function into<T extends SearchElement>(value: T): T;
 // https://docs.taiko.dev/api/accept
 export function accept(text?: string): Promise<void>;
 // https://docs.taiko.dev/api/dismiss
