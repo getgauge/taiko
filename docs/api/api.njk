@@ -67,7 +67,8 @@ layout: api.njk
             <dl>
                 <dt>
                     <code>{{ tag.name }}</code>
-                    <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/{{ tag.type.expression.name }}">{{ tag.type.expression.name }}</a>
+                    {{ typeParser(tag.type.expression) }}
+                    
                 </dt>
                 <dd>
                     {{ tag.description | markdown | safe }}
