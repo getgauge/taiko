@@ -78,6 +78,7 @@ Example: `taiko diagnostics http://gauge.org`
 - `exec()` function in plugin will be executed for the subcommand
 
 ### Examples
-- Taiko-android       - https://github.com/saikrishna321/taiko-android/
+- Taiko-android     - https://github.com/saikrishna321/taiko-android/
 - Taiko-screencast  - https://github.com/getgauge-contrib/taiko-screencast
 - Taiko-diagnostics - https://github.com/saikrishna321/taiko-diagnostics/
+- Taiko-video       - https://github.com/hkang1/taiko-video/

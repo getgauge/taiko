@@ -14,6 +14,7 @@ provides some diagnostics features like measuring speedindex, performance metric
 gif video of a taiko script run.
 * [taiko-storage](https://github.com/BugDiver/taiko-storage) A taiko plugin to interact with browser storages.
 * [taiko-screeny](https://github.com/saikrishna321/taiko-screeny) A taiko plugin to capture screenshot on every action.
+* [taiko-video](https://github.com/hkang1/taiko-video) A taiko plugin to save screencast as compressed mp4 videos.
 
 If you've [written your own plugin](/writing_plugins) send a pull request to list it here. 
 
