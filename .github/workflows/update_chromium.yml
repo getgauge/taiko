@@ -49,7 +49,7 @@ jobs:
           npm install
           node updateChromium.js
           revision=$(cat package.json | grep chromium_revision | awk '{print $2}' | sed 's/[",]//g')
-          echo "::set-env name=REVISION::$revision"
+          echo "REVISION=$revision" >> $GITHUB_ENV
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
