@@ -24,11 +24,9 @@ describe('closeTab', () => {
 
   before(() => {
     taiko = rewire('../../lib/taiko');
-    let mockCri = {
-      Close: async function () {},
-    };
     let targetRegistry = new Map();
     let mockHandler = {
+      closeTarget: () => {},
       getCriTargets: () => {
         return _targets;
       },
@@ -61,7 +59,6 @@ describe('closeTab', () => {
     taiko.__set__('title', () => title);
     taiko.__set__('targetHandler', mockHandler);
     taiko.__set__('descEvent', descEmmitter);
-    taiko.__set__('cri', mockCri);
     taiko.__set__('connect_to_cri', async (target) => {
       currentTarget = target;
       return currentTarget;
