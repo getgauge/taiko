@@ -8,10 +8,14 @@ describe('TargetHandler', () => {
 
     before(() => {
       targetHandler = rewire('../../../lib/handlers/targetHandler');
-      let mockCri = {
-        List: function () {
-          return _targets.reverse();
-        },
+      let mockCri = () => {
+        return {
+          Target: {
+            getTargets: () => {
+              return { targetInfos: _targets };
+            },
+          },
+        };
       };
       targetHandler.__set__('cri', mockCri);
     });
@@ -31,14 +35,14 @@ describe('TargetHandler', () => {
       _targets = [];
     });
     it('should give current tab as matching if no url given', async () => {
-      _targets.push({ id: '1', type: 'page' });
-      _targets.push({ id: '2', type: 'page' });
+      _targets.push({ targetId: '1', type: 'page' });
+      _targets.push({ targetId: '2', type: 'page' });
       targetHandler.__set__('activeTargetId', '2');
       let targets = await targetHandler.getCriTargets();
       expect(targets.matching.length).to.be.equal(1);
-      expect(targets.matching[0].id).to.be.equal('2');
+      expect(targets.matching[0].targetId).to.be.equal('2');
       expect(targets.others.length).to.be.equal(1);
-      expect(targets.others[0].id).to.be.equal('1');
+      expect(targets.others[0].targetId).to.be.equal('1');
     });
 
     it('should create target and return target id on createTarget call', async () => {
@@ -53,19 +57,19 @@ describe('TargetHandler', () => {
 
     it('should give all the matching tabs if regex is given', async () => {
       _targets.push({
-        id: '1',
+        targetId: '1',
         type: 'page',
         url: 'https://www.google.com',
         title: 'Google',
       });
       _targets.push({
-        id: '1',
+        targetId: '1',
         type: 'page',
         url: 'https://www.google.co.uk',
         title: 'Google',
       });
       _targets.push({
-        id: '1',
+        targetId: '1',
         type: 'page',
         url: 'https://www.github.com',
         title: 'The world’s leading software development platform · GitHub',
@@ -84,17 +88,17 @@ describe('TargetHandler', () => {
 
     it('should give all matching tabs if url is given without protocol ', async () => {
       _targets.push({
-        id: '1',
+        targetId: '1',
         type: 'page',
         url: 'https://flipkart.com/a/c',
       });
       _targets.push({
-        id: '2',
+        targetId: '2',
         type: 'page',
         url: 'https://amazon.com',
       });
       _targets.push({
-        id: '3',
+        targetId: '3',
         type: 'page',
         url: 'https://flipkart.com/a/b',
       });
@@ -102,25 +106,25 @@ describe('TargetHandler', () => {
       let targets = await targetHandler.getCriTargets('flipkart.com/a/b');
 
       expect(targets.matching.length).to.be.equal(1);
-      expect(targets.matching[0].id).to.be.equal('3');
+      expect(targets.matching[0].targetId).to.be.equal('3');
       expect(targets.matching[0].url).to.be.equal('https://flipkart.com/a/b');
       expect(targets.others.length).to.be.equal(2);
-      expect(targets.others[0].url).to.be.equal('https://amazon.com');
+      expect(targets.others[0].url).to.be.equal('https://flipkart.com/a/c');
     });
 
     it('should give all matching tabs if url is given with multi path ', async () => {
       _targets.push({
-        id: '1',
+        targetId: '1',
         type: 'page',
         url: 'https://flipkart.com/a/c',
       });
       _targets.push({
-        id: '2',
+        targetId: '2',
         type: 'page',
         url: 'https://amazon.com',
       });
       _targets.push({
-        id: '3',
+        targetId: '3',
         type: 'page',
         url: 'https://flipkart.com/a/b',
       });
@@ -128,25 +132,25 @@ describe('TargetHandler', () => {
       let targets = await targetHandler.getCriTargets('https://flipkart.com/a/b');
 
       expect(targets.matching.length).to.be.equal(1);
-      expect(targets.matching[0].id).to.be.equal('3');
+      expect(targets.matching[0].targetId).to.be.equal('3');
       expect(targets.matching[0].url).to.be.equal('https://flipkart.com/a/b');
       expect(targets.others.length).to.be.equal(2);
-      expect(targets.others[0].url).to.be.equal('https://amazon.com');
+      expect(targets.others[0].url).to.be.equal('https://flipkart.com/a/c');
     });
 
     it('should give all matching tabs if host is given', async () => {
       _targets.push({
-        id: '1',
+        targetId: '1',
         type: 'page',
         url: 'https://flipkart.com',
       });
       _targets.push({
-        id: '2',
+        targetId: '2',
         type: 'page',
         url: 'https://amazon.com',
       });
       _targets.push({
-        id: '3',
+        targetId: '3',
         type: 'page',
         url: 'https://flipkart.com',
       });
@@ -154,7 +158,7 @@ describe('TargetHandler', () => {
       let targets = await targetHandler.getCriTargets('flipkart.com');
 
       expect(targets.matching.length).to.be.equal(2);
-      expect(targets.matching[0].id).to.be.equal('3');
+      expect(targets.matching[0].targetId).to.be.equal('1');
       expect(targets.matching[0].url).to.be.equal('https://flipkart.com');
       expect(targets.others.length).to.be.equal(1);
       expect(targets.others[0].url).to.be.equal('https://amazon.com');
@@ -162,17 +166,17 @@ describe('TargetHandler', () => {
 
     it('should give no matching tabs if given url does not exists', async () => {
       _targets.push({
-        id: '1',
+        targetId: '1',
         type: 'page',
         url: 'https://flipkart.com',
       });
       _targets.push({
-        id: '2',
+        targetId: '2',
         type: 'page',
         url: 'https://amazon.com',
       });
       _targets.push({
-        id: '3',
+        targetId: '3',
         type: 'page',
         url: 'https://flipkart.com',
       });
@@ -184,13 +188,13 @@ describe('TargetHandler', () => {
     });
     it('should give the matching tab for regex Title', async () => {
       _targets.push({
-        id: '1',
+        targetId: '1',
         type: 'page',
         url: 'https://google.com',
         title: 'Google',
       });
       _targets.push({
-        id: '2',
+        targetId: '2',
         type: 'page',
         url: 'https://github.com',
         title: 'The world’s leading software development platform · GitHub',
@@ -202,24 +206,24 @@ describe('TargetHandler', () => {
 
     it('should give all matching tabs if targets has blank page', async () => {
       _targets.push({
-        id: '1',
+        targetId: '1',
         type: 'page',
         url: 'http://localhost:3001/windows',
       });
       _targets.push({
-        id: '2',
+        targetId: '2',
         type: 'page',
         url: 'http://localhost:3001/windows/new',
       });
       _targets.push({
-        id: '3',
+        targetId: '3',
         type: 'page',
         url: 'about:blank',
       });
       let targets = await targetHandler.getCriTargets('http://localhost:3001/windows');
 
       expect(targets.matching.length).to.be.equal(1);
-      expect(targets.matching[0].id).to.be.equal('1');
+      expect(targets.matching[0].targetId).to.be.equal('1');
       expect(targets.others.length).to.be.equal(2);
     });
   });
@@ -236,19 +240,19 @@ describe('TargetHandler', () => {
     });
 
     it('should register a target with name', async () => {
-      targetHandler.register('one', { id: 'first', type: 'page' });
-      targetHandler.register('two', { id: 'second', type: 'page' });
-      expect(targetHandler.register('two').id).to.be.equal('second');
+      targetHandler.register('one', { targetId: 'first', type: 'page' });
+      targetHandler.register('two', { targetId: 'second', type: 'page' });
+      expect(targetHandler.register('two').targetId).to.be.equal('second');
     });
 
     it('should unregister a tab with the given name', async () => {
-      targetHandler.register('one', { id: 'first', type: 'page' });
-      targetHandler.register('two', { id: 'second', type: 'page' });
+      targetHandler.register('one', { targetId: 'first', type: 'page' });
+      targetHandler.register('two', { targetId: 'second', type: 'page' });
 
       targetHandler.unregister('one');
 
       expect(targetHandler.register('one')).to.be.undefined;
-      expect(targetHandler.register('two').id).to.equal('second');
+      expect(targetHandler.register('two').targetId).to.equal('second');
     });
   });
 });
