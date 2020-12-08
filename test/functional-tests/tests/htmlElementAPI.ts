@@ -80,6 +80,12 @@ export default class HtmlElementAPI {
     assert.ok(await button.isSelected());
   }
 
+  @Step('Assert radioButton <label> selected')
+  public async isRadioButtonChecked(label: SearchElement) {
+    const button = radioButton(label);
+    assert.ok(await button.isSelected());
+  }
+
   @Step('Attach file <fileName> to file field <FileFieldName>')
   public async attachFile(fileName: string, FileFieldName: SearchElement) {
     const field = fileField(FileFieldName);

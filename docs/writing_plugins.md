@@ -33,6 +33,33 @@ capability:[‘subcommands’]` - in plugins package.json
 ```
 Only if the package.json has the above capability added taiko will consider it to be a subcommand. 
 
+### Initializing plugin
+
+Plugins are initialized by calling `init` method defined in plugins. Below are the parameters that init method takes,
+`init(taiko, eventHandlerProxy, descEvent, registerHooks)`
+ - taiko - exported apis from taiko (eg: openBrowser, button)
+ - eventHandlerProxy - eventHandler in taiko that listens to CDP events
+ - descEvent - eventHandler used to provide success message to REPL and taiko runner
+ - registerHooks - Callback that lets plugins register hooks that are available in taiko
+
+### Hooks for plugin
+
+Taiko provides a way for plugins to alter its behavior by letting them register hooks. Below are the available hooks in taiko,
+
+- preConnectionHook - this hook lets plugin update target details and options before making a CDP connection
+                      `parameters - target, options`
+                      `return     - target, options`
+
+```
+//Hooks example
+init(taiko, eventHandlerProxy, descEvent, registerHooks){
+      registerHooks({
+            preConnectionHook: (target, options) => {
+                  return {target,options}
+            }
+      })
+}
+```
 ### Plugin Workflow
 
 ![Taiko plugin workflow](https://user-images.githubusercontent.com/6358540/59250814-ebe81b80-8c45-11e9-80ab-6ab17df24aa5.png)
@@ -78,6 +105,7 @@ Example: `taiko diagnostics http://gauge.org`
 - `exec()` function in plugin will be executed for the subcommand
 
 ### Examples
-- Taiko-android       - https://github.com/saikrishna321/taiko-android/
+- Taiko-android     - https://github.com/saikrishna321/taiko-android/
 - Taiko-screencast  - https://github.com/getgauge-contrib/taiko-screencast
 - Taiko-diagnostics - https://github.com/saikrishna321/taiko-diagnostics/
+- Taiko-video       - https://github.com/hkang1/taiko-video/

@@ -2,20 +2,12 @@
 
 ## Write, Press, Click
 
-* Navigate to "http://localhost:3001/iframe"
-* Clear element "#tinymce"
-* Write "Clear it"
+* Navigate to relative path "./specs/data/IFrameElements.html"
+* Write "Gopher" into Text Box "Username"
 * Press "Enter"
-* Click "File"
-* Click "New document"
-* Assert text "Clear it" does not exist
-
-## Write, Clear
-
-* Navigate to "http://localhost:3001/iframe"
-* Clear element "#tinymce"
-* Write "Clear it"
-* Assert text "Clear it" exists on the page.
+* Get value "Gopher" of Text Box "Username"
+* Click "Male"
+* Assert radioButton "Male" selected
 
 ## Double Click
 * Assert text "Hello World" does not exist
