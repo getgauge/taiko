@@ -71,6 +71,7 @@ export interface GlobalConfigurationOptions {
   criConnectionRetries?: number;
   firefox?: boolean;
   highlightOnAction?: 'true' | 'false';
+  local?: boolean;
 }
 
 export interface TapOptions extends BasicNavigationOptions, EventOptions {}
