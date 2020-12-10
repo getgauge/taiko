@@ -25,9 +25,9 @@ describe(test_name, () => {
 
   describe('to about blank page', () => {
     before(async () => {
-      taiko.__set__('page', {
+      taiko.__set__('pageHandler', {
         navigateToHistoryEntry: (historyEntryId) => {
-          actualHistoryEntryId = historyEntryId;
+          actualHistoryEntryId = { entryId: historyEntryId };
         },
         getNavigationHistory: () => {
           return {

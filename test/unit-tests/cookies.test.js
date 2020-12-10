@@ -23,7 +23,7 @@ describe(test_name, () => {
   });
 
   it('setCookie should throw error if cookie is not set', async () => {
-    taiko.__set__('network', {
+    taiko.__set__('networkHandler', {
       setCookie: async () => {
         return Promise.resolve({ success: false });
       },
@@ -35,7 +35,7 @@ describe(test_name, () => {
   });
 
   it('setCookie should set successfully', async () => {
-    taiko.__set__('network', {
+    taiko.__set__('networkHandler', {
       setCookie: async () => {
         return Promise.resolve({ success: true });
       },
@@ -46,7 +46,7 @@ describe(test_name, () => {
   });
 
   it('deleteCookie should delete all cookies if no cookie name is given', async () => {
-    taiko.__set__('network', {
+    taiko.__set__('networkHandler', {
       clearBrowserCookies: async () => {
         return Promise.resolve();
       },
@@ -55,7 +55,7 @@ describe(test_name, () => {
   });
 
   it('deleteCookie should throw error if domian or url is not specified along with cookie name', async () => {
-    taiko.__set__('network', {
+    taiko.__set__('networkHandler', {
       deleteCookies: async () => {
         return Promise.resolve();
       },
