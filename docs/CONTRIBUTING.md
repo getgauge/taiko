@@ -15,10 +15,10 @@ Taiko's [automated test suite](https://github.com/getgauge/taiko/tree/master/tes
 
 * [Google](google)! We trust you already did, but in case you haven't.
 * Previous issues with the error message on [Github](https://github.com/getgauge/taiko/issues)
-* Similar questions on Taiko's [Spectrum](https://spectrum.chat/gauge?tab=posts) channel
+* Similar questions on Taiko's [Discussions](https://github.com/getgauge/taiko/discussions) 
 
 If you find a similar bug or issue please add a comment to the existing issue on Github or
-thread on [Spectrum](https://spectrum.chat/gauge?tab=posts).
+thread on [Discussions](https://github.com/getgauge/taiko/discussions).
 
 If you do not find anything and you are sure it's a bug please create a [new issue](https://github.com/getgauge/taiko/issues). To make it easier to debug and fix the issue make sure your report
 
@@ -51,7 +51,7 @@ you made on the pull request will be available under the "All checks have passed
 ## Answering queries
 
 You can help by answering queries by users who are getting started on Taiko or looking for ways to solve specific 
-test automation tasks on [Spectrum](https://spectrum.chat/gauge?tab=posts).
+test automation tasks on [Discussions](https://github.com/getgauge/taiko/discussions).
 
 You can also comment on [issues](https://github.com/getgauge/taiko/issues) raised by users. 
 To get notified of new issues make sure you are [watching](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/be-social#watching-a-repository) the repository.
@@ -93,7 +93,7 @@ To everyone is working on, what's on the roadmap and what's priority please chec
 
 If want to contribute something new it's better to discuss it before working on it. You 
 can discuss new ideas and features by creating a new issue on Github. You can also reach 
-out on [Spectrum](https://spectrum.chat/taiko).
+out on [Discussions](https://github.com/getgauge/taiko/discussions?discussions_q=category%3AIdeas).
 
 Once you pick an issue, add a comment informing that you want to work on it. To get 
 early feedback from other contributors, it's recommended that you first raise a [draft pull 
