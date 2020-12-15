@@ -40,7 +40,7 @@ describe('openTab', () => {
     });
     taiko.__set__('doActionAwaitingNavigation', mockWrapper);
     taiko.__set__('connect_to_cri', mockConnectToCri);
-    taiko.__set__('_client', new EventEmitter());
+    taiko.__set__('cleanUpListenersOnClient', () => {});
   });
 
   after(() => {

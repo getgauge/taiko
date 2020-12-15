@@ -9,6 +9,8 @@ describe('pageHandler', () => {
 
   before(() => {
     pageHandler = rewire('../../../lib/handlers/pageHandler');
+    const createdSessionListener = pageHandler.__get__('createdSessionListener');
+    pageHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
     let page = {
       bringToFront: async () => {},
       domContentEventFired: async () => {},
@@ -35,10 +37,12 @@ describe('pageHandler', () => {
   });
 
   after(() => {
-    const createdSessionListener = pageHandler.__get__('createdSessionListener');
+    let createdSessionListener = pageHandler.__get__('createdSessionListener');
     pageHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
     pageHandler = rewire('../../../lib/handlers/pageHandler');
+    createdSessionListener = pageHandler.__get__('createdSessionListener');
     pageHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    event.removeAllListeners();
   });
 
   it('.handleNavigation should call page.navigate', () => {
