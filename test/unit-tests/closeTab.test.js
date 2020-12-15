@@ -72,8 +72,7 @@ describe('closeTab', () => {
 
   beforeEach(() => {
     descEmmitter.removeAllListeners();
-    taiko.__set__('_client', new EventEmitter());
-    taiko.__set__('_client.close', () => {});
+    taiko.__set__('cleanUpListenersOnClient', () => {});
     _targets = { matching: [], others: [] };
     currentTarget = undefined;
   });
