@@ -5,5 +5,7 @@
 [[redirects]]
   from = "/devices"
   to = "https://github.com/getgauge/taiko/blob/master/lib/data/devices.js"
+
+[[redirects]]
   from ="/"
   to="/overview.html"
