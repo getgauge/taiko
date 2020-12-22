@@ -107,6 +107,7 @@ section {
 form.search {
   padding: 0;
   width: 46em;
+  margin: 1em auto;
 }
 
 form.search input {
@@ -149,7 +150,7 @@ form.search input::placeholder {
   }
 }
 
-ul,
+aside,.home-section ul,
 ol {
   list-style: none;
   margin-bottom: 2em;
@@ -201,11 +202,11 @@ pre code {
   overflow: auto;
 }
 
-.footer {
-  display: flex;
-  flex-flow: row wrap;
-  font-size: smaller;
-  justify-content: space-between;
+footer {
+  padding: 2rem;
+  text-align: center;
+  grid-column: 1 / 4;
+  border-top: solid 1px lightgrey;
 }
 
 main {

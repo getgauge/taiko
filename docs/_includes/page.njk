@@ -3,8 +3,9 @@ layout: base.njk
 ---
 <article>
   <h1 style="text-transform: capitalize">{{ page.url | heading }}</h1>
-  <aside>
+  <details>
+    <summary>In this page</summary>
     {{ content |  toc | safe }}
-  </aside>
+  </details>
   {{ content | safe }}
 </article>
