@@ -92,9 +92,7 @@ article,
 footer,
 section {
   max-width: 46em;
-  background: white;
   padding: 1em 1em 1em 2em;
-  margin: 1em auto;
 }
 
 .home-section a {
@@ -103,7 +101,6 @@ section {
 
 .home-section ul {
   list-style: none;
-  columns: 15em;
 }
 
 .home-section ul li::before {
@@ -168,10 +165,6 @@ ol {
   padding-inline-start: 20px;
   margin-bottom: 2em;
   padding-inline-start: 20px;
-}
-
-.home-section ul {
-  columns: 15em;
 }
 
 li::before {
@@ -242,4 +235,8 @@ pre code {
     background: white;
     padding: 15px;
   }
+}
+
+.sidebar {
+  float: right
 }
