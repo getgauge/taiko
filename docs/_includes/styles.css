@@ -73,7 +73,7 @@ header {
 header h1 {
   color: #2BD3EF; 
   font-size: 26px;
-  margin: 0 0 0 1em;
+  margin: 1em;
 }
 /* single-column content page layout width */
 
@@ -140,7 +140,8 @@ aside,.home-section ul,
 ol {
   list-style: none;
   margin-bottom: 2em;
-  padding-inline-start: 0px;
+  border-left: solid 1px #2bd3ef;
+  padding-left: 1em;
 }
 
 a.direct-link {
@@ -219,4 +220,8 @@ main {
 
 .right-sidebar h4 {
   margin: 0;
+}
+
+nav {
+  margin: 5px;
 }
