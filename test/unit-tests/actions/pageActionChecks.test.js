@@ -60,6 +60,7 @@ describe('pageActionChecks', () => {
       const defaultChecks = [
         pageActionChecks.checksMap.visible,
         pageActionChecks.checksMap.disabled,
+        pageActionChecks.checksMap.connected,
       ];
       let actualCheck;
       pageActionChecks.__set__('checkIfActionable', (elem, checks) => {
@@ -72,8 +73,12 @@ describe('pageActionChecks', () => {
       await pageActionChecks.waitAndGetActionableElement('Something');
       expect(actualCheck).to.deep.equal(defaultChecks);
     });
-    it('should call checkActionable with given checks', async () => {
-      const expectedChecks = [pageActionChecks.checksMap.visible];
+    it('should call checkActionable with given checks concatinated with default checks', async () => {
+      const expectedChecks = [
+        pageActionChecks.checksMap.visible,
+        pageActionChecks.checksMap.connected,
+        pageActionChecks.checksMap.disabled,
+      ];
       let actualCheck;
       pageActionChecks.__set__('checkIfActionable', (elem, checks) => {
         actualCheck = checks;
@@ -87,8 +92,18 @@ describe('pageActionChecks', () => {
     });
     it('should return first element that is actionable', async () => {
       pageActionChecks.__set__('findElements', () => [
-        { name: 'notActionable', isVisible: () => true, isDisabled: () => true },
-        { name: 'Actionable', isVisible: () => true, isDisabled: () => false },
+        {
+          name: 'notActionable',
+          isVisible: () => true,
+          isDisabled: () => true,
+          isConnected: () => true,
+        },
+        {
+          name: 'Actionable',
+          isVisible: () => true,
+          isDisabled: () => false,
+          isConnected: () => true,
+        },
       ]);
       const result = await pageActionChecks.waitAndGetActionableElement('Something');
       expect(result.name).to.equal('Actionable');
