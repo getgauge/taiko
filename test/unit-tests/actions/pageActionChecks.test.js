@@ -3,6 +3,7 @@ const expect = chai.expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 const rewire = require('rewire');
+const { checksMap } = require('../../../lib/actions/pageActionChecks');
 let pageActionChecks = rewire('../../../lib/actions/pageActionChecks');
 
 describe('pageActionChecks', () => {
@@ -61,6 +62,7 @@ describe('pageActionChecks', () => {
         pageActionChecks.checksMap.visible,
         pageActionChecks.checksMap.disabled,
         pageActionChecks.checksMap.connected,
+        pageActionChecks.checksMap.stable,
       ];
       let actualCheck;
       pageActionChecks.__set__('checkIfActionable', (elem, checks) => {
@@ -78,6 +80,8 @@ describe('pageActionChecks', () => {
         pageActionChecks.checksMap.visible,
         pageActionChecks.checksMap.connected,
         pageActionChecks.checksMap.disabled,
+        pageActionChecks.checksMap.stable,
+        pageActionChecks.checksMap.writable,
       ];
       let actualCheck;
       pageActionChecks.__set__('checkIfActionable', (elem, checks) => {
@@ -87,19 +91,30 @@ describe('pageActionChecks', () => {
       pageActionChecks.__set__('findElements', () => [
         { isVisible: () => true, isDisabled: () => false },
       ]);
-      await pageActionChecks.waitAndGetActionableElement('Something', expectedChecks);
-      expect(actualCheck).to.deep.equal(expectedChecks);
+      await pageActionChecks.waitAndGetActionableElement('Something', [
+        pageActionChecks.checksMap.writable,
+      ]);
+      expect(actualCheck).to.have.members(expectedChecks);
     });
     it('should return first element that is actionable', async () => {
+      pageActionChecks.__set__('runtimeHandler', {
+        runtimeCallFunctionOn: (a, b, c) => {
+          {
+            return { result: { value: true } };
+          }
+        },
+      });
       pageActionChecks.__set__('findElements', () => [
         {
           name: 'notActionable',
+          get: () => 1,
           isVisible: () => true,
           isDisabled: () => true,
           isConnected: () => true,
         },
         {
           name: 'Actionable',
+          get: () => 2,
           isVisible: () => true,
           isDisabled: () => false,
           isConnected: () => true,
