@@ -37,7 +37,7 @@ describe(test_name, () => {
 
     it('should throw error if the given element is not focusable', async () => {
       await expect(focus(textBox('unfocusable'))).to.be.eventually.rejectedWith(
-        'Error: Element is not focusable\n',
+        'TextBox with label unfocusable is disabled',
       );
     });
 
