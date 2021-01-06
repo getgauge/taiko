@@ -287,7 +287,7 @@ export interface InterceptMockData {
   [key: string]: any;
 }
 export interface InterceptRequest {
-  continue(overrides: {
+  continue(overrides?: {
     url?: string;
     method?: string;
     postData?: string;

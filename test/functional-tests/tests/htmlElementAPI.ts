@@ -174,6 +174,13 @@ export default class HtmlElementAPI {
     });
   }
 
+  @Step('Intercept <url> and continue')
+  public async interceptRequestAndContinue(url: string) {
+    await intercept(url, (request) => {
+      request.continue();
+    });
+  }
+
   @Step('Navigate to relative path <relativePath>')
   public async navigateToPath(relativePath: string) {
     const absolutePath = _path.resolve(relativePath);
