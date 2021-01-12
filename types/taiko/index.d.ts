@@ -63,6 +63,7 @@ export interface GlobalConfigurationOptions {
   observeTime?: number;
   retryInterval?: number;
   retryTimeout?: number;
+  noOfElementToMatch?: number;
   observe?: boolean;
   waitForNavigation?: boolean;
   ignoreSSLErrors?: boolean;
@@ -70,6 +71,7 @@ export interface GlobalConfigurationOptions {
   criConnectionRetries?: number;
   firefox?: boolean;
   highlightOnAction?: 'true' | 'false';
+  local?: boolean;
 }
 
 export interface TapOptions extends BasicNavigationOptions, EventOptions {}
@@ -285,7 +287,7 @@ export interface InterceptMockData {
   [key: string]: any;
 }
 export interface InterceptRequest {
-  continue(overrides: {
+  continue(overrides?: {
     url?: string;
     method?: string;
     postData?: string;

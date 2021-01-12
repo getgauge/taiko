@@ -80,6 +80,12 @@ export default class HtmlElementAPI {
     assert.ok(await button.isSelected());
   }
 
+  @Step('Assert radioButton <label> selected')
+  public async isRadioButtonChecked(label: SearchElement) {
+    const button = radioButton(label);
+    assert.ok(await button.isSelected());
+  }
+
   @Step('Attach file <fileName> to file field <FileFieldName>')
   public async attachFile(fileName: string, FileFieldName: SearchElement) {
     const field = fileField(FileFieldName);
@@ -165,6 +171,13 @@ export default class HtmlElementAPI {
   public async interceptRequest(url: string, mockData: any) {
     await intercept(url, (request) => {
       request.continue({ postData: mockData });
+    });
+  }
+
+  @Step('Intercept <url> and continue')
+  public async interceptRequestAndContinue(url: string) {
+    await intercept(url, (request) => {
+      request.continue();
     });
   }
 

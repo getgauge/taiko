@@ -94,6 +94,26 @@ describe(test_name, () => {
     expect(res).to.include('12345 Central St.');
   });
 
+  it('Mock Response with empty body', async () => {
+    fetchHandler.addInterceptor({
+      requestUrl: 'http://localhost:3000/api/customers/11',
+      action: {},
+    });
+    let req = {
+      requestId: 'requestId',
+      request: {
+        url: 'http://localhost:3000/api/customers/11',
+        method: 'GET',
+      },
+      resourceType: 'Document',
+      isNavigationRequest: true,
+    };
+
+    expect(() => {
+      fetchHandler.handleInterceptor(req);
+    }).to.not.throw();
+  });
+
   it('More than one intercept added for the same requestUrl', async () => {
     let actualConsoleWarn;
     console.warn = (log) => {

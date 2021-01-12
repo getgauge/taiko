@@ -10,6 +10,7 @@ describe('elementHelper', () => {
     hideHighlightCalled,
     warningMessage,
     getBoxModelCalled,
+    actualConsole,
     elemHelper,
     highlightQuadCalled;
   function createElement(id, isVisible) {
@@ -44,12 +45,15 @@ describe('elementHelper', () => {
         hideHighlightCalled = true;
       },
     });
+    actualConsole = console;
     elemHelper.__set__('console', { warn: (warning) => (warningMessage = warning) });
     setConfig({ highlightOnAction: 'true' });
   });
 
   afterEach(() => {
     elemHelper = rewire('../../../lib/elements/elementHelper');
+    // eslint-disable-next-line no-global-assign
+    console = actualConsole;
   });
 
   it('should highlight visible element', async () => {

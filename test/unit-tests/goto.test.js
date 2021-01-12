@@ -62,12 +62,16 @@ describe(test_name, () => {
     expect(validateCalled).to.be.true;
   });
 
-  it('should not alter the url if protocol(https:// or file://) is given', async () => {
+  it('should not alter the url if protocol is given', async () => {
     let expectedUrl = 'https://example.com';
     await taiko.goto(expectedUrl);
     expect(actualUrl).to.equal(expectedUrl);
 
     expectedUrl = 'file://example.com';
+    await taiko.goto(expectedUrl);
+    expect(actualUrl).to.equal(expectedUrl);
+
+    expectedUrl = 'chrome-extension://gjaerjgaerjeoareapoj/internalPage.html';
     await taiko.goto(expectedUrl);
     expect(actualUrl).to.equal(expectedUrl);
   });
