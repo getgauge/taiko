@@ -58,3 +58,10 @@
 * Navigate to "http://localhost:3001/simple_form"
 * Click "Submit"
 * Assert text "taiko" exists on the page.
+
+## Continue request even if not overridden
+* Intercept "http://localhost:3001/submit_form" and continue
+* Navigate to "http://localhost:3001/simple_form"
+* Write "Taiko" into TextBox with name "name"
+* Click "Submit"
+* Assert text "taiko" exists on the page.

@@ -173,7 +173,7 @@ describe(test_name, () => {
       const input = textBox({ id: 'readonly' });
       const text = 'hello';
       await expect(write(text, into(input))).to.eventually.be.rejectedWith(
-        'Element focused is not writable',
+        'TextBox[id="readonly"]is not writable',
       );
     });
   });

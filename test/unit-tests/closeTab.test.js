@@ -24,11 +24,9 @@ describe('closeTab', () => {
 
   before(() => {
     taiko = rewire('../../lib/taiko');
-    let mockCri = {
-      Close: async function () {},
-    };
     let targetRegistry = new Map();
     let mockHandler = {
+      closeTarget: () => {},
       getCriTargets: () => {
         return _targets;
       },
@@ -61,7 +59,6 @@ describe('closeTab', () => {
     taiko.__set__('title', () => title);
     taiko.__set__('targetHandler', mockHandler);
     taiko.__set__('descEvent', descEmmitter);
-    taiko.__set__('cri', mockCri);
     taiko.__set__('connect_to_cri', async (target) => {
       currentTarget = target;
       return currentTarget;
@@ -75,8 +72,7 @@ describe('closeTab', () => {
 
   beforeEach(() => {
     descEmmitter.removeAllListeners();
-    taiko.__set__('_client', new EventEmitter());
-    taiko.__set__('_client.close', () => {});
+    taiko.__set__('cleanUpListenersOnClient', () => {});
     _targets = { matching: [], others: [] };
     currentTarget = undefined;
   });
@@ -90,17 +86,17 @@ describe('closeTab', () => {
 
   it('should close the current tab and switch to last active target if no url given', async () => {
     _targets.matching.push({
-      id: '1',
+      targetId: '1',
       type: 'page',
       url: 'https://flipkart.com',
     });
     _targets.others.push({
-      id: '2',
+      targetId: '2',
       type: 'page',
       url: 'https://flipkart.com',
     });
     _targets.others.push({
-      id: '3',
+      targetId: '3',
       type: 'page',
       url: 'https://amazon.com',
     });
@@ -113,22 +109,22 @@ describe('closeTab', () => {
     );
     await taiko.closeTab();
     await validatePromise;
-    expect(currentTarget.url).to.be.eql('https://flipkart.com');
+    expect(currentTarget).to.be.eql('2');
   });
 
   it('should close the all matching tabs with given url switch to last active', async () => {
     _targets.matching.push({
-      id: '1',
+      targetId: '1',
       type: 'page',
       url: 'https://flipkart.com',
     });
     _targets.others.push({
-      id: '2',
+      targetId: '2',
       type: 'page',
       url: 'https://amazon.com',
     });
     _targets.matching.push({
-      id: '3',
+      targetId: '3',
       type: 'page',
       url: 'https://flipkart.com',
     });
@@ -142,21 +138,21 @@ describe('closeTab', () => {
     );
     await taiko.closeTab('https://flipkart.com');
     await validatePromise;
-    expect(currentTarget.url).to.be.eql('https://amazon.com');
+    expect(currentTarget).to.be.eql('2');
   });
   it('should close all matching tabs if target is non active tab and no reconnect should happen', async () => {
     _targets.matching.push({
-      id: '1',
+      targetId: '1',
       type: 'page',
       url: 'https://flipkart.com',
     });
     _targets.matching.push({
-      id: '2',
+      targetId: '2',
       type: 'page',
       url: 'https://flipkart.com',
     });
     _targets.others.push({
-      id: '3',
+      targetId: '3',
       type: 'page',
       url: 'https://amazon.com',
     });
@@ -174,19 +170,19 @@ describe('closeTab', () => {
   });
   it('should close all matching tabs by title and no reconnect should happen if active tab is not matched', async () => {
     _targets.matching.push({
-      id: '1',
+      targetId: '1',
       type: 'page',
       title: 'Flipkart',
       url: 'https://flipkart.com',
     });
     _targets.matching.push({
-      id: '2',
+      targetId: '2',
       type: 'page',
       title: 'Flipkart',
       url: 'https://flipkart.com',
     });
     _targets.others.push({
-      id: '3',
+      targetId: '3',
       type: 'page',
       url: 'https://amazon.com',
     });
@@ -202,17 +198,17 @@ describe('closeTab', () => {
   });
   it('should close all matching tabs for given regex', async () => {
     _targets.matching.push({
-      id: '1',
+      targetId: '1',
       type: 'page',
       url: 'https://www.google.com',
     });
     _targets.matching.push({
-      id: '2',
+      targetId: '2',
       type: 'page',
       url: 'https://www.google.co.uk',
     });
     _targets.others.push({
-      id: '3',
+      targetId: '3',
       type: 'page',
       url: 'https://amazon.com',
     });
@@ -231,7 +227,7 @@ describe('closeTab', () => {
 
   it('should close tab matching identifier', async () => {
     let targetWithIdentifier = {
-      id: '1',
+      targetId: '1',
       type: 'page',
       url: 'https://www.google.com',
     };
@@ -241,12 +237,12 @@ describe('closeTab', () => {
     taiko.__get__('targetHandler').register('google', targetWithIdentifier);
 
     _targets.others.push({
-      id: '2',
+      targetId: '2',
       type: 'page',
       url: 'https://www.google.co.uk',
     });
     _targets.others.push({
-      id: '3',
+      targetId: '3',
       type: 'page',
       url: 'https://amazon.com',
     });

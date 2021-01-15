@@ -102,6 +102,24 @@ describe('Plugins', () => {
     });
   });
 
+  describe('RegisterHooks', () => {
+    it('should define a const with available hooks', () => {
+      let expectedHooks = ['preConnectionHook'];
+      expect(expectedHooks).to.deep.equal(Object.keys(PLUGINS.pluginHooks));
+    });
+    it('should let plugins register to available hooks', () => {
+      const expectedResult = 'Value from hook';
+      PLUGINS.registerHooks({ preConnectionHook: () => expectedResult });
+      const actualResult = PLUGINS.pluginHooks['preConnectionHook']();
+      expect(actualResult).to.equal(expectedResult);
+    });
+    it('should throw error if plugins try to register unavailable hook', () => {
+      expect(() => {
+        PLUGINS.registerHooks({ nonAvailableHook: () => {} });
+      }).to.throw('Hook nonAvailableHook not available in taiko to register');
+    });
+  });
+
   describe('GetExecutablePlugin', () => {
     function createFakeFsDirentObj(isDir, isSymLink) {
       return {
