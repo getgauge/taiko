@@ -114,6 +114,11 @@ export interface CookieOptions {
   path?: string;
 }
 
+export interface ResizeWindowOptions {
+  height?: string;
+  width?: string;
+}
+
 export interface CookieDetailOptions extends CookieOptions {
   secure?: boolean;
   httpOnly?: boolean;
@@ -389,6 +394,7 @@ export function emulateNetwork(
 export function emulateDevice(deviceModel: string): Promise<void>;
 // https://docs.taiko.dev/api/setviewport
 export function setViewPort(options: ViewPortOptions): Promise<void>;
+export function resizeWindow(options: ResizeWindowOptions): Promise<void>;
 // https://docs.taiko.dev/api/emulateTimezone
 export function emulateTimezone(timezoneId: string): Promise<void>;
 // https://docs.taiko.dev/api/opentab
