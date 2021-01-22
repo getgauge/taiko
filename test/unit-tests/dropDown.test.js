@@ -156,7 +156,7 @@ describe(test_name, () => {
     });
 
     it('should return false for hidden element when isVisible fn is called on dropDown', async () => {
-      expect(await dropDown('Hidden Cars', { selectHiddenElements: true }).isVisible()).to.be.false;
+      expect(await dropDown('Hidden Cars').isVisible()).to.be.false;
     });
 
     it('test select()', async () => {

@@ -144,20 +144,16 @@ export interface EvaluateOptions extends Omit<NavigationOptions, 'headers'> {
   args?: EvaluateHandlerArgs;
 }
 
-export interface SelectionOptions {
-  selectHiddenElements?: boolean;
-}
-
-export interface DollarOptions extends SelectionOptions {
+export interface DollarOptions {
   args?: any;
 }
 
-export interface TableCellOptions extends SelectionOptions {
+export interface TableCellOptions {
   row: number;
   col: number;
 }
 
-export interface MatchingOptions extends SelectionOptions {
+export interface MatchingOptions {
   exactMatch?: boolean;
 }
 

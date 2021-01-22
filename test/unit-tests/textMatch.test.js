@@ -429,7 +429,7 @@ describe('match', () => {
 
     describe('fetch hidden text', () => {
       it('should return false for hidden element when isVisible fn is called on text', async () => {
-        expect(await text('Hidden text', { selectHiddenElements: true }).isVisible()).to.be.false;
+        expect(await text('Hidden text').isVisible()).to.be.false;
       });
     });
 
