@@ -91,7 +91,7 @@ describe('pageActionChecks', () => {
       pageActionChecks.__set__('findElements', () => [
         { isVisible: () => true, isDisabled: () => false },
       ]);
-      await pageActionChecks.waitAndGetActionableElement('Something', [
+      await pageActionChecks.waitAndGetActionableElement('Something', false, [
         pageActionChecks.checksMap.writable,
       ]);
       expect(actualCheck).to.have.members(expectedChecks);
