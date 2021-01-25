@@ -14,7 +14,8 @@ export type BrowserEvent =
   | 'networkIdle'
   | 'firstPaint'
   | 'firstContentfulPaint'
-  | 'firstMeaningfulPaint';
+  | 'firstMeaningfulPaint'
+  | 'targetNavigated';
 
 /**
  * Options
