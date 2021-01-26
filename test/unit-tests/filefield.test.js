@@ -139,6 +139,14 @@ describe(test_name, () => {
     it('hidden element exists', async () => {
       expect(await fileField({ id: 'hidden-file-upload' }).exists()).to.be.true;
     });
+    it('attach to hidden element', async () => {
+      await attach(
+        path.join(__dirname, 'data', 'foo.txt'),
+        fileField({ id: 'hidden-file-upload' }),
+        { force: true },
+      );
+      expect(await fileField({ id: 'hidden-file-upload' }).value()).to.include('foo.txt');
+    });
   });
 
   describe('test elementList properties', () => {

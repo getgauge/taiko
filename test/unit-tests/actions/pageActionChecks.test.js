@@ -135,7 +135,7 @@ describe('pageActionChecks', () => {
         'Found too many matches. Please use a selector that is more specific',
       );
     });
-    it('should throw error when no actionable element is found', async () => {
+    it('should throw error when no actionable element is found and force false', async () => {
       pageActionChecks.__set__('findElements', () => [
         { name: 'notActionable', isVisible: () => true, isDisabled: () => true },
         { name: 'notActionable', isVisible: () => true, isDisabled: () => true },
@@ -143,6 +143,14 @@ describe('pageActionChecks', () => {
       await expect(
         pageActionChecks.waitAndGetActionableElement('Something'),
       ).to.be.eventually.rejectedWith('Element matching text "Something" is disabled');
+    });
+    it('should retrun the first element if no match is found and force true', async () => {
+      pageActionChecks.__set__('findElements', () => [
+        { name: 'notActionable1', isVisible: () => true, isDisabled: () => true },
+        { name: 'notActionable2', isVisible: () => true, isDisabled: () => true },
+      ]);
+      const result = await pageActionChecks.waitAndGetActionableElement('Something', true);
+      expect(result.name).to.equal('notActionable1');
     });
   });
 });
