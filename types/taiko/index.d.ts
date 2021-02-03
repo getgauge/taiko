@@ -465,7 +465,10 @@ export function dragAndDrop(
   options?: HiddenOrDisabledElementsOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/hover
-export function hover(selector: SearchElement, options?: NavigationOptions): Promise<void>;
+export function hover(
+  selector: SearchElement,
+  options?: NavigationOptions | HiddenOrDisabledElementsOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/focus
 export function focus(
   selector: SearchElement,
