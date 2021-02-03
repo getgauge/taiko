@@ -170,6 +170,9 @@ describe(test_name, () => {
           'Button with label Click me is disabled',
         );
       });
+      it('should click when forced', async () => {
+        await expect(click(button('Click me'), { force: true })).eventually.fulfilled;
+      });
     });
   });
 });

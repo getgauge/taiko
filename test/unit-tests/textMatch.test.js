@@ -9,6 +9,7 @@ let {
   evaluate,
   setConfig,
   below,
+  near,
   $,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
@@ -168,7 +169,7 @@ describe('match', () => {
         expect(await text(/User/i).elements()).to.have.lengthOf(4);
       });
       it('test partial match get()', async () => {
-        expect(await text(/Text/).elements()).to.have.lengthOf(3);
+        expect(await text(/Text/).elements()).to.have.lengthOf(5);
       });
     });
 
@@ -311,7 +312,7 @@ describe('match', () => {
 
       it('test contains match for text', async () => {
         expect(await text('tex').exists()).to.be.true;
-        expect(await text('tex').elements()).to.have.lengthOf(6);
+        expect(await text('tex').elements()).to.have.lengthOf(10);
         expect(text('tex').description).to.be.eql('Element with text tex ');
       });
     });
@@ -325,13 +326,13 @@ describe('match', () => {
       });
     });
 
-    describe('text in iframe should be matched if match in top is invisible', () => {
+    describe('text in iframe should be matched if match in top too', () => {
       it('test text exists()', async () => {
         expect(await text('Text in iframe').exists()).to.be.true;
       });
 
       it('test text get()', async () => {
-        expect(await text('Text in iframe').elements()).to.have.lengthOf(1);
+        expect(await text('Text in iframe').elements()).to.have.lengthOf(2);
       });
 
       it('test text description', async () => {
@@ -339,7 +340,7 @@ describe('match', () => {
       });
 
       it('test text is from iframe', async () => {
-        const id = await evaluate(text('Text in iframe'), (elem) => {
+        const id = await evaluate(text('Text in iframe', near('Text in iframe')), (elem) => {
           return elem.parentElement.id;
         });
         expect(id).to.equal('inIframe');
@@ -402,7 +403,7 @@ describe('match', () => {
       });
       it('test contains match for type and text', async () => {
         expect(await text('tex').exists()).to.be.true;
-        expect(await text('tex').elements()).to.have.lengthOf(6);
+        expect(await text('tex').elements()).to.have.lengthOf(10);
         expect(text('tex').description).to.be.eql('Element with text tex ');
       });
     });
@@ -412,24 +413,15 @@ describe('match', () => {
         expect(await text('Visible content').exists()).to.be.true;
       });
 
-      it('text should not be visible when display is set to none', async () => {
-        const exists = await text('Element it self has display none').exists();
-        expect(exists).to.be.false;
-      });
-
-      it('text should not be visible when parent element display is set to none', async () => {
+      it('text should exists when parent element display is set to none', async () => {
         const exists = await text('Parent element has display none').exists();
-        expect(exists).to.be.false;
-      });
-
-      it('text should be visible when ', async () => {
-        expect(await text('Element with display inline should be invisible').exists()).to.be.true;
+        expect(exists).to.be.true;
       });
     });
 
     describe('fetch hidden text', () => {
       it('should return false for hidden element when isVisible fn is called on text', async () => {
-        expect(await text('Hidden text', { selectHiddenElements: true }).isVisible()).to.be.false;
+        expect(await text('Hidden text').isVisible()).to.be.false;
       });
     });
 

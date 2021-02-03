@@ -276,41 +276,17 @@ describe(test_name, () => {
 
     describe('button with Hidden attribute', () => {
       it('Should match hidden buttons', async () => {
-        expect(
-          await button('HiddenButton', {
-            selectHiddenElements: true,
-          }).exists(),
-        ).to.be.true;
-        expect(
-          await button('Input Hidden Reset', {
-            selectHiddenElements: true,
-          }).exists(),
-        ).to.be.true;
-        expect(
-          await button('Input Hidden Submit', {
-            selectHiddenElements: true,
-          }).exists(),
-        ).to.be.true;
+        expect(await button('HiddenButton').exists()).to.be.true;
+        expect(await button('Input Hidden Reset').exists()).to.be.true;
+        expect(await button('Input Hidden Submit').exists()).to.be.true;
       });
 
       it('should return false for hidden element when isVisible fn is called on button', async () => {
-        expect(
-          await button('HiddenButton', {
-            selectHiddenElements: true,
-          }).isVisible(),
-        ).to.be.false;
+        expect(await button('HiddenButton').isVisible()).to.be.false;
       });
 
       it('should return false for hidden element when isVisible fn is called on shadow button', async () => {
-        expect(
-          await button('HiddenShadowButton', {
-            selectHiddenElements: true,
-          }).isVisible(),
-        ).to.be.false;
-      });
-
-      it('test isVisible() should throw if the element is not found', async () => {
-        await expect(button('HiddenButton').isVisible()).to.be.eventually.rejected;
+        expect(await button('HiddenShadowButton').isVisible()).to.be.false;
       });
     });
   });

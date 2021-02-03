@@ -106,11 +106,7 @@ describe(test_name, () => {
     });
 
     it('should return false for hidden element when isVisible fn is called on text', async () => {
-      expect(
-        await $('#hidden', {
-          selectHiddenElements: true,
-        }).isVisible(),
-      ).to.be.false;
+      expect(await $('#hidden').isVisible()).to.be.false;
     });
   });
 

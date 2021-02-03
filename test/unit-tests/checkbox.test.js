@@ -243,11 +243,7 @@ const inputTypeCaseSensitive = {
 
     describe('with hidden style', () => {
       it('test finding hidden checkbox elements', async () => {
-        expect(
-          await checkBox('hiddenCheckbox', {
-            selectHiddenElements: true,
-          }).exists(),
-        ).to.be.true;
+        expect(await checkBox('hiddenCheckbox').exists()).to.be.true;
       });
 
       it('should return true for non hidden element when isVisible fn is called on checkbox', async () => {
@@ -255,22 +251,11 @@ const inputTypeCaseSensitive = {
       });
 
       it('should return false for hidden element when isVisible fn is called on shadow checkbox', async () => {
-        expect(
-          await checkBox(
-            { id: 'HiddenShadowButton' },
-            {
-              selectHiddenElements: true,
-            },
-          ).isVisible(),
-        ).to.be.false;
+        expect(await checkBox({ id: 'HiddenShadowButton' }).isVisible()).to.be.false;
       });
 
       it('should return false for hidden element when isVisible fn is called on textBox', async () => {
-        expect(
-          await checkBox('hiddenCheckbox', {
-            selectHiddenElements: true,
-          }).isVisible(),
-        ).to.be.false;
+        expect(await checkBox('hiddenCheckbox').isVisible()).to.be.false;
       });
     });
   }),

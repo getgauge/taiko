@@ -195,9 +195,7 @@ describe(test_name, () => {
       });
 
       it('should return false for hidden element when isVisible fn is called on textBox', async () => {
-        expect(
-          await textBox({ id: 'hiddenTextAreaStyle' }, { selectHiddenElements: true }).isVisible(),
-        ).to.be.false;
+        expect(await textBox({ id: 'hiddenTextAreaStyle' }).isVisible()).to.be.false;
       });
     });
   });
@@ -516,12 +514,9 @@ describe(test_name, () => {
 
         it('should return false for hidden element when isVisible fn is called', async () => {
           expect(
-            await textBox(
-              {
-                id: `hidden${inputType.type}`,
-              },
-              { selectHiddenElements: true },
-            ).isVisible(),
+            await textBox({
+              id: `hidden${inputType.type}`,
+            }).isVisible(),
           ).to.be.false;
         });
       });

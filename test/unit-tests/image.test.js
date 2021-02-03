@@ -144,15 +144,12 @@ describe(test_name, () => {
 
   describe('image with hidden style', () => {
     it('should be able to find hidden image', async () => {
-      expect(await image({ id: 'hiddenDivImage' }, { selectHiddenElements: true }).exists()).to.be
-        .true;
-      expect(await image({ id: 'hiddenImage' }, { selectHiddenElements: true }).exists()).to.be
-        .true;
+      expect(await image({ id: 'hiddenDivImage' }).exists()).to.be.true;
+      expect(await image({ id: 'hiddenImage' }).exists()).to.be.true;
     });
 
     it('should return false when isVisible fn is observed on hidden element', async () => {
-      expect(await image({ id: 'hiddenDivImage' }, { selectHiddenElements: true }).isVisible()).to
-        .be.false;
+      expect(await image({ id: 'hiddenDivImage' }).isVisible()).to.be.false;
     });
 
     it('test isVisible() should throw if the element is not found', async () => {
