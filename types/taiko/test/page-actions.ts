@@ -71,7 +71,7 @@ reload('https://google.com', {
     'firstPaint',
     'firstContentfulPaint',
     'firstMeaningfulPaint',
-    'targetNavigated',  
+    'targetNavigated',
   ],
   navigationTimeout: 30000,
   waitForStart: 100,

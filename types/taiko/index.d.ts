@@ -472,7 +472,11 @@ export function write(text: string, into?: SearchElement, options?: WriteOptions
 // https://docs.taiko.dev/api/clear
 export function clear(selector?: SearchElement, options?: NavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/attach
-export function attach(filepath: string, to: SearchElement): Promise<void>;
+export function attach(
+  filepath: string,
+  to: SearchElement,
+  options?: HiddenOrDisabledElementsOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/press
 export function press(keys: string | string[], options?: KeyOptions): Promise<void>;
 // https://docs.taiko.dev/api/highlight
