@@ -116,8 +116,8 @@ export interface CookieOptions {
 }
 
 export interface ResizeWindowOptions {
-  height?: string;
-  width?: string;
+  height?: number;
+  width?: number;
 }
 
 export interface CookieDetailOptions extends CookieOptions {
