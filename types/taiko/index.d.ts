@@ -539,49 +539,49 @@ export function $(
 // https://docs.taiko.dev/api/image
 export function image(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ImageWrapper;
 // https://docs.taiko.dev/api/link
 export function link(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: SearchElement[]
 ): LinkWrapper;
 // https://docs.taiko.dev/api/listitem
 export function listItem(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ListItemWrapper;
 // https://docs.taiko.dev/api/button
 export function button(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ButtonWrapper;
 // https://docs.taiko.dev/api/filefield
 export function fileField(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): FileFieldWrapper;
 // https://docs.taiko.dev/api/timefield
 export function timeField(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): TimeFieldWrapper;
 // https://docs.taiko.dev/api/range
 export function range(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): RangeWrapper;
 // https://docs.taiko.dev/api/color
 export function color(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ColorWrapper;
 // https://docs.taiko.dev/api/tableCell
@@ -592,26 +592,26 @@ export function tableCell(
 ): TableCellWrapper;
 // https://docs.taiko.dev/api/textbox
 export function textBox(
-  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  labelOrAttrValuePairs?: string | AttrValuePairs | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): TextBoxWrapper;
 // https://docs.taiko.dev/api/dropdown
 export function dropDown(
-  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  labelOrAttrValuePairs?: string | AttrValuePairs | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): DropDownWrapper;
 // https://docs.taiko.dev/api/checkbox
 export function checkBox(
-  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  labelOrAttrValuePairs?: string | AttrValuePairs | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): CheckBoxWrapper;
 // https://docs.taiko.dev/api/radiobutton
 export function radioButton(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): RadioButtonWrapper;
 // https://docs.taiko.dev/api/text
