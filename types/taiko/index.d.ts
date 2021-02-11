@@ -188,6 +188,10 @@ export interface ClickInclHiddenOrDisabledElementsOptions extends ClickOptions {
   force: boolean;
 }
 
+export interface WriteInclHiddenOrDisabledElementsOptions extends WriteOptions {
+  force: boolean;
+}
+
 /**
  * Elements, Selectors and Searches
  */
