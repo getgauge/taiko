@@ -171,14 +171,10 @@ export interface Response extends BasicResponse {
   redirectedResponse?: BasicResponse[];
 }
 
-export interface HiddenOrDisabledElementsOptions
-  extends VeryBasicNavigationOptions,
-    NavigationOptions,
-    ClickOptions,
-    WriteOptions,
-    TapOptions {
+export interface HiddenOrDisabledElementsOptions {
   force: boolean;
 }
+
 /**
  * Elements, Selectors and Searches
  */
