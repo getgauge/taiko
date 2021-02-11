@@ -180,6 +180,10 @@ export interface VeryBasicNavigationInclHiddenOrDisabledElementsOptions
   force: boolean;
 }
 
+export interface NavigationInclHiddenOrDisabledElementsOptions extends NavigationOptions {
+  force: boolean;
+}
+
 /**
  * Elements, Selectors and Searches
  */
