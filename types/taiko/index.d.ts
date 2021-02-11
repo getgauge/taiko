@@ -498,7 +498,7 @@ export function mouseAction(
   selector: SearchElement | 'press' | 'move' | 'release',
   action?: 'press' | 'move' | 'release' | MouseCoordinates,
   coordinates?: MouseCoordinates | NavigationOptions,
-  options?: NavigationOptions | HiddenOrDisabledElementsOptions,
+  options?: NavigationOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/scrollto
 export function scrollTo(selector: SearchElement, options?: NavigationOptions): Promise<void>;
