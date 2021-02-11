@@ -457,7 +457,7 @@ export function title(): Promise<string>;
 // https://docs.taiko.dev/api/click
 export function click(
   selector: SearchElement | MouseCoordinates,
-  options?: ClickOptions | RelativeSearchElement,
+  options?: ClickInclHiddenOrDisabledElementsOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/doubleclick
