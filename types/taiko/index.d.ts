@@ -474,11 +474,7 @@ export function hover(selector: SearchElement, options?: NavigationOptions): Pro
 // https://docs.taiko.dev/api/focus
 export function focus(selector: SearchElement, options?: NavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/write
-export function write(
-  text: string,
-  into?: SearchElement,
-  options?: WriteOptions | HiddenOrDisabledElementsOptions,
-): Promise<void>;
+export function write(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
 // https://docs.taiko.dev/api/clear
 export function clear(selector?: SearchElement, options?: NavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/attach
