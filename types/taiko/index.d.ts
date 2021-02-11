@@ -172,28 +172,28 @@ export interface Response extends BasicResponse {
 }
 
 export interface HiddenOrDisabledElementsOptions {
-  force: boolean;
+  force?: boolean;
 }
 
 export interface VeryBasicNavigationInclHiddenOrDisabledElementsOptions
   extends VeryBasicNavigationOptions {
-  force: boolean;
+  force?: boolean;
 }
 
 export interface NavigationInclHiddenOrDisabledElementsOptions extends NavigationOptions {
-  force: boolean;
+  force?: boolean;
 }
 
 export interface ClickInclHiddenOrDisabledElementsOptions extends ClickOptions {
-  force: boolean;
+  force?: boolean;
 }
 
 export interface WriteInclHiddenOrDisabledElementsOptions extends WriteOptions {
-  force: boolean;
+  force?: boolean;
 }
 
 export interface TapInclHiddenOrDisabledElementsOptions extends TapOptions {
-  force: boolean;
+  force?: boolean;
 }
 
 /**
