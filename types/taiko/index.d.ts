@@ -475,13 +475,22 @@ export function dragAndDrop(
   options?: HiddenOrDisabledElementsOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/hover
-export function hover(selector: SearchElement, options?: NavigationOptions): Promise<void>;
+export function hover(
+  selector: SearchElement,
+  options?: NavigationInclHiddenOrDisabledElementsOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/focus
-export function focus(selector: SearchElement, options?: NavigationOptions): Promise<void>;
+export function focus(
+  selector: SearchElement,
+  options?: NavigationInclHiddenOrDisabledElementsOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/write
 export function write(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
 // https://docs.taiko.dev/api/clear
-export function clear(selector?: SearchElement, options?: NavigationOptions): Promise<void>;
+export function clear(
+  selector?: SearchElement,
+  options?: NavigationInclHiddenOrDisabledElementsOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/attach
 export function attach(
   filepath: string,
@@ -498,7 +507,7 @@ export function clearHighlights(): Promise<void>;
 export function mouseAction(
   selector: SearchElement | 'press' | 'move' | 'release',
   action?: 'press' | 'move' | 'release' | MouseCoordinates,
-  coordinates?: MouseCoordinates | NavigationOptions,
+  coordinates?: MouseCoordinates | NavigationInclHiddenOrDisabledElementsOptions,
   options?: NavigationOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/scrollto
