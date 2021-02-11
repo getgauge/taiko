@@ -486,10 +486,7 @@ export function write(
   options?: WriteOptions | HiddenOrDisabledElementsOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/clear
-export function clear(
-  selector?: SearchElement,
-  options?: NavigationOptions | HiddenOrDisabledElementsOptions,
-): Promise<void>;
+export function clear(selector?: SearchElement, options?: NavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/attach
 export function attach(
   filepath: string,
