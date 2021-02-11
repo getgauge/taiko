@@ -454,7 +454,7 @@ export function click(
 // https://docs.taiko.dev/api/doubleclick
 export function doubleClick(
   selector: SearchElement | MouseCoordinates,
-  options?: VeryBasicNavigationOptions | RelativeSearchElement | HiddenOrDisabledElementsOptions,
+  options?: VeryBasicNavigationOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/rightclick
