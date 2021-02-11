@@ -475,10 +475,7 @@ export function hover(
   options?: NavigationOptions | HiddenOrDisabledElementsOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/focus
-export function focus(
-  selector: SearchElement,
-  options?: NavigationOptions | HiddenOrDisabledElementsOptions,
-): Promise<void>;
+export function focus(selector: SearchElement, options?: NavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/write
 export function write(
   text: string,
