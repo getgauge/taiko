@@ -175,6 +175,11 @@ export interface HiddenOrDisabledElementsOptions {
   force: boolean;
 }
 
+export interface VeryBasicNavigationInclHiddenOrDisabledElementsOptions
+  extends VeryBasicNavigationOptions {
+  force: boolean;
+}
+
 /**
  * Elements, Selectors and Searches
  */
