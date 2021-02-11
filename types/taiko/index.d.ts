@@ -184,6 +184,10 @@ export interface NavigationInclHiddenOrDisabledElementsOptions extends Navigatio
   force: boolean;
 }
 
+export interface ClickInclHiddenOrDisabledElementsOptions extends ClickOptions {
+  force: boolean;
+}
+
 /**
  * Elements, Selectors and Searches
  */
