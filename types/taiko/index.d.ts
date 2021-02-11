@@ -460,7 +460,7 @@ export function doubleClick(
 // https://docs.taiko.dev/api/rightclick
 export function rightClick(
   selector: SearchElement | MouseCoordinates,
-  options?: VeryBasicNavigationOptions | RelativeSearchElement | HiddenOrDisabledElementsOptions,
+  options?: VeryBasicNavigationOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/draganddrop
