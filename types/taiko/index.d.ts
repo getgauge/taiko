@@ -523,8 +523,8 @@ export function clearHighlights(): Promise<void>;
 export function mouseAction(
   selector: SearchElement | 'press' | 'move' | 'release',
   action?: 'press' | 'move' | 'release' | MouseCoordinates,
-  coordinates?: MouseCoordinates | NavigationInclHiddenOrDisabledElementsOptions,
-  options?: NavigationOptions,
+  coordinates?: MouseCoordinates | NavigationOptions,
+  options?: NavigationInclHiddenOrDisabledElementsOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/scrollto
 export function scrollTo(selector: SearchElement, options?: NavigationOptions): Promise<void>;
