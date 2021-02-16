@@ -175,11 +175,6 @@ export interface ForceOption {
   force?: boolean;
 }
 
-export interface VeryBasicNavigationInclHiddenOrDisabledElementsOptions
-  extends VeryBasicNavigationOptions {
-  force?: boolean;
-}
-
 export interface NavigationInclHiddenOrDisabledElementsOptions extends NavigationOptions {
   force?: boolean;
 }
