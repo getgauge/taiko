@@ -470,22 +470,13 @@ export function dragAndDrop(
   options?: ForceOption,
 ): Promise<void>;
 // https://docs.taiko.dev/api/hover
-export function hover(
-  selector: SearchElement,
-  options?: NavigationInclHiddenOrDisabledElementsOptions,
-): Promise<void>;
+export function hover(selector: SearchElement, options?: ForcedNavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/focus
-export function focus(
-  selector: SearchElement,
-  options?: NavigationInclHiddenOrDisabledElementsOptions,
-): Promise<void>;
+export function focus(selector: SearchElement, options?: ForcedNavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/write
 export function write(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
 // https://docs.taiko.dev/api/clear
-export function clear(
-  selector?: SearchElement,
-  options?: NavigationInclHiddenOrDisabledElementsOptions,
-): Promise<void>;
+export function clear(selector?: SearchElement, options?: ForcedNavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/attach
 export function attach(filepath: string, to: SearchElement, options?: ForceOption): Promise<void>;
 // https://docs.taiko.dev/api/press
@@ -499,7 +490,7 @@ export function mouseAction(
   selector: SearchElement | 'press' | 'move' | 'release',
   action?: 'press' | 'move' | 'release' | MouseCoordinates,
   coordinates?: MouseCoordinates | NavigationOptions,
-  options?: NavigationInclHiddenOrDisabledElementsOptions,
+  options?: ForcedNavigationOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/scrollto
 export function scrollTo(selector: SearchElement, options?: NavigationOptions): Promise<void>;
