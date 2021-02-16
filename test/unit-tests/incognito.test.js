@@ -5,6 +5,8 @@ let {
   switchTo,
   text,
   goto,
+  openTab,
+  closeTab,
   setConfig,
   evaluate,
   openIncognitoWindow,
@@ -175,6 +177,24 @@ describe('Browser Context', () => {
       await openIncognitoWindow('localhost:8000').catch((error) =>
         expect(error).to.be.an.instanceOf(TypeError),
       );
+    });
+  });
+
+  describe('close incognito window', () => {
+    it('closeIncognitoWindow should not throw error when the target used to get context id is closed', async() => {
+      let exceptionThrown = false;
+
+      try {
+        await openIncognitoWindow({ name: 'admin' });
+        await goto(url1);
+        await openTab(url2);
+        await closeTab(url1);
+        await closeIncognitoWindow('admin');
+      } catch {
+        exceptionThrown = true;
+      }
+
+      expect(exceptionThrown).to.be.false;
     });
   });
 });
