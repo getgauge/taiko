@@ -484,7 +484,7 @@ export function rightClick(
 export function dragAndDrop(
   source: SearchElement,
   destinationOrDistance: SearchElement | DragAndDropDistance,
-  options?: HiddenOrDisabledElementsOptions,
+  options?: ForceOption,
 ): Promise<void>;
 // https://docs.taiko.dev/api/hover
 export function hover(
