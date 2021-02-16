@@ -179,10 +179,6 @@ export interface NavigationInclHiddenOrDisabledElementsOptions extends Navigatio
   force?: boolean;
 }
 
-export interface WriteInclHiddenOrDisabledElementsOptions extends WriteOptions {
-  force?: boolean;
-}
-
 export interface TapInclHiddenOrDisabledElementsOptions extends TapOptions {
   force?: boolean;
 }
