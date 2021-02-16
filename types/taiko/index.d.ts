@@ -484,11 +484,7 @@ export function focus(
   options?: NavigationInclHiddenOrDisabledElementsOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/write
-export function write(
-  text: string,
-  into?: SearchElement,
-  options?: WriteInclHiddenOrDisabledElementsOptions,
-): Promise<void>;
+export function write(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
 // https://docs.taiko.dev/api/clear
 export function clear(
   selector?: SearchElement,
