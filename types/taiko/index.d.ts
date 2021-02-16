@@ -462,13 +462,13 @@ export function click(
 // https://docs.taiko.dev/api/doubleclick
 export function doubleClick(
   selector: SearchElement | MouseCoordinates,
-  options?: VeryBasicNavigationInclHiddenOrDisabledElementsOptions | RelativeSearchElement,
+  options?: VeryBasicNavigationOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/rightclick
 export function rightClick(
   selector: SearchElement | MouseCoordinates,
-  options?: VeryBasicNavigationInclHiddenOrDisabledElementsOptions | RelativeSearchElement,
+  options?: VeryBasicNavigationOptions | RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): Promise<void>;
 // https://docs.taiko.dev/api/draganddrop
