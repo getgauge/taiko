@@ -53,7 +53,7 @@ export interface ReloadOptions extends NavigationOptions {
   ignoreCache?: boolean;
 }
 
-export interface ClickOptions extends NavigationOptions {
+export interface ClickOptions extends NavigationOptions, ForceOption {
   button?: 'left' | 'right' | 'middle';
   clickCount?: number;
   elementsToMatch?: number;
