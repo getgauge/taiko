@@ -175,7 +175,7 @@ export interface ForceOption {
   force?: boolean;
 }
 
-export interface NavigationInclHiddenOrDisabledElementsOptions extends NavigationOptions {
+export interface ForcedNavigationOptions extends NavigationOptions {
   force?: boolean;
 }
 
