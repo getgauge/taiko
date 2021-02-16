@@ -36,7 +36,7 @@ export interface EventOptions {
   waitForEvents?: BrowserEvent[];
 }
 
-export interface VeryBasicNavigationOptions {
+export interface VeryBasicNavigationOptions extends ForceOption {
   waitForNavigation?: boolean;
 }
 
