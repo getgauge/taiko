@@ -184,10 +184,6 @@ export interface NavigationInclHiddenOrDisabledElementsOptions extends Navigatio
   force?: boolean;
 }
 
-export interface ClickInclHiddenOrDisabledElementsOptions extends ClickOptions {
-  force?: boolean;
-}
-
 export interface WriteInclHiddenOrDisabledElementsOptions extends WriteOptions {
   force?: boolean;
 }
