@@ -75,7 +75,7 @@ export interface GlobalConfigurationOptions {
   local?: boolean;
 }
 
-export interface TapOptions extends BasicNavigationOptions, EventOptions {}
+export interface TapOptions extends BasicNavigationOptions, EventOptions, ForceOption {}
 
 export interface KeyOptions extends NavigationOptions {
   text?: string;
