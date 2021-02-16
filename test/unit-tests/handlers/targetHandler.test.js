@@ -232,7 +232,7 @@ describe('TargetHandler', () => {
     let targetHandler;
 
     beforeEach(() => {
-      targetHandler = new require('../../../lib/handlers/targetHandler');
+      targetHandler = rewire('../../../lib/handlers/targetHandler');
     });
 
     afterEach(() => {
@@ -253,6 +253,30 @@ describe('TargetHandler', () => {
 
       expect(targetHandler.register('one')).to.be.undefined;
       expect(targetHandler.register('two').targetId).to.equal('second');
+    });
+
+    it('should register a browser context id with a target id', async () => {
+      let target = { targetId: 'first', type: 'page' };
+
+      targetHandler.__set__('activeBrowserContextId', '4');   
+      targetHandler.register('one', target);
+      
+      let browserRegistry = targetHandler.__get__('browserRegistry');
+      
+      expect(browserRegistry.get(target)).to.be.equal('4');
+    });
+
+    it('should unregister the browser context id with the given target', async() => {
+      let target = { targetId: 'first', type: 'page' };
+
+      targetHandler.__set__('activeBrowserContextId', '4');   
+      targetHandler.register('one', target);
+      
+      targetHandler.unregister('one');
+
+      let browserRegistry = targetHandler.__get__('browserRegistry');
+      
+      expect(browserRegistry.get(target)).to.be.undefined;
     });
   });
 });
