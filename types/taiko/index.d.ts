@@ -508,11 +508,7 @@ export function clear(
   options?: NavigationInclHiddenOrDisabledElementsOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/attach
-export function attach(
-  filepath: string,
-  to: SearchElement,
-  options?: HiddenOrDisabledElementsOptions,
-): Promise<void>;
+export function attach(filepath: string, to: SearchElement, options?: ForceOption): Promise<void>;
 // https://docs.taiko.dev/api/press
 export function press(keys: string | string[], options?: KeyOptions): Promise<void>;
 // https://docs.taiko.dev/api/highlight
