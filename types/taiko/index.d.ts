@@ -519,7 +519,7 @@ export function screenshot(
 // https://docs.taiko.dev/api/tap
 export function tap(
   selector: SearchElement,
-  options?: TapInclHiddenOrDisabledElementsOptions | RelativeSearchElement,
+  options?: TapOptions | RelativeSearchElement,
   ...args: SearchElement[]
 ): Promise<void>;
 
