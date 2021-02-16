@@ -171,7 +171,7 @@ export interface Response extends BasicResponse {
   redirectedResponse?: BasicResponse[];
 }
 
-export interface HiddenOrDisabledElementsOptions {
+export interface ForceOption {
   force?: boolean;
 }
 
