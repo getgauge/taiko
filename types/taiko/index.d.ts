@@ -82,7 +82,7 @@ export interface KeyOptions extends NavigationOptions {
   delay?: number;
 }
 
-export interface WriteOptions extends NavigationOptions {
+export interface WriteOptions extends NavigationOptions, ForceOption {
   delay?: number;
   hideText?: boolean;
 }
