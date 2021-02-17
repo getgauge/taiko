@@ -67,6 +67,7 @@ export interface GlobalConfigurationOptions {
   noOfElementToMatch?: number;
   observe?: boolean;
   waitForNavigation?: boolean;
+  waitForEvents?: BrowserEvent[];
   ignoreSSLErrors?: boolean;
   headful?: boolean;
   criConnectionRetries?: number;

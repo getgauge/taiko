@@ -37,6 +37,7 @@ describe('Config tests', () => {
             retryInterval: 2,
             retryTimeout: 2,
             waitForNavigation: false,
+            waitForEvents: ['firstContentfulPaint'],
             criConnectionRetries: 50,
             noOfElementToMatch: 20,
             local: false,
@@ -195,6 +196,7 @@ describe('Config tests', () => {
         navigationTimeout: 30000,
         waitForNavigation: true,
         waitForStart: 100,
+        waitForEvents: [],
       };
       const actualOptions = config.setNavigationOptions({});
       expect(actualOptions).to.deep.equal(exceptedOptions);
@@ -205,6 +207,7 @@ describe('Config tests', () => {
         navigationTimeout: 60000,
         waitForNavigation: false,
         waitForStart: 500,
+        waitForEvents: ['largestContentfulPaint'],
       };
       const actualOptions = config.setNavigationOptions(exceptedOptions);
       expect(actualOptions).to.deep.equal(exceptedOptions);
@@ -240,6 +243,7 @@ describe('Config tests', () => {
         retryInterval: 100,
         retryTimeout: 10000,
         waitForNavigation: true,
+        waitForEvents: [],
         criConnectionRetries: 50,
         noOfElementToMatch: 20,
         local: false,
@@ -268,6 +272,7 @@ describe('Config tests', () => {
         navigationTimeout: 30000,
         waitForNavigation: true,
         waitForStart: 100,
+        waitForEvents: [],
         x: undefined,
         y: undefined,
       };
@@ -287,6 +292,7 @@ describe('Config tests', () => {
         elementsToMatch: 10,
         navigationTimeout: 30000,
         waitForNavigation: true,
+        waitForEvents: [],
         waitForStart: 100,
         x: 32,
         y: 45,

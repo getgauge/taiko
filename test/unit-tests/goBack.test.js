@@ -62,20 +62,23 @@ describe(test_name, () => {
       const expectedOptions = {
         navigationTimeout: 30000,
         waitForStart: 100,
+        waitForEvents: [],
         waitForNavigation: false,
       };
       expect(actualOptions).to.be.eql(expectedOptions);
     });
 
-    it('should pass waitForNavigation option provided by the user', async () => {
+    it('should pass navigation options provided by the user', async () => {
       await taiko.goBack({
         waitForNavigation: true,
+        waitForEvents: ['networkIdle'],
         navigationTimeout: 100,
       });
       const expectedOptions = {
         navigationTimeout: 100,
         waitForNavigation: true,
         waitForStart: 100,
+        waitForEvents: ['networkIdle'],
       };
       expect(actualOptions).to.be.eql(expectedOptions);
     });
