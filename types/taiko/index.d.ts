@@ -175,9 +175,7 @@ export interface ForceOption {
   force?: boolean;
 }
 
-export interface ForcedNavigationOptions extends NavigationOptions {
-  force?: boolean;
-}
+export interface ForcedNavigationOptions extends NavigationOptions, ForceOption {}
 
 /**
  * Elements, Selectors and Searches
