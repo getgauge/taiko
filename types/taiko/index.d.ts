@@ -36,7 +36,7 @@ export interface EventOptions {
   waitForEvents?: BrowserEvent[];
 }
 
-export interface VeryBasicNavigationOptions {
+export interface VeryBasicNavigationOptions extends ForceOption {
   waitForNavigation?: boolean;
 }
 
@@ -53,7 +53,7 @@ export interface ReloadOptions extends NavigationOptions {
   ignoreCache?: boolean;
 }
 
-export interface ClickOptions extends NavigationOptions {
+export interface ClickOptions extends NavigationOptions, ForceOption {
   button?: 'left' | 'right' | 'middle';
   clickCount?: number;
   elementsToMatch?: number;
@@ -76,14 +76,14 @@ export interface GlobalConfigurationOptions {
   local?: boolean;
 }
 
-export interface TapOptions extends BasicNavigationOptions, EventOptions {}
+export interface TapOptions extends BasicNavigationOptions, EventOptions, ForceOption {}
 
 export interface KeyOptions extends NavigationOptions {
   text?: string;
   delay?: number;
 }
 
-export interface WriteOptions extends NavigationOptions {
+export interface WriteOptions extends NavigationOptions, ForceOption {
   delay?: number;
   hideText?: boolean;
 }
@@ -171,6 +171,12 @@ export interface BasicResponse {
 export interface Response extends BasicResponse {
   redirectedResponse?: BasicResponse[];
 }
+
+export interface ForceOption {
+  force?: boolean;
+}
+
+export interface ForcedNavigationOptions extends NavigationOptions, ForceOption {}
 
 /**
  * Elements, Selectors and Searches
@@ -460,17 +466,18 @@ export function rightClick(
 export function dragAndDrop(
   source: SearchElement,
   destinationOrDistance: SearchElement | DragAndDropDistance,
+  options?: ForceOption,
 ): Promise<void>;
 // https://docs.taiko.dev/api/hover
-export function hover(selector: SearchElement, options?: NavigationOptions): Promise<void>;
+export function hover(selector: SearchElement, options?: ForcedNavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/focus
-export function focus(selector: SearchElement, options?: NavigationOptions): Promise<void>;
+export function focus(selector: SearchElement, options?: ForcedNavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/write
 export function write(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
 // https://docs.taiko.dev/api/clear
-export function clear(selector?: SearchElement, options?: NavigationOptions): Promise<void>;
+export function clear(selector?: SearchElement, options?: ForcedNavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/attach
-export function attach(filepath: string, to: SearchElement): Promise<void>;
+export function attach(filepath: string, to: SearchElement, options?: ForceOption): Promise<void>;
 // https://docs.taiko.dev/api/press
 export function press(keys: string | string[], options?: KeyOptions): Promise<void>;
 // https://docs.taiko.dev/api/highlight
@@ -482,7 +489,7 @@ export function mouseAction(
   selector: SearchElement | 'press' | 'move' | 'release',
   action?: 'press' | 'move' | 'release' | MouseCoordinates,
   coordinates?: MouseCoordinates | NavigationOptions,
-  options?: NavigationOptions,
+  options?: ForcedNavigationOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/scrollto
 export function scrollTo(selector: SearchElement, options?: NavigationOptions): Promise<void>;
@@ -519,49 +526,49 @@ export function $(
 // https://docs.taiko.dev/api/image
 export function image(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ImageWrapper;
 // https://docs.taiko.dev/api/link
 export function link(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: SearchElement[]
 ): LinkWrapper;
 // https://docs.taiko.dev/api/listitem
 export function listItem(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ListItemWrapper;
 // https://docs.taiko.dev/api/button
 export function button(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ButtonWrapper;
 // https://docs.taiko.dev/api/filefield
 export function fileField(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): FileFieldWrapper;
 // https://docs.taiko.dev/api/timefield
 export function timeField(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): TimeFieldWrapper;
 // https://docs.taiko.dev/api/range
 export function range(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): RangeWrapper;
 // https://docs.taiko.dev/api/color
 export function color(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): ColorWrapper;
 // https://docs.taiko.dev/api/tableCell
@@ -572,26 +579,26 @@ export function tableCell(
 ): TableCellWrapper;
 // https://docs.taiko.dev/api/textbox
 export function textBox(
-  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  labelOrAttrValuePairs?: string | AttrValuePairs | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): TextBoxWrapper;
 // https://docs.taiko.dev/api/dropdown
 export function dropDown(
-  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  labelOrAttrValuePairs?: string | AttrValuePairs | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): DropDownWrapper;
 // https://docs.taiko.dev/api/checkbox
 export function checkBox(
-  labelOrAttrValuePairs?: string | AttrValuePairs | SelectionOptions | RelativeSearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  labelOrAttrValuePairs?: string | AttrValuePairs | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): CheckBoxWrapper;
 // https://docs.taiko.dev/api/radiobutton
 export function radioButton(
   selector: SearchElement,
-  options?: SelectionOptions | RelativeSearchElement,
+  options?: RelativeSearchElement,
   ...args: RelativeSearchElement[]
 ): RadioButtonWrapper;
 // https://docs.taiko.dev/api/text
