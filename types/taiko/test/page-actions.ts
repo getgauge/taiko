@@ -71,6 +71,7 @@ reload('https://google.com', {
     'firstPaint',
     'firstContentfulPaint',
     'firstMeaningfulPaint',
+    'targetNavigated',
   ],
   navigationTimeout: 30000,
   waitForStart: 100,
@@ -93,6 +94,7 @@ goBack({
     'firstPaint',
     'firstContentfulPaint',
     'firstMeaningfulPaint',
+    'targetNavigated',
   ],
   navigationTimeout: 30000,
   waitForStart: 100,
@@ -114,6 +116,7 @@ goForward({
     'firstPaint',
     'firstContentfulPaint',
     'firstMeaningfulPaint',
+    'targetNavigated',
   ],
   navigationTimeout: 30000,
   waitForStart: 100,
@@ -157,8 +160,10 @@ click(
       'firstPaint',
       'firstContentfulPaint',
       'firstMeaningfulPaint',
+      'targetNavigated',
     ],
     waitForStart: 100,
+    force: false,
   },
 );
 click(
@@ -177,8 +182,10 @@ click(
       'firstPaint',
       'firstContentfulPaint',
       'firstMeaningfulPaint',
+      'targetNavigated',
     ],
     waitForStart: 100,
+    force: false,
   },
   below('text'),
 );
@@ -192,6 +199,7 @@ doubleClick('Get Started', { waitForNavigation: true }); // $ExpectType Promise<
 doubleClick('Get Started', { waitForNavigation: false }, below('text')); // $ExpectType Promise<void>
 doubleClick('Get Started', {
   waitForNavigation: true,
+  force: false,
   navigationTimeout: 30000, // $ExpectError
 });
 
@@ -205,6 +213,7 @@ rightClick('Get Started', { waitForNavigation: true }); // $ExpectType Promise<v
 rightClick('Get Started', { waitForNavigation: false }, below('text')); // $ExpectType Promise<void>
 rightClick('Get Started', {
   waitForNavigation: true,
+  force: false,
   navigationTimeout: 30000, // $ExpectError
 });
 
@@ -223,14 +232,14 @@ dragAndDrop($('work'), into($('work done')), { up: 10, down: 10, left: 10, right
 // ------------------------------------------
 hover('Get Started'); // $ExpectType Promise<void>
 hover(link('Get Started')); // $ExpectType Promise<void>
-hover(link('Get Started'), { waitForEvents: ['firstMeaningfulPaint'] }); // $ExpectType Promise<void>
+hover(link('Get Started'), { force: false, waitForEvents: ['firstMeaningfulPaint'] }); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // focus
 // https://docs.taiko.dev/api/focus
 // ------------------------------------------
 focus(textBox('Username:')); // $ExpectType Promise<void>
-focus(textBox('Username:'), { waitForEvents: ['firstMeaningfulPaint'] }); // $ExpectType Promise<void>
+focus(textBox('Username:'), { force: false, waitForEvents: ['firstMeaningfulPaint'] }); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // write
@@ -245,6 +254,7 @@ write('admin', into(textBox('Username')), {
   waitForStart: 100,
   navigationTimeout: 30000,
   hideText: false,
+  force: false,
   waitForEvents: ['firstMeaningfulPaint'],
 });
 
@@ -260,6 +270,7 @@ clear(textBox({ placeholder: 'Email' }), {
   waitForNavigation: true,
   waitForStart: 100,
   navigationTimeout: 10000,
+  force: false,
   waitForEvents: ['firstMeaningfulPaint'],
 });
 
@@ -331,6 +342,7 @@ mouseAction(
     navigationTimeout: 30000,
     waitForEvents: ['firstMeaningfulPaint'],
     waitForStart: 100,
+    force: false,
   },
 );
 

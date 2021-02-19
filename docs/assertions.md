@@ -29,14 +29,6 @@ the test fails when
 All Page actions, browser actions, selectors, proximity 
 selectors have implicit assertions.
 
-### Selecting hidden elements
-
-If you do not want to assert the visibility of elements on a page
-and perform actions on hidden elements use the `selectHiddenElements`
-option on the API for example
-
-    await click("Google Search", {selectHiddenElements: true});
-
 ### Ignoring implicit assertions
 
 To ignore implicit assertions use JavaScript's `try` and `catch` block to handle the error

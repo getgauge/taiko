@@ -76,14 +76,7 @@ describe('Color picker test', () => {
     });
 
     it('should return false for hidden element when isVisible fn is called on shadow range', async () => {
-      expect(
-        await color(
-          { id: 'HiddenShadowButton' },
-          {
-            selectHiddenElements: true,
-          },
-        ).isVisible(),
-      ).to.be.false;
+      expect(await color({ id: 'HiddenShadowButton' }).isVisible()).to.be.false;
     });
   });
 

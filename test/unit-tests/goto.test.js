@@ -107,6 +107,7 @@ describe(test_name, () => {
       navigationTimeout: 30000,
       waitForNavigation: true,
       waitForStart: 100,
+      waitForEvents: [],
     };
     await taiko.goto('example.com');
     expect(actualOptions).to.deep.equal(expectedOptions);

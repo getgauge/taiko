@@ -56,8 +56,7 @@ describe(test_name, () => {
     });
 
     it('should return false for hidden element when isVisible fn is called on listItem', async () => {
-      expect(await listItem({ id: 'hidden' }, { selectHiddenElements: true }).isVisible()).to.be
-        .false;
+      expect(await listItem({ id: 'hidden' }).isVisible()).to.be.false;
     });
 
     it('should return true for non hidden element when isVisible fn is called on listItem', async () => {

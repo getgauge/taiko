@@ -82,14 +82,7 @@ describe('Range test', () => {
     });
 
     it('should return false for hidden element when isVisible fn is called on shadow range', async () => {
-      expect(
-        await range(
-          { id: 'HiddenShadowButton' },
-          {
-            selectHiddenElements: true,
-          },
-        ).isVisible(),
-      ).to.be.false;
+      expect(await range({ id: 'HiddenShadowButton' }).isVisible()).to.be.false;
     });
   });
 

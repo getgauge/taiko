@@ -120,14 +120,7 @@ describe(test_name, () => {
     });
 
     it('should return false for hidden element when isVisible fn is called on shadow radio button', async () => {
-      expect(
-        await radioButton(
-          { id: 'HiddenShadowButton' },
-          {
-            selectHiddenElements: true,
-          },
-        ).isVisible(),
-      ).to.be.false;
+      expect(await radioButton({ id: 'HiddenShadowButton' }).isVisible()).to.be.false;
     });
   });
 
@@ -202,11 +195,7 @@ describe(test_name, () => {
 
   describe('with hidden style', () => {
     it('should find hidden radio buttons', async () => {
-      expect(
-        await radioButton('hiddenRadioButton', {
-          selectHiddenElements: true,
-        }).exists(),
-      ).to.be.true;
+      expect(await radioButton('hiddenRadioButton').exists()).to.be.true;
     });
 
     it('should return true for non hidden element when isVisible fn is called on button', async () => {
@@ -214,9 +203,7 @@ describe(test_name, () => {
     });
 
     it('should return false for hidden element when isVisible fn is called on textBox', async () => {
-      expect(
-        await radioButton({ id: 'hiddenRadioButton' }, { selectHiddenElements: true }).isVisible(),
-      ).to.be.false;
+      expect(await radioButton({ id: 'hiddenRadioButton' }).isVisible()).to.be.false;
     });
   });
 

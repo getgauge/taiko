@@ -17,63 +17,6 @@ describe('Element Search', () => {
     elementSearch = rewire('../../lib/elementSearch');
   });
 
-  describe('Filter visible nodes', () => {
-    let objectIds, runtimeHandler, filterVisibleNodes;
-    beforeEach(() => {
-      filterVisibleNodes = elementSearch.__get__('filterVisibleNodes');
-      Element.__set__('Node', { TEXT_NODE });
-      objectIds = {
-        23: {
-          offsetHeight: 1,
-          offsetWidth: 0,
-        },
-        45: {
-          offsetHeight: 0,
-          offsetWidth: 1,
-        },
-        67: {
-          offsetHeight: 0,
-          offsetWidth: 1,
-          getClientRects: () => [new DomRects(), new DomRects()],
-        },
-        68: {
-          offsetHeight: 0,
-          offsetWidth: 0,
-          getClientRects: () => [],
-        },
-        89: {
-          nodeType: TEXT_NODE,
-          parentElement: {
-            offsetHeight: 0,
-            offsetWidth: 1,
-            getClientRects: () => [new DomRects(), new DomRects()],
-          },
-        },
-      };
-      runtimeHandler = {
-        runtimeCallFunctionOn: (predicate, args, obj) => {
-          const result = {
-            result: { value: predicate.call(objectIds[obj.objectId]) },
-          };
-          return result;
-        },
-      };
-    });
-    const createElement = (elements) =>
-      elements.map((objectId) => new Element(objectId, '', runtimeHandler));
-
-    it('should return visible nodes', async () => {
-      const visibleobjectIds = createElement([23, 45, 67]);
-      const elementsToFilter = createElement([23, 45, 67, 68]);
-      expect(await filterVisibleNodes(elementsToFilter)).to.eql(visibleobjectIds);
-    });
-
-    it('should use parentElement to determine visibility for text nodes', async () => {
-      const visibleobjectIds = createElement([23, 89]);
-      const elementsToFilter = createElement([23, 68, 89]);
-      expect(await filterVisibleNodes(elementsToFilter)).to.eql(visibleobjectIds);
-    });
-  });
   describe('getIfExists', () => {
     let findElementCallCount, originalWaitUntil;
     const findElement = async () => {

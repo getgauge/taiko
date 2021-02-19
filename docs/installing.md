@@ -129,5 +129,5 @@ which can cause the installation to fail with `Permission Denied` error.
 The solution to fix this is to pass `--unsafe-perm --allow-root` to `npm`
 
 ```
-npm install -g taiko --unsafe-perm --alow-root
+npm install -g taiko --unsafe-perm --allow-root
 ```

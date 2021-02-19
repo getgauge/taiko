@@ -136,16 +136,16 @@ describe(test_name, () => {
     });
   });
   describe('hidden', () => {
-    it('exists when selectHiddenElements is provided', async () => {
-      expect(await fileField({ id: 'hidden-file-upload' }, { selectHiddenElements: true }).exists())
-        .to.be.true;
+    it('hidden element exists', async () => {
+      expect(await fileField({ id: 'hidden-file-upload' }).exists()).to.be.true;
     });
-
-    it('does not exists when selectHiddenElements is not provided', async () => {
-      const exists = await fileField({
-        id: 'hidden-file-upload',
-      }).exists();
-      expect(exists).to.be.false;
+    it('attach to hidden element', async () => {
+      await attach(
+        path.join(__dirname, 'data', 'foo.txt'),
+        fileField({ id: 'hidden-file-upload' }),
+        { force: true },
+      );
+      expect(await fileField({ id: 'hidden-file-upload' }).value()).to.include('foo.txt');
     });
   });
 
