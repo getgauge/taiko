@@ -10,17 +10,18 @@ on:
 
 jobs:
   unit-tests:
-    name: Unit tests - ${{ matrix.os }}
+    name: Unit tests - ${{ matrix.os }} - ${{ matrix.node_version }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        node_version: ['12', '14']
         os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
-      - name: Use NodeJS 12
+      - name: Use NodeJS ${{ matrix.node_version }}
         uses: actions/setup-node@v1
         with:
-          node-version: '12'
+          node-version: ${{ matrix.node_version }}
       - name: install
         run: npm install
       - name: install browser dependencies
@@ -58,7 +59,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: ['10', '12']
+        node_version: ['12', '14']
         os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
