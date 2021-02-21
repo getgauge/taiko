@@ -196,3 +196,74 @@ describe(test_name, () => {
     });
   });
 });
+
+describe('Multiple file upload', () => {
+  let filePath;
+  beforeEach(async () => {
+    let innerHtml = `
+  <!doctype html>
+    <html>
+    <head>
+    <title>Proper Title</title>
+    </head>
+        
+    <body>
+    
+    <form id="myForm" method="post" enctype="multipart/form-data">
+    
+            Files: <input type="file" id="files" name="files" multiple><br/>
+    
+            <div id="selectedFiles"></div>
+    
+            <input type="submit">
+    </form>
+    
+    <script>
+    var selDiv = "";
+    
+    document.addEventListener("DOMContentLoaded", init, false);
+    function init() {
+        document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+    selDiv = document.querySelector("#selectedFiles");
+    }
+    
+    function handleFileSelect(e) {
+    if(!e.target.files) return;
+    selDiv.innerHTML = "";
+    
+    var files = e.target.files;
+    for(var i=0; i<files.length; i++) {
+    var f = files[i];
+    selDiv.innerHTML += f.name + "<br/>";
+    }
+    }
+    </script>
+    </body>
+    </html>
+      `;
+    filePath = createHtml(innerHtml, test_name);
+    await openBrowser(openBrowserArgs);
+    await goto(filePath);
+    setConfig({
+      waitForNavigation: false,
+      retryTimeout: 10,
+      retryInterval: 10,
+    });
+  });
+
+  after(async () => {
+    resetConfig();
+    await closeBrowser();
+    removeFile(filePath);
+  });
+
+  it('test multiple file can be uploaded', async () => {
+    await attach(
+      [path.join(__dirname, 'data', 'foo.txt'), path.join(__dirname, 'data', 'doo.txt')],
+      await fileField({
+        id: 'files',
+      }),
+    );
+    expect(await $('#selectedFiles').text()).to.equal('foo.txt\ndoo.txt\n');
+  });
+});
