@@ -181,7 +181,7 @@ describe('Browser Context', () => {
   });
 
   describe('close incognito window', () => {
-    it('closeIncognitoWindow should not throw error when the target used to get context id is closed', async() => {
+    it('closeIncognitoWindow should not throw error when the target used to get context id is closed', async () => {
       let exceptionThrown = false;
 
       try {
