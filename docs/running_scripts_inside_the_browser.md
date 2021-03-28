@@ -120,8 +120,9 @@ data.
 
 `evaluate` also has an option to receive data from Taiko scripts as follows
 
-      message = { greeting: "Hello"};
+    var message = { args: { greeting: "Hello" } };
       
-      var content = await evaluate($("#data"), 
-      (element, args) => { element.innerText = args.greeting }
-      , message);
+    var content = await evaluate($("#data"), (element, args) => { 
+        element.innerText = args.greeting;
+    }, message);
+
