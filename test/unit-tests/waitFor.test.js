@@ -101,6 +101,16 @@ describe(test_name, function () {
       ).to.eventually.be.rejectedWith(expectedMessage);
     });
 
+    it('should reject with custom message if element is not present', async () => {
+      await click('Click me');
+      const expectedMessage = 'Text Wait is eOver is not found';
+      await expect(
+        waitFor(async () => await $('//*[text()="Wait is eOver..!"]').exists(0, 0), 2000, {
+          message: 'Text Wait is eOver is not found',
+        }),
+      ).to.eventually.be.rejectedWith(expectedMessage);
+    });
+
     it('should wait for given condition', async () => {
       await click('Click me');
       await expect(waitFor(async () => await $('//*[text()="Wait is Over..!"]').exists(0.0))).not.to
