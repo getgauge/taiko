@@ -402,7 +402,10 @@ export function resizeWindow(options: ResizeWindowOptions): Promise<void>;
 // https://docs.taiko.dev/api/emulateTimezone
 export function emulateTimezone(timezoneId: string): Promise<void>;
 // https://docs.taiko.dev/api/opentab
-export function openTab(targetUrl?: string, options?: OpenWindowOrTabOptions): Promise<void>;
+export function openTab(
+  targetUrl?: string | OpenWindowOrTabOptions,
+  options?: OpenWindowOrTabOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/closetab
 export function closeTab(targetUrl?: string | RegExp): Promise<void>;
 // https://docs.taiko.dev/api/openincognitowindow

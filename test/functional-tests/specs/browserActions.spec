@@ -16,6 +16,13 @@
    |----|--------------------|
    |text|Opening a new window|
 
+## Switch to with name
+
+* Open Tab with name "newTab"
+* Open Tab "http://localhost:3001/"
+* Switch to tab with name "newTab"
+* Assert url to be "about:blank"
+
 ## Open/Close Tab
 * Navigate to relative path "./specs/data/sample.html"
 * Open Tab "http://localhost:3001/"

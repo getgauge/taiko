@@ -12,6 +12,7 @@ import {
   goForward,
   getCookies,
   emulateTimezone,
+  currentURL,
 } from 'taiko';
 import { Step } from 'gauge-ts';
 const assert = require('assert');
@@ -26,6 +27,22 @@ export default class Assert {
   @Step('Open Tab <url>')
   public async openTab(url: string) {
     await openTab(url);
+  }
+
+  @Step('Open Tab with name <tabName>')
+  public async openTabWithName(tabName: string) {
+    await openTab({ name: tabName });
+  }
+
+  @Step('Switch to tab with name <tabName>')
+  public async switchToWithName(tabName: string) {
+    await switchTo({ name: tabName });
+  }
+
+  @Step('Assert url to be <url>')
+  public async assertUrl(url: string) {
+    const currentUrl = await currentURL();
+    assert.equal(currentUrl, url);
   }
 
   @Step('Close Tab <url>')
