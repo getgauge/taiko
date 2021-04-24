@@ -38,6 +38,42 @@ describe('domHandler', () => {
     expect(center).to.be.eql({ x: 3, y: 4 });
   });
 
+  it('.boundingBoxLeft should get the left of a box', async () => {
+    let center = await domHandler.boundingBoxLeft(1);
+    expect(calledWith).to.be.eql({ objectId: 1 });
+    expect(center).to.be.eql({ x: 0, y: 4 });
+  });
+
+  it('.boundingBoxRight should get the right of a box', async () => {
+    let center = await domHandler.boundingBoxRight(1);
+    expect(calledWith).to.be.eql({ objectId: 1 });
+    expect(center).to.be.eql({ x: 5, y: 4 });
+  });
+
+  it('.boundingBoxTopRight should get the right of a box', async () => {
+    let center = await domHandler.boundingBoxTopRight(1);
+    expect(calledWith).to.be.eql({ objectId: 1 });
+    expect(center).to.be.eql({ x: 5, y: 1 });
+  });
+
+  it('.boundingBoxTopLeft should get the right of a box', async () => {
+    let center = await domHandler.boundingBoxTopLeft(1);
+    expect(calledWith).to.be.eql({ objectId: 1 });
+    expect(center).to.be.eql({ x: 0, y: 1 });
+  });
+
+  it('.boundingBoxBottomLeft should get the right of a box', async () => {
+    let center = await domHandler.boundingBoxBottomLeft(1);
+    expect(calledWith).to.be.eql({ objectId: 1 });
+    expect(center).to.be.eql({ x: 0, y: 6 });
+  });
+
+  it('.boundingBoxBottomRight should get the right of a box', async () => {
+    let center = await domHandler.boundingBoxBottomRight(1);
+    expect(calledWith).to.be.eql({ objectId: 1 });
+    expect(center).to.be.eql({ x: 5, y: 6 });
+  });
+
   it('.getBoundingClientRect should get the rectangle', async () => {
     let rect = await domHandler.getBoundingClientRect(1);
     expect(calledWith).to.be.eql({ objectId: 1 });
