@@ -56,7 +56,7 @@ export interface ReloadOptions extends NavigationOptions {
 export interface ClickOptions extends NavigationOptions, ForceOption {
   button?: 'left' | 'right' | 'middle';
   clickCount?: number;
-  position: string;
+  position?: string;
   elementsToMatch?: number;
 }
 
