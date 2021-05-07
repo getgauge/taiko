@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package",
   "name": "taiko",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Taiko is a Node.js library for automating Chromium based browsers",
   "main": "bin/taiko.js",
   "bin": {
@@ -60,7 +60,7 @@
     "debug": "^4.3.1",
     "documentation": "^13.0.2",
     "extract-zip": "^2.0.0",
-    "fs-extra": "^9.0.0",
+    "fs-extra": "^10.0.0",
     "https-proxy-agent": "^5.0.0",
     "is-reachable": "^5.0.0",
     "progress": "^2.0.3",
@@ -75,7 +75,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "cssnano": "^5.0.1",
-    "devtools-protocol": "0.0.876958",
+    "devtools-protocol": "0.0.878340",
     "dtslint": "^4.0.6",
     "eleventy-plugin-toc": "^1.0.1",
     "eslint": "^7.14.0",
