@@ -86,7 +86,7 @@
     "eslint-plugin-no-instanceof": "file:./eslint-plugin-no-instanceof",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^6.0.0",
-    "lint-staged": "^10.0.9",
+    "lint-staged": "^11.0.0",
     "markdown-it": "^12.0.0",
     "markdown-it-anchor": "^7.0.0",
     "mocha": "^8.0.1",
