@@ -238,7 +238,7 @@ export interface DropDownWrapper extends ValueWrapper {
   select(value?: string | number | string[] | number[] | { index: number[] }): Promise<void>;
 }
 export interface TimeFieldWrapper extends ValueWrapper {
-  select(value?: string | number): Promise<void>;
+  select(value?: Date): Promise<void>;
 }
 export interface RangeWrapper extends ValueWrapper {
   select(value?: string | number): Promise<void>;

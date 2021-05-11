@@ -554,4 +554,41 @@ describe('match', () => {
       );
     });
   });
+
+  describe('Text match with whitespaces', () => {
+    before(async () => {
+      let innerHtml = `
+        <div>
+          <p>    Leading whitespaces text</p>
+          <p>Trailing whitespaces text    </p>
+          <p>text      with      whitespaces</p>
+        </div>
+      `;
+      filePath = createHtml(innerHtml, test_name);
+      await openBrowser(openBrowserArgs);
+      await goto(filePath);
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 100,
+        retryInterval: 10,
+      });
+    });
+    after(async () => {
+      resetConfig();
+      await closeBrowser();
+      removeFile(filePath);
+    });
+    it('test with leading whitespaces', async () => {
+      expect(await text('Leading whitespaces text').exists()).to.be.true;
+    });
+    it('test with trailing whitespaces', async () => {
+      expect(await text('Trailing whitespaces text').exists()).to.be.true;
+    });
+    it('test with other whitespaces', async () => {
+      expect(await text('text with whitespaces').exists()).to.be.true;
+      expect(await text('text with whitespaces    ').exists()).to.be.true;
+      expect(await text('     text with whitespaces').exists()).to.be.true;
+      expect(await text('text     with     whitespaces').exists()).to.be.true;
+    });
+  });
 });
