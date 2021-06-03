@@ -78,7 +78,7 @@ function setEmulatedNetwork(networkType) {
 }
 
 function setDisableLogout() {
-  process.env.TAIKO_DISABLE_LOGOUT = 'true';
+  process.env.TAIKO_ENABLE_ACTION_OUTPUT = 'false';
 }
 
 function seekingForHelp(args) {
