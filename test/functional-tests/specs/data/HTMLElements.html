@@ -1,114 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Document</title>
+  <title>Document</title>
 </head>
+
 <body>
-    <div>
-        <button type="button" onclick="alert('Hello world!')">Click Me!</button>
-        <input type="button" onclick="alert('Hello World!')" value="Click Me Also!">    
-    </div>
-    <div>
-        First name: <input type="text" name="fname"><br>
-        Last name: <input type="text" name="lname"><br>
-        Birthday: <input type="date" name="bday">
-        User password:<input type="password" name="psw">
-        Select a file: <input type="file" name="myFile">
-        <input type="submit" value="Submit">    
-    </div>
-    <div>
-      <input type="radio" name="genderWithoutLabelFor" value="X" checked>X<br>
-      <input type="radio" name="genderWithoutLabelFor" value="Y">Y<br>
-      <input type="radio" name="genderWithoutLabelFor" value="Z">Z
-    </div>
-    <div>
-      <input type="checkbox" name="vehicle1" value="Bus"> I have a Bus<br>
-      <input type="checkbox" name="vehicle2" value="Aeroplane"> I have an Aeroplane
-    </div>
-    <textarea></textarea>
+  <div>
+    <button onclick="myFunction()">Try it</button>
+    <button type="button" onclick="alert('Hello world!')">Click Me!</button>
+    <input type="button" onclick="alert('Hello World!')" value="Click Me Also!">
+  </div>
+  <p id="demo"></p>
+  <div>
+    First name: <input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br>
+    Birthday: <input type="date" name="bday">
+    User password:<input type="password" name="psw">
+    Select a file: <input type="file" name="myFile">
+    <input type="submit" value="Submit">
+  </div>
+  <div>
+    <input type="radio" name="genderWithoutLabelFor" value="X" checked>X<br>
+    <input type="radio" name="genderWithoutLabelFor" value="Y">Y<br>
+    <input type="radio" name="genderWithoutLabelFor" value="Z">Z
+  </div>
+  <div>
+    <input type="checkbox" name="vehicle1" value="Bus"> I have a Bus<br>
+    <input type="checkbox" name="vehicle2" value="Aeroplane"> I have an Aeroplane
+  </div>
+  <textarea></textarea>
 
-    <label for="username">Username</label>
-    <input id="username" type="text">
-    <a href="#smith">Smith</a>
-    <label for="file">File</label>
-    <input id="file" type="file">
+  <label for="username">Username</label>
+  <input id="username" type="text">
+  <a href="#smith">Smith</a>
+  <label for="file">File</label>
+  <input id="file" type="file">
 
-    <label for="select">Cars</label>
-    <select id="select">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-    </select>
-    <label for="bike">Vehicle</label>
-    <input id="bike" type="checkbox" name="vehicle" value="Bike">bike<br>
+  <label for="select">Cars</label>
+  <select id="select">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select>
+  <label for="bike">Vehicle</label>
+  <input id="bike" type="checkbox" name="vehicle" value="Bike">bike<br>
 
-    <input type="radio" name="gender" value="male" id="male" checked><label for="male">Male</label>
-    <input type="radio" name="gender" value="female" id="female"><label for="female">Female</label>
-    <input type="radio" name="gender" value="other" id="other"><label for="other">Other</label>
+  <input type="radio" name="gender" value="male" id="male" checked><label for="male">Male</label>
+  <input type="radio" name="gender" value="female" id="female"><label for="female">Female</label>
+  <input type="radio" name="gender" value="other" id="other"><label for="other">Other</label>
 
-    <div id="myDIV">
-        <div id="content">
-          Some text inside a div element.<br><br>
-          Some text inside a div element.
-        </div>
+  <div id="myDIV">
+    <div id="content">
+      Some text inside a div element.<br><br>
+      Some text inside a div element.
     </div>
-    <div id="over">
-    </div>
+  </div>
+  <div id="over">
+  </div>
 
-    <button onclick="show('Message 1')">Alert</button>
-    <button onclick="show('Message 2')">Alert1</button>
-    <table style="width:100%">
-        <tr>
-          <th>Firstname</th>
-          <th>Lastname</th> 
-          <th>Age</th>
-        </tr>
-        <tr>
-          <td>Jill</td>
-          <td><a href="#link1">Smith</a></td> 
-          <td>50</td>
-        </tr>
-        <tr>
-            <td>Eve</td>
-            <td><a href="#link2">Jackson</a></td> 
-            <td>93</td>
-          </tr>
-        <tr>
-          <td>Eve1</td>
-          <td><a href="#link3">Jackson</a></td> 
-          <td>94</td>
-        </tr>
-        <tr>
-            <td>Eve2</td>
-            <td><a href="#link4">Jackson</a></td> 
-            <td>95</td>
-          </tr>
-      </table>
-    <script>
-        var show = function(message) {
-            alert(message);
-        }
-    </script>
-    <style>
-        #myDIV {
-            height: 250px;
-            width: 250px;
-            overflow: auto;
-        }
-        
-        #content {
-            height: 800px;
-            width: 2000px;
-            background-color: coral;
-        }
+  <button onclick="show('Message 1')">Alert</button>
+  <button onclick="show('Message 2')">Alert1</button>
+  <table style="width:100%">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Age</th>
+    </tr>
+    <tr>
+      <td>Jill</td>
+      <td><a href="#link1">Smith</a></td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Eve</td>
+      <td><a href="#link2">Jackson</a></td>
+      <td>93</td>
+    </tr>
+    <tr>
+      <td>Eve1</td>
+      <td><a href="#link3">Jackson</a></td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>Eve2</td>
+      <td><a href="#link4">Jackson</a></td>
+      <td>95</td>
+    </tr>
+  </table>
+  <script>
+    var show = function (message) {
+      alert(message);
+    }
+    function myFunction() {
+      var person = prompt("Please enter your name", "Harry Potter");
+      if (person != null) {
+        document.getElementById("demo").innerHTML =
+          "Hello " + person + "! How are you today?";
+      }
+    }
+  </script>
+  <style>
+    #myDIV {
+      height: 250px;
+      width: 250px;
+      overflow: auto;
+    }
 
-        #over {
-            height: 1000px;
-            width: 2000px;
-            background-color: coral;
-            margin-top: 5%;
-        }
-    </style>
+    #content {
+      height: 800px;
+      width: 2000px;
+      background-color: coral;
+    }
+
+    #over {
+      height: 1000px;
+      width: 2000px;
+      background-color: coral;
+      margin-top: 5%;
+    }
+  </style>
 </body>
+
 </html>

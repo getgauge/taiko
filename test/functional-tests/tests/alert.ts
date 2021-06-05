@@ -1,4 +1,4 @@
-import { alert, accept } from 'taiko';
+import { alert, accept, prompt } from 'taiko';
 // eslint-disable-next-line no-unused-vars
 import { Step, DataStoreFactory, DataStore } from 'gauge-ts';
 const assert = require('assert');
@@ -11,6 +11,11 @@ export default class Alert {
       await accept();
       scenarioStore.put('alert-text', true);
     });
+  }
+
+  @Step('Prompt <message> and await accept <text>')
+  public async promptAndAccept(message: string, text: string) {
+    prompt(message, async () => await accept(text));
   }
 
   @Step('Check if alert was accepted')
