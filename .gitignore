@@ -63,6 +63,7 @@ docs/api.md
 docs/index.md
 docs/layout/partials/content.html
 .idea/
+.vs
 
 #local chromium
 .local-chromium
