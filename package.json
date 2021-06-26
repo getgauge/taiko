@@ -88,7 +88,7 @@
     "husky": "^6.0.0",
     "lint-staged": "^10.0.9",
     "markdown-it": "^12.0.0",
-    "markdown-it-anchor": "^7.0.0",
+    "markdown-it-anchor": "^8.0.4",
     "mocha": "^8.0.1",
     "ncp": "^2.0.0",
     "prettier": "^2.2.0",
