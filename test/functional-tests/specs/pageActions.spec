@@ -103,3 +103,13 @@
 * Navigate to "http://localhost:3001/basic_auth" with basic auth "admin" and "admin"
 * Assert text "Congratulations! You must have the proper credentials." exists on the page.
 
+## Paste, Press, Click
+* Navigate to relative path "./specs/data/HTMLElements.html"
+* Paste "John" into Input Field near
+
+   |Type|Selector  |
+   |----|----------|
+   |text|First Name|
+* Press "Tab"
+* Write "Wick"
+* Click link "Smith"

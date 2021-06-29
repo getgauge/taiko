@@ -478,6 +478,8 @@ export function hover(selector: SearchElement, options?: ForcedNavigationOptions
 export function focus(selector: SearchElement, options?: ForcedNavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/write
 export function write(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
+// https://docs.taiko.dev/api/paste
+export function paste(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
 // https://docs.taiko.dev/api/clear
 export function clear(selector?: SearchElement, options?: ForcedNavigationOptions): Promise<void>;
 // https://docs.taiko.dev/api/attach
