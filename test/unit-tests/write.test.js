@@ -219,7 +219,7 @@ describe('write with hideText option', () => {
     emitter.removeAllListeners();
   });
 
-  it('should mask the text when writing to focused element', async () => {
+  it.skip('should mask the text when writing to focused element', async () => {
     let validatePromise = validateEmitterEvent('success', 'Wrote ***** into the focused element.');
     await taiko.write('writing to focused input', { hideText: true });
     await validatePromise;
