@@ -50,7 +50,7 @@ describe(test_name, () => {
       }
     });
 
-    it('should drag the element from source to destination if it is draggable', async () => {
+    it('Should throw an error if either source or destination are hidden', async () => {
       try {
         expect(await dragAndDrop($('#column-a'), $('#column-b')));
       } catch (err) {
@@ -58,7 +58,7 @@ describe(test_name, () => {
       }
     });
 
-    it('should not drag the element if either source or destination is hidden', async () => {
+    it('Should throw an error when we try to drag and drop hidden items forcefully', async () => {
       try {
         expect(await dragAndDrop($('#column-a'), $('#column-b'), { force: true }));
       } catch (err) {
