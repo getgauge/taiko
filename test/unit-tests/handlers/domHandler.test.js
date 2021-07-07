@@ -23,7 +23,9 @@ describe('domHandler', () => {
     const createdSessionListener = domHandler.__get__('createdSessionListener');
     domHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
     domHandler = rewire('../../../lib/handlers/domHandler');
-    domHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    domHandler
+      .__get__('eventHandler')
+      .removeListener('createdSession', domHandler.__get__('createdSessionListener'));
   });
 
   it('.boundBox should give the bound  box of given node id', async () => {

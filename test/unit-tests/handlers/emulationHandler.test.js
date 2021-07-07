@@ -31,7 +31,7 @@ describe('emulationHandler', () => {
     emulationHandler = rewire('../../../lib/handlers/emulationHandler');
     emulationHandler
       .__get__('eventHandler')
-      .removeListener('createdSession', createdSessionListener);
+      .removeListener('createdSession', emulationHandler.__get__('createdSessionListener'));
   });
 
   it('.setLocation should set the location', async () => {
