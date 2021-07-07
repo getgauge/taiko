@@ -28,7 +28,7 @@ describe('TargetHandler', () => {
       targetHandler = rewire('../../../lib/handlers/targetHandler');
       targetHandler
         .__get__('eventHandler')
-        .removeListener('createdSession', createdSessionListener);
+        .removeListener('createdSession', targetHandler.__get__('createdSessionListener'));
     });
 
     beforeEach(() => {
