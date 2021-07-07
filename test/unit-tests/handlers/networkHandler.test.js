@@ -31,7 +31,9 @@ describe(test_name, () => {
     const createdSessionListener = networkHandler.__get__('createdSessionListener');
     networkHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
     networkHandler = rewire('../../../lib/handlers/networkHandler');
-    networkHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    networkHandler
+      .__get__('eventHandler')
+      .removeListener('createdSession', networkHandler.__get__('createdSessionListener'));
     process.env.TAIKO_EMULATE_NETWORK = '';
   });
   describe('setNetworkEmulation', () => {

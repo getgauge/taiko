@@ -24,7 +24,9 @@ describe('Fetch Handler', () => {
     const createdSessionListener = fetchHandler.__get__('createdSessionListener');
     fetchHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
     fetchHandler = rewire('../../../lib/handlers/fetchHandler');
-    fetchHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    fetchHandler
+      .__get__('eventHandler')
+      .removeListener('createdSession', fetchHandler.__get__('createdSessionListener'));
     continueInterceptedRequestOptions = null;
   });
 

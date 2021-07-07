@@ -11,7 +11,9 @@ describe('browserHandler', () => {
     const createdSessionListener = browserHandler.__get__('createdSessionListener');
     browserHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
     browserHandler = rewire('../../../lib/handlers/browserHandler');
-    browserHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    browserHandler
+      .__get__('eventHandler')
+      .removeListener('createdSession', browserHandler.__get__('createdSessionListener'));
   });
 
   it('.clearPermissionOverrides should clear all overriden permissions', () => {
