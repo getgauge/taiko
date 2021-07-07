@@ -40,8 +40,9 @@ describe('pageHandler', () => {
     let createdSessionListener = pageHandler.__get__('createdSessionListener');
     pageHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
     pageHandler = rewire('../../../lib/handlers/pageHandler');
-    createdSessionListener = pageHandler.__get__('createdSessionListener');
-    pageHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    pageHandler
+      .__get__('eventHandler')
+      .removeListener('createdSession', pageHandler.__get__('createdSessionListener'));
     event.removeAllListeners();
   });
 

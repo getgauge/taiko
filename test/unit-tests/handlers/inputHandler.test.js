@@ -28,7 +28,9 @@ describe('inputHandler', () => {
     const createdSessionListener = inputHandler.__get__('createdSessionListener');
     inputHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
     inputHandler = rewire('../../../lib/handlers/inputHandler');
-    inputHandler.__get__('eventHandler').removeListener('createdSession', createdSessionListener);
+    inputHandler
+      .__get__('eventHandler')
+      .removeListener('createdSession', inputHandler.__get__('createdSessionListener'));
   });
 
   it('.up should dispach keyUp event', async () => {
