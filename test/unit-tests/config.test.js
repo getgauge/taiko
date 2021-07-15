@@ -41,6 +41,8 @@ describe('Config tests', () => {
             criConnectionRetries: 50,
             noOfElementToMatch: 20,
             local: false,
+            blockAlignment: 'nearest',
+            inlineAlignment: 'nearest'
           };
           expect(config.defaultConfig).not.deep.equal(newConfig);
 
@@ -247,6 +249,8 @@ describe('Config tests', () => {
         criConnectionRetries: 50,
         noOfElementToMatch: 20,
         local: false,
+        blockAlignment: 'nearest',
+        inlineAlignment: 'nearest'
       };
       config.setBrowserOptions(options);
       expect(config.defaultConfig).to.deep.equal(expectedConfig);
