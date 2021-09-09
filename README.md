@@ -16,7 +16,7 @@ A Node.js library for testing modern web applications
 
 # What’s Taiko?
 
-Taiko is a free and open source browser automation tool built by the team behind [Gauge](https://gauge.org/) from [ThoughtWorks](https://www.thoughtworks.com/). Taiko is a Node.js library with a clear and concise API to automate **Chromium based browsers**(Chrome, Microsoft Edge, Opera) and Firefox. Tests written in Taiko are highly readable and maintainable.
+Taiko is a free and open source browser automation tool built by the team behind [Gauge](https://gauge.org/) from [ThoughtWorks](https://www.thoughtworks.com/). Taiko is a Node.js library with a clear and concise API to automate **Chromium based browsers**(Chrome, Microsoft Edge, Opera). Tests written in Taiko are highly readable and maintainable.
 
 With Taiko it’s easy to
 
@@ -189,21 +189,6 @@ Install Gauge using npm and initialize an initialize and sample Taiko project us
     $ gauge init js
 
 Learn more about [Gauge](https://docs.gauge.org)!
-
-### Experimental Firefox Support
-
-#### To launch taiko with firefox:
-- Download and install [firefox nightly](https://www.mozilla.org/en-US/firefox/all/#product-desktop-nightly) 
-- Set `TAIKO_BROWSER_PATH` to firefox nightly's executable.
-
-Example: `TAIKO_BROWSER_PATH="/Applications/Firefoxnightly.app/Contents/MacOS/firefox" taiko`
-
-#### Known Issues for now:  
-- Highlighting element on action is set to false as overlay domain is not supported
-- openTab/closeTab does not work as expected since `New` is not available in firefox yet
-- Autofocus on first input field does not happen
-- file:// protocol does not emit events
-- waitFoNavigation does not wait for network calls and frame loads
 
 ### Experimental TypeScript Support
 

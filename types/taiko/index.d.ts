@@ -72,7 +72,6 @@ export interface GlobalConfigurationOptions {
   ignoreSSLErrors?: boolean;
   headful?: boolean;
   criConnectionRetries?: number;
-  firefox?: boolean;
   highlightOnAction?: 'true' | 'false';
   local?: boolean;
 }

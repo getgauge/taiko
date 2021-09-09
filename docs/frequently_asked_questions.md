@@ -9,7 +9,6 @@ Taiko can be used to automate the latest versions of
 * Chrome/Chromium
 * Microsoft Edge
 * Opera (unverified)
-* Firefox (experimental)
 
 The following browsers are NOT supported
 

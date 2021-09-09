@@ -18,8 +18,8 @@ describe('OpenBrowser', () => {
     it('from env variable TAIKO_BROWSER_ARGS', async () => {
       process.env.TAIKO_BROWSER_ARGS =
         '--test-arg, --test-arg1,--test-arg2=testArg2zValue1,testArg2zValue2, --test-arg3';
-      const setBrowserArgs = browserLauncher.__get__('setBrowserArgs');
-      const testArgs = await setBrowserArgs({ args: ['something'] });
+      const setChromeBrowserArgs = browserLauncher.__get__('setChromeBrowserArgs');
+      const testArgs = await setChromeBrowserArgs({ args: ['something'] });
       const expectedArgs = [
         'something',
         '--test-arg',

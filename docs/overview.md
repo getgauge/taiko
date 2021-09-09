@@ -4,7 +4,7 @@ layout: page.njk
 
 Taiko is free and open source [Node.js](https://nodejs.org/en/) library 
 with a simple API to automate Chromium based browsers (Chrome, 
-Microsoft Edge, Opera) and Firefox. 
+Microsoft Edge, Opera). 
 
 Taiko tests are written in JavaScript or any language that compiles
 to JavaScript, for example [TypeScript](https://www.typescriptlang.org).

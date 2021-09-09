@@ -29,7 +29,6 @@ describe('Config tests', () => {
           const newConfig = {
             headful: false,
             highlightOnAction: 'true',
-            firefox: false,
             ignoreSSLErrors: true,
             navigationTimeout: 2,
             observe: false,
@@ -238,7 +237,6 @@ describe('Config tests', () => {
         headful: true,
         highlightOnAction: 'true',
         ignoreSSLErrors: true,
-        firefox: false,
         navigationTimeout: 30000,
         observe: true,
         observeTime: 5000,

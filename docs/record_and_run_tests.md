@@ -229,7 +229,7 @@ TAIKO_BROWSER_PATH=/complete/path/to/browser/executable/file npx taiko
 Note, the path should be to the browser executable file and not just the browser executable's folder.
 You can point this environment variable to [chromium](https://www.chromium.org) based browsers like 
 [Chrome](https://www.google.com/intl/en_uk/chrome/), [Microsoft Edge](https://www.microsoft.com/en-us/edge), 
-[Opera](https://www.opera.com) etc. and [FireFox](https://www.mozilla.org/en-GB/firefox/)
+[Opera](https://www.opera.com) etc.
 
 ## Emulation
 
