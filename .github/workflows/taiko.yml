@@ -14,7 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: ['12', '14']
+        node_version: ['14', '16']
         os: [ubuntu-latest, macOS-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
@@ -44,7 +44,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: ['12', '14']
+        node_version: ['14', '16']
         os: [ubuntu-latest, macOS-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
@@ -88,10 +88,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use NodeJS 12
+      - name: Use NodeJS 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
       - name: install browser dependencies
         run: |
           sudo apt-get update
@@ -135,7 +135,7 @@ jobs:
       - name: Use NodeJS 12
         uses: actions/setup-node@v1
         with:
-          node-version: '12'
+          node-version: '14'
       - name: install
         run: npm install
       - name: install browser dependencies
