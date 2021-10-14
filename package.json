@@ -19,7 +19,7 @@
     "test:unit:silent": "mocha 'test/unit-tests/**/*.test.js' --timeout 6000 -R dot --trace-warnings",
     "test:unit": "mocha 'test/unit-tests/**/*.test.js' --timeout 6000 --trace-warnings",
     "test": "npm run test:api && npm run test:unit:silent",
-    "test-functional": "cd test/functional-tests && npm install && npm test",
+    "test-functional": "npm install && cd test/functional-tests && npm install && npm test",
     "test-docs": "cd test/docs-tests && node prepare.js && eleventy && cd ./gauge && npm install && npm test",
     "install": "node lib/install.js",
     "update-json-doc": "node build/updateJsonDoc.js",
