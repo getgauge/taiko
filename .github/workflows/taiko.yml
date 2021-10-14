@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         node_version: ['12', '14']
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
       - name: Use NodeJS ${{ matrix.node_version }}
@@ -40,13 +40,12 @@ jobs:
         run: npm test
 
   functional-tests:
-    needs: unit-tests
     name: FTs - NodeJS ${{ matrix.node_version }} & ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         node_version: ['12', '14']
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
       - name: Use NodeJS ${{ matrix.node_version }}
@@ -126,12 +125,11 @@ jobs:
           path: test/functional-tests/logs
 
   docs-tests:
-    needs: unit-tests
     name: Docs tests - ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
       - name: Use NodeJS 12
