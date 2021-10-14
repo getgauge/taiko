@@ -83,7 +83,6 @@ jobs:
           path: test/functional-tests/logs
 
   functional-tests-headful:
-    needs: unit-tests
     name: FT in linux-headful
     runs-on: ubuntu-latest
     steps:
