@@ -13,6 +13,10 @@ let {
   setConfig,
   accept,
   alert,
+  openIncognitoWindow,
+  closeIncognitoWindow,
+  scrollTo,
+  screenshot,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'Click';
@@ -93,12 +97,22 @@ describe(test_name, () => {
             `;
     filePath = createHtml(innerHtml, test_name);
     await openBrowser(openBrowserArgs);
-    await goto(filePath);
+  });
+
+  beforeEach(async () => {
+    await openIncognitoWindow(filePath, { name: 'admin' });
     setConfig({
       waitForNavigation: false,
       retryTimeout: 10,
       retryInterval: 10,
     });
+  });
+
+  afterEach(async function () {
+    if (this.currentTest.state == 'failed') {
+      await screenshot();
+    }
+    await closeIncognitoWindow('admin');
   });
 
   after(async () => {
@@ -126,6 +140,7 @@ describe(test_name, () => {
       alert('Hello from the shadows', async () => {
         await accept();
       });
+      await scrollTo('Shadow Click');
       await click(button('Shadow Click'));
     });
   });
