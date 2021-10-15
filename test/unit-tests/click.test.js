@@ -109,9 +109,6 @@ describe(test_name, () => {
   });
 
   afterEach(async function () {
-    if (this.currentTest.state == 'failed') {
-      await screenshot();
-    }
     await closeIncognitoWindow('admin');
   });
 
