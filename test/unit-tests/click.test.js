@@ -127,7 +127,7 @@ describe(test_name, () => {
 
   describe('With text nodes', () => {
     it('should click', async () => {
-      await click('on text');
+      await click('Click on text node');
       expect(await text('Click works with text nodes.').exists()).to.be.true;
     });
   });
@@ -144,7 +144,7 @@ describe(test_name, () => {
 
   describe('With proximity selector', () => {
     it('should click', async () => {
-      await click('Click with proximity', below('Proximity marker'));
+      await click(text('Click with proximity', below('Proximity marker')));
       expect(await text('Click works with proximity selector.').exists()).to.be.true;
     });
   });
