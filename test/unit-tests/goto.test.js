@@ -83,6 +83,20 @@ describe(test_name, () => {
     expect(actualUrl).to.equal(expectedUrl);
   });
 
+  it('should not add protocol http:// if url is "about:*"', async () => {
+    let aboutBlank = 'about:randomString';
+    let expectedUrl = aboutBlank;
+    await taiko.goto(aboutBlank);
+    expect(actualUrl).to.equal(expectedUrl);
+  });
+
+  it('should add protocol http:// for url with port specified', async () => {
+    let urlWithPort = 'localhost:8080';
+    let expectedUrl = 'http://' + urlWithPort;
+    await taiko.goto(urlWithPort);
+    expect(actualUrl).to.equal(expectedUrl);
+  });
+
   it('should configure provided headers for the domain', async () => {
     let options = {
       headers: { Authorization: 'Basic cG9zdG1hbjpwYXNzd29y2A==' },
