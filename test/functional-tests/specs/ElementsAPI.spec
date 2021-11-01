@@ -25,6 +25,12 @@ Radio Button without for
 tags: knownIssue
 * Radio Button "Y"
 
+Range
+------
+* Ensure Range "Age" exists
+* Select the value of Range "Age" to "51"
+
+
 File field
 ----------
 
