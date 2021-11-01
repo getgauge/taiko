@@ -2,11 +2,11 @@
 
 
 ## Switch To
-
 * Navigate to "http://localhost:3001/"
 * Click "Multiple Windows"
 * Assert page navigated to "/windows"
 * Click "Click Here"
+* Switch to tab with url "http://localhost:3001/windows/new"
 * Assert page navigated to "/windows/new"
 * Switch to tab with url "http://localhost:3001/windows"
 * Assert page navigated to "/windows"
@@ -17,7 +17,6 @@
    |text|Opening a new window|
 
 ## Switch to with name
-
 * Open Tab with name "newTab"
 * Open Tab "http://localhost:3001/"
 * Switch to tab with name "newTab"
@@ -36,6 +35,7 @@
 * Open Tab "http://localhost:3001/dropdown"
 * Open Tab "http://localhost:3001/"
 * Close Tab
+* Switch to tab with url "http://localhost:3001/dropdown"
 * Close Tab
 * Assert title to be "Document"
 
@@ -101,7 +101,7 @@
 * Set timezone "America/Jamaica"
 * Assert page has set timezome
 
-## Click & Release To Element 
+## Click & Release To Element
 * Navigate to relative path "./specs/data/MouseMoveTest.html"
 * Press & Release To Element with element1 and "0","100" co-ordinates
 * Assert text "button2" exists on the page.
