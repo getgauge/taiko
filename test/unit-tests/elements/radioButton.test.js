@@ -20,6 +20,9 @@ describe('RadioButton', () => {
           },
         };
       },
+      async runtimeEvaluate(exp, executionContextId, opt = {}) {
+        return true;
+      },
     };
   beforeEach(() => {
     RadioButton = rewire('../../../lib/elements/radioButton');
@@ -47,10 +50,20 @@ describe('RadioButton', () => {
         },
       },
     };
+    Object.defineProperty(Object.prototype, 'checked', {
+      configurable: true,
+      get: function () {
+        return this.checked;
+      },
+      set: function (val) {
+        this.checked = val;
+      },
+    });
   });
   afterEach(() => {
     RadioButton = rewire('../../../lib/elements/radioButton');
     dispatchedEvent = null;
+    delete Object.prototype.checked;
   });
 
   it('should be element', () => {
