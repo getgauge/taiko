@@ -14,6 +14,7 @@ let {
   $,
   evaluate,
 } = require('../../lib/taiko');
+const { xpath } = require('../../lib/helper');
 
 const test_name = 'Checkbox';
 
@@ -156,6 +157,58 @@ const inputTypeCaseSensitive = {
       });
     });
 
+    describe('xpath as a selector', () => {
+      let xPath = '/html/body/form/input[1]';
+
+      it('checking existence of the xpath', async () => {
+        expect(await checkBox($(xPath)).exists()).to.be.true;
+        expect(await checkBox($('foo')).exists()).to.be.false;
+      });
+
+      it('test description', async () => {
+        const description = checkBox($(xPath)).description;
+        expect(description).to.be.eql('CustomSelector with query ' + xPath + ' ');
+      });
+
+      it('test checking xpath', async () => {
+        await checkBox($(xPath)).check();
+        const isChecked = await checkBox($(xPath)).isChecked();
+        expect(isChecked).to.be.true;
+      });
+
+      it('Test check() to reject if the xpath is not found', async () => {
+        await !expect(checkBox($('foo')).check()).to.be.eventually.rejected;
+      });
+
+      it('Test uncheck() to reject if the xpath is not found', async () => {
+        await expect(checkBox($('foo')).uncheck()).to.be.eventually.rejected;
+      });
+
+      it('Test isChecked() to reject if the xpath is not found', async () => {
+        await expect(checkBox($('foo')).isChecked()).to.be.eventually.rejected;
+      });
+
+      it('Test text() to reject if the xpath is not found', async () => {
+        await expect(checkBox($('foo')).text()).to.be.eventually.rejected;
+      });
+
+      it('Test isVisible() to reject if the xpath is not found', async () => {
+        await expect(checkBox($('foo')).isVisible()).to.be.eventually.rejected;
+      });
+
+      it('test uncheck() for an xpath', async () => {
+        await checkBox($(xPath)).check();
+        await checkBox($(xPath)).uncheck();
+        const isChecked = await checkBox($(xPath)).isChecked();
+        expect(isChecked).to.be.false;
+      });
+
+      it('test isChecked()', async () => {
+        await checkBox($(xPath)).check();
+        expect(await checkBox($(xPath)).isChecked()).to.be.true;
+      });
+    });
+
     describe('wrapped in label', () => {
       it('test exists()', async () => {
         expect(await checkBox('checkboxWithWrappedInLabel').exists()).to.be.true;
@@ -261,31 +314,31 @@ const inputTypeCaseSensitive = {
   }),
 );
 
-describe('Parameters validation', () => {
-  let filePath;
+// describe('Parameters validation', () => {
+//   let filePath;
 
-  before(async () => {
-    let innerHtml = `
-      <div id='prova' style='display:none'>Element Present</div>
-    `;
-    filePath = createHtml(innerHtml, test_name);
-    await openBrowser(openBrowserArgs);
-    await goto(filePath);
-    setConfig({
-      waitForNavigation: false,
-      retryTimeout: 100,
-      retryInterval: 10,
-    });
-  });
-  after(async () => {
-    resetConfig();
-    await closeBrowser();
-    removeFile(filePath);
-  });
+//   before(async () => {
+//     let innerHtml = `
+//       <div id='prova' style='display:none'>Element Present</div>
+//     `;
+//     filePath = createHtml(innerHtml, test_name);
+//     await openBrowser(openBrowserArgs);
+//     await goto(filePath);
+//     setConfig({
+//       waitForNavigation: false,
+//       retryTimeout: 100,
+//       retryInterval: 10,
+//     });
+//   });
+//   after(async () => {
+//     resetConfig();
+//     await closeBrowser();
+//     removeFile(filePath);
+//   });
 
-  it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
-    expect(() => checkBox($('div'))).to.throw(
-      'You are passing a `ElementWrapper` to a `checkBox` selector. Refer https://docs.taiko.dev/api/checkbox/ for the correct parameters',
-    );
-  });
-});
+//   it('should throw a TypeError when an ElementWrapper is passed as argument', async () => {
+//     expect(() => checkBox($('div'))).to.throw(
+//       'You are passing a `ElementWrapper` to a `checkBox` selector. Refer https://docs.taiko.dev/api/checkbox/ for the correct parameters',
+//     );
+//   });
+// });
