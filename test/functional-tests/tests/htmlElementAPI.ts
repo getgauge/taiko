@@ -10,6 +10,7 @@ import {
   dropDown,
   checkBox,
   radioButton,
+  range,
   click,
   write,
   attach,
@@ -84,6 +85,19 @@ export default class HtmlElementAPI {
   public async isRadioButtonChecked(label: SearchElement) {
     const button = radioButton(label);
     assert.ok(await button.isSelected());
+  }
+
+  @Step('Ensure Range <rangeName> exists')
+  public async rangeExists(rangeName: string) {
+    const rangeInput = range(rangeName);
+    assert.ok(await rangeInput.exists());
+  }
+
+  @Step('Select the value of Range <rangeName> to <rangeValue>')
+  public async rangeValue(rangeName: string, rangeValue: string) {
+    const rangeInput = range(rangeName);
+    await rangeInput.select(rangeValue);
+    assert.equal(await rangeInput.value(), rangeValue);
   }
 
   @Step('Attach file <fileName> to file field <FileFieldName>')
