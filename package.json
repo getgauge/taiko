@@ -82,7 +82,7 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-jest": "^25.3.0",
     "eslint-plugin-mocha": "^9.0.0",
     "eslint-plugin-no-instanceof": "file:./eslint-plugin-no-instanceof",
     "eslint-plugin-prettier": "^4.0.0",
