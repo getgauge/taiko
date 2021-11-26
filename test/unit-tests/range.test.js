@@ -15,6 +15,7 @@ let {
   $,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
+const { assert } = require('chai');
 
 describe('Range test', () => {
   let filePath;
@@ -22,12 +23,12 @@ describe('Range test', () => {
   before(async () => {
     let innerHtml =
       `<script>
-     
+
         class ShadowButton extends HTMLElement {
           constructor() {
             super();
             var shadow = this.attachShadow({mode: 'open'});
-    
+
             var button = document.createElement('input');
             button.setAttribute('type', 'range');
             button.setAttribute('id', 'Shadow Click');
@@ -41,7 +42,7 @@ describe('Range test', () => {
             hiddenButton.setAttribute('id', 'HiddenShadowButton');
             hiddenButton.setAttribute('style','display:none');
             shadow.appendChild(hiddenButton);
-            
+
           }
         }
         customElements.define('shadow-button', ShadowButton);
@@ -50,7 +51,7 @@ describe('Range test', () => {
       `
         <div>
             <p>RangeItem</p>
-            <input type="range" id="range-1" name="range" 
+            <input type="range" id="range-1" name="range"
                 min="0" max="100" value='2'>
             <label for="volume">Volume</label>
         </div>
@@ -58,6 +59,9 @@ describe('Range test', () => {
         <p>RangeItem</p>
         <input type="range" id="range-2" name="range" value='2'>
         <label for="volume">Volume</label>
+        <p>Simulate Native Range Setter</p>
+        <input type="range" id="range-3" name="range" value='10'>
+        <label for="volume">Simulate Native Setter</label>
     </div>
      `;
     filePath = createHtml(innerHtml, 'Range');
@@ -83,6 +87,54 @@ describe('Range test', () => {
 
     it('should return false for hidden element when isVisible fn is called on shadow range', async () => {
       expect(await range({ id: 'HiddenShadowButton' }).isVisible()).to.be.false;
+    });
+  });
+
+  describe('set native value', () => {
+    it('should set native value on element', async () => {
+      await evaluate(() => {
+        function trackValueOnElementPrototype(element) {
+          const valueField = 'value';
+          const descriptor = Object.getOwnPropertyDescriptor(
+            element.constructor.prototype,
+            valueField,
+          );
+
+          const { set } = descriptor;
+          Object.defineProperty(element.constructor.prototype, valueField, {
+            configurable: true,
+            set: function (val) {
+              document.nativeSetterCalled = true;
+              set.call(this, val);
+            },
+          });
+        }
+        function trackValueOnElement(element) {
+          const valueField = 'value';
+          const descriptor = Object.getOwnPropertyDescriptor(
+            element.constructor.prototype,
+            valueField,
+          );
+
+          const { get } = descriptor;
+          Object.defineProperty(element, valueField, {
+            configurable: true,
+            get: function () {
+              return get.call(this);
+            },
+            set: function () {
+              document.nativeSetterCalled = false;
+            },
+          });
+        }
+        trackValueOnElementPrototype(document.getElementById('range-3'));
+        trackValueOnElement(document.getElementById('range-3'));
+      });
+
+      expect(await evaluate(() => document.nativeSetterCalled)).to.be.undefined;
+      await range({ id: 'range-3' }).select(57);
+      expect(await evaluate(() => document.nativeSetterCalled)).to.be.true;
+      expect(await range({ id: 'range-3' }).value()).to.be.equal('57');
     });
   });
 
