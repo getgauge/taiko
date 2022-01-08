@@ -68,7 +68,7 @@
     "recast": "^0.20.5"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy": "^0.12.1",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "babel-eslint": "^10.0.3",
@@ -76,8 +76,8 @@
     "chai-as-promised": "^7.1.1",
     "clean-css": "^5.2.2",
     "cssnano": "^5.0.14",
-    "devtools-protocol": "0.0.970581",
-    "dtslint": "^4.2.1",
+    "devtools-protocol": "0.0.955664",
+    "dtslint": "^3.4.2",
     "eleventy-plugin-toc": "^1.1.5",
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.4",
