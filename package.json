@@ -77,7 +77,7 @@
     "clean-css": "^5.2.2",
     "cssnano": "^5.0.14",
     "devtools-protocol": "0.0.955664",
-    "dtslint": "^3.4.2",
+    "dtslint": "^4.2.1",
     "eleventy-plugin-toc": "^1.1.5",
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.4",
