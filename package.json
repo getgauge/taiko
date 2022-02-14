@@ -76,7 +76,7 @@
     "chai-as-promised": "^7.1.1",
     "clean-css": "^5.2.2",
     "cssnano": "^5.0.14",
-    "devtools-protocol": "0.0.957163",
+    "devtools-protocol": "0.0.970581",
     "dtslint": "^4.2.1",
     "eleventy-plugin-toc": "^1.1.5",
     "eslint": "^8.6.0",
