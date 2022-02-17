@@ -2,7 +2,7 @@
 
 ## Write, Press, Click
 
-* Navigate to relative path "./specs/data/IFrameElements.html"
+* Navigate to "http://localhost:3002/IFrameElements.html"
 * Write "Gopher" into Text Box "Username"
 * Press "Enter"
 * Get value "Gopher" of Text Box "Username"
@@ -11,7 +11,7 @@
 
 ## Double Click
 * Assert text "Hello World" does not exist
-* Navigate to file with relative Path "/specs/data/doubleClick.html"
+* Navigate to "http://localhost:3002/doubleClick.html"
 * Double click 
 
    |Type|Selector    |
@@ -21,7 +21,7 @@
 
 ## Right Click
 
-* Navigate to relative path "./specs/data/IFrameRightClick.html"
+* Navigate to "http://localhost:3002/IFrameRightClick.html"
 * Right click 
 
    |Type|Selector   |
@@ -30,7 +30,7 @@
 * Click "Share On Facebook"
 
 ## Hover
-* Navigate to relative path "./specs/data/IFrameCompare.html"
+* Navigate to "http://localhost:3002/IFrameCompare.html"
 * Hover on element
 
    |Type|Selector        |
@@ -39,7 +39,7 @@
 * Assert text "View profile" exists on the page.
 
 ## Drag and drop
-* Navigate to relative path "./specs/data/IFrameDragAndDrop.html"
+* Navigate to "http://localhost:3002/IFrameDragAndDrop.html"
 * Drag "#column-a" and drop to "#column-b"
 * Drag "#column-b" and drop at
 
