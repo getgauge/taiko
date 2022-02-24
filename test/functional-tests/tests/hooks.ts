@@ -20,24 +20,6 @@ const headless = process.env.headless.toLowerCase() === 'true';
 export default class Hooks {
   @BeforeScenario()
   public async beforeScenario() {
-    await openIncognitoWindow({ name: 'admin' });
-  }
-
-  @CustomScreenshotWriter()
-  public async takeScreenshot(): Promise<string> {
-    const fileName = join(process.env['gauge_screenshots_dir'], `screenshot${Date.now()}.png`);
-    await screenshot({ path: fileName });
-    return basename(fileName);
-  }
-
-  @AfterScenario()
-  public async afterScenario() {
-    await closeIncognitoWindow('admin');
-  }
-
-  @BeforeSuite()
-  public async beforeSuite() {
-    await startServer();
     await openBrowser({
       headless: headless,
       args: [
@@ -50,12 +32,28 @@ export default class Hooks {
         '--window-size=1440,900',
       ],
     });
+  }
+
+  @CustomScreenshotWriter()
+  public async takeScreenshot(): Promise<string> {
+    const fileName = join(process.env['gauge_screenshots_dir'], `screenshot${Date.now()}.png`);
+    await screenshot({ path: fileName });
+    return basename(fileName);
+  }
+
+  @AfterScenario()
+  public async afterScenario() {
+    await closeBrowser();
+  }
+
+  @BeforeSuite()
+  public async beforeSuite() {
+    await startServer();
     setConfig({ navigationTimeout: 60000 });
   }
 
   @AfterSuite()
   public async afterSuite() {
-    await closeBrowser();
     await stopServer();
   }
 }
