@@ -1,7 +1,7 @@
 # Proximity Selectors in IFrame
 ## Below
 
-* Navigate to relative path "./specs/data/IFrameProximitySelectors.html"
+* Navigate to "http://localhost:3002/IFrameProximitySelectors.html"
 * Click link "Frames" below
 
    |Type|Selector           |
@@ -11,7 +11,7 @@
 ## Near by
 tags: knownIssue
 
-* Navigate to relative path "./specs/data/IFrameElements.html"
+* Navigate to "http://localhost:3002/IFrameElements.html"
 * Write "Blah" into Input Field near
 
    |Type|Selector  |
@@ -21,7 +21,7 @@ tags: knownIssue
 
 ## Above
 
-* Navigate to relative path "./specs/data/IFrameProximitySelectors.html"
+* Navigate to "http://localhost:3002/IFrameProximitySelectors.html"
 * Click link "Dynamic Loading"
 * Click link above
 
@@ -36,7 +36,7 @@ tags: knownIssue
 
 ## Right Of
 
-* Navigate to relative path "./specs/data/IFrameMouseMoveTest.html"
+* Navigate to "http://localhost:3002/IFrameMouseMoveTest.html"
 * Click button to right of 
 
    |Type  |Selector|

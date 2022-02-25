@@ -1,5 +1,5 @@
 # Positional Selectors
-* Navigate to relative path "./specs/data/HTMLElements.html"
+* Navigate to "http://localhost:3002/HTMLElements.html"
 * Focus on Text Box to right of "Username"
 
 ## Into

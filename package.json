@@ -42,8 +42,8 @@
     ]
   },
   "taiko": {
-    "chromium_revision": "823078",
-    "chromium_version": "88.0.4314.0"
+    "chromium_revision": "967620",
+    "chromium_version": "100.0.4874.0"
   },
   "husky": {
     "hooks": {
@@ -76,7 +76,7 @@
     "chai-as-promised": "^7.1.1",
     "clean-css": "^5.2.2",
     "cssnano": "^5.0.14",
-    "devtools-protocol": "0.0.970581",
+    "devtools-protocol": "0.0.955664",
     "dtslint": "^4.2.1",
     "eleventy-plugin-toc": "^1.1.5",
     "eslint": "^8.6.0",

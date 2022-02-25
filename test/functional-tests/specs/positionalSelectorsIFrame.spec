@@ -1,5 +1,5 @@
 # Positional Selectors in IFrame
-* Navigate to relative path "./specs/data/IFrameElements.html"
+* Navigate to "http://localhost:3002/IFrameElements.html"
 * Focus on Text Box to right of "Username"
 
 ## Into

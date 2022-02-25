@@ -14,7 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: ['16', '17']
+        node_version: ['16']
         os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
@@ -45,7 +45,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: ['16', '17']
+        node_version: ['16']
         os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
