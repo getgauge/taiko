@@ -3,7 +3,7 @@ layout: page.njk
 ---
 
 Taiko is a [Node.js](https://nodejs.org) library and runs on all platforms that is
-supported by [Node.js](https://nodejs.org) versions 10+ and above (Windows, MacOS, Linux). 
+supported by [Node.js](https://nodejs.org) latest LTS version (Windows, MacOS, Linux). 
 
 Once you have the latest version of node installed you can install
 and run Taiko in any of the following ways.

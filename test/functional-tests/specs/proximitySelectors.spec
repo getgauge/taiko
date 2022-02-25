@@ -12,7 +12,7 @@
 
 tags: knownIssue
 
-* Navigate to relative path "./specs/data/HTMLElements.html"
+* Navigate to "http://localhost:3002/HTMLElements.html"
 * Write "Blah" into Input Field near
 
    |Type|Selector  |
@@ -37,7 +37,7 @@ tags: knownIssue
 
 ## Right Of
 
-* Navigate to relative path "./specs/data/MouseMoveTest.html"
+* Navigate to "http://localhost:3002/MouseMoveTest.html"
 * Click button to right of 
 
    |Type  |Selector|

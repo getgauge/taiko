@@ -20,6 +20,9 @@ describe('CheckBox', () => {
           },
         };
       },
+      async runtimeEvaluate(exp, executionContextId, opt = {}) {
+        return true;
+      },
     };
 
   beforeEach(() => {
@@ -48,10 +51,21 @@ describe('CheckBox', () => {
         },
       },
     };
+
+    Object.defineProperty(Object.prototype, 'checked', {
+      configurable: true,
+      get: function () {
+        return this.checked;
+      },
+      set: function (val) {
+        this.checked = val;
+      },
+    });
   });
   afterEach(() => {
     CheckBox = rewire('../../../lib/elements/checkBox');
     dispatchedEvent = null;
+    delete Object.prototype.checked;
   });
 
   it('should be element', () => {
@@ -76,6 +90,7 @@ describe('CheckBox', () => {
   describe('check', () => {
     it('should check an uncheckedd checkbox', async () => {
       let objectId = 28;
+
       const checkBox = new CheckBox(objectId, 'description', runtimeHandler);
       expect(nodes[objectId].checked).to.be.false;
 

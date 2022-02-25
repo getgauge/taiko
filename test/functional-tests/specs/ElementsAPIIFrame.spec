@@ -1,7 +1,7 @@
 API accessing IFrame Elements
 =============================
 
-* Navigate to relative path "./specs/data/IFrameElements.html"
+* Navigate to "http://localhost:3002/IFrameElements.html"
 
 Combo Box
 ---------
@@ -24,6 +24,12 @@ Radio Button without for
 ------------------------
 tags: knownIssue
 * Radio Button "Y"
+
+
+Range
+------
+* Ensure Range "Age" exists
+* Select the value of Range "Age" to "51"
 
 Attach file
 -----------
