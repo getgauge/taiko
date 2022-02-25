@@ -15,7 +15,7 @@
    |text|Welcome |
 
 ## Write, Press, Click
-* Navigate to relative path "./specs/data/HTMLElements.html"
+* Navigate to "http://localhost:3002/HTMLElements.html"
 * Write "John" into Input Field near
 
    |Type|Selector  |
@@ -27,7 +27,7 @@
 
 ## Double Click
 * Assert text "Hello World" does not exist
-* Navigate to file with relative Path "/specs/data/doubleClick.html"
+* Navigate to "http://localhost:3002/doubleClick.html"
 * Double click
 
    |Type|Selector    |
@@ -37,7 +37,7 @@
 
 ## Right Click
 
-* Navigate to file with relative Path "/specs/data/rightClick.html"
+* Navigate to "http://localhost:3002/rightClick.html"
 * Right click
 
    |Type|Selector   |
@@ -46,7 +46,7 @@
 * Click "Share On Facebook"
 
 ## Hover
-* Navigate to relative path "./specs/data/hovers.html"
+* Navigate to "http://localhost:3002/hovers.html"
 * Hover on element
 
    |Type|Selector        |
@@ -68,12 +68,12 @@
 * Assert url host is "localhost"
 
 ## Tap
-* Navigate to file with relative Path "/specs/data/touch.html"
+* Navigate to "http://localhost:3002/touch.html"
 * Tap on "Click"
 * Assert tap on screen
 
 ## clear api should work on textArea
-* Navigate to relative path "./specs/data/HTMLElements.html"
+* Navigate to "http://localhost:3002/HTMLElements.html"
 * Write "hello" into textArea to left of
 
    |Type   |Selector|
@@ -96,8 +96,8 @@
    |textBox|Username|
 
 ## Navigate within Page
-* Navigate to relative path "./specs/data/samePageNavigation.html#gauge-navigation"
-* Navigate to relative path "./specs/data/samePageNavigation.html#gauge-navigation"
+* Navigate to "http://localhost:3002/samePageNavigation.html#gauge-navigation"
+* Navigate to "http://localhost:3002/samePageNavigation.html#gauge-navigation"
 
 ## Goto with basic authentication
 * Navigate to "http://localhost:3001/basic_auth" with basic auth "admin" and "admin"

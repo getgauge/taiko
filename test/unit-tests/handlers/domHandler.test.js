@@ -9,12 +9,12 @@ describe('domHandler', () => {
     domHandler = rewire('../../../lib/handlers/domHandler');
     calledWith = {};
     domHandler.__set__('dom', {
-      getBoxModel: async (param) => {
+      getContentQuads: async (param) => {
         calledWith = param;
         if (param.objectId == 1) {
-          return { model: { border: [0, 1, 2, 3, 4, 5, 6, 7] } };
+          return { quads: [[0, 1, 2, 3, 4, 5, 6, 7]] };
         }
-        return { model: { border: [8, 9, 10, 11, 12, 13, 14, 15] } };
+        return { quads: [[8, 9, 10, 11, 12, 13, 14, 15]] };
       },
     });
   });

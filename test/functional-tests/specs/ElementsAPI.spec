@@ -1,7 +1,7 @@
 API
 ===
 
-* Navigate to relative path "./specs/data/HTMLElements.html"
+* Navigate to "http://localhost:3002/HTMLElements.html"
 
 Combo Box
 ---------
