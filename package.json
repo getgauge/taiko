@@ -56,7 +56,7 @@
   "dependencies": {
     "@babel/parser": "^7.16.7",
     "chrome-remote-interface": "^0.31.1",
-    "commander": "^8.3.0",
+    "commander": "^9.0.0",
     "debug": "^4.3.3",
     "documentation": "^13.2.5",
     "extract-zip": "^2.0.1",
@@ -78,7 +78,7 @@
     "chai-as-promised": "^7.1.1",
     "clean-css": "^5.2.2",
     "cssnano": "^5.0.14",
-    "devtools-protocol": "0.0.955664",
+    "devtools-protocol": "0.0.975963",
     "dtslint": "^4.2.1",
     "eleventy-plugin-toc": "^1.1.5",
     "eslint": "^8.6.0",
@@ -96,7 +96,7 @@
     "ncp": "^2.0.0",
     "prettier": "^2.5.1",
     "rewire": "^6.0.0",
-    "sinon": "^12.0.1",
+    "sinon": "^13.0.1",
     "typescript": "^4.5.4"
   }
 }
