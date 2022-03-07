@@ -50,7 +50,6 @@ describe(test_name, () => {
                     document.getElementById('root').innerText = text
                 }
             </script>
-            <div style="height:1500px"></div>
             <div id="root" style="background:red;"></div>
             <span onclick="displayText('Click works with auto scroll.')">Show Message</span>
             <style>
