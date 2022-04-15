@@ -42,8 +42,8 @@
     ]
   },
   "taiko": {
-    "chromium_revision": "986347",
-    "chromium_version": "102.0.4972.0"
+    "chromium_revision": "990320",
+    "chromium_version": "102.0.4992.0"
   },
   "husky": {
     "hooks": {
