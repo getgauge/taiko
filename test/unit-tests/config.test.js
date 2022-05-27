@@ -277,6 +277,7 @@ describe('Config tests', () => {
         button: 'left',
         clickCount: 1,
         elementsToMatch: 10,
+        modifiers: 0,
         navigationTimeout: 30000,
         waitForNavigation: true,
         waitForStart: 100,
