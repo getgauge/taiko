@@ -47,7 +47,7 @@ describe('elementHelper', () => {
     });
     actualConsole = console;
     elemHelper.__set__('console', { warn: (warning) => (warningMessage = warning) });
-    setConfig({ highlightOnAction: 'true' });
+    setConfig({ highlightOnAction: true });
   });
 
   afterEach(() => {
@@ -76,7 +76,7 @@ describe('elementHelper', () => {
   });
 
   it('should not highlight when highlightOnAction is false', async () => {
-    setConfig({ highlightOnAction: 'false' });
+    setConfig({ highlightOnAction: false });
     await elemHelper.highlightElement(createElement(20, true));
 
     expect(getBoxModelCalled).to.be.false;

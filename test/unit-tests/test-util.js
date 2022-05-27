@@ -52,6 +52,6 @@ module.exports.resetConfig = () => {
     waitForNavigation: true,
     ignoreSSLErrors: true,
     headful: false,
-    highlightOnAction: 'true',
+    highlightOnAction: true,
   });
 };
