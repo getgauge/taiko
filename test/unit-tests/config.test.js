@@ -28,7 +28,7 @@ describe('Config tests', () => {
         it('should update the config', () => {
           const newConfig = {
             headful: false,
-            highlightOnAction: 'true',
+            highlightOnAction: true,
             firefox: false,
             ignoreSSLErrors: true,
             navigationTimeout: 2,
@@ -238,7 +238,7 @@ describe('Config tests', () => {
       };
       const expectedConfig = {
         headful: true,
-        highlightOnAction: 'true',
+        highlightOnAction: true,
         ignoreSSLErrors: true,
         firefox: false,
         navigationTimeout: 30000,
