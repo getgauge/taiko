@@ -305,6 +305,7 @@ describe('Config tests', () => {
         waitForStart: 100,
         x: 32,
         y: 45,
+        modifiers: 0,
       };
       const actualOptions = config.setClickOptions(options, 32, 45);
       expect(actualOptions).to.deep.equal(exceptedOptions);
