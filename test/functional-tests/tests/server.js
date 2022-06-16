@@ -1,10 +1,16 @@
 const app = require('the-internet-express');
-let server;
+const express = require('express');
+const path = require('path')
+
+var fileApp = express();
+
+fileApp.use('/', express.static(path.join(__dirname, '../specs/data')))
 
 const startServer = async () => {
   return new Promise((resolve, reject) => {
     try {
-      server = app.listen(3001, resolve);
+      ieServer = app.listen(3001, resolve);
+      filesServer = fileApp.listen(3002, resolve);
     } catch (error) {
       reject(error);
     }
@@ -12,9 +18,15 @@ const startServer = async () => {
 };
 
 const stopServer = async () => {
-  server.close((e) => {
+  ieServer.close((e) => {
     if (e) {
       console.error('Failed to close the Internet Express', e);
+    }
+  });
+
+  filesServer.close((e) => {
+    if (e) {
+      console.error('Failed to close local file server running on specs/data', e);
     }
   });
 };

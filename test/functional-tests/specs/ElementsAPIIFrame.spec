@@ -1,7 +1,7 @@
 API accessing IFrame Elements
 =============================
 
-* Navigate to relative path "./specs/data/IFrameElements.html"
+* Navigate to "http://localhost:3002/IFrameElements.html"
 
 Combo Box
 ---------

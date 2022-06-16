@@ -119,7 +119,7 @@ setConfig({
   waitForNavigation: true,
   ignoreSSLErrors: true,
   headful: false,
-  highlightOnAction: 'false',
+  highlightOnAction: false,
 });
 setConfig({});
 setConfig({ other: true }); // $ExpectError
