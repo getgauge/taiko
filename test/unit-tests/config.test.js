@@ -28,7 +28,7 @@ describe('Config tests', () => {
         it('should update the config', () => {
           const newConfig = {
             headful: false,
-            highlightOnAction: 'true',
+            highlightOnAction: true,
             firefox: false,
             ignoreSSLErrors: true,
             navigationTimeout: 2,
@@ -238,7 +238,7 @@ describe('Config tests', () => {
       };
       const expectedConfig = {
         headful: true,
-        highlightOnAction: 'true',
+        highlightOnAction: true,
         ignoreSSLErrors: true,
         firefox: false,
         navigationTimeout: 30000,
@@ -277,6 +277,7 @@ describe('Config tests', () => {
         button: 'left',
         clickCount: 1,
         elementsToMatch: 10,
+        modifiers: 0,
         navigationTimeout: 30000,
         waitForNavigation: true,
         waitForStart: 100,
@@ -304,6 +305,7 @@ describe('Config tests', () => {
         waitForStart: 100,
         x: 32,
         y: 45,
+        modifiers: 0,
       };
       const actualOptions = config.setClickOptions(options, 32, 45);
       expect(actualOptions).to.deep.equal(exceptedOptions);

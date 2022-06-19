@@ -73,7 +73,7 @@ export interface GlobalConfigurationOptions {
   headful?: boolean;
   criConnectionRetries?: number;
   firefox?: boolean;
-  highlightOnAction?: 'true' | 'false';
+  highlightOnAction?: boolean;
   local?: boolean;
 }
 

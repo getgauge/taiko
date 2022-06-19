@@ -13,6 +13,7 @@ let {
   setConfig,
   accept,
   alert,
+  evaluate,
 } = require('../../lib/taiko');
 let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
 const test_name = 'Click';
@@ -23,7 +24,7 @@ describe(test_name, () => {
     let innerHtml = `
             <span>Click with proximity</span>
             <div>
-                <span onclick="displayText('Click works with text nodes.')">Click on text node</span>
+                <span id='something' onclick="displayText('Click works with text nodes.')">Click on text node</span>
                 <span>Click with proximity</span>
             </div>
             <div>
@@ -116,6 +117,15 @@ describe(test_name, () => {
   describe('With text nodes', () => {
     it('should click', async () => {
       await click('on text');
+      expect(await text('Click works with text nodes.').exists()).to.be.true;
+    });
+
+    it('element click with coordinates', async () => {
+      const { x, y } = await evaluate(() => {
+        const { x, y } = document.querySelector('#something').getBoundingClientRect();
+        return { x, y };
+      });
+      await click({ x, y });
       expect(await text('Click works with text nodes.').exists()).to.be.true;
     });
   });
