@@ -40,7 +40,9 @@ jobs:
             libgbm-dev \
             libasound-dev
       - name: unit-tests
-        run: npm test
+        run: |
+          npm run lint:check
+          npm test
 
   functional-tests:
     needs: unit-tests
