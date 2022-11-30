@@ -9,7 +9,8 @@
   },
   "types": "./types/taiko/index.d.ts",
   "scripts": {
-    "lint": "eslint --fix --ext js,ts .",
+    "lint:check": "eslint --ext js,ts .",
+    "lint:fix": "eslint --fix --ext js,ts .",
     "dtslint": "node ./test/types-test-support/generate-types-test.js && eslint --fix --ext js,ts . && dtslint types/taiko",
     "doc": "npm run doc:api && eleventy",
     "doc:serve": "npm run doc:api && eleventy --serve",
@@ -59,7 +60,7 @@
     "commander": "^9.4.1",
     "debug": "^4.3.4",
     "devtools-protocol": "0.0.1063652",
-    "documentation": "^13.2.5",
+    "documentation": "^14.0.0",
     "extract-zip": "^2.0.1",
     "fs-extra": "^10.1.0",
     "https-proxy-agent": "^5.0.1",
