@@ -64,6 +64,10 @@ describe('openTab', () => {
     expectedUrl = 'file://example.com';
     await taiko.openTab(expectedUrl);
     expect(actualUrl).to.equal(expectedUrl);
+
+    expectedUrl = 'chrome-extension://gjaerjgaerjeoareapoj/internalPage.html';
+    await taiko.openTab(expectedUrl);
+    expect(actualUrl).to.equal(expectedUrl);
   });
 
   it('should add protocol http:// if not given', async () => {

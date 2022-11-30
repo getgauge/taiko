@@ -375,6 +375,7 @@ export function switchTo(target: RegExp | OpenWindowOrTabOptions): Promise<void>
 export function intercept(
   requestUrl: string,
   options?: InterceptMockData | interceptRequestHandler | InterceptRedirectUrl,
+  count?: number,
 ): Promise<void>;
 // https://docs.taiko.dev/api/emulatenetwork
 export function emulateNetwork(

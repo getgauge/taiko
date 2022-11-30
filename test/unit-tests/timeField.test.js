@@ -31,13 +31,25 @@ describe(test_name, () => {
     return date;
   };
 
+  const localDate = (YYYY, MM, DD, hh = 0, mm = 0, s = 0, ms = 0) => {
+    const date = new Date();
+    date.setFullYear(YYYY);
+    date.setDate(DD);
+    date.setMonth(MM - 1); // thanks JS for being dumb
+    date.setHours(hh);
+    date.setMinutes(mm);
+    date.setSeconds(s);
+    date.setMilliseconds(ms);
+    return date;
+  };
+
   var inputTypes = [
     {
       type: 'date',
       name: 'inputType-date',
       min: '2018-01-01',
       max: '2018-12-31',
-      testValue: new Date('2018-09-12'),
+      testValue: localDate(2018, 9, 12),
       testMinValue: new Date('2017-09-12'),
       testMaxValue: new Date('2021-09-12'),
       testDefaultValue: '2018-01-01',

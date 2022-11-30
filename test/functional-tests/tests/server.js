@@ -1,10 +1,11 @@
 const app = require('the-internet-express');
 const express = require('express');
-const path = require('path')
+const path = require('path');
 
-var fileApp = express();
+let fileApp = express();
+let ieServer, filesServer;
 
-fileApp.use('/', express.static(path.join(__dirname, '../specs/data')))
+fileApp.use('/', express.static(path.join(__dirname, '../specs/data')));
 
 const startServer = async () => {
   return new Promise((resolve, reject) => {
