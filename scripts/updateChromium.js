@@ -1,10 +1,11 @@
 const https = require('https');
 const { writeFileSync, readFileSync } = require('fs');
 const { execSync } = require('child_process');
+const path = require('path');
 const BrowserFetcher = require(`${__dirname}/../lib/browserFetcher`);
 const supportedPlatforms = BrowserFetcher.supportedPlatforms;
 
-const PACKAGE_JSON = `${__dirname}/../package.json`;
+const PACKAGE_JSON = path.join(__dirname, '..', 'package.json');
 
 async function checkAvailableRevision(revision, browserFetcher) {
   let results = await Promise.all(

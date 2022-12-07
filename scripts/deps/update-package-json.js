@@ -1,9 +1,5 @@
 #!/usr/bin/env node
 
-/*
- * Copyright (c) 2022 - Thoughtworks Inc. All rights reserved.
- */
-
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
