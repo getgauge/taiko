@@ -1,0 +1,13 @@
+{
+  "name": "devtools",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "update": "node ./update-package-json"
+  },
+  "author": "getgauge",
+  "license": "MIT",
+  "dependencies": {
+    "semver": "^7.3.8"
+  }
+}
