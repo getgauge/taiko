@@ -43,8 +43,8 @@
     ]
   },
   "taiko": {
-    "chromium_revision": "1075999",
-    "chromium_version": "110.0.5445.0"
+    "chromium_revision": "1080211",
+    "chromium_version": "110.0.5464.0"
   },
   "husky": {
     "hooks": {
@@ -59,23 +59,23 @@
     "chrome-remote-interface": "^0.31.3",
     "commander": "^9.4.1",
     "debug": "^4.3.4",
-    "devtools-protocol": "0.0.1079624",
-    "documentation": "^14.0.0",
+    "devtools-protocol": "0.0.1082910",
+    "documentation": "^14.0.1",
     "extract-zip": "^2.0.1",
     "fs-extra": "^11.1.0",
     "https-proxy-agent": "^5.0.1",
     "is-reachable": "^5.2.1",
     "progress": "^2.0.3",
     "proxy-from-env": "^1.1.0",
-    "recast": "^0.21.5"
+    "recast": "^0.23.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.2",
     "@babel/eslint-parser": "^7.19.1",
     "@types/chai": "^4.3.4",
     "@types/chai-as-promised": "^7.1.5",
-    "@typescript-eslint/eslint-plugin": "^5.45.1",
-    "@typescript-eslint/parser": "^5.45.1",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
     "chai": "^4.3.7",
     "chai-as-promised": "^7.1.1",
     "clean-css": "^5.3.1",
@@ -93,11 +93,11 @@
     "lint-staged": "^13.1.0",
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.5",
-    "mocha": "^10.1.0",
+    "mocha": "^10.2.0",
     "ncp": "^2.0.0",
-    "prettier": "^2.8.0",
+    "prettier": "^2.8.1",
     "rewire": "^6.0.0",
     "sinon": "^15.0.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.4"
   }
 }
