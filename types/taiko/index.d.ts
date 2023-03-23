@@ -60,6 +60,19 @@ export interface ClickOptions extends NavigationOptions, ForceOption {
   elementsToMatch?: number;
 }
 
+export interface ScrollToOptions extends NavigationOptions {
+  /**
+   * Defines vertical alignment.
+   * @default 'nearest'
+   */
+  blockAlignment?: string;
+  /**
+   * Defines horizontal alignment.
+   * @default 'nearest'
+   */
+  inlineAlignment?: string;
+}
+
 export interface GlobalConfigurationOptions {
   navigationTimeout?: number;
   observeTime?: number;
@@ -501,7 +514,7 @@ export function mouseAction(
   options?: ForcedNavigationOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/scrollto
-export function scrollTo(selector: SearchElement, options?: NavigationOptions): Promise<void>;
+export function scrollTo(selector: SearchElement, options?: ScrollToOptions): Promise<void>;
 // https://docs.taiko.dev/api/scrollright
 export function scrollRight(selector?: SearchElement | number, px?: number): Promise<void>;
 // https://docs.taiko.dev/api/scrollleft

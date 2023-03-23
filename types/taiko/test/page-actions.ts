@@ -352,7 +352,12 @@ mouseAction(
 // ------------------------------------------
 scrollTo('Get Started'); // $ExpectType Promise<void>
 scrollTo(link('Get Started')); // $ExpectType Promise<void>
+scrollTo('Get Started', { waitForNavigation: false }); // $ExpectType Promise<void>
+scrollTo('Get Started', { navigationTimeout: 50000 }); // $ExpectType Promise<void>
+scrollTo('Get Started', { waitForStart: 1000 }); // $ExpectType Promise<void>
 scrollTo(link('Get Started'), { waitForEvents: ['firstMeaningfulPaint'] }); // $ExpectType Promise<void>
+scrollTo('Get Started', { blockAlignment: 'center', inlineAlignment: 'center' }); // $ExpectType Promise<void>
+scrollTo('Get Started', { alignments: { block: 'center' } }); // $ExpectError
 
 // ------------------------------------------
 // scrollRight
