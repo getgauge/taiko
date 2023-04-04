@@ -13,10 +13,10 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v2
 
-      - name: Use NodeJS 12
+      - name: Use NodeJS 16
         uses: actions/setup-node@v1
         with:
-          node-version: '12'
+          node-version: '16'
 
       - name: Setup
         run: |
@@ -28,7 +28,10 @@ jobs:
             libcups2 \
             libxrandr2 \
             libpangocairo-1.0-0 \
-            libgtk-3-0
+            libgtk-3-0 \
+            libdrm-dev \
+            libgbm-dev \
+            libasound-dev
 
       - name: Get Chromium version and update
         run: |

@@ -200,6 +200,10 @@ export interface Element {
   create(objectIds: string[], runtimeHandler?: any): Element[];
   isDisabled(): Promise<boolean>;
   isDraggable(): Promise<boolean>;
+  getAttribute(value: string): Promise<string>;
+  isWritable(): Promise<boolean>;
+  isConnected(): Promise<boolean>;
+  isPassword(): Promise<boolean>;
 }
 
 export interface ElementWrapper {

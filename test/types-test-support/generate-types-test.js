@@ -56,7 +56,7 @@ const util = require('util');
        * Generates a statement that instantiates a const of the specified type and assigns the
        * literal to the const.
        * Dtslint will look as the generated function and produce warnings if the fields in
-       * the literal and in the type declaration are not consinstent.
+       * the literal and in the type declaration are not consistent.
        * The assignment is wrapped in an exported function to avoid irrelevant lint warnings.
        *
        * @param {string} typeName type to be assigned to the constant producing something

@@ -141,7 +141,7 @@ performance and reduce flakiness in tests.
 which has heavy image or fonts to loaded.
 * `targetNavigated` - Wait for this event if there is a new tab/window open or close 
 that happens because of an action.
-* `loadEventFired` - Wait for this event if an action triggers a page load which is not instanteneous.
+* `loadEventFired` - Wait for this event if an action triggers a page load which is not instantaneous.
 
 For example
 

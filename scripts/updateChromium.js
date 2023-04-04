@@ -1,8 +1,11 @@
 const https = require('https');
 const { writeFileSync, readFileSync } = require('fs');
 const { execSync } = require('child_process');
-const BrowserFetcher = require('./lib/browserFetcher');
+const path = require('path');
+const BrowserFetcher = require(`${__dirname}/../lib/browserFetcher`);
 const supportedPlatforms = BrowserFetcher.supportedPlatforms;
+
+const PACKAGE_JSON = path.join(__dirname, '..', 'package.json');
 
 async function checkAvailableRevision(revision, browserFetcher) {
   let results = await Promise.all(
@@ -26,13 +29,13 @@ async function findLatestCommonRevision(chromiumReleases) {
 }
 
 function updatePackageJSON(key, value) {
-  let packageJSON = JSON.parse(readFileSync('./package.json', 'utf-8'));
+  const packageJSON = JSON.parse(readFileSync(PACKAGE_JSON, 'utf-8'));
   if (key === 'revision') {
     packageJSON.taiko.chromium_revision = `${value}`;
   } else {
     packageJSON.taiko.chromium_version = `${value}`;
   }
-  writeFileSync('./package.json', `${JSON.stringify(packageJSON, null, '  ')}\n`);
+  writeFileSync(PACKAGE_JSON, `${JSON.stringify(packageJSON, null, '  ')}\n`);
 }
 
 async function getChromeReleasesInfo() {
@@ -56,7 +59,7 @@ async function getChromeReleasesInfo() {
 async function main() {
   let releasesInfo = await getChromeReleasesInfo();
   let revision = await findLatestCommonRevision(JSON.parse(releasesInfo));
-  let { chromium_revision } = require('./package.json').taiko;
+  let { chromium_revision } = require(PACKAGE_JSON).taiko;
   if (chromium_revision >= revision) {
     console.log(
       `Skipping updating package.json as current chromium revision(${chromium_revision}) is similar or greater than available revision(${revision}).`,
@@ -64,7 +67,7 @@ async function main() {
     return;
   }
   updatePackageJSON('revision', revision);
-  execSync('node ./lib/install.js');
+  execSync(`node ${__dirname}/../lib/install.js`);
   let browserFetcher = new BrowserFetcher();
   let { executablePath } = browserFetcher.revisionInfo(revision);
   let out = execSync(`${executablePath} --version`);
