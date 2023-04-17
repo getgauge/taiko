@@ -49,6 +49,11 @@ export interface NavigationOptions extends BasicNavigationOptions, EventOptions 
   waitForStart?: number;
 }
 
+export interface ScrollOptions extends NavigationOptions {
+  blockAlignment?: 'start' | 'center' | 'end' | 'nearest';
+  inlineAlignment?: 'start' | 'center' | 'end' | 'nearest';
+}
+
 export interface ReloadOptions extends NavigationOptions {
   ignoreCache?: boolean;
 }
@@ -501,7 +506,7 @@ export function mouseAction(
   options?: ForcedNavigationOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/scrollto
-export function scrollTo(selector: SearchElement, options?: NavigationOptions): Promise<void>;
+export function scrollTo(selector: SearchElement, options?: ScrollOptions): Promise<void>;
 // https://docs.taiko.dev/api/scrollright
 export function scrollRight(selector?: SearchElement | number, px?: number): Promise<void>;
 // https://docs.taiko.dev/api/scrollleft
