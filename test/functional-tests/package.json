@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "@getgauge/cli": "latest",
-    "gauge-ts": "0.1.0",
-    "taiko": "file:../.."
+    "gauge-ts": "0.1.1",
+    "taiko": "file:../..",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@types/node": "latest",

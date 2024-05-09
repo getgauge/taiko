@@ -71,7 +71,6 @@ docs/layout/partials/content.html
 #test report
 test/functional-tests/reports/
 test/functional-tests/.gauge/
-test/functional-tests/package-lock.json
 test/unit-tests/data/*.html
 
 examples/package-lock.json

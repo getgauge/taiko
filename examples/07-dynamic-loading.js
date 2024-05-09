@@ -1,6 +1,6 @@
 const { goto, click, text } = require('taiko'),
   path = require('path'),
-  { openBrowserAndStartScreencast, closeBrowserAndStopScreencast } = require('./browserLauncher'),
+  { openBrowserAndStartScreencast, closeBrowserAndStopScreencast } = require('./browser/launcher'),
   expect = require('chai').expect;
 
 (async () => {

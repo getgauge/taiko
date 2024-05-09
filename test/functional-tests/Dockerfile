@@ -2,4 +2,4 @@ FROM getgauge/taiko
 
 ADD . /gauge
 
-CMD npm install && npm test
+CMD npm ci && npm test
