@@ -25,7 +25,7 @@ var server = app.listen(3000, async () => {
   var examples = glob
     .sync('*.js')
     .filter(
-      (f) => __filename !== path.resolve(f) && 'browserLauncher.js' !== f && f.startsWith(prefix),
+      (f) => __filename !== path.resolve(f) && 'browser/launcher.js' !== f && f.startsWith(prefix),
     )
     .map((f) => {
       return { file: f, task: () => run(f) };

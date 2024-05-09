@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@getgauge/cli": "latest",
-    "gauge-ts": "0.1.0",
+    "gauge-ts": "0.1.1",
     "taiko": "file:../../.."
   },
   "devDependencies": {

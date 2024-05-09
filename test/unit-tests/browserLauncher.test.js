@@ -8,10 +8,10 @@ const { eventHandler } = require('../../lib/eventBus');
 describe('OpenBrowser', () => {
   let browserLauncher;
   before(() => {
-    browserLauncher = rewire('../../lib/browserLauncher');
+    browserLauncher = rewire('../../lib/browser/launcher');
   });
   after(() => {
-    browserLauncher = rewire('../../lib/browserLauncher');
+    browserLauncher = rewire('../../lib/browser/launcher');
   });
 
   describe('should set args', async () => {
@@ -40,7 +40,7 @@ describe('OpenBrowser', () => {
     });
 
     afterEach(() => {
-      browserLauncher = rewire('../../lib/browserLauncher');
+      browserLauncher = rewire('../../lib/browser/launcher');
     });
 
     it('should emit browserCrashed event when chrome process crashes', async () => {
