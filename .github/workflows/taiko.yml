@@ -54,7 +54,7 @@ jobs:
         os: [ubuntu-latest]
         include:
           - os: windows-latest
-            node_version: '16'
+            node_version: '18'
     steps:
       - uses: actions/checkout@v2
       - name: Use NodeJS ${{ matrix.node_version }}
@@ -142,14 +142,7 @@ jobs:
   docs-tests:
     needs: unit-tests
     name: Docs tests - ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node_version: ['20']
-        os: [ubuntu-latest]
-        include:
-          - os: windows-latest
-            node_version: '16'
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Use NodeJS 20
