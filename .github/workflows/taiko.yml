@@ -54,7 +54,7 @@ jobs:
         os: [ubuntu-latest]
         include:
           - os: windows-latest
-            node_version: '18'
+            node_version: '16'
     steps:
       - uses: actions/checkout@v2
       - name: Use NodeJS ${{ matrix.node_version }}
