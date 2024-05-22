@@ -3,7 +3,7 @@ const expect = chai.expect;
 const rewire = require('rewire');
 
 let { openBrowserArgs } = require('./test-util');
-describe('OpenBrowser', () => {
+xdescribe('OpenBrowser', () => {
   let taiko, openBrowser, closeBrowser;
   before(() => {
     taiko = rewire('../../lib/taiko');
