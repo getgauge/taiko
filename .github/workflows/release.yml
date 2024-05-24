@@ -39,7 +39,7 @@ jobs:
           release_description=$(ruby -e "$(curl -sSfL https://github.com/getgauge/gauge/raw/master/build/create_release_text.rb)" getgauge taiko)
           echo "$release_description" >> desc.txt
           echo "Creating new draft for release v$version"
-          hub release create -F ./desc.txt "v$version"
+          gh release create "v$version" -F ./desc.txt
           rm -rf desc.txt
 
       - name: 'deployment success'
