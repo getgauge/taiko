@@ -40,7 +40,7 @@ This folder contains samples inspired by some of selenium tips published by [ele
 
 `npm test` runs the examples under a headless chromium.
 
-> **Note:** The examples use `openBrowserAndStartScreencast` and `closeBrowserAndStopScreencast` from [`browserLauncher`](browserLauncher.js) instead of `openBrowser` and `closeBrowser` directly. This is to capture screen recordings. The `browserLauncher` methods can be substituted with `openBrowser` and `closeBrowser` if there is no need for screencast capture.
+> **Note:** The examples use `openBrowserAndStartScreencast` and `closeBrowserAndStopScreencast` from [`browserLauncher`](browser/launcher.js) instead of `openBrowser` and `closeBrowser` directly. This is to capture screen recordings. The `browserLauncher` methods can be substituted with `openBrowser` and `closeBrowser` if there is no need for screencast capture.
 
 ### Run Options
 

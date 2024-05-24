@@ -29,7 +29,9 @@ describe(test_name, () => {
         window.addEventListener('beforeunload', function (e) {
           let newValue = document.getElementById('name').value;
           if( oldValue != newValue) {
-            e.returnValue = '';
+            event.preventDefault();
+            // Legacy support for older browsers.
+            return (event.returnValue = true);
           }
         });
     </script>

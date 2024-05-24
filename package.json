@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package",
   "name": "taiko",
-  "version": "1.3.10",
+  "version": "1.4.0",
   "description": "Taiko is a Node.js library for automating Chromium based browsers",
   "main": "bin/taiko.js",
   "bin": {
@@ -17,8 +17,8 @@
     "doc:api": "node lib/documentation.js",
     "test:api": "node test/unit-tests/taiko-test.js",
     "examples": "cd examples && npm install && npm test",
-    "test:unit:silent": "mocha 'test/unit-tests/**/*.test.js' --timeout 6000 -R dot --trace-warnings",
-    "test:unit": "mocha 'test/unit-tests/**/*.test.js' --timeout 6000 --trace-warnings",
+    "test:unit:silent": "mocha 'test/unit-tests/**/*.test.js' --timeout 9000 -R dot --trace-warnings --exit",
+    "test:unit": "mocha 'test/unit-tests/**/*.test.js' --timeout 9000 --trace-warnings --exit",
     "test": "npm run test:api && npm run test:unit:silent",
     "test-functional": "npm install && cd test/functional-tests && npm install && npm test",
     "test-docs": "cd test/docs-tests && node prepare.js && eleventy && cd ./gauge && npm install && npm test",
@@ -43,8 +43,34 @@
     ]
   },
   "taiko": {
-    "chromium_revision": "1083080",
-    "chromium_version": "110.0.5478.0"
+    "browser": {
+      "version": "126.0.6468.0",
+      "revision": "1298436",
+      "downloads": {
+        "chrome": [
+          {
+            "platform": "linux64",
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/126.0.6468.0/linux64/chrome-linux64.zip"
+          },
+          {
+            "platform": "mac-arm64",
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/126.0.6468.0/mac-arm64/chrome-mac-arm64.zip"
+          },
+          {
+            "platform": "mac-x64",
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/126.0.6468.0/mac-x64/chrome-mac-x64.zip"
+          },
+          {
+            "platform": "win32",
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/126.0.6468.0/win32/chrome-win32.zip"
+          },
+          {
+            "platform": "win64",
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/126.0.6468.0/win64/chrome-win64.zip"
+          }
+        ]
+      }
+    }
   },
   "husky": {
     "hooks": {
@@ -56,7 +82,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/parser": "^7.20.7",
-    "chrome-remote-interface": "^0.31.3",
+    "chrome-remote-interface": "^0.33.0",
     "commander": "^9.5.0",
     "debug": "^4.3.4",
     "devtools-protocol": "0.0.1082910",
@@ -93,7 +119,7 @@
     "lint-staged": "^13.1.0",
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.6",
-    "mocha": "^10.2.0",
+    "mocha": "^10.4.0",
     "ncp": "^2.0.0",
     "prettier": "^2.8.2",
     "rewire": "^6.0.0",
