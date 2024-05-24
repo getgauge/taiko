@@ -68,6 +68,9 @@ docs/layout/partials/content.html
 #local chromium
 .local-chromium
 
+#asdf tool-version
+.tool-versions
+
 #test report
 test/functional-tests/reports/
 test/functional-tests/.gauge/
