@@ -16,9 +16,7 @@ let {
 let { createHtml, removeFile, openBrowserArgs } = require('./test-util');
 const test_name = 'beforeunload';
 
-// TODO: Skip this test and remove the unload functionality
-// Refer:https://developer.chrome.com/docs/web-platform/deprecating-unload
-xdescribe(test_name, () => {
+describe(test_name, () => {
   let filePath, filePath1;
   let called = false;
   before(async () => {
