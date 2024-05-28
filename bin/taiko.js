@@ -142,7 +142,7 @@ if (isTaikoRunner(processArgv[1])) {
     )
     .option('--plugin <plugin1,plugin2...>', 'Load the taiko plugin.', setPluginNameInEnv)
     .option('--no-log', 'Disable log output of taiko', setDisableLogout)
-    .action(function(_, fileName, cmd) {
+    .action(function (_, fileName, cmd) {
       taiko = require('../lib/taiko');
       if (fileName) {
         validate(fileName);
