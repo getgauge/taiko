@@ -18,7 +18,11 @@ function printVersion() {
     if (packageJson._resolved && packageJson._resolved.includes('#')) {
       hash = packageJson._resolved.split('#')[1];
     }
-    return `Version: ${packageJson.version} (Chromium: ${packageJson.taiko.chromium_version}) ${hash}`;
+
+    const taikoVersion = packageJson.version;
+    const browserVersion = packageJson.taiko.browser.version;
+
+    return `Version: ${taikoVersion} (Chromium: ${browserVersion}) ${hash}`;
   } catch (error) {
     return 'Could not find the package.json file to read version information';
   }
@@ -138,7 +142,7 @@ if (isTaikoRunner(processArgv[1])) {
     )
     .option('--plugin <plugin1,plugin2...>', 'Load the taiko plugin.', setPluginNameInEnv)
     .option('--no-log', 'Disable log output of taiko', setDisableLogout)
-    .action(function (_, fileName, cmd) {
+    .action(function(_, fileName, cmd) {
       taiko = require('../lib/taiko');
       if (fileName) {
         validate(fileName);
