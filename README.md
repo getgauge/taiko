@@ -1,5 +1,5 @@
 # Taiko
-##### [Docs](https://docs.taiko.dev) | [API reference](https://docs.taiko.dev/api/reference) 
+##### [Docs](https://docs.taiko.dev) | [API reference](https://docs.taiko.dev/api/reference)
 
 A Node.js library for testing modern web applications
 
@@ -48,7 +48,7 @@ This installs Taiko and the latest version of Chromium browser. We are all set t
 Taiko comes with a Recorder that’s a REPL for writing test scripts. You can use Taiko’s JavaScript API to control the browser from the REPL. To launch the REPL type taiko in your favorite terminal application
 
     $ taiko
-    Version: 0.8.0 (Chromium:76.0.3803.0)
+    Version: 1.4.0 (Chromium: 126.0.6468.0)
     Type .api for help and .exit to quit
     >
 
@@ -107,7 +107,7 @@ By default Taiko runs the script in headless mode, that means it does not launch
 Taiko’s REPL also documents all the API’s. To view all available API’s use the special command `.api`
 
     $ taiko
-    Version: 0.8.0 (Chromium:76.0.3803.0)
+    Version: 1.4.0 (Chromium: 126.0.6468.0)
     Type .api for help and .exit to quit
     > .api
     Browser actions
@@ -191,12 +191,12 @@ Learn more about [Gauge](https://docs.gauge.org)!
 ### Experimental Firefox Support
 
 #### To launch taiko with firefox:
-- Download and install [firefox nightly](https://www.mozilla.org/en-US/firefox/all/#product-desktop-nightly) 
+- Download and install [firefox nightly](https://www.mozilla.org/en-US/firefox/all/#product-desktop-nightly)
 - Set `TAIKO_BROWSER_PATH` to firefox nightly's executable.
 
 Example: `TAIKO_BROWSER_PATH="/Applications/Firefoxnightly.app/Contents/MacOS/firefox" taiko`
 
-#### Known Issues for now:  
+#### Known Issues for now:
 - Highlighting element on action is set to false as overlay domain is not supported
 - openTab/closeTab does not work as expected since `New` is not available in firefox yet
 - Autofocus on first input field does not happen
