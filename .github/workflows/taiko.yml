@@ -17,9 +17,9 @@ jobs:
         node_version: ['20']
         os: [ubuntu-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Use NodeJS ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
       - name: install
@@ -54,9 +54,9 @@ jobs:
         os: [ubuntu-latest, windows-latest]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Use NodeJS ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
       - name: install browser dependencies
@@ -97,9 +97,9 @@ jobs:
     name: FT in linux-headful
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Use NodeJS 20
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: install browser dependencies
@@ -142,9 +142,9 @@ jobs:
     name: Docs tests - ${{ matrix.os }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Use NodeJS 20
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
       - name: install
