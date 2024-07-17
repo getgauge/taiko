@@ -18,7 +18,11 @@ function printVersion() {
     if (packageJson._resolved && packageJson._resolved.includes('#')) {
       hash = packageJson._resolved.split('#')[1];
     }
-    return `Version: ${packageJson.version} (Chromium: ${packageJson.taiko.chromium_version}) ${hash}`;
+
+    const taikoVersion = packageJson.version;
+    const browserVersion = packageJson.taiko.browser.version;
+
+    return `Version: ${taikoVersion} (Chromium: ${browserVersion}) ${hash}`;
   } catch (error) {
     return 'Could not find the package.json file to read version information';
   }

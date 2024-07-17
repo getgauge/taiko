@@ -9,9 +9,6 @@ xdescribe('close browser successfully', () => {
   });
 
   it("closeBrowser should return 'Browser closed' message", async () => {
-    // emitter.on('success', (desc) => {
-    //     expect(desc).to.equal('Browser closed');
-    // });
     await closeBrowser().then((data) => {
       expect(data).to.equal(undefined);
     });
