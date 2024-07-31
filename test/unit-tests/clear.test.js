@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-let {
+const expect = require("chai").expect;
+const {
   openBrowser,
   goto,
   textBox,
@@ -10,14 +10,19 @@ let {
   into,
   $,
   click,
-} = require('../../lib/taiko');
-let { createHtml, openBrowserArgs, removeFile, resetConfig } = require('./test-util');
-const test_name = 'Clear';
+} = require("../../lib/taiko");
+const {
+  createHtml,
+  openBrowserArgs,
+  removeFile,
+  resetConfig,
+} = require("./test-util");
+const test_name = "Clear";
 
 describe(test_name, () => {
   let filePath;
   before(async () => {
-    let innerHtml =
+    const innerHtml =
       `<script>
      
     class ShadowButton extends HTMLElement {
@@ -35,7 +40,7 @@ describe(test_name, () => {
     }
     customElements.define('shadow-button', ShadowButton);
   </script>` +
-      ' <shadow-button></shadow-button>' +
+      " <shadow-button></shadow-button>" +
       `
         <form>
             <p>
@@ -86,52 +91,56 @@ multiple lines.</textarea>
     removeFile(filePath);
   });
 
-  describe('input field', () => {
+  describe("input field", () => {
     afterEach(async () => {
-      await click('Reset');
+      await click("Reset");
     });
 
-    it('should clear content', async () => {
-      expect(await textBox('Email').value()).to.equal('example@test.com');
-      await clear(textBox('Email'));
-      expect(await textBox('Email').value()).to.equal('');
+    it("should clear content", async () => {
+      expect(await textBox("Email").value()).to.equal("example@test.com");
+      await clear(textBox("Email"));
+      expect(await textBox("Email").value()).to.equal("");
     });
 
-    it('should wait for input to be clearable', async () => {
-      expect(await textBox('Name').value()).to.equal('Example');
-      await clear(textBox('Name'));
-      expect(await textBox('Name').value()).to.equal('');
+    it("should wait for input to be clearable", async () => {
+      expect(await textBox("Name").value()).to.equal("Example");
+      await clear(textBox("Name"));
+      expect(await textBox("Name").value()).to.equal("");
     });
   });
 
-  describe('textarea', () => {
+  describe("textarea", () => {
     afterEach(async () => {
-      await click('Reset');
+      await click("Reset");
     });
-    it('should clear whole content', async () => {
-      expect(await textBox('Address').value()).to.equal('Address in\nmultiple lines.');
-      await clear(textBox('Address'));
-      expect(await textBox('Address').value()).to.equal('');
+    it("should clear whole content", async () => {
+      expect(await textBox("Address").value()).to.equal(
+        "Address in\nmultiple lines.",
+      );
+      await clear(textBox("Address"));
+      expect(await textBox("Address").value()).to.equal("");
     });
   });
 
-  describe('shadowDom', () => {
-    it('should clear whole content', async () => {
-      expect(await textBox({ id: 'Shadow text' }).value()).to.equal('Shadow text');
-      await clear(textBox({ id: 'Shadow text' }));
-      expect(await textBox({ id: 'Shadow text' }).value()).to.equal('');
+  describe("shadowDom", () => {
+    it("should clear whole content", async () => {
+      expect(await textBox({ id: "Shadow text" }).value()).to.equal(
+        "Shadow text",
+      );
+      await clear(textBox({ id: "Shadow text" }));
+      expect(await textBox({ id: "Shadow text" }).value()).to.equal("");
     });
   });
 
-  describe('events', () => {
+  describe("events", () => {
     afterEach(async () => {
-      await click('Reset');
+      await click("Reset");
     });
-    it('should be trigged after clearing textbox', async () => {
-      await write('No man land', into(textBox('Country')));
-      expect(await $('#info-borad').text()).to.equal('No man land');
-      await clear(textBox('Country'));
-      expect(await $('#info-borad').text()).to.equal('');
+    it("should be trigged after clearing textbox", async () => {
+      await write("No man land", into(textBox("Country")));
+      expect(await $("#info-borad").text()).to.equal("No man land");
+      await clear(textBox("Country"));
+      expect(await $("#info-borad").text()).to.equal("");
     });
   });
 });

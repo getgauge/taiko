@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-let {
+const expect = require("chai").expect;
+const {
   openBrowser,
   highlight,
   closeBrowser,
@@ -8,14 +8,19 @@ let {
   evaluate,
   $,
   setConfig,
-} = require('../../lib/taiko');
-let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
-const test_name = 'Highlight';
+} = require("../../lib/taiko");
+const {
+  createHtml,
+  removeFile,
+  openBrowserArgs,
+  resetConfig,
+} = require("./test-util");
+const test_name = "Highlight";
 
 describe(test_name, () => {
   let filePath;
   before(async () => {
-    let innerHtml = `
+    const innerHtml = `
             <div>
                 <a href="/">
                     Text node
@@ -38,30 +43,30 @@ describe(test_name, () => {
     removeFile(filePath);
   });
 
-  it('should highlight text node', async () => {
-    await highlight('Text node');
-    let res = await evaluate($('a'), (elem) => {
+  it("should highlight text node", async () => {
+    await highlight("Text node");
+    const res = await evaluate($("a"), (elem) => {
       return elem.classList;
     });
-    expect(res[0]).to.be.eql('taiko_highlight_style');
+    expect(res[0]).to.be.eql("taiko_highlight_style");
   });
 
-  it('should add a taiko_highlight style to pages head', async () => {
-    await highlight('Text node');
-    let styleExists = await evaluate(() => {
-      return document.getElementById('taiko_highlight') != null;
+  it("should add a taiko_highlight style to pages head", async () => {
+    await highlight("Text node");
+    const styleExists = await evaluate(() => {
+      return document.getElementById("taiko_highlight") != null;
     });
     expect(styleExists).to.be.true;
   });
 
-  it('should clear all highlights for current page', async () => {
-    await highlight('Text node');
-    let res = await evaluate($('a'), (elem) => {
+  it("should clear all highlights for current page", async () => {
+    await highlight("Text node");
+    let res = await evaluate($("a"), (elem) => {
       return elem.classList;
     });
-    expect(res[0]).to.be.eql('taiko_highlight_style');
+    expect(res[0]).to.be.eql("taiko_highlight_style");
     await clearHighlights();
-    res = await evaluate($('a'), (elem) => {
+    res = await evaluate($("a"), (elem) => {
       return elem.classList;
     });
     expect(res).to.be.empty;

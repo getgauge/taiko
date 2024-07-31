@@ -1,8 +1,8 @@
-import { execSync } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';
-import path from 'node:path';
+import { execSync } from "node:child_process";
+import { readFileSync, writeFileSync } from "node:fs";
+import path from "node:path";
 
-const PACKAGE_JSON_PATH = path.join(__dirname, '..', 'package.json');
+const PACKAGE_JSON_PATH = path.join(__dirname, "..", "package.json");
 
 interface ChromeDownload {
   platform: string;
@@ -21,7 +21,7 @@ interface ChromeReleaseInfo {
 
 class ChromeUpdater {
   private readPackageJSON() {
-    return JSON.parse(readFileSync(PACKAGE_JSON_PATH, 'utf-8'));
+    return JSON.parse(readFileSync(PACKAGE_JSON_PATH, "utf-8"));
   }
 
   private writePackageJSON(content: ChromeReleaseInfo): void {
@@ -39,7 +39,9 @@ class ChromeUpdater {
       }
 
       if (currentVersion.revision < latestVersion.revision) {
-        console.log(`Updating to latest chrome version: ${latestVersion.version}`);
+        console.log(
+          `Updating to latest chrome version: ${latestVersion.version}`,
+        );
         this.updatePackageJSON(latestVersion);
         execSync(`node ${__dirname}/../lib/install.js`);
       } else {
@@ -70,7 +72,7 @@ class ChromeUpdater {
 
   private async fetchLatestChromeVersion(): Promise<ChromeReleaseInfo> {
     const response = await fetch(
-      'https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json',
+      "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json",
     );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

@@ -1,21 +1,21 @@
+import { basename, join } from "path";
 import {
-  openBrowser,
-  setConfig,
-  screenshot,
-  closeBrowser,
-  openIncognitoWindow,
-  closeIncognitoWindow,
-} from 'taiko';
-import {
-  AfterSuite,
-  BeforeSuite,
   AfterScenario,
+  AfterSuite,
   BeforeScenario,
+  BeforeSuite,
   CustomScreenshotWriter,
-} from 'gauge-ts';
-import { startServer, stopServer } from './server';
-import { join, basename } from 'path';
-const headless = process.env.headless.toLowerCase() === 'true';
+} from "gauge-ts";
+import {
+  closeBrowser,
+  closeIncognitoWindow,
+  openBrowser,
+  openIncognitoWindow,
+  screenshot,
+  setConfig,
+} from "taiko";
+import { startServer, stopServer } from "./server";
+const headless = process.env.headless.toLowerCase() === "true";
 
 export default class Hooks {
   @BeforeScenario()
@@ -23,20 +23,23 @@ export default class Hooks {
     await openBrowser({
       headless: headless,
       args: [
-        '--disable-gpu',
-        '--disable-dev-shm-usage',
-        '--disable-setuid-sandbox',
-        '--no-first-run',
-        '--no-sandbox',
-        '--no-zygote',
-        '--window-size=1440,900',
+        "--disable-gpu",
+        "--disable-dev-shm-usage",
+        "--disable-setuid-sandbox",
+        "--no-first-run",
+        "--no-sandbox",
+        "--no-zygote",
+        "--window-size=1440,900",
       ],
     });
   }
 
   @CustomScreenshotWriter()
   public async takeScreenshot(): Promise<string> {
-    const fileName = join(process.env['gauge_screenshots_dir'], `screenshot${Date.now()}.png`);
+    const fileName = join(
+      process.env["gauge_screenshots_dir"],
+      `screenshot${Date.now()}.png`,
+    );
     await screenshot({ path: fileName });
     return basename(fileName);
   }
