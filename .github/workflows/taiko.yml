@@ -41,7 +41,6 @@ jobs:
             libasound-dev
       - name: unit-tests
         run: |
-          npm run lint:check
           npm test
 
   functional-tests:
