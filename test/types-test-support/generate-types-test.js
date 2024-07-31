@@ -1,8 +1,8 @@
-const taiko = require('../../lib/taiko');
-const config = require('../../lib/config');
-const fs = require('fs');
-const path = require('path');
-const util = require('util');
+const taiko = require("../../lib/taiko");
+const config = require("../../lib/config");
+const fs = require("fs");
+const path = require("path");
+const util = require("util");
 
 (async () => {
   /**
@@ -11,8 +11,8 @@ const util = require('util');
    * a type definition in index.d.ts.
    */
   async function genTypeTestForTaiko() {
-    const BASE_DIR = './types/taiko/test/generated';
-    const FILENAME = 'generated-type-test.ts';
+    const BASE_DIR = "./types/taiko/test/generated";
+    const FILENAME = "generated-type-test.ts";
     const filePath = path.join(BASE_DIR, FILENAME);
 
     try {
@@ -44,11 +44,11 @@ const util = require('util');
        */
       function generateTestForTaikoFuncs() {
         const funcs = Object.keys(taiko).filter(
-          (item) => item !== 'emitter' && item !== 'metadata',
+          (item) => item !== "emitter" && item !== "metadata",
         );
-        let result = '';
+        let result = "";
         funcs.sort().forEach(async (item) => (result += `taiko.${item};\n`));
-        result += '\n';
+        result += "\n";
         return result;
       }
 
@@ -70,25 +70,28 @@ const util = require('util');
           function firstToUpper(str) {
             return str.charAt(0).toUpperCase() + str.slice(1);
           }
-          const simpleName = typeName.replace(/\./, '');
-          const functionName = 'get' + firstToUpper(simpleName);
-          const constName = 'c' + firstToUpper(simpleName);
+          const simpleName = typeName.replace(/\./, "");
+          const functionName = "get" + firstToUpper(simpleName);
+          const constName = "c" + firstToUpper(simpleName);
           return { functionName, constName };
         }
         const { functionName, constName } = createNamesFromType();
-        let result =
+        const result =
           `export function ${functionName}(){\n` +
           `const ${constName}: ${typeName} = ${JSON.stringify(literal)};\n` +
           `return ${constName};\n` +
-          '}\n\n';
+          "}\n\n";
         return result;
       }
       return (
         generateImports() +
         generateTestForTaikoFuncs() +
-        generateLiteralToObjectAssignment('taiko.GlobalConfigurationOptions', config.defaultConfig)
+        generateLiteralToObjectAssignment(
+          "taiko.GlobalConfigurationOptions",
+          config.defaultConfig,
+        )
       );
     }
   }
   return await genTypeTestForTaiko();
-})().then((filePath) => console.log('Generated ' + filePath));
+})().then((filePath) => console.log("Generated " + filePath));

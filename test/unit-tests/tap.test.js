@@ -1,8 +1,8 @@
-const chai = require('chai');
+const chai = require("chai");
 const expect = chai.expect;
-const chaiAsPromised = require('chai-as-promised');
+const chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
-let {
+const {
   openBrowser,
   tap,
   closeBrowser,
@@ -13,14 +13,19 @@ let {
   setConfig,
   accept,
   alert,
-} = require('../../lib/taiko');
-let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
-const test_name = 'tap';
+} = require("../../lib/taiko");
+const {
+  createHtml,
+  removeFile,
+  openBrowserArgs,
+  resetConfig,
+} = require("./test-util");
+const test_name = "tap";
 
 describe(test_name, () => {
   let filePath;
   before(async () => {
-    let innerHtml = `
+    const innerHtml = `
             <span>tap with proximity</span>
             <div>
                 <span onclick="displayText('tap works with text nodes.')">tap on text node</span>
@@ -106,59 +111,62 @@ describe(test_name, () => {
     removeFile(filePath);
   });
 
-  describe('scroll to tap', () => {
-    it('test if auto scrolls to element before taping', async () => {
-      await tap('Show Message');
-      expect(await text('tap works with auto scroll.').exists()).to.be.true;
+  describe("scroll to tap", () => {
+    it("test if auto scrolls to element before taping", async () => {
+      await tap("Show Message");
+      expect(await text("tap works with auto scroll.").exists()).to.be.true;
     });
   });
 
-  describe('With text nodes', () => {
-    it('should tap', async () => {
-      await tap('on text');
-      expect(await text('tap works with text nodes.').exists()).to.be.true;
+  describe("With text nodes", () => {
+    it("should tap", async () => {
+      await tap("on text");
+      expect(await text("tap works with text nodes.").exists()).to.be.true;
     });
   });
 
-  describe('element inside shadow dom', () => {
-    it('should tap', async () => {
-      alert('Hello from the shadows', async () => {
+  describe("element inside shadow dom", () => {
+    it("should tap", async () => {
+      alert("Hello from the shadows", async () => {
         await accept();
       });
-      await tap(button('Shadow tap'));
+      await tap(button("Shadow tap"));
     });
   });
 
-  describe('With proximity selector', () => {
-    it('should tap', async () => {
-      await tap('tap with proximity', below('Proximity marker'));
-      expect(await text('tap works with proximity selector.').exists()).to.be.true;
+  describe("With proximity selector", () => {
+    it("should tap", async () => {
+      await tap("tap with proximity", below("Proximity marker"));
+      expect(await text("tap works with proximity selector.").exists()).to.be
+        .true;
     });
   });
 
-  describe('Text accross element', () => {
-    it('should tap', async () => {
-      await tap('Text accross elements');
-      expect(await text('tap works with text accross element.').exists()).to.be.true;
+  describe("Text accross element", () => {
+    it("should tap", async () => {
+      await tap("Text accross elements");
+      expect(await text("tap works with text accross element.").exists()).to.be
+        .true;
     });
   });
 
-  describe('Text as value', () => {
-    it('should tap', async () => {
-      await tap('Text as value');
-      expect(await text('tap works with text as value.').exists()).to.be.true;
+  describe("Text as value", () => {
+    it("should tap", async () => {
+      await tap("Text as value");
+      expect(await text("tap works with text as value.").exists()).to.be.true;
     });
   });
 
-  describe('With ghost element', () => {
-    it('should tap the ghost element', async () => {
-      await tap('tap ghost element covering text');
-      expect(await text('tap works with ghost element covering text.').exists()).to.be.true;
+  describe("With ghost element", () => {
+    it("should tap the ghost element", async () => {
+      await tap("tap ghost element covering text");
+      expect(await text("tap works with ghost element covering text.").exists())
+        .to.be.true;
     });
 
-    describe('With element covered by an overlay', () => {
-      it('should throw error', async () => {
-        await expect(tap('tap Element covered')).to.be.rejectedWith(
+    describe("With element covered by an overlay", () => {
+      it("should throw error", async () => {
+        await expect(tap("tap Element covered")).to.be.rejectedWith(
           'Element matching text "tap Element covered" is covered by other element',
         );
       });

@@ -10,10 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/getgauge/taiko.git"
   },
-  "keywords": [
-    "taiko",
-    "tips"
-  ],
+  "keywords": ["taiko", "tips"],
   "author": "getgauge",
   "license": "MIT",
   "bugs": {

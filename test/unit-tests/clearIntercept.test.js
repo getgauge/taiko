@@ -1,21 +1,21 @@
-const expect = require('chai').expect;
-const { EventEmitter } = require('events');
-const rewire = require('rewire');
+const expect = require("chai").expect;
+const { EventEmitter } = require("events");
+const rewire = require("rewire");
 
-describe('clearIntercept', () => {
+describe("clearIntercept", () => {
   let validateEmitterEvent, taiko;
   before(() => {
-    taiko = rewire('../../lib/taiko');
+    taiko = rewire("../../lib/taiko");
   });
 
   after(() => {
-    rewire('../../lib/taiko');
+    rewire("../../lib/taiko");
   });
 
   beforeEach(() => {
-    validateEmitterEvent = function (event, expectedText) {
-      let descEmitter = new EventEmitter();
-      taiko.__set__('descEvent', descEmitter);
+    validateEmitterEvent = (event, expectedText) => {
+      const descEmitter = new EventEmitter();
+      taiko.__set__("descEvent", descEmitter);
       return new Promise((resolve) => {
         descEmitter.on(event, (eventData) => {
           expect(eventData).to.be.equal(expectedText);
@@ -25,35 +25,41 @@ describe('clearIntercept', () => {
     };
   });
 
-  it('should display success message if there are intercepts for the url', async () => {
-    let validatePromise = validateEmitterEvent('success', 'Intercepts reset for url google.com');
-    let fetchHandler = {
+  it("should display success message if there are intercepts for the url", async () => {
+    const validatePromise = validateEmitterEvent(
+      "success",
+      "Intercepts reset for url google.com",
+    );
+    const fetchHandler = {
       resetInterceptor: () => true,
     };
-    taiko.__set__('fetchHandler', fetchHandler);
-    await taiko.clearIntercept('google.com');
+    taiko.__set__("fetchHandler", fetchHandler);
+    await taiko.clearIntercept("google.com");
     await validatePromise;
   });
 
-  it('should display message if all intercepts are reset', async () => {
-    let validatePromise = validateEmitterEvent('success', 'Intercepts reset for all url');
-    let fetchHandler = {
+  it("should display message if all intercepts are reset", async () => {
+    const validatePromise = validateEmitterEvent(
+      "success",
+      "Intercepts reset for all url",
+    );
+    const fetchHandler = {
       resetInterceptors: () => {},
     };
-    taiko.__set__('fetchHandler', fetchHandler);
+    taiko.__set__("fetchHandler", fetchHandler);
     await taiko.clearIntercept();
     await validatePromise;
   });
-  it('should display failure message if there are no intercepts for the url', async () => {
-    let validatePromise = validateEmitterEvent(
-      'success',
-      'Intercepts not found for url google.com',
+  it("should display failure message if there are no intercepts for the url", async () => {
+    const validatePromise = validateEmitterEvent(
+      "success",
+      "Intercepts not found for url google.com",
     );
-    let fetchHandler = {
+    const fetchHandler = {
       resetInterceptor: () => false,
     };
-    taiko.__set__('fetchHandler', fetchHandler);
-    await taiko.clearIntercept('google.com');
+    taiko.__set__("fetchHandler", fetchHandler);
+    await taiko.clearIntercept("google.com");
     await validatePromise;
   });
 });

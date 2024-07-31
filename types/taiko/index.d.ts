@@ -3,19 +3,19 @@
 // Custom Typings for Taiko - https://docs.taiko.dev/api/reference
 
 // eslint-disable-next-line no-unused-vars
-import Protocol from 'devtools-protocol';
+import type Protocol from "devtools-protocol";
 
 export type Cookie = Protocol.Network.Cookie;
 
 export type BrowserEvent =
-  | 'DOMContentLoaded'
-  | 'loadEventFired'
-  | 'networkAlmostIdle'
-  | 'networkIdle'
-  | 'firstPaint'
-  | 'firstContentfulPaint'
-  | 'firstMeaningfulPaint'
-  | 'targetNavigated';
+  | "DOMContentLoaded"
+  | "loadEventFired"
+  | "networkAlmostIdle"
+  | "networkIdle"
+  | "firstPaint"
+  | "firstContentfulPaint"
+  | "firstMeaningfulPaint"
+  | "targetNavigated";
 
 /**
  * Options
@@ -44,14 +44,16 @@ export interface BasicNavigationOptions extends VeryBasicNavigationOptions {
   navigationTimeout?: number;
 }
 
-export interface NavigationOptions extends BasicNavigationOptions, EventOptions {
+export interface NavigationOptions
+  extends BasicNavigationOptions,
+    EventOptions {
   headers?: object;
   waitForStart?: number;
 }
 
 export interface ScrollOptions extends NavigationOptions {
-  blockAlignment?: 'start' | 'center' | 'end' | 'nearest';
-  inlineAlignment?: 'start' | 'center' | 'end' | 'nearest';
+  blockAlignment?: "start" | "center" | "end" | "nearest";
+  inlineAlignment?: "start" | "center" | "end" | "nearest";
 }
 
 export interface ReloadOptions extends NavigationOptions {
@@ -59,7 +61,7 @@ export interface ReloadOptions extends NavigationOptions {
 }
 
 export interface ClickOptions extends NavigationOptions, ForceOption {
-  button?: 'left' | 'right' | 'middle';
+  button?: "left" | "right" | "middle";
   clickCount?: number;
   position?: string;
   elementsToMatch?: number;
@@ -82,7 +84,10 @@ export interface GlobalConfigurationOptions {
   local?: boolean;
 }
 
-export interface TapOptions extends BasicNavigationOptions, EventOptions, ForceOption {}
+export interface TapOptions
+  extends BasicNavigationOptions,
+    EventOptions,
+    ForceOption {}
 
 export interface KeyOptions extends NavigationOptions {
   text?: string;
@@ -148,7 +153,7 @@ export interface EvaluateHandlerArgs {
   [key: string]: any;
 }
 
-export interface EvaluateOptions extends Omit<NavigationOptions, 'headers'> {
+export interface EvaluateOptions extends Omit<NavigationOptions, "headers"> {
   args?: EvaluateHandlerArgs;
 }
 
@@ -182,7 +187,9 @@ export interface ForceOption {
   force?: boolean;
 }
 
-export interface ForcedNavigationOptions extends NavigationOptions, ForceOption {}
+export interface ForcedNavigationOptions
+  extends NavigationOptions,
+    ForceOption {}
 
 /**
  * Elements, Selectors and Searches
@@ -221,7 +228,11 @@ export interface ElementWrapper {
   isDraggable(retryInterval?: number, retryTimeout?: number): Promise<boolean>;
   attribute(name: string): Promise<string>;
   elements(retryInterval?: number, retryTimeout?: number): Promise<Element[]>;
-  element(index: number, retryInterval?: number, retryTimeout?: number): Promise<Element>;
+  element(
+    index: number,
+    retryInterval?: number,
+    retryTimeout?: number,
+  ): Promise<Element>;
 }
 
 export interface ValueWrapper extends ElementWrapper {
@@ -244,7 +255,9 @@ export interface FileFieldWrapper extends ValueWrapper {}
 export interface TextBoxWrapper extends ValueWrapper {}
 
 export interface DropDownWrapper extends ValueWrapper {
-  select(value?: string | number | string[] | number[] | { index: number[] }): Promise<void>;
+  select(
+    value?: string | number | string[] | number[] | { index: number[] },
+  ): Promise<void>;
 }
 export interface TimeFieldWrapper extends ValueWrapper {
   select(value?: Date): Promise<void>;
@@ -291,7 +304,12 @@ export interface RelativeSearchElement {
 export type Selector = BasicSelector | ElementWrapper;
 
 // SearchElement mimics isSelector, isString, isElement and also allows relative search elements
-export type SearchElement = string | Selector | Element | RelativeSearchElement | object;
+export type SearchElement =
+  | string
+  | Selector
+  | Element
+  | RelativeSearchElement
+  | object;
 
 export interface AttrValuePairs {
   [key: string]: string;
@@ -328,14 +346,20 @@ export interface InterceptRequest {
   resourceType: string;
   networkId: string;
 }
-export type interceptRequestHandler = (request: InterceptRequest) => Promise<void>;
+export type interceptRequestHandler = (
+  request: InterceptRequest,
+) => Promise<void>;
 
 /**
  * Viewport
  */
 
 export interface ViewPortScreenOrientation {
-  type: 'portraitPrimary' | 'portraitSecondary' | 'landscapePrimary' | 'landscapeSecondary';
+  type:
+    | "portraitPrimary"
+    | "portraitSecondary"
+    | "landscapePrimary"
+    | "landscapeSecondary";
   angle: number;
 }
 export interface ViewPort {
@@ -378,7 +402,9 @@ export function closeBrowser(): Promise<void>;
 export function client(): any; // TODO: no TS Bindings available: https://github.com/cyrus-and/chrome-remote-interface/issues/112
 // https://docs.taiko.dev/api/switchto
 // TODO: fix corresponding JSDoc in lib/taiko.js
-export function switchTo(target: RegExp | OpenWindowOrTabOptions): Promise<void>;
+export function switchTo(
+  target: RegExp | OpenWindowOrTabOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/intercept
 // https://github.com/getgauge/taiko/issues/98#issuecomment-42024186
 export function intercept(
@@ -389,15 +415,15 @@ export function intercept(
 // https://docs.taiko.dev/api/emulatenetwork
 export function emulateNetwork(
   networkType:
-    | 'GPRS'
-    | 'Regular2G'
-    | 'Good2G'
-    | 'Good3G'
-    | 'Regular3G'
-    | 'Regular4G'
-    | 'DSL'
-    | 'WiFi'
-    | 'Offline'
+    | "GPRS"
+    | "Regular2G"
+    | "Good2G"
+    | "Good3G"
+    | "Regular3G"
+    | "Regular4G"
+    | "DSL"
+    | "WiFi"
+    | "Offline"
     | {
         offline?: boolean;
         downloadThroughput?: number;
@@ -428,7 +454,10 @@ export function openIncognitoWindow(
 export function closeIncognitoWindow(name: string): Promise<void>;
 // https://docs.taiko.dev/api/overridepermissions
 // TODO: use the proper type for the second param from devtools-protocol
-export function overridePermissions(origin: string, permissions: string[]): Promise<void>;
+export function overridePermissions(
+  origin: string,
+  permissions: string[],
+): Promise<void>;
 // https://docs.taiko.dev/api/clearpermissionoverrides
 export function clearPermissionOverrides(): Promise<void>;
 // https://docs.taiko.dev/api/setcookie
@@ -438,7 +467,10 @@ export function setCookie(
   options?: CookieDetailOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/deletecookies
-export function deleteCookies(cookieName?: string, options?: CookieOptions): Promise<void>;
+export function deleteCookies(
+  cookieName?: string,
+  options?: CookieOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/getcookies
 export function getCookies(options?: { urls: string[] }): Promise<Cookie[]>;
 // https://docs.taiko.dev/api/setlocation
@@ -449,7 +481,10 @@ export function setLocation(options: LocationOptions): Promise<void>;
  */
 
 // https://docs.taiko.dev/api/goto
-export function goto(url: string, options?: NavigationOptions): Promise<Response>;
+export function goto(
+  url: string,
+  options?: NavigationOptions,
+): Promise<Response>;
 // https://docs.taiko.dev/api/reload
 export function reload(url?: string, options?: ReloadOptions): Promise<void>;
 // https://docs.taiko.dev/api/goback
@@ -483,38 +518,76 @@ export function dragAndDrop(
   options?: ForceOption,
 ): Promise<void>;
 // https://docs.taiko.dev/api/hover
-export function hover(selector: SearchElement, options?: ForcedNavigationOptions): Promise<void>;
+export function hover(
+  selector: SearchElement,
+  options?: ForcedNavigationOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/focus
-export function focus(selector: SearchElement, options?: ForcedNavigationOptions): Promise<void>;
+export function focus(
+  selector: SearchElement,
+  options?: ForcedNavigationOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/write
-export function write(text: string, into?: SearchElement, options?: WriteOptions): Promise<void>;
+export function write(
+  text: string,
+  into?: SearchElement,
+  options?: WriteOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/clear
-export function clear(selector?: SearchElement, options?: ForcedNavigationOptions): Promise<void>;
+export function clear(
+  selector?: SearchElement,
+  options?: ForcedNavigationOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/attach
-export function attach(filepath: string, to: SearchElement, options?: ForceOption): Promise<void>;
+export function attach(
+  filepath: string,
+  to: SearchElement,
+  options?: ForceOption,
+): Promise<void>;
 // https://docs.taiko.dev/api/press
-export function press(keys: string | string[], options?: KeyOptions): Promise<void>;
+export function press(
+  keys: string | string[],
+  options?: KeyOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/highlight
-export function highlight(selector: SearchElement, ...args: RelativeSearchElement[]): Promise<void>;
+export function highlight(
+  selector: SearchElement,
+  ...args: RelativeSearchElement[]
+): Promise<void>;
 // https://docs.taiko.dev/api/clearHighlights
 export function clearHighlights(): Promise<void>;
 // https://docs.taiko.dev/api/mouseaction
 export function mouseAction(
-  selector: SearchElement | 'press' | 'move' | 'release',
-  action?: 'press' | 'move' | 'release' | MouseCoordinates,
+  selector: SearchElement | "press" | "move" | "release",
+  action?: "press" | "move" | "release" | MouseCoordinates,
   coordinates?: MouseCoordinates | NavigationOptions,
   options?: ForcedNavigationOptions,
 ): Promise<void>;
 // https://docs.taiko.dev/api/scrollto
-export function scrollTo(selector: SearchElement, options?: ScrollOptions): Promise<void>;
+export function scrollTo(
+  selector: SearchElement,
+  options?: ScrollOptions,
+): Promise<void>;
 // https://docs.taiko.dev/api/scrollright
-export function scrollRight(selector?: SearchElement | number, px?: number): Promise<void>;
+export function scrollRight(
+  selector?: SearchElement | number,
+  px?: number,
+): Promise<void>;
 // https://docs.taiko.dev/api/scrollleft
-export function scrollLeft(selector?: SearchElement | number, px?: number): Promise<void>;
+export function scrollLeft(
+  selector?: SearchElement | number,
+  px?: number,
+): Promise<void>;
 // https://docs.taiko.dev/api/scrollup
-export function scrollUp(selector?: SearchElement | number, px?: number): Promise<void>;
+export function scrollUp(
+  selector?: SearchElement | number,
+  px?: number,
+): Promise<void>;
 // https://docs.taiko.dev/api/scrolldown
-export function scrollDown(selector?: SearchElement | number, px?: number): Promise<void>;
+export function scrollDown(
+  selector?: SearchElement | number,
+  px?: number,
+): Promise<void>;
 // https://docs.taiko.dev/api/screenshot
 export function screenshot(
   selector?: SearchElement,
@@ -627,15 +700,25 @@ export function text(
  */
 
 // https://docs.taiko.dev/api/toleftof
-export function toLeftOf(selector: SearchElement | ElementWrapper): RelativeSearchElement;
+export function toLeftOf(
+  selector: SearchElement | ElementWrapper,
+): RelativeSearchElement;
 // https://docs.taiko.dev/api/torightof
-export function toRightOf(selector: SearchElement | ElementWrapper): RelativeSearchElement;
+export function toRightOf(
+  selector: SearchElement | ElementWrapper,
+): RelativeSearchElement;
 // https://docs.taiko.dev/api/above
-export function above(selector: SearchElement | ElementWrapper): RelativeSearchElement;
+export function above(
+  selector: SearchElement | ElementWrapper,
+): RelativeSearchElement;
 // https://docs.taiko.dev/api/below
-export function below(selector: SearchElement | ElementWrapper): RelativeSearchElement;
+export function below(
+  selector: SearchElement | ElementWrapper,
+): RelativeSearchElement;
 // https://docs.taiko.dev/api/within
-export function within(selector: SearchElement | ElementWrapper): RelativeSearchElement;
+export function within(
+  selector: SearchElement | ElementWrapper,
+): RelativeSearchElement;
 // https://docs.taiko.dev/api/near
 export function near(
   selector: SearchElement | ElementWrapper,
@@ -673,7 +756,10 @@ export function confirm(
 // https://docs.taiko.dev/api/beforeunload
 export function beforeunload(callback: () => Promise<void>): void;
 
-export type EvaluateHandler<T> = (element: HTMLElement, args?: EvaluateHandlerArgs) => T;
+export type EvaluateHandler<T> = (
+  element: HTMLElement,
+  args?: EvaluateHandlerArgs,
+) => T;
 
 /**
  * Helpers
