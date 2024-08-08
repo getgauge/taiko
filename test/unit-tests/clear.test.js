@@ -24,7 +24,7 @@ describe(test_name, () => {
   before(async () => {
     const innerHtml =
       `<script>
-     
+
     class ShadowButton extends HTMLElement {
       constructor() {
         super();
@@ -35,7 +35,7 @@ describe(test_name, () => {
         button.setAttribute('id', 'Shadow text');
         button.setAttribute('value', 'Shadow text');
         shadow.appendChild(button);
-        
+
       }
     }
     customElements.define('shadow-button', ShadowButton);
@@ -64,15 +64,21 @@ multiple lines.</textarea>
         </form>
         <div id='info-borad' ></div>
         <script type="text/javascript">
-            setTimeout( () => {
-                document.getElementById('name').disabled = false;
-            }, 50);
+            document.addEventListener("DOMContentLoaded", function() {
+                setTimeout(() => {
+                    document.getElementById('name').disabled = false;
+                }, 50);
 
-            function displayInfo(element) {
-                console.log(element)
-                console.log(element.value)
-                document.getElementById('info-borad').innerText  = element.value;
-            }
+                function displayInfo(element) {
+                    console.log(element);
+                    console.log(element.value);
+                    document.getElementById('info-borad').innerText = element.value;
+                }
+
+                document.getElementById('country').addEventListener('keyup', function() {
+                    displayInfo(this);
+                });
+            });
         </script>
         `;
     filePath = createHtml(innerHtml, test_name);
