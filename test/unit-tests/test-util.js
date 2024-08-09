@@ -1,11 +1,17 @@
-let path = require('path');
-let { writeFileSync, unlinkSync, existsSync } = require('fs');
-let { pathToFileURL, fileURLToPath } = require('url');
-let { setConfig } = require('../../lib/taiko');
+const path = require("path");
+const { writeFileSync, unlinkSync, existsSync } = require("fs");
+const { pathToFileURL, fileURLToPath } = require("url");
+const { setConfig } = require("../../lib/taiko");
 
 module.exports.createHtml = (innerHtml, testName) => {
-  let htmlFilePath = path.join(process.cwd(), 'test', 'unit-tests', 'data', testName + '.html');
-  let content = `
+  const htmlFilePath = path.join(
+    process.cwd(),
+    "test",
+    "unit-tests",
+    "data",
+    testName + ".html",
+  );
+  const content = `
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,12 +39,12 @@ module.exports.removeFile = (filePath) => {
 
 module.exports.openBrowserArgs = {
   args: [
-    '--disable-gpu',
-    '--disable-dev-shm-usage',
-    '--disable-setuid-sandbox',
-    '--no-first-run',
-    '--no-sandbox',
-    '--no-zygote',
+    "--disable-gpu",
+    "--disable-dev-shm-usage",
+    "--disable-setuid-sandbox",
+    "--no-first-run",
+    "--no-sandbox",
+    "--no-zygote",
   ],
 };
 

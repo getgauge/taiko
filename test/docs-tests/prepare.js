@@ -1,12 +1,12 @@
-const chai = require('chai');
+const chai = require("chai");
 // const expect = chai.expect;
-const chaiAsPromised = require('chai-as-promised');
+const chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
-const fs = require('fs');
-const util = require('util');
-const path = require('path');
-const { jsDocToJson } = require('../../lib/documentation');
-const _ncp = require('ncp').ncp;
+const fs = require("fs");
+const util = require("util");
+const path = require("path");
+const { jsDocToJson } = require("../../lib/documentation");
+const _ncp = require("ncp").ncp;
 _ncp.limit = 16;
 const recursiveCp = util.promisify(_ncp);
 const mkdir = util.promisify(fs.mkdir);
@@ -15,7 +15,7 @@ async function prepare() {
   try {
     const docsConstants = prepareDocsConstants();
     await prepareDocsDirs(docsConstants);
-    const jsonConstants = prepareJsonConstants(['./jsdoc-inputs/*.js']);
+    const jsonConstants = prepareJsonConstants(["./jsdoc-inputs/*.js"]);
     await prepareJson(jsonConstants);
   } catch (e) {
     console.error(e);
@@ -23,17 +23,17 @@ async function prepare() {
 }
 
 function prepareDocsConstants() {
-  const destBaseDir = './tmp/docs';
-  const srcBaseDir = '../../docs';
+  const destBaseDir = "./tmp/docs";
+  const srcBaseDir = "../../docs";
   const docsConstants = {
-    srcApiDir: path.join(srcBaseDir, 'api'),
-    destApiDir: path.join(destBaseDir, 'api'),
-    apiNjkFileName: 'api.njk',
-    srcIncludesDir: path.join(srcBaseDir, '_includes'),
-    destIncludesDir: path.join(destBaseDir, '_includes'),
-    srcDataDir: path.join(srcBaseDir, '_data'),
-    destDataDir: path.join(destBaseDir, '_data'),
-    apiJsFileName: 'apis.js',
+    srcApiDir: path.join(srcBaseDir, "api"),
+    destApiDir: path.join(destBaseDir, "api"),
+    apiNjkFileName: "api.njk",
+    srcIncludesDir: path.join(srcBaseDir, "_includes"),
+    destIncludesDir: path.join(destBaseDir, "_includes"),
+    srcDataDir: path.join(srcBaseDir, "_data"),
+    destDataDir: path.join(destBaseDir, "_data"),
+    apiJsFileName: "apis.js",
   };
   return docsConstants;
 }
@@ -74,8 +74,8 @@ async function prepareDataDir(srcDataDir, destDataDir, apiJsFileName) {
 }
 
 function prepareJsonConstants(sourceCodeFiles) {
-  const jsonDir = path.join(process.cwd(), 'lib');
-  const jsonFileName = 'api.json';
+  const jsonDir = path.join(process.cwd(), "lib");
+  const jsonFileName = "api.json";
   const jsonConstants = { sourceCodeFiles, jsonDir, jsonFileName };
   return jsonConstants;
 }

@@ -92,7 +92,6 @@ test-script.js
 test/docs-tests/tmp/
 test/docs-tests/lib/
 test/docs-tests/gauge/.vscode
-test/docs-tests/gauge/package-lock.json
 test/docs-tests/gauge/reports/
 test/docs-tests/gauge/.gauge/
 test/package-lock.json

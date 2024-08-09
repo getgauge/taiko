@@ -1,6 +1,5 @@
-'use strict';
-import { Table } from 'gauge-ts';
-import { button, link, textBox, text, $ } from 'taiko';
+import type { Table } from "gauge-ts";
+import { $, button, link, text, textBox } from "taiko";
 
 function getElementWithSelector(element: string, selector: string) {
   let selectedElement = null;
@@ -11,19 +10,19 @@ function getElementWithSelector(element: string, selector: string) {
     selectedItem = selector;
   }
   switch (element) {
-    case 'link':
+    case "link":
       selectedElement = link(selectedItem);
       break;
-    case 'textBox':
+    case "textBox":
       selectedElement = textBox(selectedItem);
       break;
-    case 'text':
+    case "text":
       selectedElement = text(selectedItem);
       break;
-    case 'button':
+    case "button":
       selectedElement = button(selectedItem);
       break;
-    case '$':
+    case "$":
       selectedElement = $(selectedItem);
       break;
   }
@@ -32,8 +31,8 @@ function getElementWithSelector(element: string, selector: string) {
 
 export function getElements(table: Table) {
   const referenceElements = [];
-  let headers = table.getColumnNames();
-  table.getTableRows().forEach(function (row) {
+  const headers = table.getColumnNames();
+  table.getTableRows().forEach((row) => {
     referenceElements.push(
       getElementWithSelector(row.getCell(headers[0]), row.getCell(headers[1])),
     );

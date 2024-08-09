@@ -1,12 +1,11 @@
-'use strict';
-import { getElements } from './selectors';
+import { getElements } from "./selectors";
 
-import { link, click, below, SearchElement } from 'taiko';
+import { type SearchElement, below, click, link } from "taiko";
 
-import { Step } from 'gauge-ts';
+import { Step } from "gauge-ts";
 
 export default class Click {
-  @Step('Click link <userlink> below <text>')
+  @Step("Click link <userlink> below <text>")
   public async clickLinkBelowTable(userlink: SearchElement, text: string) {
     await click(link(userlink, below(text)), { waitForNavigation: true });
   }
