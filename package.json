@@ -20,7 +20,7 @@
     "test:unit": "mocha 'test/unit-tests/**/*.test.js' --timeout 9000 --trace-warnings --exit",
     "test": "npm run test:api && npm run test:unit:silent",
     "test-functional": "npm install && cd test/functional-tests && npm install && npm test",
-    "test-docs": "cd test/docs-tests && node prepare.js && eleventy && cd ./gauge && npm install && npm test",
+    "test-docs": "cd test/docs-tests && node prepare.js && eleventy && cd ./gauge && npm ci && npm test",
     "install": "node lib/install.js",
     "update-json-doc": "node build/updateJsonDoc.js",
     "postinstall": "node lib/documentation.js"
@@ -36,7 +36,10 @@
     "headless-browser"
   ],
   "lint-staged": {
-    "**/*.{js,ts}": ["npm run lint", "git add"]
+    "**/*.{js,ts}": [
+      "npm run lint",
+      "git add"
+    ]
   },
   "taiko": {
     "browser": {
