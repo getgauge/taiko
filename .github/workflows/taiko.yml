@@ -138,7 +138,7 @@ jobs:
 
   docs-tests:
     needs: unit-tests
-    name: Docs tests - ${{ matrix.os }}
+    name: Docs tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -149,7 +149,6 @@ jobs:
       - name: install
         run: npm install
       - name: install browser dependencies
-        if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -170,11 +169,11 @@ jobs:
         uses: actions/upload-artifact@v1
         if: failure()
         with:
-          name: docs-tests-reports-${{ matrix.os }}
+          name: docs-tests-reports
           path: test/docs-tests/gauge/reports/html-report
       - name: Upload logs
         uses: actions/upload-artifact@v1
         if: failure()
         with:
-          name: docs-tests-logs-${{ matrix.os }}
+          name: docs-tests-logs
           path: test/docs-tests/gauge/logs
