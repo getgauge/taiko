@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-let {
+const expect = require("chai").expect;
+const {
   openBrowser,
   closeBrowser,
   goto,
@@ -8,17 +8,22 @@ let {
   above,
   text,
   $,
-} = require('../../lib/taiko');
-let { createHtml, removeFile, openBrowserArgs, resetConfig } = require('./test-util');
-let path = require('path');
-let fs = require('fs');
-const test_name = 'screenshot';
+} = require("../../lib/taiko");
+const {
+  createHtml,
+  removeFile,
+  openBrowserArgs,
+  resetConfig,
+} = require("./test-util");
+const path = require("path");
+const fs = require("fs");
+const test_name = "screenshot";
 
 describe(test_name, () => {
   let filePath;
-  let screenshotPath = path.join(__dirname, 'data', 'screenshot.png');
+  const screenshotPath = path.join(__dirname, "data", "screenshot.png");
   before(async () => {
-    let innerHtml = `
+    const innerHtml = `
         <div class="example">
             <h3 id='header'>Screenshot</h3>
             <p>Sample webpage for screenshot</p>
@@ -40,26 +45,37 @@ describe(test_name, () => {
     removeFile(screenshotPath);
   });
 
-  describe('screenshot', () => {
-    it('should get the screenshot in given path', async () => {
+  describe("screenshot", () => {
+    it("should get the screenshot in given path", async () => {
       await screenshot({ path: screenshotPath });
       expect(fs.existsSync(screenshotPath)).to.be.true;
     });
-    it('should get the screenshot with encoding', async () => {
-      expect(await screenshot({ encoding: 'base64' })).to.not.be.empty;
+    it("should get the screenshot with encoding", async () => {
+      expect(await screenshot({ encoding: "base64" })).to.not.be.empty;
     });
-    it('should get the screenshot with proximity selectors', async () => {
-      let screenshotPath = path.join(__dirname, 'data', 'screenshot_proximity.png');
-      await screenshot(text('Screenshot', above('Sample webpage for screenshot')), {
-        path: screenshotPath,
-      });
+    it("should get the screenshot with proximity selectors", async () => {
+      const screenshotPath = path.join(
+        __dirname,
+        "data",
+        "screenshot_proximity.png",
+      );
+      await screenshot(
+        text("Screenshot", above("Sample webpage for screenshot")),
+        {
+          path: screenshotPath,
+        },
+      );
       expect(fs.existsSync(screenshotPath)).to.be.true;
       removeFile(screenshotPath);
     });
 
-    it('should get the screenshot with elements', async () => {
-      let screenshotPath = path.join(__dirname, 'data', 'screenshot_proximity.png');
-      await screenshot(await $('#header').element(0), {
+    it("should get the screenshot with elements", async () => {
+      const screenshotPath = path.join(
+        __dirname,
+        "data",
+        "screenshot_proximity.png",
+      );
+      await screenshot(await $("#header").element(0), {
         path: screenshotPath,
       });
       expect(fs.existsSync(screenshotPath)).to.be.true;

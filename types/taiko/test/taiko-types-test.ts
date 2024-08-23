@@ -1,23 +1,23 @@
 import {
-  openBrowser,
-  closeBrowser,
-  switchTo,
-  intercept,
-  emulateNetwork,
-  emulateDevice,
-  setViewPort,
-  openTab,
-  closeTab,
-  openIncognitoWindow,
-  closeIncognitoWindow,
-  overridePermissions,
-  clearPermissionOverrides,
-  setCookie,
-  deleteCookies,
-  getCookies,
-  setLocation,
   clearIntercept,
-} from '../../taiko';
+  clearPermissionOverrides,
+  closeBrowser,
+  closeIncognitoWindow,
+  closeTab,
+  deleteCookies,
+  emulateDevice,
+  emulateNetwork,
+  getCookies,
+  intercept,
+  openBrowser,
+  openIncognitoWindow,
+  openTab,
+  overridePermissions,
+  setCookie,
+  setLocation,
+  setViewPort,
+  switchTo,
+} from "../../taiko";
 
 // ------------------------------------------
 // openBrowser
@@ -26,17 +26,17 @@ import {
 
 openBrowser(); // $ExpectType Promise<void>
 openBrowser({ headless: false }); // $ExpectType Promise<void>
-openBrowser({ args: ['--window-size=1440,900'] }); // $ExpectType Promise<void>
+openBrowser({ args: ["--window-size=1440,900"] }); // $ExpectType Promise<void>
 
 // $ExpectType Promise<void>
 openBrowser({
   args: [
-    '--disable-gpu',
-    '--disable-dev-shm-usage',
-    '--disable-setuid-sandbox',
-    '--no-first-run',
-    '--no-sandbox',
-    '--no-zygote',
+    "--disable-gpu",
+    "--disable-dev-shm-usage",
+    "--disable-setuid-sandbox",
+    "--no-first-run",
+    "--no-sandbox",
+    "--no-zygote",
   ],
 });
 
@@ -58,7 +58,7 @@ switchTo(/Taiko/); // $ExpectType Promise<void>
 switchTo(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/); // $ExpectType Promise<void>
 switchTo(/Go*gle/); // $ExpectType Promise<void>
 switchTo(/google.com/); // $ExpectType Promise<void>
-switchTo({ name: 'newyorktimes' }); // $ExpectType Promise<void>
+switchTo({ name: "newyorktimes" }); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // intercept
@@ -67,11 +67,11 @@ switchTo({ name: 'newyorktimes' }); // $ExpectType Promise<void>
 
 // Case 1: Block URL (Blocks all request for people.png)
 // $ExpectType Promise<void>
-intercept('http://localhost:3000/assets/images/people.png');
+intercept("http://localhost:3000/assets/images/people.png");
 
 // Case 2: Mock response (Mocks response to modify address from "888 Central St." to "12345 Central St." )
 // $ExpectType Promise<void>
-intercept('http://localhost:3000/api/customers/11', {
+intercept("http://localhost:3000/api/customers/11", {
   body:
     '{"id":11,"firstName":"ward","lastName":"bell","gender":"male",' +
     '"address":"12345 Central St.","city":"Los Angeles",' +
@@ -81,30 +81,36 @@ intercept('http://localhost:3000/api/customers/11', {
 
 // Case 3: Override request (Overrides google4_hdpi.png url to return female.png can be seen in map)
 // $ExpectType Promise<void>
-intercept('https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png', (request) => {
-  request.continue({ url: 'http://localhost:3000/assets/images/female.png' });
-});
+intercept(
+  "https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png",
+  (request) => {
+    request.continue({ url: "http://localhost:3000/assets/images/female.png" });
+  },
+);
 // $ExpectType Promise<void>
-intercept('https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png', (request) => {
-  request.continue({
-    url: 'http://localhost:3000/assets/images/female.png',
-    headers: {
-      foo: 'bar', // set "foo" header
-      origin: undefined, // remove "origin" header
-    },
-  });
-});
+intercept(
+  "https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png",
+  (request) => {
+    request.continue({
+      url: "http://localhost:3000/assets/images/female.png",
+      headers: {
+        foo: "bar", // set "foo" header
+        origin: undefined, // remove "origin" header
+      },
+    });
+  },
+);
 
 // Case 4: Redirect URL (Overrides male.png to female.png)
 // $ExpectType Promise<void>
 intercept(
-  'http://localhost:3000/assets/images/male.png',
-  'http://localhost:3000/assets/images/female.png',
+  "http://localhost:3000/assets/images/male.png",
+  "http://localhost:3000/assets/images/female.png",
 );
 
 // Case 5: Mock response based on request (Mocks response to modify address from "1234 Anywhere St." to "888 Anywhere St.")
 // $ExpectType Promise<void>
-intercept('http://localhost:3000/api/customers/1', (request) => {
+intercept("http://localhost:3000/api/customers/1", (request) => {
   request.respond({
     body:
       '{"id":1,"firstName":"ted","lastName":"james",' +
@@ -121,17 +127,26 @@ intercept('http://localhost:3000/api/customers/1', (request) => {
 // https://docs.taiko.dev/api/emulatenetwork
 // ------------------------------------------
 
-emulateNetwork('Offline'); // $ExpectType Promise<void>
-emulateNetwork('Good2G'); // $ExpectType Promise<void>
-emulateNetwork({ offline: false, downloadThroughput: 6400, uploadThroughput: 2560, latency: 500 }); // $ExpectType Promise<void>
-emulateNetwork({ downloadThroughput: 6400, uploadThroughput: 2560, latency: 500 }); // $ExpectType Promise<void>
+emulateNetwork("Offline"); // $ExpectType Promise<void>
+emulateNetwork("Good2G"); // $ExpectType Promise<void>
+emulateNetwork({
+  offline: false,
+  downloadThroughput: 6400,
+  uploadThroughput: 2560,
+  latency: 500,
+}); // $ExpectType Promise<void>
+emulateNetwork({
+  downloadThroughput: 6400,
+  uploadThroughput: 2560,
+  latency: 500,
+}); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // emulateDevice
 // https://docs.taiko.dev/api/emulatedevice
 // ------------------------------------------
 
-emulateDevice('iPhone 6'); // $ExpectType Promise<void>
+emulateDevice("iPhone 6"); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // setViewPort
@@ -152,7 +167,7 @@ setViewPort({
   positionX: 1,
   positionY: 1,
   dontSetVisibleSize: true,
-  screenOrientation: { type: 'landscapePrimary', angle: 0 },
+  screenOrientation: { type: "landscapePrimary", angle: 0 },
   viewport: { x: 1, y: 1, width: 1, height: 1, scale: 1 },
 });
 
@@ -161,23 +176,23 @@ setViewPort({
 // https://docs.taiko.dev/api/opentab
 // ------------------------------------------
 
-openTab('https://taiko.dev'); // $ExpectType Promise<void>
+openTab("https://taiko.dev"); // $ExpectType Promise<void>
 openTab(); // $ExpectType Promise<void>
-openTab('https://taiko.dev', { name: 'taiko' }); // $ExpectType Promise<void>
+openTab("https://taiko.dev", { name: "taiko" }); // $ExpectType Promise<void>
 // $ExpectType Promise<void>
-openTab('https://taiko.dev', {
+openTab("https://taiko.dev", {
   waitForNavigation: true,
-  name: 'aaa',
+  name: "aaa",
   navigationTimeout: 10000,
   waitForStart: 200,
   waitForEvents: [
-    'DOMContentLoaded',
-    'loadEventFired',
-    'networkAlmostIdle',
-    'networkIdle',
-    'firstPaint',
-    'firstContentfulPaint',
-    'firstMeaningfulPaint',
+    "DOMContentLoaded",
+    "loadEventFired",
+    "networkAlmostIdle",
+    "networkIdle",
+    "firstPaint",
+    "firstContentfulPaint",
+    "firstMeaningfulPaint",
   ],
 });
 
@@ -187,8 +202,8 @@ openTab('https://taiko.dev', {
 // ------------------------------------------
 
 closeTab(); // $ExpectType Promise<void>
-closeTab('Open Source Test Automation Framework | Gauge'); // $ExpectType Promise<void>
-closeTab('https://gauge.org'); // $ExpectType Promise<void>
+closeTab("Open Source Test Automation Framework | Gauge"); // $ExpectType Promise<void>
+closeTab("https://gauge.org"); // $ExpectType Promise<void>
 closeTab(/Go*gle/); // $ExpectType Promise<void>
 closeTab(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/); // $ExpectType Promise<void>
 
@@ -198,22 +213,22 @@ closeTab(/http(s?):\/\/(www?).google.(com|co.in|co.uk)/); // $ExpectType Promise
 // ------------------------------------------
 
 openIncognitoWindow(); // $ExpectType Promise<void>
-openIncognitoWindow('https://google.com'); // $ExpectType Promise<void>
-openIncognitoWindow('https://google.com', { name: 'windowName' }); // $ExpectType Promise<void>
+openIncognitoWindow("https://google.com"); // $ExpectType Promise<void>
+openIncognitoWindow("https://google.com", { name: "windowName" }); // $ExpectType Promise<void>
 // $ExpectType Promise<void>
-openIncognitoWindow('https://google.com', {
+openIncognitoWindow("https://google.com", {
   waitForNavigation: true,
-  name: 'aaa',
+  name: "aaa",
   navigationTimeout: 10000,
   waitForStart: 200,
   waitForEvents: [
-    'DOMContentLoaded',
-    'loadEventFired',
-    'networkAlmostIdle',
-    'networkIdle',
-    'firstPaint',
-    'firstContentfulPaint',
-    'firstMeaningfulPaint',
+    "DOMContentLoaded",
+    "loadEventFired",
+    "networkAlmostIdle",
+    "networkIdle",
+    "firstPaint",
+    "firstContentfulPaint",
+    "firstMeaningfulPaint",
   ],
 });
 
@@ -222,7 +237,7 @@ openIncognitoWindow('https://google.com', {
 // https://docs.taiko.dev/api/closeIncognitoWindow
 // ------------------------------------------
 
-closeIncognitoWindow('windowName'); // $ExpectType Promise<void>
+closeIncognitoWindow("windowName"); // $ExpectType Promise<void>
 closeIncognitoWindow(); // $ExpectError
 
 // ------------------------------------------
@@ -230,7 +245,7 @@ closeIncognitoWindow(); // $ExpectError
 // https://docs.taiko.dev/api/overridePermissions
 // ------------------------------------------
 
-overridePermissions('http://maps.google.com', ['geolocation']); // $ExpectType Promise<void>
+overridePermissions("http://maps.google.com", ["geolocation"]); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // clearPermissionOverrides
@@ -244,20 +259,22 @@ clearPermissionOverrides(); // $ExpectType Promise<void>
 // https://docs.taiko.dev/api/setCookie
 // ------------------------------------------
 
-setCookie('CSRFToken', 'csrfToken', { url: 'http://the-internet.herokuapp.com' }); // $ExpectType Promise<void>
-setCookie('CSRFToken', 'csrfToken', { domain: 'herokuapp.com' }); // $ExpectType Promise<void>
+setCookie("CSRFToken", "csrfToken", {
+  url: "http://the-internet.herokuapp.com",
+}); // $ExpectType Promise<void>
+setCookie("CSRFToken", "csrfToken", { domain: "herokuapp.com" }); // $ExpectType Promise<void>
 // $ExpectType Promise<void>
-setCookie('CSRFToken', 'csrfToken', {
-  url: 'an url',
-  domain: 'a domain',
-  path: 'a path',
+setCookie("CSRFToken", "csrfToken", {
+  url: "an url",
+  domain: "a domain",
+  path: "a path",
   secure: true,
   httpOnly: true,
-  sameSite: 'a string',
+  sameSite: "a string",
   expires: 1000000,
 });
-setCookie('CSRFToken', 'csrfToken', {}); // $ExpectType Promise<void>
-setCookie('CSRFToken', 'csrfToken'); // $ExpectType Promise<void>
+setCookie("CSRFToken", "csrfToken", {}); // $ExpectType Promise<void>
+setCookie("CSRFToken", "csrfToken"); // $ExpectType Promise<void>
 
 // ------------------------------------------
 // deleteCookies
@@ -265,13 +282,13 @@ setCookie('CSRFToken', 'csrfToken'); // $ExpectType Promise<void>
 // ------------------------------------------
 
 deleteCookies(); // $ExpectType Promise<void>
-deleteCookies('CSRFToken', { url: 'http://the-internet.herokuapp.com' }); // $ExpectType Promise<void>
-deleteCookies('CSRFToken', { domain: 'herokuapp.com' }); // $ExpectType Promise<void>
+deleteCookies("CSRFToken", { url: "http://the-internet.herokuapp.com" }); // $ExpectType Promise<void>
+deleteCookies("CSRFToken", { domain: "herokuapp.com" }); // $ExpectType Promise<void>
 // $ExpectType Promise<void>
-deleteCookies('CSRFToken', {
-  url: 'an url',
-  domain: 'a domain',
-  path: 'a path',
+deleteCookies("CSRFToken", {
+  url: "an url",
+  domain: "a domain",
+  path: "a path",
 });
 
 // ------------------------------------------
@@ -280,7 +297,7 @@ deleteCookies('CSRFToken', {
 // ------------------------------------------
 
 getCookies(); // $ExpectType Promise<Cookie[]>
-getCookies({ urls: ['https://the-internet.herokuapp.com'] }); // $ExpectType Promise<Cookie[]>
+getCookies({ urls: ["https://the-internet.herokuapp.com"] }); // $ExpectType Promise<Cookie[]>
 
 // ------------------------------------------
 // setLocation
@@ -301,5 +318,5 @@ setLocation({ longitude: 78.040009 });
 // https://docs.taiko.dev/api/clearIntercept
 // ------------------------------------------
 
-clearIntercept('https://google.com'); // $ExpectType void
+clearIntercept("https://google.com"); // $ExpectType void
 clearIntercept(); // $ExpectType void

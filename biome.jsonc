@@ -1,0 +1,21 @@
+{
+  "files": {
+    "ignore": [
+      "dist/**",
+      "coverage/**",
+      "node_modules",
+      "src/gen",
+      ".vscode",
+      "reports",
+      ".gauge",
+      "examples",
+      "test",
+      ".local-chromium",
+      "types",
+      "lib/api.json"
+    ]
+  },
+  "formatter": {
+    "indentStyle": "space"
+  }
+}

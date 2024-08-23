@@ -1,8 +1,8 @@
-const expect = require('chai').expect;
-let { openBrowser, closeBrowser } = require('../../lib/taiko');
-let { openBrowserArgs } = require('./test-util');
+const expect = require("chai").expect;
+const { openBrowser, closeBrowser } = require("../../lib/taiko");
+const { openBrowserArgs } = require("./test-util");
 
-xdescribe('close browser successfully', () => {
+xdescribe("close browser successfully", () => {
   before(async () => {
     expect(process.env.TAIKO_EMULATE_DEVICE).to.be.undefined;
     await openBrowser(openBrowserArgs);

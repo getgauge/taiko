@@ -1,6 +1,6 @@
-const expect = require('chai').expect;
-const rewire = require('rewire');
-const Element = require('../../../lib/elements/element');
+const expect = require("chai").expect;
+const rewire = require("rewire");
+const Element = require("../../../lib/elements/element");
 
 class Event {
   constructor(name) {
@@ -8,7 +8,7 @@ class Event {
   }
 }
 
-describe('CheckBox', () => {
+describe("CheckBox", () => {
   let nodes,
     CheckBox,
     dispatchedEvent = null,
@@ -26,11 +26,14 @@ describe('CheckBox', () => {
     };
 
   beforeEach(() => {
-    CheckBox = rewire('../../../lib/elements/checkBox');
-    CheckBox.__set__('Event', Event);
-    CheckBox.__set__('doActionAwaitingNavigation', async (navigationOptions, action) => {
-      await action();
-    });
+    CheckBox = rewire("../../../lib/elements/checkBox");
+    CheckBox.__set__("Event", Event);
+    CheckBox.__set__(
+      "doActionAwaitingNavigation",
+      async (navigationOptions, action) => {
+        await action();
+      },
+    );
     nodes = {
       23: {
         checked: true,
@@ -52,7 +55,7 @@ describe('CheckBox', () => {
       },
     };
 
-    Object.defineProperty(Object.prototype, 'checked', {
+    Object.defineProperty(Object.prototype, "checked", {
       configurable: true,
       get: function () {
         return this.checked;
@@ -63,75 +66,78 @@ describe('CheckBox', () => {
     });
   });
   afterEach(() => {
-    CheckBox = rewire('../../../lib/elements/checkBox');
+    CheckBox = rewire("../../../lib/elements/checkBox");
     dispatchedEvent = null;
     delete Object.prototype.checked;
   });
 
-  it('should be element', () => {
+  it("should be element", () => {
     expect(new CheckBox() instanceof Element).to.be.true;
   });
-  it('should create CheckBox from element', () => {
-    const expectedCheckBox = CheckBox.from(new Element(12, '', runtimeHandler), 'description');
-    const actualCheckBox = new CheckBox(12, 'description', runtimeHandler);
+  it("should create CheckBox from element", () => {
+    const expectedCheckBox = CheckBox.from(
+      new Element(12, "", runtimeHandler),
+      "description",
+    );
+    const actualCheckBox = new CheckBox(12, "description", runtimeHandler);
     expect(actualCheckBox).to.be.deep.equal(expectedCheckBox);
   });
-  describe('isChecked', () => {
-    it('should be checked', async () => {
-      const checkBox = new CheckBox(23, 'description', runtimeHandler);
+  describe("isChecked", () => {
+    it("should be checked", async () => {
+      const checkBox = new CheckBox(23, "description", runtimeHandler);
       expect(await checkBox.isChecked()).to.be.true;
     });
-    it('should not be checked', async () => {
-      const checkBox = new CheckBox(26, 'description', runtimeHandler);
+    it("should not be checked", async () => {
+      const checkBox = new CheckBox(26, "description", runtimeHandler);
       expect(await checkBox.isChecked()).to.be.false;
     });
   });
 
-  describe('check', () => {
-    it('should check an uncheckedd checkbox', async () => {
-      let objectId = 28;
+  describe("check", () => {
+    it("should check an uncheckedd checkbox", async () => {
+      const objectId = 28;
 
-      const checkBox = new CheckBox(objectId, 'description', runtimeHandler);
+      const checkBox = new CheckBox(objectId, "description", runtimeHandler);
       expect(nodes[objectId].checked).to.be.false;
 
       await checkBox.check();
       expect(nodes[objectId].checked).to.be.true;
       expect(dispatchedEvent instanceof Event).to.be.true;
-      expect(dispatchedEvent.name).to.be.equal('click');
+      expect(dispatchedEvent.name).to.be.equal("click");
     });
-    it('should check a checked checkbox', async () => {
-      let objectId = 30;
-      const checkBox = new CheckBox(objectId, 'description', runtimeHandler);
+    it("should check a checked checkbox", async () => {
+      const objectId = 30;
+      const checkBox = new CheckBox(objectId, "description", runtimeHandler);
       expect(nodes[objectId].checked).to.be.true;
 
       await checkBox.check();
       expect(nodes[objectId].checked).to.be.true;
       expect(dispatchedEvent instanceof Event).to.be.true;
-      expect(dispatchedEvent.name).to.be.equal('click');
+      expect(dispatchedEvent.name).to.be.equal("click");
     });
   });
 
-  describe('uncheck', () => {
-    it('should uncheck an unchecked checkbox', async () => {
-      let objectId = 28;
-      const checkBox = new CheckBox(28, 'description', runtimeHandler);
+  describe("uncheck", () => {
+    it("should uncheck an unchecked checkbox", async () => {
+      const objectId = 28;
+      const checkBox = new CheckBox(28, "description", runtimeHandler);
       expect(nodes[objectId].checked).to.be.false;
 
       await checkBox.uncheck();
       expect(nodes[objectId].checked).to.be.false;
       expect(dispatchedEvent instanceof Event).to.be.true;
-      expect(dispatchedEvent.name).to.be.equal('click');
+      expect(dispatchedEvent.name).to.be.equal("click");
     });
 
-    it('should uncheck a checked checkbox', async () => {
-      let objectId = 30;
-      const checkBox = new CheckBox(objectId, 'description', runtimeHandler);
+    it("should uncheck a checked checkbox", async () => {
+      const objectId = 30;
+      const checkBox = new CheckBox(objectId, "description", runtimeHandler);
       expect(nodes[objectId].checked).to.be.true;
 
       await checkBox.uncheck();
       expect(nodes[objectId].checked).to.be.false;
       expect(dispatchedEvent instanceof Event).to.be.true;
-      expect(dispatchedEvent.name).to.be.equal('click');
+      expect(dispatchedEvent.name).to.be.equal("click");
     });
   });
 });

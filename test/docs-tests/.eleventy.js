@@ -1,13 +1,12 @@
-const parent = require('../../.eleventy')
+const parent = require("../../.eleventy");
 
-module.exports = function (eleventyConfig) {
+module.exports = (eleventyConfig) => {
+  parent(eleventyConfig);
 
-    parent(eleventyConfig);
-
-    return {
-      dir: {
-        input: './tmp/docs',
-        output: './tmp/docs/_site'
-      }
-    }
+  return {
+    dir: {
+      input: "./tmp/docs",
+      output: "./tmp/docs/_site",
+    },
   };
+};

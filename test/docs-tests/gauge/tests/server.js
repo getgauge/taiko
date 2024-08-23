@@ -1,4 +1,4 @@
-const app = require('the-internet-express');
+const app = require("the-internet-express");
 let server;
 
 const startServer = async () => {
@@ -14,7 +14,7 @@ const startServer = async () => {
 const stopServer = async () => {
   server.close((e) => {
     if (e) {
-      console.error('Failed to close the Internet Express', e);
+      console.error("Failed to close the Internet Express", e);
     }
   });
 };

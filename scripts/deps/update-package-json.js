@@ -1,34 +1,36 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+const fs = require("node:fs");
+const path = require("node:path");
+const { execSync } = require("node:child_process");
 
 // externals
-const semver = tryRequire('semver');
+const semver = tryRequire("semver");
 
 const WORKSPACE = path.dirname(path.dirname(__dirname));
 const SOURCES = WORKSPACE;
 
-const manifest = JSON.parse(fs.readFileSync(path.join(SOURCES, 'package.json')));
+const manifest = JSON.parse(
+  fs.readFileSync(path.join(SOURCES, "package.json")),
+);
 
-const FLAGS = ['--canary', '--optional', '-h', '--help'];
+const FLAGS = ["--canary", "--optional", "-h", "--help"];
 
 const opts = process.argv.slice(2).reduce((opts, arg) => {
   if (!FLAGS.includes(arg)) {
     usage(`Unknown argument/flag: ${arg}`);
   }
 
-  if ('-h' === arg || '--help' === arg) {
+  if ("-h" === arg || "--help" === arg) {
     usage();
   }
 
-  if ('--canary' === arg) {
-    opts['canary'] = true;
+  if ("--canary" === arg) {
+    opts.canary = true;
   }
 
-  if ('--optional' === arg) {
-    opts['update-optional-dependencies'] = true;
+  if ("--optional" === arg) {
+    opts["update-optional-dependencies"] = true;
   }
 
   return opts;
@@ -39,16 +41,16 @@ const canary = !!opts.canary;
 if (canary) {
   console.warn(
     `canary: ${canary};`,
-    'This will perform any major version upgrades as well, even for exact-version package specs',
+    "This will perform any major version upgrades as well, even for exact-version package specs",
   );
 }
 
-function usage(msg = '') {
-  msg = (msg || '').trim();
+function usage(msg = "") {
+  const _msg = (msg || "").trim();
   const prog = path.basename(process.argv[1]);
 
-  if (msg) {
-    console.error(`[FATAL] ${msg}`);
+  if (_msg) {
+    console.error(`[FATAL] ${_msg}`);
   }
 
   console.error(`
@@ -82,46 +84,55 @@ function usage(msg = '') {
 }
 
 function update(dict) {
-  interestingKeys(dict).forEach((mod) => {
+  for (const mod of interestingKeys(dict)) {
     const range = dict[mod];
     console.log(`Checking ${mod} -- current: ${range}`);
 
     // reverse sort to get the latest first
-    const versions = JSON.parse(execSync(`npm view ${mod} versions --json`).toString()).reverse();
-    const major = semver.major(range.replace(/^[^0-9]*/, ''));
-    const latest = semver.maxSatisfying(versions, canary ? `>=${major}` : range);
+    const versions = JSON.parse(
+      execSync(`npm view ${mod} versions --json`).toString(),
+    ).reverse();
+    const major = semver.major(range.replace(/^[^0-9]*/, ""));
+    const latest = semver.maxSatisfying(
+      versions,
+      canary ? `>=${major}` : range,
+    );
 
     const detectModifier = range.match(/^([^0-9]+)/);
-    const modifier = detectModifier ? detectModifier[1] : '';
+    const modifier = detectModifier ? detectModifier[1] : "";
     const upgraded = modifier + latest;
 
     if (range !== upgraded) {
       dict[mod] = upgraded;
-      console.log('  => updating', mod, 'to', upgraded);
+      console.log("  => updating", mod, "to", upgraded);
     }
-  });
+  }
 }
 
 update(manifest.dependencies);
 update(manifest.devDependencies);
 
-if (opts['update-optional-dependencies']) {
+if (opts["update-optional-dependencies"]) {
   update(manifest.optionalDependencies);
 }
 
-fs.writeFileSync(path.join(SOURCES, 'package.json'), JSON.stringify(manifest, null, 2) + '\n', {
-  encoding: 'utf8',
-  mode: 0o644,
-});
+fs.writeFileSync(
+  path.join(SOURCES, "package.json"),
+  `${JSON.stringify(manifest, null, 2)}\n`,
+  {
+    encoding: "utf8",
+    mode: 0o644,
+  },
+);
 
 // deleting package-lock.json allows us to sort of "tree-shake" our deps by forcing yarn to rebuild
 // the depgraph; sometimes newer versions of packages remove dependencies and a normal yarn
 // update doesn't seem to prune those old deps from the lockfile.
-fs.unlinkSync(path.join(SOURCES, 'package-lock.json'));
-fs.rmSync(path.join(SOURCES, 'node_modules'), { force: true, recursive: true });
+fs.unlinkSync(path.join(SOURCES, "package-lock.json"));
+fs.rmSync(path.join(SOURCES, "node_modules"), { force: true, recursive: true });
 
-console.log('Updating package-lock.json');
-execSync('npm install', { cwd: SOURCES });
+console.log("Updating package-lock.json");
+execSync("npm install", { cwd: SOURCES });
 
 function interestingKeys(dict) {
   return Object.keys(dict).filter((k) => excludes(dict, k));
@@ -129,9 +140,9 @@ function interestingKeys(dict) {
 
 function excludes(dict, key) {
   return !(
-    dict[key].startsWith('file:') ||
-    dict[key].startsWith('http:') ||
-    dict[key].startsWith('https:')
+    dict[key].startsWith("file:") ||
+    dict[key].startsWith("http:") ||
+    dict[key].startsWith("https:")
   );
 }
 

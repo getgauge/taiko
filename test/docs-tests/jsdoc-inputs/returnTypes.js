@@ -13,7 +13,8 @@ async function functionReturningPromiseOfObject(url) {
     a: url,
   }));
 }
-module.exports.functionReturningPromiseOfObject = functionReturningPromiseOfObject;
+module.exports.functionReturningPromiseOfObject =
+  functionReturningPromiseOfObject;
 
 /**
  * Test description of a test function.
@@ -81,7 +82,8 @@ async function functionReturningArrayOfObjects(url) {
     a: url,
   }));
 }
-module.exports.functionReturningArrayOfObjects = functionReturningArrayOfObjects;
+module.exports.functionReturningArrayOfObjects =
+  functionReturningArrayOfObjects;
 
 /**
  * Test description of a test function.
@@ -98,4 +100,5 @@ async function functionReturningPromiseOfArrayOfObjects(url) {
     a: url,
   }));
 }
-module.exports.functionReturningPromiseOfArrayOfObjects = functionReturningPromiseOfArrayOfObjects;
+module.exports.functionReturningPromiseOfArrayOfObjects =
+  functionReturningPromiseOfArrayOfObjects;

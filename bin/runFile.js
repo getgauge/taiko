@@ -1,21 +1,21 @@
-const path = require('path');
-const util = require('util');
-const recorder = require('../recorder');
+const path = require("node:path");
+const util = require("node:util");
+const recorder = require("../recorder");
 
-const { removeQuotes } = require('../lib/util');
+const { removeQuotes } = require("../lib/util");
 module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
   const realFuncs = {};
-  for (let func in taiko) {
+  for (const func in taiko) {
     realFuncs[func] = taiko[func];
-    if (realFuncs[func].constructor.name === 'AsyncFunction') {
+    if (realFuncs[func].constructor.name === "AsyncFunction") {
       global[func] = async function () {
-        let res,
-          args = arguments;
-        if (func === 'openBrowser' && (observe || continueRepl)) {
-          if (args['0']) {
-            args['0'].headless = !observe;
+        // biome-ignore lint/style/noArguments: Cannot use rest paramaters
+        let args = arguments;
+        if (func === "openBrowser" && (observe || continueRepl)) {
+          if (args["0"]) {
+            args["0"].headless = !observe;
             args[0].observe = observe;
-            args['0'].observeTime = observeTime;
+            args["0"].observeTime = observeTime;
           } else if (continueRepl) {
             args = [
               {
@@ -35,11 +35,12 @@ module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
           }
         }
 
-        res = await realFuncs[func].apply(this, args);
+        const res = await realFuncs[func].apply(this, args);
         return res;
       };
-    } else if (realFuncs[func].constructor.name === 'Function') {
+    } else if (realFuncs[func].constructor.name === "Function") {
       global[func] = function () {
+        // biome-ignore lint/style/noArguments: Cannot use rest paramaters
         return realFuncs[func].apply(this, arguments);
       };
     } else {
@@ -48,15 +49,20 @@ module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
     if (continueRepl) {
       recorder.repl = async () => {
         console.log(
-          removeQuotes(util.inspect('Starting REPL..', { colors: true }), 'Starting REPL..'),
+          removeQuotes(
+            util.inspect("Starting REPL..", { colors: true }),
+            "Starting REPL..",
+          ),
         );
         await continueRepl(file);
       };
     }
-    require.cache[path.join(__dirname, 'taiko.js')].exports[func] = global[func];
+    require.cache[path.join(__dirname, "taiko.js")].exports[func] =
+      global[func];
   }
   const oldNodeModulesPaths = module.constructor._nodeModulePaths;
   module.constructor._nodeModulePaths = function () {
+    // biome-ignore lint/style/noArguments: Cannot use rest paramaters
     const ret = oldNodeModulesPaths.apply(this, arguments);
     ret.push(__dirname);
     ret.push(path.dirname(path.dirname(__dirname)));
