@@ -22,6 +22,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: latest
       - name: install
         run: npm install
       - name: install browser dependencies
@@ -41,7 +45,7 @@ jobs:
             libasound-dev
       - name: unit-tests
         run: |
-          npm run lint:check
+          biome ci
           npm test
 
   functional-tests:
