@@ -11,7 +11,8 @@
       "examples",
       "test",
       ".local-chromium",
-      "types"
+      "types",
+      "lib/api.json"
     ]
   },
   "formatter": {
