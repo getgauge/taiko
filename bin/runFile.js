@@ -1,5 +1,5 @@
-const path = require("path");
-const util = require("util");
+const path = require("node:path");
+const util = require("node:util");
 const recorder = require("../recorder");
 
 const { removeQuotes } = require("../lib/util");
@@ -9,8 +9,8 @@ module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
     realFuncs[func] = taiko[func];
     if (realFuncs[func].constructor.name === "AsyncFunction") {
       global[func] = async function () {
-        let res,
-          args = arguments;
+        // biome-ignore lint/style/noArguments: Cannot use rest paramaters
+        let args = arguments;
         if (func === "openBrowser" && (observe || continueRepl)) {
           if (args["0"]) {
             args["0"].headless = !observe;
@@ -35,11 +35,12 @@ module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
           }
         }
 
-        res = await realFuncs[func].apply(this, args);
+        const res = await realFuncs[func].apply(this, args);
         return res;
       };
     } else if (realFuncs[func].constructor.name === "Function") {
       global[func] = function () {
+        // biome-ignore lint/style/noArguments: Cannot use rest paramaters
         return realFuncs[func].apply(this, arguments);
       };
     } else {
@@ -61,6 +62,7 @@ module.exports = async (taiko, file, observe, observeTime, continueRepl) => {
   }
   const oldNodeModulesPaths = module.constructor._nodeModulePaths;
   module.constructor._nodeModulePaths = function () {
+    // biome-ignore lint/style/noArguments: Cannot use rest paramaters
     const ret = oldNodeModulesPaths.apply(this, arguments);
     ret.push(__dirname);
     ret.push(path.dirname(path.dirname(__dirname)));

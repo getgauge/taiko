@@ -1,11 +1,11 @@
-const fs = require("fs");
+const fs = require("node:fs");
 
 module.exports = () => {
   try {
-    var apis = { classes: [], functions: [] };
-    JSON.parse(fs.readFileSync("lib/api.json", "utf-8")).forEach((x) =>
-      x.kind === "class" ? apis.classes.push(x) : apis.functions.push(x),
-    );
+    const apis = { classes: [], functions: [] };
+    for (const x of JSON.parse(fs.readFileSync("lib/api.json", "utf-8"))) {
+      x.kind === "class" ? apis.classes.push(x) : apis.functions.push(x);
+    }
     return apis;
   } catch (error) {
     throw new Error("Please run `npm run doc:api` to generate api metadata");

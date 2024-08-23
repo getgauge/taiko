@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 const runFile = require("./runFile");
-const fs = require("fs");
+const fs = require("node:fs");
 const Command = require("commander").Command;
 const repl = require("../lib/repl/repl");
 const { isTaikoRunner } = require("../lib/util");
@@ -15,7 +15,7 @@ function printVersion() {
   try {
     const packageJson = require("../package.json");
     let hash = "RELEASE";
-    if (packageJson._resolved && packageJson._resolved.includes("#")) {
+    if (packageJson._resolved?.includes("#")) {
       hash = packageJson._resolved.split("#")[1];
     }
 
@@ -59,7 +59,7 @@ function validate(file) {
 
 function setupEmulateDevice(device) {
   if (Object.prototype.hasOwnProperty.call(devices, device)) {
-    process.env["TAIKO_EMULATE_DEVICE"] = device;
+    process.env.TAIKO_EMULATE_DEVICE = device;
   } else {
     console.log(`Invalid value ${device} for --emulate-device`);
     console.log(`Available devices: ${Object.keys(devices).join(", ")}`);
@@ -90,7 +90,7 @@ function seekingForHelp(args) {
 }
 
 function registerSubcommandForPlugins(program, plugins) {
-  Object.keys(plugins).forEach((pluginName) => {
+  for (const pluginName of Object.keys(plugins)) {
     program
       .command(`${pluginName} [options...]`)
       .allowUnknownOption(true)
@@ -98,7 +98,7 @@ function registerSubcommandForPlugins(program, plugins) {
         const plugin = require(plugins[cmd.name()]);
         plugin.exec(options);
       });
-  });
+  }
 }
 
 function isCLICommand() {
@@ -170,7 +170,9 @@ if (isTaikoRunner(processArgv[1])) {
                 const listeners = r.listeners("exit");
                 r.removeAllListeners("exit");
                 r.on("exit", () => {
-                  listeners.forEach((l) => r.addListener("exit", l));
+                  for (const l of listeners) {
+                    r.addListener("exit", l);
+                  }
                   resolve();
                 });
               });
