@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
+const fs = require("node:fs");
+const path = require("node:path");
+const { execSync } = require("node:child_process");
 
 // externals
 const semver = tryRequire("semver");
@@ -26,7 +26,7 @@ const opts = process.argv.slice(2).reduce((opts, arg) => {
   }
 
   if ("--canary" === arg) {
-    opts["canary"] = true;
+    opts.canary = true;
   }
 
   if ("--optional" === arg) {
@@ -46,11 +46,11 @@ if (canary) {
 }
 
 function usage(msg = "") {
-  msg = (msg || "").trim();
+  const _msg = (msg || "").trim();
   const prog = path.basename(process.argv[1]);
 
-  if (msg) {
-    console.error(`[FATAL] ${msg}`);
+  if (_msg) {
+    console.error(`[FATAL] ${_msg}`);
   }
 
   console.error(`
@@ -84,7 +84,7 @@ function usage(msg = "") {
 }
 
 function update(dict) {
-  interestingKeys(dict).forEach((mod) => {
+  for (const mod of interestingKeys(dict)) {
     const range = dict[mod];
     console.log(`Checking ${mod} -- current: ${range}`);
 
@@ -106,7 +106,7 @@ function update(dict) {
       dict[mod] = upgraded;
       console.log("  => updating", mod, "to", upgraded);
     }
-  });
+  }
 }
 
 update(manifest.dependencies);
@@ -118,7 +118,7 @@ if (opts["update-optional-dependencies"]) {
 
 fs.writeFileSync(
   path.join(SOURCES, "package.json"),
-  JSON.stringify(manifest, null, 2) + "\n",
+  `${JSON.stringify(manifest, null, 2)}\n`,
   {
     encoding: "utf8",
     mode: 0o644,
