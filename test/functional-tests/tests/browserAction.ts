@@ -98,7 +98,7 @@ export default class Assert {
 
   @Step("Assert location longitude as <longitude> and latitude as <latitude>")
   public async function(longitude: string, latitude: string) {
-    const geolocation: any = await evaluate(
+    const geolocation = (await evaluate(
       () =>
         new Promise((resolve) =>
           navigator.geolocation.getCurrentPosition((position) => {
@@ -108,7 +108,7 @@ export default class Assert {
             });
           }),
         ),
-    );
+    )) as { latitude: number; longitude: number };
     assert.equal(geolocation.longitude, Number.parseFloat(longitude));
     assert.equal(geolocation.latitude, Number.parseFloat(latitude));
   }
@@ -119,7 +119,7 @@ export default class Assert {
   }
 
   @Step("Assert width is <width> and height is <height>")
-  public async assertWidthAndHeight(width: any, height: any) {
+  public async assertWidthAndHeight(width: number, height: number) {
     const innerWidth = await evaluate(() => window.innerWidth);
     const innerHeight = await evaluate(() => window.innerHeight);
     assert.equal(innerWidth, width);

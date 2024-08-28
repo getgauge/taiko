@@ -55,28 +55,28 @@ export default class PageActions {
   public async dragSourceToDirection(source: string, directionTable: Table) {
     const direction = {};
 
-    directionTable.getTableRows().forEach((row: TableRow) => {
+    for (const row of directionTable.getTableRows()) {
       direction[row.getCellValues()[0]] = Number.parseInt(
         row.getCellValues()[1],
       );
-    });
+    }
     await dragAndDrop($(source), direction);
   }
 
   @Step("Assert url host is <hostName>")
-  public async assertUrlOfHost(hostName: any) {
+  public async assertUrlOfHost(hostName: string) {
     const url = await currentURL();
     assert.equal(new URL(url).hostname, hostName);
   }
 
   @Step("Assert page navigated back <hostname>")
-  public async assertPageNavigatedBack(hostName: any) {
+  public async assertPageNavigatedBack(hostName: string) {
     const url = await currentURL();
     assert.equal(new URL(url).hostname, hostName);
   }
 
   @Step("Assert page navigated to <target>")
-  public async assertPageNavigatedToTarget(target: any) {
+  public async assertPageNavigatedToTarget(target: string) {
     const url = await currentURL();
     assert.equal(new URL(url).pathname, target);
   }
@@ -88,7 +88,7 @@ export default class PageActions {
 
   @Step("Assert tap on screen")
   public async assertTapOnScreen() {
-    function getResult(): void { }
+    function getResult(): void {}
     const touch = await evaluate(() => getResult());
     assert.deepEqual(touch, ["Touchstart: 0", "Touchend: 0"]);
   }
