@@ -1,5 +1,5 @@
-import assert = require("assert");
-import _path = require("path");
+import assert = require("node:assert");
+import _path = require("node:path");
 import {
   $,
   type DialogHandler,
@@ -188,15 +188,14 @@ export default class HtmlElementAPI {
   @Step("Navigate to relative path <relativePath>")
   public async navigateToPath(relativePath: string) {
     const absolutePath = _path.resolve(relativePath);
-    await goto("file:///" + absolutePath);
+    await goto(`file:///${absolutePath}`);
   }
 
   @Step("Navigate to relative API reference page for <functionName>")
   public async navigateToApiRefPage(functionName: string) {
-    const relativePath =
-      "../tmp/docs/_site/api/" + functionName + "/index.html";
+    const relativePath = `../tmp/docs/_site/api/${functionName}/index.html`;
     const absolutePath = _path.resolve(relativePath);
-    await goto("file:///" + absolutePath);
+    await goto(`file:///${absolutePath}`);
   }
 
   @ContinueOnFailure()
@@ -259,15 +258,15 @@ export default class HtmlElementAPI {
   }
 
   @Step("Navigate to relative path <path> with timeout <timeout> ms")
-  public async navigateToPathWithTimeout(path: string, timeout: any) {
+  public async navigateToPathWithTimeout(path: string, timeout: number) {
     const absolutePath = _path.resolve(path);
-    await goto("file:///" + absolutePath, {
+    await goto(`file:///${absolutePath}`, {
       navigationTimeout: timeout,
     });
   }
 
   @Step("Navigate to <url> with timeout <timeout> ms")
-  public async navigateToURLWithTimeout(url: string, timeout: any) {
+  public async navigateToURLWithTimeout(url: string, timeout: number) {
     await goto(url, { navigationTimeout: timeout });
   }
 

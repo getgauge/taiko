@@ -10,18 +10,18 @@ class Event {
 }
 
 describe("DropDown", () => {
-  let nodes,
-    DropDown,
-    dispatchedEvents,
-    runtimeHandler = {
-      async runtimeCallFunctionOn(predicate, contextId, options) {
-        return {
-          result: {
-            value: predicate.call(nodes[options.objectId], options.arg),
-          },
-        };
-      },
-    };
+  let nodes;
+  let DropDown;
+  let dispatchedEvents;
+  const runtimeHandler = {
+    async runtimeCallFunctionOn(predicate, contextId, options) {
+      return {
+        result: {
+          value: predicate.call(nodes[options.objectId], options.arg),
+        },
+      };
+    },
+  };
   beforeEach(() => {
     DropDown = rewire("../../../lib/elements/dropDown");
     DropDown.__set__("Event", Event);

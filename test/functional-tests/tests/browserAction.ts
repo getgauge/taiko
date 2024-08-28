@@ -15,7 +15,7 @@ import {
   setLocation,
   switchTo,
 } from "taiko";
-const assert = require("assert");
+const assert = require("node:assert");
 const cwd = process.cwd();
 
 export default class Assert {
@@ -80,7 +80,7 @@ export default class Assert {
 
   @Step("Navigate to file with relative Path <filePath>")
   public async navigateToFileWithRelativePath(filePath: string) {
-    await goto("file:///" + cwd + filePath);
+    await goto(`file:///${cwd}${filePath}`);
   }
 
   @Step("Override browser permission with <geolocation> for site <url>")

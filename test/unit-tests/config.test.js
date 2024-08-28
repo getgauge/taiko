@@ -2,7 +2,8 @@ const expect = require("chai").expect;
 const rewire = require("rewire");
 
 describe("Config tests", () => {
-  let config, originalConfig;
+  let config;
+  let originalConfig;
   beforeEach(() => {
     config = rewire("../../lib/config");
     Object.assign({}, config.defaultConfig);

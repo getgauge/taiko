@@ -1,5 +1,5 @@
 const expect = require("chai").expect;
-const { EventEmitter } = require("events");
+const { EventEmitter } = require("node:events");
 const rewire = require("rewire");
 
 describe("closeTab", () => {
@@ -10,7 +10,9 @@ describe("closeTab", () => {
   let _isMatchRegex = false;
   const _isMatchTarget = false;
 
-  let currentTarget, taiko, targetHandler;
+  let currentTarget;
+  let taiko;
+  let targetHandler;
   const descEmmitter = new EventEmitter();
 
   const validateEmitterEvent = (event, expectedText) =>

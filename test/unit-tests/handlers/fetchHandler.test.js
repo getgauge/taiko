@@ -5,7 +5,9 @@ const chaiAsPromissed = require("chai-as-promised");
 chai.use(chaiAsPromissed);
 
 describe("Fetch Handler", () => {
-  let requestInterceptor, continueInterceptedRequestOptions, fetchHandler;
+  let requestInterceptor;
+  let continueInterceptedRequestOptions;
+  let fetchHandler;
 
   before(() => {
     fetchHandler = rewire("../../../lib/handlers/fetchHandler");
@@ -38,7 +40,8 @@ describe("Fetch Handler", () => {
   });
 
   describe("http headers", () => {
-    let headersAndHost, expectedHeaders;
+    let headersAndHost;
+    let expectedHeaders;
     before(() => {
       headersAndHost = [
         [{ header1: "header1 value" }, "https://example.com"],

@@ -165,13 +165,13 @@ describe(test_name, () => {
     it("test select() triggers events", async () => {
       await evaluate(() => {
         document.raisedEvents = [];
-        var dropDown = document.getElementById("radioButtonWithLabelFor");
+        const dropDown = document.getElementById("radioButtonWithLabelFor");
         ["input", "change", "click"].forEach((ev) => {
           dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
         });
       });
       await radioButton("radioButtonWithLabelFor").select();
-      var events = await evaluate(() => document.raisedEvents);
+      const events = await evaluate(() => document.raisedEvents);
       expect(events).to.eql(["change", "input", "click"]);
     });
 

@@ -6,11 +6,12 @@ chai.use(chaiAsPromissed);
 const test_name = "Network Handler";
 
 describe(test_name, () => {
-  let actualNetworkCondition, networkHandler;
+  let actualNetworkCondition;
+  let networkHandler;
 
   before(() => {
     networkHandler = rewire("../../../lib/handlers/networkHandler");
-    delete process.env.TAIKO_EMULATE_NETWORK;
+    process.env.TAIKO_EMULATE_NETWORK = undefined;
     const network = {
       requestWillBeSent: () => {},
       loadingFinished: () => {},

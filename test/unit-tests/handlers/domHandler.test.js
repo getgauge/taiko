@@ -2,8 +2,8 @@ const rewire = require("rewire");
 const expect = require("chai").expect;
 
 describe("domHandler", () => {
-  let calledWith = {},
-    domHandler;
+  let calledWith = {};
+  let domHandler;
 
   before(() => {
     domHandler = rewire("../../../lib/handlers/domHandler");
@@ -11,7 +11,7 @@ describe("domHandler", () => {
     domHandler.__set__("dom", {
       getContentQuads: async (param) => {
         calledWith = param;
-        if (param.objectId == 1) {
+        if (param.objectId === 1) {
           return { quads: [[0, 1, 2, 3, 4, 5, 6, 7]] };
         }
         return { quads: [[8, 9, 10, 11, 12, 13, 14, 15]] };

@@ -1,4 +1,4 @@
-import { basename, join } from "path";
+import { basename, join } from "node:path";
 import {
   AfterScenario,
   AfterSuite,
@@ -26,7 +26,7 @@ export default class Hooks {
   @CustomScreenshotWriter()
   public async takeScreenshot(): Promise<string> {
     const fileName = join(
-      process.env["gauge_screenshots_dir"],
+      process.env.gauge_screenshots_dir,
       `screenshot${Date.now()}.png`,
     );
     await screenshot({ path: fileName });

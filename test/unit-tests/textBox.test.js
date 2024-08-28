@@ -382,7 +382,7 @@ describe(test_name, () => {
     });
   });
 
-  var inputTypes = [
+  const inputTypes = [
     {
       type: "text",
       name: "inputType-text",
@@ -418,16 +418,16 @@ describe(test_name, () => {
 
   function toInputTypeCaseSensitive(inputType) {
     const type = inputType.type.toUpperCase();
-    const name = "inputType-" + type;
+    const name = `inputType-${type}`;
     return Object.assign({}, inputType, { type: type, name: name });
   }
 
-  var inputTypesCaseSensitive = inputTypes.map(toInputTypeCaseSensitive);
+  const inputTypesCaseSensitive = inputTypes.map(toInputTypeCaseSensitive);
 
-  var inputTypesToTest = inputTypes.concat(inputTypesCaseSensitive);
+  const inputTypesToTest = inputTypes.concat(inputTypesCaseSensitive);
 
   inputTypesToTest.forEach((inputType) => {
-    describe("input with type " + inputType.type, () => {
+    describe(`input with type ${inputType.type}`, () => {
       let filePath;
       before(async () => {
         const innerHtml = `
@@ -529,7 +529,7 @@ describe(test_name, () => {
         it("test exists()", async () => {
           expect(
             await textBox({
-              id: inputType.name + "WithLabelFor",
+              id: `${inputType.name}WithLabelFor`,
             }).exists(),
           ).to.be.true;
         });
@@ -537,7 +537,7 @@ describe(test_name, () => {
         it("test value()", async () => {
           expect(
             await textBox({
-              id: inputType.name + "WithLabelFor",
+              id: `${inputType.name}WithLabelFor`,
             }).value(),
           ).to.equal(inputType.testValue);
         });
@@ -545,7 +545,7 @@ describe(test_name, () => {
         it("test description", async () => {
           expect(
             textBox({
-              id: inputType.name + "WithLabelFor",
+              id: `${inputType.name}WithLabelFor`,
             }).description,
           ).to.be.eql(`TextBox[id="inputType-${inputType.type}WithLabelFor"]`);
         });
@@ -702,7 +702,7 @@ describe(test_name, () => {
       it("test exists()", async () => {
         expect(
           await textBox({
-            id: inputTypeName + "WithLabelFor",
+            id: `${inputTypeName}WithLabelFor`,
           }).exists(),
         ).to.be.true;
       });
@@ -710,7 +710,7 @@ describe(test_name, () => {
       it("test value()", async () => {
         expect(
           await textBox({
-            id: inputTypeName + "WithLabelFor",
+            id: `${inputTypeName}WithLabelFor`,
           }).value(),
         ).to.equal(inputValue);
       });
@@ -718,7 +718,7 @@ describe(test_name, () => {
       it("test description", async () => {
         expect(
           textBox({
-            id: inputTypeName + "WithLabelFor",
+            id: `${inputTypeName}WithLabelFor`,
           }).description,
         ).to.be.eql('TextBox[id="input-without-typeWithLabelFor"]');
       });

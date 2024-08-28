@@ -334,7 +334,7 @@ describe(test_name, () => {
     it("should emit events", async () => {
       await evaluate(() => {
         document.raisedEvents = [];
-        var dropDown = document.getElementById("select-one");
+        const dropDown = document.getElementById("select-one");
         ["input", "change"].forEach((ev) => {
           dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
         });
@@ -342,7 +342,7 @@ describe(test_name, () => {
 
       await dropDown("One").select("Hot Beverages");
 
-      var events = await evaluate(() => document.raisedEvents);
+      const events = await evaluate(() => document.raisedEvents);
       expect(events).to.eql(["change", "input"]);
     });
   });

@@ -34,14 +34,13 @@ const inputTypeCaseSensitive = {
 
     let filePath;
     before(async () => {
-      const innerHtml =
-        `<script>
-     
+      const innerHtml = `<script>
+
         class ShadowButton extends HTMLElement {
           constructor() {
             super();
             var shadow = this.attachShadow({mode: 'open'});
-    
+
             var button = document.createElement('input');
             button.setAttribute('type', '${type}');
             button.setAttribute('id', 'Shadow Click');
@@ -55,33 +54,11 @@ const inputTypeCaseSensitive = {
             hiddenButton.setAttribute('id', 'HiddenShadowButton');
             hiddenButton.setAttribute('style','display:none');
             shadow.appendChild(hiddenButton);
-            
+
           }
         }
         customElements.define('shadow-button', ShadowButton);
-      </script>` +
-        " <shadow-button></shadow-button>" +
-        "<form>" +
-        `<input type="${type}" id="checkboxWithInlineLabel" name="testCheckbox" value="checkboxWithInlineLabel">checkboxWithInlineLabel</input>` +
-        `<input type="${type}" style="display: none" id="hiddenCheckbox" name="testCheckbox" value="hiddenCheckbox">hiddenCheckbox</input>` +
-        "<label>" +
-        `<input name="testCheckbox" type="${type}" value="checkboxWithWrappedInLabel" />` +
-        "<span>checkboxWithWrappedInLabel</span>" +
-        "</label>" +
-        "<p>" +
-        `<input id="checkboxWithLabelFor" name="testCheckbox" type="${type}" value="checkboxWithLabelFor" />` +
-        '<label for="checkboxWithLabelFor">checkboxWithLabelFor</label>' +
-        "</p>" +
-        '<input type="reset" value="Reset" />' +
-        "</form>" +
-        '<button id="panel" style="display:none">show on check</button>' +
-        `<input type="${type}" id="someCheckBox" name="testCheckbox" value="someCheckBox">someCheckBox</input>` +
-        "<script>" +
-        'var elem = document.getElementById("checkboxWithInlineLabel");' +
-        'elem.addEventListener("click", myFunction);' +
-        "function myFunction() {" +
-        'document.getElementById("panel").style.display = "block";' +
-        "}</script>";
+      </script> <shadow-button></shadow-button><form><input type="${type}" id="checkboxWithInlineLabel" name="testCheckbox" value="checkboxWithInlineLabel">checkboxWithInlineLabel</input><input type="${type}" style="display: none" id="hiddenCheckbox" name="testCheckbox" value="hiddenCheckbox">hiddenCheckbox</input><label><input name="testCheckbox" type="${type}" value="checkboxWithWrappedInLabel" /><span>checkboxWithWrappedInLabel</span></label><p><input id="checkboxWithLabelFor" name="testCheckbox" type="${type}" value="checkboxWithLabelFor" /><label for="checkboxWithLabelFor">checkboxWithLabelFor</label></p><input type="reset" value="Reset" /></form><button id="panel" style="display:none">show on check</button><input type="${type}" id="someCheckBox" name="testCheckbox" value="someCheckBox">someCheckBox</input><script>var elem = document.getElementById("checkboxWithInlineLabel");elem.addEventListener("click", myFunction);function myFunction() {document.getElementById("panel").style.display = "block";}</script>`;
       filePath = createHtml(innerHtml, test_name);
       await openBrowser(openBrowserArgs);
       await goto(filePath);
@@ -182,15 +159,15 @@ const inputTypeCaseSensitive = {
       it("should emit events", async () => {
         await evaluate(() => {
           document.raisedEvents = [];
-          var dropDown = document.getElementById("checkboxWithLabelFor");
-          ["input", "change", "click"].forEach((ev) => {
+          const dropDown = document.getElementById("checkboxWithLabelFor");
+          for (const ev of ["input", "change", "click"]) {
             dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
-          });
+          }
         });
 
         await checkBox("checkboxWithLabelFor").check();
 
-        var events = await evaluate(() => document.raisedEvents);
+        const events = await evaluate(() => document.raisedEvents);
         expect(events).to.eql(["change", "input", "click"]);
       });
     });

@@ -1,6 +1,6 @@
 const chai = require("chai");
 const expect = chai.expect;
-const util = require("util");
+const util = require("node:util");
 const { openBrowser, closeBrowser, client } = require("../../lib/taiko");
 
 const { openBrowserArgs } = require("./test-util");

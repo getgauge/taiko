@@ -4,7 +4,9 @@ class DomRects {}
 const TEXT_NODE = 3;
 
 describe("Element Search", () => {
-  let Element, elementSearch, getIfExists;
+  let Element;
+  let elementSearch;
+  let getIfExists;
 
   before(() => {
     Element = rewire("../../lib/elements/element");
@@ -18,7 +20,8 @@ describe("Element Search", () => {
   });
 
   describe("getIfExists", () => {
-    let findElementCallCount, originalWaitUntil;
+    let findElementCallCount;
+    let originalWaitUntil;
     const findElement = async () => {
       findElementCallCount++;
       return [{ id: 23 }];
@@ -47,7 +50,7 @@ describe("Element Search", () => {
     it("should try to find element after wait on unsuccessful finding", async () => {
       const findElement = async () => {
         findElementCallCount++;
-        const elements = findElementCallCount == 2 ? [{ id: 23 }] : [];
+        const elements = findElementCallCount === 2 ? [{ id: 23 }] : [];
         return elements;
       };
       const elements = await getIfExists(findElement, "Element description")(

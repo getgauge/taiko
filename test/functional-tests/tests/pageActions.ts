@@ -1,5 +1,5 @@
 import { getElements } from "./selectors";
-const assert = require("assert");
+const assert = require("node:assert");
 import {
   $,
   type SearchElement,
@@ -16,7 +16,7 @@ import {
   tap,
   toLeftOf,
 } from "taiko";
-const URL = require("url").URL;
+const URL = require("node:url").URL;
 import { Step, type Table, type TableRow } from "gauge-ts";
 
 export default class PageActions {
@@ -88,7 +88,7 @@ export default class PageActions {
 
   @Step("Assert tap on screen")
   public async assertTapOnScreen() {
-    function getResult(): void {}
+    function getResult(): void { }
     const touch = await evaluate(() => getResult());
     assert.deepEqual(touch, ["Touchstart: 0", "Touchend: 0"]);
   }

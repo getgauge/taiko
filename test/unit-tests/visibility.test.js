@@ -1,5 +1,5 @@
-const path = require("path");
-const { pathToFileURL } = require("url");
+const path = require("node:path");
+const { pathToFileURL } = require("node:url");
 const {
   goto,
   openBrowser,

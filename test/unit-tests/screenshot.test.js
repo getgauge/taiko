@@ -15,8 +15,8 @@ const {
   openBrowserArgs,
   resetConfig,
 } = require("./test-util");
-const path = require("path");
-const fs = require("fs");
+const path = require("node:path");
+const fs = require("node:fs");
 const test_name = "screenshot";
 
 describe(test_name, () => {

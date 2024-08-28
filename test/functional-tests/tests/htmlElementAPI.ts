@@ -1,5 +1,5 @@
-import assert = require("assert");
-import _path = require("path");
+import assert = require("node:assert");
+import _path = require("node:path");
 import {
   $,
   type DialogHandler,
@@ -215,7 +215,7 @@ export default class HtmlElementAPI {
   @Step("Navigate to relative path <relativePath>")
   public async navigateToPath(relativePath: string) {
     const absolutePath = _path.resolve(relativePath);
-    await goto("file:///" + absolutePath);
+    await goto(`file:///${absolutePath}`);
   }
 
   @ContinueOnFailure()
@@ -280,7 +280,7 @@ export default class HtmlElementAPI {
   @Step("Navigate to relative path <path> with timeout <timeout> ms")
   public async navigateToPathWithTimeout(path: string, timeout: any) {
     const absolutePath = _path.resolve(path);
-    await goto("file:///" + absolutePath, {
+    await goto(`file:///${absolutePath}`, {
       navigationTimeout: timeout,
     });
   }

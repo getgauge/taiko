@@ -1,8 +1,8 @@
 const taiko = require("../../lib/taiko");
 const config = require("../../lib/config");
-const fs = require("fs");
-const path = require("path");
-const util = require("util");
+const fs = require("node:fs");
+const path = require("node:path");
+const util = require("node:util");
 
 (async () => {
   /**
@@ -47,7 +47,9 @@ const util = require("util");
           (item) => item !== "emitter" && item !== "metadata",
         );
         let result = "";
-        funcs.sort().forEach(async (item) => (result += `taiko.${item};\n`));
+        for (const item of funcs.sort()) {
+          result += `taiko.${item};\n`;
+        }
         result += "\n";
         return result;
       }
@@ -71,16 +73,12 @@ const util = require("util");
             return str.charAt(0).toUpperCase() + str.slice(1);
           }
           const simpleName = typeName.replace(/\./, "");
-          const functionName = "get" + firstToUpper(simpleName);
-          const constName = "c" + firstToUpper(simpleName);
+          const functionName = `get${firstToUpper(simpleName)}`;
+          const constName = `c${firstToUpper(simpleName)}`;
           return { functionName, constName };
         }
         const { functionName, constName } = createNamesFromType();
-        const result =
-          `export function ${functionName}(){\n` +
-          `const ${constName}: ${typeName} = ${JSON.stringify(literal)};\n` +
-          `return ${constName};\n` +
-          "}\n\n";
+        const result = `export function ${functionName}(){\nconst ${constName}: ${typeName} = ${JSON.stringify(literal)};\nreturn ${constName};\n}\n\n`;
         return result;
       }
       return (
@@ -94,4 +92,4 @@ const util = require("util");
     }
   }
   return await genTypeTestForTaiko();
-})().then((filePath) => console.log("Generated " + filePath));
+})().then((filePath) => console.log(`Generated ${filePath}`));

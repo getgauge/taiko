@@ -71,30 +71,33 @@ describe(test_name, () => {
     it("should construct elementWrapper from function returning Node", async () => {
       expect(
         await $(() => {
-          return document.querySelector('#foo');
+          return document.querySelector("#foo");
         }).exists(),
       ).to.be.true;
     });
     it("should construct elementWrapper from function returning NodeList", async () => {
       expect(
         await $(() => {
-          return document.querySelectorAll('#foo');
+          return document.querySelectorAll("#foo");
         }).exists(),
       ).to.be.true;
     });
-    it('should accept args to be passed to query function as an option', async () => {
-      expect(await $((selector) => document.querySelector(selector), { args: '#foo' }).exists()).to
-        .be.true;
+    it("should accept args to be passed to query function as an option", async () => {
+      expect(
+        await $((selector) => document.querySelector(selector), {
+          args: "#foo",
+        }).exists(),
+      ).to.be.true;
     });
     it("should throw an error if the query function does not return a node or nodeList", async () => {
-      await expect($(() => { }).exists()).to.be.eventually.rejectedWith(
+      await expect($(() => {}).exists()).to.be.eventually.rejectedWith(
         "Query function should return a DOM Node or DOM NodeList",
       );
     });
   });
 
-  describe('text with xpath', () => {
-    it('should find text with xpath', async () => {
+  describe("text with xpath", () => {
+    it("should find text with xpath", async () => {
       expect(await $("//*[text()='taiko']").exists()).to.be.true;
     });
 
@@ -104,11 +107,11 @@ describe(test_name, () => {
       );
     });
 
-    it('test text() with xpath', async () => {
-      expect(await $("//*[text()='taiko']").text()).to.be.eql('taiko');
+    it("test text() with xpath", async () => {
+      expect(await $("//*[text()='taiko']").text()).to.be.eql("taiko");
     });
 
-    it('should return true for non hidden element when isVisible fn is called', async () => {
+    it("should return true for non hidden element when isVisible fn is called", async () => {
       expect(await $("//*[text()='taiko']").isVisible()).to.be.true;
     });
 
@@ -117,8 +120,8 @@ describe(test_name, () => {
         .rejected;
     });
 
-    it('should return false for hidden element when isVisible fn is called on text', async () => {
-      expect(await $('#hidden').isVisible()).to.be.false;
+    it("should return false for hidden element when isVisible fn is called on text", async () => {
+      expect(await $("#hidden").isVisible()).to.be.false;
     });
   });
 

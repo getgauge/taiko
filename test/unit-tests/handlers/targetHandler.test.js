@@ -3,8 +3,8 @@ const rewire = require("rewire");
 
 describe("TargetHandler", () => {
   describe(".getCriTargets", () => {
-    let _targets = [],
-      targetHandler;
+    let _targets = [];
+    let targetHandler;
 
     before(() => {
       targetHandler = rewire("../../../lib/handlers/targetHandler");

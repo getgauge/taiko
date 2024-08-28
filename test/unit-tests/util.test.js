@@ -1,11 +1,14 @@
 const chai = require("chai");
-const path = require("path");
+const path = require("node:path");
 const rewire = require("rewire");
 const expect = chai.expect;
 const test_name = "util";
 
 describe(test_name, () => {
-  let util, trimCharLeft, escapeHtml, taikoInstallationLocation;
+  let util;
+  let trimCharLeft;
+  let escapeHtml;
+  let taikoInstallationLocation;
   before(() => {
     util = rewire("../../lib/util");
     trimCharLeft = util.trimCharLeft;
@@ -42,10 +45,10 @@ describe(test_name, () => {
   });
 
   describe("taikoInstallationLocation", () => {
-    let packageJSONExists = true,
-      packageJSONData,
-      globalPath,
-      localPath;
+    let packageJSONExists = true;
+    let packageJSONData;
+    let globalPath;
+    let localPath;
     before(() => {
       globalPath = path.join("path", "to", "taiko-global", "installation");
       localPath = path.join("path", "to", "taiko-local", "installation");

@@ -1,6 +1,6 @@
-const assert = require("assert");
+const assert = require("node:assert");
 const taiko = require("../../lib/taiko");
-const util = require("util");
+const util = require("node:util");
 const { removeQuotes, symbols } = require("../../lib/util");
 
 (() => {
@@ -10,8 +10,7 @@ const { removeQuotes, symbols } = require("../../lib/util");
       .apply(["metadata"], Object.values(taiko.metadata))
       .filter((item) => item !== "repl");
     assert.deepEqual(allFuncs.sort(), funcsInMetadata.sort());
-    const description =
-      symbols.pass + "All the exported functions are present in metadata";
+    const description = `${symbols.pass}All the exported functions are present in metadata`;
     console.log(
       removeQuotes(util.inspect(description, { colors: true }), description),
     );
