@@ -26,12 +26,12 @@ describe(test_name, () => {
   before(async () => {
     const innerHtml =
       `<script>
-     
+
         class ShadowButton extends HTMLElement {
           constructor() {
             super();
             var shadow = this.attachShadow({mode: 'open'});
-    
+
             var button = document.createElement('input');
             button.setAttribute('type', 'radio');
             button.setAttribute('id', 'Shadow Click');
@@ -45,7 +45,7 @@ describe(test_name, () => {
             hiddenButton.setAttribute('id', 'HiddenShadowButton');
             hiddenButton.setAttribute('style','display:none');
             shadow.appendChild(hiddenButton);
-            
+
           }
         }
         customElements.define('shadow-button', ShadowButton);
@@ -166,9 +166,9 @@ describe(test_name, () => {
       await evaluate(() => {
         document.raisedEvents = [];
         const dropDown = document.getElementById("radioButtonWithLabelFor");
-        ["input", "change", "click"].forEach((ev) => {
+        for (const ev of ["input", "change", "click"]) {
           dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
-        });
+        }
       });
       await radioButton("radioButtonWithLabelFor").select();
       const events = await evaluate(() => document.raisedEvents);

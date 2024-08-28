@@ -106,6 +106,7 @@ describe(test_name, () => {
     },
   ];
 
+  // biome-ignore lint/complexity/noForEach: Test shorhand
   inputTypes.forEach((inputType) => {
     describe(`input with type ${inputType.type}`, () => {
       let filePath;

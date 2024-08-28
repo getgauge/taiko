@@ -35,17 +35,17 @@ describe(test_name, () => {
     before(async () => {
       const innerHtml =
         ` <script>
-     
+
           class ShadowButton extends HTMLElement {
             constructor() {
               super();
               var shadow = this.attachShadow({mode: 'open'});
-      
+
               var button = document.createElement('textarea');
               button.setAttribute('id', 'Shadow text');
               button.textContent = "Shadow text"
               shadow.appendChild(button);
-              
+
             }
           }
           customElements.define('shadow-button', ShadowButton);
@@ -426,6 +426,7 @@ describe(test_name, () => {
 
   const inputTypesToTest = inputTypes.concat(inputTypesCaseSensitive);
 
+  // biome-ignore lint/complexity/noForEach: Test shorthand
   inputTypesToTest.forEach((inputType) => {
     describe(`input with type ${inputType.type}`, () => {
       let filePath;
@@ -773,7 +774,7 @@ describe(test_name, () => {
       <!DOCTYPE html>
       <html>
       <body>
-      
+
       <input type="search" id="mySearch" placeholder="Filter items">
       </body>
       </html>
@@ -801,17 +802,17 @@ describe(test_name, () => {
     let filePath;
     before(async () => {
       const innerHtml = ` <script>
-     
+
       class ShadowButton extends HTMLElement {
         constructor() {
           super();
           var shadow = this.attachShadow({mode: 'open'});
-  
+
           var button = document.createElement('input');
           button.setAttribute('id', 'Shadow text');
           button.setAttribute('placeholder', 'Shadow Placeholder');
           shadow.appendChild(button);
-          
+
         }
       }
       customElements.define('shadow-button', ShadowButton);
