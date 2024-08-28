@@ -209,8 +209,10 @@ describe("Plugins", () => {
           ].includes(plugin)
         ) {
           return { capability: ["subcommands"] };
+          // biome-ignore lint/style/noUselessElse: Needed for logic
         } else if (plugin === "taiko-plugin2") {
           return { capability: [] };
+          // biome-ignore lint/style/noUselessElse: Needed for logic
         } else {
           return {};
         }
