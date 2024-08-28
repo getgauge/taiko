@@ -14,10 +14,9 @@ describe("pageActionChecks", () => {
         retryTimeout: 0,
       });
     });
-    afterEach(
-      () =>
-        (pageActionChecks = rewire("../../../lib/actions/pageActionChecks")),
-    );
+    afterEach(() => {
+      pageActionChecks = rewire("../../../lib/actions/pageActionChecks");
+    });
     it("should call elements isVisible method and return result", async () => {
       const elem = { isVisible: () => true };
       const result = await pageActionChecks.__get__("checkVisible")(elem);
@@ -31,10 +30,9 @@ describe("pageActionChecks", () => {
         retryTimeout: 0,
       });
     });
-    afterEach(
-      () =>
-        (pageActionChecks = rewire("../../../lib/actions/pageActionChecks")),
-    );
+    afterEach(() => {
+      pageActionChecks = rewire("../../../lib/actions/pageActionChecks");
+    });
     it("should call elements isDisabled method and return not of result", async () => {
       const elem = { isDisabled: () => false };
       const result = await pageActionChecks.__get__("checkNotDisabled")(elem);
@@ -48,10 +46,9 @@ describe("pageActionChecks", () => {
         retryTimeout: 0,
       });
     });
-    afterEach(
-      () =>
-        (pageActionChecks = rewire("../../../lib/actions/pageActionChecks")),
-    );
+    afterEach(() => {
+      pageActionChecks = rewire("../../../lib/actions/pageActionChecks");
+    });
     it("should check all given checks and return false if anyone is false", async () => {
       const checks = [
         pageActionChecks.checksMap.visible,

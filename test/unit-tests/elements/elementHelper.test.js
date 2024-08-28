@@ -47,14 +47,16 @@ describe("elementHelper", () => {
     });
     actualConsole = console;
     elemHelper.__set__("console", {
-      warn: (warning) => (warningMessage = warning),
+      warn: (warning) => {
+        warningMessage = warning;
+      },
     });
     setConfig({ highlightOnAction: true });
   });
 
   afterEach(() => {
     elemHelper = rewire("../../../lib/elements/elementHelper");
-    // eslint-disable-next-line no-global-assign
+    // biome-ignore lint/suspicious/noGlobalAssign: Required for testing
     console = actualConsole;
   });
 
