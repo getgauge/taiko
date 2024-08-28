@@ -28,6 +28,7 @@ const inputTypeCaseSensitive = {
   testDescription: `${test_name} case insensitive selector`,
 };
 
+// biome-ignore lint/complexity/noForEach: No impact
 [inputType, inputTypeCaseSensitive].forEach((inputType) =>
   describe(inputType.testDescription, () => {
     const type = inputType.type;

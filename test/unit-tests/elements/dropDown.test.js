@@ -110,12 +110,12 @@ describe("DropDown", () => {
 
       await dropDown.select({ index: 2 });
       expect(nodes[objectId].selectedIndex).to.be.equal(2);
-      dispatchedEvents.forEach((e) => {
+      for (const e of dispatchedEvents) {
         expect(e instanceof Event).to.be.true;
         expect(e.options).to.be.deep.equal({
           bubbles: true,
         });
-      });
+      }
       expect(dispatchedEvents.map((x) => x.name)).to.eql(["change", "input"]);
     });
 
@@ -126,12 +126,12 @@ describe("DropDown", () => {
 
       await dropDown.select("26 value 2");
       expect(nodes[objectId].selectedIndex).to.be.equal(2);
-      dispatchedEvents.forEach((e) => {
+      for (const e of dispatchedEvents) {
         expect(e instanceof Event).to.be.true;
         expect(e.options).to.be.deep.equal({
           bubbles: true,
         });
-      });
+      }
       expect(dispatchedEvents.map((x) => x.name)).to.eql(["change", "input"]);
     });
 
@@ -142,12 +142,12 @@ describe("DropDown", () => {
 
       await dropDown.select("27 text 2");
       expect(nodes[objectId].selectedIndex).to.be.equal(2);
-      dispatchedEvents.forEach((e) => {
+      for (const e of dispatchedEvents) {
         expect(e instanceof Event).to.be.true;
         expect(e.options).to.be.deep.equal({
           bubbles: true,
         });
-      });
+      }
       expect(dispatchedEvents.map((x) => x.name)).to.eql(["change", "input"]);
     });
   });

@@ -85,10 +85,10 @@ describe("Config tests", () => {
       it("should return the specified config", () => {
         const allowedConfig = Object.keys(config.defaultConfig);
 
-        allowedConfig.forEach((optionName) => {
+        for (const optionName of allowedConfig) {
           const optionValue = config.getConfig(optionName);
           expect(config.defaultConfig[optionName]).to.equal(optionValue);
-        });
+        }
       });
     });
 

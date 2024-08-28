@@ -98,7 +98,7 @@ describe(test_name, () => {
       `<div id="one">
         <label for="select-one">One</label>
         <select id="select-one" name="select" value="select">
-          <option>Select One</option> 
+          <option>Select One</option>
           <option>Hot Beverages</option>
           </select>
       </div>
@@ -335,9 +335,9 @@ describe(test_name, () => {
       await evaluate(() => {
         document.raisedEvents = [];
         const dropDown = document.getElementById("select-one");
-        ["input", "change"].forEach((ev) => {
+        for (const ev of ["input", "change"]) {
           dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
-        });
+        }
       });
 
       await dropDown("One").select("Hot Beverages");

@@ -198,9 +198,9 @@ describe("Range test", () => {
     await evaluate(() => {
       document.raisedEvents = [];
       const range = document.getElementById("range-2");
-      ["input", "change"].forEach((ev) => {
+      for (const ev of ["input", "change"]) {
         range.addEventListener(ev, () => document.raisedEvents.push(ev));
-      });
+      }
     });
 
     await range({ id: "range-2" }).select(110);
