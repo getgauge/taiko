@@ -3,6 +3,7 @@ import { $, button, link, text, textBox } from "taiko";
 
 function getElementWithSelector(element: string, selector: string) {
   let selectedElement = null;
+  // biome-ignore lint: Required for testing
   let selectedItem;
   try {
     selectedItem = JSON.parse(selector);
