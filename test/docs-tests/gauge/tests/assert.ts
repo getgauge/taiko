@@ -1,4 +1,4 @@
-const assert = require("assert");
+const assert = require("node:assert");
 import { Step, type Table } from "gauge-ts";
 import { below, evaluate, text, textBox, title, toLeftOf } from "taiko";
 import { getElements } from "./selectors";

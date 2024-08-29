@@ -1,6 +1,6 @@
-const path = require("path");
-const { writeFileSync, unlinkSync, existsSync } = require("fs");
-const { pathToFileURL, fileURLToPath } = require("url");
+const path = require("node:path");
+const { writeFileSync, unlinkSync, existsSync } = require("node:fs");
+const { pathToFileURL, fileURLToPath } = require("node:url");
 const { setConfig } = require("../../lib/taiko");
 
 module.exports.createHtml = (innerHtml, testName) => {
@@ -9,7 +9,7 @@ module.exports.createHtml = (innerHtml, testName) => {
     "test",
     "unit-tests",
     "data",
-    testName + ".html",
+    `${testName}.html`,
   );
   const content = `
 <!DOCTYPE html>
@@ -27,12 +27,13 @@ module.exports.createHtml = (innerHtml, testName) => {
 };
 
 module.exports.removeFile = (filePath) => {
+  let _filePath = filePath;
   try {
-    filePath = fileURLToPath(filePath);
+    _filePath = fileURLToPath(filePath);
   } catch (e) {
   } finally {
-    if (existsSync(filePath)) {
-      unlinkSync(filePath);
+    if (existsSync(_filePath)) {
+      unlinkSync(_filePath);
     }
   }
 };

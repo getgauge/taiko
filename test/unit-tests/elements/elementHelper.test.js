@@ -5,14 +5,14 @@ const Element = require("../../../lib/elements/element");
 const { setConfig } = require("../../../lib/config");
 
 describe("elementHelper", () => {
-  let boxModel,
-    highlightQuadArgs,
-    hideHighlightCalled,
-    warningMessage,
-    getBoxModelCalled,
-    actualConsole,
-    elemHelper,
-    highlightQuadCalled;
+  let boxModel;
+  let highlightQuadArgs;
+  let hideHighlightCalled;
+  let warningMessage;
+  let getBoxModelCalled;
+  let actualConsole;
+  let elemHelper;
+  let highlightQuadCalled;
   function createElement(id, isVisible) {
     const elem = new Element(id, "");
     elem.isVisible = () => {
@@ -47,14 +47,16 @@ describe("elementHelper", () => {
     });
     actualConsole = console;
     elemHelper.__set__("console", {
-      warn: (warning) => (warningMessage = warning),
+      warn: (warning) => {
+        warningMessage = warning;
+      },
     });
     setConfig({ highlightOnAction: true });
   });
 
   afterEach(() => {
     elemHelper = rewire("../../../lib/elements/elementHelper");
-    // eslint-disable-next-line no-global-assign
+    // biome-ignore lint/suspicious/noGlobalAssign: Required for testing
     console = actualConsole;
   });
 

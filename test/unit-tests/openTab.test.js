@@ -1,10 +1,13 @@
 const expect = require("chai").expect;
-const { EventEmitter } = require("events");
+const { EventEmitter } = require("node:events");
 const rewire = require("rewire");
-const { fail } = require("assert");
+const { fail } = require("node:assert");
 
 describe("openTab", () => {
-  let actualTarget, actualOptions, actualUrl, taiko;
+  let actualTarget;
+  let actualOptions;
+  let actualUrl;
+  let taiko;
   const target = "TARGET";
 
   before(async () => {
@@ -73,7 +76,7 @@ describe("openTab", () => {
   it("should add protocol http:// if not given", async () => {
     const expectedUrl = "gauge.org";
     await taiko.openTab(expectedUrl);
-    expect(actualUrl).to.equal("http://" + expectedUrl);
+    expect(actualUrl).to.equal(`http://${expectedUrl}`);
   });
 
   it("should call doActionAwaitingNavigation with default options if options not given", async () => {

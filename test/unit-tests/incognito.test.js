@@ -18,7 +18,8 @@ const { openBrowserArgs, resetConfig } = require("./test-util");
 const { createHtml, removeFile } = require("./test-util");
 
 describe("Browser Context", () => {
-  let url1, url2;
+  let url1;
+  let url2;
   before(async () => {
     await openBrowser(openBrowserArgs);
     setConfig({

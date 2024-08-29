@@ -26,12 +26,12 @@ describe(test_name, () => {
   before(async () => {
     const innerHtml =
       `<script>
-     
+
         class ShadowButton extends HTMLElement {
           constructor() {
             super();
             var shadow = this.attachShadow({mode: 'open'});
-    
+
             var button = document.createElement('input');
             button.setAttribute('type', 'radio');
             button.setAttribute('id', 'Shadow Click');
@@ -45,7 +45,7 @@ describe(test_name, () => {
             hiddenButton.setAttribute('id', 'HiddenShadowButton');
             hiddenButton.setAttribute('style','display:none');
             shadow.appendChild(hiddenButton);
-            
+
           }
         }
         customElements.define('shadow-button', ShadowButton);
@@ -165,13 +165,13 @@ describe(test_name, () => {
     it("test select() triggers events", async () => {
       await evaluate(() => {
         document.raisedEvents = [];
-        var dropDown = document.getElementById("radioButtonWithLabelFor");
-        ["input", "change", "click"].forEach((ev) => {
+        const dropDown = document.getElementById("radioButtonWithLabelFor");
+        for (const ev of ["input", "change", "click"]) {
           dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
-        });
+        }
       });
       await radioButton("radioButtonWithLabelFor").select();
-      var events = await evaluate(() => document.raisedEvents);
+      const events = await evaluate(() => document.raisedEvents);
       expect(events).to.eql(["change", "input", "click"]);
     });
 

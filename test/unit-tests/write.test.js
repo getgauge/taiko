@@ -1,7 +1,7 @@
 const chai = require("chai");
 const chaiAsPromised = require("chai-as-promised");
 const rewire = require("rewire");
-const EventEmitter = require("events").EventEmitter;
+const EventEmitter = require("node:events").EventEmitter;
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 const {
@@ -181,7 +181,9 @@ describe(test_name, () => {
 
 // separated from the rest because taiko needs to get rewired
 describe("write with hideText option", () => {
-  let filePath, actualEmmiter, taiko;
+  let filePath;
+  let actualEmmiter;
+  let taiko;
   const emitter = new EventEmitter();
 
   const validateEmitterEvent = (event, expectedText) =>

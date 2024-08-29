@@ -2,13 +2,15 @@ const expect = require("chai").expect;
 const rewire = require("rewire");
 
 describe("Config tests", () => {
-  let config, originalConfig;
+  let config;
+  let originalConfig;
   beforeEach(() => {
     config = rewire("../../lib/config");
     Object.assign({}, config.defaultConfig);
   });
   afterEach(() => {
     config = rewire("../../lib/config");
+    config.setConfig(originalConfig);
   });
   describe("Test setConfig", () => {
     describe("For invalid config name", () => {
@@ -84,10 +86,10 @@ describe("Config tests", () => {
       it("should return the specified config", () => {
         const allowedConfig = Object.keys(config.defaultConfig);
 
-        allowedConfig.forEach((optionName) => {
+        for (const optionName of allowedConfig) {
           const optionValue = config.getConfig(optionName);
           expect(config.defaultConfig[optionName]).to.equal(optionValue);
-        });
+        }
       });
     });
 
@@ -309,9 +311,5 @@ describe("Config tests", () => {
       const actualOptions = config.setClickOptions(options, 32, 45);
       expect(actualOptions).to.deep.equal(exceptedOptions);
     });
-  });
-
-  afterEach(() => {
-    config.setConfig(originalConfig);
   });
 });

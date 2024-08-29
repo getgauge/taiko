@@ -98,7 +98,7 @@ describe(test_name, () => {
       `<div id="one">
         <label for="select-one">One</label>
         <select id="select-one" name="select" value="select">
-          <option>Select One</option> 
+          <option>Select One</option>
           <option>Hot Beverages</option>
           </select>
       </div>
@@ -334,15 +334,15 @@ describe(test_name, () => {
     it("should emit events", async () => {
       await evaluate(() => {
         document.raisedEvents = [];
-        var dropDown = document.getElementById("select-one");
-        ["input", "change"].forEach((ev) => {
+        const dropDown = document.getElementById("select-one");
+        for (const ev of ["input", "change"]) {
           dropDown.addEventListener(ev, () => document.raisedEvents.push(ev));
-        });
+        }
       });
 
       await dropDown("One").select("Hot Beverages");
 
-      var events = await evaluate(() => document.raisedEvents);
+      const events = await evaluate(() => document.raisedEvents);
       expect(events).to.eql(["change", "input"]);
     });
   });

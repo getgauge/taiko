@@ -3,6 +3,7 @@ import { $, button, link, text, textBox } from "taiko";
 
 function getElementWithSelector(element: string, selector: string) {
   let selectedElement = null;
+  // biome-ignore lint: Required for testing
   let selectedItem;
   try {
     selectedItem = JSON.parse(selector);
@@ -32,10 +33,10 @@ function getElementWithSelector(element: string, selector: string) {
 export function getElements(table: Table) {
   const referenceElements = [];
   const headers = table.getColumnNames();
-  table.getTableRows().forEach((row) => {
+  for (const row of table.getTableRows()) {
     referenceElements.push(
       getElementWithSelector(row.getCell(headers[0]), row.getCell(headers[1])),
     );
-  });
+  }
   return referenceElements;
 }

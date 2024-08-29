@@ -1,5 +1,5 @@
 import { getElements } from "./selectors";
-const assert = require("assert");
+const assert = require("node:assert");
 import {
   $,
   type SearchElement,
@@ -16,7 +16,7 @@ import {
   tap,
   toLeftOf,
 } from "taiko";
-const URL = require("url").URL;
+const URL = require("node:url").URL;
 import { Step, type Table, type TableRow } from "gauge-ts";
 
 export default class PageActions {
@@ -55,28 +55,28 @@ export default class PageActions {
   public async dragSourceToDirection(source: string, directionTable: Table) {
     const direction = {};
 
-    directionTable.getTableRows().forEach((row: TableRow) => {
+    for (const row of directionTable.getTableRows()) {
       direction[row.getCellValues()[0]] = Number.parseInt(
         row.getCellValues()[1],
       );
-    });
+    }
     await dragAndDrop($(source), direction);
   }
 
   @Step("Assert url host is <hostName>")
-  public async assertUrlOfHost(hostName: any) {
+  public async assertUrlOfHost(hostName: string) {
     const url = await currentURL();
     assert.equal(new URL(url).hostname, hostName);
   }
 
   @Step("Assert page navigated back <hostname>")
-  public async assertPageNavigatedBack(hostName: any) {
+  public async assertPageNavigatedBack(hostName: string) {
     const url = await currentURL();
     assert.equal(new URL(url).hostname, hostName);
   }
 
   @Step("Assert page navigated to <target>")
-  public async assertPageNavigatedToTarget(target: any) {
+  public async assertPageNavigatedToTarget(target: string) {
     const url = await currentURL();
     assert.equal(new URL(url).pathname, target);
   }

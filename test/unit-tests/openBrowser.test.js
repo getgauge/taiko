@@ -4,7 +4,9 @@ const rewire = require("rewire");
 
 const { openBrowserArgs } = require("./test-util");
 describe("OpenBrowser", () => {
-  let taiko, openBrowser, closeBrowser;
+  let taiko;
+  let openBrowser;
+  let closeBrowser;
   before(() => {
     taiko = rewire("../../lib/taiko");
     openBrowser = taiko.openBrowser;

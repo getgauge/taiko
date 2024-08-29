@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { type DataStore, DataStoreFactory, Step } from "gauge-ts";
 import { accept, alert, prompt } from "taiko";
-const assert = require("assert");
+const assert = require("node:assert");
 const scenarioStore: DataStore = DataStoreFactory.getSpecDataStore();
 
 export default class Alert {

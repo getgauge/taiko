@@ -9,21 +9,21 @@ class Event {
 }
 
 describe("RadioButton", () => {
-  let nodes,
-    RadioButton,
-    dispatchedEvent = null,
-    runtimeHandler = {
-      async runtimeCallFunctionOn(predicate, contextId, options) {
-        return {
-          result: {
-            value: predicate.call(nodes[options.objectId], options.arg),
-          },
-        };
-      },
-      async runtimeEvaluate(exp, executionContextId, opt = {}) {
-        return true;
-      },
-    };
+  let nodes;
+  let RadioButton;
+  let dispatchedEvent = null;
+  const runtimeHandler = {
+    async runtimeCallFunctionOn(predicate, contextId, options) {
+      return {
+        result: {
+          value: predicate.call(nodes[options.objectId], options.arg),
+        },
+      };
+    },
+    async runtimeEvaluate(exp, executionContextId, opt = {}) {
+      return true;
+    },
+  };
   beforeEach(() => {
     RadioButton = rewire("../../../lib/elements/radioButton");
     RadioButton.__set__("Event", Event);
@@ -66,6 +66,7 @@ describe("RadioButton", () => {
   afterEach(() => {
     RadioButton = rewire("../../../lib/elements/radioButton");
     dispatchedEvent = null;
+    // biome-ignore lint: Required for testing
     delete Object.prototype.checked;
   });
 

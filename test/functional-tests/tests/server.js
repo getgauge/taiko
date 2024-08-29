@@ -1,9 +1,10 @@
 const app = require("the-internet-express");
 const express = require("express");
-const path = require("path");
+const path = require("node:path");
 
 const fileApp = express();
-let ieServer, filesServer;
+let ieServer;
+let filesServer;
 
 fileApp.use("/", express.static(path.join(__dirname, "../specs/data")));
 

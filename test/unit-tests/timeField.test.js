@@ -48,7 +48,7 @@ describe(test_name, () => {
     return date;
   };
 
-  var inputTypes = [
+  const inputTypes = [
     {
       type: "date",
       name: "inputType-date",
@@ -106,8 +106,9 @@ describe(test_name, () => {
     },
   ];
 
+  // biome-ignore lint/complexity/noForEach: Test shorhand
   inputTypes.forEach((inputType) => {
-    describe("input with type " + inputType.type, () => {
+    describe(`input with type ${inputType.type}`, () => {
       let filePath;
       before(async () => {
         const innerHtml = `
@@ -263,7 +264,7 @@ describe(test_name, () => {
         it("test exists()", async () => {
           expect(
             await timeField({
-              id: inputType.name + "WithLabelFor",
+              id: `${inputType.name}WithLabelFor`,
             }).exists(),
           ).to.be.true;
         });
@@ -271,19 +272,19 @@ describe(test_name, () => {
         it("test value()", async () => {
           expect(
             await timeField({
-              id: inputType.name + "WithLabelFor",
+              id: `${inputType.name}WithLabelFor`,
             }).value(),
           ).to.equal(inputType.testDefaultValue);
         });
 
         it("test select()", async () => {
           await timeField({
-            id: inputType.name + "WithLabelFor",
+            id: `${inputType.name}WithLabelFor`,
           }).select(inputType.testValue);
 
           expect(
             await timeField({
-              id: inputType.name + "WithLabelFor",
+              id: `${inputType.name}WithLabelFor`,
             }).value(),
           ).to.equal(inputType.testActualValue);
         });
@@ -291,7 +292,7 @@ describe(test_name, () => {
         it("test description", async () => {
           expect(
             timeField({
-              id: inputType.name + "WithLabelFor",
+              id: `${inputType.name}WithLabelFor`,
             }).description,
           ).to.be.eql(
             `TimeField[id="inputType-${inputType.type}WithLabelFor"]`,

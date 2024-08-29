@@ -9,21 +9,21 @@ class Event {
 }
 
 describe("CheckBox", () => {
-  let nodes,
-    CheckBox,
-    dispatchedEvent = null,
-    runtimeHandler = {
-      async runtimeCallFunctionOn(predicate, contextId, options) {
-        return {
-          result: {
-            value: predicate.call(nodes[options.objectId], options.arg),
-          },
-        };
-      },
-      async runtimeEvaluate(exp, executionContextId, opt = {}) {
-        return true;
-      },
-    };
+  let nodes;
+  let CheckBox;
+  let dispatchedEvent = null;
+  const runtimeHandler = {
+    async runtimeCallFunctionOn(predicate, contextId, options) {
+      return {
+        result: {
+          value: predicate.call(nodes[options.objectId], options.arg),
+        },
+      };
+    },
+    async runtimeEvaluate(exp, executionContextId, opt = {}) {
+      return true;
+    },
+  };
 
   beforeEach(() => {
     CheckBox = rewire("../../../lib/elements/checkBox");
@@ -68,6 +68,7 @@ describe("CheckBox", () => {
   afterEach(() => {
     CheckBox = rewire("../../../lib/elements/checkBox");
     dispatchedEvent = null;
+    // biome-ignore lint: Required for testing
     delete Object.prototype.checked;
   });
 

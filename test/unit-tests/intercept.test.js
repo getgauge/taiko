@@ -159,7 +159,7 @@ describe(test_name, () => {
     });
 
     it("intercepts requestUrl", async () => {
-      for (var i = 0; i < count + 1; i++) {
+      for (let i = 0; i < count + 1; i++) {
         fetchHandler.handleInterceptor({
           requestId: "requestId",
           request: {
@@ -169,13 +169,13 @@ describe(test_name, () => {
           resourceType: "Document",
           isNavigationRequest: true,
         });
-        var result = count === i ? undefined : "http://www.gauge.org";
+        const result = count === i ? undefined : "http://www.gauge.org";
         expect(actualOption.url).to.equal(result);
       }
     });
 
     it("maintains count amidst interleaving matched requests", async () => {
-      for (var i = 0; i < count + 1; i++) {
+      for (let i = 0; i < count + 1; i++) {
         fetchHandler.handleInterceptor({
           requestId: "otherRequestId",
           request: {
@@ -194,7 +194,7 @@ describe(test_name, () => {
           resourceType: "Document",
           isNavigationRequest: true,
         });
-        var result = count === i ? undefined : "http://www.gauge.org";
+        const result = count === i ? undefined : "http://www.gauge.org";
         expect(actualOption.url).to.equal(result);
       }
     });
@@ -205,7 +205,7 @@ describe(test_name, () => {
       requestUrl: "www.google.com",
       action: "www.gauge.org",
     });
-    var result = fetchHandler.resetInterceptor("www.google.com");
+    const result = fetchHandler.resetInterceptor("www.google.com");
     fetchHandler.handleInterceptor({
       requestId: "requestId",
       request: {
@@ -219,7 +219,7 @@ describe(test_name, () => {
     expect(result).to.equal(true);
   });
   it("reset intercept returns false if intercept does not exist for the requestUrl", async () => {
-    var result = fetchHandler.resetInterceptor("www.google.com");
+    const result = fetchHandler.resetInterceptor("www.google.com");
     expect(result).to.equal(false);
   });
   it("reset interceptors should set interceptors empty array and userEnabledIntercept false", async () => {

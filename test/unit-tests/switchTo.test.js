@@ -6,7 +6,8 @@ const rewire = require("rewire");
 chai.use(chaiAsPromised);
 
 describe("switchTo", () => {
-  let argument, taiko;
+  let argument;
+  let taiko;
   let registeredTarget;
 
   before(async () => {

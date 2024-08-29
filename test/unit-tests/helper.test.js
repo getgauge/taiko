@@ -6,7 +6,8 @@ const { waitUntil } = require("../../lib/helper");
 
 describe("Helper", () => {
   describe("waitUntil", () => {
-    let callCount, maxCallCOunt;
+    let callCount;
+    let maxCallCOunt;
     const condition = async () => {
       if (callCount === maxCallCOunt) {
         return true;

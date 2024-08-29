@@ -1,5 +1,5 @@
 const rewire = require("rewire");
-const EventEmitter = require("events").EventEmitter;
+const EventEmitter = require("node:events").EventEmitter;
 const expect = require("chai").expect;
 
 describe("pageHandler", () => {

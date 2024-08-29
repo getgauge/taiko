@@ -1,9 +1,10 @@
 const expect = require("chai").expect;
-const { EventEmitter } = require("events");
+const { EventEmitter } = require("node:events");
 const rewire = require("rewire");
 
 describe("clearIntercept", () => {
-  let validateEmitterEvent, taiko;
+  let validateEmitterEvent;
+  let taiko;
   before(() => {
     taiko = rewire("../../lib/taiko");
   });

@@ -1,7 +1,7 @@
 const expect = require("chai").expect;
 const rewire = require("rewire");
-const path = require("path");
-const os = require("os");
+const path = require("node:path");
+const os = require("node:os");
 
 describe("Plugins", () => {
   let PLUGINS;
@@ -13,7 +13,7 @@ describe("Plugins", () => {
   });
   describe("GetPlugins", () => {
     function mockReadFileSyncWith(content) {
-      var fsMock = {
+      const fsMock = {
         readFileSync: () => content,
         existsSync: () => true,
       };
@@ -21,6 +21,7 @@ describe("Plugins", () => {
     }
     describe("With ENV variable", () => {
       afterEach(() => {
+        // biome-ignore lint: Required for testing
         delete process.env.TAIKO_PLUGIN;
       });
       it("should give plugin name from ENV variable", () => {
@@ -40,7 +41,7 @@ describe("Plugins", () => {
 
     describe("Get plugins from package.json", () => {
       it("should give empty array if there is no package.json", () => {
-        var fsMock = {
+        const fsMock = {
           existsSync: () => false,
         };
         PLUGINS.__set__("fs", fsMock);
@@ -107,7 +108,7 @@ describe("Plugins", () => {
     it("should let plugins register to available hooks", () => {
       const expectedResult = "Value from hook";
       PLUGINS.registerHooks({ preConnectionHook: () => expectedResult });
-      const actualResult = PLUGINS.pluginHooks["preConnectionHook"]();
+      const actualResult = PLUGINS.pluginHooks.preConnectionHook();
       expect(actualResult).to.equal(expectedResult);
     });
     it("should throw error if plugins try to register unavailable hook", () => {
@@ -129,7 +130,7 @@ describe("Plugins", () => {
       const simlinkedPath = path.join(tmpDir, "taiko-plugin-simlinked-path");
       const globalPluginPath = path.join(tmpDir, "global", "taiko-plugin-path");
       const localPluginPath = path.join(tmpDir, "local", "taiko-plugin-path");
-      var fsMock = {
+      const fsMock = {
         existsSync: () => true,
         readdirSync: (path) => {
           if (path === globalPluginPath) {
@@ -209,8 +210,10 @@ describe("Plugins", () => {
           ].includes(plugin)
         ) {
           return { capability: ["subcommands"] };
+          // biome-ignore lint/style/noUselessElse: Needed for logic
         } else if (plugin === "taiko-plugin2") {
           return { capability: [] };
+          // biome-ignore lint/style/noUselessElse: Needed for logic
         } else {
           return {};
         }

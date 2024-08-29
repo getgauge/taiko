@@ -33,7 +33,7 @@ describe(test_name, () => {
     const cookieName = "MySetCookie";
     await expect(
       taiko.setCookie(cookieName, "Foo", { url: "file:///foo.html" }),
-    ).to.eventually.be.rejectedWith("Unable to set " + cookieName + " cookie");
+    ).to.eventually.be.rejectedWith(`Unable to set ${cookieName} cookie`);
   });
 
   it("setCookie should set successfully", async () => {

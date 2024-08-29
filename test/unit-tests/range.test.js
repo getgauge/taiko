@@ -1,6 +1,6 @@
 const chai = require("chai");
 const expect = chai.expect;
-var sinon = require("sinon");
+const sinon = require("sinon");
 const { descEvent } = require("../../lib/eventBus");
 const chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
@@ -197,15 +197,15 @@ describe("Range test", () => {
   it("should emit events", async () => {
     await evaluate(() => {
       document.raisedEvents = [];
-      var range = document.getElementById("range-2");
-      ["input", "change"].forEach((ev) => {
+      const range = document.getElementById("range-2");
+      for (const ev of ["input", "change"]) {
         range.addEventListener(ev, () => document.raisedEvents.push(ev));
-      });
+      }
     });
 
     await range({ id: "range-2" }).select(110);
 
-    var events = await evaluate(() => document.raisedEvents);
+    const events = await evaluate(() => document.raisedEvents);
     expect(events).to.eql(["change", "input"]);
   });
 

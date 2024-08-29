@@ -5,8 +5,8 @@ const test_name = "goBack";
 
 describe(test_name, () => {
   let taiko;
-  let actualHistoryEntryId,
-    actualOptions = null;
+  let actualHistoryEntryId;
+  let actualOptions = null;
 
   before(async () => {
     const mockWrapper = async (options, cb) => {

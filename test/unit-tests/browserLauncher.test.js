@@ -28,6 +28,7 @@ describe("OpenBrowser", () => {
         "--test-arg3",
       ];
       expect(testArgs).to.include.members(expectedArgs);
+      // biome-ignore lint: Required for testing
       delete process.env.TAIKO_BROWSER_ARGS;
     });
   });

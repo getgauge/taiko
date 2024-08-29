@@ -1,5 +1,5 @@
-import assert = require("assert");
-import _path = require("path");
+import assert = require("node:assert");
+import _path = require("node:path");
 import {
   $,
   type DialogHandler,
@@ -40,8 +40,8 @@ export default class HtmlElementAPI {
   @Step("Navigate to <url> with basic auth <username> and <password>")
   public async navigateWithBasicAuth(
     url: string,
-    username: any,
-    password: any,
+    username: string,
+    password: string,
   ) {
     const encodedCredentials = Buffer.from(`${username}:${password}`).toString(
       "base64",
@@ -63,7 +63,7 @@ export default class HtmlElementAPI {
   public async selectDropDownValue(
     value: string | number,
     dropDownName: string,
-    fieldValue: any,
+    fieldValue: string,
   ) {
     const box = dropDown(dropDownName);
     await box.select(value);
@@ -99,7 +99,7 @@ export default class HtmlElementAPI {
   }
 
   @Step("Get value <text> of Text Box <textBoxName>")
-  public async getTextboxValue(text: any, textBoxName: string) {
+  public async getTextboxValue(text: string, textBoxName: string) {
     const field = textBox(textBoxName);
     assert.equal(await field.value(), text);
   }
@@ -111,17 +111,17 @@ export default class HtmlElementAPI {
   }
 
   @Step("Write <text> into Text Box <textBoxName>")
-  public async writeInto(text: string, textBoxName: any) {
+  public async writeInto(text: string, textBoxName: string) {
     await write(text, into(textBoxName));
   }
 
   @Step("Write <text> into TextBox with name <textboxName>")
-  public async writeWithName(text: string, textBoxName: any) {
+  public async writeWithName(text: string, textBoxName: string) {
     await write(text, into(textBox({ name: textBoxName })));
   }
 
   @Step("Write <text> to Text Box <textBoxName>")
-  public async writeTo(text: string, textBoxName: any) {
+  public async writeTo(text: string, textBoxName: string) {
     await write(text, to(textBoxName));
   }
 
@@ -169,7 +169,7 @@ export default class HtmlElementAPI {
   }
 
   @Step("Respond to <url> with <responseBody>")
-  public async interceptResponse(url: string, responseBody: any) {
+  public async interceptResponse(url: string, responseBody: string) {
     await intercept(url, { body: responseBody });
   }
 
@@ -179,7 +179,7 @@ export default class HtmlElementAPI {
   }
 
   @Step("Intercept <url> and continue with postData <mockData>")
-  public async interceptRequest(url: string, mockData: any) {
+  public async interceptRequest(url: string, mockData: string) {
     await intercept(url, (request) => {
       request.continue({ postData: mockData });
     });
@@ -188,15 +188,14 @@ export default class HtmlElementAPI {
   @Step("Navigate to relative path <relativePath>")
   public async navigateToPath(relativePath: string) {
     const absolutePath = _path.resolve(relativePath);
-    await goto("file:///" + absolutePath);
+    await goto(`file:///${absolutePath}`);
   }
 
   @Step("Navigate to relative API reference page for <functionName>")
   public async navigateToApiRefPage(functionName: string) {
-    const relativePath =
-      "../tmp/docs/_site/api/" + functionName + "/index.html";
+    const relativePath = `../tmp/docs/_site/api/${functionName}/index.html`;
     const absolutePath = _path.resolve(relativePath);
-    await goto("file:///" + absolutePath);
+    await goto(`file:///${absolutePath}`);
   }
 
   @ContinueOnFailure()
@@ -259,15 +258,15 @@ export default class HtmlElementAPI {
   }
 
   @Step("Navigate to relative path <path> with timeout <timeout> ms")
-  public async navigateToPathWithTimeout(path: string, timeout: any) {
+  public async navigateToPathWithTimeout(path: string, timeout: number) {
     const absolutePath = _path.resolve(path);
-    await goto("file:///" + absolutePath, {
+    await goto(`file:///${absolutePath}`, {
       navigationTimeout: timeout,
     });
   }
 
   @Step("Navigate to <url> with timeout <timeout> ms")
-  public async navigateToURLWithTimeout(url: string, timeout: any) {
+  public async navigateToURLWithTimeout(url: string, timeout: number) {
     await goto(url, { navigationTimeout: timeout });
   }
 

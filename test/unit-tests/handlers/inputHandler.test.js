@@ -2,8 +2,8 @@ const rewire = require("rewire");
 const expect = require("chai").expect;
 
 describe("inputHandler", () => {
-  let calledWith = [],
-    inputHandler;
+  let calledWith = [];
+  let inputHandler;
 
   before(() => {
     inputHandler = rewire("../../../lib/handlers/inputHandler");

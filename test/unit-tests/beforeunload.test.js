@@ -17,7 +17,8 @@ const { createHtml, removeFile, openBrowserArgs } = require("./test-util");
 const test_name = "beforeunload";
 
 describe(test_name, () => {
-  let filePath, filePath1;
+  let filePath;
+  let filePath1;
   let called = false;
   before(async () => {
     const innerHtml = `

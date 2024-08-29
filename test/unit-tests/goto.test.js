@@ -3,12 +3,12 @@ const expect = require("chai").expect;
 const test_name = "Goto";
 
 describe(test_name, () => {
-  let actualHeader,
-    actualDomain,
-    actualUrl,
-    actualOptions,
-    taiko,
-    validateCalled = false;
+  let actualHeader;
+  let actualDomain;
+  let actualUrl;
+  let actualOptions;
+  let taiko;
+  let validateCalled = false;
 
   before(() => {
     taiko = rewire("../../lib/taiko");
@@ -78,7 +78,7 @@ describe(test_name, () => {
 
   it("should add protocol http:// if not given", async () => {
     const urlWithoutProtocol = "example.com";
-    const expectedUrl = "http://" + urlWithoutProtocol;
+    const expectedUrl = `http://${urlWithoutProtocol}`;
     await taiko.goto(urlWithoutProtocol);
     expect(actualUrl).to.equal(expectedUrl);
   });
@@ -92,7 +92,7 @@ describe(test_name, () => {
 
   it("should add protocol http:// for url with port specified", async () => {
     const urlWithPort = "localhost:8080";
-    const expectedUrl = "http://" + urlWithPort;
+    const expectedUrl = `http://${urlWithPort}`;
     await taiko.goto(urlWithPort);
     expect(actualUrl).to.equal(expectedUrl);
   });
