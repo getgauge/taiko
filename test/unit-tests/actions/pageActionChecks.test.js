@@ -83,10 +83,9 @@ describe("pageActionChecks", () => {
         retryTimeout: 10,
       });
     });
-    afterEach(
-      () =>
-        (pageActionChecks = rewire("../../../lib/actions/pageActionChecks")),
-    );
+    afterEach(() => {
+      pageActionChecks = rewire("../../../lib/actions/pageActionChecks");
+    });
     it("should call checkActionable with default checks if not given", async () => {
       const defaultChecks = [
         pageActionChecks.checksMap.visible,

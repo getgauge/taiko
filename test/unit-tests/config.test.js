@@ -10,6 +10,7 @@ describe("Config tests", () => {
   });
   afterEach(() => {
     config = rewire("../../lib/config");
+    config.setConfig(originalConfig);
   });
   describe("Test setConfig", () => {
     describe("For invalid config name", () => {
@@ -310,9 +311,5 @@ describe("Config tests", () => {
       const actualOptions = config.setClickOptions(options, 32, 45);
       expect(actualOptions).to.deep.equal(exceptedOptions);
     });
-  });
-
-  afterEach(() => {
-    config.setConfig(originalConfig);
   });
 });

@@ -68,9 +68,9 @@ describe("Fetch Handler", () => {
           },
         ],
       ];
-      headersAndHost.forEach((headerAndHost) => {
+      for (const headerAndHost of headersAndHost) {
         fetchHandler.setHTTPHeaders(headerAndHost[0], headerAndHost[1]);
-      });
+      }
     });
     it("should set appropriate headers for a host", () => {
       headersAndHost.forEach((headerAndHost, index) => {
