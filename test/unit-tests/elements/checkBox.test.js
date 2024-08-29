@@ -68,6 +68,7 @@ describe("CheckBox", () => {
   afterEach(() => {
     CheckBox = rewire("../../../lib/elements/checkBox");
     dispatchedEvent = null;
+    // biome-ignore lint: Required for testing
     delete Object.prototype.checked;
   });
 

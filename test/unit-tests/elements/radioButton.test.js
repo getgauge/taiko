@@ -66,6 +66,7 @@ describe("RadioButton", () => {
   afterEach(() => {
     RadioButton = rewire("../../../lib/elements/radioButton");
     dispatchedEvent = null;
+    // biome-ignore lint: Required for testing
     delete Object.prototype.checked;
   });
 

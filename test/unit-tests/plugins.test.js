@@ -21,6 +21,7 @@ describe("Plugins", () => {
     }
     describe("With ENV variable", () => {
       afterEach(() => {
+        // biome-ignore lint: Required for testing
         delete process.env.TAIKO_PLUGIN;
       });
       it("should give plugin name from ENV variable", () => {
