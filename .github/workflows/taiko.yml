@@ -83,14 +83,14 @@ jobs:
         run: npm run test-functional
 
       - name: Upload html report
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: ft-reports-${{ matrix.os }}-${{ matrix.node_version }}
           path: test/functional-tests/reports/html-report
 
       - name: Upload logs
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: ft-logs-${{ matrix.os }}-${{ matrix.node_version }}
@@ -129,13 +129,13 @@ jobs:
           TAIKO_HIGHLIGHT_ON_ACTION: false
         run: xvfb-run npm run test-functional
       - name: Upload html report
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: ft-reports-linux-headful
           path: test/functional-tests/reports/html-report
       - name: Upload logs
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: ft-logs-linux-headful
@@ -171,13 +171,13 @@ jobs:
       - name: test-docs
         run: npm run test-docs
       - name: Upload html report
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: docs-tests-reports
           path: test/docs-tests/gauge/reports/html-report
       - name: Upload logs
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: docs-tests-logs

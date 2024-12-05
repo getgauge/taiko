@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
 /* Global Styles */
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 1.8;
-  color: #25282D;
+  color: #25282d;
   background: #fcfcfc;
   margin: 0;
 }
@@ -21,8 +21,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Poppins', sans-serif;
-  color: #25282D;
+  font-family: "Poppins", sans-serif;
+  color: #25282d;
 }
 
 h1 {
@@ -38,7 +38,7 @@ h3 > a {
 a,
 a:visited,
 a:active {
-  color: #25282D;
+  color: #25282d;
 }
 
 a:hover {
@@ -61,7 +61,7 @@ li {
 }
 
 blockquote {
-  border-left: 5px solid #2BD3EF;
+  border-left: 5px solid #2bd3ef;
   margin-inline-start: 0;
   padding-left: 1em;
 }
@@ -98,7 +98,7 @@ section {
 }
 
 .home-section a {
-  color: #25282D;
+  color: #25282d;
 }
 
 .home-section ul {
@@ -108,7 +108,7 @@ section {
 
 .home-section ul li::before {
   content: "\2022";
-  color: #2BD3EF;
+  color: #2bd3ef;
   font-weight: bold;
   display: inline-block;
   width: 1em;
@@ -135,7 +135,7 @@ form.search label {
   line-height: 1.5;
   font-size: 14px;
   font-weight: normal;
-  font-family: 'Open Sans';
+  font-family: "Open Sans", sans-serif;
 }
 
 form.search img {
@@ -150,7 +150,6 @@ form.search input::placeholder {
 /* Small screen overrides */
 
 @media (max-width: 600px) {
-
   .header-text {
     font-size: 34px;
     max-width: 300px;
@@ -176,7 +175,7 @@ ol {
 
 li::before {
   content: "\2022";
-  color: #2BD3EF;
+  color: #2bd3ef;
   display: inline-block;
   width: 1em;
   margin-left: -1em;
@@ -220,7 +219,7 @@ span {
 }
 
 pre code {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   background: #222222;
   color: #fff;
   display: block;
@@ -235,7 +234,7 @@ pre code {
   justify-content: space-between;
 }
 
-@media(max-width:800px) {
+@media (max-width: 800px) {
   article,
   footer,
   section {
