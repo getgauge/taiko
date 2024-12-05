@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package",
   "name": "taiko",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Taiko is a Node.js library for automating Chromium based browsers",
   "main": "bin/taiko.js",
   "bin": {
@@ -36,33 +36,36 @@
     "headless-browser"
   ],
   "lint-staged": {
-    "**/*.{js,ts}": ["npm run lint:fix", "git add"]
+    "**/*.{js,ts}": [
+      "npm run lint:fix",
+      "git add"
+    ]
   },
   "taiko": {
     "browser": {
-      "version": "128.0.6597.0",
-      "revision": "1327306",
+      "version": "133.0.6878.0",
+      "revision": "1392035",
       "downloads": {
         "chrome": [
           {
             "platform": "linux64",
-            "url": "https://storage.googleapis.com/chrome-for-testing-public/128.0.6597.0/linux64/chrome-linux64.zip"
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/133.0.6878.0/linux64/chrome-linux64.zip"
           },
           {
             "platform": "mac-arm64",
-            "url": "https://storage.googleapis.com/chrome-for-testing-public/128.0.6597.0/mac-arm64/chrome-mac-arm64.zip"
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/133.0.6878.0/mac-arm64/chrome-mac-arm64.zip"
           },
           {
             "platform": "mac-x64",
-            "url": "https://storage.googleapis.com/chrome-for-testing-public/128.0.6597.0/mac-x64/chrome-mac-x64.zip"
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/133.0.6878.0/mac-x64/chrome-mac-x64.zip"
           },
           {
             "platform": "win32",
-            "url": "https://storage.googleapis.com/chrome-for-testing-public/128.0.6597.0/win32/chrome-win32.zip"
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/133.0.6878.0/win32/chrome-win32.zip"
           },
           {
             "platform": "win64",
-            "url": "https://storage.googleapis.com/chrome-for-testing-public/128.0.6597.0/win64/chrome-win64.zip"
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/133.0.6878.0/win64/chrome-win64.zip"
           }
         ]
       }
