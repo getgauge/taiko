@@ -157,14 +157,14 @@ describe(test_name, () => {
   describe("With proximity selector and Options Object", () => {
     it("should click", async () => {
       await click(
-        "Click with proximity", 
-        { waitForNavigation: true }, 
+        "Click with proximity",
+        { waitForNavigation: true },
         below("Proximity marker"),
       );
       expect(
         await text(
-          "Click works with proximity selector and Options Object."
-        ).exists()
+          "Click works with proximity selector and Options Object.",
+        ).exists(),
       ).to.be.true;
     });
   });
