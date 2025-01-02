@@ -48,6 +48,7 @@ describe(test_name, () => {
             <input onclick="displayText('Click works with text as value.')" value="Text as value"/><br/>
             <input onclick="displayText('Click works with text as type.')" type="Text as type"/><br/>
             <span onclick="displayText('Click works with proximity selector.')">Click with proximity</span>
+            <span onclick="displayText('Click works with proximity selector and options object.')">Click with proximity and options object</span>
             <div onclick="displayText('Click works with text accross element.')">
                 Text <span>accross</span> elements
             </div>
@@ -151,6 +152,21 @@ describe(test_name, () => {
       await click("Click with proximity", below("Proximity marker"));
       expect(await text("Click works with proximity selector.").exists()).to.be
         .true;
+    });
+  });
+
+  describe("With proximity selector and options object", () => {
+    it("should click", async () => {
+      await click(
+        "Click with proximity and options object",
+        { waitForNavigation: true },
+        below("Proximity marker"),
+      );
+      expect(
+        await text(
+          "Click works with proximity selector and options object.",
+        ).exists(),
+      ).to.be.true;
     });
   });
 
