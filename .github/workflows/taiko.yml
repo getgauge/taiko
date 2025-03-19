@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         node_version: ['20']
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-22.04, windows-latest]
     steps:
       - uses: actions/checkout@v4
       - name: Use NodeJS ${{ matrix.node_version }}
@@ -29,7 +29,7 @@ jobs:
       - name: install
         run: npm install
       - name: install browser dependencies
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-22.04'
         run: |
           sudo apt-get update
           sudo apt-get install -y  libnss3 \
@@ -55,7 +55,7 @@ jobs:
     strategy:
       matrix:
         node_version: ['20']
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-22.04, windows-latest]
 
     steps:
       - uses: actions/checkout@v4
@@ -64,7 +64,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: install browser dependencies
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-22.04'
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -99,7 +99,7 @@ jobs:
   functional-tests-headful:
     needs: unit-tests
     name: FT in linux-headful
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - name: Use NodeJS 20
@@ -144,7 +144,7 @@ jobs:
   docs-tests:
     needs: unit-tests
     name: Docs tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - name: Use NodeJS 20
