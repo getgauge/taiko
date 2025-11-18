@@ -128,7 +128,19 @@ describe("emulationHandler", () => {
       },
     };
 
-    const mockClient = { Emulation: newMockEmulation };
+    // Mock Network to prevent errors from networkHandler
+    const newMockNetwork = {
+      requestWillBeSent: () => {},
+      loadingFinished: () => {},
+      loadingFailed: () => {},
+      responseReceived: () => {},
+      setCacheDisabled: async () => {},
+    };
+
+    const mockClient = {
+      Emulation: newMockEmulation,
+      Network: newMockNetwork,
+    };
 
     // Emit createdSession event (simulating opening a new tab)
     const eventHandler = emulationHandler.__get__("eventHandler");
@@ -149,6 +161,11 @@ describe("emulationHandler", () => {
   });
 
   it("should not reapply viewport if setViewport was never called", async () => {
+    // Remove old listener before reloading
+    const oldEventHandler = emulationHandler.__get__("eventHandler");
+    const oldListener = emulationHandler.__get__("createdSessionListener");
+    oldEventHandler.removeListener("createdSession", oldListener);
+
     // Reload the module to reset state
     emulationHandler = rewire("../../../lib/handlers/emulationHandler");
 
@@ -163,7 +180,19 @@ describe("emulationHandler", () => {
       },
     };
 
-    const mockClient = { Emulation: newMockEmulation };
+    // Mock Network to prevent errors from networkHandler
+    const newMockNetwork = {
+      requestWillBeSent: () => {},
+      loadingFinished: () => {},
+      loadingFailed: () => {},
+      responseReceived: () => {},
+      setCacheDisabled: async () => {},
+    };
+
+    const mockClient = {
+      Emulation: newMockEmulation,
+      Network: newMockNetwork,
+    };
 
     // Emit createdSession without setting viewport first
     const eventHandler = emulationHandler.__get__("eventHandler");
