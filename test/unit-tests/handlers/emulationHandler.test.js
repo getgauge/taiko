@@ -107,4 +107,102 @@ describe("emulationHandler", () => {
       deviceScaleFactor: 1,
     });
   });
+
+  it(".setViewport should reapply viewport settings when createdSession event is emitted", async () => {
+    // Set viewport first
+    await emulationHandler.setViewport({ height: 720, width: 1280 });
+
+    // Reset calledWith to verify reapplication
+    calledWith = {};
+    calledWithTouch = {};
+
+    // Create a new mock emulation for the new session
+    const newCalledWith = {};
+    const newCalledWithTouch = {};
+    const newMockEmulation = {
+      setDeviceMetricsOverride: async (param) => {
+        Object.assign(newCalledWith, param);
+      },
+      setTouchEmulationEnabled: async (param) => {
+        Object.assign(newCalledWithTouch, param);
+      },
+    };
+
+    // Mock Network to prevent errors from networkHandler
+    const newMockNetwork = {
+      requestWillBeSent: () => {},
+      loadingFinished: () => {},
+      loadingFailed: () => {},
+      responseReceived: () => {},
+      setCacheDisabled: async () => {},
+    };
+
+    const mockClient = {
+      Emulation: newMockEmulation,
+      Network: newMockNetwork,
+    };
+
+    // Emit createdSession event (simulating opening a new tab)
+    const eventHandler = emulationHandler.__get__("eventHandler");
+    await eventHandler.emit("createdSession", mockClient);
+
+    // Wait for async event handler to complete
+    await new Promise((resolve) => setTimeout(resolve, 50));
+
+    // Verify viewport settings were reapplied
+    expect(newCalledWith).to.be.eql({
+      height: 720,
+      width: 1280,
+      mobile: false,
+      screenOrientation: { angle: 0, type: "portraitPrimary" },
+      deviceScaleFactor: 1,
+    });
+    expect(newCalledWithTouch).to.be.eql({ enabled: false });
+  });
+
+  it("should not reapply viewport if setViewport was never called", async () => {
+    // Remove old listener before reloading
+    const oldEventHandler = emulationHandler.__get__("eventHandler");
+    const oldListener = emulationHandler.__get__("createdSessionListener");
+    oldEventHandler.removeListener("createdSession", oldListener);
+
+    // Reload the module to reset state
+    emulationHandler = rewire("../../../lib/handlers/emulationHandler");
+
+    const newCalledWith = {};
+    const newCalledWithTouch = {};
+    const newMockEmulation = {
+      setDeviceMetricsOverride: async (param) => {
+        Object.assign(newCalledWith, param);
+      },
+      setTouchEmulationEnabled: async (param) => {
+        Object.assign(newCalledWithTouch, param);
+      },
+    };
+
+    // Mock Network to prevent errors from networkHandler
+    const newMockNetwork = {
+      requestWillBeSent: () => {},
+      loadingFinished: () => {},
+      loadingFailed: () => {},
+      responseReceived: () => {},
+      setCacheDisabled: async () => {},
+    };
+
+    const mockClient = {
+      Emulation: newMockEmulation,
+      Network: newMockNetwork,
+    };
+
+    // Emit createdSession without setting viewport first
+    const eventHandler = emulationHandler.__get__("eventHandler");
+    await eventHandler.emit("createdSession", mockClient);
+
+    // Wait for async event handler to complete
+    await new Promise((resolve) => setTimeout(resolve, 50));
+
+    // Verify viewport settings were NOT applied
+    expect(Object.keys(newCalledWith).length).to.equal(0);
+    expect(Object.keys(newCalledWithTouch).length).to.equal(0);
+  });
 });
