@@ -211,8 +211,8 @@ describe("write with hideText option", () => {
   });
 
   after(async () => {
+    await taiko.closeBrowser();
     removeFile(filePath);
-    taiko.closeBrowser();
     taiko.__set__("descEvent", actualEmmiter);
   });
 
