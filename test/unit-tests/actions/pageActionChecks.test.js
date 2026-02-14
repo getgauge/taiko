@@ -3,7 +3,6 @@ const expect = chai.expect;
 const chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 const rewire = require("rewire");
-const { checksMap } = require("../../../lib/actions/pageActionChecks");
 let pageActionChecks = rewire("../../../lib/actions/pageActionChecks");
 
 describe("pageActionChecks", () => {
