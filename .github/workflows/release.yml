@@ -7,7 +7,8 @@ jobs:
     if: github.event.deployment.environment == 'production'
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # Required for OIDC trusted publishing to NPM
+      id-token: write    # Required for OIDC trusted publishing to NPM
+      deployments: write # For updating deployment status
       contents: read
     env:
       GITHUB_TOKEN: '${{ secrets.GAUGEBOT_GITHUB_TOKEN }}'
