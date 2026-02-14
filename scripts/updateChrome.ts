@@ -1,8 +1,14 @@
 import { execSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
-import path from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const PACKAGE_JSON_PATH = path.join(__dirname, "..", "package.json");
+const PACKAGE_JSON_PATH = join(
+  // @ts-ignore
+  dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "package.json",
+);
 
 interface ChromeDownload {
   platform: string;

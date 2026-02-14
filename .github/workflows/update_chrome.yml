@@ -1,11 +1,11 @@
-name: update-chromium
+name: update-chrome
 on:
   schedule:
-    # cron job that will run 1st and 15th of every month by 12am
-    - cron: '0 12 1,15 * *'
+    # cron job that will run 1st of every month by 12am
+    - cron: '0 12 1 * *'
 
 jobs:
-  update-to-latest-chromium:
+  update-to-latest-chrome:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,17 +32,17 @@ jobs:
             libgbm-dev \
             libasound-dev
 
-      - name: Get Chromium version and update
+      - name: Get Chrome version and update
         run: |
           npm install
-          node updateChromium.js
-          revision=$(cat package.json | grep chromium_revision | awk '{print $2}' | sed 's/[",]//g')
+          node scripts/updateChrome.ts
+          revision=$(cat package.json | grep revision | awk '{print $2}' | sed 's/[",]//g')
           echo "REVISION=$revision" >> $GITHUB_ENV
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v2
+        uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GAUGEBOT_GITHUB_TOKEN }}
-          branch: ${{format('{0}{1}', 'update-chromium',env.REVISION)}}
-          commit-message: ${{format('{0}{1}','Update chromium to revision ', env.REVISION)}}
-          title: ${{format('{0}{1}','Update chromium to revision ', env.REVISION)}}
+          branch: ${{format('{0}{1}', 'update-chrome-', env.REVISION)}}
+          commit-message: ${{format('{0}{1}', 'Update chrome to revision ', env.REVISION)}}
+          title: ${{format('{0}{1}', 'Update chrome to revision ', env.REVISION)}}
