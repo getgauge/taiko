@@ -31,7 +31,7 @@ jobs:
 
       - name: Deploy on github
         run: |
-          version=$(grep '"version"' package.json | sed 's/"version":[[:space:]]*"//' | sed 's/",//' | tr -d [:space:])
+          version=$(grep '^  "version"' package.json | sed 's/"version":[ ]*"//' | sed 's/",//' | tr -d ' ')
           if [ -z "$version" ]; then
               echo "Taiko version is not set"
               exit 1
@@ -39,8 +39,8 @@ jobs:
           echo -e "taiko v$version\n\n" > desc.txt
           release_description=$(ruby -e "$(curl -sSfL https://github.com/getgauge/gauge/raw/master/build/create_release_text.rb)" getgauge taiko)
           echo "$release_description" >> desc.txt
-          echo "Creating new draft for release v$version"
-          gh release create "v$version" -F ./desc.txt
+          echo "Creating new release v$version"
+          gh release create --title "v$version" --notes-file ./desc.txt "v$version"
           rm -rf desc.txt
 
       - name: 'deployment success'
