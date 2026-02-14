@@ -10,12 +10,12 @@ jobs:
 
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
 
-      - name: Use NodeJS 16
-        uses: actions/setup-node@v1
+      - name: Use Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: 24
 
       - name: Setup
         run: |

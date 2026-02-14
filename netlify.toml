@@ -1,6 +1,8 @@
 [build]
   command = "npm run doc"
   publish = "docs/_site"
+[build.environment]
+  NODE_VERSION = "24"
 
 [[redirects]]
   from = "/devices"

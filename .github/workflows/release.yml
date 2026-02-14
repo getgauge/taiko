@@ -6,22 +6,22 @@ jobs:
   release-and-bump-version:
     if: github.event.deployment.environment == 'production'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # Required for OIDC trusted publishing to NPM
+      contents: read
     env:
       GITHUB_TOKEN: '${{ secrets.GAUGEBOT_GITHUB_TOKEN }}'
-      NPM_TOKEN: '${{ secrets.NPM_TOKEN }}'
       CI: true
-
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v6
         with:
-          node-version: '16'
+          node-version: 24
           registry-url: 'https://registry.npmjs.org'
 
       - name: npm install
-        run: |
-          npm install
+        run: npm install
 
       - name: Setup git
         run: |
@@ -57,7 +57,6 @@ jobs:
           token: '${{ secrets.GITHUB_TOKEN }}'
 
       - name: Deploy npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
+        run: | # See https://github.com/actions/setup-node/issues/1440
+          unset NODE_AUTH_TOKEN
           npm publish --access=public

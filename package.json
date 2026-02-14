@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package",
   "name": "taiko",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "Taiko is a Node.js library for automating Chromium based browsers",
   "main": "bin/taiko.js",
   "bin": {
@@ -9,8 +9,9 @@
   },
   "types": "./types/taiko/index.d.ts",
   "scripts": {
-    "lint:check": "npx @biomejs/biome check",
-    "lint:fix": "npx @biomejs/biome check --write",
+    "lint:ci": "biome ci",
+    "lint:check": "biome check",
+    "lint:fix": "biome check --write",
     "doc": "npm run doc:api && eleventy",
     "doc:serve": "npm run doc:api && eleventy --serve",
     "doc:api": "node lib/documentation.js",
@@ -27,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/getgauge/taiko"
+    "url": "git+https://github.com/getgauge/taiko.git"
   },
   "keywords": [
     "headless",
