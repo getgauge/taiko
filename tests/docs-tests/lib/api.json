@@ -1,0 +1,968 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Test description of a test function."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "await functionReturningPromiseOfObject('https://google.com')",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "URL to navigate page to.",
+        "lineNumber": 6,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "url"
+      },
+      {
+        "title": "returns",
+        "description": "Description of the return",
+        "lineNumber": 8,
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "Object"
+            }
+          ]
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0,
+        "index": 0
+      },
+      "end": {
+        "line": 10,
+        "column": 3,
+        "index": 240
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0,
+          "index": 241
+        },
+        "end": {
+          "line": 15,
+          "column": 1,
+          "index": 346
+        }
+      },
+      "file": "/Users/zabilcm/projects/taiko/tests/docs-tests/jsdoc-inputs/returnTypes.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "await functionReturningPromiseOfObject('https://google.com')"
+      }
+    ],
+    "implements": [],
+    "params": [
+      {
+        "title": "param",
+        "name": "url",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "URL to navigate page to."
+                }
+              ]
+            }
+          ]
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Description of the return"
+                }
+              ]
+            }
+          ]
+        },
+        "title": "returns",
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "Object"
+            }
+          ]
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "yields": [],
+    "name": "functionReturningPromiseOfObject",
+    "kind": "function",
+    "async": true,
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "functionReturningPromiseOfObject",
+        "kind": "function"
+      }
+    ],
+    "namespace": "functionReturningPromiseOfObject"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Test description of a test function."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "await functionReturningPromise('https://google.com')",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "URL to navigate page to.",
+        "lineNumber": 6,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "url"
+      },
+      {
+        "title": "returns",
+        "description": "Description of the return",
+        "lineNumber": 8,
+        "type": {
+          "type": "NameExpression",
+          "name": "Promise"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 19,
+        "column": 0,
+        "index": 434
+      },
+      "end": {
+        "line": 28,
+        "column": 3,
+        "index": 658
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 0,
+          "index": 659
+        },
+        "end": {
+          "line": 33,
+          "column": 1,
+          "index": 756
+        }
+      },
+      "file": "/Users/zabilcm/projects/taiko/tests/docs-tests/jsdoc-inputs/returnTypes.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "await functionReturningPromise('https://google.com')"
+      }
+    ],
+    "implements": [],
+    "params": [
+      {
+        "title": "param",
+        "name": "url",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "URL to navigate page to."
+                }
+              ]
+            }
+          ]
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Description of the return"
+                }
+              ]
+            }
+          ]
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "Promise"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "yields": [],
+    "name": "functionReturningPromise",
+    "kind": "function",
+    "async": true,
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "functionReturningPromise",
+        "kind": "function"
+      }
+    ],
+    "namespace": "functionReturningPromise"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Test description of a test function."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "await functionReturningPromiseOfVoid('https://google.com')",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "URL to navigate page to.",
+        "lineNumber": 6,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "url"
+      },
+      {
+        "title": "returns",
+        "description": "Description of the return",
+        "lineNumber": 8,
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "void"
+            }
+          ]
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 36,
+        "column": 0,
+        "index": 826
+      },
+      "end": {
+        "line": 45,
+        "column": 3,
+        "index": 1062
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 0,
+          "index": 1063
+        },
+        "end": {
+          "line": 50,
+          "column": 1,
+          "index": 1166
+        }
+      },
+      "file": "/Users/zabilcm/projects/taiko/tests/docs-tests/jsdoc-inputs/returnTypes.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "await functionReturningPromiseOfVoid('https://google.com')"
+      }
+    ],
+    "implements": [],
+    "params": [
+      {
+        "title": "param",
+        "name": "url",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "URL to navigate page to."
+                }
+              ]
+            }
+          ]
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Description of the return"
+                }
+              ]
+            }
+          ]
+        },
+        "title": "returns",
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "void"
+            }
+          ]
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "yields": [],
+    "name": "functionReturningPromiseOfVoid",
+    "kind": "function",
+    "async": true,
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "functionReturningPromiseOfVoid",
+        "kind": "function"
+      }
+    ],
+    "namespace": "functionReturningPromiseOfVoid"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Test description of a test function."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "await functionReturningString('https://google.com')",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "URL to navigate page to.",
+        "lineNumber": 6,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "url"
+      },
+      {
+        "title": "returns",
+        "description": "Description of the return",
+        "lineNumber": 8,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 53,
+        "column": 0,
+        "index": 1248
+      },
+      "end": {
+        "line": 62,
+        "column": 3,
+        "index": 1470
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 63,
+          "column": 0,
+          "index": 1471
+        },
+        "end": {
+          "line": 67,
+          "column": 1,
+          "index": 1567
+        }
+      },
+      "file": "/Users/zabilcm/projects/taiko/tests/docs-tests/jsdoc-inputs/returnTypes.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "await functionReturningString('https://google.com')"
+      }
+    ],
+    "implements": [],
+    "params": [
+      {
+        "title": "param",
+        "name": "url",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "URL to navigate page to."
+                }
+              ]
+            }
+          ]
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Description of the return"
+                }
+              ]
+            }
+          ]
+        },
+        "title": "returns",
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "yields": [],
+    "name": "functionReturningString",
+    "kind": "function",
+    "async": true,
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "functionReturningString",
+        "kind": "function"
+      }
+    ],
+    "namespace": "functionReturningString"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Test description of a test function."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "await functionReturningArrayOfObjects('https://google.com')",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "URL to navigate page to.",
+        "lineNumber": 6,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "url"
+      },
+      {
+        "title": "returns",
+        "description": "Description of the return",
+        "lineNumber": 8,
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Array"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "Object"
+            }
+          ]
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 70,
+        "column": 0,
+        "index": 1635
+      },
+      "end": {
+        "line": 79,
+        "column": 3,
+        "index": 1867
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 80,
+          "column": 0,
+          "index": 1868
+        },
+        "end": {
+          "line": 84,
+          "column": 1,
+          "index": 1972
+        }
+      },
+      "file": "/Users/zabilcm/projects/taiko/tests/docs-tests/jsdoc-inputs/returnTypes.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "await functionReturningArrayOfObjects('https://google.com')"
+      }
+    ],
+    "implements": [],
+    "params": [
+      {
+        "title": "param",
+        "name": "url",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "URL to navigate page to."
+                }
+              ]
+            }
+          ]
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Description of the return"
+                }
+              ]
+            }
+          ]
+        },
+        "title": "returns",
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Array"
+          },
+          "applications": [
+            {
+              "type": "NameExpression",
+              "name": "Object"
+            }
+          ]
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "yields": [],
+    "name": "functionReturningArrayOfObjects",
+    "kind": "function",
+    "async": true,
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "functionReturningArrayOfObjects",
+        "kind": "function"
+      }
+    ],
+    "namespace": "functionReturningArrayOfObjects"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Test description of a test function."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "await functionReturningPromiseOfArrayOfObjects('https://google.com')",
+        "lineNumber": 3
+      },
+      {
+        "title": "param",
+        "description": "URL to navigate page to.",
+        "lineNumber": 6,
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "name": "url"
+      },
+      {
+        "title": "returns",
+        "description": "Description of the return",
+        "lineNumber": 8,
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "TypeApplication",
+              "expression": {
+                "type": "NameExpression",
+                "name": "Array"
+              },
+              "applications": [
+                {
+                  "type": "NameExpression",
+                  "name": "Object"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "loc": {
+      "start": {
+        "line": 88,
+        "column": 0,
+        "index": 2058
+      },
+      "end": {
+        "line": 97,
+        "column": 3,
+        "index": 2308
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 98,
+          "column": 0,
+          "index": 2309
+        },
+        "end": {
+          "line": 102,
+          "column": 1,
+          "index": 2422
+        }
+      },
+      "file": "/Users/zabilcm/projects/taiko/tests/docs-tests/jsdoc-inputs/returnTypes.js"
+    },
+    "augments": [],
+    "examples": [
+      {
+        "description": "await functionReturningPromiseOfArrayOfObjects('https://google.com')"
+      }
+    ],
+    "implements": [],
+    "params": [
+      {
+        "title": "param",
+        "name": "url",
+        "lineNumber": 6,
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "URL to navigate page to."
+                }
+              ]
+            }
+          ]
+        },
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        }
+      }
+    ],
+    "properties": [],
+    "returns": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Description of the return"
+                }
+              ]
+            }
+          ]
+        },
+        "title": "returns",
+        "type": {
+          "type": "TypeApplication",
+          "expression": {
+            "type": "NameExpression",
+            "name": "Promise"
+          },
+          "applications": [
+            {
+              "type": "TypeApplication",
+              "expression": {
+                "type": "NameExpression",
+                "name": "Array"
+              },
+              "applications": [
+                {
+                  "type": "NameExpression",
+                  "name": "Object"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "yields": [],
+    "name": "functionReturningPromiseOfArrayOfObjects",
+    "kind": "function",
+    "async": true,
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "functionReturningPromiseOfArrayOfObjects",
+        "kind": "function"
+      }
+    ],
+    "namespace": "functionReturningPromiseOfArrayOfObjects"
+  }
+]

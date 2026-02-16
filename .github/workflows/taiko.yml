@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: install
-        run: npm install
+        run: npm ci
       - name: install browser dependencies
         if: matrix.os == 'ubuntu-22.04'
         run: |
@@ -40,10 +40,11 @@ jobs:
             libdrm-dev \
             libgbm-dev \
             libasound-dev
-      - name: unit-tests
-        run: |
-          npm run lint:ci
-          npm test
+      - name: Run Biome
+        uses: biomejs/setup-biome@v2
+      - run: biome check packages/taiko
+      - name: Run unit tests
+        run: npm run test:unit:silent
 
   functional-tests:
     needs: unit-tests
@@ -60,6 +61,8 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node_version }}
+      - name: install
+        run: npm ci
       - name: install browser dependencies
         if: matrix.os == 'ubuntu-22.04'
         run: |
@@ -84,14 +87,14 @@ jobs:
         if: failure()
         with:
           name: ft-reports-${{ matrix.os }}-${{ matrix.node_version }}
-          path: test/functional-tests/reports/html-report
+          path: tests/functional-tests/reports/html-report
 
       - name: Upload logs
         uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: ft-logs-${{ matrix.os }}-${{ matrix.node_version }}
-          path: test/functional-tests/logs
+          path: tests/functional-tests/logs
 
   functional-tests-headful:
     needs: unit-tests
@@ -103,6 +106,8 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24
+      - name: install
+        run: npm ci
       - name: install browser dependencies
         run: |
           sudo apt-get update
@@ -124,19 +129,19 @@ jobs:
         env:
           headless: false
           TAIKO_HIGHLIGHT_ON_ACTION: false
-        run: xvfb-run npm run test-functional
+        run: xvfb-run npm run test-functional --workspace=tests
       - name: Upload html report
         uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: ft-reports-linux-headful
-          path: test/functional-tests/reports/html-report
+          path: tests/functional-tests/reports/html-report
       - name: Upload logs
         uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: ft-logs-linux-headful
-          path: test/functional-tests/logs
+          path: tests/functional-tests/logs
 
   docs-tests:
     needs: unit-tests
@@ -149,7 +154,7 @@ jobs:
         with:
           node-version: 24
       - name: install
-        run: npm install
+        run: npm ci
       - name: install browser dependencies
         run: |
           sudo apt-get update
@@ -166,16 +171,16 @@ jobs:
             libgbm-dev \
             libasound-dev
       - name: test-docs
-        run: npm run test-docs
+        run: npm run test-docs --workspace=tests
       - name: Upload html report
         uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: docs-tests-reports
-          path: test/docs-tests/gauge/reports/html-report
+          path: tests/docs-tests/gauge/reports/html-report
       - name: Upload logs
         uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: docs-tests-logs
-          path: test/docs-tests/gauge/logs
+          path: tests/docs-tests/gauge/logs

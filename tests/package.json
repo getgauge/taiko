@@ -1,0 +1,28 @@
+{
+  "name": "taiko-tests",
+  "version": "1.4.7",
+  "description": "Test suite for Taiko browser automation library",
+  "private": true,
+  "scripts": {
+    "test:api": "node unit-tests/taiko-test.js",
+    "test:unit:silent": "node ../node_modules/mocha/bin/mocha.js 'unit-tests/**/*.test.js' --timeout 9000 -R dot --trace-warnings --exit",
+    "test:unit": "node ../node_modules/mocha/bin/mocha.js 'unit-tests/**/*.test.js' --timeout 9000 --trace-warnings --exit",
+    "test": "npm run test:api && npm run test:unit:silent",
+    "test-functional": "npm install && cd functional-tests && npm install && npm test",
+    "test-docs": "cd docs-tests && node prepare.js && eleventy && cd ./gauge && npm ci && npm test"
+  },
+  "dependencies": {
+    "taiko": "*"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/chai-as-promised": "^7.1.5",
+    "chai": "^4.3.7",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^10.4.0",
+    "rewire": "^9.0.1",
+    "sinon": "^15.0.1"
+  },
+  "author": "getgauge",
+  "license": "MIT"
+}
