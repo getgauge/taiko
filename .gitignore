@@ -70,7 +70,9 @@ packages/taiko/lib/api.json
 packages/taiko/apis.json
 _site/
 
+
 # Test reports and artifacts
+reports/*
 tests/functional-tests/reports/
 tests/functional-tests/.gauge/
 tests/functional-tests/logs/
