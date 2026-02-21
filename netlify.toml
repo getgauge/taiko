@@ -1,9 +1,7 @@
 [build]
-  command = "npm run doc"
-  publish = "docs/_site"
-[build.environment]
-  NODE_VERSION = "24"
+  command = "npm install && cd packages/taiko && npm run doc:api && npx eleventy"
+  publish = "packages/taiko/docs/_site"
 
 [[redirects]]
   from = "/devices"
-  to = "https://github.com/getgauge/taiko/blob/master/lib/data/devices.js"
+  to = "https://github.com/getgauge/taiko/blob/master/packages/taiko/lib/data/devices.js"

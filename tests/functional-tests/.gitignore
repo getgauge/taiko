@@ -1,0 +1,6 @@
+# Gauge specific files
+.gauge
+
+# Test artifacts specific to this directory
+reports/
+logs/

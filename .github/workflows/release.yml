@@ -31,7 +31,7 @@ jobs:
 
       - name: Deploy on github
         run: |
-          version=$(grep '^  "version"' package.json | sed 's/"version":[ ]*"//' | sed 's/",//' | tr -d ' ')
+          version=$(grep '"version"' packages/taiko/package.json | sed 's/"version":[[:space:]]*"//' | sed 's/",//' | tr -d [:space:])
           if [ -z "$version" ]; then
               echo "Taiko version is not set"
               exit 1
@@ -60,4 +60,4 @@ jobs:
       - name: Deploy npm
         run: | # See https://github.com/actions/setup-node/issues/1440
           unset NODE_AUTH_TOKEN
-          npm publish --access=public
+          npm publish --workspace=taiko --access=public

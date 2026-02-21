@@ -20,24 +20,12 @@ coverage
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# Bower dependency directory (https://bower.io/)
-bower_components
-
-# node-waf configuration
-.lock-wscript
-
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directories
 node_modules/
 jspm_packages/
-
-# Typescript v1 declaration files
-typings/
 
 # Optional npm cache directory
 .npm
@@ -57,41 +45,46 @@ typings/
 # dotenv environment variables file
 .env
 
+# OS files
 .DS_Store
-docs/site
-docs/api.md
-docs/index.md
-docs/layout/partials/content.html
+
+# IDE files
 .idea/
 .vs
-
-#local chromium
-.local-chromium
-
-#asdf tool-version
-.tool-versions
-
-#test report
-test/functional-tests/reports/
-test/functional-tests/.gauge/
-test/unit-tests/data/*.html
-
-examples/package-lock.json
-lib/api.json
+.vscode/
 *.swp
 tags
-_site
-apis.json
 
-#generated types testing
-types/taiko/test/generated
+# Local chromium installations
+.local-chromium
 
-# Ignore testscripts with this name in the root folder (created for debugging)
+# Tool version files
+.tool-versions
+
+# Generated documentation and API files
+packages/taiko/docs/site/
+packages/taiko/docs/_site/
+packages/taiko/docs/api.md
+packages/taiko/docs/index.md
+packages/taiko/lib/api.json
+packages/taiko/apis.json
+_site/
+
+
+# Test reports and artifacts
+reports/*
+tests/functional-tests/reports/
+tests/functional-tests/.gauge/
+tests/functional-tests/logs/
+tests/unit-tests/data/*.html
+tests/docs-tests/tmp/
+tests/docs-tests/lib/
+tests/docs-tests/gauge/.vscode/
+tests/docs-tests/gauge/reports/
+tests/docs-tests/gauge/.gauge/
+
+# Generated types testing
+packages/taiko/types/taiko/test/generated
+
+# Debug scripts (created for debugging)
 test-script.js
-
-test/docs-tests/tmp/
-test/docs-tests/lib/
-test/docs-tests/gauge/.vscode
-test/docs-tests/gauge/reports/
-test/docs-tests/gauge/.gauge/
-test/package-lock.json
