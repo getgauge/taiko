@@ -31,7 +31,7 @@ jobs:
 
       - name: Deploy on github
         run: |
-          version=$(grep '"version"' packages/taiko/package.json | sed 's/"version":[[:space:]]*"//' | sed 's/",//' | tr -d [:space:])
+          version=$(grep '^  "version"' packages/taiko/package.json | sed 's/"version":[ ]*"//' | sed 's/",//' | tr -d ' ')
           if [ -z "$version" ]; then
               echo "Taiko version is not set"
               exit 1
