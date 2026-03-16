@@ -1,7 +1,6 @@
 const chai = require("chai");
 const expect = require("chai").expect;
 const chaiAsPromised = require("chai-as-promised");
-const rewire = require("rewire");
 
 chai.use(chaiAsPromised);
 
@@ -11,23 +10,31 @@ describe("switchTo", () => {
   let registeredTarget;
 
   before(async () => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko = require("taiko/lib/taiko");
+    taiko.__reset__();
+    const targetRegistry = new Map();
     taiko.__set__("validate", () => {});
-    taiko.__set__("targetHandler.getCriTargets", (arg) => {
-      argument = arg;
-      return { matching: [] };
+    taiko.__set__("targetHandler", {
+      getCriTargets: (arg) => {
+        argument = arg;
+        return { matching: [] };
+      },
+      register: (name, target) => {
+        if (name && target) {
+          targetRegistry.set(name, target);
+          return;
+        }
+        return registeredTarget ?? targetRegistry.get(name);
+      },
+      switchBrowserContext: () => {},
     });
-    taiko.__set__("targetHandler.register", () => {
-      return registeredTarget;
-    });
-    taiko.__set__("targetHandler.switchBrowserContext", () => {});
     taiko.__set__("connect_to_cri", () => {
       return registeredTarget;
     });
   });
 
   after(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko.__reset__();
   });
 
   it("should throw error if no url specified", async () => {

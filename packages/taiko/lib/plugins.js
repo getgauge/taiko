@@ -39,11 +39,11 @@ const getPlugins = () => {
 
 const getExecutablePlugins = () => {
   const pluginsGlobalPath = childProcess
-    .spawnSync("npm", ["root", "-g"], { shell: true })
+    .spawnSync("npm", ["root", "-g"])
     .stdout.toString()
     .trim();
   const pluginsLocalPath = childProcess
-    .spawnSync("npm", ["root"], { shell: true })
+    .spawnSync("npm", ["root"])
     .stdout.toString()
     .trim();
   const globalPlugins = getPluginsInstalledOn(pluginsGlobalPath);

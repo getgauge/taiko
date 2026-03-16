@@ -1,4 +1,5 @@
-const { doActionAwaitingNavigation } = require("./doActionAwaitingNavigation");
+let { doActionAwaitingNavigation } = require("./doActionAwaitingNavigation");
+const helper = require("./helper");
 const {
   wait,
   isString,
@@ -10,13 +11,13 @@ const {
   isSelector,
   isElement,
   isObject,
-} = require("./helper");
+} = helper;
 const inputHandler = require("./handlers/inputHandler");
 const domHandler = require("./handlers/domHandler");
-const networkHandler = require("./handlers/networkHandler");
-const fetchHandler = require("./handlers/fetchHandler");
-const pageHandler = require("./handlers/pageHandler");
-const targetHandler = require("./handlers/targetHandler");
+let networkHandler = require("./handlers/networkHandler");
+let fetchHandler = require("./handlers/fetchHandler");
+let pageHandler = require("./handlers/pageHandler");
+let targetHandler = require("./handlers/targetHandler");
 const runtimeHandler = require("./handlers/runtimeHandler");
 const browserHandler = require("./handlers/browserHandler");
 const emulationHandler = require("./handlers/emulationHandler");
@@ -42,7 +43,7 @@ const crypto = require("node:crypto");
 const { eventHandler, eventRegexMap } = require("./eventBus");
 const { highlightElement } = require("./elements/elementHelper");
 const { launchBrowser } = require("./browser/launcher");
-const {
+let {
   connect_to_cri,
   closeConnection,
   cleanUpListenersOnClient,
@@ -50,9 +51,11 @@ const {
   getClient,
 } = require("./connection");
 const { getPlugins, registerHooks } = require("./plugins");
+const { defineTestHooks } = require("./testHooks");
 let eventHandlerProxy;
+let emitter = descEvent;
 
-module.exports.emitter = descEvent;
+module.exports.emitter = emitter;
 
 /**
  * Launches a browser with a tab. The browser will be closed when the parent node.js process is closed.<br>
@@ -117,7 +120,7 @@ module.exports.openBrowser = async (
   const description = defaultConfig.device
     ? `Browser opened with viewport ${defaultConfig.device}`
     : "Browser opened";
-  descEvent.emit("success", description);
+  emitter.emit("success", description);
 
   if (process.env.TAIKO_EMULATE_NETWORK) {
     await module.exports.emulateNetwork(process.env.TAIKO_EMULATE_NETWORK);
@@ -142,10 +145,10 @@ module.exports.closeBrowser = async () => {
   await waitFor(50); // wait for 50ms to ensure all events are flushed
   await _closeBrowser();
   targetHandler.clearRegister();
-  descEvent.emit("success", "Browser closed");
+  emitter.emit("success", "Browser closed");
 };
 
-const _closeBrowser = async () => {
+let _closeBrowser = async () => {
   fetchHandler.resetInterceptors();
   emulationHandler.resetViewportSettings();
   await closeConnection(promisesToBeResolvedBeforeCloseBrowser);
@@ -247,7 +250,7 @@ module.exports.switchTo = async (arg) => {
   }
   await targetHandler.switchBrowserContext(targetId);
   await connect_to_cri(targetId);
-  descEvent.emit("success", message);
+  emitter.emit("success", message);
 };
 
 /**
@@ -287,7 +290,7 @@ module.exports.intercept = async (requestUrl, option, count) => {
     action: option,
     count,
   });
-  descEvent.emit("success", `Interceptor added for ${requestUrl}`);
+  emitter.emit("success", `Interceptor added for ${requestUrl}`);
 };
 
 /**
@@ -314,7 +317,7 @@ module.exports.intercept = async (requestUrl, option, count) => {
 module.exports.emulateNetwork = async (networkType) => {
   validate();
   await networkHandler.setNetworkEmulation(networkType);
-  descEvent.emit(
+  emitter.emit(
     "success",
     `Set network emulation with values ${JSON.stringify(networkType)}`,
   );
@@ -335,7 +338,7 @@ module.exports.emulateDevice = emulateDevice;
 async function emulateDevice(deviceModel) {
   validate();
   await emulationHandler.emulateDevice(deviceModel);
-  descEvent.emit("success", `Device emulation set to ${deviceModel}`);
+  emitter.emit("success", `Device emulation set to ${deviceModel}`);
 }
 
 /**
@@ -351,7 +354,7 @@ async function emulateDevice(deviceModel) {
 module.exports.setViewPort = async (options) => {
   validate();
   await emulationHandler.setViewport(options);
-  descEvent.emit(
+  emitter.emit(
     "success",
     `ViewPort is set to width ${options.width} and height ${options.height}`,
   );
@@ -366,7 +369,7 @@ module.exports.setViewPort = async (options) => {
 
 module.exports.emulateTimezone = async (timezoneId) => {
   await emulationHandler.setTimeZone(timezoneId);
-  descEvent.emit("success", `Timezone set to ${timezoneId}`);
+  emitter.emit("success", `Timezone set to ${timezoneId}`);
 };
 
 /**
@@ -418,7 +421,7 @@ module.exports.openTab = async (targetUrl, options = {}) => {
   };
 
   await doActionAwaitingNavigation(_options, createNewTarget);
-  descEvent.emit("success", `Opened tab with URL ${finalTargetUrl}`);
+  emitter.emit("success", `Opened tab with URL ${finalTargetUrl}`);
 };
 
 /**
@@ -477,10 +480,7 @@ module.exports.openIncognitoWindow = async (url, options = {}) => {
     });
   }
 
-  descEvent.emit(
-    "success",
-    `Incognito window opened with name ${_options.name}`,
-  );
+  emitter.emit("success", `Incognito window opened with name ${_options.name}`);
 };
 /**
  * Closes the specified browser window.
@@ -509,7 +509,7 @@ module.exports.closeIncognitoWindow = async (arg) => {
     });
     await promiseReconnect;
   }
-  descEvent.emit("success", `Window with name ${arg} closed`);
+  emitter.emit("success", `Window with name ${arg} closed`);
 };
 
 /**
@@ -539,7 +539,7 @@ module.exports.closeTab = async (identifier) => {
   const { matching, others } = await targetHandler.getCriTargets(identifier);
   if (!others.length) {
     await _closeBrowser();
-    descEvent.emit("success", "Closing last target and browser.");
+    emitter.emit("success", "Closing last target and browser.");
     return;
   }
   if (!matching.length) {
@@ -568,7 +568,7 @@ module.exports.closeTab = async (identifier) => {
     targetHandler.unregister(identifier.name);
   }
 
-  descEvent.emit("success", message);
+  emitter.emit("success", message);
 };
 
 /**
@@ -585,7 +585,7 @@ module.exports.closeTab = async (identifier) => {
 module.exports.overridePermissions = async (origin, permissions) => {
   validate();
   await browserHandler.overridePermissions(origin, permissions);
-  descEvent.emit("success", `Override permissions with ${permissions}`);
+  emitter.emit("success", `Override permissions with ${permissions}`);
 };
 
 /**
@@ -599,7 +599,7 @@ module.exports.overridePermissions = async (origin, permissions) => {
 module.exports.clearPermissionOverrides = async () => {
   validate();
   await browserHandler.clearPermissionOverrides();
-  descEvent.emit("success", "Cleared permission overrides");
+  emitter.emit("success", "Cleared permission overrides");
 };
 
 /**
@@ -636,7 +636,7 @@ module.exports.setCookie = async (name, value, options = {}) => {
   if (!res.success) {
     throw new Error(`Unable to set ${name} cookie`);
   }
-  descEvent.emit("success", `${name} cookie set successfully`);
+  emitter.emit("success", `${name} cookie set successfully`);
 };
 
 /**
@@ -661,7 +661,7 @@ module.exports.deleteCookies = async (cookieName, options = {}) => {
   validate();
   if (!cookieName || !cookieName.trim()) {
     await networkHandler.clearBrowserCookies();
-    descEvent.emit("success", "Browser cookies deleted successfully");
+    emitter.emit("success", "Browser cookies deleted successfully");
   } else {
     if (options.url === undefined && options.domain === undefined) {
       throw new Error(
@@ -670,7 +670,7 @@ module.exports.deleteCookies = async (cookieName, options = {}) => {
     }
     options.name = cookieName;
     await networkHandler.deleteCookies(options);
-    descEvent.emit("success", `"${cookieName}" cookie deleted successfully`);
+    emitter.emit("success", `"${cookieName}" cookie deleted successfully`);
   }
 };
 
@@ -689,7 +689,7 @@ module.exports.resizeWindow = async (options = {}) => {
   }
   const [{ targetId }] = await targetHandler.getFirstAvailablePageTarget();
   await browserHandler.setWindowBounds(targetId, options.height, options.width);
-  descEvent.emit(
+  emitter.emit(
     "success",
     `Window resized to height ${options.height} and width ${options.width}`,
   );
@@ -728,7 +728,7 @@ module.exports.getCookies = async (options = {}) => {
 module.exports.setLocation = async (options) => {
   validate();
   await emulationHandler.setLocation(options);
-  descEvent.emit("success", "Geolocation set");
+  emitter.emit("success", "Geolocation set");
 };
 
 /**
@@ -775,7 +775,7 @@ module.exports.goto = async (
   await doActionAwaitingNavigation(setNavigationOptions(options), async () => {
     response = await pageHandler.handleNavigation(_url);
   });
-  descEvent.emit("success", `Navigated to URL ${_url}`);
+  emitter.emit("success", `Navigated to URL ${_url}`);
   return response;
 };
 
@@ -816,7 +816,7 @@ module.exports.reload = async (
   const windowLocation = (
     await runtimeHandler.runtimeEvaluate("window.location.toString()")
   ).result.value;
-  descEvent.emit("success", `${windowLocation}reloaded`);
+  emitter.emit("success", `${windowLocation}reloaded`);
 };
 
 /**
@@ -837,7 +837,7 @@ module.exports.goBack = async (
 ) => {
   validate();
   await _go(-1, options);
-  descEvent.emit("success", "Performed clicking on browser back button");
+  emitter.emit("success", "Performed clicking on browser back button");
 };
 
 /**
@@ -858,7 +858,7 @@ module.exports.goForward = async (
 ) => {
   validate();
   await _go(+1, options);
-  descEvent.emit("success", "Performed clicking on browser forward button");
+  emitter.emit("success", "Performed clicking on browser forward button");
 };
 
 const _go = async (delta, options) => {
@@ -889,7 +889,7 @@ const _go = async (delta, options) => {
  *
  * @returns {Promise<string>} - The URL of the current window.
  */
-const currentURL = async () => {
+let currentURL = async () => {
   validate();
   const locationObj = await runtimeHandler.runtimeEvaluate(
     "window.location.toString()",
@@ -909,12 +909,107 @@ module.exports.currentURL = currentURL;
  *
  * @returns {Promise<string>} - The title of the current page.
  */
-const title = async () => {
+let title = async () => {
   validate();
   const result = await runtimeHandler.runtimeEvaluate("document.title");
   return result.result.value;
 };
 module.exports.title = title;
+
+const createTestAccessors = () => ({
+  doActionAwaitingNavigation: {
+    get: () => doActionAwaitingNavigation,
+    set: (value) => {
+      doActionAwaitingNavigation = value;
+    },
+  },
+  networkHandler: {
+    get: () => networkHandler,
+    set: (value) => {
+      networkHandler = value;
+    },
+  },
+  fetchHandler: {
+    get: () => fetchHandler,
+    set: (value) => {
+      fetchHandler = value;
+    },
+  },
+  pageHandler: {
+    get: () => pageHandler,
+    set: (value) => {
+      pageHandler = value;
+    },
+  },
+  targetHandler: {
+    get: () => targetHandler,
+    set: (value) => {
+      targetHandler = value;
+    },
+  },
+  connect_to_cri: {
+    get: () => connect_to_cri,
+    set: (value) => {
+      connect_to_cri = value;
+    },
+  },
+  cleanUpListenersOnClient: {
+    get: () => cleanUpListenersOnClient,
+    set: (value) => {
+      cleanUpListenersOnClient = value;
+    },
+  },
+  validate: {
+    get: () => validate,
+    set: (value) => {
+      validate = value;
+    },
+  },
+  descEvent: {
+    get: () => emitter,
+    set: (value) => {
+      emitter = value;
+      module.exports.emitter = value;
+    },
+  },
+  _closeBrowser: {
+    get: () => _closeBrowser,
+    set: (value) => {
+      _closeBrowser = value;
+    },
+  },
+  currentURL: {
+    get: () => currentURL,
+    set: (value) => {
+      currentURL = value;
+      module.exports.currentURL = value;
+    },
+  },
+  title: {
+    get: () => title,
+    set: (value) => {
+      title = value;
+      module.exports.title = value;
+    },
+  },
+});
+
+const createTestDefaults = () => ({
+  doActionAwaitingNavigation,
+  networkHandler,
+  fetchHandler,
+  pageHandler,
+  targetHandler,
+  connect_to_cri,
+  cleanUpListenersOnClient,
+  validate,
+  descEvent: emitter,
+  _closeBrowser,
+  currentURL,
+  title,
+});
+
+defineTestHooks(module.exports, createTestAccessors(), createTestDefaults());
 
 /**
  * Fetches an element with the given selector, scrolls it into view if needed, and then clicks in the center of the element. If there's no element matching selector, the method throws an error.
@@ -2816,12 +2911,12 @@ module.exports.clearIntercept = (requestUrl) => {
   if (requestUrl) {
     const success = fetchHandler.resetInterceptor(requestUrl);
     if (success) {
-      descEvent.emit("success", `Intercepts reset for url ${requestUrl}`);
+      emitter.emit("success", `Intercepts reset for url ${requestUrl}`);
     } else {
-      descEvent.emit("success", `Intercepts not found for url ${requestUrl}`);
+      emitter.emit("success", `Intercepts not found for url ${requestUrl}`);
     }
   } else {
     fetchHandler.resetInterceptors();
-    descEvent.emit("success", "Intercepts reset for all url");
+    emitter.emit("success", "Intercepts reset for all url");
   }
 };

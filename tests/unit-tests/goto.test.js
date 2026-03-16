@@ -1,4 +1,3 @@
-const rewire = require("rewire");
 const expect = require("chai").expect;
 const test_name = "Goto";
 
@@ -11,7 +10,8 @@ describe(test_name, () => {
   let validateCalled = false;
 
   before(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko = require("taiko/lib/taiko");
+    taiko.__reset__();
     const mockWrapper = async (options, cb) => {
       actualOptions = options;
       await cb();
@@ -46,7 +46,7 @@ describe(test_name, () => {
   });
 
   after(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko.__reset__();
   });
 
   afterEach(() => {

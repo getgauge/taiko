@@ -22,7 +22,6 @@ const fs = require("fs-extra");
 const path = require("node:path");
 const extract = require("extract-zip");
 const util = require("node:util");
-const URL = require("node:url");
 const { helper, assert } = require("../helper");
 const ProxyAgent = require("https-proxy-agent");
 const getProxyForUrl = require("proxy-from-env").getProxyForUrl;
@@ -193,13 +192,19 @@ function extractZip(zipPath, folderPath) {
 
 function httpRequest(url, method, response) {
   /** @type {Object} */
-  const options = URL.parse(url);
+  const parsedUrl = new URL(url);
+  const options = {
+    protocol: parsedUrl.protocol,
+    hostname: parsedUrl.hostname,
+    port: parsedUrl.port,
+    path: parsedUrl.pathname + parsedUrl.search,
+  };
   options.method = method;
 
   const proxyURL = getProxyForUrl(url);
   if (proxyURL) {
     /** @type {Object} */
-    const parsedProxyURL = URL.parse(proxyURL);
+    const parsedProxyURL = new URL(proxyURL);
     parsedProxyURL.secureProxy = parsedProxyURL.protocol === "https:";
 
     options.agent = new ProxyAgent(parsedProxyURL);

@@ -1,6 +1,5 @@
 const chai = require("chai");
 const expect = chai.expect;
-const rewire = require("rewire");
 
 const { openBrowserArgs } = require("./test-util");
 describe("OpenBrowser", () => {
@@ -8,12 +7,13 @@ describe("OpenBrowser", () => {
   let openBrowser;
   let closeBrowser;
   before(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko = require("taiko/lib/taiko");
+    taiko.__reset__();
     openBrowser = taiko.openBrowser;
     closeBrowser = taiko.closeBrowser;
   });
   after(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko.__reset__();
   });
   describe("throws an error", () => {
     it("openBrowser should throw an error when options parameter is string", async () =>
