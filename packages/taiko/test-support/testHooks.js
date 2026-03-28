@@ -1,3 +1,14 @@
+/**
+ * TEST SEAM UTILITIES — not shipped in production (excluded via .npmignore).
+ *
+ * This module is only loaded when TAIKO_ENABLE_TEST_HOOKS=1.
+ * It is required from within production modules (taiko.js, util.js, repl.js)
+ * because the injected variables are module-private and closures must live
+ * in the same module scope. The require() calls are guarded by
+ * process.env.TAIKO_ENABLE_TEST_HOOKS so this file is never loaded in
+ * production environments.
+ */
+
 const defineTestHooks = (target, accessors, defaults) => {
   Object.defineProperties(target, {
     __set__: {

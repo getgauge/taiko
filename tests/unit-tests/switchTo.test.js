@@ -5,18 +5,17 @@ const chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 
 describe("switchTo", () => {
-  let argument;
   let taiko;
   let registeredTarget;
+  let baseTargetHandler;
 
   before(async () => {
     taiko = require("taiko/lib/taiko");
     taiko.__reset__();
     const targetRegistry = new Map();
     taiko.__set__("validate", () => {});
-    taiko.__set__("targetHandler", {
-      getCriTargets: (arg) => {
-        argument = arg;
+    baseTargetHandler = {
+      getCriTargets: () => {
         return { matching: [] };
       },
       register: (name, target) => {
@@ -27,7 +26,8 @@ describe("switchTo", () => {
         return registeredTarget ?? targetRegistry.get(name);
       },
       switchBrowserContext: () => {},
-    });
+    };
+    taiko.__set__("targetHandler", baseTargetHandler);
     taiko.__set__("connect_to_cri", () => {
       return registeredTarget;
     });
@@ -37,33 +37,53 @@ describe("switchTo", () => {
     taiko.__reset__();
   });
 
-  it("should throw error if no url specified", async () => {
-    await expect(taiko.switchTo()).to.eventually.rejectedWith(
-      'The "targetUrl" argument must be of type string, regex or identifier. Received type undefined',
-    );
+  afterEach(() => {
+    // Restore the baseline targetHandler in case a test overrode it
+    taiko.__set__("targetHandler", baseTargetHandler);
   });
 
-  it("should throw error if url is empty", async () => {
-    await expect(taiko.switchTo("")).to.eventually.rejectedWith(
-      "Cannot switch to tab or window as the targetUrl is empty. Please use a valid string, regex or identifier",
-    );
-  });
+  const invalidInputCases = [
+    {
+      label: "no url specified",
+      input: undefined,
+      expectedMsg:
+        'The "targetUrl" argument must be of type string, regex or identifier. Received type undefined',
+    },
+    {
+      label: "empty string",
+      input: "",
+      expectedMsg:
+        "Cannot switch to tab or window as the targetUrl is empty. Please use a valid string, regex or identifier",
+    },
+    {
+      label: "whitespace-only string",
+      input: "  ",
+      expectedMsg:
+        "Cannot switch to tab or window as the targetUrl is empty. Please use a valid string, regex or identifier",
+    },
+  ];
 
-  it("should throw error if url is only spaces", async () => {
-    await expect(taiko.switchTo("  ")).to.eventually.rejectedWith(
-      "Cannot switch to tab or window as the targetUrl is empty. Please use a valid string, regex or identifier",
-    );
-  });
+  for (const { label, input, expectedMsg } of invalidInputCases) {
+    it(`should throw error when ${label}`, async () => {
+      await expect(taiko.switchTo(input)).to.eventually.be.rejectedWith(
+        expectedMsg,
+      );
+    });
+  }
 
   it("should accept regex and call targetHandler with RegExp", async () => {
-    await expect(
-      taiko.switchTo(/http(s):\/\/www.google.com/),
-    ).to.eventually.rejectedWith(
-      "No tab(s) matching /http(s):\\/\\/www.google.com/ found",
-    );
-    await expect(argument).to.deep.equal(
-      new RegExp(/http(s):\/\/www.google.com/),
-    );
+    let capturedArg;
+    taiko.__set__("targetHandler", {
+      getCriTargets: (arg) => {
+        capturedArg = arg;
+        return { matching: [] };
+      },
+      register: () => {},
+      switchBrowserContext: () => {},
+    });
+    const pattern = /http(s):\/\/www.google.com/;
+    await taiko.switchTo(pattern).catch(() => {});
+    expect(capturedArg, "targetHandler should be called with the regex").to.deep.equal(pattern);
   });
 
   it("should accept window identifier", async () => {

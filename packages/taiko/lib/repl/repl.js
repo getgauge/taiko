@@ -5,7 +5,6 @@ const { aEval } = require("./awaitEval");
 const { initSearch } = require("./repl-search");
 const { defaultConfig } = require("../config");
 const { removeQuotes, symbols, taikoInstallationLocation } = require("../util");
-const { defineHiddenTestProperty } = require("../testHooks");
 const { EOL } = require("node:os");
 const funcs = {};
 const commands = [];
@@ -194,14 +193,18 @@ ${text}
 `;
 }
 
-defineHiddenTestProperty(module.exports, "__test__", {
-  code,
-  resetState() {
-    commands.length = 0;
-    taikoCommands = [];
-    lastStack = "";
-  },
-});
+// ─── TEST SEAM ─── active only when TAIKO_ENABLE_TEST_HOOKS=1 ───────────────
+if (process.env.TAIKO_ENABLE_TEST_HOOKS) {
+  const { defineHiddenTestProperty } = require("../../test-support/testHooks");
+  defineHiddenTestProperty(module.exports, "__test__", {
+    code,
+    resetState() {
+      commands.length = 0;
+      taikoCommands = [];
+      lastStack = "";
+    },
+  });
+}
 
 function step(withImports = false, actions = commands) {
   const _actions = actions.filter(

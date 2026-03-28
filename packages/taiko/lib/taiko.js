@@ -1,3 +1,4 @@
+// @injectable — reassignable by test seam; see if (TAIKO_ENABLE_TEST_HOOKS) block below
 let { doActionAwaitingNavigation } = require("./doActionAwaitingNavigation");
 const helper = require("./helper");
 const {
@@ -14,9 +15,13 @@ const {
 } = helper;
 const inputHandler = require("./handlers/inputHandler");
 const domHandler = require("./handlers/domHandler");
+// @injectable — reassignable by test seam; see if (TAIKO_ENABLE_TEST_HOOKS) block below
 let networkHandler = require("./handlers/networkHandler");
+// @injectable — reassignable by test seam; see if (TAIKO_ENABLE_TEST_HOOKS) block below
 let fetchHandler = require("./handlers/fetchHandler");
+// @injectable — reassignable by test seam; see if (TAIKO_ENABLE_TEST_HOOKS) block below
 let pageHandler = require("./handlers/pageHandler");
+// @injectable — reassignable by test seam; see if (TAIKO_ENABLE_TEST_HOOKS) block below
 let targetHandler = require("./handlers/targetHandler");
 const runtimeHandler = require("./handlers/runtimeHandler");
 const browserHandler = require("./handlers/browserHandler");
@@ -43,6 +48,7 @@ const crypto = require("node:crypto");
 const { eventHandler, eventRegexMap } = require("./eventBus");
 const { highlightElement } = require("./elements/elementHelper");
 const { launchBrowser } = require("./browser/launcher");
+// @injectable — connect_to_cri, cleanUpListenersOnClient, validate are reassignable by test seam
 let {
   connect_to_cri,
   closeConnection,
@@ -51,7 +57,6 @@ let {
   getClient,
 } = require("./connection");
 const { getPlugins, registerHooks } = require("./plugins");
-const { defineTestHooks } = require("./testHooks");
 let eventHandlerProxy;
 let emitter = descEvent;
 
@@ -916,100 +921,104 @@ let title = async () => {
 };
 module.exports.title = title;
 
-const createTestAccessors = () => ({
-  doActionAwaitingNavigation: {
-    get: () => doActionAwaitingNavigation,
-    set: (value) => {
-      doActionAwaitingNavigation = value;
+// ─── TEST SEAM ─── active only when TAIKO_ENABLE_TEST_HOOKS=1 ───────────────
+// createTestAccessors and createTestDefaults MUST live in this file because
+// they close over module-private variables. See test-support/testHooks.js.
+if (process.env.TAIKO_ENABLE_TEST_HOOKS) {
+  const { defineTestHooks } = require("../test-support/testHooks");
+  const createTestAccessors = () => ({
+    doActionAwaitingNavigation: {
+      get: () => doActionAwaitingNavigation,
+      set: (value) => {
+        doActionAwaitingNavigation = value;
+      },
     },
-  },
-  networkHandler: {
-    get: () => networkHandler,
-    set: (value) => {
-      networkHandler = value;
+    networkHandler: {
+      get: () => networkHandler,
+      set: (value) => {
+        networkHandler = value;
+      },
     },
-  },
-  fetchHandler: {
-    get: () => fetchHandler,
-    set: (value) => {
-      fetchHandler = value;
+    fetchHandler: {
+      get: () => fetchHandler,
+      set: (value) => {
+        fetchHandler = value;
+      },
     },
-  },
-  pageHandler: {
-    get: () => pageHandler,
-    set: (value) => {
-      pageHandler = value;
+    pageHandler: {
+      get: () => pageHandler,
+      set: (value) => {
+        pageHandler = value;
+      },
     },
-  },
-  targetHandler: {
-    get: () => targetHandler,
-    set: (value) => {
-      targetHandler = value;
+    targetHandler: {
+      get: () => targetHandler,
+      set: (value) => {
+        targetHandler = value;
+      },
     },
-  },
-  connect_to_cri: {
-    get: () => connect_to_cri,
-    set: (value) => {
-      connect_to_cri = value;
+    connect_to_cri: {
+      get: () => connect_to_cri,
+      set: (value) => {
+        connect_to_cri = value;
+      },
     },
-  },
-  cleanUpListenersOnClient: {
-    get: () => cleanUpListenersOnClient,
-    set: (value) => {
-      cleanUpListenersOnClient = value;
+    cleanUpListenersOnClient: {
+      get: () => cleanUpListenersOnClient,
+      set: (value) => {
+        cleanUpListenersOnClient = value;
+      },
     },
-  },
-  validate: {
-    get: () => validate,
-    set: (value) => {
-      validate = value;
+    validate: {
+      get: () => validate,
+      set: (value) => {
+        validate = value;
+      },
     },
-  },
-  descEvent: {
-    get: () => emitter,
-    set: (value) => {
-      emitter = value;
-      module.exports.emitter = value;
+    descEvent: {
+      get: () => emitter,
+      set: (value) => {
+        emitter = value;
+        module.exports.emitter = value;
+      },
     },
-  },
-  _closeBrowser: {
-    get: () => _closeBrowser,
-    set: (value) => {
-      _closeBrowser = value;
+    _closeBrowser: {
+      get: () => _closeBrowser,
+      set: (value) => {
+        _closeBrowser = value;
+      },
     },
-  },
-  currentURL: {
-    get: () => currentURL,
-    set: (value) => {
-      currentURL = value;
-      module.exports.currentURL = value;
+    currentURL: {
+      get: () => currentURL,
+      set: (value) => {
+        currentURL = value;
+        module.exports.currentURL = value;
+      },
     },
-  },
-  title: {
-    get: () => title,
-    set: (value) => {
-      title = value;
-      module.exports.title = value;
+    title: {
+      get: () => title,
+      set: (value) => {
+        title = value;
+        module.exports.title = value;
+      },
     },
-  },
-});
-
-const createTestDefaults = () => ({
-  doActionAwaitingNavigation,
-  networkHandler,
-  fetchHandler,
-  pageHandler,
-  targetHandler,
-  connect_to_cri,
-  cleanUpListenersOnClient,
-  validate,
-  descEvent: emitter,
-  _closeBrowser,
-  currentURL,
-  title,
-});
-
-defineTestHooks(module.exports, createTestAccessors(), createTestDefaults());
+  });
+  const createTestDefaults = () => ({
+    doActionAwaitingNavigation,
+    networkHandler,
+    fetchHandler,
+    pageHandler,
+    targetHandler,
+    connect_to_cri,
+    cleanUpListenersOnClient,
+    validate,
+    descEvent: emitter,
+    _closeBrowser,
+    currentURL,
+    title,
+  });
+  defineTestHooks(module.exports, createTestAccessors(), createTestDefaults());
+}
 
 /**
  * Fetches an element with the given selector, scrolls it into view if needed, and then clicks in the center of the element. If there's no element matching selector, the method throws an error.

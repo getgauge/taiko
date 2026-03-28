@@ -1,9 +1,11 @@
 const isWin = require("node:os").platform() === "win32";
 const Module = require("node:module");
 const path = require("node:path");
+// @injectable — reassignable by test seam; see if (TAIKO_ENABLE_TEST_HOOKS) block below
 let { spawnSync } = require("node:child_process");
-let { readFileSync, existsSync, realpathSync } = require("node:fs");
-const { defineTestHooks } = require("./testHooks");
+const { realpathSync } = require("node:fs");
+// @injectable — reassignable by test seam; see if (TAIKO_ENABLE_TEST_HOOKS) block below
+let { readFileSync, existsSync } = require("node:fs");
 
 module.exports.removeQuotes = (textWithQuotes, textWithoutQuotes) => {
   return textWithQuotes
@@ -94,31 +96,35 @@ module.exports.taikoInstallationLocation = () => {
   return installLocation;
 };
 
-const createTestAccessors = () => ({
-  spawnSync: {
-    get: () => spawnSync,
-    set: (value) => {
-      spawnSync = value;
+// ─── TEST SEAM ─── active only when TAIKO_ENABLE_TEST_HOOKS=1 ───────────────
+// createTestAccessors and createTestDefaults MUST live in this file because
+// they close over module-private variables. See test-support/testHooks.js.
+if (process.env.TAIKO_ENABLE_TEST_HOOKS) {
+  const { defineTestHooks } = require("../test-support/testHooks");
+  const createTestAccessors = () => ({
+    spawnSync: {
+      get: () => spawnSync,
+      set: (value) => {
+        spawnSync = value;
+      },
     },
-  },
-  readFileSync: {
-    get: () => readFileSync,
-    set: (value) => {
-      readFileSync = value;
+    readFileSync: {
+      get: () => readFileSync,
+      set: (value) => {
+        readFileSync = value;
+      },
     },
-  },
-  existsSync: {
-    get: () => existsSync,
-    set: (value) => {
-      existsSync = value;
+    existsSync: {
+      get: () => existsSync,
+      set: (value) => {
+        existsSync = value;
+      },
     },
-  },
-});
-
-const createTestDefaults = () => ({
-  spawnSync,
-  readFileSync,
-  existsSync,
-});
-
-defineTestHooks(module.exports, createTestAccessors(), createTestDefaults());
+  });
+  const createTestDefaults = () => ({
+    spawnSync,
+    readFileSync,
+    existsSync,
+  });
+  defineTestHooks(module.exports, createTestAccessors(), createTestDefaults());
+}
