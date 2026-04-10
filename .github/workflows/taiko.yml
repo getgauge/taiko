@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node_version }}
+          check-latest: 'true'
       - name: install
         run: npm ci
       - name: install browser dependencies
@@ -61,6 +62,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node_version }}
+          check-latest: 'true'
       - name: install
         run: npm ci
       - name: install browser dependencies
@@ -106,6 +108,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24
+          check-latest: 'true'
       - name: install
         run: npm ci
       - name: install browser dependencies
@@ -153,6 +156,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24
+          check-latest: 'true'
       - name: install
         run: npm ci
       - name: install browser dependencies
