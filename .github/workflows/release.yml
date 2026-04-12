@@ -19,6 +19,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
+          check-latest: 'true'
           registry-url: 'https://registry.npmjs.org'
 
       - name: npm install
@@ -58,6 +59,5 @@ jobs:
           token: '${{ secrets.GITHUB_TOKEN }}'
 
       - name: Deploy npm
-        run: | # See https://github.com/actions/setup-node/issues/1440
-          unset NODE_AUTH_TOKEN
+        run: |
           npm publish --workspace=taiko --access=public
