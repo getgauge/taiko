@@ -27,12 +27,6 @@
     "headless-testing",
     "headless-browser"
   ],
-  "lint-staged": {
-    "**/*.{js,ts}": [
-      "npm run lint:fix",
-      "git add"
-    ]
-  },
   "taiko": {
     "browser": {
       "version": "140.0.7339.82",
@@ -63,12 +57,6 @@
       }
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && npm run test:api",
-      "pre-push": "npm test"
-    }
-  },
   "author": "getgauge",
   "license": "MIT",
   "dependencies": {
@@ -88,19 +76,9 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
-    "@types/chai": "^4.3.4",
-    "@types/chai-as-promised": "^7.1.5",
-    "chai": "^4.3.7",
-    "chai-as-promised": "^7.1.1",
     "clean-css": "^5.3.1",
-    "cssnano": "^5.1.14",
     "eleventy-plugin-toc": "^1.1.5",
     "markdown-it": "^14.1.1",
-    "markdown-it-anchor": "^9.2.0",
-    "mocha": "^10.4.0",
-    "ncp": "^2.0.0",
-    "rewire": "^9.0.1",
-    "sinon": "^15.0.1",
-    "typescript": "^4.9.4"
+    "markdown-it-anchor": "^9.2.0"
   }
 }
