@@ -12,9 +12,11 @@ const highlightElement = async (element) => {
 
   if (await element.isVisible()) {
     const result = await domHandler.getBoxModel(element.get());
-    await overlayHandler.highlightQuad(result.model.border);
-    await wait(1000);
-    await overlayHandler.hideHighlight();
+    if (result) {
+      await overlayHandler.highlightQuad(result.model.border);
+      await wait(1000);
+      await overlayHandler.hideHighlight();
+    }
   } else {
     console.warn("WARNING: Taiko cannot highlight hidden elements.");
   }
