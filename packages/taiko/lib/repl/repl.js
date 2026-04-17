@@ -14,6 +14,8 @@ let lastStack = "";
 let version = "";
 let browserVersion = "";
 let doc = "";
+const isError = (value) =>
+  util.types?.isNativeError?.(value) || value instanceof Error;
 
 module.exports.initialize = async (
   taiko,
@@ -39,7 +41,7 @@ module.exports.initialize = async (
     });
   }
   aEval(repl, (cmd, res) => {
-    if (util.isError(res)) {
+    if (isError(res)) {
       return res;
     }
     commands.push(cmd.trim());
@@ -71,7 +73,7 @@ async function setVersionInfo() {
 }
 
 const writer = (w) => (output) => {
-  if (util.isError(output)) {
+  if (isError(output)) {
     return output.message;
   }
   return w(output);
@@ -162,17 +164,18 @@ function initCommands(taiko, repl, previousSessionFile) {
 }
 
 function code() {
-  if (commands[commands.length - 1].includes("closeBrowser()")) {
-    commands.pop();
-  }
-  const text = commands
+  const lastCommand = commands[commands.length - 1];
+  const sessionCommands = lastCommand?.includes("closeBrowser()")
+    ? commands.slice(0, -1)
+    : commands;
+  const text = sessionCommands
     .map((e) => {
       const _e = e.endsWith(";") ? e : `${e};`;
       return isTaikoFunc(_e) ? `        await ${_e}` : `\t${_e}`;
     })
     .join("\n");
 
-  const cmds = taikoCommands;
+  const cmds = [...taikoCommands];
   if (!cmds.includes("closeBrowser")) {
     cmds.push("closeBrowser");
   }
@@ -188,6 +191,19 @@ ${text}
     }
 })();
 `;
+}
+
+// ─── TEST SEAM ─── active only when TAIKO_ENABLE_TEST_HOOKS=1 ───────────────
+if (process.env.TAIKO_ENABLE_TEST_HOOKS) {
+  const { defineHiddenTestProperty } = require("../../test-support/testHooks");
+  defineHiddenTestProperty(module.exports, "__test__", {
+    code,
+    resetState() {
+      commands.length = 0;
+      taikoCommands = [];
+      lastStack = "";
+    },
+  });
 }
 
 function step(withImports = false, actions = commands) {
@@ -249,7 +265,7 @@ function writeCode(file, previousSessionFile) {
     }
   } catch (error) {
     console.log(`Failed to write to ${file}.`);
-    console.log(error.stacktrace);
+    console.log(error.stack || error.message || error);
   }
 }
 

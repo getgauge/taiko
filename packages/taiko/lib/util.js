@@ -1,9 +1,11 @@
 const isWin = require("node:os").platform() === "win32";
 const Module = require("node:module");
-const nodeURL = require("node:url");
 const path = require("node:path");
-const { spawnSync } = require("node:child_process");
-const { readFileSync, existsSync, realpathSync } = require("node:fs");
+// @injectable — reassignable by test seam; see if (TAIKO_ENABLE_TEST_HOOKS) block below
+let { spawnSync } = require("node:child_process");
+const { realpathSync } = require("node:fs");
+// @injectable — reassignable by test seam; see if (TAIKO_ENABLE_TEST_HOOKS) block below
+let { readFileSync, existsSync } = require("node:fs");
 
 module.exports.removeQuotes = (textWithQuotes, textWithoutQuotes) => {
   return textWithQuotes
@@ -43,13 +45,13 @@ module.exports.isSameUrl = (url1, url2) => {
   if (url1 === url2) {
     return true;
   }
-  const parsedUrl1 = nodeURL.parse(url1);
-  const parsedUrl2 = nodeURL.parse(url2);
+  const parsedUrl1 = new URL(url1);
+  const parsedUrl2 = new URL(url2);
   if (
     parsedUrl1.protocol === "file:" &&
     parsedUrl2.protocol === "file:" &&
-    path.relative(parsedUrl1.path, parsedUrl2.path) === "" &&
-    parsedUrl1.query === parsedUrl2.query &&
+    path.relative(parsedUrl1.pathname, parsedUrl2.pathname) === "" &&
+    parsedUrl1.search === parsedUrl2.search &&
     parsedUrl1.hash === parsedUrl2.hash
   ) {
     return true;
@@ -93,3 +95,36 @@ module.exports.taikoInstallationLocation = () => {
   }
   return installLocation;
 };
+
+// ─── TEST SEAM ─── active only when TAIKO_ENABLE_TEST_HOOKS=1 ───────────────
+// createTestAccessors and createTestDefaults MUST live in this file because
+// they close over module-private variables. See test-support/testHooks.js.
+if (process.env.TAIKO_ENABLE_TEST_HOOKS) {
+  const { defineTestHooks } = require("../test-support/testHooks");
+  const createTestAccessors = () => ({
+    spawnSync: {
+      get: () => spawnSync,
+      set: (value) => {
+        spawnSync = value;
+      },
+    },
+    readFileSync: {
+      get: () => readFileSync,
+      set: (value) => {
+        readFileSync = value;
+      },
+    },
+    existsSync: {
+      get: () => existsSync,
+      set: (value) => {
+        existsSync = value;
+      },
+    },
+  });
+  const createTestDefaults = () => ({
+    spawnSync,
+    readFileSync,
+    existsSync,
+  });
+  defineTestHooks(module.exports, createTestAccessors(), createTestDefaults());
+}

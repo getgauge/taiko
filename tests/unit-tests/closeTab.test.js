@@ -1,6 +1,5 @@
 const expect = require("chai").expect;
 const { EventEmitter } = require("node:events");
-const rewire = require("rewire");
 
 describe("closeTab", () => {
   let _targets = { matching: [], others: [] };
@@ -24,7 +23,8 @@ describe("closeTab", () => {
     });
 
   before(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko = require("taiko/lib/taiko");
+    taiko.__reset__();
     const targetRegistry = new Map();
     const mockHandler = {
       closeTarget: () => {},
@@ -64,11 +64,10 @@ describe("closeTab", () => {
       currentTarget = target;
       return currentTarget;
     });
-    taiko.__set__("dom", { getDocument: async () => {} });
   });
 
   after(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko.__reset__();
   });
 
   beforeEach(() => {

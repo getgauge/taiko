@@ -1,8 +1,12 @@
-const { handleUrlRedirection, isElement, isSelector } = require("../helper");
+const {
+  handleUrlRedirection,
+  isElement,
+  isSelector,
+  parseUrl,
+} = require("../helper");
 const { eventHandler, eventRegexMap } = require("../eventBus");
 const { logEvent } = require("../logger");
 const { findElements } = require("../elementSearch");
-const nodeURL = require("node:url");
 const path = require("node:path");
 const { isSameUrl } = require("../util");
 let page;
@@ -146,10 +150,10 @@ const resolveFrameEvent = (p) => {
 };
 
 const normalizeAndHandleRedirection = (urlString) => {
-  let url = nodeURL.parse(urlString);
+  let url = parseUrl(urlString);
   url = handleUrlRedirection(url.href);
   if (url.protocol === "file:") {
-    url.path = path.normalize(url.path);
+    url.path = path.normalize(url.pathname);
   }
   return url.toString();
 };
@@ -158,9 +162,7 @@ const handleNavigation = async (gotoUrl) => {
   let resolveResponse;
   let requestId;
   const response = {};
-  const urlToNavigate = normalizeAndHandleRedirection(
-    nodeURL.parse(gotoUrl).href,
-  );
+  const urlToNavigate = normalizeAndHandleRedirection(parseUrl(gotoUrl).href);
   const handleRequest = (request) => {
     if (
       requestId &&

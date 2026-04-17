@@ -1,4 +1,3 @@
-const rewire = require("rewire");
 const expect = require("chai").expect;
 const test_name = "Goto";
 
@@ -11,7 +10,8 @@ describe(test_name, () => {
   let validateCalled = false;
 
   before(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko = require("taiko/lib/taiko");
+    taiko.__reset__();
     const mockWrapper = async (options, cb) => {
       actualOptions = options;
       await cb();
@@ -46,7 +46,7 @@ describe(test_name, () => {
   });
 
   after(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko.__reset__();
   });
 
   afterEach(() => {
@@ -62,40 +62,45 @@ describe(test_name, () => {
     expect(validateCalled).to.be.true;
   });
 
-  it("should not alter the url if protocol is given", async () => {
-    let expectedUrl = "https://example.com";
-    await taiko.goto(expectedUrl);
-    expect(actualUrl).to.equal(expectedUrl);
+  const urlTransformCases = [
+    {
+      label: "https protocol untouched",
+      input: "https://example.com",
+      expected: "https://example.com",
+    },
+    {
+      label: "file protocol untouched",
+      input: "file://example.com",
+      expected: "file://example.com",
+    },
+    {
+      label: "chrome-extension protocol untouched",
+      input: "chrome-extension://gjaerjgaerjeoareapoj/internalPage.html",
+      expected: "chrome-extension://gjaerjgaerjeoareapoj/internalPage.html",
+    },
+    {
+      label: "adds http:// when no protocol given",
+      input: "example.com",
+      expected: "http://example.com",
+    },
+    {
+      label: 'does not add http:// for "about:*" urls',
+      input: "about:randomString",
+      expected: "about:randomString",
+    },
+    {
+      label: "adds http:// for url with port specified",
+      input: "localhost:8080",
+      expected: "http://localhost:8080",
+    },
+  ];
 
-    expectedUrl = "file://example.com";
-    await taiko.goto(expectedUrl);
-    expect(actualUrl).to.equal(expectedUrl);
-
-    expectedUrl = "chrome-extension://gjaerjgaerjeoareapoj/internalPage.html";
-    await taiko.goto(expectedUrl);
-    expect(actualUrl).to.equal(expectedUrl);
-  });
-
-  it("should add protocol http:// if not given", async () => {
-    const urlWithoutProtocol = "example.com";
-    const expectedUrl = `http://${urlWithoutProtocol}`;
-    await taiko.goto(urlWithoutProtocol);
-    expect(actualUrl).to.equal(expectedUrl);
-  });
-
-  it('should not add protocol http:// if url is "about:*"', async () => {
-    const aboutBlank = "about:randomString";
-    const expectedUrl = aboutBlank;
-    await taiko.goto(aboutBlank);
-    expect(actualUrl).to.equal(expectedUrl);
-  });
-
-  it("should add protocol http:// for url with port specified", async () => {
-    const urlWithPort = "localhost:8080";
-    const expectedUrl = `http://${urlWithPort}`;
-    await taiko.goto(urlWithPort);
-    expect(actualUrl).to.equal(expectedUrl);
-  });
+  for (const { label, input, expected } of urlTransformCases) {
+    it(`URL: ${label}`, async () => {
+      await taiko.goto(input);
+      expect(actualUrl, `navigated URL for input "${input}"`).to.equal(expected);
+    });
+  }
 
   it("should configure provided headers for the domain", async () => {
     const options = {

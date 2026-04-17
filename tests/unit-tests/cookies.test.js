@@ -1,6 +1,5 @@
 const chai = require("chai");
 const chaiAsPromised = require("chai-as-promised");
-const rewire = require("rewire");
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 const test_name = "cookies";
@@ -8,12 +7,13 @@ const test_name = "cookies";
 describe(test_name, () => {
   let taiko;
   before(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko = require("taiko/lib/taiko");
+    taiko.__reset__();
     taiko.__set__("validate", () => {});
   });
 
   after(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko.__reset__();
   });
 
   it("setCookie should throw error if url or domain is not specified", async () => {
