@@ -2367,6 +2367,15 @@ module.exports.evaluate = async (selector, callback, options = {}) => {
     });
   });
 
+  if (result && result.exceptionDetails) {
+    const exceptionDetails = result.exceptionDetails;
+    const errorMessage =
+      exceptionDetails.exception && exceptionDetails.exception.description
+        ? exceptionDetails.exception.description
+        : exceptionDetails.text || "Error in evaluate callback";
+    throw new Error(errorMessage);
+  }
+
   if (!_options.silent) {
     descEvent.emit("success", "Evaluated given script");
   }

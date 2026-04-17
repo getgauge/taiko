@@ -103,6 +103,19 @@ describe(testName, () => {
       expect(actual).to.equal(testName);
     });
 
+    it("should throw when the callback throws an error", async () => {
+      let thrownError;
+      try {
+        await evaluate(() => {
+          return document.querySelector(".doesNotExist").textContent;
+        });
+      } catch (e) {
+        thrownError = e;
+      }
+      expect(thrownError).to.be.an.instanceof(Error);
+      expect(thrownError.message).to.include("TypeError");
+    });
+
     it("should pass args to the callback", async () => {
       const newText = "Updated Item 1 with new item";
       await evaluate(
