@@ -104,16 +104,9 @@ describe(testName, () => {
     });
 
     it("should throw when the callback throws an error", async () => {
-      let thrownError;
-      try {
-        await evaluate(() => {
-          return document.querySelector(".doesNotExist").textContent;
-        });
-      } catch (e) {
-        thrownError = e;
-      }
-      expect(thrownError).to.be.an.instanceof(Error);
-      expect(thrownError.message).to.include("TypeError");
+      await expect(
+        evaluate(() => document.querySelector(".doesNotExist").textContent)
+      ).to.be.rejectedWith(Error, /TypeError/);
     });
 
     it("should pass args to the callback", async () => {
