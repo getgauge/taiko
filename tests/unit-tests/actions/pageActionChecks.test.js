@@ -214,4 +214,35 @@ describe("pageActionChecks", () => {
       expect(result.name).to.equal("notActionable1");
     });
   });
+  describe("checkStable", () => {
+    afterEach(() => {
+      pageActionChecks = rewire("taiko/lib/actions/pageActionChecks");
+    });
+    it("should return true when element is stable", async () => {
+      pageActionChecks.__set__("runtimeHandler", {
+        runtimeCallFunctionOn: () => ({
+          result: { value: true },
+        }),
+      });
+      const elem = { get: () => 1 };
+      const result = await pageActionChecks.__get__("checkStable")(elem);
+      expect(result).to.be.true;
+    });
+    it("should throw when element keeps moving and never becomes stable", async () => {
+      pageActionChecks.__set__("runtimeHandler", {
+        runtimeCallFunctionOn: () => ({
+          exceptionDetails: {
+            exception: {
+              description:
+                "Error: Element is not stable: still moving after 10000ms",
+            },
+          },
+        }),
+      });
+      const elem = { get: () => 1 };
+      await expect(
+        pageActionChecks.__get__("checkStable")(elem),
+      ).to.be.rejectedWith("Element is not stable: still moving after 10000ms");
+    });
+  });
 });
