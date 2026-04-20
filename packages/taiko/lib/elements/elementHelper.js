@@ -16,6 +16,11 @@ const highlightElement = async (element) => {
       await overlayHandler.highlightQuad(result.model.border);
       await wait(1000);
       await overlayHandler.hideHighlight();
+    } else {
+      console.warn(
+        "WARNING: Taiko cannot highlight element — no rendered content quads " +
+          "(element may be off-screen, zero-sized, or not yet laid out).",
+      );
     }
   } else {
     console.warn("WARNING: Taiko cannot highlight hidden elements.");

@@ -19,7 +19,7 @@ const {
   removeFile,
   openBrowserArgs,
   resetConfig,
-} = require("./test-util");
+} = require("../test-util");
 const test_name = "proximitySelector";
 
 describe(test_name, () => {
