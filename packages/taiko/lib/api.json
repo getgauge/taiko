@@ -7572,27 +7572,27 @@
     ],
     "loc": {
       "start": {
-        "line": 57,
+        "line": 65,
         "column": 0,
-        "index": 1751
+        "index": 2328
       },
       "end": {
-        "line": 89,
+        "line": 97,
         "column": 3,
-        "index": 3845
+        "index": 4422
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 90,
+          "line": 98,
           "column": 0,
-          "index": 3846
+          "index": 4423
         },
         "end": {
-          "line": 125,
+          "line": 133,
           "column": 2,
-          "index": 5097
+          "index": 5672
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -8032,27 +8032,27 @@
     ],
     "loc": {
       "start": {
-        "line": 127,
+        "line": 135,
         "column": 0,
-        "index": 5099
+        "index": 5674
       },
       "end": {
-        "line": 134,
+        "line": 142,
         "column": 3,
-        "index": 5230
+        "index": 5805
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 135,
+          "line": 143,
           "column": 0,
-          "index": 5231
+          "index": 5806
         },
         "end": {
-          "line": 146,
+          "line": 154,
           "column": 2,
-          "index": 5560
+          "index": 6133
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -8171,27 +8171,27 @@
     ],
     "loc": {
       "start": {
-        "line": 154,
+        "line": 162,
         "column": 0,
-        "index": 5747
+        "index": 6318
       },
       "end": {
-        "line": 161,
+        "line": 169,
         "column": 3,
-        "index": 6033
+        "index": 6604
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 162,
+          "line": 170,
           "column": 0,
-          "index": 6034
+          "index": 6605
         },
         "end": {
-          "line": 162,
+          "line": 170,
           "column": 57,
-          "index": 6091
+          "index": 6662
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -8315,27 +8315,27 @@
     ],
     "loc": {
       "start": {
-        "line": 185,
+        "line": 193,
         "column": 0,
-        "index": 6555
+        "index": 7126
       },
       "end": {
-        "line": 215,
+        "line": 223,
         "column": 3,
-        "index": 7491
+        "index": 8062
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 217,
+          "line": 225,
           "column": 0,
-          "index": 7493
+          "index": 8064
         },
         "end": {
-          "line": 251,
+          "line": 259,
           "column": 2,
-          "index": 8768
+          "index": 9337
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -8558,27 +8558,27 @@
     ],
     "loc": {
       "start": {
-        "line": 253,
+        "line": 261,
         "column": 0,
-        "index": 8770
+        "index": 9339
       },
       "end": {
-        "line": 283,
+        "line": 291,
         "column": 3,
-        "index": 9897
+        "index": 10466
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 284,
+          "line": 292,
           "column": 0,
-          "index": 9898
+          "index": 10467
         },
         "end": {
-          "line": 291,
+          "line": 299,
           "column": 2,
-          "index": 10137
+          "index": 10704
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -8823,27 +8823,27 @@
     ],
     "loc": {
       "start": {
-        "line": 293,
+        "line": 301,
         "column": 0,
-        "index": 10139
+        "index": 10706
       },
       "end": {
-        "line": 312,
+        "line": 320,
         "column": 3,
-        "index": 11014
+        "index": 11581
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 314,
+          "line": 322,
           "column": 0,
-          "index": 11016
+          "index": 11583
         },
         "end": {
-          "line": 321,
+          "line": 329,
           "column": 2,
-          "index": 11256
+          "index": 11821
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -8998,27 +8998,27 @@
     ],
     "loc": {
       "start": {
-        "line": 323,
+        "line": 331,
         "column": 0,
-        "index": 11258
+        "index": 11823
       },
       "end": {
-        "line": 332,
+        "line": 340,
         "column": 3,
-        "index": 11619
+        "index": 12184
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 334,
+          "line": 342,
           "column": 0,
-          "index": 11621
+          "index": 12186
         },
         "end": {
-          "line": 334,
+          "line": 342,
           "column": 45,
-          "index": 11666
+          "index": 12231
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -9167,27 +9167,27 @@
     ],
     "loc": {
       "start": {
-        "line": 341,
+        "line": 349,
         "column": 0,
-        "index": 11852
+        "index": 12415
       },
       "end": {
-        "line": 350,
+        "line": 358,
         "column": 3,
-        "index": 12202
+        "index": 12765
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 351,
+          "line": 359,
           "column": 0,
-          "index": 12203
+          "index": 12766
         },
         "end": {
-          "line": 358,
+          "line": 366,
           "column": 2,
-          "index": 12432
+          "index": 12993
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -9326,27 +9326,27 @@
     ],
     "loc": {
       "start": {
-        "line": 360,
+        "line": 368,
         "column": 0,
-        "index": 12434
+        "index": 12995
       },
       "end": {
-        "line": 365,
+        "line": 373,
         "column": 3,
-        "index": 12727
+        "index": 13288
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 367,
+          "line": 375,
           "column": 0,
-          "index": 12729
+          "index": 13290
         },
         "end": {
-          "line": 370,
+          "line": 378,
           "column": 2,
-          "index": 12900
+          "index": 13459
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -9362,7 +9362,7 @@
       {
         "title": "param",
         "name": "timezoneId",
-        "lineNumber": 367
+        "lineNumber": 375
       }
     ],
     "properties": [],
@@ -9546,27 +9546,27 @@
     ],
     "loc": {
       "start": {
-        "line": 372,
+        "line": 380,
         "column": 0,
-        "index": 12902
+        "index": 13461
       },
       "end": {
-        "line": 389,
+        "line": 397,
         "column": 3,
-        "index": 14163
+        "index": 14722
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 390,
+          "line": 398,
           "column": 0,
-          "index": 14164
+          "index": 14723
         },
         "end": {
-          "line": 422,
+          "line": 430,
           "column": 2,
-          "index": 15189
+          "index": 15746
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -9975,27 +9975,27 @@
     ],
     "loc": {
       "start": {
-        "line": 424,
+        "line": 432,
         "column": 0,
-        "index": 15191
+        "index": 15748
       },
       "end": {
-        "line": 438,
+        "line": 446,
         "column": 3,
-        "index": 16328
+        "index": 16885
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 439,
+          "line": 447,
           "column": 0,
-          "index": 16329
+          "index": 16886
         },
         "end": {
-          "line": 484,
+          "line": 489,
           "column": 2,
-          "index": 17465
+          "index": 18007
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -10296,27 +10296,27 @@
     ],
     "loc": {
       "start": {
-        "line": 485,
+        "line": 490,
         "column": 0,
-        "index": 17466
+        "index": 18008
       },
       "end": {
-        "line": 490,
+        "line": 495,
         "column": 3,
-        "index": 17649
+        "index": 18191
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 491,
+          "line": 496,
           "column": 0,
-          "index": 17650
+          "index": 18192
         },
         "end": {
-          "line": 513,
+          "line": 518,
           "column": 2,
-          "index": 18331
+          "index": 18871
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -10332,7 +10332,7 @@
       {
         "title": "param",
         "name": "arg",
-        "lineNumber": 491
+        "lineNumber": 496
       },
       {
         "title": "param",
@@ -10461,27 +10461,27 @@
     ],
     "loc": {
       "start": {
-        "line": 515,
+        "line": 520,
         "column": 0,
-        "index": 18333
+        "index": 18873
       },
       "end": {
-        "line": 537,
+        "line": 542,
         "column": 3,
-        "index": 19107
+        "index": 19647
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 538,
+          "line": 543,
           "column": 0,
-          "index": 19108
+          "index": 19648
         },
         "end": {
-          "line": 572,
+          "line": 577,
           "column": 2,
-          "index": 20250
+          "index": 20786
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -10509,7 +10509,7 @@
       {
         "title": "param",
         "name": "identifier",
-        "lineNumber": 538
+        "lineNumber": 543
       },
       {
         "title": "param",
@@ -10655,27 +10655,27 @@
     ],
     "loc": {
       "start": {
-        "line": 574,
+        "line": 579,
         "column": 0,
-        "index": 20252
+        "index": 20788
       },
       "end": {
-        "line": 584,
+        "line": 589,
         "column": 3,
-        "index": 20692
+        "index": 21228
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 585,
+          "line": 590,
           "column": 0,
-          "index": 20693
+          "index": 21229
         },
         "end": {
-          "line": 589,
+          "line": 594,
           "column": 2,
-          "index": 20917
+          "index": 21451
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -10849,27 +10849,27 @@
     ],
     "loc": {
       "start": {
-        "line": 591,
+        "line": 596,
         "column": 0,
-        "index": 20919
+        "index": 21453
       },
       "end": {
-        "line": 598,
+        "line": 603,
         "column": 3,
-        "index": 21060
+        "index": 21594
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 599,
+          "line": 604,
           "column": 0,
-          "index": 21061
+          "index": 21595
         },
         "end": {
-          "line": 603,
+          "line": 608,
           "column": 2,
-          "index": 21245
+          "index": 21777
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -11105,27 +11105,27 @@
     ],
     "loc": {
       "start": {
-        "line": 605,
+        "line": 610,
         "column": 0,
-        "index": 21247
+        "index": 21779
       },
       "end": {
-        "line": 625,
+        "line": 630,
         "column": 3,
-        "index": 22379
+        "index": 22911
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 626,
+          "line": 631,
           "column": 0,
-          "index": 22380
+          "index": 22912
         },
         "end": {
-          "line": 640,
+          "line": 645,
           "column": 2,
-          "index": 22881
+          "index": 23411
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -11549,27 +11549,27 @@
     ],
     "loc": {
       "start": {
-        "line": 642,
+        "line": 647,
         "column": 0,
-        "index": 22883
+        "index": 23413
       },
       "end": {
-        "line": 659,
+        "line": 664,
         "column": 3,
-        "index": 23776
+        "index": 24306
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 660,
+          "line": 665,
           "column": 0,
-          "index": 23777
+          "index": 24307
         },
         "end": {
-          "line": 675,
+          "line": 680,
           "column": 2,
-          "index": 24381
+          "index": 24907
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -11798,27 +11798,27 @@
     ],
     "loc": {
       "start": {
-        "line": 677,
+        "line": 682,
         "column": 0,
-        "index": 24383
+        "index": 24909
       },
       "end": {
-        "line": 684,
+        "line": 689,
         "column": 3,
-        "index": 24512
+        "index": 25038
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 685,
+          "line": 690,
           "column": 0,
-          "index": 24513
+          "index": 25039
         },
         "end": {
-          "line": 696,
+          "line": 701,
           "column": 2,
-          "index": 24997
+          "index": 25521
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -11834,7 +11834,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 685,
+        "lineNumber": 690,
         "default": "{}"
       }
     ],
@@ -11966,27 +11966,27 @@
     ],
     "loc": {
       "start": {
-        "line": 697,
+        "line": 702,
         "column": 0,
-        "index": 24998
+        "index": 25522
       },
       "end": {
-        "line": 709,
+        "line": 714,
         "column": 3,
-        "index": 25342
+        "index": 25866
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 710,
+          "line": 715,
           "column": 0,
-          "index": 25343
+          "index": 25867
         },
         "end": {
-          "line": 713,
+          "line": 718,
           "column": 2,
-          "index": 25474
+          "index": 25998
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -12188,27 +12188,27 @@
     ],
     "loc": {
       "start": {
-        "line": 715,
+        "line": 720,
         "column": 0,
-        "index": 25476
+        "index": 26000
       },
       "end": {
-        "line": 727,
+        "line": 732,
         "column": 3,
-        "index": 25891
+        "index": 26415
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 728,
+          "line": 733,
           "column": 0,
-          "index": 25892
+          "index": 26416
         },
         "end": {
-          "line": 732,
+          "line": 737,
           "column": 2,
-          "index": 26053
+          "index": 26575
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -12524,27 +12524,27 @@
     ],
     "loc": {
       "start": {
-        "line": 734,
+        "line": 739,
         "column": 0,
-        "index": 26055
+        "index": 26577
       },
       "end": {
-        "line": 764,
+        "line": 769,
         "column": 3,
-        "index": 27578
+        "index": 28100
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 765,
+          "line": 770,
           "column": 0,
-          "index": 27579
+          "index": 28101
         },
         "end": {
-          "line": 780,
+          "line": 785,
           "column": 2,
-          "index": 28100
+          "index": 28620
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -12950,27 +12950,27 @@
     ],
     "loc": {
       "start": {
-        "line": 782,
+        "line": 787,
         "column": 0,
-        "index": 28102
+        "index": 28622
       },
       "end": {
-        "line": 798,
+        "line": 803,
         "column": 3,
-        "index": 29152
+        "index": 29672
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 799,
+          "line": 804,
           "column": 0,
-          "index": 29153
+          "index": 29673
         },
         "end": {
-          "line": 820,
+          "line": 825,
           "column": 2,
-          "index": 29857
+          "index": 30375
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -13332,27 +13332,27 @@
     ],
     "loc": {
       "start": {
-        "line": 822,
+        "line": 827,
         "column": 0,
-        "index": 29859
+        "index": 30377
       },
       "end": {
-        "line": 834,
+        "line": 839,
         "column": 3,
-        "index": 30695
+        "index": 31213
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 835,
+          "line": 840,
           "column": 0,
-          "index": 30696
+          "index": 31214
         },
         "end": {
-          "line": 841,
+          "line": 846,
           "column": 2,
-          "index": 30919
+          "index": 31435
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -13664,27 +13664,27 @@
     ],
     "loc": {
       "start": {
-        "line": 843,
+        "line": 848,
         "column": 0,
-        "index": 30921
+        "index": 31437
       },
       "end": {
-        "line": 855,
+        "line": 860,
         "column": 3,
-        "index": 31766
+        "index": 32282
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 856,
+          "line": 861,
           "column": 0,
-          "index": 31767
+          "index": 32283
         },
         "end": {
-          "line": 862,
+          "line": 867,
           "column": 2,
-          "index": 31996
+          "index": 32510
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -14133,27 +14133,27 @@
     ],
     "loc": {
       "start": {
-        "line": 919,
+        "line": 1023,
         "column": 0,
-        "index": 33387
+        "index": 36267
       },
       "end": {
-        "line": 947,
+        "line": 1051,
         "column": 3,
-        "index": 35530
+        "index": 38410
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 948,
+          "line": 1052,
           "column": 0,
-          "index": 35531
+          "index": 38411
         },
         "end": {
-          "line": 953,
+          "line": 1057,
           "column": 2,
-          "index": 35754
+          "index": 38634
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -14704,27 +14704,27 @@
     ],
     "loc": {
       "start": {
-        "line": 955,
+        "line": 1059,
         "column": 0,
-        "index": 35756
+        "index": 38636
       },
       "end": {
-        "line": 974,
+        "line": 1078,
         "column": 3,
-        "index": 36838
+        "index": 39718
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 975,
+          "line": 1079,
           "column": 0,
-          "index": 36839
+          "index": 39719
         },
         "end": {
-          "line": 981,
+          "line": 1085,
           "column": 2,
-          "index": 37124
+          "index": 40004
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -15058,27 +15058,27 @@
     ],
     "loc": {
       "start": {
-        "line": 983,
+        "line": 1087,
         "column": 0,
-        "index": 37126
+        "index": 40006
       },
       "end": {
-        "line": 998,
+        "line": 1102,
         "column": 3,
-        "index": 38051
+        "index": 40931
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 999,
+          "line": 1103,
           "column": 0,
-          "index": 38052
+          "index": 40932
         },
         "end": {
-          "line": 1005,
+          "line": 1109,
           "column": 2,
-          "index": 38337
+          "index": 41217
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -15411,27 +15411,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1007,
+        "line": 1111,
         "column": 0,
-        "index": 38339
+        "index": 41219
       },
       "end": {
-        "line": 1022,
+        "line": 1126,
         "column": 3,
-        "index": 39209
+        "index": 42089
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1023,
+          "line": 1127,
           "column": 0,
-          "index": 39210
+          "index": 42090
         },
         "end": {
-          "line": 1028,
+          "line": 1132,
           "column": 2,
-          "index": 39461
+          "index": 42341
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -15482,12 +15482,12 @@
       {
         "title": "param",
         "name": "destination",
-        "lineNumber": 1023
+        "lineNumber": 1127
       },
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 1023,
+        "lineNumber": 1127,
         "default": "{}"
       },
       {
@@ -15675,27 +15675,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1030,
+        "line": 1134,
         "column": 0,
-        "index": 39463
+        "index": 42343
       },
       "end": {
-        "line": 1044,
+        "line": 1148,
         "column": 3,
-        "index": 40407
+        "index": 43287
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1045,
+          "line": 1149,
           "column": 0,
-          "index": 40408
+          "index": 43288
         },
         "end": {
-          "line": 1050,
+          "line": 1154,
           "column": 2,
-          "index": 40635
+          "index": 43515
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -15938,27 +15938,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1052,
+        "line": 1156,
         "column": 0,
-        "index": 40637
+        "index": 43517
       },
       "end": {
-        "line": 1064,
+        "line": 1168,
         "column": 3,
-        "index": 41461
+        "index": 44341
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1065,
+          "line": 1169,
           "column": 0,
-          "index": 41462
+          "index": 44342
         },
         "end": {
-          "line": 1070,
+          "line": 1174,
           "column": 2,
-          "index": 41695
+          "index": 44575
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -16300,27 +16300,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1072,
+        "line": 1176,
         "column": 0,
-        "index": 41697
+        "index": 44577
       },
       "end": {
-        "line": 1091,
+        "line": 1195,
         "column": 3,
-        "index": 43044
+        "index": 45924
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1092,
+          "line": 1196,
           "column": 0,
-          "index": 43045
+          "index": 45925
         },
         "end": {
-          "line": 1098,
+          "line": 1202,
           "column": 2,
-          "index": 43315
+          "index": 46195
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -16800,27 +16800,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1100,
+        "line": 1204,
         "column": 0,
-        "index": 43317
+        "index": 46197
       },
       "end": {
-        "line": 1119,
+        "line": 1223,
         "column": 3,
-        "index": 44627
+        "index": 47507
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1120,
+          "line": 1224,
           "column": 0,
-          "index": 44628
+          "index": 47508
         },
         "end": {
-          "line": 1134,
+          "line": 1238,
           "column": 2,
-          "index": 45059
+          "index": 47939
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -17168,27 +17168,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1136,
+        "line": 1240,
         "column": 0,
-        "index": 45061
+        "index": 47941
       },
       "end": {
-        "line": 1149,
+        "line": 1253,
         "column": 3,
-        "index": 45619
+        "index": 48499
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1150,
+          "line": 1254,
           "column": 0,
-          "index": 45620
+          "index": 48500
         },
         "end": {
-          "line": 1155,
+          "line": 1259,
           "column": 2,
-          "index": 45837
+          "index": 48717
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -17274,7 +17274,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 1150,
+        "lineNumber": 1254,
         "default": "{}"
       }
     ],
@@ -17493,27 +17493,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1157,
+        "line": 1261,
         "column": 0,
-        "index": 45839
+        "index": 48719
       },
       "end": {
-        "line": 1179,
+        "line": 1283,
         "column": 3,
-        "index": 47160
+        "index": 50040
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1180,
+          "line": 1284,
           "column": 0,
-          "index": 47161
+          "index": 50041
         },
         "end": {
-          "line": 1183,
+          "line": 1287,
           "column": 2,
-          "index": 47303
+          "index": 50183
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -17906,27 +17906,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1203,
+        "line": 1307,
         "column": 0,
-        "index": 47815
+        "index": 50695
       },
       "end": {
-        "line": 1215,
+        "line": 1319,
         "column": 3,
-        "index": 48301
+        "index": 51181
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1216,
+          "line": 1320,
           "column": 0,
-          "index": 48302
+          "index": 51182
         },
         "end": {
-          "line": 1216,
+          "line": 1320,
           "column": 37,
-          "index": 48339
+          "index": 51219
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -18110,27 +18110,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1229,
+        "line": 1333,
         "column": 0,
-        "index": 48673
+        "index": 51553
       },
       "end": {
-        "line": 1236,
+        "line": 1340,
         "column": 3,
-        "index": 48830
+        "index": 51710
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1238,
+          "line": 1342,
           "column": 0,
-          "index": 48832
+          "index": 51712
         },
         "end": {
-          "line": 1243,
+          "line": 1347,
           "column": 2,
-          "index": 49032
+          "index": 51912
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -18354,27 +18354,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1245,
+        "line": 1349,
         "column": 0,
-        "index": 49034
+        "index": 51914
       },
       "end": {
-        "line": 1271,
+        "line": 1375,
         "column": 3,
-        "index": 50577
+        "index": 53457
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1272,
+          "line": 1376,
           "column": 0,
-          "index": 50578
+          "index": 53458
         },
         "end": {
-          "line": 1272,
+          "line": 1376,
           "column": 41,
-          "index": 50619
+          "index": 53499
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -18821,27 +18821,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1281,
+        "line": 1385,
         "column": 0,
-        "index": 50881
+        "index": 53761
       },
       "end": {
-        "line": 1303,
+        "line": 1407,
         "column": 3,
-        "index": 52434
+        "index": 55314
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1304,
+          "line": 1408,
           "column": 0,
-          "index": 52435
+          "index": 55315
         },
         "end": {
-          "line": 1315,
+          "line": 1419,
           "column": 2,
-          "index": 52904
+          "index": 55784
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -19280,27 +19280,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1317,
+        "line": 1421,
         "column": 0,
-        "index": 52906
+        "index": 55786
       },
       "end": {
-        "line": 1333,
+        "line": 1437,
         "column": 3,
-        "index": 53284
+        "index": 56164
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1334,
+          "line": 1438,
           "column": 0,
-          "index": 53285
+          "index": 56165
         },
         "end": {
-          "line": 1355,
+          "line": 1459,
           "column": 2,
-          "index": 53812
+          "index": 56692
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -19512,27 +19512,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1357,
+        "line": 1461,
         "column": 0,
-        "index": 53814
+        "index": 56694
       },
       "end": {
-        "line": 1373,
+        "line": 1477,
         "column": 3,
-        "index": 54187
+        "index": 57067
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1374,
+          "line": 1478,
           "column": 0,
-          "index": 54188
+          "index": 57068
         },
         "end": {
-          "line": 1395,
+          "line": 1499,
           "column": 2,
-          "index": 54718
+          "index": 57598
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -19744,27 +19744,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1397,
+        "line": 1501,
         "column": 0,
-        "index": 54720
+        "index": 57600
       },
       "end": {
-        "line": 1413,
+        "line": 1517,
         "column": 3,
-        "index": 55076
+        "index": 57956
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1414,
+          "line": 1518,
           "column": 0,
-          "index": 55077
+          "index": 57957
         },
         "end": {
-          "line": 1435,
+          "line": 1539,
           "column": 2,
-          "index": 55602
+          "index": 58482
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -19976,27 +19976,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1437,
+        "line": 1541,
         "column": 0,
-        "index": 55604
+        "index": 58484
       },
       "end": {
-        "line": 1453,
+        "line": 1557,
         "column": 3,
-        "index": 55970
+        "index": 58850
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1454,
+          "line": 1558,
           "column": 0,
-          "index": 55971
+          "index": 58851
         },
         "end": {
-          "line": 1475,
+          "line": 1579,
           "column": 2,
-          "index": 56495
+          "index": 59375
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -20242,27 +20242,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1477,
+        "line": 1581,
         "column": 0,
-        "index": 56497
+        "index": 59377
       },
       "end": {
-        "line": 1496,
+        "line": 1600,
         "column": 3,
-        "index": 57274
+        "index": 60154
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1497,
+          "line": 1601,
           "column": 0,
-          "index": 57275
+          "index": 60155
         },
         "end": {
-          "line": 1515,
+          "line": 1619,
           "column": 2,
-          "index": 57941
+          "index": 60821
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -20600,27 +20600,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1517,
+        "line": 1621,
         "column": 0,
-        "index": 57943
+        "index": 60823
       },
       "end": {
-        "line": 1536,
+        "line": 1640,
         "column": 3,
-        "index": 59074
+        "index": 61954
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1537,
+          "line": 1641,
           "column": 0,
-          "index": 59075
+          "index": 61955
         },
         "end": {
-          "line": 1543,
+          "line": 1647,
           "column": 2,
-          "index": 59325
+          "index": 62205
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -20963,27 +20963,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1545,
+        "line": 1649,
         "column": 0,
-        "index": 59327
+        "index": 62207
       },
       "end": {
-        "line": 1564,
+        "line": 1668,
         "column": 3,
-        "index": 60033
+        "index": 62913
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1565,
+          "line": 1669,
           "column": 0,
-          "index": 60034
+          "index": 62914
         },
         "end": {
-          "line": 1569,
+          "line": 1673,
           "column": 2,
-          "index": 60245
+          "index": 63125
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -21014,7 +21014,7 @@
       {
         "title": "param",
         "name": "attrValuePairs",
-        "lineNumber": 1565
+        "lineNumber": 1669
       },
       {
         "title": "param",
@@ -21226,27 +21226,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1571,
+        "line": 1675,
         "column": 0,
-        "index": 60247
+        "index": 63127
       },
       "end": {
-        "line": 1591,
+        "line": 1695,
         "column": 3,
-        "index": 60941
+        "index": 63821
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1592,
+          "line": 1696,
           "column": 0,
-          "index": 60942
+          "index": 63822
         },
         "end": {
-          "line": 1596,
+          "line": 1700,
           "column": 2,
-          "index": 61154
+          "index": 64034
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -21504,27 +21504,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1598,
+        "line": 1702,
         "column": 0,
-        "index": 61156
+        "index": 64036
       },
       "end": {
-        "line": 1617,
+        "line": 1721,
         "column": 3,
-        "index": 61818
+        "index": 64698
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1618,
+          "line": 1722,
           "column": 0,
-          "index": 61819
+          "index": 64699
         },
         "end": {
-          "line": 1622,
+          "line": 1726,
           "column": 2,
-          "index": 62027
+          "index": 64907
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -21790,27 +21790,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1624,
+        "line": 1728,
         "column": 0,
-        "index": 62029
+        "index": 64909
       },
       "end": {
-        "line": 1643,
+        "line": 1747,
         "column": 3,
-        "index": 62765
+        "index": 65645
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1644,
+          "line": 1748,
           "column": 0,
-          "index": 62766
+          "index": 65646
         },
         "end": {
-          "line": 1648,
+          "line": 1752,
           "column": 2,
-          "index": 62990
+          "index": 65870
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -22068,27 +22068,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1650,
+        "line": 1754,
         "column": 0,
-        "index": 62992
+        "index": 65872
       },
       "end": {
-        "line": 1670,
+        "line": 1774,
         "column": 3,
-        "index": 63776
+        "index": 66656
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1671,
+          "line": 1775,
           "column": 0,
-          "index": 63777
+          "index": 66657
         },
         "end": {
-          "line": 1675,
+          "line": 1779,
           "column": 2,
-          "index": 63993
+          "index": 66873
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -22346,27 +22346,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1677,
+        "line": 1781,
         "column": 0,
-        "index": 63995
+        "index": 66875
       },
       "end": {
-        "line": 1696,
+        "line": 1800,
         "column": 3,
-        "index": 64796
+        "index": 67676
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1697,
+          "line": 1801,
           "column": 0,
-          "index": 64797
+          "index": 67677
         },
         "end": {
-          "line": 1697,
+          "line": 1801,
           "column": 37,
-          "index": 64834
+          "index": 67714
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -22626,27 +22626,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1705,
+        "line": 1809,
         "column": 0,
-        "index": 65053
+        "index": 67933
       },
       "end": {
-        "line": 1727,
+        "line": 1831,
         "column": 3,
-        "index": 65958
+        "index": 68838
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1728,
+          "line": 1832,
           "column": 0,
-          "index": 65959
+          "index": 68839
         },
         "end": {
-          "line": 1728,
+          "line": 1832,
           "column": 37,
-          "index": 65996
+          "index": 68876
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -22884,27 +22884,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1736,
+        "line": 1840,
         "column": 0,
-        "index": 66215
+        "index": 69095
       },
       "end": {
-        "line": 1751,
+        "line": 1855,
         "column": 3,
-        "index": 66941
+        "index": 69821
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1752,
+          "line": 1856,
           "column": 0,
-          "index": 66942
+          "index": 69822
         },
         "end": {
-          "line": 1752,
+          "line": 1856,
           "column": 29,
-          "index": 66971
+          "index": 69851
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -23120,27 +23120,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1760,
+        "line": 1864,
         "column": 0,
-        "index": 67174
+        "index": 70054
       },
       "end": {
-        "line": 1778,
+        "line": 1882,
         "column": 3,
-        "index": 67835
+        "index": 70715
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1780,
+          "line": 1884,
           "column": 0,
-          "index": 67837
+          "index": 70717
         },
         "end": {
-          "line": 1780,
+          "line": 1884,
           "column": 29,
-          "index": 67866
+          "index": 70746
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -23387,27 +23387,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1792,
+        "line": 1896,
         "column": 0,
-        "index": 68197
+        "index": 71077
       },
       "end": {
-        "line": 1819,
+        "line": 1923,
         "column": 4,
-        "index": 69311
+        "index": 72191
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1820,
+          "line": 1924,
           "column": 0,
-          "index": 69312
+          "index": 72192
         },
         "end": {
-          "line": 1820,
+          "line": 1924,
           "column": 37,
-          "index": 69349
+          "index": 72229
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -23685,27 +23685,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1849,
+        "line": 1953,
         "column": 0,
-        "index": 70169
+        "index": 73049
       },
       "end": {
-        "line": 1866,
+        "line": 1970,
         "column": 3,
-        "index": 70946
+        "index": 73826
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1867,
+          "line": 1971,
           "column": 0,
-          "index": 70947
+          "index": 73827
         },
         "end": {
-          "line": 1867,
+          "line": 1971,
           "column": 33,
-          "index": 70980
+          "index": 73860
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -23939,27 +23939,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1875,
+        "line": 1979,
         "column": 0,
-        "index": 71200
+        "index": 74080
       },
       "end": {
-        "line": 1900,
+        "line": 2004,
         "column": 3,
-        "index": 72295
+        "index": 75175
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1901,
+          "line": 2005,
           "column": 0,
-          "index": 72296
+          "index": 75176
         },
         "end": {
-          "line": 1901,
+          "line": 2005,
           "column": 35,
-          "index": 72331
+          "index": 75211
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -24185,27 +24185,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1909,
+        "line": 2013,
         "column": 0,
-        "index": 72555
+        "index": 75435
       },
       "end": {
-        "line": 1925,
+        "line": 2029,
         "column": 3,
-        "index": 73226
+        "index": 76106
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1926,
+          "line": 2030,
           "column": 0,
-          "index": 73227
+          "index": 76107
         },
         "end": {
-          "line": 1930,
+          "line": 2034,
           "column": 2,
-          "index": 73460
+          "index": 76340
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -24416,27 +24416,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1932,
+        "line": 2036,
         "column": 0,
-        "index": 73462
+        "index": 76342
       },
       "end": {
-        "line": 1946,
+        "line": 2050,
         "column": 3,
-        "index": 74081
+        "index": 76961
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1947,
+          "line": 2051,
           "column": 0,
-          "index": 74082
+          "index": 76962
         },
         "end": {
-          "line": 1951,
+          "line": 2055,
           "column": 2,
-          "index": 74327
+          "index": 77207
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -24673,27 +24673,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1953,
+        "line": 2057,
         "column": 0,
-        "index": 74329
+        "index": 77209
       },
       "end": {
-        "line": 1976,
+        "line": 2080,
         "column": 3,
-        "index": 75143
+        "index": 78023
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1977,
+          "line": 2081,
           "column": 0,
-          "index": 75144
+          "index": 78024
         },
         "end": {
-          "line": 1977,
+          "line": 2081,
           "column": 27,
-          "index": 75171
+          "index": 78051
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -24927,27 +24927,27 @@
     ],
     "loc": {
       "start": {
-        "line": 1985,
+        "line": 2089,
         "column": 0,
-        "index": 75350
+        "index": 78230
       },
       "end": {
-        "line": 1995,
+        "line": 2099,
         "column": 3,
-        "index": 75661
+        "index": 78541
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 1997,
+          "line": 2101,
           "column": 0,
-          "index": 75663
+          "index": 78543
         },
         "end": {
-          "line": 2009,
+          "line": 2113,
           "column": 2,
-          "index": 76043
+          "index": 78923
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -25117,27 +25117,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2011,
+        "line": 2115,
         "column": 0,
-        "index": 76045
+        "index": 78925
       },
       "end": {
-        "line": 2021,
+        "line": 2125,
         "column": 3,
-        "index": 76358
+        "index": 79238
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2023,
+          "line": 2127,
           "column": 0,
-          "index": 76360
+          "index": 79240
         },
         "end": {
-          "line": 2036,
+          "line": 2140,
           "column": 2,
-          "index": 76760
+          "index": 79640
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -25307,27 +25307,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2038,
+        "line": 2142,
         "column": 0,
-        "index": 76762
+        "index": 79642
       },
       "end": {
-        "line": 2048,
+        "line": 2152,
         "column": 3,
-        "index": 77057
+        "index": 79937
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2050,
+          "line": 2154,
           "column": 0,
-          "index": 77059
+          "index": 79939
         },
         "end": {
-          "line": 2063,
+          "line": 2167,
           "column": 2,
-          "index": 77443
+          "index": 80323
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -25497,27 +25497,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2065,
+        "line": 2169,
         "column": 0,
-        "index": 77445
+        "index": 80325
       },
       "end": {
-        "line": 2075,
+        "line": 2179,
         "column": 3,
-        "index": 77740
+        "index": 80620
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2077,
+          "line": 2181,
           "column": 0,
-          "index": 77742
+          "index": 80622
         },
         "end": {
-          "line": 2090,
+          "line": 2194,
           "column": 2,
-          "index": 78126
+          "index": 81006
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -25687,27 +25687,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2092,
+        "line": 2196,
         "column": 0,
-        "index": 78128
+        "index": 81008
       },
       "end": {
-        "line": 2106,
+        "line": 2210,
         "column": 3,
-        "index": 78655
+        "index": 81535
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2107,
+          "line": 2211,
           "column": 0,
-          "index": 78656
+          "index": 81536
         },
         "end": {
-          "line": 2130,
+          "line": 2234,
           "column": 2,
-          "index": 79376
+          "index": 82256
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -25758,7 +25758,7 @@
       {
         "title": "param",
         "name": "opts",
-        "lineNumber": 2107,
+        "lineNumber": 2211,
         "default": "{offset:30}"
       }
     ],
@@ -25878,27 +25878,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2132,
+        "line": 2236,
         "column": 0,
-        "index": 79378
+        "index": 82258
       },
       "end": {
-        "line": 2143,
+        "line": 2247,
         "column": 3,
-        "index": 79746
+        "index": 82626
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2144,
+          "line": 2248,
           "column": 0,
-          "index": 79747
+          "index": 82627
         },
         "end": {
-          "line": 2166,
+          "line": 2270,
           "column": 2,
-          "index": 80376
+          "index": 83256
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -26061,27 +26061,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2168,
+        "line": 2272,
         "column": 0,
-        "index": 80378
+        "index": 83258
       },
       "end": {
-        "line": 2201,
+        "line": 2305,
         "column": 3,
-        "index": 81460
+        "index": 84340
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2202,
+          "line": 2306,
           "column": 0,
-          "index": 81461
+          "index": 84341
         },
         "end": {
-          "line": 2203,
+          "line": 2307,
           "column": 37,
-          "index": 81544
+          "index": 84424
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -26097,7 +26097,7 @@
       {
         "title": "param",
         "name": "message",
-        "lineNumber": 2202
+        "lineNumber": 2306
       },
       {
         "title": "param",
@@ -26274,27 +26274,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2205,
+        "line": 2309,
         "column": 0,
-        "index": 81546
+        "index": 84426
       },
       "end": {
-        "line": 2239,
+        "line": 2343,
         "column": 3,
-        "index": 82726
+        "index": 85606
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2240,
+          "line": 2344,
           "column": 0,
-          "index": 82727
+          "index": 85607
         },
         "end": {
-          "line": 2241,
+          "line": 2345,
           "column": 38,
-          "index": 82812
+          "index": 85692
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -26310,7 +26310,7 @@
       {
         "title": "param",
         "name": "message",
-        "lineNumber": 2240
+        "lineNumber": 2344
       },
       {
         "title": "param",
@@ -26467,27 +26467,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2243,
+        "line": 2347,
         "column": 0,
-        "index": 82814
+        "index": 85694
       },
       "end": {
-        "line": 2278,
+        "line": 2382,
         "column": 3,
-        "index": 83960
+        "index": 86840
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2279,
+          "line": 2383,
           "column": 0,
-          "index": 83961
+          "index": 86841
         },
         "end": {
-          "line": 2280,
+          "line": 2384,
           "column": 39,
-          "index": 84048
+          "index": 86928
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -26503,7 +26503,7 @@
       {
         "title": "param",
         "name": "message",
-        "lineNumber": 2279
+        "lineNumber": 2383
       },
       {
         "title": "param",
@@ -26642,27 +26642,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2282,
+        "line": 2386,
         "column": 0,
-        "index": 84050
+        "index": 86930
       },
       "end": {
-        "line": 2294,
+        "line": 2398,
         "column": 3,
-        "index": 84441
+        "index": 87321
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2295,
+          "line": 2399,
           "column": 0,
-          "index": 84442
+          "index": 87322
         },
         "end": {
-          "line": 2296,
+          "line": 2400,
           "column": 39,
-          "index": 84525
+          "index": 87405
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -26913,27 +26913,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2298,
+        "line": 2402,
         "column": 0,
-        "index": 84527
+        "index": 87407
       },
       "end": {
-        "line": 2331,
+        "line": 2435,
         "column": 3,
-        "index": 86502
+        "index": 89382
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2332,
+          "line": 2436,
           "column": 0,
-          "index": 86503
+          "index": 89383
         },
         "end": {
-          "line": 2375,
+          "line": 2479,
           "column": 2,
-          "index": 87650
+          "index": 90530
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -27332,27 +27332,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2377,
+        "line": 2481,
         "column": 0,
-        "index": 87652
+        "index": 90532
       },
       "end": {
-        "line": 2385,
+        "line": 2489,
         "column": 3,
-        "index": 87961
+        "index": 90841
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2386,
+          "line": 2490,
           "column": 0,
-          "index": 87962
+          "index": 90842
         },
         "end": {
-          "line": 2386,
+          "line": 2490,
           "column": 37,
-          "index": 87999
+          "index": 90879
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -27368,7 +27368,7 @@
       {
         "title": "param",
         "name": "value",
-        "lineNumber": 2386
+        "lineNumber": 2490
       },
       {
         "title": "param",
@@ -27521,27 +27521,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2388,
+        "line": 2492,
         "column": 0,
-        "index": 88001
+        "index": 90881
       },
       "end": {
-        "line": 2396,
+        "line": 2500,
         "column": 3,
-        "index": 88302
+        "index": 91182
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2397,
+          "line": 2501,
           "column": 0,
-          "index": 88303
+          "index": 91183
         },
         "end": {
-          "line": 2397,
+          "line": 2501,
           "column": 39,
-          "index": 88342
+          "index": 91222
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -27557,7 +27557,7 @@
       {
         "title": "param",
         "name": "value",
-        "lineNumber": 2397
+        "lineNumber": 2501
       },
       {
         "title": "param",
@@ -27709,27 +27709,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2458,
+        "line": 2562,
         "column": 0,
-        "index": 89943
+        "index": 92823
       },
       "end": {
-        "line": 2468,
+        "line": 2572,
         "column": 3,
-        "index": 90255
+        "index": 93135
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2469,
+          "line": 2573,
           "column": 0,
-          "index": 90256
+          "index": 93136
         },
         "end": {
-          "line": 2472,
+          "line": 2576,
           "column": 2,
-          "index": 90409
+          "index": 93289
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -27873,27 +27873,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2474,
+        "line": 2578,
         "column": 0,
-        "index": 90411
+        "index": 93291
       },
       "end": {
-        "line": 2481,
+        "line": 2585,
         "column": 3,
-        "index": 90589
+        "index": 93469
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2482,
+          "line": 2586,
           "column": 0,
-          "index": 90590
+          "index": 93470
         },
         "end": {
-          "line": 2485,
+          "line": 2589,
           "column": 2,
-          "index": 90731
+          "index": 93611
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -28088,27 +28088,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2551,
+        "line": 2655,
         "column": 0,
-        "index": 92589
+        "index": 95469
       },
       "end": {
-        "line": 2572,
+        "line": 2676,
         "column": 3,
-        "index": 94274
+        "index": 97154
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2573,
+          "line": 2677,
           "column": 0,
-          "index": 94275
+          "index": 97155
         },
         "end": {
-          "line": 2573,
+          "line": 2677,
           "column": 37,
-          "index": 94312
+          "index": 97192
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -28799,27 +28799,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2575,
+        "line": 2679,
         "column": 0,
-        "index": 94314
+        "index": 97194
       },
       "end": {
-        "line": 2600,
+        "line": 2704,
         "column": 3,
-        "index": 96606
+        "index": 99486
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2601,
+          "line": 2705,
           "column": 0,
-          "index": 96607
+          "index": 99487
         },
         "end": {
-          "line": 2601,
+          "line": 2705,
           "column": 37,
-          "index": 96644
+          "index": 99524
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -29567,27 +29567,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2804,
+        "line": 2908,
         "column": 0,
-        "index": 100802
+        "index": 103682
       },
       "end": {
-        "line": 2814,
+        "line": 2918,
         "column": 3,
-        "index": 101145
+        "index": 104025
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2815,
+          "line": 2919,
           "column": 0,
-          "index": 101146
+          "index": 104026
         },
         "end": {
-          "line": 2827,
+          "line": 2931,
           "column": 2,
-          "index": 101589
+          "index": 104463
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -29702,27 +29702,27 @@
     ],
     "loc": {
       "start": {
-        "line": 881,
+        "line": 886,
         "column": 0,
-        "index": 32484
+        "index": 32998
       },
       "end": {
-        "line": 891,
+        "line": 896,
         "column": 3,
-        "index": 32753
+        "index": 33267
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 892,
+          "line": 897,
           "column": 0,
-          "index": 32754
+          "index": 33268
         },
         "end": {
-          "line": 898,
+          "line": 903,
           "column": 2,
-          "index": 32937
+          "index": 33449
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -29779,7 +29779,8 @@
     "todos": [],
     "yields": [],
     "name": "currentURL",
-    "kind": "constant",
+    "kind": "function",
+    "async": true,
     "members": {
       "global": [],
       "inner": [],
@@ -29790,7 +29791,7 @@
     "path": [
       {
         "name": "currentURL",
-        "kind": "constant"
+        "kind": "function"
       }
     ],
     "namespace": "currentURL"
@@ -29847,27 +29848,27 @@
     ],
     "loc": {
       "start": {
-        "line": 901,
+        "line": 906,
         "column": 0,
-        "index": 32979
+        "index": 33491
       },
       "end": {
-        "line": 911,
+        "line": 916,
         "column": 3,
-        "index": 33207
+        "index": 33719
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 912,
+          "line": 917,
           "column": 0,
-          "index": 33208
+          "index": 33720
         },
         "end": {
-          "line": 916,
+          "line": 921,
           "column": 2,
-          "index": 33355
+          "index": 33865
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -29924,7 +29925,8 @@
     "todos": [],
     "yields": [],
     "name": "title",
-    "kind": "constant",
+    "kind": "function",
+    "async": true,
     "members": {
       "global": [],
       "inner": [],
@@ -29935,7 +29937,7 @@
     "path": [
       {
         "name": "title",
-        "kind": "constant"
+        "kind": "function"
       }
     ],
     "namespace": "title"
@@ -30027,27 +30029,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2399,
+        "line": 2503,
         "column": 0,
-        "index": 88344
+        "index": 91224
       },
       "end": {
-        "line": 2415,
+        "line": 2519,
         "column": 3,
-        "index": 88839
+        "index": 91719
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2417,
+          "line": 2521,
           "column": 0,
-          "index": 88841
+          "index": 91721
         },
         "end": {
-          "line": 2454,
+          "line": 2558,
           "column": 2,
-          "index": 89906
+          "index": 92786
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -30127,7 +30129,7 @@
       {
         "title": "param",
         "name": "options",
-        "lineNumber": 2417,
+        "lineNumber": 2521,
         "default": "{}"
       },
       {
@@ -30232,27 +30234,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2487,
+        "line": 2591,
         "column": 0,
-        "index": 90733
+        "index": 93613
       },
       "end": {
-        "line": 2501,
+        "line": 2605,
         "column": 3,
-        "index": 91065
+        "index": 93945
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2509,
+          "line": 2613,
           "column": 0,
-          "index": 91269
+          "index": 94149
         },
         "end": {
-          "line": 2522,
+          "line": 2626,
           "column": 2,
-          "index": 91626
+          "index": 94506
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -30328,27 +30330,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2503,
+        "line": 2607,
         "column": 0,
-        "index": 91067
+        "index": 93947
       },
       "end": {
-        "line": 2508,
+        "line": 2612,
         "column": 3,
-        "index": 91268
+        "index": 94148
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2509,
+          "line": 2613,
           "column": 0,
-          "index": 91269
+          "index": 94149
         },
         "end": {
-          "line": 2522,
+          "line": 2626,
           "column": 2,
-          "index": 91626
+          "index": 94506
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -30360,7 +30362,7 @@
       {
         "title": "param",
         "name": "id",
-        "lineNumber": 2509
+        "lineNumber": 2613
       },
       {
         "title": "param",
@@ -30486,27 +30488,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2651,
+        "line": 2755,
         "column": 0,
-        "index": 97915
+        "index": 100795
       },
       "end": {
-        "line": 2665,
+        "line": 2769,
         "column": 3,
-        "index": 98164
+        "index": 101044
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2699,
+          "line": 2803,
           "column": 0,
-          "index": 98856
+          "index": 101736
         },
         "end": {
-          "line": 2699,
+          "line": 2803,
           "column": 21,
-          "index": 98877
+          "index": 101757
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -30661,27 +30663,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2667,
+        "line": 2771,
         "column": 0,
-        "index": 98166
+        "index": 101046
       },
       "end": {
-        "line": 2686,
+        "line": 2790,
         "column": 3,
-        "index": 98648
+        "index": 101528
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2699,
+          "line": 2803,
           "column": 0,
-          "index": 98856
+          "index": 101736
         },
         "end": {
-          "line": 2699,
+          "line": 2803,
           "column": 21,
-          "index": 98877
+          "index": 101757
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"
@@ -30839,27 +30841,27 @@
     ],
     "loc": {
       "start": {
-        "line": 2688,
+        "line": 2792,
         "column": 0,
-        "index": 98650
+        "index": 101530
       },
       "end": {
-        "line": 2697,
+        "line": 2801,
         "column": 3,
-        "index": 98854
+        "index": 101734
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 2699,
+          "line": 2803,
           "column": 0,
-          "index": 98856
+          "index": 101736
         },
         "end": {
-          "line": 2699,
+          "line": 2803,
           "column": 21,
-          "index": 98877
+          "index": 101757
         }
       },
       "file": "/Users/zabilcm/projects/taiko/packages/taiko/lib/taiko.js"

@@ -16,3 +16,4 @@ biome.jsonc
 scripts
 netlify*
 _redirects
+test-support/
