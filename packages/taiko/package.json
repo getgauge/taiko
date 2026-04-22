@@ -29,29 +29,29 @@
   ],
   "taiko": {
     "browser": {
-      "version": "140.0.7339.82",
-      "revision": "1496484",
+      "version": "147.0.7727.117",
+      "revision": "1596535",
       "downloads": {
         "chrome": [
           {
             "platform": "linux64",
-            "url": "https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.82/linux64/chrome-linux64.zip"
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/147.0.7727.117/linux64/chrome-linux64.zip"
           },
           {
             "platform": "mac-arm64",
-            "url": "https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.82/mac-arm64/chrome-mac-arm64.zip"
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/147.0.7727.117/mac-arm64/chrome-mac-arm64.zip"
           },
           {
             "platform": "mac-x64",
-            "url": "https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.82/mac-x64/chrome-mac-x64.zip"
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/147.0.7727.117/mac-x64/chrome-mac-x64.zip"
           },
           {
             "platform": "win32",
-            "url": "https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.82/win32/chrome-win32.zip"
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/147.0.7727.117/win32/chrome-win32.zip"
           },
           {
             "platform": "win64",
-            "url": "https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.82/win64/chrome-win64.zip"
+            "url": "https://storage.googleapis.com/chrome-for-testing-public/147.0.7727.117/win64/chrome-win64.zip"
           }
         ]
       }
