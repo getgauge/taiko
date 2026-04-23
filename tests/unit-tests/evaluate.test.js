@@ -12,7 +12,10 @@ const {
   closeBrowser,
   setConfig,
 } = require("taiko");
-const expect = require("chai").expect;
+const chai = require("chai");
+const chaiAsPromised = require("chai-as-promised");
+chai.use(chaiAsPromised);
+const expect = chai.expect;
 const testName = "Evaluate";
 
 describe(testName, () => {
