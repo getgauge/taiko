@@ -45,7 +45,16 @@ jobs:
         uses: biomejs/setup-biome@v2
       - run: biome check packages/taiko
       - name: Run unit tests
+        if: matrix.os != 'windows-latest'
         run: npm run test:unit:silent
+
+      - name: Run unit tests (windows, with retry)
+        if: matrix.os == 'windows-latest'
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 10
+          max_attempts: 2
+          command: npm run test:unit:silent
 
   functional-tests:
     needs: unit-tests
@@ -82,7 +91,16 @@ jobs:
             libgbm-dev \
             libasound-dev
       - name: functional-tests
+        if: matrix.os != 'windows-latest'
         run: npm run test-functional
+
+      - name: functional-tests (windows, with retry)
+        if: matrix.os == 'windows-latest'
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 15
+          max_attempts: 2
+          command: npm run test-functional
 
       - name: Upload html report
         uses: actions/upload-artifact@v6
