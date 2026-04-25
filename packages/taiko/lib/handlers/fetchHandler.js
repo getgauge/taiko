@@ -73,7 +73,10 @@ const filterInterceptorsAndWarnIfNeeded = (requestUrl) => {
 
 const warnInterceptFailed = (p) => {
   console.warn(`WARNING: Could not intercept request ${p.request.url}`);
-  logIntercept("fulfillRequest/continueRequest failed for url=%s", p.request.url);
+  logIntercept(
+    "fulfillRequest/continueRequest failed for url=%s",
+    p.request.url,
+  );
 };
 
 const handleInterceptor = (p) => {
@@ -103,7 +106,10 @@ const handleInterceptor = (p) => {
       p.continue = (override) => overrideRequest(p, override, options);
       p.respond = (mock) => {
         options = mockResponse(mock, options);
-        logIntercept("calling fulfillRequest (callback) for url=%s", p.request.url);
+        logIntercept(
+          "calling fulfillRequest (callback) for url=%s",
+          p.request.url,
+        );
         fetch.fulfillRequest(options).catch(() => warnInterceptFailed(p));
       };
       interceptor.action(p);
