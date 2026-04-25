@@ -1,5 +1,6 @@
 const { isFunction, isString, isObject } = require("../helper");
 const { eventHandler } = require("../eventBus");
+const { logIntercept } = require("../logger");
 const headersMap = new Map();
 const defaultErrorReason = "Failed";
 let fetch;
@@ -72,16 +73,20 @@ const filterInterceptorsAndWarnIfNeeded = (requestUrl) => {
 
 const warnInterceptFailed = (p) => {
   console.warn(`WARNING: Could not intercept request ${p.request.url}`);
+  logIntercept("fulfillRequest/continueRequest failed for url=%s", p.request.url);
 };
 
 const handleInterceptor = (p) => {
+  logIntercept("requestPaused url=%s", p.request.url);
   let options = addExtraHeadersToRequest(p);
   const interceptor = filterInterceptorsAndWarnIfNeeded(p.request.url);
   if (!interceptor) {
+    logIntercept("no matching interceptor, continuing request");
     fetch.continueRequest(options).catch(() => {});
     return;
   }
   interceptor.count = interceptor.count - 1;
+  logIntercept("matched interceptor url=%s action=%s", interceptor.requestUrl, typeof interceptor.action);
 
   switch (true) {
     //Blocks matching url
@@ -94,6 +99,7 @@ const handleInterceptor = (p) => {
       p.continue = (override) => overrideRequest(p, override, options);
       p.respond = (mock) => {
         options = mockResponse(mock, options);
+        logIntercept("calling fulfillRequest (callback) for url=%s", p.request.url);
         fetch.fulfillRequest(options).catch(() => warnInterceptFailed(p));
       };
       interceptor.action(p);
@@ -107,11 +113,13 @@ const handleInterceptor = (p) => {
         interceptor.action = `http://${interceptor.action}`;
       }
       options.url = interceptor.action;
+      logIntercept("calling continueRequest (redirect) for url=%s -> %s", p.request.url, interceptor.action);
       fetch.continueRequest(options).catch(() => warnInterceptFailed(p));
       break;
     //Mocks response with given object
     case isObject(interceptor.action):
       options = mockResponse(interceptor.action, options);
+      logIntercept("calling fulfillRequest (object) for url=%s responseCode=%d bodyLen=%d", p.request.url, options.responseCode, options.body ? options.body.length : 0);
       fetch.fulfillRequest(options).catch(() => warnInterceptFailed(p));
       break;
     //Continue default request if none of the above matches
@@ -247,6 +255,7 @@ const getMatchingInterceptor = (interceptor, url) => {
 
 const addInterceptor = async (requestWithAction) => {
   interceptors.push(requestWithAction);
+  logIntercept("interceptor added url=%s totalInterceptors=%d", requestWithAction.requestUrl, interceptors.length);
   if (!userEnabledIntercept) {
     userEnabledIntercept = true;
     await enableFetchIntercept();
