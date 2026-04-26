@@ -119,16 +119,15 @@ const handleInterceptor = (p) => {
           // Fetch.fulfillRequest for Document navigations, causing handleNavigation
           // to wait forever for responsePromise. Emit it explicitly as a fallback.
           if (p.resourceType === "Document") {
-            eventHandler.emit("responseReceived", {
-              requestId: p.networkId,
-              response: {
-                url: p.request.url,
-                status: options.responseCode,
-                statusText: options.responsePhrase || "",
-              },
+            // On Windows, Chrome sometimes skips Network.responseReceived and
+            // frameStoppedLoading after Fetch.fulfillRequest, hanging navigation.
+            // Emit dedicated events so handleNavigation and waitForNavigation
+            // can unblock without relying on networkId (which may be undefined).
+            eventHandler.emit("interceptedNavigationResponse", {
+              url: p.request.url,
+              status: options.responseCode,
+              statusText: options.responsePhrase || "",
             });
-            // Resolve pending frame promises — on Windows, frameStoppedLoading
-            // may not fire after fulfillRequest, blocking waitForNavigation.
             eventHandler.emit("navigationFulfilledByIntercept", {
               frameId: p.frameId,
             });

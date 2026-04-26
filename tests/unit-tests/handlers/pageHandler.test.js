@@ -68,6 +68,7 @@ describe("pageHandler", () => {
     expect(event.eventNames()).to.be.eql([
       "requestStarted",
       "responseReceived",
+      "interceptedNavigationResponse",
     ]);
   });
 

@@ -208,9 +208,18 @@ const handleNavigation = async (gotoUrl) => {
       resolveResponse(response.response);
     }
   };
+  const handleInterceptedResponse = ({ url, status, statusText }) => {
+    if (isSameUrl(url, urlToNavigate)) {
+      resolveResponse({ url, status, statusText });
+    }
+  };
   const responsePromise = new Promise((resolve) => {
     resolveResponse = resolve;
     eventHandler.addListener("responseReceived", handleResponseStatus);
+    eventHandler.addListener(
+      "interceptedNavigationResponse",
+      handleInterceptedResponse,
+    );
   });
 
   try {
@@ -232,6 +241,10 @@ const handleNavigation = async (gotoUrl) => {
   } finally {
     eventHandler.removeListener("responseReceived", handleResponseStatus);
     eventHandler.removeListener("requestStarted", handleRequest);
+    eventHandler.removeListener(
+      "interceptedNavigationResponse",
+      handleInterceptedResponse,
+    );
   }
 };
 
