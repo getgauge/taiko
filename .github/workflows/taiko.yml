@@ -48,12 +48,13 @@ jobs:
         if: matrix.os != 'windows-latest'
         run: npm run test:unit:silent
 
-      - name: Run unit tests (windows, with retry)
+      - name: Run unit tests (windows)
         if: matrix.os == 'windows-latest'
         uses: nick-fields/retry@v3
         with:
           timeout_minutes: 10
           max_attempts: 2
+          on_retry_command: taskkill /F /IM chrome.exe /T 2>nul & exit 0
           command: npm run test:unit:silent
 
   functional-tests:
@@ -94,7 +95,7 @@ jobs:
         if: matrix.os != 'windows-latest'
         run: npm run test-functional
 
-      - name: functional-tests (windows, with retry)
+      - name: functional-tests (windows)
         if: matrix.os == 'windows-latest'
         uses: nick-fields/retry@v3
         with:
