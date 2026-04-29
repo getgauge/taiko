@@ -9,6 +9,7 @@ const {
   closeBrowser,
   write,
   into,
+  focus,
   setConfig,
 } = require("taiko");
 const { descEvent } = require("taiko/lib/helper");
@@ -74,7 +75,7 @@ describe(test_name, () => {
   });
 
   beforeEach(async () => {
-    await goto(filePath);
+    await goto(filePath, { waitForNavigation: true });
   });
 
   it("into focused element", async () => {
@@ -184,11 +185,7 @@ describe("write with hideText option", () => {
 
   const validateEmitterEvent = (event, expectedText) =>
     new Promise((resolve, reject) => {
-      const timeout = setTimeout(() => {
-        reject(new Error(`Timeout waiting for event: ${event}`));
-      }, 8000);
-      
-      descEvent.once(event, (eventData) => {
+      const handler = (eventData) => {
         clearTimeout(timeout);
         try {
           expect(eventData).to.be.equal(expectedText);
@@ -196,7 +193,14 @@ describe("write with hideText option", () => {
         } catch (err) {
           reject(err);
         }
-      });
+      };
+
+      const timeout = setTimeout(() => {
+        descEvent.removeListener(event, handler);
+        reject(new Error(`Timeout waiting for event: ${event}`));
+      }, 8000);
+
+      descEvent.once(event, handler);
     });
 
   before(async () => {
@@ -215,7 +219,12 @@ describe("write with hideText option", () => {
     removeFile(filePath);
   });
 
+  beforeEach(async () => {
+    await goto(filePath, { waitForNavigation: true });
+  });
+
   it("should mask the text when writing to focused element", async () => {
+    await focus(textBox({ id: "focused" }));
     const validatePromise = validateEmitterEvent(
       "success",
       "Wrote ***** into the focused element.",
