@@ -81,7 +81,6 @@ describe(test_name, () => {
   it("into focused element", async () => {
     const input = textBox({ id: "focused" });
     const text = "writing to focused input";
-    await focus(input);
     await write(text);
     expect(await input.value()).to.equal(text);
   });
@@ -89,7 +88,6 @@ describe(test_name, () => {
   it("should enter emoji char into focused element", async () => {
     const input = textBox({ id: "focused" });
     const text = "🦘 🦡 🐨 🐯 🦁 🐮 🐷 🐽 🐸 writing to focused input";
-    await focus(input);
     await write(text);
     expect(await input.value()).to.equal(text);
   });
