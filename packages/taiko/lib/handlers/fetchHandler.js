@@ -112,7 +112,28 @@ const handleInterceptor = (p) => {
     //Mocks response with given object
     case isObject(interceptor.action):
       options = mockResponse(interceptor.action, options);
-      fetch.fulfillRequest(options).catch(() => warnInterceptFailed(p));
+      fetch
+        .fulfillRequest(options)
+        .then(() => {
+          // On Windows, Chrome sometimes skips Network.responseReceived after
+          // Fetch.fulfillRequest for Document navigations, causing handleNavigation
+          // to wait forever for responsePromise. Emit it explicitly as a fallback.
+          if (p.resourceType === "Document") {
+            // On Windows, Chrome sometimes skips Network.responseReceived and
+            // frameStoppedLoading after Fetch.fulfillRequest, hanging navigation.
+            // Emit dedicated events so handleNavigation and waitForNavigation
+            // can unblock without relying on networkId (which may be undefined).
+            eventHandler.emit("interceptedNavigationResponse", {
+              url: p.request.url,
+              status: options.responseCode,
+              statusText: options.responsePhrase || "",
+            });
+            eventHandler.emit("navigationFulfilledByIntercept", {
+              frameId: p.frameId,
+            });
+          }
+        })
+        .catch(() => warnInterceptFailed(p));
       break;
     //Continue default request if none of the above matches
     default:
