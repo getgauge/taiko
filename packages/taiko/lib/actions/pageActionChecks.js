@@ -79,7 +79,10 @@ const checkStable = async (elem) => {
   function waitForElementToBeStable() {
     let elem = this;
     return new Promise((resolve, reject) => {
-      setTimeout(() => reject(false), 10000);
+      setTimeout(
+        () => reject(new Error("Element is not stable: still moving after 10000ms")),
+        10000,
+      );
       let previousRect;
       let currentRect;
       function isInSamePosition(previousRect, currentRect) {
@@ -87,7 +90,7 @@ const checkStable = async (elem) => {
         const leftDiff = Math.abs(previousRect.left - currentRect.left);
         const bottomDiff = Math.abs(previousRect.bottom - currentRect.bottom);
         const rightDiff = Math.abs(previousRect.right - currentRect.right);
-        return topDiff + leftDiff + bottomDiff + rightDiff;
+        return topDiff + leftDiff + bottomDiff + rightDiff === 0;
       }
       (function step() {
         if (elem.nodeType === Node.TEXT_NODE) {
@@ -101,14 +104,14 @@ const checkStable = async (elem) => {
         if (previousRect === undefined) {
           previousRect = currentRect;
           window.requestAnimationFrame(step);
+          return;
         }
 
-        const positionalDiff = isInSamePosition(previousRect, currentRect);
-        if (positionalDiff) {
+        if (isInSamePosition(previousRect, currentRect)) {
+          resolve(true);
+        } else {
           previousRect = currentRect;
           window.requestAnimationFrame(step);
-        } else {
-          resolve(true);
         }
       })();
     });
@@ -123,6 +126,14 @@ const checkStable = async (elem) => {
       awaitPromise: true,
     },
   );
+  if (res.exceptionDetails) {
+    const exceptionDetails = res.exceptionDetails;
+    const message =
+      exceptionDetails.exception && exceptionDetails.exception.description
+        ? exceptionDetails.exception.description
+        : exceptionDetails.text || "Element is not stable";
+    throw new Error(message);
+  }
   return res.result.value;
 };
 
