@@ -2439,9 +2439,11 @@ module.exports.evaluate = async (selector, callback, options = {}) => {
   let elem;
   let _options = options;
   let _callback = callback;
+  let _noSelector = false;
   if (isFunction(selector)) {
     _options = callback || options;
     _callback = selector;
+    _noSelector = true;
     elem = (await $$xpath("//*"))[0];
   } else {
     elem = await findFirstElement(selector);
@@ -2450,7 +2452,7 @@ module.exports.evaluate = async (selector, callback, options = {}) => {
     await highlightElement(elem);
   }
 
-  async function evalFunc({ callback, args }) {
+  async function evalFunc({ callback, args, noSelector }) {
     let fn;
     try {
       fn = new Function(`return ${callback}`)();
@@ -2459,6 +2461,9 @@ module.exports.evaluate = async (selector, callback, options = {}) => {
         `Error evaluating the callback function: ${error.message}`,
       );
     }
+    if (noSelector) {
+      return await fn(args);
+    }
     return await fn(this, args);
   }
 
@@ -2466,7 +2471,7 @@ module.exports.evaluate = async (selector, callback, options = {}) => {
   await doActionAwaitingNavigation(_options, async () => {
     result = await runtimeHandler.runtimeCallFunctionOn(evalFunc, null, {
       objectId: elem.get(),
-      arg: { callback: _callback.toString(), args: _options.args },
+      arg: { callback: _callback.toString(), args: _options.args, noSelector: _noSelector },
       returnByValue: true,
     });
   });

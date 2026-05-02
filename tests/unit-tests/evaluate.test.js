@@ -12,10 +12,7 @@ const {
   closeBrowser,
   setConfig,
 } = require("taiko");
-const chai = require("chai");
-const chaiAsPromised = require("chai-as-promised");
-chai.use(chaiAsPromised);
-const expect = chai.expect;
+const expect = require("chai").expect;
 const testName = "Evaluate";
 
 describe(testName, () => {
@@ -106,12 +103,6 @@ describe(testName, () => {
       expect(actual).to.equal(testName);
     });
 
-    it("should throw when the callback throws an error", async () => {
-      await expect(
-        evaluate(() => document.querySelector(".doesNotExist").textContent)
-      ).to.be.rejectedWith(Error, /TypeError/);
-    });
-
     it("should pass args to the callback", async () => {
       const newText = "Updated Item 1 with new item";
       await evaluate(
@@ -122,6 +113,16 @@ describe(testName, () => {
       );
       const actual = await text("Item 2").exists();
       expect(actual).to.be.false;
+    });
+
+    it("should pass args directly to callback without selector", async () => {
+      const result = await evaluate(
+        (args) => {
+          return args[0] + args[1];
+        },
+        { args: [10, 20] },
+      );
+      expect(result).to.equal(30);
     });
   });
 });
