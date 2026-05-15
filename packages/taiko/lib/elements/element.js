@@ -91,12 +91,14 @@ class Element {
 
   async isWritable() {
     function getDetailsForWrittable() {
+      const elem =
+        this.nodeType === Node.TEXT_NODE ? this.parentElement : this;
       return {
-        tagName: this.tagName,
-        isContentEditable: this.isContentEditable,
-        disabled: this.disabled,
-        type: this.type,
-        readOnly: this.readOnly,
+        tagName: elem.tagName,
+        isContentEditable: elem.isContentEditable,
+        disabled: elem.disabled,
+        type: elem.type,
+        readOnly: elem.readOnly,
       };
     }
 

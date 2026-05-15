@@ -33,6 +33,17 @@ const nodes = {
       getClientRects: () => [new DomRects(), new DomRects()],
     },
   },
+  91: {
+    nodeType: TEXT_NODE,
+    parentElement: {
+      tagName: "P",
+      isContentEditable: true,
+    },
+  },
+  92: {
+    tagName: "INPUT",
+    type: "text",
+  },
   100: {
     draggable: true,
   },
@@ -106,6 +117,20 @@ describe("Element", () => {
         runtimeHandler,
       );
       expect(await element.isDraggable()).to.be.false;
+    });
+  });
+
+  describe("isWritable", () => {
+    it("should use parent element details for TEXT_NODE", async () => {
+      const element = new Element(91, "element description", runtimeHandler);
+
+      expect(await element.isWritable()).to.be.true;
+    });
+
+    it("should identify writable input elements", async () => {
+      const element = new Element(92, "element description", runtimeHandler);
+
+      expect(await element.isWritable()).to.be.true;
     });
   });
 
