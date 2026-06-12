@@ -54,6 +54,7 @@ jspm_packages/
 .vscode/
 *.swp
 tags
+.worktrees/
 
 # Local chromium installations
 .local-chromium
