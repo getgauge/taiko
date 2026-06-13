@@ -48,6 +48,10 @@ const routeMap = new Map([
   ["contributing", "/contributing/"],
 ]);
 
+const oldDocsLinkMap = new Map([
+  ["https://docs.taiko.dev/#taiko-env-variables", "/configuring-taiko/#using-environment-variables"],
+]);
+
 function stripFrontmatter(markdown) {
   return markdown.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, "");
 }
@@ -94,6 +98,11 @@ function rewriteApiUrl(url) {
 }
 
 function rewriteGuideUrl(url) {
+  const oldDocsUrl = oldDocsLinkMap.get(url);
+  if (oldDocsUrl) {
+    return oldDocsUrl;
+  }
+
   const apiUrl = rewriteApiUrl(url);
   if (apiUrl !== url) {
     return apiUrl;

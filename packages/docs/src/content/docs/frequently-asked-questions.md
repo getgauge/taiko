@@ -32,7 +32,7 @@ Javascript or languages that compile to Javascript for example
 
 To skip downloading chromium you can set the 
 `TAIKO_SKIP_CHROMIUM_DOWNLOAD` 
-[environment variable](https://docs.taiko.dev/#taiko-env-variables)
+[environment variable](/configuring-taiko/#using-environment-variables)
 for example
 
 ```
