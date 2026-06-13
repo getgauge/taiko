@@ -6,9 +6,13 @@ export default defineConfig({
     starlight({
       title: "Taiko Documentation",
       favicon: "/assets/images/taiko_favicon.ico",
-      social: {
-        github: "https://github.com/getgauge/taiko",
-      },
+      social: [
+        {
+          icon: "github",
+          label: "GitHub",
+          href: "https://github.com/getgauge/taiko",
+        },
+      ],
       sidebar: [
         {
           label: "Introductory",
@@ -63,7 +67,7 @@ export default defineConfig({
         },
         {
           label: "API Reference",
-          items: [{ autogenerate: { directory: "api" } }],
+          autogenerate: { directory: "api" },
         },
       ],
     }),
