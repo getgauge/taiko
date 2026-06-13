@@ -9,7 +9,7 @@
     "build": "npm run generate:api && astro build",
     "preview": "astro preview",
     "sync:guides": "node scripts/sync-guides.mjs",
-    "generate:api": "npm run doc:api --workspace=packages/taiko && node scripts/generate-api-docs.mjs"
+    "generate:api": "npm --prefix ../taiko run doc:api && node scripts/generate-api-docs.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.35.0",
