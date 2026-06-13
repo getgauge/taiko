@@ -161,16 +161,21 @@ function renderExamples(entry) {
   return `\n## Examples\n\n${examples}\n`;
 }
 
+function paramToRows(param) {
+  const name = param.name || "parameter";
+  const type = renderType(param.type?.expression ?? param.type);
+  const description = renderDescription(param.description);
+  const defaultValue = param.default ? ` Default: \`${param.default}\`.` : "";
+  const row = `| \`${escapeTableCell(name)}\` | ${escapeTableCell(type)} | ${escapeTableCell(description + defaultValue)} |`;
+  const propertyRows = (param.properties || []).flatMap(paramToRows);
+
+  return [row, ...propertyRows];
+}
+
 function paramRows(entry) {
   return (entry.params || [])
     .filter((param) => param.title === "param")
-    .map((param) => {
-      const name = param.name || "parameter";
-      const type = renderType(param.type?.expression ?? param.type);
-      const description = renderDescription(param.description);
-      const defaultValue = param.default ? ` Default: \`${param.default}\`.` : "";
-      return `| \`${escapeTableCell(name)}\` | ${escapeTableCell(type)} | ${escapeTableCell(description + defaultValue)} |`;
-    });
+    .flatMap(paramToRows);
 }
 
 function renderParameters(entry, heading = "Parameters") {

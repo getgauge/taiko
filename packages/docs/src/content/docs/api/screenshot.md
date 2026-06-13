@@ -29,6 +29,9 @@ await screenshot(text('Images', toRightOf('gmail')))
 | --- | --- | --- |
 | `selector` | [selector](/api/selector/) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) |  |
 | `options` | [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) |  Default: `{}`. |
+| `options.fullpage` | [boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | toggles full page screenshot Default: `false`. |
+| `options.path` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | path of the output file Default: `'Screenshot-${Date.now()}.png'`. |
+| `options.encoding` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | encoding for the image Default: `'base64'`. |
 
 ## Returns
 

@@ -35,6 +35,17 @@ await openBrowser({args: [
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) | eg. {headless: true\|false, args:['--window-size=1440,900']} Default: `{headless:true}`. |
+| `options.headless` | [boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | Option to open browser in headless/headful mode. Default: `true`. |
+| `options.args` | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array) | [Chromium browser launch options](https://peter.sh/experiments/chromium-command-line-switches/). Default: `[]`. |
+| `options.host` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | Remote host to connect to. Default: `'127.0.0.1'`. |
+| `options.target` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | Determines which target the client should interact.([https://github.com/cyrus-and/chrome-remote-interface#cdpoptions-callback](https://github.com/cyrus-and/chrome-remote-interface#cdpoptions-callback)) |
+| `options.port` | [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | Remote debugging port, if not given connects to any open port. Default: `0`. |
+| `options.useHostName` | [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | If the browser should be called using the hostname itself or with IP address Default: `false`. |
+| `options.secure` | [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | HTTPS/WSS frontend. Defaults to false. Default: `false`. |
+| `options.ignoreCertificateErrors` | [boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | Option to ignore certificate errors. Default: `true`. |
+| `options.observe` | [boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | Option to run each command after a delay. Useful to observe what is happening in the browser. Default: `false`. |
+| `options.observeTime` | [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | Option to modify delay time for observe mode. Accepts value in milliseconds. Default: `3000`. |
+| `options.dumpio` | [boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | Option to dump IO from browser. Default: `false`. |
 
 ## Returns
 

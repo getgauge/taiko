@@ -25,6 +25,9 @@ await deleteCookies("CSRFToken", {domain: "herokuapp.com"})
 | --- | --- | --- |
 | `cookieName` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | Cookie name. Default: `undefined`. |
 | `options` | [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) |  Default: `{}`. |
+| `options.url` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | deletes all the cookies with the given name where domain and path match provided URL. eg: [https://google.com](https://google.com) Default: `undefined`. |
+| `options.domain` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | deletes only cookies with the exact domain. eg: google.com Default: `undefined`. |
+| `options.path` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | deletes only cookies with the exact path. eg: Google/Chrome/Default/Cookies/.. Default: `undefined`. |
 
 ## Returns
 
