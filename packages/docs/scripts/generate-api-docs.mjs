@@ -11,6 +11,7 @@ const apiTargetDir = path.join(repoRoot, "packages/docs/src/content/docs/api");
 const { metadata } = require(path.join(repoRoot, "packages/taiko/lib/taiko"));
 
 let generatedApiSlugs = new Set();
+let generatedApiMemberAnchors = new Map();
 
 const externalTypeLinks = new Map([
   ["Array", "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array"],
@@ -28,6 +29,10 @@ const externalTypeLinks = new Map([
 ]);
 
 function apiSlug(name) {
+  return name.toLowerCase();
+}
+
+function headingAnchor(name) {
   return name.toLowerCase();
 }
 
@@ -64,7 +69,12 @@ function normalizeDocLink(url) {
   const memberMatch = url.match(/^([^#]+)#(.+)$/);
   if (memberMatch) {
     const [, type, member] = memberMatch;
-    return `/api/${apiSlug(type)}/#${member}`;
+    const slug = apiSlug(type);
+    const anchor = headingAnchor(member);
+    if (generatedApiSlugs.has(slug) && generatedApiMemberAnchors.get(slug)?.has(anchor)) {
+      return `/api/${slug}/#${anchor}`;
+    }
+    return null;
   }
 
   const slug = apiSlug(url);
@@ -83,7 +93,7 @@ function renderInline(children = []) {
       if (child.type === "link") {
         const label = renderInline(child.children).trim() || child.url;
         const url = normalizeDocLink(child.url);
-        return url ? `[${label}](${url})` : label;
+        return url ? `[${label}](${url})` : `\`${label}\``;
       }
       if (child.type === "strong") return `**${renderInline(child.children)}**`;
       if (child.type === "emphasis") return `_${renderInline(child.children)}_`;
@@ -291,6 +301,16 @@ function renderReference() {
   return `${frontmatter("API Reference", "Index of Taiko's public browser automation APIs.")}Taiko APIs can be used in the recorder and in JavaScript test scripts.\n\n\`\`\`js\nconst { openBrowser, goto, click } = require("taiko");\n\n(async () => {\n  await openBrowser();\n  await goto("google.com");\n  await click("Google search");\n})();\n\`\`\`\n\n${sections}\n`;
 }
 
+function memberAnchorsFor(entry) {
+  if (entry.kind !== "class") return new Set();
+
+  return new Set(
+    ["global", "inner", "instance", "events", "static"].flatMap((key) =>
+      (entry.members?.[key] || []).map((member) => headingAnchor(member.name)),
+    ),
+  );
+}
+
 async function cleanApiDirectory() {
   await mkdir(apiTargetDir, { recursive: true });
   const entries = await readdir(apiTargetDir, { withFileTypes: true });
@@ -303,6 +323,11 @@ async function cleanApiDirectory() {
 
 const apiEntries = JSON.parse(await readFile(apiJsonPath, "utf8"));
 generatedApiSlugs = new Set(apiEntries.map((entry) => apiSlug(entry.name)));
+generatedApiMemberAnchors = new Map(
+  apiEntries
+    .filter((entry) => entry.kind === "class")
+    .map((entry) => [apiSlug(entry.name), memberAnchorsFor(entry)]),
+);
 await cleanApiDirectory();
 await writeFile(path.join(apiTargetDir, "reference.md"), `${renderReference().trimEnd()}\n`);
 

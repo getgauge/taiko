@@ -32,7 +32,7 @@ This API does not return any values.
 
 ### elements
 
-Overrides [ValueWrapper#elements](/api/valuewrapper/#elements), but for [TimeField](/api/timefield/) elements.
+Overrides `ValueWrapper#elements`, but for [TimeField](/api/timefield/) elements.
 
 #### Parameters
 

@@ -26,7 +26,7 @@ This API does not return any values.
 
 ### elements
 
-Overrides [ValueWrapper#elements](/api/valuewrapper/#elements), but for Range elements.
+Overrides `ValueWrapper#elements`, but for Range elements.
 
 #### Parameters
 

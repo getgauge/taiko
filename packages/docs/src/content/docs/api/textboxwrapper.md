@@ -11,7 +11,7 @@ Extends [ValueWrapper](/api/valuewrapper/).
 
 ### elements
 
-Overrides [ValueWrapper#elements](/api/valuewrapper/#elements), but for TextBox elements.
+Overrides `ValueWrapper#elements`, but for TextBox elements.
 
 #### Parameters
 
