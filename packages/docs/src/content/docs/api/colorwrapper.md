@@ -12,7 +12,7 @@ Extends [ValueWrapper](/api/valuewrapper/).
 
 ### elements
 
-Overrides [ElementWrapper#elements](/api/elementwrapper#elements/), but for Color elements.
+Overrides [ElementWrapper#elements](/api/elementwrapper/#elements), but for Color elements.
 
 #### Parameters
 
@@ -26,4 +26,3 @@ Overrides [ElementWrapper#elements](/api/elementwrapper#elements/), but for Colo
 | Type | Description |
 | --- | --- |
 | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Color](/api/color/)> | Array of all elements matching the selector. |
-

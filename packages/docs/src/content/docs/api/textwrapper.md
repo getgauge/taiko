@@ -18,4 +18,3 @@ Supported HTML tags:
 - [`*[contenteditable="true"]`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/contentEditable)
 
 Extends [ElementWrapper](/api/elementwrapper/).
-

@@ -24,7 +24,7 @@ Select the given date.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `value` | [Date](/api/date/) |  |
+| `value` | [Date](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date) |  |
 
 #### Returns
 
@@ -32,7 +32,7 @@ This API does not return any values.
 
 ### elements
 
-Overrides [ValueWrapper#elements](/api/valuewrapper#elements/), but for [TimeField](/api/timefield/) elements.
+Overrides [ValueWrapper#elements](/api/valuewrapper/#elements), but for [TimeField](/api/timefield/) elements.
 
 #### Parameters
 
@@ -46,4 +46,3 @@ Overrides [ValueWrapper#elements](/api/valuewrapper#elements/), but for [TimeFie
 | Type | Description |
 | --- | --- |
 | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[TimeField](/api/timefield/)> | Array of all timeFields matching the selector. |
-

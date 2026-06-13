@@ -1,12 +1,12 @@
 ---
 title: "ElementWrapper class"
-description: "Wrapper object of all found elements. This list mimics the behaviour of [Element](/api/element/) by exposing similar methods. The call of these methods gets delegated to first element. By default, the `ElementWrapper` acts as a proxy to the first matching element and hence it forwards function calls that belong to [Element](/api/element/)"
+description: "Wrapper object of all found elements. This list mimics the behaviour of [Element](https://developer.mozilla.org/docs/Web/API/Element) by exposing similar methods. The call of these methods gets delegated to first element. By default, the `ElementWrapper` acts as a proxy to the first matching element and hence it forwards function calls that belong to [Element](https://developer.mozilla.org/docs/Web/API/Element)"
 ---
 
-Wrapper object of all found elements. This list mimics the behaviour of [Element](/api/element/)
+Wrapper object of all found elements. This list mimics the behaviour of [Element](https://developer.mozilla.org/docs/Web/API/Element)
 by exposing similar methods. The call of these methods gets delegated to first element.
 By default, the `ElementWrapper` acts as a proxy to the first matching element and hence
-it forwards function calls that belong to [Element](/api/element/)
+it forwards function calls that belong to [Element](https://developer.mozilla.org/docs/Web/API/Element)
 
 ## Instance Members
 
@@ -25,7 +25,7 @@ API documentation for get.
 
 | Type | Description |
 | --- | --- |
-| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Element](/api/element/)> | All elements mathing the selector. |
+| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Element](https://developer.mozilla.org/docs/Web/API/Element)> | All elements mathing the selector. |
 
 ### description
 
@@ -208,7 +208,7 @@ console.log(await element.text());
 
 | Type | Description |
 | --- | --- |
-| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Element](/api/element/)> | Array of all elements matching the selector. |
+| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Element](https://developer.mozilla.org/docs/Web/API/Element)> | Array of all elements matching the selector. |
 
 ### element
 
@@ -226,5 +226,4 @@ DOM element getter. Implicitly wait for the element to appears with timeout of 1
 
 | Type | Description |
 | --- | --- |
-| [Element](/api/element/) | First element that matches the selector. |
-
+| [Element](https://developer.mozilla.org/docs/Web/API/Element) | First element that matches the selector. |

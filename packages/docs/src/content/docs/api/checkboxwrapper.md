@@ -68,7 +68,7 @@ This API does not return any values.
 
 ### elements
 
-Overrides [ElementWrapper#elements](/api/elementwrapper#elements/), but for Checkbox elements.
+Overrides [ElementWrapper#elements](/api/elementwrapper/#elements), but for Checkbox elements.
 
 #### Parameters
 
@@ -82,4 +82,3 @@ Overrides [ElementWrapper#elements](/api/elementwrapper#elements/), but for Chec
 | Type | Description |
 | --- | --- |
 | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[CheckBox](/api/checkbox/)> | Array of all checkboxes matching the selector. |
-

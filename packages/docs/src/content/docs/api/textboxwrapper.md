@@ -11,7 +11,7 @@ Extends [ValueWrapper](/api/valuewrapper/).
 
 ### elements
 
-Overrides [ValueWrapper#elements](/api/valuewrapper#elements/), but for TextBox elements.
+Overrides [ValueWrapper#elements](/api/valuewrapper/#elements), but for TextBox elements.
 
 #### Parameters
 
@@ -25,4 +25,3 @@ Overrides [ValueWrapper#elements](/api/valuewrapper#elements/), but for TextBox 
 | Type | Description |
 | --- | --- |
 | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[TextBox](/api/textbox/)> | Array of all textBoxes matching the selector. |
-

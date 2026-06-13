@@ -10,20 +10,21 @@ const apiJsonPath = path.join(repoRoot, "packages/taiko/lib/api.json");
 const apiTargetDir = path.join(repoRoot, "packages/docs/src/content/docs/api");
 const { metadata } = require(path.join(repoRoot, "packages/taiko/lib/taiko"));
 
-const mdnTypes = new Set([
-  "Array",
-  "Boolean",
-  "Error",
-  "Function",
-  "Number",
-  "Object",
-  "Promise",
-  "String",
-  "boolean",
-  "function",
-  "number",
-  "object",
-  "string",
+let generatedApiSlugs = new Set();
+
+const externalTypeLinks = new Map([
+  ["Array", "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array"],
+  ["Boolean", "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean"],
+  ["Date", "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date"],
+  ["Error", "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error"],
+  ["Function", "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function"],
+  ["Number", "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number"],
+  ["Object", "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object"],
+  ["Promise", "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise"],
+  ["RegExp", "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp"],
+  ["String", "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String"],
+  ["Element", "https://developer.mozilla.org/docs/Web/API/Element"],
+  ["Buffer", "https://nodejs.org/api/buffer.html"],
 ]);
 
 function apiSlug(name) {
@@ -49,6 +50,30 @@ function fenceCode(code) {
   return "`".repeat(fenceLength);
 }
 
+function normalizeDocLink(url) {
+  if (
+    /^(?:[a-z][a-z0-9+.-]*:)?\/\//i.test(url) ||
+    url.startsWith("/") ||
+    url.startsWith("#") ||
+    url.startsWith("./") ||
+    url.startsWith("../")
+  ) {
+    return url;
+  }
+
+  const memberMatch = url.match(/^([^#]+)#(.+)$/);
+  if (memberMatch) {
+    const [, type, member] = memberMatch;
+    return `/api/${apiSlug(type)}/#${member}`;
+  }
+
+  const slug = apiSlug(url);
+  if (generatedApiSlugs.has(slug)) return `/api/${slug}/`;
+
+  const normalized = url.charAt(0).toUpperCase() + url.slice(1);
+  return externalTypeLinks.get(url) || externalTypeLinks.get(normalized) || null;
+}
+
 function renderInline(children = []) {
   return children
     .map((child) => {
@@ -57,10 +82,8 @@ function renderInline(children = []) {
       if (child.type === "html") return child.value;
       if (child.type === "link") {
         const label = renderInline(child.children).trim() || child.url;
-        const url = child.url.startsWith("http")
-          ? child.url
-          : `/api/${apiSlug(child.url)}/`;
-        return `[${label}](${url})`;
+        const url = normalizeDocLink(child.url);
+        return url ? `[${label}](${url})` : label;
       }
       if (child.type === "strong") return `**${renderInline(child.children)}**`;
       if (child.type === "emphasis") return `_${renderInline(child.children)}_`;
@@ -110,11 +133,17 @@ function linkTypeName(name) {
   if (name === "void" || name === "undefined" || name === "null") return `\`${name}\``;
 
   const normalized = name.charAt(0).toUpperCase() + name.slice(1);
-  if (mdnTypes.has(name) || mdnTypes.has(normalized)) {
-    return `[${name}](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/${normalized})`;
+  const externalTypeLink = externalTypeLinks.get(name) || externalTypeLinks.get(normalized);
+  if (externalTypeLink) {
+    return `[${name}](${externalTypeLink})`;
   }
 
-  return `[${name}](/api/${apiSlug(name)}/)`;
+  const slug = apiSlug(name);
+  if (!name.includes(".") && !name.includes("-") && generatedApiSlugs.has(slug)) {
+    return `[${name}](/api/${slug}/)`;
+  }
+
+  return `\`${name}\``;
 }
 
 function renderType(type) {
@@ -273,13 +302,14 @@ async function cleanApiDirectory() {
 }
 
 const apiEntries = JSON.parse(await readFile(apiJsonPath, "utf8"));
+generatedApiSlugs = new Set(apiEntries.map((entry) => apiSlug(entry.name)));
 await cleanApiDirectory();
-await writeFile(path.join(apiTargetDir, "reference.md"), renderReference());
+await writeFile(path.join(apiTargetDir, "reference.md"), `${renderReference().trimEnd()}\n`);
 
 for (const entry of apiEntries) {
   const filename = `${apiSlug(entry.name)}.md`;
   const content = entry.kind === "class" ? renderClass(entry) : renderFunction(entry);
-  await writeFile(path.join(apiTargetDir, filename), content);
+  await writeFile(path.join(apiTargetDir, filename), `${content.trimEnd()}\n`);
 }
 
 console.log(`Generated ${apiEntries.length + 1} Starlight API pages.`);

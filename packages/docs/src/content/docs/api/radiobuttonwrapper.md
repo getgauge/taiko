@@ -68,7 +68,7 @@ This API does not return any values.
 
 ### elements
 
-Overrides [ElementWrapper#elements](/api/elementwrapper#elements/), but for RadioButton elements.
+Overrides [ElementWrapper#elements](/api/elementwrapper/#elements), but for RadioButton elements.
 
 #### Parameters
 
@@ -82,4 +82,3 @@ Overrides [ElementWrapper#elements](/api/elementwrapper#elements/), but for Radi
 | Type | Description |
 | --- | --- |
 | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[RadioButton](/api/radiobutton/)> | Array of all radioButtons matching the selector. |
-

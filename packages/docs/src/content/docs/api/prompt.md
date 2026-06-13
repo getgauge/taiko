@@ -42,7 +42,7 @@ await click('Open Prompt')
 | --- | --- | --- |
 | `message` | `unknown` |  |
 | `callback` | [function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function) | Action to perform. accept/dismiss. |
-| `messageOrCallback` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [RegExp](/api/regexp/) \| [function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function) | Identify prompt based on this message, regex or callback. |
+| `messageOrCallback` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) \| [function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function) | Identify prompt based on this message, regex or callback. |
 
 ## Returns
 

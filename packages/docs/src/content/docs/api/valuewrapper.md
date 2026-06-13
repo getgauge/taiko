@@ -20,4 +20,3 @@ This API does not have any parameters.
 #### Returns
 
 This API does not return any values.
-

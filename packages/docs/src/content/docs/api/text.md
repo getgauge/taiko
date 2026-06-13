@@ -39,7 +39,7 @@ await text(new RegExp('Vehicle')).exists()
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `text` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [RegExp](/api/regexp/) | Text/regex to match. |
+| `text` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp) | Text/regex to match. |
 | `_options` | [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) |  |
 | `_options.exactMatch` | [boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | Option to look for exact match. Default: `false`. |
 | `args` | [relativeSelector](/api/relativeselector/) | Proximity selectors |

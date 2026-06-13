@@ -26,7 +26,7 @@ This API does not return any values.
 
 ### elements
 
-Overrides [ValueWrapper#elements](/api/valuewrapper#elements/), but for Range elements.
+Overrides [ValueWrapper#elements](/api/valuewrapper/#elements), but for Range elements.
 
 #### Parameters
 
@@ -40,4 +40,3 @@ Overrides [ValueWrapper#elements](/api/valuewrapper#elements/), but for Range el
 | Type | Description |
 | --- | --- |
 | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Range](/api/range/)> | Array of all range matching the selector. |
-

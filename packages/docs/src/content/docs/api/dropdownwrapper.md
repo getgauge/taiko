@@ -38,7 +38,7 @@ This API does not return any values.
 
 ### elements
 
-Overrides [ElementWrapper#elements](/api/elementwrapper#elements/), but for DropDown elements.
+Overrides [ElementWrapper#elements](/api/elementwrapper/#elements), but for DropDown elements.
 
 #### Parameters
 
@@ -52,4 +52,3 @@ Overrides [ElementWrapper#elements](/api/elementwrapper#elements/), but for Drop
 | Type | Description |
 | --- | --- |
 | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[DropDown](/api/dropdown/)> | Array of all elements matching the selector. |
-

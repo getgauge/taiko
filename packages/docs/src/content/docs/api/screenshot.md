@@ -37,4 +37,4 @@ await screenshot(text('Images', toRightOf('gmail')))
 
 | Type | Description |
 | --- | --- |
-| [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Buffer](/api/buffer/)> | Promise which resolves to buffer with captured screenshot if `{encoding:'base64'}` given, otherwise it resolves to undefined. |
+| [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Buffer](https://nodejs.org/api/buffer.html)> | Promise which resolves to buffer with captured screenshot if `{encoding:'base64'}` given, otherwise it resolves to undefined. |

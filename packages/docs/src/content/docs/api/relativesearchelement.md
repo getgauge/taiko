@@ -4,4 +4,3 @@ description: "Represents a relative HTML element search. This is returned by [re
 ---
 
 Represents a relative HTML element search. This is returned by [relativeSelector](/api/relativeselector/)
-

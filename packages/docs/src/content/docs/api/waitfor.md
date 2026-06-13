@@ -28,9 +28,9 @@ waitFor(async () => !(await $("loading-text").exists()))
 | Name | Type | Description |
 | --- | --- | --- |
 | `element` | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | Element/condition to wait for |
-| `time` | [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [time](/api/time/) | Time to wait. default to 10s |
+| `time` | [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| `time` | Time to wait. default to 10s |
 | `options` | `unknown` |  Default: `{}`. |
-| `null-null` | [options.message](/api/options.message/) | Custom message |
+| `null-null` | `options.message` | Custom message |
 
 ## Returns
 

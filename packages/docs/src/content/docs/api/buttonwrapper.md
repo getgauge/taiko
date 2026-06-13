@@ -13,4 +13,3 @@ Supported HTML tags:
 - [`button`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)
 
 Extends [ElementWrapper](/api/elementwrapper/).
-

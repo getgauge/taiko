@@ -12,7 +12,7 @@ Extends [ValueWrapper](/api/valuewrapper/).
 
 ### elements
 
-Overrides [ElementWrapper#elements](/api/elementwrapper#elements/), but for FileField elements.
+Overrides [ElementWrapper#elements](/api/elementwrapper/#elements), but for FileField elements.
 
 #### Parameters
 
@@ -26,4 +26,3 @@ Overrides [ElementWrapper#elements](/api/elementwrapper#elements/), but for File
 | Type | Description |
 | --- | --- |
 | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[FileField](/api/filefield/)> | Array of all elements matching the selector. |
-
