@@ -13,7 +13,7 @@ Taiko forums, issue tracker or sending pull requests.
 
 Taiko's [automated test suite](https://github.com/getgauge/taiko/tree/master/test) runs on every commit. Despite best efforts, bugs happen. As a first step make sure the issue/bug wasn't reported earlier. You can start by searching
 
-* [Google](google)! We trust you already did, but in case you haven't.
+* [Google](https://www.google.com/)! We trust you already did, but in case you haven't.
 * Previous issues with the error message on [Github](https://github.com/getgauge/taiko/issues)
 * Similar questions on Taiko's [Discussions](https://github.com/getgauge/taiko/discussions) 
 
@@ -127,4 +127,4 @@ For bumping major version run
 
     npm version major --no-git-tag-version
 
-This will update the version accordingly in the `package.json`. 
+This will update the version accordingly in the `package.json`.

@@ -91,4 +91,4 @@ The project code can be made available on the Docker using various methods (besi
 `node_modules` as well. 
  
 `node_modules` can have OS specific files which also get mounted on to the Docker. If the Docker is 
-running for a different OS configuration, this will give errors unless `node_modules` is deleted before mounting. 
+running for a different OS configuration, this will give errors unless `node_modules` is deleted before mounting.

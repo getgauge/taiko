@@ -40,4 +40,3 @@ Edit your `tsconfig.json` and add the following lines:
             "types": ["node", "taiko"]
         }
     }
-

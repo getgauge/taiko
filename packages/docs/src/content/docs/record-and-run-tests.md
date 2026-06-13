@@ -243,7 +243,7 @@ To emulate devices (using the browser's viewport) you can use the `--emulate-dev
 ```
 npx taiko --emulate-device 'iPhone X'
 ```
-You can refer [devices.js](https://docs.taiko.dev/devices) for the full list of devices.
+You can refer [devices.js](https://github.com/getgauge/taiko/blob/master/packages/taiko/lib/data/devices.js) for the full list of devices.
 
 To emulate network you can use the `--emulate-network` option for example
 

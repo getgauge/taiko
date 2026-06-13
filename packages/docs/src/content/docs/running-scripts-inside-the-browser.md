@@ -125,4 +125,3 @@ data.
     var content = await evaluate($("#data"), (element, args) => { 
         element.innerText = args.greeting;
     }, message);
-

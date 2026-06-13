@@ -50,6 +50,9 @@ const routeMap = new Map([
 
 const oldDocsLinkMap = new Map([
   ["https://docs.taiko.dev/#taiko-env-variables", "/configuring-taiko/#using-environment-variables"],
+  ["https://docs.taiko.dev/devices", "https://github.com/getgauge/taiko/blob/master/packages/taiko/lib/data/devices.js"],
+  ["https://docs.taiko.dev/devices/", "https://github.com/getgauge/taiko/blob/master/packages/taiko/lib/data/devices.js"],
+  ["google", "https://www.google.com/"],
 ]);
 
 function stripFrontmatter(markdown) {
@@ -141,8 +144,14 @@ function rewriteMarkdownLinks(markdown) {
     });
 }
 
+function normalizeGeneratedContent(content) {
+  return `${content.trimEnd()}\n`;
+}
+
 function transformGuide(markdown, page) {
-  return `${starlightFrontmatter(page)}${rewriteMarkdownLinks(stripFrontmatter(markdown)).trimStart()}`;
+  return normalizeGeneratedContent(
+    `${starlightFrontmatter(page)}${rewriteMarkdownLinks(stripFrontmatter(markdown)).trimStart()}`,
+  );
 }
 
 function homePage() {
@@ -209,6 +218,6 @@ for (const page of pages) {
   await writeFile(targetPath, transformGuide(markdown, page), "utf8");
 }
 
-await writeFile(path.join(targetDir, "index.mdx"), homePage(), "utf8");
+await writeFile(path.join(targetDir, "index.mdx"), normalizeGeneratedContent(homePage()), "utf8");
 
 console.log(`Synced ${pages.length + 1} Starlight guide pages.`);

@@ -92,4 +92,4 @@ you can use set these wait times to `0`.
       await goto("google.com");
       await assert.ok(!await text('Facebook').exists(0,0));
       await closeBrowser();
-    })(); 
+    })();
