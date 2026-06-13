@@ -1,0 +1,50 @@
+---
+title: "Taiko Documentation"
+description: "Documentation for Taiko, a Node.js browser automation library."
+template: splash
+hero:
+  tagline: "Automate browsers with readable JavaScript commands."
+  actions:
+    - text: "Get started"
+      link: "/overview/"
+      icon: "right-arrow"
+    - text: "API Reference"
+      link: "/api/reference/"
+      icon: "document"
+      variant: "minimal"
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Introductory
+
+<CardGrid>
+  <Card title="Overview" icon="open-book" href="/overview/">Learn what Taiko is and how its browser automation API works.</Card>
+  <Card title="Installing" icon="setting" href="/installing/">Install Taiko globally, locally, or with npx.</Card>
+  <Card title="Record and run tests" icon="pencil" href="/record-and-run-tests/">Use Taiko's recorder and run generated JavaScript test scripts.</Card>
+  <Card title="API Reference" icon="document" href="/api/reference/">Browse Taiko commands, selectors, options, and examples.</Card>
+  <Card title="Frequently asked questions" icon="information" href="/frequently-asked-questions/">Answers to common questions about Taiko support and behavior.</Card>
+  <Card title="Getting Help" icon="comment" href="/getting-help/">Find the right support channel for Taiko questions and issues.</Card>
+</CardGrid>
+
+## Intermediate
+
+<CardGrid>
+  <Card title="Taking Screenshots" icon="seti:image" href="/taking-screenshots/">Capture page and element screenshots with Taiko.</Card>
+  <Card title="Assertions" icon="approve-check-circle" href="/assertions/">Understand Taiko implicit assertions and custom assertion usage.</Card>
+  <Card title="File Upload and Download" icon="cloud-download" href="/file-upload-and-download/">Attach files and download files in Taiko scripts.</Card>
+  <Card title="Working with element lists" icon="list-format" href="/working-with-element-lists/">Use Taiko selectors when multiple page elements match.</Card>
+  <Card title="Integrating with test runners" icon="rocket" href="/integrating-with-test-runners/">Run Taiko scripts with Gauge, Mocha, and other test runners.</Card>
+  <Card title="Configuring Taiko" icon="setting" href="/configuring-taiko/">Configure Taiko behavior with environment variables and settings.</Card>
+  <Card title="Plugins" icon="add-document" href="/plugins/">Use community Taiko plugins and load plugins in runners.</Card>
+</CardGrid>
+
+## Advanced
+
+<CardGrid>
+  <Card title="Running scripts inside the browser" icon="code" href="/running-scripts-inside-the-browser/">Use evaluate to run JavaScript in the page context.</Card>
+  <Card title="Taiko in Docker" icon="seti:docker" href="/taiko-in-docker/">Set up Taiko tests in Docker for local or CI execution.</Card>
+  <Card title="Writing plugins" icon="puzzle" href="/writing-plugins/">Extend Taiko with plugins and custom command behavior.</Card>
+  <Card title="Experimental Features" icon="star" href="/experimental-features/">Use experimental Taiko features such as Firefox and TypeScript support.</Card>
+  <Card title="Contributing" icon="github" href="/contributing/">Contribute issues, fixes, and improvements to Taiko.</Card>
+</CardGrid>
