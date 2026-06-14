@@ -70,7 +70,7 @@ const { openBrowser, goto, click } = require("taiko");
 
 ## Selectors
 
-- [`$`](/api/$/)
+- [`$`](/api/dollar/)
 - [`image`](/api/image/)
 - [`link`](/api/link/)
 - [`listItem`](/api/listitem/)

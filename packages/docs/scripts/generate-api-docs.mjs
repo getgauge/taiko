@@ -29,6 +29,7 @@ const externalTypeLinks = new Map([
 ]);
 
 function apiSlug(name) {
+  if (name === "$") return "dollar";
   return name.toLowerCase();
 }
 
