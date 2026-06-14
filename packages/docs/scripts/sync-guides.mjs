@@ -171,49 +171,49 @@ hero:
       variant: "minimal"
 ---
 
-import { Card, CardGrid } from "@astrojs/starlight/components";
+import { CardGrid, LinkCard } from "@astrojs/starlight/components";
 
 ## Start Here
 
 <CardGrid>
-  <Card title="Overview" icon="open-book" href="/overview/">Learn what Taiko is and how its browser automation API works.</Card>
-  <Card title="Installing" icon="setting" href="/installing/">Install Taiko globally, locally, or with npx.</Card>
-  <Card title="Record and run tests" icon="pencil" href="/record-and-run-tests/">Use Taiko's recorder and run generated JavaScript test scripts.</Card>
-  <Card title="API Reference" icon="document" href="/api/reference/">Browse Taiko commands, selectors, options, and examples.</Card>
+  <LinkCard title="Overview" href="/overview/" description="Learn what Taiko is and how its browser automation API works." />
+  <LinkCard title="Installing" href="/installing/" description="Install Taiko globally, locally, or with npx." />
+  <LinkCard title="Record and run tests" href="/record-and-run-tests/" description="Use Taiko's recorder and run generated JavaScript test scripts." />
+  <LinkCard title="API Reference" href="/api/reference/" description="Browse Taiko commands, selectors, options, and examples." />
 </CardGrid>
 
 ## Writing Tests
 
 <CardGrid>
-  <Card title="Assertions" icon="approve-check-circle" href="/assertions/">Understand Taiko implicit assertions and custom assertion usage.</Card>
-  <Card title="Working with element lists" icon="list-format" href="/working-with-element-lists/">Use Taiko selectors when multiple page elements match.</Card>
-  <Card title="Taking Screenshots" icon="seti:image" href="/taking-screenshots/">Capture page and element screenshots with Taiko.</Card>
-  <Card title="File Upload and Download" icon="cloud-download" href="/file-upload-and-download/">Attach files and download files in Taiko scripts.</Card>
-  <Card title="Running scripts inside the browser" icon="code" href="/running-scripts-inside-the-browser/">Use evaluate to run JavaScript in the page context.</Card>
+  <LinkCard title="Assertions" href="/assertions/" description="Understand Taiko implicit assertions and custom assertion usage." />
+  <LinkCard title="Working with element lists" href="/working-with-element-lists/" description="Use Taiko selectors when multiple page elements match." />
+  <LinkCard title="Taking Screenshots" href="/taking-screenshots/" description="Capture page and element screenshots with Taiko." />
+  <LinkCard title="File Upload and Download" href="/file-upload-and-download/" description="Attach files and download files in Taiko scripts." />
+  <LinkCard title="Running scripts inside the browser" href="/running-scripts-inside-the-browser/" description="Use evaluate to run JavaScript in the page context." />
 </CardGrid>
 
 ## Running and Integrating
 
 <CardGrid>
-  <Card title="Integrating with test runners" icon="rocket" href="/integrating-with-test-runners/">Run Taiko scripts with Gauge, Mocha, and other test runners.</Card>
-  <Card title="Configuring Taiko" icon="setting" href="/configuring-taiko/">Configure Taiko behavior with environment variables and settings.</Card>
-  <Card title="Taiko in Docker" icon="seti:docker" href="/taiko-in-docker/">Set up Taiko tests in Docker for local or CI execution.</Card>
+  <LinkCard title="Integrating with test runners" href="/integrating-with-test-runners/" description="Run Taiko scripts with Gauge, Mocha, and other test runners." />
+  <LinkCard title="Configuring Taiko" href="/configuring-taiko/" description="Configure Taiko behavior with environment variables and settings." />
+  <LinkCard title="Taiko in Docker" href="/taiko-in-docker/" description="Set up Taiko tests in Docker for local or CI execution." />
 </CardGrid>
 
 ## Extending Taiko
 
 <CardGrid>
-  <Card title="Plugins" icon="add-document" href="/plugins/">Use community Taiko plugins and load plugins in runners.</Card>
-  <Card title="Writing plugins" icon="puzzle" href="/writing-plugins/">Extend Taiko with plugins and custom command behavior.</Card>
-  <Card title="Experimental Features" icon="star" href="/experimental-features/">Use experimental Taiko features such as Firefox and TypeScript support.</Card>
+  <LinkCard title="Plugins" href="/plugins/" description="Use community Taiko plugins and load plugins in runners." />
+  <LinkCard title="Writing plugins" href="/writing-plugins/" description="Extend Taiko with plugins and custom command behavior." />
+  <LinkCard title="Experimental Features" href="/experimental-features/" description="Use experimental Taiko features such as Firefox and TypeScript support." />
 </CardGrid>
 
 ## Help and Community
 
 <CardGrid>
-  <Card title="Frequently asked questions" icon="information" href="/frequently-asked-questions/">Answers to common questions about Taiko support and behavior.</Card>
-  <Card title="Getting Help" icon="comment" href="/getting-help/">Find the right support channel for Taiko questions and issues.</Card>
-  <Card title="Contributing" icon="github" href="/contributing/">Contribute issues, fixes, and improvements to Taiko.</Card>
+  <LinkCard title="Frequently asked questions" href="/frequently-asked-questions/" description="Answers to common questions about Taiko support and behavior." />
+  <LinkCard title="Getting Help" href="/getting-help/" description="Find the right support channel for Taiko questions and issues." />
+  <LinkCard title="Contributing" href="/contributing/" description="Contribute issues, fixes, and improvements to Taiko." />
 </CardGrid>
 `;
 }
