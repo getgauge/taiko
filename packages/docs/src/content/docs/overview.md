@@ -39,7 +39,14 @@ Taiko's API also implicitly waits for the web page or the elements in the page t
 This considerably speeds up your tests. Taiko tests run fast, [really fast](https://gauge.org/2019/08/21/how-taiko-compares-to-other-browser-automation-tools/). 
 Here's a quick comparison with other tools.
 
-<script src="https://gist.github.com/NivedhaSenthil/919cdb1f9d8d3fee493bd428a851d125.js"></script>
+| Tool | Total (sec) | Performance |
+| --- | ---: | --- |
+| Selenium 4.0.0-alpha.7 (chromedriver 83.0.0) | 13.240 | Average |
+| WebdriverIO 6.1.17 (chromedriver 83.0.0) | 5.044 | Good |
+| TestCafe 1.8.0 | 23.977 | Basic |
+| Cypress 4.8.0 | 14.247 | Average |
+| Puppeteer 4.0.0 | 2.719 | Excellent |
+| Taiko 1.0.12 | 4.757 | Good |
 
 <small>* Source code for running this comparison is available on [Github](https://github.com/getgauge-contrib/compareBrowserAutomationTools/tree/master/comparePerformanceAndReliableWaitsOfTools)</small>
 

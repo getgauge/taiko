@@ -144,13 +144,29 @@ function rewriteMarkdownLinks(markdown) {
     });
 }
 
+function rewriteEmbeddedContent(markdown) {
+  return markdown.replace(
+    /<script src="https:\/\/gist\.github\.com\/NivedhaSenthil\/919cdb1f9d8d3fee493bd428a851d125\.js"><\/script>/g,
+    [
+      "| Tool | Total (sec) | Performance |",
+      "| --- | ---: | --- |",
+      "| Selenium 4.0.0-alpha.7 (chromedriver 83.0.0) | 13.240 | Average |",
+      "| WebdriverIO 6.1.17 (chromedriver 83.0.0) | 5.044 | Good |",
+      "| TestCafe 1.8.0 | 23.977 | Basic |",
+      "| Cypress 4.8.0 | 14.247 | Average |",
+      "| Puppeteer 4.0.0 | 2.719 | Excellent |",
+      "| Taiko 1.0.12 | 4.757 | Good |",
+    ].join("\n"),
+  );
+}
+
 function normalizeGeneratedContent(content) {
   return `${content.trimEnd()}\n`;
 }
 
 function transformGuide(markdown, page) {
   return normalizeGeneratedContent(
-    `${starlightFrontmatter(page)}${rewriteMarkdownLinks(stripFrontmatter(markdown)).trimStart()}`,
+    `${starlightFrontmatter(page)}${rewriteMarkdownLinks(rewriteEmbeddedContent(stripFrontmatter(markdown))).trimStart()}`,
   );
 }
 
