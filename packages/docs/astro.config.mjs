@@ -6,6 +6,7 @@ export default defineConfig({
     starlight({
       title: "Taiko Documentation",
       favicon: "/assets/images/taiko_favicon.ico",
+      customCss: ["./src/styles/taiko-theme.css"],
       social: [
         {
           icon: "github",
