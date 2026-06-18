@@ -119,6 +119,38 @@ describe("Plugins", () => {
   });
 
   describe("GetExecutablePlugin", () => {
+    it("should invoke npm through cmd.exe on Windows", () => {
+      const spawnCalls = [];
+      const revert = PLUGINS.__set__({
+        process: { platform: "win32", env: {} },
+        childProcess: {
+          spawnSync: (...args) => {
+            spawnCalls.push(args);
+            return { status: 0, stdout: os.tmpdir(), stderr: "" };
+          },
+        },
+        fs: { existsSync: () => false },
+      });
+
+      try {
+        expect(PLUGINS.getExecutablePlugins()).to.deep.equal({});
+        expect(spawnCalls).to.deep.equal([
+          [
+            "cmd.exe",
+            ["/d", "/s", "/c", "npm.cmd root -g"],
+            { windowsHide: true },
+          ],
+          [
+            "cmd.exe",
+            ["/d", "/s", "/c", "npm.cmd root"],
+            { windowsHide: true },
+          ],
+        ]);
+      } finally {
+        revert();
+      }
+    });
+
     function createFakeFsDirentObj(isDir, isSymLink) {
       return {
         isSymbolicLink: () => isSymLink,
