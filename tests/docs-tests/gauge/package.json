@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "latest",
-    "the-internet-express": "git+https://github.com/getgauge-contrib/the-internet-express.git"
+    "the-internet-express": "git+https://github.com/getgauge-contrib/the-internet-express.git",
+    "tsconfig-paths": "^4.2.0"
   }
 }
