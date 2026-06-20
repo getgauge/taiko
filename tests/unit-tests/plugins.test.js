@@ -222,14 +222,9 @@ describe("Plugins", () => {
           return simlinkedPath;
         },
       };
-      PLUGINS.__set__("childProcess", {
-        spawnSync: (...args) => {
-          if (args[1][1] === "-g") {
-            return { stdout: globalPluginPath };
-          }
-          return { stdout: localPluginPath };
-        },
-      });
+      PLUGINS.__set__("getNpmRootPath", (global) =>
+        global ? globalPluginPath : localPluginPath,
+      );
       PLUGINS.__set__("fs", fsMock);
       PLUGINS.__set__("getPackageJsonForPlugin", (pluginPath, plugin) => {
         if (

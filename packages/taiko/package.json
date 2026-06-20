@@ -61,12 +61,12 @@
   "license": "MIT",
   "dependencies": {
     "@babel/parser": "^7.20.7",
+    "adm-zip": "^0.5.17",
     "chrome-remote-interface": "^0.33.0",
     "commander": "^9.5.0",
     "debug": "^4.3.4",
     "devtools-protocol": "0.0.1082910",
     "documentation": "^14.0.1",
-    "extract-zip": "^2.0.1",
     "fs-extra": "^11.1.0",
     "https-proxy-agent": "^5.0.1",
     "is-reachable": "^5.2.1",
