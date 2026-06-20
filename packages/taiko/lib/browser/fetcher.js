@@ -20,16 +20,15 @@
 
 const fs = require("fs-extra");
 const path = require("node:path");
-const AdmZip = require("adm-zip");
 const util = require("node:util");
 const { helper, assert } = require("../helper");
 const ProxyAgent = require("https-proxy-agent");
 const getProxyForUrl = require("proxy-from-env").getProxyForUrl;
+const extractZip = require("./archive");
 
 const mkdirAsync = util.promisify(fs.mkdir.bind(fs));
 const unlinkAsync = util.promisify(fs.unlink.bind(fs));
 const chmodAsync = util.promisify(fs.chmod.bind(fs));
-const symlinkAsync = util.promisify(fs.symlink.bind(fs));
 const BrowserMetadata = require("./metadata");
 const metadata = new BrowserMetadata();
 
@@ -185,47 +184,6 @@ function downloadFile(url, destinationPath, progressCallback) {
     downloadedBytes += chunk.length;
     progressCallback(downloadedBytes, totalBytes);
   }
-}
-
-/**
- * @param {string} zipPath
- * @param {string} folderPath
- * @return {!Promise<?Error>}
- */
-async function extractZip(zipPath, folderPath) {
-  const archive = new AdmZip(zipPath);
-  archive.extractAllTo(folderPath, true, true);
-
-  for (const entry of archive.getEntries()) {
-    const mode = (entry.attr >>> 16) & 0xffff;
-    const isSymlink = (mode & 0xf000) === 0xa000;
-    if (!isSymlink) {
-      continue;
-    }
-
-    const linkPath = path.resolve(folderPath, entry.entryName);
-    const linkTarget = entry.getData().toString();
-    const resolvedTarget = path.resolve(path.dirname(linkPath), linkTarget);
-    if (
-      !isPathInside(folderPath, linkPath) ||
-      !isPathInside(folderPath, resolvedTarget)
-    ) {
-      throw new Error(`Unsafe symlink in browser archive: ${entry.entryName}`);
-    }
-
-    await unlinkAsync(linkPath);
-    await symlinkAsync(linkTarget, linkPath);
-  }
-}
-
-function isPathInside(parentPath, childPath) {
-  const relativePath = path.relative(path.resolve(parentPath), childPath);
-  return (
-    relativePath !== "" &&
-    relativePath !== ".." &&
-    !relativePath.startsWith(`..${path.sep}`) &&
-    !path.isAbsolute(relativePath)
-  );
 }
 
 function httpRequest(url, method, response) {
