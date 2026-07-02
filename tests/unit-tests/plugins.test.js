@@ -228,5 +228,17 @@ describe("Plugins", () => {
       };
       expect(PLUGINS.getExecutablePlugins()).to.be.deep.equal(expected);
     });
+
+    it("should not throw when npm root cannot be spawned", () => {
+      PLUGINS.__set__("childProcess", {
+        spawnSync: () => {
+          return { error: new Error("spawn npm ENOENT"), stdout: null };
+        },
+      });
+      PLUGINS.__set__("fs", {
+        existsSync: () => false,
+      });
+      expect(PLUGINS.getExecutablePlugins()).to.be.deep.equal({});
+    });
   });
 });
