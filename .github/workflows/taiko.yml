@@ -50,7 +50,7 @@ jobs:
 
       - name: Run unit tests (windows)
         if: matrix.os == 'windows-latest'
-        uses: nick-fields/retry@v3
+        uses: nick-fields/retry@v4
         with:
           timeout_minutes: 10
           max_attempts: 2
@@ -97,7 +97,7 @@ jobs:
 
       - name: functional-tests (windows)
         if: matrix.os == 'windows-latest'
-        uses: nick-fields/retry@v3
+        uses: nick-fields/retry@v4
         with:
           timeout_minutes: 15
           max_attempts: 2
