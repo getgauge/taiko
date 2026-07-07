@@ -7,9 +7,11 @@ const extractZip = require("taiko/lib/browser/archive");
 
 const expect = chai.expect;
 
-// Unix external attribute value for a symlink with rwxrwxrwx permissions.
-// Uses unsigned right-shift to avoid JS signed 32-bit overflow.
-const SYMLINK_ATTR = 0xa1ff0000 >>> 0;
+// ZIP external file attributes pack the Unix mode into the upper 16 bits.
+// >>> 0 coerces the result to unsigned 32-bit (JS bitwise ops are signed).
+const S_IFLNK = 0xa000; // Unix file type: symbolic link
+const S_IRWXALL = 0o777; // rwxrwxrwx permissions
+const SYMLINK_ATTR = ((S_IFLNK | S_IRWXALL) << 16) >>> 0;
 
 function createZipFixture() {
   const zip = new AdmZip();
