@@ -80,7 +80,10 @@ const checkStable = async (elem) => {
     let elem = this;
     return new Promise((resolve, reject) => {
       setTimeout(
-        () => reject(new Error("Element is not stable: still moving after 10000ms")),
+        () =>
+          reject(
+            new Error("Element is not stable: still moving after 10000ms"),
+          ),
         10000,
       );
       let previousRect;
@@ -129,9 +132,9 @@ const checkStable = async (elem) => {
   if (res.exceptionDetails) {
     const exceptionDetails = res.exceptionDetails;
     const message =
-      exceptionDetails.exception && exceptionDetails.exception.description
-        ? exceptionDetails.exception.description
-        : exceptionDetails.text || "Element is not stable";
+      exceptionDetails.exception?.description ??
+      exceptionDetails.text ??
+      "Element is not stable";
     throw new Error(message);
   }
   return res.result.value;
