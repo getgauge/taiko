@@ -21,7 +21,11 @@ const focus = async (selector, options = {}, highlight = false) => {
       objectId: elem.get(),
     });
     function focusElement() {
-      this.focus();
+      let elem = this;
+      if (this.nodeType === Node.TEXT_NODE) {
+        elem = this.parentElement;
+      }
+      elem.focus();
       return true;
     }
   });

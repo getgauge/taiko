@@ -139,6 +139,9 @@ async function getBoxModel(e) {
   const result = await dom.getContentQuads({
     objectId: isElement(e) ? e.objectId : e,
   });
+  if (!result.quads || result.quads.length === 0) {
+    return null;
+  }
   return { model: { border: result.quads[0] } };
 }
 
@@ -159,6 +162,9 @@ async function getBoundingClientRect(e) {
 const getPositionalDifference = async (nodeA, nodeB) => {
   const r = await getBoundingClientRect(nodeA);
   const v = await getBoundingClientRect(nodeB);
+  if (!r || !v) {
+    return Number.POSITIVE_INFINITY;
+  }
   const topDiff = Math.abs(r.top - v.top);
   const leftDiff = Math.abs(r.left - v.left);
   const bottomDiff = Math.abs(r.bottom - v.bottom);

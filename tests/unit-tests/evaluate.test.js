@@ -12,7 +12,10 @@ const {
   closeBrowser,
   setConfig,
 } = require("taiko");
-const expect = require("chai").expect;
+const chai = require("chai");
+const chaiAsPromised = require("chai-as-promised");
+chai.use(chaiAsPromised);
+const expect = chai.expect;
 const testName = "Evaluate";
 
 describe(testName, () => {
@@ -101,6 +104,12 @@ describe(testName, () => {
         return document.title;
       });
       expect(actual).to.equal(testName);
+    });
+
+    it("should throw when the callback throws an error", async () => {
+      await expect(
+        evaluate(() => document.querySelector(".doesNotExist").textContent)
+      ).to.be.rejectedWith(Error, /TypeError/);
     });
 
     it("should pass args to the callback", async () => {

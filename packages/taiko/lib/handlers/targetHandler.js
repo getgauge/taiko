@@ -1,7 +1,12 @@
 const cri = require("chrome-remote-interface");
-const url = require("node:url");
 const path = require("node:path");
-const { handleUrlRedirection, isString, isRegex } = require("../helper");
+const {
+  handleUrlRedirection,
+  isString,
+  isRegex,
+  ensureProtocol,
+  parseUrl,
+} = require("../helper");
 const { eventHandler } = require("../eventBus");
 const { trimCharLeft, escapeHtml } = require("../util");
 const { logEvent } = require("../logger");
@@ -56,7 +61,7 @@ const isMatchingRegex = (target, targetRegex) => {
   if (!isRegex(targetRegex)) {
     return false;
   }
-  const parsedUrl = url.parse(target.url, true);
+  const parsedUrl = new URL(target.url);
   const host = parsedUrl.host ? parsedUrl.host : "";
   const urlPath = path.join(host, trimCharLeft(parsedUrl.pathname, "/"));
   const urlHrefPath = parsedUrl.protocol
@@ -71,11 +76,7 @@ const isMatchingRegex = (target, targetRegex) => {
   );
 };
 
-const prependHttp = (targetUrl) => {
-  return targetUrl && url.parse(targetUrl).host === null
-    ? `http://${targetUrl}`
-    : targetUrl;
-};
+const prependHttp = (targetUrl) => ensureProtocol(targetUrl);
 
 const isMatchingUrl = (target, identifier) => {
   if (!isString(identifier)) {
@@ -83,8 +84,8 @@ const isMatchingUrl = (target, identifier) => {
   }
 
   const _identifier = prependHttp(identifier);
-  const parsedUrl = url.parse(target.url, true);
-  const parsedTargetUrl = url.parse(_identifier, true);
+  const parsedUrl = parseUrl(target.url);
+  const parsedTargetUrl = parseUrl(_identifier);
 
   const host = parsedUrl.host ? parsedUrl.host : "";
   const targetHost = parsedTargetUrl.host ? parsedTargetUrl.host : "";

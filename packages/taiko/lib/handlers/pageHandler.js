@@ -1,8 +1,12 @@
-const { handleUrlRedirection, isElement, isSelector } = require("../helper");
+const {
+  handleUrlRedirection,
+  isElement,
+  isSelector,
+  parseUrl,
+} = require("../helper");
 const { eventHandler, eventRegexMap } = require("../eventBus");
 const { logEvent } = require("../logger");
 const { findElements } = require("../elementSearch");
-const nodeURL = require("node:url");
 const path = require("node:path");
 const { isSameUrl } = require("../util");
 let page;
@@ -52,6 +56,14 @@ const createdSessionListener = async (client) => {
   resolve();
 };
 eventHandler.on("createdSession", createdSessionListener);
+
+// When fetchHandler fulfills a Document request via Fetch.fulfillRequest, Chrome on
+// Windows may not fire frameStoppedLoading, leaving frame promises unresolved.
+// Resolve them explicitly so waitForNavigation can proceed.
+eventHandler.on("navigationFulfilledByIntercept", ({ frameId }) => {
+  resolveFrameEvent({ frameId });
+  resolveFrameNavigationEvent({ frameId, frame: { frameId } });
+});
 
 const getJsDialogEventName = (message, type) => {
   if (eventRegexMap.size) {
@@ -146,10 +158,10 @@ const resolveFrameEvent = (p) => {
 };
 
 const normalizeAndHandleRedirection = (urlString) => {
-  let url = nodeURL.parse(urlString);
+  let url = parseUrl(urlString);
   url = handleUrlRedirection(url.href);
   if (url.protocol === "file:") {
-    url.path = path.normalize(url.path);
+    url.path = path.normalize(url.pathname);
   }
   return url.toString();
 };
@@ -158,9 +170,7 @@ const handleNavigation = async (gotoUrl) => {
   let resolveResponse;
   let requestId;
   const response = {};
-  const urlToNavigate = normalizeAndHandleRedirection(
-    nodeURL.parse(gotoUrl).href,
-  );
+  const urlToNavigate = normalizeAndHandleRedirection(parseUrl(gotoUrl).href);
   const handleRequest = (request) => {
     if (
       requestId &&
@@ -198,9 +208,18 @@ const handleNavigation = async (gotoUrl) => {
       resolveResponse(response.response);
     }
   };
+  const handleInterceptedResponse = ({ url, status, statusText }) => {
+    if (isSameUrl(url, urlToNavigate)) {
+      resolveResponse({ url, status, statusText });
+    }
+  };
   const responsePromise = new Promise((resolve) => {
     resolveResponse = resolve;
     eventHandler.addListener("responseReceived", handleResponseStatus);
+    eventHandler.addListener(
+      "interceptedNavigationResponse",
+      handleInterceptedResponse,
+    );
   });
 
   try {
@@ -222,6 +241,10 @@ const handleNavigation = async (gotoUrl) => {
   } finally {
     eventHandler.removeListener("responseReceived", handleResponseStatus);
     eventHandler.removeListener("requestStarted", handleRequest);
+    eventHandler.removeListener(
+      "interceptedNavigationResponse",
+      handleInterceptedResponse,
+    );
   }
 };
 

@@ -24,7 +24,6 @@ const { join, basename } = require("node:path");
 const { promisify } = require("node:util");
 const { helper, assert } = require("../helper");
 const { createInterface } = require("node:readline");
-const { parse } = require("node:url");
 const BrowserMetadata = require("./metadata");
 const metadata = new BrowserMetadata();
 
@@ -168,10 +167,11 @@ class Browser {
           return;
         }
         cleanup();
+        const parsedUrl = new URL(match[1]);
         const endpoint = {
-          host: parse(match[1]).hostname,
-          port: parse(match[1]).port,
-          browser: parse(match[1]).href,
+          host: parsedUrl.hostname,
+          port: parsedUrl.port,
+          browser: parsedUrl.href,
         };
         resolve(endpoint);
       }

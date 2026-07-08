@@ -1,6 +1,5 @@
 const chai = require("chai");
 const path = require("node:path");
-const rewire = require("rewire");
 const expect = chai.expect;
 const test_name = "util";
 
@@ -10,13 +9,14 @@ describe(test_name, () => {
   let escapeHtml;
   let taikoInstallationLocation;
   before(() => {
-    util = rewire("taiko/lib/util");
+    util = require("taiko/lib/util");
+    util.__reset__();
     trimCharLeft = util.trimCharLeft;
     escapeHtml = util.escapeHtml;
     taikoInstallationLocation = util.taikoInstallationLocation;
   });
   after(() => {
-    util = rewire("taiko/lib/util");
+    util.__reset__();
   });
   describe("trim Char()", () => {
     it("should trim the char specified from the string", async () => {

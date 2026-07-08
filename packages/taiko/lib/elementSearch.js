@@ -79,11 +79,8 @@ function match(text, options = {}, ...args) {
 
       function checkIfRegexMatch(text, searchText, exactMatch) {
         return exactMatch
-          ? isRegex(searchText) &&
-              text &&
-              text.match(searchText) &&
-              text.match(searchText)[0] === text
-          : isRegex(searchText) && text && text.match(searchText);
+          ? isRegex(searchText) && text?.match(searchText)?.[0] === text
+          : isRegex(searchText) && text?.match(searchText);
       }
 
       function normalizeText(text) {

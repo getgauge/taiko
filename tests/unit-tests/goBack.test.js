@@ -1,5 +1,4 @@
 const { expect } = require("chai");
-const rewire = require("rewire");
 
 const test_name = "goBack";
 
@@ -13,14 +12,15 @@ describe(test_name, () => {
       actualOptions = options;
       await cb();
     };
-    taiko = rewire("taiko/lib/taiko");
+    taiko = require("taiko/lib/taiko");
+    taiko.__reset__();
     taiko.__set__("doActionAwaitingNavigation", mockWrapper);
     taiko.__set__("validate", () => {});
   });
 
   after(async () => {
     actualOptions = null;
-    taiko = rewire("taiko/lib/taiko");
+    taiko.__reset__();
   });
 
   describe("to about blank page", () => {

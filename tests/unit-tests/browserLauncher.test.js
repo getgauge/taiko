@@ -1,9 +1,24 @@
 const chai = require("chai");
 const expect = chai.expect;
 const rewire = require("rewire");
+const { once } = require("node:events");
 const { openBrowserArgs } = require("./test-util");
 const { openBrowser, closeBrowser } = require("taiko");
 const { eventHandler } = require("taiko/lib/eventBus");
+
+const waitForEvent = (emitter, eventName, timeout = 1000) => {
+  let timeoutId;
+  return Promise.race([
+    once(emitter, eventName),
+    new Promise((_, reject) => {
+      timeoutId = setTimeout(() => {
+        reject(new Error(`Timed out waiting for ${eventName}`));
+      }, timeout);
+    }),
+  ]).finally(() => {
+    clearTimeout(timeoutId);
+  });
+};
 
 describe("OpenBrowser", () => {
   let browserLauncher;
@@ -45,19 +60,15 @@ describe("OpenBrowser", () => {
     });
 
     it("should emit browserCrashed event when chrome process crashes", async () => {
-      let browserCrashedEmitted = false;
-      eventHandler.on("browserCrashed", () => {
-        browserCrashedEmitted = true;
-      });
+      const browserCrashed = waitForEvent(eventHandler, "browserCrashed");
       browserProcess.kill("SIGKILL");
-      await new Promise((resolve) => {
-        setTimeout(resolve, 100);
-      });
-      expect(browserCrashedEmitted).to.be.true;
+      await browserCrashed;
     });
 
     it("should allow to open a browser after chrome process crashes", async () => {
+      const browserExit = waitForEvent(browserProcess, "exit");
       browserProcess.kill("SIGKILL");
+      await browserExit;
       await openBrowser(openBrowserArgs);
       await closeBrowser();
     });

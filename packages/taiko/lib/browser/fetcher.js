@@ -20,12 +20,11 @@
 
 const fs = require("fs-extra");
 const path = require("node:path");
-const extract = require("extract-zip");
 const util = require("node:util");
-const URL = require("node:url");
 const { helper, assert } = require("../helper");
 const ProxyAgent = require("https-proxy-agent");
 const getProxyForUrl = require("proxy-from-env").getProxyForUrl;
+const extractZip = require("./archive");
 
 const mkdirAsync = util.promisify(fs.mkdir.bind(fs));
 const unlinkAsync = util.promisify(fs.unlink.bind(fs));
@@ -74,6 +73,13 @@ class BrowserFetcher {
       resolve(false);
     });
     return promise;
+  }
+
+  /**
+   * @return {!Promise<!Array<string>>}
+   */
+  localRevisions() {
+    return metadata.localRevisions();
   }
 
   /**
@@ -180,26 +186,21 @@ function downloadFile(url, destinationPath, progressCallback) {
   }
 }
 
-/**
- * @param {string} zipPath
- * @param {string} folderPath
- * @return {!Promise<?Error>}
- */
-function extractZip(zipPath, folderPath) {
-  return new Promise((fulfill) =>
-    extract(zipPath, { dir: folderPath }, fulfill),
-  );
-}
-
 function httpRequest(url, method, response) {
   /** @type {Object} */
-  const options = URL.parse(url);
+  const parsedUrl = new URL(url);
+  const options = {
+    protocol: parsedUrl.protocol,
+    hostname: parsedUrl.hostname,
+    port: parsedUrl.port,
+    path: parsedUrl.pathname + parsedUrl.search,
+  };
   options.method = method;
 
   const proxyURL = getProxyForUrl(url);
   if (proxyURL) {
     /** @type {Object} */
-    const parsedProxyURL = URL.parse(proxyURL);
+    const parsedProxyURL = new URL(proxyURL);
     parsedProxyURL.secureProxy = parsedProxyURL.protocol === "https:";
 
     options.agent = new ProxyAgent(parsedProxyURL);

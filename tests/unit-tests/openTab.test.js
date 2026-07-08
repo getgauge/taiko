@@ -1,6 +1,5 @@
 const expect = require("chai").expect;
 const { EventEmitter } = require("node:events");
-const rewire = require("rewire");
 const { fail } = require("node:assert");
 
 describe("openTab", () => {
@@ -11,7 +10,8 @@ describe("openTab", () => {
   const target = "TARGET";
 
   before(async () => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko = require("taiko/lib/taiko");
+    taiko.__reset__();
 
     const mockConnectToCri = (tgt) => {
       actualTarget = tgt;
@@ -47,7 +47,7 @@ describe("openTab", () => {
   });
 
   after(() => {
-    taiko = rewire("taiko/lib/taiko");
+    taiko.__reset__();
   });
 
   afterEach(() => {

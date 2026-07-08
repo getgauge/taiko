@@ -174,6 +174,18 @@ const handleUrlRedirection = (url) => {
     : trimmedUrl;
 };
 
+const ensureProtocol = (url) => {
+  if (!url) {
+    return url;
+  }
+  return /^[a-zA-Z][a-zA-Z\d+.-]*:\/\//.test(url) ||
+    /^(about|data|file|mailto|ws|wss):/.test(url)
+    ? url
+    : `http://${url}`;
+};
+
+const parseUrl = (url) => new URL(ensureProtocol(url));
+
 const isSelector = (obj) =>
   (obj && Object.hasOwn(obj, "elements") && Object.hasOwn(obj, "exists")) ||
   (obj && Object.hasOwn(obj, "selector"));
@@ -196,6 +208,8 @@ module.exports = {
   xpath,
   waitUntil,
   handleUrlRedirection,
+  ensureProtocol,
+  parseUrl,
   assertType,
   descEvent,
   isSelector,
