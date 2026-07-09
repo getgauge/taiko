@@ -2,15 +2,40 @@ const fs = require("node:fs/promises");
 const os = require("node:os");
 const path = require("node:path");
 const chai = require("chai");
+const AdmZip = require("adm-zip");
 const extractZip = require("taiko/lib/browser/archive");
 
 const expect = chai.expect;
-const ZIP_FIXTURE =
-  "UEsDBAoAAAAAAGtQ1FwAAAAAAAAAAAAAAAAIABwAYnJvd3Nlci9VVAkAA1lXNmpZVzZqdXgLAAEE9gEAAAQAAAAAUEsDBAoAAAAAAGtQ1FzCeZYxCAAAAAgAAAAOABwAYnJvd3Nlci9jaHJvbWVVVAkAA1lXNmpZVzZqdXgLAAEE9gEAAAQAAAAAY2hyb21pdW1QSwECHgMKAAAAAABrUNRcAAAAAAAAAAAAAAAACAAYAAAAAAAAABAA7UEAAAAAYnJvd3Nlci9VVAUAA1lXNmp1eAsAAQT2AQAABAAAAABQSwECHgMKAAAAAABrUNRcwnmWMQgAAAAIAAAADgAYAAAAAAABAAAA7YFCAAAAYnJvd3Nlci9jaHJvbWVVVAUAA1lXNmp1eAsAAQT2AQAABAAAAABQSwUGAAAAAAIAAgCiAAAAkgAAAAAA";
-const SYMLINK_ZIP_FIXTURE =
-  "UEsDBAoAAAAAAGdQ1FwAAAAAAAAAAAAAAAAIABwAYnJvd3Nlci9VVAkAA1FXNmpRVzZqdXgLAAEE9gEAAAQAAAAAUEsDBAoAAAAAAGdQ1FzshNb5BgAAAAYAAAAPABwAYnJvd3Nlci9jdXJyZW50VVQJAANRVzZqUVc2anV4CwABBPYBAAAEAAAAAGNocm9tZVBLAwQKAAAAAABnUNRcwnmWMQgAAAAIAAAADgAcAGJyb3dzZXIvY2hyb21lVVQJAANRVzZqUVc2anV4CwABBPYBAAAEAAAAAGNocm9taXVtUEsBAh4DCgAAAAAAZ1DUXAAAAAAAAAAAAAAAAAgAGAAAAAAAAAAQAO1BAAAAAGJyb3dzZXIvVVQFAANRVzZqdXgLAAEE9gEAAAQAAAAAUEsBAh4DCgAAAAAAZ1DUXOyE1vkGAAAABgAAAA8AGAAAAAAAAAAAAO2hQgAAAGJyb3dzZXIvY3VycmVudFVUBQADUVc2anV4CwABBPYBAAAEAAAAAFBLAQIeAwoAAAAAAGdQ1FzCeZYxCAAAAAgAAAAOABgAAAAAAAEAAADtgZEAAABicm93c2VyL2Nocm9tZVVUBQADUVc2anV4CwABBPYBAAAEAAAAAFBLBQYAAAAAAwADAPcAAADhAAAAAAA=";
-const UNSAFE_SYMLINK_ZIP_FIXTURE =
-  "UEsDBAoAAAAAAPVQ1FwAAAAAAAAAAAAAAAAIABwAYnJvd3Nlci9VVAkAA15YNmpeWDZqdXgLAAEE9gEAAAQAAAAAUEsDBAoAAAAAAPVQ1FxASv+xDQAAAA0AAAAPABwAYnJvd3Nlci9jdXJyZW50VVQJAANeWDZqXlg2anV4CwABBPYBAAAEAAAAAC4uLy4uL291dHNpZGVQSwECHgMKAAAAAAD1UNRcAAAAAAAAAAAAAAAACAAYAAAAAAAAABAA7UEAAAAAYnJvd3Nlci9VVAUAA15YNmp1eAsAAQT2AQAABAAAAABQSwECHgMKAAAAAAD1UNRcQEr/sQ0AAAANAAAADwAYAAAAAAAAAAAA7aFCAAAAYnJvd3Nlci9jdXJyZW50VVQFAANeWDZqdXgLAAEE9gEAAAQAAAAAUEsFBgAAAAACAAIAowAAAJgAAAAAAA==";
+
+// ZIP external file attributes pack the Unix mode into the upper 16 bits.
+// >>> 0 coerces the result to unsigned 32-bit (JS bitwise ops are signed).
+const S_IFLNK = 0xa000; // Unix file type: symbolic link
+const S_IRWXALL = 0o777; // rwxrwxrwx permissions
+const SYMLINK_ATTR = ((S_IFLNK | S_IRWXALL) << 16) >>> 0;
+
+function createZipFixture() {
+  const zip = new AdmZip();
+  zip.addFile("browser/", Buffer.alloc(0));
+  zip.addFile("browser/chrome", Buffer.from("chromium"));
+  return zip.toBuffer();
+}
+
+function createSymlinkZipFixture() {
+  const zip = new AdmZip();
+  zip.addFile("browser/", Buffer.alloc(0));
+  zip.addFile("browser/current", Buffer.from("chrome"));
+  zip.getEntry("browser/current").attr = SYMLINK_ATTR;
+  zip.addFile("browser/chrome", Buffer.from("chromium"));
+  return zip.toBuffer();
+}
+
+function createUnsafeSymlinkZipFixture() {
+  const zip = new AdmZip();
+  zip.addFile("browser/", Buffer.alloc(0));
+  zip.addFile("browser/current", Buffer.from("../../outside"));
+  zip.getEntry("browser/current").attr = SYMLINK_ATTR;
+  return zip.toBuffer();
+}
 
 describe("BrowserArchive", () => {
   it("waits for Chromium archive extraction to finish", async () => {
@@ -19,7 +44,7 @@ describe("BrowserArchive", () => {
     );
     const zipPath = path.join(tempDirectory, "chromium.zip");
     const destinationPath = path.join(tempDirectory, "chromium");
-    await fs.writeFile(zipPath, Buffer.from(ZIP_FIXTURE, "base64"));
+    await fs.writeFile(zipPath, createZipFixture());
 
     try {
       await Promise.race([
@@ -53,7 +78,7 @@ describe("BrowserArchive", () => {
     );
     const zipPath = path.join(tempDirectory, "chromium.zip");
     const destinationPath = path.join(tempDirectory, "chromium");
-    await fs.writeFile(zipPath, Buffer.from(SYMLINK_ZIP_FIXTURE, "base64"));
+    await fs.writeFile(zipPath, createSymlinkZipFixture());
 
     try {
       await extractZip(zipPath, destinationPath);
@@ -76,10 +101,7 @@ describe("BrowserArchive", () => {
     );
     const zipPath = path.join(tempDirectory, "chromium.zip");
     const destinationPath = path.join(tempDirectory, "chromium");
-    await fs.writeFile(
-      zipPath,
-      Buffer.from(UNSAFE_SYMLINK_ZIP_FIXTURE, "base64"),
-    );
+    await fs.writeFile(zipPath, createUnsafeSymlinkZipFixture());
 
     try {
       let extractionError;

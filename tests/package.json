@@ -15,6 +15,7 @@
     "taiko": "*"
   },
   "devDependencies": {
+    "adm-zip": "^0.5.18",
     "chai": "^4.3.7",
     "chai-as-promised": "^7.1.1",
     "mocha": "^10.4.0",
