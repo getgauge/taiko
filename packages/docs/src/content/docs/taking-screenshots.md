@@ -13,14 +13,14 @@ works on headless mode. Here are a few ways to work with screenshots.
 You can use Taiko's `screenshot` API to take screenshots 
 of a web page. For example in the REPL (after navigating to a web page)
 
-```
+```sh
 > screenshot()
 ✔ Screenshot is created at Screenshot-1592405213958.png
 ```
 
 or in a script using
 
-```
+```javascript
 const { openBrowser, goto, screenshot, closeBrowser } = require('taiko');
 (async () => {
   await openBrowser();
@@ -37,14 +37,14 @@ directory with a randomised name in the format `Screenshot-xxx`.
 To save screenshots to a custom location you can use the optional 
 attribute `path` for example in the REPL
 
-```
+```sh
 > screenshot({path: 'screenshot.png'})
 ✔ Screenshot is created at screenshot.png
 ```
 
 Or in a script using
 
-```
+```javascript
 const { openBrowser, goto, screenshot, closeBrowser } = require('taiko');
 (async () => {
   await openBrowser();
@@ -59,7 +59,7 @@ By default, screenshots are only of the visible area of the page which
 inturn depends on the browser windows size. You can use the `fullPage` 
 option to take a screenshot of the entire page for example
 
-```
+```javascript
 const { openBrowser, goto, screenshot, closeBrowser } = require('taiko');
 (async () => {
   await openBrowser();
@@ -73,7 +73,7 @@ const { openBrowser, goto, screenshot, closeBrowser } = require('taiko');
 Taiko's `screenshot` can also take screenshots of a specific section
 of the web page using selectors for example
 
-```
+```javascript
 const { openBrowser, goto, screenshot, closeBrowser } = require('taiko');
 (async () => {
   await openBrowser();
@@ -88,7 +88,7 @@ Taiko's `screenshot` API can also return images in `base64` encoding
 format. This is useful in case you want you don't want Taiko to save 
 the file locally but want to use another library to save it.
 
-```
+```javascript
 const { openBrowser, goto, screenshot, closeBrowser } = require('taiko');
 (async () => {
   await openBrowser();
@@ -102,7 +102,7 @@ const { openBrowser, goto, screenshot, closeBrowser } = require('taiko');
 If you are using Gauge and Taiko you add the following snippet
 in any of your Taiko test script
 
-```
+```javascript
 const path = require('path');
 gauge.customScreenshotWriter = async function () {
     const screenshotFilePath = path.join(process.env['gauge_screenshots_dir'], `screenshot-${process.hrtime.bigint()}.png`);

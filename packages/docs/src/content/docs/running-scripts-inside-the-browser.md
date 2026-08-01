@@ -17,18 +17,22 @@ The `evaluate` API can access the DOM of the page
 you are testing to read or modify elements for example in 
 the following HTML
 
-    <div id="data" 
-        data-text="some metadata"
-        class="box">Lorem ipsum</div>
+```html
+<div id="data" 
+    data-text="some metadata"
+    class="box">Lorem ipsum</div>
+```
 
 Although there's no core Taiko API to read data attributes like
 `data-text`, Taiko's `evaluate` API can run the following script in the 
 browser to read the value.
 
-    var text = await evaluate($("#data"), 
-        (element) => element.dataset.text);
+```javascript
+var text = await evaluate($("#data"), 
+    (element) => element.dataset.text);
 
-    console.log(text); // Prints "some metadata"
+console.log(text); // Prints "some metadata"
+```
 
 Please note that `element.dataset.text` runs in the context
 of the page, it is plain JavaScript in the browser. You cannot 
@@ -36,15 +40,17 @@ access Taiko's API within `evaluate`.
 
 You can also use `evaluate` to read other attributes or content
 
-    var attribute = await evaluate($("#data"), 
-        (element) => element.getAttribute("class"));
+```javascript
+var attribute = await evaluate($("#data"), 
+    (element) => element.getAttribute("class"));
 
-    console.log(attribute); // Prints "box"
+console.log(attribute); // Prints "box"
 
-    var content = await evaluate($("#data"), 
-        (element) => element.innerText);
+var content = await evaluate($("#data"), 
+    (element) => element.innerText);
 
-    console.log(attribute); // Prints "box"
+console.log(attribute); // Prints "box"
+```
 
 ## Perform actions on the page
 
@@ -56,12 +62,16 @@ and perform these actions directly on the page.
 
 For the sake of simplicity let's click the following button 
 
-    <input type="button" id="hidden" value="Click"/>
+```html
+<input type="button" id="hidden" value="Click"/>
+```
 
 You can use `evaluate` for clicking as follows
 
-    await evaluate($("#hidden"), (element) => element.click());
-    await evaluate(() => document.getElementById('hidden').click());
+```javascript
+await evaluate($("#hidden"), (element) => element.click());
+await evaluate(() => document.getElementById('hidden').click());
+```
 
 As mentioned earlier, the scripts in `evaluate` uses the page's DOM. 
 For more reference please check [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document)
@@ -72,16 +82,20 @@ You can also use the `evaluate` method to inject
 Javascript functions on your page for example let's 
 assume there's a call to a function `foo` on you page.
 
-    <input type="button" onclick="foo()" value="Foo click"/>
+```html
+<input type="button" onclick="foo()" value="Foo click"/>
+```
 
 You can have Taiko define or override the function using `evaluate` as
 follows.
 
-    await evaluate(function() { 
-        window.foo = () => { console.log('bar')}
-    });
+```javascript
+await evaluate(function() { 
+    window.foo = () => { console.log('bar')}
+});
 
-    await click("Foo click"); // Prints 'bar' in the Browser's console
+await click("Foo click"); // Prints 'bar' in the Browser's console
+```
 
 Please note the scope/availability of the injected 
 JavaScript function is dependent on the order of injection 
@@ -92,36 +106,46 @@ as the page scope usually remains the same.
 
 You an also invoke the web applications JavaScript methods
 
-    <script>
-        function foo() {
-            return 'bar';
-        }
-    </script>
+```html
+<script>
+    function foo() {
+        return 'bar';
+    }
+</script>
+```
 
 Invoke `foo` using `evaluate` as follows
 
-    var result = await evaluate(function() { return foo() });
-    console.log(result) // Prints 'bar' on Taiko's console
+```javascript
+var result = await evaluate(function() { return foo() });
+console.log(result) // Prints 'bar' on Taiko's console
+```
 
 ## Passing data
 
 The `evaluate` function can return values for example
 
-    var title = await evaluate(() => { return document.title });
+```javascript
+var title = await evaluate(() => { return document.title });
+```
 
 Here `document.title` is a string type. The following is an example
 that returns a JSON Object
 
-    var result = await evaluate(() => { return { title: "Page 1" } });
-    console.log(result.title) // Prints "Page 1"
+```javascript
+var result = await evaluate(() => { return { title: "Page 1" } });
+console.log(result.title) // Prints "Page 1"
+```
 
 You cannot return HTML elements. `evaluate` must return only serializable 
 data.
 
 `evaluate` also has an option to receive data from Taiko scripts as follows
 
-    var message = { args: { greeting: "Hello" } };
-      
-    var content = await evaluate($("#data"), (element, args) => { 
-        element.innerText = args.greeting;
-    }, message);
+```javascript
+var message = { args: { greeting: "Hello" } };
+  
+var content = await evaluate($("#data"), (element, args) => { 
+    element.innerText = args.greeting;
+}, message);
+```

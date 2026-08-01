@@ -8,7 +8,7 @@ there are more than one element that match the selector criteria.
 
 Let's use a list as an example to understand this better
 
-```
+```html
 <ul id="fruits">
     <li class="fruit">Apple</li>
     <li class="fruit">Orange</li>
@@ -21,7 +21,7 @@ This sample uses the `li` HTML tag and class attributes to render a list of frui
 You can use Taiko's [`listItem`](/api/listitem/)
 API to select a specific item from this list
 
-```
+```javascript
 // Returns true
 await listItem('Apple').exists(); 
 
@@ -32,7 +32,7 @@ await listItem('Mango').exists();
 In some cases you might want to fetch the value from the list to
 use as data or use your own assertion library. You can do this as follows
 
-```
+```javascript
 // Returns Apple
 await listItem({class: "fruit"}).text(); 
 ```
@@ -49,14 +49,14 @@ in two ways.
 
 By passing the index of the match you want to fetch
 
-```
+```javascript
 var fruit = await listItem({class: "fruit"}).element(0); 
 
 // Prints Apple
 console.log(fruit);
 ```
 
-```
+```javascript
 var fruit = await listItem({class: "fruit"}).element(3); 
 
 // Prints Pear
@@ -65,7 +65,7 @@ console.log(fruit);
 
 or by looping through all matches in the elements array using a `for` loop 
 
-```
+```javascript
 /* Prints
 Apple
 Orange
@@ -83,11 +83,11 @@ for (fruit of fruits) {
 
 The `elements` method is also available for CSS and XPath selectors
 
-```
+```javascript
 var fruits = await $('.fruit').elements(); 
 ```
 
-```
+```javascript
 var fruits = await $("//li[@class='fruit']").elements(); 
 ```
 
@@ -101,12 +101,12 @@ Please note
 To directly fetch the nth element, use indexes in your CSS and XPath
 selectors
 
-```
+```javascript
 //Returns Orange
 var fruit = await $(".fruit:nth-child(2)").text(); 
 ```
 
-```
+```javascript
 //Returns Melon
 var fruit = await $("//li[@class='fruit'][3]").text();
 ```
