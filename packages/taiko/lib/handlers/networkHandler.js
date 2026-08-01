@@ -23,6 +23,12 @@ const createdSessionListener = (client) => {
 };
 eventHandler.on("createdSession", createdSessionListener);
 
+eventHandler.on("navigationFulfilledByIntercept", ({ networkId }) => {
+  if (networkId) {
+    resolveXHREvent({ requestId: networkId });
+  }
+});
+
 const resetPromises = () => {
   requestPromises = {};
 };

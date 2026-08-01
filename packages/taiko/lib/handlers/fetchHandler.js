@@ -130,6 +130,7 @@ const handleInterceptor = (p) => {
             });
             eventHandler.emit("navigationFulfilledByIntercept", {
               frameId: p.frameId,
+              networkId: p.networkId,
             });
           }
         })
