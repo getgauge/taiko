@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json.schemastore.org/package",
+  "name": "@taiko/docs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run generate:api && astro dev",
+    "build": "npm run generate:api && astro build",
+    "preview": "astro preview",
+    "sync:guides": "node scripts/sync-guides.mjs",
+    "generate:api": "npm --prefix ../taiko run doc:api && node scripts/generate-api-docs.mjs"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.35.0",
+    "astro": "^5.0.0",
+    "sharp": "^0.33.5"
+  }
+}

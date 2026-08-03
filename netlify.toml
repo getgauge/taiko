@@ -1,6 +1,6 @@
 [build]
-  command = "npm install && cd packages/taiko && npm run doc:api && npx eleventy"
-  publish = "packages/taiko/docs/_site"
+  command = "npm install && npm run doc:starlight"
+  publish = "packages/docs/dist"
 
 [[redirects]]
   from = "/devices"
