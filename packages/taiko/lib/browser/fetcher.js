@@ -187,25 +187,7 @@ function downloadFile(url, destinationPath, progressCallback) {
 }
 
 function httpRequest(url, method, response) {
-  /** @type {Object} */
-  const parsedUrl = new URL(url);
-  const options = {
-    protocol: parsedUrl.protocol,
-    hostname: parsedUrl.hostname,
-    port: parsedUrl.port,
-    path: parsedUrl.pathname + parsedUrl.search,
-  };
-  options.method = method;
-
-  const proxyURL = getProxyForUrl(url);
-  if (proxyURL) {
-    /** @type {Object} */
-    const parsedProxyURL = new URL(proxyURL);
-    parsedProxyURL.secureProxy = parsedProxyURL.protocol === "https:";
-
-    options.agent = new ProxyAgent(parsedProxyURL);
-    options.rejectUnauthorized = false;
-  }
+  const options = createRequestOptions(url, method);
 
   const driver = options.protocol === "https:" ? "https" : "http";
   const request = require(driver).request(options, (res) => {
@@ -217,4 +199,26 @@ function httpRequest(url, method, response) {
   });
   request.end();
   return request;
+}
+
+function createRequestOptions(url, method) {
+  /** @type {Object} */
+  const parsedUrl = new URL(url);
+  const options = {
+    protocol: parsedUrl.protocol,
+    hostname: parsedUrl.hostname,
+    port: parsedUrl.port,
+    path: parsedUrl.pathname + parsedUrl.search,
+    method,
+  };
+  const proxyURL = getProxyForUrl(url);
+  if (proxyURL) {
+    /** @type {Object} */
+    const parsedProxyURL = new URL(proxyURL);
+    parsedProxyURL.secureProxy = parsedProxyURL.protocol === "https:";
+
+    options.agent = new ProxyAgent(parsedProxyURL);
+  }
+
+  return options;
 }
