@@ -12,8 +12,8 @@
     "generate:api": "npm --prefix ../taiko run doc:api && node scripts/generate-api-docs.mjs"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.35.0",
-    "astro": "^5.0.0",
-    "sharp": "^0.33.5"
+    "@astrojs/starlight": "^0.38.5",
+    "astro": "^6.4.8",
+    "sharp": "^0.35.3"
   }
 }

@@ -14,7 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: ['22', '24', '25']
+        node_version: ['22', '24', '26']
         os: [ubuntu-22.04, windows-latest]
       fail-fast: false
     steps:
@@ -63,7 +63,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: ['22', '24', '25']
+        node_version: ['22', '24', '26']
         os: [ubuntu-22.04, windows-latest]
       fail-fast: false
     steps:
@@ -123,7 +123,7 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        node_version: ['22', '24', '25']
+        node_version: ['22', '24', '26']
       fail-fast: false
     steps:
       - uses: actions/checkout@v6
@@ -175,7 +175,7 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        node_version: ['22', '24', '25']
+        node_version: ['22', '24', '26']
       fail-fast: false
     steps:
       - uses: actions/checkout@v6
