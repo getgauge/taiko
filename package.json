@@ -36,5 +36,8 @@
     "headless-browser"
   ],
   "author": "getgauge",
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "adm-zip": "0.6.0"
+  }
 }
