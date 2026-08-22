@@ -36,5 +36,10 @@
     "headless-browser"
   ],
   "author": "getgauge",
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "astro": {
+      "sharp": "^0.35.3"
+    }
+  }
 }

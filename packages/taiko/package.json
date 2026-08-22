@@ -61,7 +61,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/parser": "^7.20.7",
-    "adm-zip": "^0.5.17",
+    "adm-zip": "^0.6.0",
     "chrome-remote-interface": "^0.33.0",
     "commander": "^9.5.0",
     "debug": "^4.3.4",
