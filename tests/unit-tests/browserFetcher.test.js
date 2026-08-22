@@ -1,8 +1,6 @@
 const { expect } = require("chai");
 const rewire = require("rewire");
 
-const expect = chai.expect;
-
 describe("BrowserFetcher", () => {
   let browserFetcher;
 
