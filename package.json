@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package",
   "name": "taiko-workspace",
-  "version": "1.4.9",
+  "version": "1.5.0",
   "description": "Taiko workspace for browser automation",
   "private": true,
   "workspaces": [
@@ -14,6 +14,9 @@
     "doc": "npm run doc --workspace=packages/taiko",
     "doc:serve": "npm run doc:serve --workspace=packages/taiko",
     "doc:api": "npm run doc:api --workspace=packages/taiko",
+    "doc:starlight": "npm run build --workspace=packages/docs",
+    "doc:starlight:dev": "npm run dev --workspace=packages/docs",
+    "doc:starlight:preview": "npm run preview --workspace=packages/docs",
     "test:api": "npm run test:api --workspace=tests",
     "examples": "npm run test --workspace=packages/examples",
     "test:unit:silent": "npm run test:unit:silent --workspace=tests",
@@ -33,5 +36,10 @@
     "headless-browser"
   ],
   "author": "getgauge",
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "astro": {
+      "sharp": "^0.35.3"
+    }
+  }
 }

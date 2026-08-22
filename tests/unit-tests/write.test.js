@@ -11,6 +11,7 @@ const {
   into,
   focus,
   setConfig,
+  text,
 } = require("taiko");
 const { descEvent } = require("taiko/lib/helper");
 const { createHtml, removeFile, openBrowserArgs } = require("./test-util");
@@ -54,6 +55,9 @@ const innerHtml = `
         document.getElementById('disabled').disabled = false;
       }, 100);
     </script>
+    <div>
+      <div id='contenteditable' contenteditable='true'>This is a paragraph is editable.</div>
+    </div>
   </div>`;
 
 describe(test_name, () => {
@@ -146,6 +150,11 @@ describe(test_name, () => {
     const text = "Shadow text updated";
     await write(text, into(input));
     expect(await input.value()).to.equal(text);
+  });
+
+  it("should write into contenteditable element", async () => {
+    await write("Hello", into(text("This is a paragraph is editable.")));
+    expect(await text("HelloThis is a paragraph is editable.").exists()).to.be.true;
   });
 
   describe("write test on multiple similar elements", () => {

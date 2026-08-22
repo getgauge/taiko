@@ -37,15 +37,23 @@ const getPlugins = () => {
   return taikoPluginNames;
 };
 
+function getNpmRootPath(global) {
+  const args = global ? ["root", "-g"] : ["root"];
+  const result =
+    process.platform === "win32"
+      ? childProcess.spawnSync(
+          process.env.ComSpec || "cmd.exe",
+          ["/d", "/s", "/c", `npm.cmd ${args.join(" ")}`],
+          { windowsHide: true },
+        )
+      : childProcess.spawnSync("npm", args);
+
+  return result.stdout.toString().trim();
+}
+
 const getExecutablePlugins = () => {
-  const pluginsGlobalPath = childProcess
-    .spawnSync("npm", ["root", "-g"])
-    .stdout.toString()
-    .trim();
-  const pluginsLocalPath = childProcess
-    .spawnSync("npm", ["root"])
-    .stdout.toString()
-    .trim();
+  const pluginsGlobalPath = getNpmRootPath(true);
+  const pluginsLocalPath = getNpmRootPath(false);
   const globalPlugins = getPluginsInstalledOn(pluginsGlobalPath);
   const localPlugins = getPluginsInstalledOn(pluginsLocalPath);
   const globalExecutablePlugin = filterExecutablePlugin(

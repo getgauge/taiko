@@ -20,11 +20,11 @@
 
 const fs = require("fs-extra");
 const path = require("node:path");
-const extract = require("extract-zip");
 const util = require("node:util");
 const { helper, assert } = require("../helper");
 const ProxyAgent = require("https-proxy-agent");
 const getProxyForUrl = require("proxy-from-env").getProxyForUrl;
+const extractZip = require("./archive");
 
 const mkdirAsync = util.promisify(fs.mkdir.bind(fs));
 const unlinkAsync = util.promisify(fs.unlink.bind(fs));
@@ -73,6 +73,13 @@ class BrowserFetcher {
       resolve(false);
     });
     return promise;
+  }
+
+  /**
+   * @return {!Promise<!Array<string>>}
+   */
+  localRevisions() {
+    return metadata.localRevisions();
   }
 
   /**
@@ -177,17 +184,6 @@ function downloadFile(url, destinationPath, progressCallback) {
     downloadedBytes += chunk.length;
     progressCallback(downloadedBytes, totalBytes);
   }
-}
-
-/**
- * @param {string} zipPath
- * @param {string} folderPath
- * @return {!Promise<?Error>}
- */
-function extractZip(zipPath, folderPath) {
-  return new Promise((fulfill) =>
-    extract(zipPath, { dir: folderPath }, fulfill),
-  );
 }
 
 function httpRequest(url, method, response) {

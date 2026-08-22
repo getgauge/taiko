@@ -1,0 +1,87 @@
+:root {
+  --taiko-cyan: #2bd3ef;
+  --taiko-ink: #25282d;
+  --taiko-paper: #fcfcfc;
+  --taiko-code: #222222;
+
+  --sl-font: "Open Sans", var(--sl-font-system);
+  --sl-font-mono: "Roboto Mono", var(--sl-font-system-mono);
+  --sl-line-height: 1.8;
+  --sl-color-accent: var(--taiko-cyan);
+  --sl-color-blue: var(--taiko-cyan);
+}
+
+:root[data-theme="light"] {
+  --sl-color-white: var(--taiko-ink);
+  --sl-color-gray-1: #25282d;
+  --sl-color-gray-2: #333840;
+  --sl-color-gray-3: #5e6672;
+  --sl-color-gray-4: #8b94a1;
+  --sl-color-gray-5: #cbd2da;
+  --sl-color-gray-6: #e6e6e6;
+  --sl-color-gray-7: #f6f9fb;
+  --sl-color-black: #ffffff;
+
+  --sl-color-accent-high: #065766;
+  --sl-color-accent: #0f9fba;
+  --sl-color-accent-low: #dffaff;
+  --sl-color-text: var(--taiko-ink);
+  --sl-color-text-accent: #08788b;
+  --sl-color-text-invert: #ffffff;
+  --sl-color-bg: var(--taiko-paper);
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-bg-sidebar: #ffffff;
+  --sl-color-bg-inline-code: #e6e6e6;
+  --sl-color-bg-accent: #08788b;
+  --sl-color-hairline-light: #e6edf2;
+  --sl-color-hairline: #d8e1e8;
+  --sl-color-hairline-shade: #d8e1e8;
+}
+
+:root[data-theme="dark"] {
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #e5eefb;
+  --sl-color-gray-2: #c6d4e5;
+  --sl-color-gray-3: #9fb0c6;
+  --sl-color-gray-4: #718096;
+  --sl-color-gray-5: #334155;
+  --sl-color-gray-6: #121f30;
+  --sl-color-black: #070b12;
+
+  --sl-color-accent-high: #8ff0fb;
+  --sl-color-accent: var(--taiko-cyan);
+  --sl-color-accent-low: #06303d;
+  --sl-color-text: #e5eefb;
+  --sl-color-text-accent: #67e8f9;
+  --sl-color-text-invert: #041016;
+  --sl-color-bg: #070b12;
+  --sl-color-bg-nav: #0d1420;
+  --sl-color-bg-sidebar: #0d1420;
+  --sl-color-bg-inline-code: var(--taiko-code);
+  --sl-color-bg-accent: #67e8f9;
+  --sl-color-hairline-light: #243244;
+  --sl-color-hairline: #1a2636;
+  --sl-color-hairline-shade: #070b12;
+}
+
+.site-title,
+.sl-markdown-content :is(h1, h2, h3, h4, h5, h6) {
+  font-family: "Poppins", var(--sl-font-system);
+  letter-spacing: 0;
+}
+
+.sl-markdown-content blockquote {
+  border-inline-start-color: var(--taiko-cyan);
+}
+
+.sl-markdown-content :not(pre) > code {
+  border-radius: 0.2rem;
+}
+
+.sl-markdown-content pre {
+  border-color: var(--sl-color-hairline-light);
+}
+
+.sl-markdown-content li::marker {
+  color: var(--taiko-cyan);
+}
