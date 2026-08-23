@@ -1,6 +1,6 @@
 {
   "name": "taiko-tests",
-  "version": "1.4.7",
+  "version": "0.0.1",
   "description": "Test suite for Taiko browser automation library",
   "private": true,
   "scripts": {
@@ -11,9 +11,6 @@
     "test-functional": "npm install && cd functional-tests && npm install && npm test",
     "test-docs": "cd docs-tests && node prepare.js && eleventy && cd ./gauge && npm ci && npm test"
   },
-  "dependencies": {
-    "taiko": "*"
-  },
   "devDependencies": {
     "adm-zip": "^0.6.0",
     "chai": "^4.3.7",
@@ -21,7 +18,8 @@
     "mocha": "^11.8.0",
     "ncp": "^2.0.0",
     "rewire": "^9.0.1",
-    "sinon": "^15.0.1"
+    "sinon": "^15.0.1",
+    "taiko": "*"
   },
   "author": "getgauge",
   "license": "MIT"
