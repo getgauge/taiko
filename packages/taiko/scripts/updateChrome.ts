@@ -3,12 +3,9 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const PACKAGE_JSON_PATH = join(
-  // @ts-expect-error
-  dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "package.json",
-);
+// @ts-expect-error
+const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
+const PACKAGE_JSON_PATH = join(SCRIPT_DIR, "..", "package.json");
 
 interface ChromeDownload {
   platform: string;
@@ -49,7 +46,7 @@ class ChromeUpdater {
           `Updating to latest chrome version: ${latestVersion.version}`,
         );
         this.updatePackageJSON(latestVersion);
-        execSync(`node ${dirname}/../lib/install.js`);
+        execSync(`node ${SCRIPT_DIR}/../lib/install.js`);
       } else {
         console.log(
           `Current chrome version (${currentVersion.revision}) is up to date with the latest version (${latestVersion.revision}).`,

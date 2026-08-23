@@ -19,6 +19,21 @@ jobs:
           node-version: 24
           check-latest: 'true'
 
+      - name: Setup
+        run: |
+          sudo apt-get update
+           sudo apt-get install -y  libnss3 \
+            libatk1.0-0 \
+            libatk-bridge2.0-0 \
+            libxcomposite1 \
+            libcups2 \
+            libxrandr2 \
+            libpangocairo-1.0-0 \
+            libgtk-3-0 \
+            libdrm-dev \
+            libgbm-dev \
+            libasound-dev
+
       - name: Get Chrome version and update
         run: |
           npm ci
