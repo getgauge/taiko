@@ -8,7 +8,7 @@
     "test:unit:silent": "node ../node_modules/mocha/bin/mocha.js \"unit-tests/**/*.test.js\" --require unit-tests/setup.js --timeout 9000 -R dot --trace-warnings --exit",
     "test:unit": "node ../node_modules/mocha/bin/mocha.js \"unit-tests/**/*.test.js\" --require unit-tests/setup.js --timeout 9000 --trace-warnings --exit",
     "test": "npm run test:api && npm run test:unit:silent",
-    "test-functional": "npm install && cd functional-tests && npm install && npm test",
+    "test-functional": "npm ci && cd functional-tests && npm ci && npm test",
     "test-docs": "cd docs-tests && node prepare.js && eleventy && cd ./gauge && npm ci && npm test"
   },
   "devDependencies": {
