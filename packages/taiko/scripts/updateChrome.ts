@@ -49,7 +49,7 @@ class ChromeUpdater {
           `Updating to latest chrome version: ${latestVersion.version}`,
         );
         this.updatePackageJSON(latestVersion);
-        execSync(`node ${__dirname}/../lib/install.js`);
+        execSync(`node ${dirname}/../lib/install.js`);
       } else {
         console.log(
           `Current chrome version (${currentVersion.revision}) is up to date with the latest version (${latestVersion.revision}).`,

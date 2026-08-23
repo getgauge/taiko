@@ -1,7 +1,8 @@
 {
-  "name": "gauge-js-template",
+  "name": "taiko-functional-tests",
   "version": "0.0.1",
-  "description": "Starter template for writing JavaScript tests for Gauge",
+  "description": "Functional tests for Taiko",
+  "private": true,
   "scripts": {
     "test": "gauge run -v --tags=\\!knownIssue --simple-console",
     "format": "prettier --write --single-quote '**/*.{js,jsx,ts,tsx}'",
@@ -11,16 +12,17 @@
     "type": "git",
     "url": "git+https://github.com/getgauge/taiko.git"
   },
-  "dependencies": {
+  "devDependencies": {
     "@getgauge/cli": "latest",
     "gauge-ts": "^0.3.6",
     "taiko": "file:../..",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
-  },
-  "devDependencies": {
+    "typescript": "^5.4.5",
     "@types/node": "latest",
     "the-internet-express": "git+https://github.com/getgauge-contrib/the-internet-express.git"
+  },
+  "allowScripts": {
+    "@getgauge/cli": true
   },
   "overrides": {
     "the-internet-express": {
@@ -30,8 +32,5 @@
     "gauge-ts": {
       "uuid": "^14.0.2"
     }
-  },
-  "allowScripts": {
-    "@getgauge/cli": true
   }
 }

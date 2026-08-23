@@ -35,9 +35,9 @@ jobs:
 
       - name: Get Chrome version and update
         run: |
-          npm install
-          node scripts/updateChrome.ts
-          revision=$(cat package.json | grep revision | awk '{print $2}' | sed 's/[",]//g')
+          npm ci
+          node packages/taiko/scripts/updateChrome.ts
+          revision=$(cat packages/taiko/package.json | grep revision | awk '{print $2}' | sed 's/[",]//g')
           echo "REVISION=$revision" >> $GITHUB_ENV
 
       - name: Create Pull Request

@@ -1,5 +1,5 @@
 [build]
-  command = "npm install && npm run doc:starlight"
+  command = "npm ci && npm run doc:starlight"
   publish = "packages/docs/dist"
 
 [[redirects]]
