@@ -8,10 +8,10 @@ const { execSync } = require("node:child_process");
 const semver = tryRequire("semver");
 
 const WORKSPACE = path.dirname(path.dirname(__dirname));
-const SOURCES = WORKSPACE;
+const ROOT = path.join(WORKSPACE, "../..");
 
 const manifest = JSON.parse(
-  fs.readFileSync(path.join(SOURCES, "package.json")),
+  fs.readFileSync(path.join(WORKSPACE, "package.json")),
 );
 
 const FLAGS = ["--canary", "--optional", "-h", "--help"];
@@ -117,7 +117,7 @@ if (opts["update-optional-dependencies"]) {
 }
 
 fs.writeFileSync(
-  path.join(SOURCES, "package.json"),
+  path.join(WORKSPACE, "package.json"),
   `${JSON.stringify(manifest, null, 2)}\n`,
   {
     encoding: "utf8",
@@ -128,11 +128,11 @@ fs.writeFileSync(
 // deleting package-lock.json allows us to sort of "tree-shake" our deps by forcing yarn to rebuild
 // the depgraph; sometimes newer versions of packages remove dependencies and a normal yarn
 // update doesn't seem to prune those old deps from the lockfile.
-fs.unlinkSync(path.join(SOURCES, "package-lock.json"));
-fs.rmSync(path.join(SOURCES, "node_modules"), { force: true, recursive: true });
+fs.unlinkSync(path.join(ROOT, "package-lock.json"));
+fs.rmSync(path.join(ROOT, "node_modules"), { force: true, recursive: true });
 
 console.log("Updating package-lock.json");
-execSync("npm install", { cwd: SOURCES });
+execSync("npm install", { cwd: ROOT });
 
 function interestingKeys(dict) {
   return Object.keys(dict).filter((k) => excludes(dict, k));
