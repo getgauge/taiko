@@ -3,6 +3,7 @@ on:
   schedule:
     # cron job that will run 1st of every month by 12am
     - cron: '0 12 1 * *'
+  workflow_dispatch:
 
 jobs:
   update-to-latest-chrome:
@@ -35,13 +36,13 @@ jobs:
 
       - name: Get Chrome version and update
         run: |
-          npm install
-          node scripts/updateChrome.ts
-          revision=$(cat package.json | grep revision | awk '{print $2}' | sed 's/[",]//g')
+          npm ci
+          node packages/taiko/scripts/updateChrome.ts
+          revision=$(cat packages/taiko/package.json | grep revision | awk '{print $2}' | sed 's/[",]//g')
           echo "REVISION=$revision" >> $GITHUB_ENV
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GAUGEBOT_GITHUB_TOKEN }}
           branch: ${{format('{0}{1}', 'update-chrome-', env.REVISION)}}
