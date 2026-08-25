@@ -125,11 +125,6 @@ const initCRI = async (target, n, options = {}) => {
 const connect_to_cri = async (target, options = {}) => {
   const _target = defaultConfig.local ? defaultConfig.browserDebugUrl : target;
   if (_client && _client._ws.readyState === 1) {
-    if (!defaultConfig.firefox) {
-      await network.setRequestInterception({
-        patterns: [],
-      });
-    }
     _client.removeAllListeners();
   }
   const tgt =
