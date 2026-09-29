@@ -38,7 +38,10 @@ async function extractZip(zipPath, folderPath) {
 }
 
 function isPathInside(parentPath, childPath) {
-  const relativePath = path.relative(path.resolve(parentPath), childPath);
+  const relativePath = path.relative(
+    path.resolve(parentPath),
+    path.resolve(childPath),
+  );
   return (
     relativePath !== "" &&
     relativePath !== ".." &&

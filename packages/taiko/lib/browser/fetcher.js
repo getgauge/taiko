@@ -102,6 +102,11 @@ class BrowserFetcher {
     try {
       await downloadFile(this.downloadURL, zipPath, progressCallback);
       await extractZip(zipPath, folderPath);
+    } catch (error) {
+      if (await existsAsync(folderPath)) {
+        await fs.remove(folderPath);
+      }
+      throw error;
     } finally {
       if (await existsAsync(zipPath)) {
         await unlinkAsync(zipPath);
@@ -186,13 +191,18 @@ function downloadFile(url, destinationPath, progressCallback) {
   }
 }
 
-function httpRequest(url, method, response) {
+function httpRequest(url, method, response, redirectCount = 0) {
+  if (redirectCount > 10) {
+    throw new Error(`Too many redirects while requesting ${url}`);
+  }
   const options = createRequestOptions(url, method);
 
   const driver = options.protocol === "https:" ? "https" : "http";
   const request = require(driver).request(options, (res) => {
     if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-      httpRequest(res.headers.location, method, response);
+      res.resume();
+      const redirectUrl = new URL(res.headers.location, url).toString();
+      httpRequest(redirectUrl, method, response, redirectCount + 1);
     } else {
       response(res);
     }
