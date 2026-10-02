@@ -12,7 +12,7 @@
     "test-docs": "cd docs-tests && node prepare.js && eleventy && cd ./gauge && npm ci && npm test"
   },
   "devDependencies": {
-    "adm-zip": "^0.6.0",
+    "adm-zip": "^0.6.1",
     "chai": "^4.3.7",
     "chai-as-promised": "^7.1.1",
     "mocha": "^11.8.0",
