@@ -27,6 +27,7 @@ const supportedPlatforms = [
   "mac-arm64",
   "mac-x64",
   "linux64",
+  "linux-arm64",
   "win32",
   "win64",
 ];
@@ -50,7 +51,7 @@ class BrowserMetadata {
     if (platform === "darwin") {
       this._platform = os.arch() === "arm64" ? "mac-arm64" : "mac-x64";
     } else if (platform === "linux") {
-      this._platform = "linux64";
+      this._platform = os.arch() === "arm64" ? "linux-arm64" : "linux64";
     } else if (platform === "win32") {
       this._platform = os.arch() === "x64" ? "win64" : "win32";
     }
@@ -117,12 +118,15 @@ class BrowserMetadata {
         "MacOS",
         "Google Chrome for Testing",
       );
-    } else if (this._platform === "linux64") {
+    } else if (
+      this._platform === "linux64" ||
+      this._platform === "linux-arm64"
+    ) {
       executablePath = path.join(folderPath, this.archiveName(), "chrome");
     } else if (this._platform === "win32" || this._platform === "win64") {
       executablePath = path.join(folderPath, this.archiveName(), "chrome.exe");
     } else {
-      throw `Unsupported platform: ${this._platform}`;
+      throw new Error(`Unsupported platform: ${this._platform}`);
     }
     const local = fs.existsSync(folderPath);
     return {
@@ -154,12 +158,13 @@ module.exports = BrowserMetadata;
  */
 function parseFolderPath(folderPath) {
   const name = path.basename(folderPath);
-  const splits = name.split("-");
-  if (splits.length !== 2) {
+  const lastDashIndex = name.lastIndexOf("-");
+  if (lastDashIndex === -1) {
     return null;
   }
-  const [platform, revision] = splits;
-  if (!supportedPlatforms.includes(platform)) {
+  const platform = name.slice(0, lastDashIndex);
+  const revision = name.slice(lastDashIndex + 1);
+  if (!revision || !supportedPlatforms.includes(platform)) {
     return null;
   }
   return { platform, revision };

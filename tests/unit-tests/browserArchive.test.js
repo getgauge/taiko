@@ -119,4 +119,19 @@ describe("BrowserArchive", () => {
       await fs.rm(tempDirectory, { recursive: true, force: true });
     }
   });
+
+  it("validates path containment strictly in isPathInside", () => {
+    const rewire = require("rewire");
+    const archiveModule = rewire("taiko/lib/browser/archive");
+    const isPathInside = archiveModule.__get__("isPathInside");
+
+    expect(isPathInside("/tmp/chromium", "/tmp/chromium/browser/chrome")).to.be
+      .true;
+    expect(isPathInside("/tmp/chromium", "/tmp/chromium")).to.be.false;
+    expect(isPathInside("/tmp/chromium", "/tmp/outside")).to.be.false;
+    expect(isPathInside("/tmp/chromium", "/tmp/chromium-other/file")).to.be
+      .false;
+    expect(isPathInside("/tmp/chromium", "/tmp/chromium/sub/../../etc/passwd"))
+      .to.be.false;
+  });
 });
