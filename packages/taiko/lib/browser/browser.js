@@ -27,7 +27,14 @@ const { createInterface } = require("node:readline");
 const BrowserMetadata = require("./metadata");
 const metadata = new BrowserMetadata();
 
-const supportedPlatforms = ["mac-arm64", "mac-x64", "linux", "win32", "win64"];
+const supportedPlatforms = [
+  "mac-arm64",
+  "mac-x64",
+  "linux64",
+  "linux-arm64",
+  "win32",
+  "win64",
+];
 
 const readdirAsync = promisify(readdir.bind(fs));
 
@@ -202,12 +209,13 @@ module.exports = Browser;
  */
 function parseFolderPath(folderPath) {
   const name = basename(folderPath);
-  const splits = name.split("-");
-  if (splits.length !== 2) {
+  const lastDashIndex = name.lastIndexOf("-");
+  if (lastDashIndex === -1) {
     return null;
   }
-  const [platform, revision] = splits;
-  if (!supportedPlatforms.includes(platform)) {
+  const platform = name.slice(0, lastDashIndex);
+  const revision = name.slice(lastDashIndex + 1);
+  if (!revision || !supportedPlatforms.includes(platform)) {
     return null;
   }
   return { platform, revision };
