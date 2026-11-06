@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 chai.use(chaiAsPromised);
 
-const { openBrowserArgs } = require("./test-util");
+const { openBrowserArgs, resetConfig } = require("./test-util");
 
 describe("OpenBrowser", () => {
   let taiko;
@@ -29,6 +29,25 @@ describe("OpenBrowser", () => {
 
     it("openBrowser should throw an error when options parameter is array", async () => {
       await expect(openBrowser([])).to.eventually.be.rejectedWith(Error);
+    });
+  });
+
+  describe("with observe set before the browser opens", () => {
+    before(() => {
+      taiko.setConfig({ observe: true, observeTime: 1 });
+    });
+
+    after(async () => {
+      resetConfig();
+      try {
+        await closeBrowser();
+      } catch (_) {
+        // ignore — browser may not have opened successfully
+      }
+    });
+
+    it("openBrowser should not wait on a browser that is not open yet", async () => {
+      await expect(openBrowser(openBrowserArgs)).to.eventually.be.fulfilled;
     });
   });
 
