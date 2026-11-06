@@ -42,6 +42,7 @@ function getTimeFieldElementWithLabel(searchElement, label) {
   ];
   for (const inputRadioElement of inputRadioElements) {
     if (
+      inputRadioElement.nextSibling &&
       inputRadioElement.nextSibling.nodeType === Node.TEXT_NODE &&
       inputRadioElement.nextSibling.wholeText.includes(label)
     ) {
