@@ -2815,7 +2815,7 @@ for (const func in module.exports) {
   if (realFuncs[func].constructor.name === "AsyncFunction") {
     module.exports[func] = async function () {
       if (defaultConfig.observe) {
-        await waitFor(defaultConfig.observeTime);
+        await wait(defaultConfig.observeTime);
       }
       // biome-ignore lint/complexity/noArguments: Cannot use optional arguments
       return await realFuncs[func].apply(this, arguments);

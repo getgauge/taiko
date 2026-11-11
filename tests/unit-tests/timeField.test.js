@@ -362,6 +362,33 @@ describe(test_name, () => {
     });
   });
 
+  describe("input as the last child of its label", () => {
+    let filePath;
+    before(async () => {
+      const innerHtml = `<label>Last Child<input type="date" value="2018-01-01"/></label>`;
+      filePath = createHtml(innerHtml, `${test_name}LastChild`);
+      await goto(filePath);
+      setConfig({
+        waitForNavigation: false,
+        retryTimeout: 10,
+        retryInterval: 10,
+      });
+    });
+
+    after(() => {
+      resetConfig();
+      removeFile(filePath);
+    });
+
+    it("test exists()", async () => {
+      expect(await timeField("Last Child").exists()).to.be.true;
+    });
+
+    it("test value()", async () => {
+      expect(await timeField("Last Child").value()).to.equal("2018-01-01");
+    });
+  });
+
   describe("Parameters validation", () => {
     it("should throw a TypeError when an ElementWrapper is passed as argument", async () => {
       expect(() => timeField($("div"))).to.throw(
